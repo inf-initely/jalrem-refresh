@@ -1,6 +1,6 @@
 # Jalur Rempah Website
 
-Project Jalur Rempah - Upana Studio
+Project Jalur Rempah - Upana Studio.
 
 ## Requirements
 
