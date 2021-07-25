@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\Admin\ArtikelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +15,19 @@ use App\Http\Controllers\ArtikelController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::prefix('admin')->group(function() {
-    Route::get('/artikel', [ArtikelController::class, 'index']);
+    Route::get('/', [ArtikelController::class, 'index']);
+
+    Route::get('/konten/artikel', [ArtikelController::class, 'index'])->name('admin.article.index');
+    Route::get('/konten/artikel/tambah', [ArtikelController::class, 'add'])->name('admin.article.add');
+    Route::get('/konten/artikel/edit', [ArtikelController::class, 'edit'])->name('admin.article.edit');
+
+
+    Route::get('/konten/foto', [ArtikelController::class, 'index']);
+
+    Route::get('/konten/video', [ArtikelController::class, 'index']);
+    
+    Route::get('/konten/publikasi', [ArtikelController::class, 'index']);
+    
+    Route::get('/konten/suara', [ArtikelController::class, 'index']);
 });
