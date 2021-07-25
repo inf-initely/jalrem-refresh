@@ -76,7 +76,7 @@
                 <h2 class="sub-judul">Jalur Rempah</h2>
               </header>
               <p class="jelajah-des">Melihat kembali lintasan jalur perdagangan rempah dari satu titik ke titik lainnya, menghidupkan kembali beragam kisahnya, menghubungkan kembali berbagai jejaknya.</p>
-              <a href="tentang-jalur.html" class="btn btn-danger btn-jelajah">
+              <a href="{{ route('tentangjalur') }}" class="btn btn-danger btn-jelajah">
                 lihat selengkapnya
               </a>
             </div>
@@ -87,7 +87,7 @@
                 <h2 class="sub-judul">Jejak Rempah Nusantara</h2>
               </header>
               <p class="jelajah-des">Menghidupkan kembali jejak globalisasi dari perniagaan rempah masa lalu yang menciptakan hubungan lintas budaya. Menampilkan jejak antar bangsa dan antar suku bangsa sebagai warisan dan pengetahuan hari ini.</p>
-              <a href="tentang-jejak.html" class="btn btn-danger btn-jelajah">
+              <a href="{{ route('tentangjejak') }}" class="btn btn-danger btn-jelajah">
                 lihat selengkapnya
               </a>
             </div>
@@ -104,7 +104,7 @@
                 <h2 class="sub-judul">Masa Depan</h2>
               </header>
               <p class="jelajah-des">Melihat kembali lintasan jalur perdagangan rempah dari satu titik ke titik lainnya, menghidupkan kembali beragam kisahnya, menghubungkan kembali berbagai jejaknya.</p>
-              <a href="tentang-masa-depan.html" class="btn btn-danger btn-jelajah">
+              <a href="{{ route('tentangmasadepan') }}" class="btn btn-danger btn-jelajah">
                 lihat selengkapnya
               </a>
             </div>
@@ -150,7 +150,7 @@
               <p>Berbagai upaya dilakukan untuk melestarikan jalur rempah, salah satunya dengan melakukan berbagai kegiatan.</p>
             </div>
             <div class="col-md-6 center-v text-end d-desktop">
-              <a href="informasi.html" class="btn btn-outline-danger">Lihat Semua Kegiatan</a>
+              <a href="{{ route('informasi') }}" class="btn btn-outline-danger">Lihat Semua Kegiatan</a>
             </div>
           </header>
           <section class="row justify-content-center" data-aos="flip-up">
@@ -216,7 +216,7 @@
               <p>Berbagai upaya dilakukan untuk melestarikan jalur rempah, salah satunya dengan melakukan berbagai kegiatan.</p>
             </div>
             <div class="col-md-6 center-v text-end  d-desktop">
-              <a href="list-artikel.html" class="btn btn-outline-danger">Lihat Semua Berita</a>
+              <a href="{{ route('articles') }}" class="btn btn-outline-danger">Lihat Semua Berita</a>
             </div>
           </header>
           <section class="row justify-content-center" data-aos="fade-up">
@@ -280,7 +280,7 @@
                 <h2 class="sub-judul">Konten Jalur Rempah</h2>
                 <p class="des-sub-judul">Berbagai upaya dilakukan untuk melestarikan jalur rempah, salah satunya dengan melakukan berbagai kegiatan.</p>
                 <p class="des-sub-sub-judul">Di masa lampau, kehadiran para pedagang antarbangsa memiliki peranan penting terhadap perkembangan budaya yang masih bisa kita lihat dan rasakan jejaknya.</p>
-                <a href="konten.html" class="btn btn-outline-danger">
+                <a href="{{ route('konten') }}" class="btn btn-outline-danger">
                   Lihat Semua Konten
                 </a>
               </header>
@@ -296,7 +296,7 @@
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor.
                       </p>
                     </div>
-                    <a href="list-foto.html" class="stretched-link"></a>
+                    <a href="{{ route('photos') }}" class="stretched-link"></a>
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -308,7 +308,7 @@
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor.
                       </p>
                     </div>
-                    <a href="list-publikasi.html" class="stretched-link"></a>
+                    <a href="{{ route('publications') }}" class="stretched-link"></a>
                   </div>
                 </div>
               </div>
@@ -322,7 +322,7 @@
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor.
                       </p>
                     </div>
-                    <a href="list-video.html" class="stretched-link"></a>
+                    <a href="{{ route('videos') }}" class="stretched-link"></a>
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -334,7 +334,7 @@
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor.
                       </p>
                     </div>
-                    <a href="list-audio.html" class="stretched-link"></a>
+                    <a href="{{ route('audios') }}" class="stretched-link"></a>
                   </div>
                 </div>
               </div>

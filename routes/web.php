@@ -58,11 +58,11 @@ Route::prefix('admin')->group(function() {
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/semua-artikel', [ArtikelController::class, 'index'])->name('artikel');
-Route::get('/semua-foto', [FotoController::class, 'index'])->name('photo');
-Route::get('/semua-video', [VideoController::class, 'index'])->name('video');
-Route::get('/semua-audio', [AudioController::class, 'index'])->name('sound');
-Route::get('/semua-publikasi', [PublikasiController::class, 'index'])->name('publication');
+Route::get('/semua-artikel', [ArtikelController::class, 'index'])->name('articles');
+Route::get('/semua-foto', [FotoController::class, 'index'])->name('photos');
+Route::get('/semua-video', [VideoController::class, 'index'])->name('videos');
+Route::get('/semua-audio', [AudioController::class, 'index'])->name('audios');
+Route::get('/semua-publikasi', [PublikasiController::class, 'index'])->name('publications');
 
 
 Route::get('/informasi', [InformasiController::class, 'index'])->name('informasi');

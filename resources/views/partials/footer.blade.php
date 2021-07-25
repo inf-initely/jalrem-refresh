@@ -25,13 +25,13 @@
           <h3 class="menu-footer">TENTANG</h3>
           <ul>
             <li>
-              <a href="tentang-jejak.html">Jejak</a>
+              <a href="{{ route('tentangjejak') }}">Jejak</a>
             </li>
             <li>
-              <a href="tentang-jalur.html">Jalur</a>
+              <a href="{{ route('tentangjalur') }}">Jalur</a>
             </li>
             <li>
-              <a href="tentang-masa-depan.html">Masa Depan</a>
+              <a href="{{ route('tentangmasadepan') }}">Masa Depan</a>
             </li>
           </ul>
         </div>
@@ -39,19 +39,19 @@
           <h3 class="menu-footer">KONTEN</h3>
           <ul>
             <li>
-              <a href="list-artikel.html">Artikel</a>
+              <a href="{{ route('articles') }}">Artikel</a>
             </li>
             <li>
-              <a href="list-foto.html">Foto</a>
+              <a href="{{ route('photos') }}">Foto</a>
             </li>
             <li>
-              <a href="list-video.html">Video</a>
+              <a href="{{ route('videos') }}">Video</a>
             </li>
             <li>
-              <a href="list-publikasi.html">Publikasi</a>
+              <a href="{{ route('publications') }}">Publikasi</a>
             </li>
             <li>
-              <a href="list-audio.html">Audio</a>
+              <a href="{{ route('audios') }}">Audio</a>
             </li>
           </ul>
         </div>
