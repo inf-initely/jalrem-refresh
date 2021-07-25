@@ -19,6 +19,8 @@ use App\Http\Controllers\PublikasiController;
 use App\Http\Controllers\JalurController;
 use App\Http\Controllers\JejakController;
 use App\Http\Controllers\MasaDepanController;
+use App\Http\Controllers\InformasiController;
+use App\Http\Controllers\KontenController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -62,6 +64,9 @@ Route::get('/semua-video', [VideoController::class, 'index'])->name('video');
 Route::get('/semua-audio', [AudioController::class, 'index'])->name('sound');
 Route::get('/semua-publikasi', [PublikasiController::class, 'index'])->name('publication');
 
+
+Route::get('/informasi', [InformasiController::class, 'index'])->name('informasi');
+Route::get('/konten', [KontenController::class, 'index'])->name('konten');
 Route::get('/tentang-jalur', [JalurController::class, 'index'])->name('tentangjalur');
 Route::get('/tentang-jejak', [JejakController::class, 'index'])->name('tentangjejak');
 Route::get('/tentang-masa-depan', [MasaDepanController::class, 'index'])->name('tentangmasadepan');
