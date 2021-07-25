@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\ArtikelController;
+use App\Http\Controllers\Admin\FotoController;
 use App\Http\Controllers\Admin\HomeController;
 
 /*
@@ -24,7 +25,9 @@ Route::prefix('admin')->group(function() {
     Route::get('/konten/artikel/edit', [ArtikelController::class, 'edit'])->name('admin.article.edit');
 
 
-    Route::get('/konten/foto', [ArtikelController::class, 'index']);
+    Route::get('/konten/foto', [FotoController::class, 'index']);
+    Route::get('/konten/foto/tambah', [FotoController::class, 'add']);
+    Route::get('/konten/foto/edit', [FotoController::class, 'edit']);
 
     Route::get('/konten/video', [ArtikelController::class, 'index']);
     
