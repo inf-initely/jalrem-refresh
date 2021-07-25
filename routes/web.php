@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\ArtikelController;
+use App\Http\Controllers\Admin\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +17,7 @@ use App\Http\Controllers\Admin\ArtikelController;
 */
 
 Route::prefix('admin')->group(function() {
-    Route::get('/', [ArtikelController::class, 'index']);
+    Route::get('/', [HomeController::class, 'index']);
 
     Route::get('/konten/artikel', [ArtikelController::class, 'index'])->name('admin.article.index');
     Route::get('/konten/artikel/tambah', [ArtikelController::class, 'add'])->name('admin.article.add');

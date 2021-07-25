@@ -5,7 +5,7 @@
       <i class="fa fa-bars"></i>
     </button>
     <div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-      <h2 class="judul text-gray-800">Konten - Artikel</h2>
+      <h2 class="judul text-gray-800">@yield('topbar-title')</h2>
     </div>
     <ul class="navbar-nav ml-auto">
       <!-- Nav Item - User Information -->
