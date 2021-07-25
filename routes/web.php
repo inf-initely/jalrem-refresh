@@ -21,7 +21,7 @@ use App\Http\Controllers\Admin\HomeController;
 */
 
 Route::prefix('admin')->group(function() {
-    Route::get('/', [HomeController::class, 'index']);
+    Route::get('/', [HomeController::class, 'index'])->name('admin.home');
 
     Route::get('/konten/artikel', [ArtikelController::class, 'index'])->name('admin.article.index');
     Route::get('/konten/artikel/tambah', [ArtikelController::class, 'add'])->name('admin.article.add');
