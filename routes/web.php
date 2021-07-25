@@ -7,7 +7,9 @@ use App\Http\Controllers\Admin\FotoController;
 use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\Admin\PublikasiController;
 use App\Http\Controllers\Admin\SuaraController;
-use App\Http\Controllers\Admin\HomeController;
+
+use App\Http\Controllers\Admin\HomeController as HomeControllerAdmin;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +23,7 @@ use App\Http\Controllers\Admin\HomeController;
 */
 
 Route::prefix('admin')->group(function() {
-    Route::get('/', [HomeController::class, 'index'])->name('admin.home');
+    Route::get('/', [HomeControllerAdmin::class, 'index'])->name('admin.home');
 
     Route::get('/konten/artikel', [ArtikelController::class, 'index'])->name('admin.article.index');
     Route::get('/konten/artikel/tambah', [ArtikelController::class, 'add'])->name('admin.article.add');
@@ -44,3 +46,6 @@ Route::prefix('admin')->group(function() {
     Route::get('/konten/suara/tambah', [SuaraController::class, 'add'])->name('admin.sound.add');
     Route::get('/konten/suara/edit', [SuaraController::class, 'edit'])->name('admin.sound.edit');
 });
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
+// Route::get('/semua-artikel', [])
