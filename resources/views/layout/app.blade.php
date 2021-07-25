@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/css/swiper.min.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/hero-slider.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/jalur-rempah.css') }}">
-    <title>@yield('title')</title>
+    <title>Jalur Rempah</title>
     <link rel="shortcut icon" href="{{ asset('assets/img/logo/favicon.png') }}">
 </head>
 
