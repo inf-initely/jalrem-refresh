@@ -78,5 +78,7 @@ Route::get('/tentang-jejak', [JejakController::class, 'index'])->name('tentangje
 Route::get('/tentang-masa-depan', [MasaDepanController::class, 'index'])->name('tentangmasadepan');
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'login_post'])->name('login_post');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/register', [AuthController::class, 'register_post'])->name('register_post');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');

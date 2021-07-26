@@ -22,7 +22,7 @@ class AuthController extends Controller
         ]);
         
         $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials)) {
+        if (auth()->attempt($credentials)) {
             return redirect()->route('admin.home');
         }
   
@@ -59,4 +59,11 @@ class AuthController extends Controller
         'password' => Hash::make($data['password'])
       ]);
     }  
+
+    public function logout()
+    {
+        auth()->logout();
+        
+        return redirect('/login');
+    }
 }

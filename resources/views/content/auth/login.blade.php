@@ -30,16 +30,23 @@
             <div class="card-body">
               <h3 class="sub-judul-form">Form Login</h3>
               <p class="des-form-daftar">These contacts are used to inform about orders</p>
-              <form>
+              @if (count($errors) > 0)
+                <div class="alert alert-danger" role="alert">
+                  {{ $errors->first() }} 
+                </div>
+              @endif
+              
+              <form method="post" action="{{ route('login_post') }}">
+                @csrf
                 <div class="input-group mb-4">
                   <span class="input-group-text icon-group" id="icon-email"> <i class="fa fa-envelope"></i> </span>
-                  <input id="inputEmail" type="email" class="form-control" placeholder="masukkan email" aria-label="email" aria-describedby="icon-email">
+                  <input id="inputEmail" type="email" name="email" class="form-control" placeholder="masukkan email" aria-label="email" aria-describedby="icon-email">
                 </div>
                 <div class="input-group mb-4">
                   <span class="input-group-text icon-group" id="icon-pass">
                     <i class="fa  fa-asterisk"></i>
                   </span>
-                  <input id="inputPassword" type="password" class="form-control" placeholder="masukkan password" aria-label="password" aria-describedby="icon-pass">
+                  <input id="inputPassword" type="password" name="password" class="form-control" placeholder="masukkan password" aria-label="password" aria-describedby="icon-pass">
                   <span class="input-group-text" id="icon-pass">
                     <i toggle="#inputPassword" class="fa  fa-eye toggle-password"></i>
                   </span>
