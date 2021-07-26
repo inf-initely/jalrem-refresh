@@ -549,7 +549,7 @@
               <p>Melihat kembali lintasan jalur perdagangan rempah dari satu titik ke titik lainnya, menghidupkan kembali beragam kisahnya, menghubungkan kembali berbagai jejaknya <br>Melihat kembali lintasan jalur perdagangan rempah dari satu titik ke titik lainnya, menghidupkan kembali beragam kisahnya, menghubungkan kembali berbagai jejaknya <br>Melihat kembali lintasan jalur perdagangan rempah dari satu titik ke titik lainnya, menghidupkan kembali beragam kisahnya, menghubungkan kembali berbagai jejaknya</p>
             </div>
             <div class="offset-lg-1 col-lg-6 text-center center-v">
-              <a href="daftar.html" class="btn btn-lg btn-secondary btn-primary-jarem">Jadi Kontributor</a>
+              <a href="{{ route('register') }}" class="btn btn-lg btn-secondary btn-primary-jarem">Jadi Kontributor</a>
             </div>
           </div>
         </div>

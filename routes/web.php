@@ -22,6 +22,8 @@ use App\Http\Controllers\MasaDepanController;
 use App\Http\Controllers\InformasiController;
 use App\Http\Controllers\KontenController;
 use App\Http\Controllers\KegiatanController;
+
+use App\Http\Controllers\AuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -74,3 +76,7 @@ Route::get('/konten', [KontenController::class, 'index'])->name('konten');
 Route::get('/tentang-jalur', [JalurController::class, 'index'])->name('tentangjalur');
 Route::get('/tentang-jejak', [JejakController::class, 'index'])->name('tentangjejak');
 Route::get('/tentang-masa-depan', [MasaDepanController::class, 'index'])->name('tentangmasadepan');
+
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/register', [AuthController::class, 'register_post'])->name('register_post');

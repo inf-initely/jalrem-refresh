@@ -47,7 +47,7 @@
         <button class="btn icon-search mr-4" data-bs-toggle="modal" data-bs-target="#searchModal">
           <i class="fa fa-search clr-white"></i>
         </button>
-        <a href="login.html" class="btn btn-danger mr-4" style="margin-right:1rem">
+        <a href="{{ route('login') }}" class="btn btn-danger mr-4" style="margin-right:1rem">
           Masuk
         </a>
       </div>
@@ -110,7 +110,7 @@
         <button class="btn icon-search mr-4" data-bs-toggle="modal" data-bs-target="#searchModal">
           <i class="fa fa-search clr-black"></i>
         </button>
-        <a href="login.html" class="btn btn-danger mr-4" style="margin-right:1rem">
+        <a href="{{ route('login') }}" class="btn btn-danger mr-4" style="margin-right:1rem">
           Masuk
         </a>
       </div>
@@ -173,7 +173,7 @@
         <button class="btn icon-search mr-4" data-bs-toggle="modal" data-bs-target="#searchModal">
           <i class="fa fa-search clr-white"></i>
         </button>
-        <a href="login.html" class="btn btn-danger mr-4" style="margin-right:1rem">
+        <a href="{{ route('login') }}" class="btn btn-danger mr-4" style="margin-right:1rem">
           Masuk
         </a>
       </div>

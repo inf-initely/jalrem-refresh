@@ -30,26 +30,27 @@
             <div class="card-body">
               <h3 class="sub-judul-form">Mendaftar</h3>
               <p class="des-form-daftar">These contacts are used to inform about orders</p>
-              <form>
+              <form method="post" action="{{ route('register_post') }}">
+                @csrf
                 <div class="input-group mb-4">
                   <span class="input-group-text icon-group" id="icon-email"> <i class="fa fa-envelope"></i> </span>
-                  <input id="inputEmail" type="email" class="form-control" placeholder="masukkan email" aria-label="email" aria-describedby="icon-email">
+                  <input id="inputEmail" type="email" class="form-control" placeholder="masukkan email" aria-label="email" name="email" aria-describedby="icon-email">
                 </div>
                 <div class="input-group mb-4">
                   <span class="input-group-text icon-group" id="icon-tel"> <i class="fa fa-phone"></i> </span>
-                  <input id="inputTelpon" type="tel" class="form-control" placeholder="masukkan no. telpon" aria-label="telpon" aria-describedby="icon-tel">
+                  <input id="inputTelpon" name="telp" type="tel" class="form-control" placeholder="masukkan no. telpon" aria-label="telpon" aria-describedby="icon-tel">
                 </div>
                 <div class="input-group mb-4">
                   <span class="input-group-text icon-group" id="icon-pass">
                     <i class="fa  fa-asterisk"></i>
                   </span>
-                  <input id="inputPassword" type="password" class="form-control" placeholder="masukkan password" aria-label="password" aria-describedby="icon-pass">
+                  <input id="inputPassword" name="password" type="password" class="form-control" placeholder="masukkan password" aria-label="password" aria-describedby="icon-pass">
                   <span class="input-group-text" id="icon-pass">
                     <i toggle="#inputPassword" class="fa  fa-eye toggle-password"></i>
                   </span>
                 </div>
                 <!-- <input id="inputPassword" type="password" class="form-control mb-4" id="inputPassword"> -->
-                <select class="form-select mb-4" aria-label="select kontributor">
+                <select class="form-select mb-4" aria-label="select kontributor" name="contributor">
                   <option selected>Jenis Kontributor</option>
                   <option value="1">Kontributor Pamong Budaya</option>
                   <option value="2">Kontributor Umum</option>
@@ -70,7 +71,7 @@
               </form>
             </div>
           </div>
-          <p class="des-form-daftar text-center">Already hava an account? <a class="link-daftar" href="login.html">Sign In</a></p>
+          <p class="des-form-daftar text-center">Already hava an account? <a class="link-daftar" href="{{ route('login') }}">Sign In</a></p>
         </div>
       </div>
     </div>

@@ -21,7 +21,7 @@
                       <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">List Video</h2>
                     </div>
                     <div class="col-6 text-end">
-                      <a href="tambah-konten-video.html" class="btn btn-primary">
+                      <a href="{{ route('admin.video.add') }}" class="btn btn-primary">
                         <i class="fa fa-plus mr-1"></i> Tambah
                       </a>
                     </div>

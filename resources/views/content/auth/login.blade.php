@@ -54,7 +54,7 @@
               </form>
             </div>
           </div>
-          <p class="des-form-daftar text-center">Don't have an account? <a class="link-daftar" href="daftar.html">Sign Up</a></p>
+          <p class="des-form-daftar text-center">Don't have an account? <a class="link-daftar" href="{{ route('register') }}">Sign Up</a></p>
         </div>
       </div>
     </div>

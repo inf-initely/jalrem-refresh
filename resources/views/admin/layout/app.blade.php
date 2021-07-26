@@ -48,7 +48,7 @@
         <div class="modal-body">dengan memilih "logout" anda akan keluar dari website ini</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="../public/login.html">Logout</a>
+          <a class="btn btn-primary" href="{{ route('logout') }}">Logout</a>
         </div>
       </div>
     </div>
