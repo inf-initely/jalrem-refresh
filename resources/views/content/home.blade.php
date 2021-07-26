@@ -166,7 +166,7 @@
                       <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">Kompetisi Cerita Gambar Rempah dan Budaya Bahari</h3>
                     </div>
                   </div>
-                  <a href="detail-kegiatan" class="stretched-link"></a>
+                  <a href="{{ route('event_detail') }}" class="stretched-link"></a>
                 </div>
               </div>
             </div>
@@ -182,7 +182,7 @@
                       <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">Kompetisi Cerita Gambar Rempah dan Budaya Bahari</h3>
                     </div>
                   </div>
-                  <a href="detail-kegiatan" class="stretched-link"></a>
+                  <a href="{{ route('event_detail') }}" class="stretched-link"></a>
                 </div>
               </div>
             </div>
@@ -198,7 +198,7 @@
                       <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">Kompetisi Cerita Gambar Rempah dan Budaya Bahari</h3>
                     </div>
                   </div>
-                  <a href="detail-kegiatan" class="stretched-link"></a>
+                  <a href="{{ route('event_detail') }}" class="stretched-link"></a>
                 </div>
               </div>
             </div>
@@ -233,7 +233,7 @@
                     20 November 2021
                   </p>
                 </div>
-                <a href="detail-berita.html" class="stretched-link"></a>
+                <a href="{{ route('article_detail') }}" class="stretched-link"></a>
               </div>
             </div>
             <div class="col-md-6 col-lg-4 mb-4">
@@ -249,7 +249,7 @@
                     20 November 2021
                   </p>
                 </div>
-                <a href="detail-berita.html" class="stretched-link"></a>
+                <a href="{{ route('article_detail') }}" class="stretched-link"></a>
               </div>
             </div>
             <div class="col-md-6 col-lg-4 mb-4">
@@ -265,7 +265,7 @@
                     20 November 2021
                   </p>
                 </div>
-                <a href="detail-berita.html" class="stretched-link"></a>
+                <a href="{{ route('article_detail') }}" class="stretched-link"></a>
               </div>
             </div>
             <div class="col-md-12 text-center  d-mobile">

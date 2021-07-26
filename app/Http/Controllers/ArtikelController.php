@@ -10,4 +10,9 @@ class ArtikelController extends Controller
     {
         return view('content.articles');
     }
+
+    public function show()
+    {
+        return view('content.article_detail');
+    }
 }

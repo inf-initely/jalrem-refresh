@@ -10,4 +10,9 @@ class FotoController extends Controller
     {
         return view('content.photos');
     }
+
+    public function show()
+    {
+        return view('content.photo_detail');
+    }
 }

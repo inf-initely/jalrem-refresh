@@ -21,6 +21,7 @@ use App\Http\Controllers\JejakController;
 use App\Http\Controllers\MasaDepanController;
 use App\Http\Controllers\InformasiController;
 use App\Http\Controllers\KontenController;
+use App\Http\Controllers\KegiatanController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,6 +65,9 @@ Route::get('/semua-video', [VideoController::class, 'index'])->name('videos');
 Route::get('/semua-audio', [AudioController::class, 'index'])->name('audios');
 Route::get('/semua-publikasi', [PublikasiController::class, 'index'])->name('publications');
 
+Route::get('/artikel', [ArtikelController::class, 'show'])->name('article_detail');
+Route::get('/kegiatan', [KegiatanController::class, 'show'])->name('event_detail');
+Route::get('/foto', [FotoController::class, 'show'])->name('photo_detail');
 
 Route::get('/informasi', [InformasiController::class, 'index'])->name('informasi');
 Route::get('/konten', [KontenController::class, 'index'])->name('konten');
