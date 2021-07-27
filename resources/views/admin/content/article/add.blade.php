@@ -4,9 +4,14 @@
     ADMIN - Jalur Rempah
 @endsection
 
+@section('topbar-title')
+    Konten - Artikel
+@endsection
+
 @section('content')
-    
           <!-- Begin Page Content -->
+          <form method="post" action="{{ route('admin.article.store') }}">
+          @csrf
           <div class="container-fluid" id="contentWrapper">
             <!-- Page Heading -->
             <div class="row">
@@ -16,16 +21,14 @@
                     <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">Bahasa</h2>
                   </div>
                   <div class="card-body">
-                    <form>
                       <div class="mb-3">
                         <label for="judulArtikelBahasa" class="form-label">Judul</label>
-                        <input type="text" class="form-control" id="judulArtikelBahasa" placeholder="masukkan judul artikel">
+                        <input type="text" name="judul_indo" class="form-control" id="judulArtikelBahasa" placeholder="masukkan judul artikel">
                       </div>
                       <div class="mb-3">
                         <label for="isiArtikelBahasa" class="form-label">Isi Konten</label>
-                        <textarea class="form-control" id="isiArtikelBahasa" rows="8"></textarea>
+                        <textarea class="form-control" name="konten_indo" id="isiArtikelBahasa" rows="8"></textarea>
                       </div>
-                    </form>
                   </div>
                 </div>
               </div>
@@ -35,16 +38,14 @@
                     <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">English</h2>
                   </div>
                   <div class="card-body">
-                    <form>
                       <div class="mb-3">
                         <label for="judulArtikelEnglish" class="form-label">Judul</label>
-                        <input type="text" class="form-control" id="judulArtikelEnglish" placeholder="masukkan judul artikel">
+                        <input type="text" class="form-control" name="judul_english" id="judulArtikelEnglish" placeholder="masukkan judul artikel">
                       </div>
                       <div class="mb-3">
                         <label for="isiArtikelEnglish" class="form-label">Isi Konten</label>
-                        <textarea class="form-control" id="isiArtikelEnglish" rows="8"></textarea>
+                        <textarea class="form-control" name="konten_english" id="isiArtikelEnglish" rows="8"></textarea>
                       </div>
-                    </form>
                   </div>
                 </div>
               </div>
@@ -56,11 +57,11 @@
                   <div class="card-body ">
                     <div class="row">
                       <div class="col-lg-12 text-center">
-                        <img class="preview mb-3 text-center" src="assets/img/noimage.jpg" />
+                        <img class="preview mb-3 text-center" src="{{ asset('assets/admin/img/noimage.jpg') }}" />
                       </div>
                     </div>
                     <div class="mb-4">
-                      <input class="form-control" id="uploadThumbnail" type="file" data-preview=".preview">
+                      <input class="form-control" id="uploadThumbnail" name="thumbnail" type="file" data-preview=".preview">
                     </div>
                     <div class="mb-3">
                       <h5>Panduan unggah gambar</h5>
@@ -80,10 +81,9 @@
                     <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">Tag Artikel</h2>
                   </div>
                   <div class="card-body">
-                    <form>
                       <div class="mb-3">
                         <label for="lokasiArtikel" class="form-label">Lokasi</label>
-                        <select id="pilihLokasi" class="form-select select2-style" aria-label="Default select example">
+                        <select id="pilihLokasi" class="form-select select2-style" name="id_lokasi" aria-label="Default select example">
                           <option selected>Pilih Lokasi</option>
                           <option value="1">Lokasi 1</option>
                           <option value="2">Lokasi 2</option>
@@ -96,86 +96,17 @@
                         <label for="isiArtikelEnglish" class="form-label">Jenis Rempah</label>
                         <div class="px-3 row">
                           <div class="col-lg-4">
+                            @foreach( $rempahs as $r )
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                              <label class="form-check-label" for="flexCheckDefault">
-                                Jenis Rempah 1
+                              <input class="form-check-input-{{ $r->id }}" type="checkbox" name="rempah-{{ $r->id }}" value="{{ $r->id }}" id="flexCheckDefault-{{ $r->id }}"">
+                              <label class="form-check-label-{{ $r->id }}"" for="flexCheckDefault-{{ $r->id }}"">
+                                {{ $r->jenis_rempah }}
                               </label>
                             </div>
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                              <label class="form-check-label" for="flexCheckChecked">
-                                Jenis Rempah 2
-                              </label>
-                            </div>
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                              <label class="form-check-label" for="flexCheckDefault">
-                                Jenis Rempah 1
-                              </label>
-                            </div>
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                              <label class="form-check-label" for="flexCheckChecked">
-                                Jenis Rempah 2
-                              </label>
-                            </div>
-                          </div>
-                          <div class="col-lg-4">
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                              <label class="form-check-label" for="flexCheckDefault">
-                                Jenis Rempah 1
-                              </label>
-                            </div>
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                              <label class="form-check-label" for="flexCheckChecked">
-                                Jenis Rempah 2
-                              </label>
-                            </div>
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                              <label class="form-check-label" for="flexCheckDefault">
-                                Jenis Rempah 1
-                              </label>
-                            </div>
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                              <label class="form-check-label" for="flexCheckChecked">
-                                Jenis Rempah 2
-                              </label>
-                            </div>
-                          </div>
-                          <div class="col-lg-4">
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                              <label class="form-check-label" for="flexCheckDefault">
-                                Jenis Rempah 1
-                              </label>
-                            </div>
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                              <label class="form-check-label" for="flexCheckChecked">
-                                Jenis Rempah 2
-                              </label>
-                            </div>
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                              <label class="form-check-label" for="flexCheckDefault">
-                                Jenis Rempah 1
-                              </label>
-                            </div>
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                              <label class="form-check-label" for="flexCheckChecked">
-                                Jenis Rempah 2
-                              </label>
-                            </div>
+                            @endforeach
                           </div>
                         </div>
                       </div>
-                    </form>
                   </div>
                 </div>
               </div>
@@ -192,5 +123,5 @@
          </div>
         <!-- End of Main Content -->
         </div>
-        
+      </form>
 @endsection

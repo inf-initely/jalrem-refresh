@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ArtikelRempah extends Migration
+class CreateLokasisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class ArtikelRempah extends Migration
      */
     public function up()
     {
-        Schema::create('artikel_rempah', function (Blueprint $table) {
+        Schema::create('lokasis', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('id_artikel');
-            $table->unsignedInteger('id_rempah');
+            $table->string('nama_lokasi');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class ArtikelRempah extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('lokasis');
     }
 }

@@ -38,86 +38,24 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>#</td>
-                          <td>Lorem Ipsum Lorem Ipsum Lorem Ipsum</td>
-                          <td>Anonim</td>
-                          <td>
-                            <a href="../public/detail-berita.html" class="btn btn-sm btn-outline-primary">
-                              View
-                            </a>
-                            <a href="{{ route('admin.article.edit') }}" class="btn btn-sm btn-outline-info">
-                              Edit
-                            </a>
-                            <button class="btn btn-sm btn-outline-danger btn-hapus">
-                              Hapus
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>#</td>
-                          <td>Lorem Ipsum</td>
-                          <td>Anonim</td>
-                          <td>
-                            <a href="../public/detail-berita.html" class="btn btn-sm btn-outline-primary">
-                              View
-                            </a>
-                            <a href="edit-konten-artikel.html" class="btn btn-sm btn-outline-info">
-                              Edit
-                            </a>
-                            <button class="btn btn-sm btn-outline-danger btn-hapus">
-                              Hapus
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>#</td>
-                          <td>Source undefine</td>
-                          <td>Anonim</td>
-                          <td>
-                            <a href="../public/detail-berita.html" class="btn btn-sm btn-outline-primary">
-                              View
-                            </a>
-                            <a href="edit-konten-artikel.html" class="btn btn-sm btn-outline-info">
-                              Edit
-                            </a>
-                            <button class="btn btn-sm btn-outline-danger btn-hapus">
-                              Hapus
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>#</td>
-                          <td>Source undefine</td>
-                          <td>Anonim</td>
-                          <td>
-                            <a href="../public/detail-berita.html" class="btn btn-sm btn-outline-primary">
-                              View
-                            </a>
-                            <a href="edit-konten-artikel.html" class="btn btn-sm btn-outline-info">
-                              Edit
-                            </a>
-                            <button class="btn btn-sm btn-outline-danger btn-hapus">
-                              Hapus
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>#</td>
-                          <td>Source undefine</td>
-                          <td>Anonim</td>
-                          <td>
-                            <a href="../public/detail-berita.html" class="btn btn-sm btn-outline-primary">
-                              View
-                            </a>
-                            <a href="edit-konten-artikel.html" class="btn btn-sm btn-outline-info">
-                              Edit
-                            </a>
-                            <button class="btn btn-sm btn-outline-danger btn-hapus">
-                              Hapus
-                            </button>
-                          </td>
-                        </tr>
+                        @foreach( $artikels as $a )
+                          <tr>
+                            <td>#</td>
+                            <td>{{ $a->judul }}</td>
+                            <td>{{ $a-penulis }}</td>
+                            <td>
+                              <a href="../public/detail-berita.html" class="btn btn-sm btn-outline-primary">
+                                View
+                              </a>
+                              <a href="{{ route('admin.article.edit') }}" class="btn btn-sm btn-outline-info">
+                                Edit
+                              </a>
+                              <button class="btn btn-sm btn-outline-danger btn-hapus">
+                                Hapus
+                              </button>
+                            </td>
+                          </tr>
+                        @endforeach
                       </tbody>
                     </table>
                   </div>

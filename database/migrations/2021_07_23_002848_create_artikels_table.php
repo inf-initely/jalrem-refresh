@@ -17,10 +17,11 @@ class CreateArtikelsTable extends Migration
             $table->id();
             $table->string('judul_indo');
             $table->longText('konten_indo');
-            $table->string('judul_english');
-            $table->longText('konten_english');
+            $table->string('judul_english')->nullable();
+            $table->longText('konten_english')->nullable();
             $table->string('thumbnail');
             $table->unsignedInteger('id_lokasi');
+            $table->string('penulis');
             $table->timestamps();
         });
     }

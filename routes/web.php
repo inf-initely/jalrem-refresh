@@ -40,6 +40,7 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function() {
 
     Route::get('/konten/artikel', [ArtikelControllerAdmin::class, 'index'])->name('admin.article.index');
     Route::get('/konten/artikel/tambah', [ArtikelControllerAdmin::class, 'add'])->name('admin.article.add');
+    Route::post('/konten/artikel/tambah', [ArtikelControllerAdmin::class, 'store'])->name('admin.article.store');
     Route::get('/konten/artikel/edit', [ArtikelControllerAdmin::class, 'edit'])->name('admin.article.edit');
 
 
