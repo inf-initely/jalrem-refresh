@@ -35,7 +35,7 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::prefix('admin')->group(function() {
+Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function() {
     Route::get('/', [HomeControllerAdmin::class, 'index'])->name('admin.home');
 
     Route::get('/konten/artikel', [ArtikelControllerAdmin::class, 'index'])->name('admin.article.index');

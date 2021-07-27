@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+    }
+
     public function login()
     {
         return view('content.auth.login');
@@ -16,17 +21,18 @@ class AuthController extends Controller
 
     public function login_post(Request $request)
     {
-        $request->validate([
+        $validate = $request->validate([
             'email' => 'required|email',
             'password' => 'required'
         ]);
+       
         
         $credentials = $request->only('email', 'password');
         if (auth()->attempt($credentials)) {
             return redirect()->route('admin.home');
         }
   
-        // return redirect("login")->withError('');
+        return redirect()->route('login')->withErrors(['errors' => 'email or password wrong!!']);
 
     }
 
