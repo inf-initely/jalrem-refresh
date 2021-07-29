@@ -233,7 +233,7 @@
                     20 November 2021
                   </p>
                 </div>
-                <a href="{{ route('article_detail') }}" class="stretched-link"></a>
+                <a href="{{ route('article_detail', 1) }}" class="stretched-link"></a>
               </div>
             </div>
             <div class="col-md-6 col-lg-4 mb-4">
@@ -249,7 +249,7 @@
                     20 November 2021
                   </p>
                 </div>
-                <a href="{{ route('article_detail') }}" class="stretched-link"></a>
+                <a href="{{ route('article_detail', 1) }}" class="stretched-link"></a>
               </div>
             </div>
             <div class="col-md-6 col-lg-4 mb-4">
@@ -265,7 +265,7 @@
                     20 November 2021
                   </p>
                 </div>
-                <a href="{{ route('article_detail') }}" class="stretched-link"></a>
+                <a href="{{ route('article_detail', 1) }}" class="stretched-link"></a>
               </div>
             </div>
             <div class="col-md-12 text-center  d-mobile">

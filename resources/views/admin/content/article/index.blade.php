@@ -44,7 +44,7 @@
                             <td>{{ $a->judul_indo }}</td>
                             <td>{{ $a->penulis }}</td>
                             <td>
-                              <a href="../public/detail-berita.html" class="btn btn-sm btn-outline-primary">
+                              <a href="{{ route('article_detail', $a->id) }}" class="btn btn-sm btn-outline-primary">
                                 View
                               </a>
                               <a href="{{ route('admin.article.edit', $a->id) }}" class="btn btn-sm btn-outline-info">

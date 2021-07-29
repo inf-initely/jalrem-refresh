@@ -1,8 +1,12 @@
 @extends('layout.app')
 
+@section('name')
+    
+@endsection
+
 @section('content')
 <header id="hero">
-    <img class="hero-img-2" src="assets/img/hero/hero-2.webp">
+    <img class="hero-img-2" src="{{ asset('assets/artikel/thumbnail/' . $artikel->thumbnail) }}">
     <div class="text-hero-2">
       <div class="">
         <div class="col-lg-12 text-center">
@@ -20,16 +24,10 @@
           <div class="row justify-content-center">
             <div class="col-lg-8">
               <header>
-                <h2 class="sub-judul">Pengumuman Kompetisi Cerita Gambar Rempah dan Budaya Bahari 2021</h2>
+                <h2 class="sub-judul">{{ $artikel->judul_indo }}</h2>
               </header>
               <section id="desTentang">
-                <p>Halo, Sobat Nusa! Siapa yang dari kemarin sudah tidak sabar menunggu pengumuman pemenang Kompetisi Cerita Gambar Rempah dan Budaya Bahari?</p>
-                <p>Setelah melewati proses seleksi dan penjurian dengan beberapa kriteria. Inilah daftar para pemenang Kompetisi Cerita Gambar Rempah dan Budaya Bahari dari kategori remaja dan anak. Pengumuman pemenang bisa dilihat pada video berikut ini atau langsung di kanal youtube Jalur Rempah RI.</p>
-                <p>Nusa ucapkan kepada seluruh pemenang yang terpilih dalam kompetisi ini, ya!. Terima kasih sudah berpartisipasi dalam kompetisi cerita gambar. Jangan patah semangat untuk yang belum terpilih dan terus berkreasi untuk negeri.</p>
-                <img src="assets/img/berita-detail/gambar2.png" width="100%">
-                <p>Halo, Sobat Nusa! Siapa yang dari kemarin sudah tidak sabar menunggu pengumuman pemenang Kompetisi Cerita Gambar Rempah dan Budaya Bahari?</p>
-                <p>Setelah melewati proses seleksi dan penjurian dengan beberapa kriteria. Inilah daftar para pemenang Kompetisi Cerita Gambar Rempah dan Budaya Bahari dari kategori remaja dan anak. Pengumuman pemenang bisa dilihat pada video berikut ini atau langsung di kanal youtube Jalur Rempah RI.</p>
-                <p>Nusa ucapkan kepada seluruh pemenang yang terpilih dalam kompetisi ini, ya!. Terima kasih sudah berpartisipasi dalam kompetisi cerita gambar. Jangan patah semangat untuk yang belum terpilih dan terus berkreasi untuk negeri.</p>
+                {!! $artikel->konten_indo !!}
               </section>
             </div>
             <div class="col-lg-4">
@@ -39,54 +37,24 @@
                     <h2 class="sub-judul">Berita Populer</h2>
                   </header>
                   <div class="row">
+                    @foreach( $artikelPopuler as $a )
                     <div class="col-12 mb-2">
                       <div class="card no-border no-background">
                         <div class="card-body">
                           <div class="row">
                             <div class="col-5">
-                              <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/kegiatan/kegiatan-1.jpg">
+                              <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="{{ asset('assets/artikel/thumbnail/' . $a->thumbnail) }}">
                             </div>
                             <div class="col-7 center-v">
-                              <h3 class="judul-berita-aside" id="jdlKegiatan" name="jdlKegiatan">Kompetisi Cerita Gambar Rempah dan Budaya Bahari</h3>
-                              <p class="tgl-berita-aside" id="tglKegiatan" name="tglKegiatan">20 Januari 2021</p>
+                              <h3 class="judul-berita-aside" id="jdlKegiatan" name="jdlKegiatan">{{ $a->title }}</h3>
+                              <p class="tgl-berita-aside" id="tglKegiatan" name="tglKegiatan">{{ $a->created_at->isoFormat('dddd, D MMMM Y') }} </p>
                             </div>
                           </div>
                           <a href="detail-berita.html" class="stretched-link"></a>
                         </div>
                       </div>
                     </div>
-                    <div class="col-12 mb-2">
-                      <div class="card no-border no-background">
-                        <div class="card-body">
-                          <div class="row">
-                            <div class="col-5">
-                              <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/kegiatan/kegiatan-1.jpg">
-                            </div>
-                            <div class="col-7 center-v">
-                              <h3 class="judul-berita-aside" id="jdlKegiatan" name="jdlKegiatan">Kompetisi Cerita Gambar Rempah dan Budaya Bahari</h3>
-                              <p class="tgl-berita-aside" id="tglKegiatan" name="tglKegiatan">20 Januari 2021</p>
-                            </div>
-                          </div>
-                          <a href="detail-berita.html" class="stretched-link"></a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-12 mb-2">
-                      <div class="card no-border no-background">
-                        <div class="card-body">
-                          <div class="row">
-                            <div class="col-5">
-                              <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/kegiatan/kegiatan-1.jpg">
-                            </div>
-                            <div class="col-7 center-v">
-                              <h3 class="judul-berita-aside" id="jdlKegiatan" name="jdlKegiatan">Kompetisi Cerita Gambar Rempah dan Budaya Bahari</h3>
-                              <p class="tgl-berita-aside" id="tglKegiatan" name="tglKegiatan">20 Januari 2021</p>
-                            </div>
-                          </div>
-                          <a href="detail-berita.html" class="stretched-link"></a>
-                        </div>
-                      </div>
-                    </div>
+                    @endforeach
                   </div>
                 </div>
               </div>
@@ -96,54 +64,24 @@
                     <h2 class="sub-judul">Berita Terbaru</h2>
                   </header>
                   <div class="row">
+                    @foreach( $artikelTerbaru as $a )
                     <div class="col-12 mb-2">
                       <div class="card no-border no-background">
                         <div class="card-body">
                           <div class="row">
                             <div class="col-5">
-                              <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/kegiatan/kegiatan-1.jpg">
+                              <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="{{ asset('assets/artikel/thumbnail/' . $a->thumbnail) }}">
                             </div>
                             <div class="col-7 center-v">
-                              <h3 class="judul-berita-aside" id="jdlKegiatan" name="jdlKegiatan">Kompetisi Cerita Gambar Rempah dan Budaya Bahari</h3>
-                              <p class="tgl-berita-aside" id="tglKegiatan" name="tglKegiatan">20 Januari 2021</p>
+                              <h3 class="judul-berita-aside" id="jdlKegiatan" name="jdlKegiatan">{{ $a->judul_indo }}</h3>
+                              <p class="tgl-berita-aside" id="tglKegiatan" name="tglKegiatan">{{ $a->created_at->isoFormat('dddd, D MMMM Y'); }}</p>
                             </div>
                           </div>
                           <a href="detail-berita.html" class="stretched-link"></a>
                         </div>
                       </div>
                     </div>
-                    <div class="col-12 mb-2">
-                      <div class="card no-border no-background">
-                        <div class="card-body">
-                          <div class="row">
-                            <div class="col-5">
-                              <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/kegiatan/kegiatan-1.jpg">
-                            </div>
-                            <div class="col-7 center-v">
-                              <h3 class="judul-berita-aside" id="jdlKegiatan" name="jdlKegiatan">Kompetisi Cerita Gambar Rempah dan Budaya Bahari</h3>
-                              <p class="tgl-berita-aside" id="tglKegiatan" name="tglKegiatan">20 Januari 2021</p>
-                            </div>
-                          </div>
-                          <a href="detail-berita.html" class="stretched-link"></a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-12 mb-2">
-                      <div class="card no-border no-background">
-                        <div class="card-body">
-                          <div class="row">
-                            <div class="col-5">
-                              <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/kegiatan/kegiatan-1.jpg">
-                            </div>
-                            <div class="col-7 center-v">
-                              <h3 class="judul-berita-aside" id="jdlKegiatan" name="jdlKegiatan">Kompetisi Cerita Gambar Rempah dan Budaya Bahari</h3>
-                              <p class="tgl-berita-aside" id="tglKegiatan" name="tglKegiatan">20 Januari 2021</p>
-                            </div>
-                          </div>
-                          <a href="detail-berita.html" class="stretched-link"></a>
-                        </div>
-                      </div>
-                    </div>
+                    @endforeach
                   </div>
                 </div>
               </div>
@@ -164,27 +102,7 @@
         <section class="row justify-content-center">
           <div class="col-md-6 col-lg-4 mb-4">
             <div class="card no-border no-background card-body">
-              <img src="assets/img/berita-detail/gambar6.png" class="card-img-top mb-4" alt="...">
-              <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-              <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
-              <p class="penulis-artikel">Ahmad Rifaldi</p>
-              <p class="tgl-artikel">20 November 2021</p>
-              <a href="detail-berita.html" class="stretched-link"></a>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4 mb-4">
-            <div class="card no-border no-background card-body">
-              <img src="assets/img/berita-detail/gambar7.png" class="card-img-top mb-4" alt="...">
-              <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-              <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
-              <p class="penulis-artikel">Ahmad Rifaldi</p>
-              <p class="tgl-artikel">20 November 2021</p>
-              <a href="detail-berita.html" class="stretched-link"></a>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4 mb-4">
-            <div class="card no-border no-background card-body">
-              <img src="assets/img/berita-detail/gambar8.png" class="card-img-top mb-4" alt="...">
+              <img src="{{ asset('assets/img/berita-detail/gambar6.png') }}" class="card-img-top mb-4" alt="...">
               <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
               <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
               <p class="penulis-artikel">Ahmad Rifaldi</p>

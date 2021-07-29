@@ -69,7 +69,9 @@ Route::get('/semua-video', [VideoController::class, 'index'])->name('videos');
 Route::get('/semua-audio', [AudioController::class, 'index'])->name('audios');
 Route::get('/semua-publikasi', [PublikasiController::class, 'index'])->name('publications');
 
-Route::get('/artikel', [ArtikelController::class, 'show'])->name('article_detail');
+Route::get('/artikel', [ArtikelController::class, 'index'])->name('article_detail');
+Route::get('/artikel/{articleId}', [ArtikelController::class, 'show'])->name('article_detail');
+
 Route::get('/kegiatan', [KegiatanController::class, 'show'])->name('event_detail');
 Route::get('/foto', [FotoController::class, 'show'])->name('photo_detail');
 

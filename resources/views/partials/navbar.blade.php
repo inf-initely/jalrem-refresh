@@ -121,7 +121,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-light sticky-top bg-trans">
   <div class="container">
     <a class="navbar-brand" href="{{ route('home') }}">
-      <img src="assets/img/logo/logo.png" width="117px">
+      <img src="{{ asset('assets/img/logo/logo.png') }}" width="117px">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -153,17 +153,17 @@
           <ul class="link-bahasa">
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="assets/img/bendera/flag-indonesia.png" class="mr-2 flag" width="20px"> INA
+                <img src="{{ asset('assets/img/bendera/flag-indonesia.png') }}" class="mr-2 flag" width="20px"> INA
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
                   <a class="dropdown-item" href="{{ route('home') }}">
-                    <img src="assets/img/bendera/flag-indonesia.png" class="mr-2 flag" width="20px"> INA
+                    <img src="{{ asset('assets/img/bendera/flag-indonesia.png') }}" class="mr-2 flag" width="20px"> INA
                   </a>
                 </li>
                 <li>
                   <a class="dropdown-item" href="#">
-                    <img src="assets/img/bendera/flag-english.png" class="mr-2 flag" width="20px"> ENG
+                    <img src="{{ asset('assets/img/bendera/flag-english.png') }}" class="mr-2 flag" width="20px"> ENG
                   </a>
                 </li>
               </ul>

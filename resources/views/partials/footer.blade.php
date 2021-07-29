@@ -1,10 +1,10 @@
 <footer>
-    <img class="footer-bg-1" src="assets/img/asset-jelajah.png" width="50%">
-    <img class="footer-bg-2" src="assets/img/asset-jelajah2.png" width="50%">
+    <img class="footer-bg-1" src="{{ asset('assets/img/asset-jelajah.png') }}" width="50%">
+    <img class="footer-bg-2" src="{{ asset('assets/img/asset-jelajah2.png') }}" width="50%">
     <div class="container wrap-footer">
       <div class="row justify-content-center">
         <div class="col-12 col-md-8 col-lg-3 footer-content mb-4">
-          <img class="logo-footer" src="assets/img/logo-footer.png" width="70%">
+          <img class="logo-footer" src="{{ asset('assets/img/logo-footer.png') }}" width="70%">
           <p class="footer-alamat">Kompleks Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi, Jalan Jenderal Sudirman, Senayan, Jakarta 10270</p>
         </div>
         <div class="col-12 col-md-6 col-lg-3 mb-4 footer-content">
@@ -60,22 +60,22 @@
           <ul class="list-group list-group-horizontal">
             <li class="list-group-item">
               <a target="_blank" href="https://web.facebook.com/jalurrempahri">
-                <img src="assets/img/icon-media-sosial/icon-facebook.png" width="25px">
+                <img src="{{ asset('assets/img/icon-media-sosial/icon-facebook.png') }}" width="25px">
               </a>
             </li>
             <li class="list-group-item">
               <a target="_blank" href="https://www.youtube.com/channel/UCyhHsv7jCOiE12pGXbkINoA">
-                <img src="assets/img/icon-media-sosial/icon-youtube.png" width="25px">
+                <img src="{{ asset('assets/img/icon-media-sosial/icon-youtube.png') }}" width="25px">
               </a>
             </li>
             <li class="list-group-item">
               <a target="_blank" href="https://www.instagram.com/jalurrempahri/?hl=id">
-                <img src="assets/img/icon-media-sosial/icon-instagram.png" width="25px">
+                <img src="{{ asset('assets/img/icon-media-sosial/icon-instagram.png') }}" width="25px">
               </a>
             </li>
             <li class="list-group-item">
               <a target="_blank" href="https://twitter.com/JalurrempahRI">
-                <img src="assets/img/icon-media-sosial/icon-twitter.png" width="25px">
+                <img src="{{ asset('assets/img/icon-media-sosial/icon-twitter.png') }}" width="25px">
               </a>
             </li>
           </ul>
