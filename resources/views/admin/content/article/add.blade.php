@@ -32,7 +32,7 @@
                       </div>
                       <div class="mb-3">
                         <label for="isiArtikelBahasa" class="form-label">Isi Konten</label>
-                        <textarea class="form-control" name="konten_indo" id="isiArtikelBahasa" rows="8"></textarea>
+                        <textarea class="form-control editor" name="konten_indo" id="editor" rows="8"></textarea>
                       </div>
                   </div>
                 </div>
@@ -49,7 +49,7 @@
                       </div>
                       <div class="mb-3">
                         <label for="isiArtikelEnglish" class="form-label">Isi Konten</label>
-                        <textarea class="form-control" name="konten_english" id="isiArtikelEnglish" rows="8"></textarea>
+                        <textarea class="form-control editor" name="konten_english" id="isiArtikelEnglish" rows="8"></textarea>
                       </div>
                   </div>
                 </div>

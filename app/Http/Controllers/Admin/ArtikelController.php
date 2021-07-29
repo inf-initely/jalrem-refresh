@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File; 
 
 use App\Models\Artikel;
 use App\Models\Rempah;
@@ -67,7 +68,7 @@ class ArtikelController extends Controller
         return view('admin.content.article.edit', compact('artikel', 'rempahs', 'lokasi'));
     }
 
-    public function upload(Request $request, $articleId)
+    public function update(Request $request, $articleId)
     {
         $this->validate($request, [
             'judul_indo' => 'required',
@@ -87,7 +88,8 @@ class ArtikelController extends Controller
             $filename = uniqid() . '.' . $thumbnail->getClientOriginalExtension();
             $thumbnail->move($tujuan_upload_file, $filename);
 
-            unlink('/assets/artikel/thumbnail/' . $artikel->thumbnail );
+            // unlink('assets/artikel/thumbnail/' . $artikel->thumbnail );
+            File::delete('assets/artikel/thumbnail/' . $artikel->thumbnail);
         } else {
             $filename = $artikel->thumbnail;
         }
@@ -102,5 +104,9 @@ class ArtikelController extends Controller
             'penulis' => 'admin',
             'status' => $request->publish != null ? 'publikasi' : 'draft'
         ]);
+
+        $artikel->rempahs()->sync($request->rempah);
+
+        return redirect()->route('admin.article.index');
     }
 }

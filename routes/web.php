@@ -42,7 +42,7 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function() {
     Route::get('/konten/artikel/tambah', [ArtikelControllerAdmin::class, 'add'])->name('admin.article.add');
     Route::post('/konten/artikel/tambah', [ArtikelControllerAdmin::class, 'store'])->name('admin.article.store');
     Route::get('/konten/artikel/edit/{articleId}', [ArtikelControllerAdmin::class, 'edit'])->name('admin.article.edit');
-    Route::put('/konten/artikel/upload/{articleId}', [ArtikelControllerAdmin::class, 'update'])->name('admin.article.update');
+    Route::post('/konten/artikel/upload/{articleId}', [ArtikelControllerAdmin::class, 'update'])->name('admin.article.update');
 
 
     Route::get('/konten/foto', [FotoControllerAdmin::class, 'index'])->name('admin.photo.index');

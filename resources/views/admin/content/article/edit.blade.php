@@ -9,26 +9,31 @@
 @endsection
 
 @section('content')
-    <!-- Begin Page Content -->
+    <form method="POST" action="{{ route('admin.article.update', $artikel->id) }}" enctype="multipart/form-data">
+    @csrf
+      <!-- Begin Page Content -->
     <div class="container-fluid" id="contentWrapper">
         <!-- Page Heading -->
         <div class="row">
           <div class="col-lg-12 mb-3">
             <div class="card shadow mb-4">
+              @if (count($errors) > 0)
+                <div class="alert alert-danger" role="alert">
+                  {{ $errors->first() }} 
+                </div>
+              @endif
               <div class="card-header py-3">
                 <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">Bahasa</h2>
               </div>
               <div class="card-body">
-                <form>
                   <div class="mb-3">
                     <label for="judulArtikelBahasa" class="form-label" >Judul</label>
-                    <input type="text" class="form-control" value="{{ $artikel->judul_indo }}" id="judulArtikelBahasa" placeholder="masukkan judul artikel">
+                    <input type="text" name="judul_indo" class="form-control" value="{{ $artikel->judul_indo }}" id="judulArtikelBahasa" placeholder="masukkan judul artikel">
                   </div>
                   <div class="mb-3">
                     <label for="isiArtikelBahasa" class="form-label">Isi Konten</label>
-                    <textarea class="form-control" id="isiArtikelBahasa" rows="8">{{ $artikel->konten_indo }}</textarea>
+                    <textarea class="form-control editor" name="konten_indo" id="isiArtikelBahasa" rows="8">{{ $artikel->konten_indo }}</textarea>
                   </div>
-                </form>
               </div>
             </div>
           </div>
@@ -38,16 +43,14 @@
                 <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">English</h2>
               </div>
               <div class="card-body">
-                <form>
                   <div class="mb-3">
                     <label for="judulArtikelEnglish" class="form-label">Judul</label>
-                    <input type="text" class="form-control" id="judulArtikelEnglish" placeholder="masukkan judul artikel" value="value="{{ $artikel->judul_english }}"">
+                    <input type="text" name="judul_english" class="form-control" id="judulArtikelEnglish" placeholder="masukkan judul artikel" value="{{ $artikel->judul_english }}">
                   </div>
                   <div class="mb-3">
                     <label for="isiArtikelEnglish" class="form-label">Isi Konten</label>
-                    <textarea class="form-control" id="isiArtikelEnglish" rows="8">{{ $artikel->judul_english }}</textarea>
+                    <textarea class="form-control editor" name="konten_english" id="isiArtikelEnglish" rows="8">{{ $artikel->judul_english }}</textarea>
                   </div>
-                </form>
               </div>
             </div>
           </div>
@@ -63,7 +66,7 @@
                   </div>
                 </div>
                 <div class="mb-4">
-                  <input class="form-control" id="uploadThumbnail" type="file" data-preview=".preview">
+                  <input class="form-control" name="thumbnail" id="uploadThumbnail" type="file" data-preview=".preview">
                 </div>
                 <div class="mb-3">
                   <h5>Panduan unggah gambar</h5>
@@ -83,114 +86,56 @@
                 <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">Tag Artikel</h2>
               </div>
               <div class="card-body">
-                <form>
                   <div class="mb-3">
                     <label for="lokasiArtikel" class="form-label">Lokasi</label>
-                    <select id="pilihLokasi" class="form-select select2-style" aria-label="Default select example">
-                      <option selected>Pilih Lokasi</option>
-                      <option value="1">Lokasi 1</option>
-                      <option value="2">Lokasi 2</option>
-                      <option value="3">Lokasi 3</option>
-                      <option value="4">Lokasi 4</option>
-                      <option value="5">Lokasi 5</option>
+                    <select id="pilihLokasi" name="id_lokasi" class="form-select select2-style" aria-label="Default select example">
+                      <option value="" selected>Pilih Lokasi</option>
+                      @foreach( $lokasi as $l ) 
+                        @if( $l->id == $artikel->id_lokasi )
+                          <option selected value="{{ $l->id }}">{{ $l->nama_lokasi }}</option>
+                        @else
+                          <option value="{{ $l->id }}">{{ $l->nama_lokasi }}</option>
+                        @endif
+                      @endforeach
                     </select>
                   </div>
                   <div class="mb-3">
                     <label for="isiArtikelEnglish" class="form-label">Jenis Rempah</label>
                     <div class="px-3 row">
+                      @php $ids = $artikel->rempahs->pluck('id'); @endphp
+                      @foreach( $rempahs as $r )
                       <div class="col-lg-4">
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                          @php
+                          $checked = ''; 
+                          foreach( $ids as $id ) {
+                            if( $id == $r->id ) {
+                              $checked = 'checked';
+                            }
+                          } 
+                          @endphp
+                          <input class="form-check-input" {{ $checked }} name="rempah[]" type="checkbox" value="{{ $r->id }}" id="flexCheckDefault">
                           <label class="form-check-label" for="flexCheckDefault">
-                            Jenis Rempah 1
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                          <label class="form-check-label" for="flexCheckChecked">
-                            Jenis Rempah 2
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                          <label class="form-check-label" for="flexCheckDefault">
-                            Jenis Rempah 1
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                          <label class="form-check-label" for="flexCheckChecked">
-                            Jenis Rempah 2
+                            {{ $r->jenis_rempah }}
                           </label>
                         </div>
                       </div>
-                      <div class="col-lg-4">
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                          <label class="form-check-label" for="flexCheckDefault">
-                            Jenis Rempah 1
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                          <label class="form-check-label" for="flexCheckChecked">
-                            Jenis Rempah 2
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                          <label class="form-check-label" for="flexCheckDefault">
-                            Jenis Rempah 1
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                          <label class="form-check-label" for="flexCheckChecked">
-                            Jenis Rempah 2
-                          </label>
-                        </div>
-                      </div>
-                      <div class="col-lg-4">
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                          <label class="form-check-label" for="flexCheckDefault">
-                            Jenis Rempah 1
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                          <label class="form-check-label" for="flexCheckChecked">
-                            Jenis Rempah 2
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                          <label class="form-check-label" for="flexCheckDefault">
-                            Jenis Rempah 1
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                          <label class="form-check-label" for="flexCheckChecked">
-                            Jenis Rempah 2
-                          </label>
-                        </div>
-                      </div>
+                      @endforeach
                     </div>
                   </div>
-                </form>
               </div>
             </div>
           </div>
           <div class="col-lg-12 mb-5 text-center">
-            <button class="btn btn-lg btn-secondary mr-3">
+            <button type="submit" value="draft" class="btn btn-lg btn-secondary mr-3">
               Save as Draft
             </button>
-            <button class="btn btn-lg btn-success">
+            <button type="submit" value="publish" class="btn btn-lg btn-success">
               Publish
             </button>
           </div>
         </div>
       </div>
+    </form>
       <!-- /.container-fluid -->
 @endsection

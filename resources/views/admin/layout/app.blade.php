@@ -58,6 +58,10 @@
     <i class="fas fa-angle-up"></i>
   </a>
   @include('admin.partials.js')
+  <script src="//cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
+  <script>
+    CKEDITOR.replaceAll('editor')
+  </script>
 </body>
 
 </html>
