@@ -10,11 +10,11 @@ class Artikel extends Model
     use HasFactory;
     
     protected $fillable = [
-        'judul_indo', 'konten_indo', 'judul_english', 'konten_english', 'thumbnail'
+        'judul_indo', 'konten_indo', 'judul_english', 'konten_english', 'thumbnail', 'id_lokasi', 'penulis'
     ];
 
-    public function rempah()
+    public function rempahs()
     {
-        return $this->belongsToMany('App\Models\Rempah', 'artikel_rempah', 'artikel_id', 'rempah_id');
+        return $this->belongsToMany('App\Models\Rempah', 'artikel_rempah', 'id_artikel', 'id_rempah');
     }
 }

@@ -4,6 +4,10 @@
     ADMIN - Jalur Rempah
 @endsection
 
+@section('topbar-title')
+    Konten - Artikel
+@endsection
+
 @section('content')
     <!-- Begin Page Content -->
     <div class="container-fluid" id="contentWrapper">
@@ -18,11 +22,11 @@
                 <form>
                   <div class="mb-3">
                     <label for="judulArtikelBahasa" class="form-label" >Judul</label>
-                    <input type="text" class="form-control" id="judulArtikelBahasa" placeholder="masukkan judul artikel" value="lorem ipsum">
+                    <input type="text" class="form-control" value="{{ $artikel->judul_indo }}" id="judulArtikelBahasa" placeholder="masukkan judul artikel">
                   </div>
                   <div class="mb-3">
                     <label for="isiArtikelBahasa" class="form-label">Isi Konten</label>
-                    <textarea class="form-control" id="isiArtikelBahasa" rows="8">Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Pellentesque in ipsum id orci porta dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ultricies ligula sed magna dictum porta. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vivamus suscipit tortor eget felis porttitor volutpat. Donec sollicitudin molestie malesuada. Nulla quis lorem ut libero malesuada feugiat.</textarea>
+                    <textarea class="form-control" id="isiArtikelBahasa" rows="8">{{ $artikel->konten_indo }}</textarea>
                   </div>
                 </form>
               </div>
@@ -37,11 +41,11 @@
                 <form>
                   <div class="mb-3">
                     <label for="judulArtikelEnglish" class="form-label">Judul</label>
-                    <input type="text" class="form-control" id="judulArtikelEnglish" placeholder="masukkan judul artikel" value="lorem ipsum">
+                    <input type="text" class="form-control" id="judulArtikelEnglish" placeholder="masukkan judul artikel" value="value="{{ $artikel->judul_english }}"">
                   </div>
                   <div class="mb-3">
                     <label for="isiArtikelEnglish" class="form-label">Isi Konten</label>
-                    <textarea class="form-control" id="isiArtikelEnglish" rows="8">Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Pellentesque in ipsum id orci porta dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ultricies ligula sed magna dictum porta. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vivamus suscipit tortor eget felis porttitor volutpat. Donec sollicitudin molestie malesuada. Nulla quis lorem ut libero malesuada feugiat.</textarea>
+                    <textarea class="form-control" id="isiArtikelEnglish" rows="8">{{ $artikel->judul_english }}</textarea>
                   </div>
                 </form>
               </div>
@@ -55,7 +59,7 @@
               <div class="card-body ">
                 <div class="row">
                   <div class="col-lg-12 text-center">
-                    <img class="preview mb-3 text-center" src="assets/img/noimage.jpg" />
+                    <img class="preview mb-3 text-center" src="{{ asset('/assets/artikel/thumbnail/' . $artikel->thumbnail) }}" />
                   </div>
                 </div>
                 <div class="mb-4">

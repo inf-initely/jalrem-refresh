@@ -22,6 +22,7 @@ class CreateArtikelsTable extends Migration
             $table->string('thumbnail');
             $table->unsignedInteger('id_lokasi');
             $table->string('penulis');
+            $table->enum('status', ['publikasi', 'draft']);
             $table->timestamps();
         });
     }

@@ -41,13 +41,13 @@
                         @foreach( $artikels as $a )
                           <tr>
                             <td>#</td>
-                            <td>{{ $a->judul }}</td>
-                            <td>{{ $a-penulis }}</td>
+                            <td>{{ $a->judul_indo }}</td>
+                            <td>{{ $a->penulis }}</td>
                             <td>
                               <a href="../public/detail-berita.html" class="btn btn-sm btn-outline-primary">
                                 View
                               </a>
-                              <a href="{{ route('admin.article.edit') }}" class="btn btn-sm btn-outline-info">
+                              <a href="{{ route('admin.article.edit', $a->id) }}" class="btn btn-sm btn-outline-info">
                                 Edit
                               </a>
                               <button class="btn btn-sm btn-outline-danger btn-hapus">

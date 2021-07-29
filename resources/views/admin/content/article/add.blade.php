@@ -10,13 +10,18 @@
 
 @section('content')
           <!-- Begin Page Content -->
-          <form method="post" action="{{ route('admin.article.store') }}">
+          <form method="post" action="{{ route('admin.article.store') }}" enctype="multipart/form-data">
           @csrf
           <div class="container-fluid" id="contentWrapper">
             <!-- Page Heading -->
             <div class="row">
               <div class="col-lg-12 mb-3">
                 <div class="card shadow mb-4">
+                  @if (count($errors) > 0)
+                    <div class="alert alert-danger" role="alert">
+                      {{ $errors->first() }} 
+                    </div>
+                  @endif
                   <div class="card-header py-3">
                     <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">Bahasa</h2>
                   </div>
@@ -84,12 +89,10 @@
                       <div class="mb-3">
                         <label for="lokasiArtikel" class="form-label">Lokasi</label>
                         <select id="pilihLokasi" class="form-select select2-style" name="id_lokasi" aria-label="Default select example">
-                          <option selected>Pilih Lokasi</option>
-                          <option value="1">Lokasi 1</option>
-                          <option value="2">Lokasi 2</option>
-                          <option value="3">Lokasi 3</option>
-                          <option value="4">Lokasi 4</option>
-                          <option value="5">Lokasi 5</option>
+                          <option value="" selected>Pilih Lokasi</option>
+                          @foreach( $lokasi as $l )
+                            <option value="{{ $l->id }}">{{ $l->nama_lokasi }}</option>
+                          @endforeach
                         </select>
                       </div>
                       <div class="mb-3">
@@ -98,7 +101,7 @@
                           <div class="col-lg-4">
                             @foreach( $rempahs as $r )
                             <div class="form-check">
-                              <input class="form-check-input-{{ $r->id }}" type="checkbox" name="rempah-{{ $r->id }}" value="{{ $r->id }}" id="flexCheckDefault-{{ $r->id }}"">
+                              <input class="form-check-input-{{ $r->id }}" type="checkbox" name="rempah[]" value="{{ $r->id }}" id="flexCheckDefault-{{ $r->id }}"">
                               <label class="form-check-label-{{ $r->id }}"" for="flexCheckDefault-{{ $r->id }}"">
                                 {{ $r->jenis_rempah }}
                               </label>
@@ -111,10 +114,10 @@
                 </div>
               </div>
               <div class="col-lg-12 mb-5 text-center">
-                <button class="btn btn-lg btn-secondary mr-3">
+                <button type="submit" value="draft" name="draft" class="btn btn-lg btn-secondary mr-3">
                   Save as Draft
                 </button>
-                <button class="btn btn-lg btn-success">
+                <button type="submit" value="publish" name="publish" class="btn btn-lg btn-success">
                   Publish
                 </button>
               </div>
