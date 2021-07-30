@@ -22,7 +22,9 @@ class CreateArtikelsTable extends Migration
             $table->string('thumbnail');
             $table->unsignedInteger('id_lokasi');
             $table->string('penulis');
-            $table->integer('views')->default(0);
+            $table->string('contributor')->nullable();
+            $table->string('slider_file')->nullable();
+            $table->boolean('slider_utama')->default(false);
             $table->enum('status', ['publikasi', 'draft']);
             $table->timestamps();
         });

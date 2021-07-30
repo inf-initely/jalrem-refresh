@@ -5,11 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Models\Foto;
+
 class FotoController extends Controller
 {
     public function index()
     {
-        return view('admin.content.photo.index');
+        $foto = Foto::all();
+        return view('admin.content.photo.index', compact('foto'));
     }
 
     public function add() 

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\File;
 use App\Models\Artikel;
 use App\Models\Rempah;
 use App\Models\Lokasi;
+use App\Models\KategoriShow;
 
 class ArtikelController extends Controller
 {
@@ -23,8 +24,9 @@ class ArtikelController extends Controller
     {
         $rempahs = Rempah::all();
         $lokasi = Lokasi::all();
+        $kategori_show = KategoriShow::all();
 
-        return view('admin.content.article.add', compact('rempahs', 'lokasi'));
+        return view('admin.content.article.add', compact('rempahs', 'lokasi', 'kategori_show'));
     }
 
     public function store(Request $request)
@@ -34,26 +36,42 @@ class ArtikelController extends Controller
             'konten_indo' => 'required',
             'thumbnail' => 'required|max:10000|mimes:png,jpg,jpeg',
             'id_lokasi' => 'required',
-            'rempah' => 'required'
         ]);
 
+        // UPLOAD THUMBNAIL
         $thumbnail = $request->file('thumbnail');
-        $tujuan_upload_file = 'assets/artikel/thumbnail';
-        $filename = uniqid() . '.' . $thumbnail->getClientOriginalExtension();
-        $thumbnail->move($tujuan_upload_file, $filename);
+        $tujuan_upload_file_thumbnail = 'assets/artikel/thumbnail';
+        $filename_thumbnail = uniqid() . '.' . $thumbnail->getClientOriginalExtension();
+        $thumbnail->move($tujuan_upload_file_thumbnail, $filename_thumbnail);
+
+        // UPLOAD FILE SLIDER UTAMA(NULLABLE)
+        if( $request->has('slider') ) {
+            $slider = $request->file('slider');
+            $tujuan_upload_file_slider = 'assets/artikel/slider';
+            $filename_slider = uniqid() . '.' . $slider->getClientOriginalExtension();
+            $slider->move($tujuan_upload_file_slider, $filename_slider);
+        } else {
+            $filename_slider = null;
+        }
 
         $artikel = Artikel::create([
             'judul_indo' => $request->judul_indo,
             'konten_indo' => $request->konten_indo,
             'judul_english' => $request->judul_english,
             'konten_english' => $request->konten_english,
-            'thumbnail' => $filename,
+            'thumbnail' => $filename_thumbnail,
             'id_lokasi' => $request->id_lokasi,
-            'penulis' => 'admin',
+            'penulis' => $request->contributor != null ? 'Kontributor Umum/Pamong' : 'Admin',
+            'slider_file' => $filename_slider,
+            'contributor' => $request->contributor,
             'status' => $request->publish != null ? 'publikasi' : 'draft'
         ]);
 
+        // ATTACH REMPAH ARTIKEL
         $artikel->rempahs()->attach($request->rempah);
+
+        // ATTACH KATEGORI SHOW ARTIKEL
+        $artikel->kategori_show()->attach($request->kategori_show);
 
         return redirect()->route('admin.article.index');
 

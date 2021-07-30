@@ -20,6 +20,7 @@ class ArtikelController extends Controller
             return abort(404);
         views($artikel)->record();
         $artikelPopuler = Artikel::orderByViews()->take(3)->get();
+        // $artikelTerkait = Artikel::
         $artikelTerbaru = Artikel::where('status', 'publikasi')->orderBy('created_at', 'desc')->take(3)->get();
 
         return view('content.article_detail', compact('artikel', 'artikelTerbaru', 'artikelPopuler'));

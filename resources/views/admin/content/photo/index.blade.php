@@ -21,7 +21,7 @@
                         <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">List Foto</h2>
                       </div>
                       <div class="col-6 text-end">
-                        <a href="tambah-konten-foto.html" class="btn btn-primary">
+                        <a href="{{ route('admin.photo.add') }}" class="btn btn-primary">
                           <i class="fa fa-plus mr-1"></i> Tambah
                         </a>
                       </div>
@@ -38,6 +38,7 @@
                         </tr>
                       </thead>
                       <tbody>
+                        @foreach( $foto as $f )
                         <tr>
                           <td>#</td>
                           <td>Lorem Ipsum Lorem Ipsum Lorem Ipsum</td>
@@ -54,70 +55,7 @@
                             </button>
                           </td>
                         </tr>
-                        <tr>
-                          <td>#</td>
-                          <td>Lorem Ipsum</td>
-                          <td>Anonim</td>
-                          <td>
-                            <a href="../public/detail-foto.html" class="btn btn-sm btn-outline-primary">
-                              View
-                            </a>
-                            <a href="edit-konten-foto.html" class="btn btn-sm btn-outline-info">
-                              Edit
-                            </a>
-                            <button class="btn btn-sm btn-outline-danger btn-hapus">
-                              Hapus
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>#</td>
-                          <td>Source undefine</td>
-                          <td>Anonim</td>
-                          <td>
-                            <a href="../public/detail-foto.html" class="btn btn-sm btn-outline-primary">
-                              View
-                            </a>
-                            <a href="edit-konten-foto.html" class="btn btn-sm btn-outline-info">
-                              Edit
-                            </a>
-                            <button class="btn btn-sm btn-outline-danger btn-hapus">
-                              Hapus
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>#</td>
-                          <td>Source undefine</td>
-                          <td>Anonim</td>
-                          <td>
-                            <a href="../public/detail-foto.html" class="btn btn-sm btn-outline-primary">
-                              View
-                            </a>
-                            <a href="edit-konten-foto.html" class="btn btn-sm btn-outline-info">
-                              Edit
-                            </a>
-                            <button class="btn btn-sm btn-outline-danger btn-hapus">
-                              Hapus
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>#</td>
-                          <td>Source undefine</td>
-                          <td>Anonim</td>
-                          <td>
-                            <a href="../public/detail-foto.html" class="btn btn-sm btn-outline-primary">
-                              View
-                            </a>
-                            <a href="edit-konten-foto.html" class="btn btn-sm btn-outline-info">
-                              Edit
-                            </a>
-                            <button class="btn btn-sm btn-outline-danger btn-hapus">
-                              Hapus
-                            </button>
-                          </td>
-                        </tr>
+                       @endforeach
                       </tbody>
                     </table>
                   </div>

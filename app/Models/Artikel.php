@@ -12,11 +12,16 @@ class Artikel extends Model implements Viewable
     use HasFactory, InteractsWithViews;
     
     protected $fillable = [
-        'judul_indo', 'konten_indo', 'judul_english', 'konten_english', 'thumbnail', 'id_lokasi', 'penulis'
+        'judul_indo', 'konten_indo', 'judul_english', 'konten_english', 'thumbnail', 'id_lokasi', 'penulis', 'contributor', 'slider_file', 'status', 'slider_utama'
     ];
 
     public function rempahs()
     {
         return $this->belongsToMany('App\Models\Rempah', 'artikel_rempah', 'id_artikel', 'id_rempah');
+    }
+
+    public function kategori_show()
+    { 
+        return $this->belongsToMany('App\Models\KategoriShow', 'artikel_kategori_show', 'id_artikel', 'id_kategori_show');
     }
 }
