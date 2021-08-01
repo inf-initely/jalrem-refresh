@@ -47,7 +47,9 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function() {
 
     Route::get('/konten/foto', [FotoControllerAdmin::class, 'index'])->name('admin.photo.index');
     Route::get('/konten/foto/tambah', [FotoControllerAdmin::class, 'add'])->name('admin.photo.add');
-    Route::get('/konten/foto/edit', [FotoControllerAdmin::class, 'edit'])->name('admin.photo.edit');
+    Route::post('/konten/foto/tambah', [FotoControllerAdmin::class, 'store'])->name('admin.photo.store');
+    Route::get('/konten/foto/edit/{photoId}', [FotoControllerAdmin::class, 'edit'])->name('admin.photo.edit');
+    Route::post('/konten/foto/update/{photoId}', [FotoControllerAdmin::class, 'update'])->name('admin.photo.update');
 
     Route::get('/konten/video', [VideoControllerAdmin::class, 'index'])->name('admin.video.index');
     Route::get('/konten/video/tambah', [VideoControllerAdmin::class, 'add'])->name('admin.video.add');

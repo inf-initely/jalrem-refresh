@@ -41,13 +41,13 @@
                         @foreach( $foto as $f )
                         <tr>
                           <td>#</td>
-                          <td>Lorem Ipsum Lorem Ipsum Lorem Ipsum</td>
-                          <td>Anonim</td>
+                          <td>{{ $f->judul_indo }}</td>
+                          <td>{{ $f->penulis }}</td>
                           <td>
-                            <a href="../public/detail-foto.html" class="btn btn-sm btn-outline-primary">
+                            <a href="#" class="btn btn-sm btn-outline-primary">
                               View
                             </a>
-                            <a href="edit-konten-foto.html" class="btn btn-sm btn-outline-info">
+                            <a href="{{ route('admin.photo.edit', $f->id) }}" class="btn btn-sm btn-outline-info">
                               Edit
                             </a>
                             <button class="btn btn-sm btn-outline-danger btn-hapus">

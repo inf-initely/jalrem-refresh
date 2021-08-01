@@ -5,7 +5,7 @@ namespace Database\Factories;
 use App\Models\Model;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class KatagoriShowFactory extends Factory
+class KategoriShowFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
@@ -22,7 +22,7 @@ class KatagoriShowFactory extends Factory
     public function definition()
     {
         return [
-            'isi' => 'Tampilkan di menu Jalur'
+            'isi' => $this->faker->text(4)
         ];
     }
 }

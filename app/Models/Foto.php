@@ -8,4 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Foto extends Model
 {
     use HasFactory;
+
+    protected $casts = [
+        'slider_foto' => 'array'
+    ];
+
+    protected $guarded = [];
+
+    public function rempahs()
+    {
+        return $this->belongsToMany('App\Models\Rempah', 'artikel_rempah', 'id_artikel', 'id_rempah');
+    }
+
+    public function kategori_show()
+    { 
+        return $this->belongsToMany('App\Models\KategoriShow', 'artikel_kategori_show', 'id_artikel', 'id_kategori_show');
+    }
 }

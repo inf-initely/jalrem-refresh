@@ -82,8 +82,9 @@ class ArtikelController extends Controller
         $artikel = Artikel::findOrFail($articleId);
         $rempahs = Rempah::all();
         $lokasi = Lokasi::all();
+        $kategori_show = KategoriShow::all();
 
-        return view('admin.content.article.edit', compact('artikel', 'rempahs', 'lokasi'));
+        return view('admin.content.article.edit', compact('artikel', 'rempahs', 'lokasi', 'kategori_show'));
     }
 
     public function update(Request $request, $articleId)
@@ -92,7 +93,6 @@ class ArtikelController extends Controller
             'judul_indo' => 'required',
             'konten_indo' => 'required',
             'id_lokasi' => 'required',
-            'rempah' => 'required'
         ]);
 
         $artikel = Artikel::findOrFail($articleId);
@@ -103,13 +103,25 @@ class ArtikelController extends Controller
 
             $thumbnail = $request->file('thumbnail');
             $tujuan_upload_file = 'assets/artikel/thumbnail';
-            $filename = uniqid() . '.' . $thumbnail->getClientOriginalExtension();
-            $thumbnail->move($tujuan_upload_file, $filename);
+            $filename_thumbnail = uniqid() . '.' . $thumbnail->getClientOriginalExtension();
+            $thumbnail->move($tujuan_upload_file, $filename_thumbnail);
 
             // unlink('assets/artikel/thumbnail/' . $artikel->thumbnail );
             File::delete('assets/artikel/thumbnail/' . $artikel->thumbnail);
         } else {
-            $filename = $artikel->thumbnail;
+            $filename_thumbnail = $artikel->thumbnail;
+        }
+
+        // UPLOAD FILE SLIDER UTAMA(NULLABLE)
+        if( $request->has('slider') ) {
+            $slider = $request->file('slider');
+            $tujuan_upload_file_slider = 'assets/artikel/slider';
+            $filename_slider = uniqid() . '.' . $slider->getClientOriginalExtension();
+            $slider->move($tujuan_upload_file_slider, $filename_slider);
+
+            File::delete('assets/artikel/slider/' . $artikel->slider_file);            
+        } else {
+            $filename_slider = $artikel->slider_file;
         }
 
         $artikel->update([
@@ -117,9 +129,12 @@ class ArtikelController extends Controller
             'konten_indo' => $request->konten_indo,
             'judul_english' => $request->judul_english,
             'konten_english' => $request->konten_english,
-            'thumbnail' => $filename,
+            'thumbnail' => $filename_thumbnail,
             'id_lokasi' => $request->id_lokasi,
-            'penulis' => 'admin',
+            'penulis' => $request->contributor != null ? 'Kontributor Umum/Pamong' : 'Admin',
+            'slider_file' => $filename_slider,
+            'slider_utama' => $request->slider_utama != null ? true : false,
+            'contributor' => $request->contributor_type,
             'status' => $request->publish != null ? 'publikasi' : 'draft'
         ]);
 

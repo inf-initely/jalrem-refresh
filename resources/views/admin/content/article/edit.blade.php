@@ -88,7 +88,7 @@
               <div class="card-body">
                   <div class="mb-3">
                     <label for="lokasiArtikel" class="form-label">Lokasi</label>
-                    <select id="pilihLokasi" name="id_lokasi" class="form-select select2-style" aria-label="Default select example">
+                    <select id="pilihLokasi" name="id_lokasi" class="form-select select2-style" name="id_lokasi" aria-label="Default select example">
                       <option value="" selected>Pilih Lokasi</option>
                       @foreach( $lokasi as $l ) 
                         @if( $l->id == $artikel->id_lokasi )
@@ -107,22 +107,105 @@
                       <div class="col-lg-4">
                         <div class="form-check">
                           @php
-                          $checked = ''; 
-                          foreach( $ids as $id ) {
-                            if( $id == $r->id ) {
-                              $checked = 'checked';
-                            }
-                          } 
-                          @endphp
-                          <input class="form-check-input" {{ $checked }} name="rempah[]" type="checkbox" value="{{ $r->id }}" id="flexCheckDefault">
-                          <label class="form-check-label" for="flexCheckDefault">
-                            {{ $r->jenis_rempah }}
+                            $checked = ''; 
+                            foreach( $ids as $id ) {
+                              if( $id == $r->id ) {
+                                $checked = 'checked';
+                              }
+                            } 
+                            @endphp
+                            <input class="form-check-input" {{ $checked }} name="rempah[]" type="checkbox" value="{{ $r->id }}" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                              {{ $r->jenis_rempah }}
+                            </label>
+                          </div>
+                        </div>
+                        @endforeach
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="isiArtikelEnglish" class="form-label">Kategori</label>
+                    <div class="px-3 row">
+                      <div class="col-lg-4">
+                        @foreach( $kategori_show as $k )
+                        <div class="form-check">
+                          <input class="form-check-input-{{ $k->id }}" type="checkbox" name="kategori_show[]" value="{{ $k->id }}" id="flexCheckDefault-{{ $k->id }}"">
+                          <label class="form-check-label-{{ $k->id }}" for="flexCheckDefault-{{ $k->id }}"">
+                            {{ $k->isi }}
+                          </label>
+                        </div>
+                        @endforeach
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="isiArtikelEnglish" class="form-label">Pengaturan</label>
+                    <div class="px-3 row">
+                      <div class="col-lg-4">
+                        <div class="form-check">
+                          @if( $artikel->penulis == 'Kontributor Umum/Pamong' )
+                            <input checked class="form-check-input-contributor" type="checkbox" name="contributor" 
+                            value="contributor" id="flexCheckDefault-contributor"">
+                          @else
+                            <input class="form-check-input-contributor" type="checkbox" name="contributor" 
+                            value="contributor" id="flexCheckDefault-contributor"">
+                          @endif
+                            <label class="form-check-label-contributor"" for="flexCheckDefault-contributor"">
+                            Kontributor Umum/Pamong
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          @if( $artikel->slider_utama == null )
+                            <input class="form-check-input-slider" type="checkbox" name="slider_utama" value="slider_utama" id="flexCheckDefault-slider"">
+                          @else
+                            <input checked class="form-check-input-slider" type="checkbox" name="slider_utama" value="slider_utama" id="flexCheckDefault-slider"">
+                          @endif
+                          <label class="form-check-label-slider"" for="flexCheckDefault-slider"">
+                            Tampilkan di Slider Utama
                           </label>
                         </div>
                       </div>
-                      @endforeach
                     </div>
                   </div>
+                  <div class="mb-3">
+                    <label for="lokasiArtikel" class="form-label">Jenis Kontributor</label>
+                    <select name="contributor_type" class="form-select mb-4" aria-label="select kontributor">
+                      @if( $artikel->contributor == 'Kontributor Pamong Budaya' )
+                        <option value="" selected>Jenis Kontributor</option>
+                        <option selected value="Kontributor Pamong Budaya">Kontributor Pamong Budaya</option>
+                        <option value="Kontributor Umum">Kontributor Umum</option>
+                      @elseif( $artikel->contributor == 'Kontributor Umum' )
+                        <option value="" selected>Jenis Kontributor</option>
+                        <option value="Kontributor Pamong Budaya">Kontributor Pamong Budaya</option>
+                        <option selected value="Kontributor Umum">Kontributor Umum</option>
+                      @else
+                        <option value="" selected>Jenis Kontributor</option>
+                        <option value="Kontributor Pamong Budaya">Kontributor Pamong Budaya</option>
+                        <option value="Kontributor Umum">Kontributor Umum</option>
+                      @endif
+                    </select>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12 mb-3">
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">Foto Slider</h2>
+              </div>
+              <div class="card-body ">
+                <div class="row">
+                  <div class="col-lg-12 text-center">
+                    @if( $artikel->slider_file == null )
+                      <img class="preview mb-3 text-center" src="{{ asset('assets/admin/img/noimage.jpg') }}" />
+                    @else
+                      <img class="preview mb-3 text-center" src="{{ asset('assets/artikel/slider/' . $artikel->slider_file) }}" />
+                    @endif
+                  </div>
+                </div>
+                <div class="mb-4">
+                  <input class="form-control" name="slider" id="uploadSlider" type="file" data-preview=".preview">
+                </div>
               </div>
             </div>
           </div>

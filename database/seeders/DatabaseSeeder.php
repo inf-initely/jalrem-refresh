@@ -15,6 +15,18 @@ class DatabaseSeeder extends Seeder
     {
         \App\Models\User::factory(1)->create();
         \App\Models\Lokasi::factory(1)->create();
-        \App\Models\Rempah::factory(1)->create();
+        // \App\Models\KategoriShow::factory(1)->create();
+        // \App\Models\KategoriShow::factory(1)->create([
+        //     'isi' => 'Tampilkan di menu Jejak'
+        // ]);
+        // \App\Models\KategoriShow::factory(1)->create([
+        //     'isi' => 'Tampilkan di menu Masa Depan'
+        // ]);
+        // \App\Models\KategoriShow::factory(1)->create([
+        //     'isi' => 'Tampilkan di menu Kerjasama'
+        // ]);
+        // \App\Models\KategoriShow::factory(1)->create([
+        //     'isi' => 'Tampilkan di menu Kegiatan'
+        // ]);
     }
 }
