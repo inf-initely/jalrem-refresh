@@ -101,8 +101,8 @@
                           @foreach( $rempahs as $r )
                           <div class="col-lg-4">
                             <div class="form-check">
-                              <input class="form-check-input-{{ $r->id }}" type="checkbox" name="rempah[]" value="{{ $r->id }}" id="flexCheckDefault-{{ $r->id }}"">
-                              <label class="form-check-label-{{ $r->id }}"" for="flexCheckDefault-{{ $r->id }}"">
+                              <input class="form-check-input" type="checkbox" name="rempah[]" value="{{ $r->id }}" id="flexCheckDefault"">
+                              <label class="form-check-label"" for="flexCheckDefault"">
                                 {{ $r->jenis_rempah }}
                               </label>
                             </div>
@@ -116,8 +116,8 @@
                           <div class="col-lg-4">
                             @foreach( $kategori_show as $k )
                             <div class="form-check">
-                              <input class="form-check-input-{{ $k->id }}" type="checkbox" name="kategori_show[]" value="{{ $k->id }}" id="flexCheckDefault-{{ $k->id }}"">
-                              <label class="form-check-label-{{ $k->id }}"" for="flexCheckDefault-{{ $k->id }}"">
+                              <input class="form-check-input" type="checkbox" name="kategori_show[]" value="{{ $k->id }}" id="flexCheckDefault">
+                              <label class="form-check-label" for="flexCheckDefault">
                                 {{ $k->isi }}
                               </label>
                             </div>
@@ -130,14 +130,14 @@
                         <div class="px-3 row">
                           <div class="col-lg-4">
                             <div class="form-check">
-                              <input class="form-check-input-contributor" type="checkbox" name="contributor" value="contributor" id="flexCheckDefault-contributor"">
-                              <label class="form-check-label-contributor"" for="flexCheckDefault-contributor"">
+                              <input class="form-check-input" type="checkbox" name="contributor" value="contributor" id="flexCheckDefault">
+                              <label class="form-check-label" for="flexCheckDefault">
                                 Kontributor Umum/Pamong
                               </label>
                             </div>
                             <div class="form-check">
-                              <input class="form-check-input-slider" type="checkbox" name="slider_utama" value="slider_utama" id="flexCheckDefault-slider"">
-                              <label class="form-check-label-slider" for="flexCheckDefault-slider"">
+                              <input class="form-check-input" type="checkbox" name="slider_utama" value="slider_utama" id="flexCheckDefault">
+                              <label class="form-check-label" for="flexCheckDefault">
                                 Tampilkan di Slider Utama
                               </label>
                             </div>
@@ -148,8 +148,8 @@
                         <label for="lokasiArtikel" class="form-label">Jenis Kontributor</label>
                         <select name="contributor_type" class="form-select mb-4" aria-label="select kontributor">
                           <option selected>Jenis Kontributor</option>
-                          <option value="1">Kontributor Pamong Budaya</option>
-                          <option value="2">Kontributor Umum</option>
+                          <option value="Kontributor Pamong Budaya">Kontributor Pamong Budaya</option>
+                          <option value="Kontributor Umum">Kontributor Umum</option>
                         </select>
                       </div>
                   </div>

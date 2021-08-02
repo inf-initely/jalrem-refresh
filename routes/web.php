@@ -43,31 +43,35 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function() {
     Route::post('/konten/artikel/tambah', [ArtikelControllerAdmin::class, 'store'])->name('admin.article.store');
     Route::get('/konten/artikel/edit/{articleId}', [ArtikelControllerAdmin::class, 'edit'])->name('admin.article.edit');
     Route::post('/konten/artikel/upload/{articleId}', [ArtikelControllerAdmin::class, 'update'])->name('admin.article.update');
-
+    Route::get('/konten/artikel/delete/{articleId}', [ArtikelControllerAdmin::class, 'delete'])->name('admin.article.delete');
 
     Route::get('/konten/foto', [FotoControllerAdmin::class, 'index'])->name('admin.photo.index');
     Route::get('/konten/foto/tambah', [FotoControllerAdmin::class, 'add'])->name('admin.photo.add');
     Route::post('/konten/foto/tambah', [FotoControllerAdmin::class, 'store'])->name('admin.photo.store');
     Route::get('/konten/foto/edit/{photoId}', [FotoControllerAdmin::class, 'edit'])->name('admin.photo.edit');
     Route::post('/konten/foto/update/{photoId}', [FotoControllerAdmin::class, 'update'])->name('admin.photo.update');
+    Route::get('/konten/foto/delete/{photoId}', [FotoControllerAdmin::class, 'delete'])->name('admin.photo.delete');
 
     Route::get('/konten/video', [VideoControllerAdmin::class, 'index'])->name('admin.video.index');
     Route::get('/konten/video/tambah', [VideoControllerAdmin::class, 'add'])->name('admin.video.add');
     Route::post('/konten/video/tambah', [VideoControllerAdmin::class, 'store'])->name('admin.video.store');
     Route::get('/konten/video/edit/{videoId}', [VideoControllerAdmin::class, 'edit'])->name('admin.video.edit');
     Route::post('/konten/video/update/{videoId}', [VideoControllerAdmin::class, 'update'])->name('admin.video.update');
+    Route::get('/konten/video/delete/{videoId}', [VideoControllerAdmin::class, 'delete'])->name('admin.video.delete');
     
     Route::get('/konten/publikasi', [PublikasiControllerAdmin::class, 'index'])->name('admin.publication.index');
     Route::get('/konten/publikasi/tambah', [PublikasiControllerAdmin::class, 'add'])->name('admin.publication.add');
     Route::post('/konten/publikasi/tambah', [PublikasiControllerAdmin::class, 'store'])->name('admin.publication.store');
     Route::get('/konten/publikasi/edit/{publicationId}', [PublikasiControllerAdmin::class, 'edit'])->name('admin.publication.edit');
     Route::post('/konten/publikasi/update/{publicationId}', [PublikasiControllerAdmin::class, 'update'])->name('admin.publication.update');
+    Route::get('/konten/publikasi/delete/{publicationId}', [PublikasiController::class, 'delete'])->name('admin.publication.delete');
     
     Route::get('/konten/audio', [AudioControllerAdmin::class, 'index'])->name('admin.audio.index');
     Route::get('/konten/audio/tambah', [AudioControllerAdmin::class, 'add'])->name('admin.audio.add');
     Route::post('/konten/audio/tambah', [AudioControllerAdmin::class, 'store'])->name('admin.audio.store');
     Route::get('/konten/audio/edit/{audioId}', [AudioControllerAdmin::class, 'edit'])->name('admin.audio.edit');
     Route::post('/konten/audio/update/{audioId}', [AudioControllerAdmin::class, 'update'])->name('admin.audio.update');
+    Route::get('/konten/audio/delete/{audioId}', [AudioControllerAdmin::class, 'delete'])->name('admin.audio.delete');
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');

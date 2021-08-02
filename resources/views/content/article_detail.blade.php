@@ -46,7 +46,7 @@
                               <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="{{ asset('assets/artikel/thumbnail/' . $a->thumbnail) }}">
                             </div>
                             <div class="col-7 center-v">
-                              <h3 class="judul-berita-aside" id="jdlKegiatan" name="jdlKegiatan">{{ $a->title }}</h3>
+                              <h3 class="judul-berita-aside" id="jdlKegiatan" name="jdlKegiatan">{{ $a->judul_indo }}</h3>
                               <p class="tgl-berita-aside" id="tglKegiatan" name="tglKegiatan">{{ $a->created_at->isoFormat('dddd, D MMMM Y') }} </p>
                             </div>
                           </div>
@@ -105,7 +105,7 @@
             <div class="card no-border no-background card-body">
               <img src="{{ asset('assets/artikel/thumbnail/' . $a->thumbnail) }}" class="card-img-top mb-4" alt="...">
               <h3 class="card-title judul-artikel">{{ $a->judul_indo }}</h3>
-              <p class="card-text des-artikel minimize">{{ $a->konten_indo }}</p>
+              <p class="card-text des-artikel minimize">{!! $a->konten_indo !!}</p>
               <p class="penulis-artikel">{{ $a->penulis }}</p>
               <p class="tgl-artikel">{{ $a->created_at->isoFormat('dddd, D MMMM Y'); }}</p>
               <a href="detail-berita.html" class="stretched-link"></a>

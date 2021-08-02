@@ -126,4 +126,12 @@ class VideoController extends Controller
 
         return redirect()->route('admin.video.index');
     }
+
+    public function delete($videoId)
+    {
+        $video = Video::findOrFail($videoId);
+        $video->delete();
+
+        return redirect()->route('admin.video.index');
+    }
 }

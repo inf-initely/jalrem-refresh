@@ -145,4 +145,12 @@ class ArtikelController extends Controller
 
         return redirect()->route('admin.article.index');
     }
+
+    public function delete($articleId)
+    {
+        $artikel = Artikel::findOrFail($articleId);
+        $artikel->delete();
+
+        return redirect()->route('admin.article.index');
+    }
 }

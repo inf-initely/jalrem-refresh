@@ -145,5 +145,13 @@ class PublikasiController extends Controller
         return redirect()->route('admin.publication.index');
     }
 
+    public function delete($publicationId)
+    {
+        $publikasi = Publikasi::findOrFail($publicationId);
+        $publikasi->delete();
+
+        return redirect()->route('admin.publication.index');
+    }
+
 
 }

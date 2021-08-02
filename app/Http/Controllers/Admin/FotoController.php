@@ -175,4 +175,12 @@ class FotoController extends Controller
 
         return redirect()->route('admin.photo.index');
     }
+
+    public function delete($photoId)
+    {
+        $foto = Foto::findOrFail($photoId);
+        $foto->delete();
+
+        return redirect()->route('admin.photo.index');
+    }
 }

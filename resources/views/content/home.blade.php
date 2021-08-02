@@ -220,54 +220,24 @@
             </div>
           </header>
           <section class="row justify-content-center" data-aos="fade-up">
+            @foreach( $artikel as $a )
             <div class="col-md-6 col-lg-4 mb-4">
               <div class="card no-border card-artikel">
-                <img src="assets/img/artikel-berita/artikel-1.png" class="card-img-top" alt="...">
+                <img src="{{ asset('assets/artikel/thumbnail/' . $a->thumbnail) }}" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                  <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
+                  <h3 class="card-title judul-artikel">{{ $a->judul_indo }}</h3>
+                  <p class="card-text des-artikel minimize">{!! $a->konten_indo !!}</p>
                   <p class="penulis-artikel">
-                    Ahmad Rifaldi
+                    {{ $a->penulis }}
                   </p>
                   <p class="tgl-artikel">
-                    20 November 2021
+                    {{ $a->created_at->isoFormat('dddd, D MMMM Y'); }}
                   </p>
                 </div>
-                <a href="{{ route('article_detail', 1) }}" class="stretched-link"></a>
+                <a href="{{ route('article_detail', $a->id) }}" class="stretched-link"></a>
               </div>
             </div>
-            <div class="col-md-6 col-lg-4 mb-4">
-              <div class="card no-border card-artikel">
-                <img src="assets/img/artikel-berita/artikel-2.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                  <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
-                  <p class="penulis-artikel">
-                    Ahmad Rifaldi
-                  </p>
-                  <p class="tgl-artikel">
-                    20 November 2021
-                  </p>
-                </div>
-                <a href="{{ route('article_detail', 1) }}" class="stretched-link"></a>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-4 mb-4">
-              <div class="card no-border card-artikel">
-                <img src="assets/img/artikel-berita/artikel-3.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                  <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
-                  <p class="penulis-artikel">
-                    Ahmad Rifaldi
-                  </p>
-                  <p class="tgl-artikel">
-                    20 November 2021
-                  </p>
-                </div>
-                <a href="{{ route('article_detail', 1) }}" class="stretched-link"></a>
-              </div>
-            </div>
+            @endforeach
             <div class="col-md-12 text-center  d-mobile">
               <button type="button" class="btn btn-outline-danger">Lihat Semua Berita</button>
             </div>

@@ -126,4 +126,12 @@ class AudioController extends Controller
 
         return redirect()->route('admin.audio.index');
     }
+
+    public function delete($audioId)
+    {
+        $audio = Audio::findOrFail($audioId);
+        $audio->delete();
+
+        return redirect()->route('admin.audio.index');
+    }
 }

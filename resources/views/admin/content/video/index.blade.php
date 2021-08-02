@@ -50,9 +50,9 @@
                           <a href="{{ route('admin.video.edit', $v->id) }}" class="btn btn-sm btn-outline-info">
                             Edit
                           </a>
-                          <button class="btn btn-sm btn-outline-danger btn-hapus">
+                          <a href="{{ route('admin.video.delete', $v->id) }}" class="btn btn-sm btn-outline-danger btn-hapus">
                             Hapus
-                          </button>
+                          </a>
                         </td>
                       </tr>
                       @endforeach
