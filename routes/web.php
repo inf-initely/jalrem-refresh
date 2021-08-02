@@ -53,15 +53,21 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function() {
 
     Route::get('/konten/video', [VideoControllerAdmin::class, 'index'])->name('admin.video.index');
     Route::get('/konten/video/tambah', [VideoControllerAdmin::class, 'add'])->name('admin.video.add');
-    Route::get('/konten/video/edit', [VideoControllerAdmin::class, 'edit'])->name('admin.video.edit');
+    Route::post('/konten/video/tambah', [VideoControllerAdmin::class, 'store'])->name('admin.video.store');
+    Route::get('/konten/video/edit/{videoId}', [VideoControllerAdmin::class, 'edit'])->name('admin.video.edit');
+    Route::post('/konten/video/update/{videoId}', [VideoControllerAdmin::class, 'update'])->name('admin.video.update');
     
     Route::get('/konten/publikasi', [PublikasiControllerAdmin::class, 'index'])->name('admin.publication.index');
     Route::get('/konten/publikasi/tambah', [PublikasiControllerAdmin::class, 'add'])->name('admin.publication.add');
-    Route::get('/konten/publikasi/edit', [PublikasiControllerAdmin::class, 'edit'])->name('admin.publication.edit');
+    Route::post('/konten/publikasi/tambah', [PublikasiControllerAdmin::class, 'store'])->name('admin.publication.store');
+    Route::get('/konten/publikasi/edit/{publicationId}', [PublikasiControllerAdmin::class, 'edit'])->name('admin.publication.edit');
+    Route::post('/konten/publikasi/update/{publicationId}', [PublikasiControllerAdmin::class, 'update'])->name('admin.publication.update');
     
-    Route::get('/konten/suara', [SuaraControllerAdmin::class, 'index'])->name('admin.sound.index');
-    Route::get('/konten/suara/tambah', [SuaraControllerAdmin::class, 'add'])->name('admin.sound.add');
-    Route::get('/konten/suara/edit', [SuaraControllerAdmin::class, 'edit'])->name('admin.sound.edit');
+    Route::get('/konten/audio', [AudioControllerAdmin::class, 'index'])->name('admin.audio.index');
+    Route::get('/konten/audio/tambah', [AudioControllerAdmin::class, 'add'])->name('admin.audio.add');
+    Route::post('/konten/audio/tambah', [AudioControllerAdmin::class, 'store'])->name('admin.audio.store');
+    Route::get('/konten/audio/edit/{audioId}', [AudioControllerAdmin::class, 'edit'])->name('admin.audio.edit');
+    Route::post('/konten/audio/update/{audioId}', [AudioControllerAdmin::class, 'update'])->name('admin.audio.update');
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');

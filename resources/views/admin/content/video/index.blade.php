@@ -38,15 +38,16 @@
                       </tr>
                     </thead>
                     <tbody>
+                      @foreach( $videos as $v )
                       <tr>
                         <td>#</td>
-                        <td>Lorem Ipsum Lorem Ipsum Lorem Ipsum</td>
-                        <td>Anonim</td>
+                        <td>{{ $v->judul_indo }}</td>
+                        <td>{{ $v->penulis }}</td>
                         <td>
                           <a href="../public/detail-foto.html" class="btn btn-sm btn-outline-primary">
                             View
                           </a>
-                          <a href="edit-konten-video.html" class="btn btn-sm btn-outline-info">
+                          <a href="{{ route('admin.video.edit', $v->id) }}" class="btn btn-sm btn-outline-info">
                             Edit
                           </a>
                           <button class="btn btn-sm btn-outline-danger btn-hapus">
@@ -54,70 +55,7 @@
                           </button>
                         </td>
                       </tr>
-                      <tr>
-                        <td>#</td>
-                        <td>Lorem Ipsum</td>
-                        <td>Anonim</td>
-                        <td>
-                          <a href="../public/detail-foto.html" class="btn btn-sm btn-outline-primary">
-                            View
-                          </a>
-                          <a href="edit-konten-video.html" class="btn btn-sm btn-outline-info">
-                            Edit
-                          </a>
-                          <button class="btn btn-sm btn-outline-danger btn-hapus">
-                            Hapus
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>#</td>
-                        <td>Source undefine</td>
-                        <td>Anonim</td>
-                        <td>
-                          <a href="../public/detail-foto.html" class="btn btn-sm btn-outline-primary">
-                            View
-                          </a>
-                          <a href="edit-konten-video.html" class="btn btn-sm btn-outline-info">
-                            Edit
-                          </a>
-                          <button class="btn btn-sm btn-outline-danger btn-hapus">
-                            Hapus
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>#</td>
-                        <td>Source undefine</td>
-                        <td>Anonim</td>
-                        <td>
-                          <a href="../public/detail-foto.html" class="btn btn-sm btn-outline-primary">
-                            View
-                          </a>
-                          <a href="edit-konten-video.html" class="btn btn-sm btn-outline-info">
-                            Edit
-                          </a>
-                          <button class="btn btn-sm btn-outline-danger btn-hapus">
-                            Hapus
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>#</td>
-                        <td>Source undefine</td>
-                        <td>Anonim</td>
-                        <td>
-                          <a href="../public/detail-foto.html" class="btn btn-sm btn-outline-primary">
-                            View
-                          </a>
-                          <a href="edit-konten-video.html" class="btn btn-sm btn-outline-info">
-                            Edit
-                          </a>
-                          <button class="btn btn-sm btn-outline-danger btn-hapus">
-                            Hapus
-                          </button>
-                        </td>
-                      </tr>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>

@@ -76,10 +76,9 @@ class FotoController extends Controller
             'slider_file' => $filename_slider,
             'slider_foto' => $slider_foto_array,
             'slider_utama' => $request->slider_utama != null ? 1 : 0,
-            'contributor' => $request->contributor,
+            'contributor' => $request->contributor_type,
             'status' => $request->publish != null ? 'publikasi' : 'draft'
         ]);
-
         // ATTACH REMPAH FOTO
         $foto->rempahs()->attach($request->rempah);
 

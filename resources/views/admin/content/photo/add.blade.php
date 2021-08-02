@@ -168,7 +168,7 @@
                               </label>
                             </div>
                             <div class="form-check">
-                              <input class="form-check-input-slider" type="checkbox" name="slider" value="slider" id="flexCheckDefault-slider"">
+                              <input class="form-check-input-slider" type="checkbox" name="slider_utama" value="slider_utama" id="flexCheckDefault-slider"">
                               <label class="form-check-label-slider"" for="flexCheckDefault-slider"">
                                 Tampilkan di Slider Utama
                               </label>
@@ -178,7 +178,7 @@
                       </div>
                       <div class="mb-3">
                         <label for="lokasiArtikel" class="form-label">Jenis Kontributor</label>
-                        <select name="contributor" class="form-select mb-4" aria-label="select kontributor">
+                        <select name="contributor_type" class="form-select mb-4" aria-label="select kontributor">
                           <option value="" selected>Jenis Kontributor</option>
                           <option value="Kontributor Pamong Budaya">Kontributor Pamong Budaya</option>
                           <option value="Kontributor Umum">Kontributor Umum</option>
@@ -205,10 +205,10 @@
                 </div>
               </div>
               <div class="col-lg-12 mb-5 text-center">
-                <button name="publish" class="btn btn-lg btn-secondary mr-3">
+                <button name="draft" value="draft" class="btn btn-lg btn-secondary mr-3">
                   Save as Draft
                 </button>
-                <button name="draft" class="btn btn-lg btn-success">
+                <button name="publish" value="publish" class="btn btn-lg btn-success">
                   Publish
                 </button>
               </div>

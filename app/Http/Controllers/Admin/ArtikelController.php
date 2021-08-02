@@ -63,7 +63,8 @@ class ArtikelController extends Controller
             'id_lokasi' => $request->id_lokasi,
             'penulis' => $request->contributor != null ? 'Kontributor Umum/Pamong' : 'Admin',
             'slider_file' => $filename_slider,
-            'contributor' => $request->contributor,
+            'slider_utama' => $request->slider_utama != null ? 1 : 0,
+            'contributor' => $request->contributor_type,
             'status' => $request->publish != null ? 'publikasi' : 'draft'
         ]);
 
@@ -133,12 +134,14 @@ class ArtikelController extends Controller
             'id_lokasi' => $request->id_lokasi,
             'penulis' => $request->contributor != null ? 'Kontributor Umum/Pamong' : 'Admin',
             'slider_file' => $filename_slider,
-            'slider_utama' => $request->slider_utama != null ? true : false,
+            'slider_utama' => $request->slider_utama != null ? 1 : 0,
             'contributor' => $request->contributor_type,
             'status' => $request->publish != null ? 'publikasi' : 'draft'
         ]);
 
         $artikel->rempahs()->sync($request->rempah);
+
+        $artikel->kategori_show()->sync($request->kategori_show);
 
         return redirect()->route('admin.article.index');
     }

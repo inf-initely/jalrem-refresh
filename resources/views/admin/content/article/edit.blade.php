@@ -127,13 +127,22 @@
                     <label for="isiArtikelEnglish" class="form-label">Kategori</label>
                     <div class="px-3 row">
                       <div class="col-lg-4">
+                        @php $ids = $artikel->kategori_show->pluck('id'); @endphp
                         @foreach( $kategori_show as $k )
-                        <div class="form-check">
-                          <input class="form-check-input-{{ $k->id }}" type="checkbox" name="kategori_show[]" value="{{ $k->id }}" id="flexCheckDefault-{{ $k->id }}"">
-                          <label class="form-check-label-{{ $k->id }}" for="flexCheckDefault-{{ $k->id }}"">
-                            {{ $k->isi }}
-                          </label>
-                        </div>
+                          <div class="form-check">
+                            @php
+                              $checked = ''; 
+                              foreach( $ids as $id ) {
+                                if( $id == $k->id ) {
+                                  $checked = 'checked';
+                                }
+                              } 
+                              @endphp
+                              <input class="form-check-input" {{ $checked }} name="kategori_show[]" type="checkbox" value="{{ $k->id }}" id="flexCheckDefault">
+                              <label class="form-check-label" for="flexCheckDefault">
+                                {{ $k->isi }}
+                              </label>
+                            </div>
                         @endforeach
                       </div>
                     </div>
@@ -144,10 +153,10 @@
                       <div class="col-lg-4">
                         <div class="form-check">
                           @if( $artikel->penulis == 'Kontributor Umum/Pamong' )
-                            <input checked class="form-check-input-contributor" type="checkbox" name="contributor" 
+                            <input checked class="form-check-input" type="checkbox" name="contributor" 
                             value="contributor" id="flexCheckDefault-contributor"">
                           @else
-                            <input class="form-check-input-contributor" type="checkbox" name="contributor" 
+                            <input class="form-check-input" type="checkbox" name="contributor" 
                             value="contributor" id="flexCheckDefault-contributor"">
                           @endif
                             <label class="form-check-label-contributor"" for="flexCheckDefault-contributor"">
@@ -156,9 +165,9 @@
                         </div>
                         <div class="form-check">
                           @if( $artikel->slider_utama == null )
-                            <input class="form-check-input-slider" type="checkbox" name="slider_utama" value="slider_utama" id="flexCheckDefault-slider"">
+                            <input class="form-check-input" type="checkbox" name="slider_utama" value="slider_utama" id="flexCheckDefault-slider"">
                           @else
-                            <input checked class="form-check-input-slider" type="checkbox" name="slider_utama" value="slider_utama" id="flexCheckDefault-slider"">
+                            <input checked class="form-check-input" type="checkbox" name="slider_utama" value="slider_utama" id="flexCheckDefault-slider"">
                           @endif
                           <label class="form-check-label-slider"" for="flexCheckDefault-slider"">
                             Tampilkan di Slider Utama
@@ -210,10 +219,10 @@
             </div>
           </div>
           <div class="col-lg-12 mb-5 text-center">
-            <button type="submit" value="draft" class="btn btn-lg btn-secondary mr-3">
+            <button type="submit" name="draft" value="draft" class="btn btn-lg btn-secondary mr-3">
               Save as Draft
             </button>
-            <button type="submit" value="publish" class="btn btn-lg btn-success">
+            <button type="submit" name="publish" value="publish" class="btn btn-lg btn-success">
               Publish
             </button>
           </div>

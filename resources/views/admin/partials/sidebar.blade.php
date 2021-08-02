@@ -25,7 +25,7 @@
           <a class="collapse-item {{ Request::segment(3) == 'foto' ? 'active' : '' }}" href="{{ route('admin.photo.index') }}"><i class="fas fa-fw fa-image mr-1"></i>Foto</a>
           <a class="collapse-item {{ Request::segment(3) == 'video' ? 'active' : '' }}" href="{{ route('admin.video.index') }}"><i class="fas fa-fw fa-video mr-1"></i>Video</a>
           <a class="collapse-item {{ Request::segment(3) == 'publikasi' ? 'active' : '' }}" href="{{ route('admin.publication.index') }}"><i class="fas fa-fw fa-newspaper mr-1"></i>Publikasi</a>
-          <a class="collapse-item {{ Request::segment(3) == 'suara' ? 'active' : '' }}" href="{{ route('admin.sound.index') }}"><i class="fas fa-fw fa-volume-up mr-1"></i>Suara</a>
+          <a class="collapse-item {{ Request::segment(3) == 'audio' ? 'active' : '' }}" href="{{ route('admin.audio.index') }}"><i class="fas fa-fw fa-volume-up mr-1"></i>Audio</a>
         </div>
       </div>
     </li>

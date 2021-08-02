@@ -136,8 +136,8 @@
                               </label>
                             </div>
                             <div class="form-check">
-                              <input class="form-check-input-slider" type="checkbox" name="slider" value="slider" id="flexCheckDefault-slider"">
-                              <label class="form-check-label-slider"" for="flexCheckDefault-slider"">
+                              <input class="form-check-input-slider" type="checkbox" name="slider_utama" value="slider_utama" id="flexCheckDefault-slider"">
+                              <label class="form-check-label-slider" for="flexCheckDefault-slider"">
                                 Tampilkan di Slider Utama
                               </label>
                             </div>
@@ -146,7 +146,7 @@
                       </div>
                       <div class="mb-3">
                         <label for="lokasiArtikel" class="form-label">Jenis Kontributor</label>
-                        <select class="form-select mb-4" aria-label="select kontributor">
+                        <select name="contributor_type" class="form-select mb-4" aria-label="select kontributor">
                           <option selected>Jenis Kontributor</option>
                           <option value="1">Kontributor Pamong Budaya</option>
                           <option value="2">Kontributor Umum</option>
@@ -173,10 +173,10 @@
                 </div>
               </div>
               <div class="col-lg-12 mb-5 text-center">
-                <button type="submit" value="draft" name="draft" class="btn btn-lg btn-secondary mr-3">
+                <button type="submit" name="draft" value="draft" name="draft" class="btn btn-lg btn-secondary mr-3">
                   Save as Draft
                 </button>
-                <button type="submit" value="publish" name="publish" class="btn btn-lg btn-success">
+                <button type="submit" name="publish" value="publish" name="publish" class="btn btn-lg btn-success">
                   Publish
                 </button>
               </div>
