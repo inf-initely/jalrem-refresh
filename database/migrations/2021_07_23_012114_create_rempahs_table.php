@@ -16,6 +16,7 @@ class CreateRempahsTable extends Migration
         Schema::create('rempahs', function (Blueprint $table) {
             $table->id();
             $table->string('jenis_rempah');
+            $table->text('keterangan');
             $table->timestamps();
         });
     }

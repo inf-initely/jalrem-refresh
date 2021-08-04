@@ -8,6 +8,9 @@ use App\Http\Controllers\Admin\VideoController as VideoControllerAdmin;
 use App\Http\Controllers\Admin\PublikasiController as PublikasiControllerAdmin;
 use App\Http\Controllers\Admin\AudioController as AudioControllerAdmin;
 
+use App\Http\Controllers\Admin\RempahController as RempahControllerAdmin;
+use App\Http\Controllers\Admin\KontributorController as KontributorControllerAdmin;
+
 use App\Http\Controllers\Admin\HomeController as HomeControllerAdmin;
 
 use App\Http\Controllers\HomeController;
@@ -72,6 +75,17 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function() {
     Route::get('/konten/audio/edit/{audioId}', [AudioControllerAdmin::class, 'edit'])->name('admin.audio.edit');
     Route::post('/konten/audio/update/{audioId}', [AudioControllerAdmin::class, 'update'])->name('admin.audio.update');
     Route::get('/konten/audio/delete/{audioId}', [AudioControllerAdmin::class, 'delete'])->name('admin.audio.delete');
+
+
+    // MASTER DATA
+    Route::get('/master/rempah', [RempahControllerAdmin::class, 'index'])->name('admin.rempah.index');
+    Route::get('/master/rempah/tambah', [RempahControllerAdmin::class, 'add'])->name('admin.rempah.add');
+    Route::post('/master/rempah/tambah', [RempahControllerAdmin::class, 'store'])->name('admin.rempah.store');
+    Route::get('/master/rempah/edit/{rempahId}', [RempahControllerAdmin::class, 'edit'])->name('admin.rempah.edit');
+    Route::post('/master/rempah/update/{rempahId}', [RempahControllerAdmin::class, 'update'])->name('admin.rempah.update');
+    Route::get('/master/rempah/delete/{rempahId}', [RempahControllerAdmin::class, 'delete'])->name('admin.rempah.delete');
+    
+    Route::get('/master/kontributor', [KontributorControllerAdmin::class, 'index'])->name('admin.contributor.index');
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
