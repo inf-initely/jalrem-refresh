@@ -9,6 +9,7 @@
 <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="{{ asset('assets/js/sb-admin-2.min.js') }}"></script>
+  <script src="{{ asset('assets/js/tagin.min.js') }}"></script>
 <script>
 $("#sidebarToggle").click(function() {
   $("#topNavbar").toggleClass("shrink");
@@ -37,6 +38,11 @@ $(document).ready(function() {
   }).draw();
 });
 </script>
+<script>
+  for (const el of document.querySelectorAll('.tagin')) {
+    tagin(el)
+  }
+  </script>
 {{-- <script>
   window.onload = function() {
     //Check File API support

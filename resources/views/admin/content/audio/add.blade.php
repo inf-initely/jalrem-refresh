@@ -29,11 +29,11 @@
                 <form>
                   <div class="mb-3">
                     <label for="judulArtikelBahasa" class="form-label">Judul</label>
-                    <input type="text" name="judul_indo" class="form-control" id="judulArtikelBahasa" placeholder="masukkan judul artikel">
+                    <input required type="text" name="judul_indo" class="form-control" id="judulArtikelBahasa" placeholder="masukkan judul artikel">
                   </div>
                   <div class="mb-3">
                     <label for="isiArtikelBahasa" class="form-label">Isi Konten</label>
-                    <textarea class="form-control editor" name="konten_indo" id="isiArtikelBahasa" rows="8"></textarea>
+                    <textarea required class="form-control editor" name="konten_indo" id="isiArtikelBahasa" rows="8"></textarea>
                   </div>
                 </form>
               </div>
@@ -64,7 +64,7 @@
               <div class="card-body ">
                 <div class="mb-3">
                   <label for="youtubeKey" class="form-label">Sound Cloud Key</label>
-                  <input type="text" name="cloud_key" class="form-control" id="youtubeKey" placeholder="masukkan youtube key">
+                  <input required type="text" name="cloud_key" class="form-control" id="youtubeKey" placeholder="masukkan youtube key">
                   <small class="ml-1">Key di dapatkan dari embed code sound cloud</small>
                 </div>
               </div>

@@ -23,11 +23,11 @@
                 <div class="card-body">
                     <div class="mb-3">
                       <label for="judulArtikelBahasa" class="form-label">Judul</label>
-                      <input type="text" name="judul_indo" class="form-control" id="judulArtikelBahasa" placeholder="masukkan judul artikel" value="{{ $video->judul_indo }}">
+                      <input required type="text" name="judul_indo" class="form-control" id="judulArtikelBahasa" placeholder="masukkan judul artikel" value="{{ $video->judul_indo }}">
                     </div>
                     <div class="mb-3">
                       <label for="isiArtikelBahasa" class="form-label">Isi Konten</label>
-                      <textarea class="form-control editor" name="konten_indo" id="isiArtikelBahasa" rows="8">{{ $video->konten_indo }}</textarea>
+                      <textarea required class="form-control editor" name="konten_indo" id="isiArtikelBahasa" rows="8">{{ $video->konten_indo }}</textarea>
                     </div>
                 </div>
               </div>
@@ -59,7 +59,7 @@
                 <div class="card-body ">
                   <div class="mb-3">
                     <label for="youtubeKey" class="form-label">Youtube Key</label>
-                    <input type="text" name="youtube_key" value="{{ $video->youtube_key }}" class="form-control" id="youtubeKey" placeholder="masukkan youtube key">
+                    <input required type="text" name="youtube_key" value="{{ $video->youtube_key }}" class="form-control" id="youtubeKey" placeholder="masukkan youtube key">
                     <small class="ml-1">Key di dapatkan dari embed code video youtube</small>
                   </div>
                 </div>

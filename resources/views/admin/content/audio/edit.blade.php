@@ -23,11 +23,11 @@
               <div class="card-body">
                   <div class="mb-3">
                     <label for="judulArtikelBahasa" class="form-label">Judul</label>
-                    <input type="text" name="judul_indo" class="form-control" id="judulArtikelBahasa" placeholder="masukkan judul artikel" value="{{ $audio->judul_indo }}">
+                    <input required type="text" name="judul_indo" class="form-control" id="judulArtikelBahasa" placeholder="masukkan judul artikel" value="{{ $audio->judul_indo }}">
                   </div>
                   <div class="mb-3">
                     <label for="isiArtikelBahasa" class="form-label">Isi Konten</label>
-                    <textarea class="form-control editor" name="konten_indo" id="isiArtikelBahasa" rows="8">{{ $audio->konten_indo }}</textarea>
+                    <textarea required class="form-control editor" name="konten_indo" id="isiArtikelBahasa" rows="8">{{ $audio->konten_indo }}</textarea>
                   </div>
               </div>
             </div>
@@ -58,8 +58,8 @@
               </div>
               <div class="card-body ">
                 <div class="mb-3">
-                  <label for="youtubeKey" class="form-label">Spund Cloud Key</label>
-                  <input type="text" name="cloud_key" value="{{ $audio->cloud_key }}" class="form-control" id="youtubeKey" placeholder="masukkan youtube key">
+                  <label for="youtubeKey" class="form-label">Sound Cloud Key</label>
+                  <input required type="text" name="cloud_key" value="{{ $audio->cloud_key }}" class="form-control" id="youtubeKey" placeholder="masukkan youtube key">
                   <small class="ml-1">Key di dapatkan dari embed code cloud key</small>
                 </div>
               </div>

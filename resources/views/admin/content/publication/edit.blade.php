@@ -28,11 +28,11 @@
             <div class="card-body">
                 <div class="mb-3">
                   <label for="judulArtikelBahasa" class="form-label" >Judul</label>
-                  <input type="text" name="judul_indo" class="form-control" value="{{ $publikasi->judul_indo }}" id="judulArtikelBahasa" placeholder="masukkan judul artikel">
+                  <input required type="text" name="judul_indo" class="form-control" value="{{ $publikasi->judul_indo }}" id="judulArtikelBahasa" placeholder="masukkan judul artikel">
                 </div>
                 <div class="mb-3">
                   <label for="isiArtikelBahasa" class="form-label">Isi Konten</label>
-                  <textarea class="form-control editor" name="konten_indo" id="isiArtikelBahasa" rows="8">{{ $publikasi->konten_indo }}</textarea>
+                  <textarea required class="form-control editor" name="konten_indo" id="isiArtikelBahasa" rows="8">{{ $publikasi->konten_indo }}</textarea>
                 </div>
             </div>
           </div>
@@ -66,7 +66,7 @@
                 </div>
               </div>
               <div class="mb-4">
-                <input class="form-control" name="thumbnail" id="uploadThumbnail" type="file" data-preview=".preview">
+                <input required class="form-control" name="thumbnail" id="uploadThumbnail" type="file" data-preview=".preview">
               </div>
               <div class="mb-3">
                 <h5>Panduan unggah gambar</h5>

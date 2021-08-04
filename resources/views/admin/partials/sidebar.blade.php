@@ -95,7 +95,7 @@
       <div id="collapseTwoa" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
         <div class="bg-submenu-nav py-2 collapse-inner rounded">
           <a class="collapse-item" href="informasi-kegiatan.html"><i class="fas fa-fw fa-newspaper mr-1"></i> Kegiatan</a>
-          <a class="collapse-item" href="informasi-kerjasama.html"><i class="fas fa-fw fa-image mr-1"></i>Kerjasama</a>
+          <a class="collapse-item" href="{{ route('admin.kerjasama.index') }}"><i class="fas fa-fw fa-image mr-1"></i>Kerjasama</a>
         </div>
       </div>
     </li>

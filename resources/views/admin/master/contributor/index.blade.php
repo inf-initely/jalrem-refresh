@@ -21,7 +21,7 @@
                         <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">List Kontributor</h2>
                       </div>
                       <div class="col-6 text-end">
-                        <a href="tambah-kontributor.html" class="btn btn-primary">
+                        <a href="{{ route('admin.contributor.add') }}" class="btn btn-primary">
                           <i class="fa fa-plus mr-1"></i> Tambah
                         </a>
                       </div>
@@ -39,76 +39,22 @@
                         </tr>
                       </thead>
                       <tbody>
+                        @foreach( $kontributor as $k )
                         <tr>
                           <td>#</td>
-                          <td>Ahmad Rifaldi</td>
-                          <td>Sulawesi Selatan</td>
-                          <td>Umum</td>
+                          <td>{{ $k->nama }}</td>
+                          <td>{{ $k->domisili }}</td>
+                          <td>{{ $k->kategori }}</td>
                           <td>
-                            <a href="edit-konten-artikel.html" class="btn btn-sm btn-outline-info">
+                            <a href="{{ route('admin.contributor.edit', $k->id) }}" class="btn btn-sm btn-outline-info">
                               Edit
                             </a>
-                            <button class="btn btn-sm btn-outline-danger btn-hapus">
+                            <a href="{{ route('admin.contributor.delete', $k->id) }}" class="btn btn-sm btn-outline-danger btn-hapus">
                               Hapus
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>#</td>
-                          <td>Fascal Ivandry</td>
-                          <td>Sulawesi Selatan</td>
-                          <td>Pamong Budaya</td>
-                          <td>
-                            <a href="edit-konten-artikel.html" class="btn btn-sm btn-outline-info">
-                              Edit
                             </a>
-                            <button class="btn btn-sm btn-outline-danger btn-hapus">
-                              Hapus
-                            </button>
                           </td>
                         </tr>
-                        <tr>
-                          <td>#</td>
-                          <td>Nijar Ali</td>
-                          <td>Sulawesi Selatan</td>
-                          <td>Pamong Budaya</td>
-                          <td>
-                            <a href="edit-konten-artikel.html" class="btn btn-sm btn-outline-info">
-                              Edit
-                            </a>
-                            <button class="btn btn-sm btn-outline-danger btn-hapus">
-                              Hapus
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>#</td>
-                          <td>Saiful Abdullah</td>
-                          <td>Kalimantan Utara</td>
-                          <td>Umum</td>
-                          <td>
-                            <a href="edit-konten-artikel.html" class="btn btn-sm btn-outline-info">
-                              Edit
-                            </a>
-                            <button class="btn btn-sm btn-outline-danger btn-hapus">
-                              Hapus
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>#</td>
-                          <td>Akbar Basith</td>
-                          <td>Jakarta</td>
-                          <td>Umum</td>
-                          <td>
-                            <a href="edit-konten-artikel.html" class="btn btn-sm btn-outline-info">
-                              Edit
-                            </a>
-                            <button class="btn btn-sm btn-outline-danger btn-hapus">
-                              Hapus
-                            </button>
-                          </td>
-                        </tr>
+                        @endforeach
                       </tbody>
                     </table>
                   </div>

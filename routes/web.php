@@ -11,6 +11,8 @@ use App\Http\Controllers\Admin\AudioController as AudioControllerAdmin;
 use App\Http\Controllers\Admin\RempahController as RempahControllerAdmin;
 use App\Http\Controllers\Admin\KontributorController as KontributorControllerAdmin;
 
+use App\Http\Controllers\Admin\KerjasamaController as KerjasamaControllerAdmin;
+
 use App\Http\Controllers\Admin\HomeController as HomeControllerAdmin;
 
 use App\Http\Controllers\HomeController;
@@ -84,8 +86,21 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function() {
     Route::get('/master/rempah/edit/{rempahId}', [RempahControllerAdmin::class, 'edit'])->name('admin.rempah.edit');
     Route::post('/master/rempah/update/{rempahId}', [RempahControllerAdmin::class, 'update'])->name('admin.rempah.update');
     Route::get('/master/rempah/delete/{rempahId}', [RempahControllerAdmin::class, 'delete'])->name('admin.rempah.delete');
-    
+
     Route::get('/master/kontributor', [KontributorControllerAdmin::class, 'index'])->name('admin.contributor.index');
+    Route::get('/master/kontributor/tambah', [KontributorControllerAdmin::class, 'add'])->name('admin.contributor.add');
+    Route::post('/master/kontributor/tambah', [KontributorControllerAdmin::class, 'store'])->name('admin.contributor.store');
+    Route::get('/master/kontributor/edit/{contributorId}', [KontributorControllerAdmin::class, 'edit'])->name('admin.contributor.edit');
+    Route::post('/master/kontributor/update/{contributorId}', [KontributorControllerAdmin::class, 'update'])->name('admin.contributor.update');
+    Route::get('/master/kontributor/delete/{contributorId}', [KontributorControllerAdmin::class, 'delete'])->name('admin.contributor.delete');
+
+    // INFORMASI
+    Route::get('/informasi/kerjasama', [KerjasamaControllerAdmin::class, 'index'])->name('admin.kerjasama.index');
+    Route::get('/informasi/kerjasama/tambah', [KerjasamaControllerAdmin::class, 'add'])->name('admin.kerjasama.add');
+    Route::post('/informasi/kerjasama/tambah', [KerjasamaControllerAdmin::class, 'store'])->name('admin.kerjasama.store');
+    Route::get('/informasi/kerjasama/edit/{kerjasamaId}', [KerjasamaControllerAdmin::class, 'edit'])->name('admin.kerjasama.edit');
+    Route::post('/informasi/kerjasama/update/{kerjasamaId}', [KerjasamaControllerAdmin::class, 'update'])->name('admin.kerjasama.update');
+    Route::get('/informasi/kerjasama/delete/{kerjasamaId}', [KerjasamaControllerAdmin::class, 'delete'])->name('admin.kerjasama.delete');
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
