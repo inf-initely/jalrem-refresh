@@ -24,7 +24,7 @@ class CreateKerjasamasTable extends Migration
             $table->text('meta_english')->nullable();
             $table->string('keywords_english')->nullable();
             $table->string('thumbnail');
-            $table->unsignedInteger('id_lokasi');
+            $table->unsignedInteger('id_lokasi')->nullable();
             $table->string('penulis');
             $table->string('contributor')->nullable();
             $table->string('slider_file')->nullable();

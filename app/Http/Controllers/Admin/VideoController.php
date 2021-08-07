@@ -34,7 +34,6 @@ class VideoController extends Controller
         $this->validate($request, [
             'judul_indo' => 'required',
             'konten_indo' => 'required',
-            'id_lokasi' => 'required',
             'youtube_key' => 'required'
         ]);
 
@@ -51,8 +50,12 @@ class VideoController extends Controller
         $video = Video::create([
             'judul_indo' => $request->judul_indo,
             'konten_indo' => $request->konten_indo,
+            'meta_indo' => $request->meta_indo,
+            'keywords_indo' => $request->keywords_indo,
             'judul_english' => $request->judul_english,
             'konten_english' => $request->konten_english,
+            'meta_english' => $request->meta_english,
+            'keywords_english' => $request->keywords_english,
             'id_lokasi' => $request->id_lokasi,
             'penulis' => $request->contributor != null ? 'Kontributor Umum/Pamong' : 'Admin',
             'youtube_key' => $request->youtube_key,
@@ -85,7 +88,6 @@ class VideoController extends Controller
         $this->validate($request, [
             'judul_indo' => 'required',
             'konten_indo' => 'required',
-            'id_lokasi' => 'required',
             'youtube_key' => 'required' 
         ]);
 
@@ -107,8 +109,12 @@ class VideoController extends Controller
         $video->update([
             'judul_indo' => $request->judul_indo,
             'konten_indo' => $request->konten_indo,
+            'meta_indo' => $request->meta_indo,
+            'keywords_indo' => $request->keywords_indo,
             'judul_english' => $request->judul_english,
             'konten_english' => $request->konten_english,
+            'meta_english' => $request->meta_english,
+            'keywords_english' => $request->keywords_english,
             'id_lokasi' => $request->id_lokasi,
             'penulis' => $request->contributor != null ? 'Kontributor Umum/Pamong' : 'Admin',
             'slider_file' => $filename_slider,

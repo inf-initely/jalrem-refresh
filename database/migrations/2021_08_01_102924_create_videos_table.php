@@ -17,13 +17,13 @@ class CreateVideosTable extends Migration
             $table->id();
             $table->string('judul_indo');
             $table->longText('konten_indo');
-            // $table->text('meta_indo');
-            // $table->string('keywords_indo');
+            $table->text('meta_indo');
+            $table->string('keywords_indo');
             $table->string('judul_english')->nullable();
             $table->longText('konten_english')->nullable();
-            // $table->text('meta_english')->nullable();
-            // $table->string('keywords_english')->nullable();
-            $table->unsignedInteger('id_lokasi');
+            $table->text('meta_english')->nullable();
+            $table->string('keywords_english')->nullable();
+            $table->unsignedInteger('id_lokasi')->nullable();
             $table->string('penulis');
             $table->string('youtube_key');
             $table->string('contributor')->nullable();

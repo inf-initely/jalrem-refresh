@@ -36,7 +36,7 @@
                       </div>
                       <div class="mb-3">
                         <label for="metaDesID" class="form-label">Meta Description</label>
-                        <textarea required name="meta_indo" class="form-control" id="metaDesEN" rows="2" maxlength="160" placeholder="masukkan meta description"></textarea>
+                        <textarea required name="meta_indo" class="form-control" id="metaDesID" rows="2" maxlength="160" placeholder="masukkan meta description"></textarea>
                         <little>maks 160 karakter</little>
                       </div>
                       <div class="mb-3">
@@ -68,7 +68,7 @@
                       </div>
                       <div class="mb-3">
                         <label for="keywordsEN" class="form-label">Keywords</label>
-                        <input name="keywords_english" id="keywordsID" type="text" class="form-control tagin" data-separator=" ">
+                        <input name="keywords_english" id="keywordsID" type="text" class="form-control tagin" data-separator=",">
                         <little>gunakan tombol "," (koma) untuk memisahkan keyword</little>
                       </div>
                   </div>

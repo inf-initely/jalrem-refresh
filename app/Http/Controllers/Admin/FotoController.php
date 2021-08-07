@@ -35,7 +35,6 @@ class FotoController extends Controller
             'judul_indo' => 'required',
             'konten_indo' => 'required',
             'thumbnail' => 'required|max:10000|mimes:png,jpg,jpeg',
-            'id_lokasi' => 'required',
             'slider_foto' => 'required'
         ]);
 
@@ -68,8 +67,12 @@ class FotoController extends Controller
         $foto = Foto::create([
             'judul_indo' => $request->judul_indo,
             'konten_indo' => $request->konten_indo,
+            'meta_indo' => $request->meta_indo,
+            'keywords_indo' => $request->keywords_indo,
             'judul_english' => $request->judul_english,
             'konten_english' => $request->konten_english,
+            'meta_english' => $request->meta_english,
+            'keywords_english' => $request->keywords_english,
             'thumbnail' => $filename_thumbnail,
             'id_lokasi' => $request->id_lokasi,
             'penulis' => $request->penulis != null ? 'Kontributor Umum/Pamong' : 'Admin',
@@ -103,7 +106,6 @@ class FotoController extends Controller
         $this->validate($request, [
             'judul_indo' => 'required',
             'konten_indo' => 'required',
-            'id_lokasi' => 'required',
         ]);
 
         $foto = Foto::findOrFail($photoId);
@@ -155,8 +157,12 @@ class FotoController extends Controller
         $foto->update([
             'judul_indo' => $request->judul_indo,
             'konten_indo' => $request->konten_indo,
+            'meta_indo' => $request->meta_indo,
+            'keywords_indo' => $request->keywords_indo,
             'judul_english' => $request->judul_english,
             'konten_english' => $request->konten_english,
+            'meta_english' => $request->meta_english,
+            'keywords_english' => $request->keywords_english,
             'thumbnail' => $filename_thumbnail,
             'id_lokasi' => $request->id_lokasi,
             'penulis' => $request->contributor != null ? 'Kontributor Umum/Pamong' : 'Admin',

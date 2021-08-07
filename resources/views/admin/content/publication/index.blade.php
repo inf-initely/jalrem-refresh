@@ -34,6 +34,7 @@
                         <th>No.</th>
                         <th>Judul Artikel</th>
                         <th>Penulis</th>
+                        <th>Status</th>
                         <th>Aksi</th>
                       </tr>
                     </thead>
@@ -43,6 +44,9 @@
                         <td>#</td>
                         <td>{{ $p->judul_indo }}</td>
                         <td>{{ $p->penulis }}</td>
+                        <td>
+                          <span class="badge rounded-pill py-1 px-3 {{ $p->status == 'publikasi' ? 'bg-success' : 'bg-secondary' }}">{{ $p->status == 'publikasi' ? 'Aktif' : 'Draft' }}</span>
+                        </td>
                         <td>
                           <a href="../public/detail-berita.html" class="btn btn-sm btn-outline-primary">
                             View

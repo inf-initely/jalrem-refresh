@@ -55,7 +55,7 @@
                   <div class="card-body">
                       <div class="mb-3">
                         <label for="judulArtikelEnglish" class="form-label">Judul</label>
-                        <input value="$kerjasama->judul_english }}" type="text" class="form-control" name="judul_english" id="judulArtikelEnglish" placeholder="masukkan judul artikel">
+                        <input value="{{ $kerjasama->judul_english }}" type="text" class="form-control" name="judul_english" id="judulArtikelEnglish" placeholder="masukkan judul artikel">
                       </div>
                       <div class="mb-3">
                         <label for="isiArtikelEnglish" class="form-label">Isi Konten</label>
@@ -68,7 +68,7 @@
                       </div>
                       <div class="mb-3">
                         <label for="keywordsEN" class="form-label">Keywords</label>
-                        <input name="keywords_english" id="keywordsID" type="text" class="form-control tagin" data-separator=" " value="{{ $kerjasama->keywords_english }}">
+                        <input name="keywords_english" id="keywordsID" type="text" class="form-control tagin" data-separator="," value="{{ $kerjasama->keywords_english }}">
                         <little>gunakan tombol "," (koma) untuk memisahkan keyword</little>
                       </div>
                   </div>
@@ -86,7 +86,7 @@
                       </div>
                     </div>
                     <div class="mb-4">
-                      <input required class="form-control" name="thumbnail" id="uploadThumbnail" type="file" data-preview=".preview">
+                      <input class="form-control" name="thumbnail" id="uploadThumbnail" type="file" data-preview=".preview">
                     </div>
                     <div class="mb-3">
                       <h5>Panduan unggah gambar</h5>

@@ -34,6 +34,16 @@
                         <label for="isiArtikelBahasa" class="form-label">Isi Konten</label>
                         <textarea required class="form-control editor" name="konten_indo" id="editor" rows="8"></textarea>
                       </div>
+                      <div class="mb-3">
+                        <label for="metaDesID" class="form-label">Meta Description</label>
+                        <textarea required name="meta_indo" class="form-control" id="metaDesID" rows="2" maxlength="160" placeholder="masukkan meta description"></textarea>
+                        <little>maks 160 karakter</little>
+                      </div>
+                      <div class="mb-3">
+                        <label for="keywordsID" class="form-label">Keywords</label>
+                        <input required name="keywords_indo" id="keywordsID" type="text" class="form-control tagin">
+                        <little>gunakan tombol "," (koma) untuk memisahkan keyword</little>
+                      </div>
                   </div>
                 </div>
               </div>
@@ -50,6 +60,16 @@
                       <div class="mb-3">
                         <label for="isiArtikelEnglish" class="form-label">Isi Konten</label>
                         <textarea class="form-control editor" name="konten_english" id="isiArtikelEnglish" rows="8"></textarea>
+                      </div>
+                      <div class="mb-3">
+                        <label for="metaDesEN" class="form-label">Meta Description</label>
+                        <textarea name="meta_english" class="form-control" id="metaDesEN" rows="2" maxlength="160" placeholder="masukkan meta description"></textarea>
+                        <little>maks 160 karakter</little>
+                      </div>
+                      <div class="mb-3">
+                        <label for="keywordsEN" class="form-label">Keywords</label>
+                        <input name="keywords_english" id="keywordsEN" type="text" class="form-control tagin" data-separator=",">
+                        <little>gunakan tombol "," (koma) untuk memisahkan keyword</little>
                       </div>
                   </div>
                 </div>

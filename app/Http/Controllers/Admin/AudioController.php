@@ -34,7 +34,6 @@ class AudioController extends Controller
         $this->validate($request, [
             'judul_indo' => 'required',
             'konten_indo' => 'required',
-            'id_lokasi' => 'required',
             'cloud_key' => 'required'
         ]);
 
@@ -51,8 +50,11 @@ class AudioController extends Controller
         $audio = Audio::create([
             'judul_indo' => $request->judul_indo,
             'konten_indo' => $request->konten_indo,
+            'meta_indo' => $request->meta_indo,
+            'keywords_indo' => $request->keywords_indo,
             'judul_english' => $request->judul_english,
             'konten_english' => $request->konten_english,
+            'meta_english' => $request->meta_english,
             'id_lokasi' => $request->id_lokasi,
             'penulis' => $request->contributor != null ? 'Kontributor Umum/Pamong' : 'Admin',
             'cloud_key' => $request->cloud_key,
@@ -85,7 +87,6 @@ class AudioController extends Controller
         $this->validate($request, [
             'judul_indo' => 'required',
             'konten_indo' => 'required',
-            'id_lokasi' => 'required',
             'cloud_key' => 'required'
         ]);
 
@@ -107,8 +108,12 @@ class AudioController extends Controller
         $audio->update([
             'judul_indo' => $request->judul_indo,
             'konten_indo' => $request->konten_indo,
+            'meta_indo' => $request->meta_indo,
+            'keywords_indo' => $request->keywords_indo,
             'judul_english' => $request->judul_english,
             'konten_english' => $request->konten_english,
+            'meta_english' => $request->meta_english,
+            'keywords_english' => $request->keywords_english,
             'id_lokasi' => $request->id_lokasi,
             'penulis' => $request->contributor != null ? 'Kontributor Umum/Pamong' : 'Admin',
             'slider_file' => $filename_slider,

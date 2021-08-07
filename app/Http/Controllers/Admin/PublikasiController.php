@@ -34,7 +34,6 @@ class PublikasiController extends Controller
             'judul_indo' => 'required',
             'konten_indo' => 'required',
             'thumbnail' => 'required|max:10000|mimes:png,jpg,jpeg',
-            'id_lokasi' => 'required',
         ]);
 
         // UPLOAD THUMBNAIL
@@ -56,8 +55,12 @@ class PublikasiController extends Controller
         $publikasi = Publikasi::create([
             'judul_indo' => $request->judul_indo,
             'konten_indo' => $request->konten_indo,
+            'meta_indo' => $request->meta_indo,
+            'keywords_indo' => $request->keywords_indo,
             'judul_english' => $request->judul_english,
             'konten_english' => $request->konten_english,
+            'meta_english' => $request->meta_english,
+            'keywords_english' => $request->keywords_english,
             'thumbnail' => $filename_thumbnail,
             'id_lokasi' => $request->id_lokasi,
             'penulis' => $request->contributor != null ? 'Kontributor Umum/Pamong' : 'Admin',
@@ -92,7 +95,6 @@ class PublikasiController extends Controller
         $this->validate($request, [
             'judul_indo' => 'required',
             'konten_indo' => 'required',
-            'id_lokasi' => 'required',
         ]);
 
         $publikasi = Publikasi::findOrFail($articleId);
@@ -127,8 +129,12 @@ class PublikasiController extends Controller
         $publikasi->update([
             'judul_indo' => $request->judul_indo,
             'konten_indo' => $request->konten_indo,
+            'meta_indo' => $request->meta_indo,
+            'keywords_indo' => $request->keywords_indo,
             'judul_english' => $request->judul_english,
             'konten_english' => $request->konten_english,
+            'meta_english' => $request->meta_english,
+            'keywords_english' => $request->keywords_english,
             'thumbnail' => $filename_thumbnail,
             'id_lokasi' => $request->id_lokasi,
             'penulis' => $request->contributor != null ? 'Kontributor Umum/Pamong' : 'Admin',

@@ -34,6 +34,16 @@
                         <label for="isiArtikelBahasa" class="form-label">Isi Konten</label>
                         <textarea required class="form-control editor" name="konten_indo" id="isiArtikelBahasa" rows="8">{{ $foto->konten_indo }}</textarea>
                       </div>
+                      <div class="mb-3">
+                        <label for="metaDesID" class="form-label">Meta Description</label>
+                        <textarea required name="meta_indo" class="form-control" id="metaDesID" rows="2" maxlength="160" placeholder="masukkan meta description">{{ $foto->meta_indo }}</textarea>
+                        <little>maks 160 karakter</little>
+                      </div>
+                      <div class="mb-3">
+                        <label for="keywordsID" class="form-label">Keywords</label>
+                        <input value="{{ $foto->keywords_indo }}" required name="keywords_indo" id="keywordsID" type="text" class="form-control tagin">
+                        <little>gunakan tombol "," (koma) untuk memisahkan keyword</little>
+                      </div>
                   </div>
                 </div>
               </div>
@@ -51,6 +61,16 @@
                         <label for="isiArtikelEnglish" class="form-label">Isi Konten</label>
                         <textarea class="form-control editor" name="konten_english" id="isiArtikelEnglish" rows="8">{{ $foto->konten_english }}</textarea>
                       </div>
+                      <div class="mb-3">
+                        <label for="metaDesEN" class="form-label">Meta Description</label>
+                        <textarea name="meta_english" class="form-control" id="metaDesEN" rows="2" maxlength="160" placeholder="masukkan meta description">{{ $foto->meta_english }}</textarea>
+                        <little>maks 160 karakter</little>
+                      </div>
+                      <div class="mb-3">
+                        <label for="keywordsEN" class="form-label">Keywords</label>
+                        <input value="{{ $foto->keywords_english }}" name="keywords_english" id="keywordsEN" type="text" class="form-control tagin" data-separator=",">
+                        <little>gunakan tombol "," (koma) untuk memisahkan keyword</little>
+                      </div>
                   </div>
                 </div>
               </div>
@@ -66,7 +86,7 @@
                       </div>
                     </div>
                     <div class="mb-4">
-                      <input required class="form-control" id="uploadThumbnail" type="file" data-preview=".preview">
+                      <input class="form-control" id="uploadThumbnail" type="file" data-preview=".preview">
                     </div>
                     <div class="mb-3">
                       <h5>Panduan unggah gambar</h5>
@@ -87,7 +107,7 @@
                   </div>
                   <div class="card-body row">
                     <div class="col-lg-6">
-                      <input required id="files" type="file" multiple />
+                      <input id="files" type="file" multiple />
                     </div>
                     <div class="col-lg-6 text-right">
                       <button id="btnReset" class="btn btn-danger">

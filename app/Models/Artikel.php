@@ -11,9 +11,7 @@ class Artikel extends Model implements Viewable
 {
     use HasFactory, InteractsWithViews;
     
-    protected $fillable = [
-        'judul_indo', 'konten_indo', 'judul_english', 'konten_english', 'thumbnail', 'id_lokasi', 'penulis', 'contributor', 'slider_file', 'status', 'slider_utama'
-    ];
+    protected $guarded = [];
 
     public function rempahs()
     {
