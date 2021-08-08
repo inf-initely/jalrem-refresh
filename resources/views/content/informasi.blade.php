@@ -24,102 +24,24 @@
           <div class="row justify-content-center">
             <div class="col-lg-12">
               <div class="row">
+                @foreach( $kegiatan_saat_ini as $k )
                 <div class="col-lg-4 mb-1">
                   <div class="card no-border no-background">
                     <div class="card-body">
                       <div class="row">
                         <div class="col-6">
-                          <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/kegiatan/kegiatan-1.jpg">
+                          <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="{{ asset('assets/kegiatan/thumbnail' . $k->thumbnail) }}">
                         </div>
                         <div class="col-6 center-v">
-                          <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">20 Januari 2021</p>
-                          <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">Kompetisi Cerita Gambar Rempah dan Budaya Bahari</h3>
+                          <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">{{ $k->created_at->isoFormat('dddd, D MMMM Y'); }}</p>
+                          <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">{{ $k->judul_indo }}</h3>
                         </div>
                       </div>
                       <a href="detail-kegiatan.html" class="stretched-link"></a>
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-4 mb-1">
-                  <div class="card no-border no-background">
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-6">
-                          <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/kegiatan/kegiatan-1.jpg">
-                        </div>
-                        <div class="col-6 center-v">
-                          <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">20 Januari 2021</p>
-                          <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">Kompetisi Cerita Gambar Rempah dan Budaya Bahari</h3>
-                        </div>
-                      </div>
-                      <a href="detail-kegiatan.html" class="stretched-link"></a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-4 mb-1">
-                  <div class="card no-border no-background">
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-6">
-                          <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/kegiatan/kegiatan-1.jpg">
-                        </div>
-                        <div class="col-6 center-v">
-                          <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">20 Januari 2021</p>
-                          <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">Kompetisi Cerita Gambar Rempah dan Budaya Bahari</h3>
-                        </div>
-                      </div>
-                      <a href="detail-kegiatan.html" class="stretched-link"></a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-4 mb-1">
-                  <div class="card no-border no-background">
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-6">
-                          <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/kegiatan/kegiatan-1.jpg">
-                        </div>
-                        <div class="col-6 center-v">
-                          <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">20 Januari 2021</p>
-                          <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">Kompetisi Cerita Gambar Rempah dan Budaya Bahari</h3>
-                        </div>
-                      </div>
-                      <a href="https://upanastudio.com" class="stretched-link"></a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-4 mb-1">
-                  <div class="card no-border no-background">
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-6">
-                          <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/kegiatan/kegiatan-1.jpg">
-                        </div>
-                        <div class="col-6 center-v">
-                          <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">20 Januari 2021</p>
-                          <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">Kompetisi Cerita Gambar Rempah dan Budaya Bahari</h3>
-                        </div>
-                      </div>
-                      <a href="https://upanastudio.com" class="stretched-link"></a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-4 mb-1">
-                  <div class="card no-border no-background">
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-6">
-                          <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/kegiatan/kegiatan-1.jpg">
-                        </div>
-                        <div class="col-6 center-v">
-                          <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">20 Januari 2021</p>
-                          <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">Kompetisi Cerita Gambar Rempah dan Budaya Bahari</h3>
-                        </div>
-                      </div>
-                      <a href="https://upanastudio.com" class="stretched-link"></a>
-                    </div>
-                  </div>
-                </div>
+                @endforeach
               </div>
             </div>
             <header class="row justify-content-start mb-2 m-5">
@@ -131,102 +53,24 @@
             <div class="row justify-content-center">
               <div class="col-lg-12">
                 <div class="row">
+                  @foreach( $kegiatan_sebelumnya as $k )
                   <div class="col-lg-4 mb-1">
                     <div class="card no-border no-background">
                       <div class="card-body">
                         <div class="row">
                           <div class="col-6">
-                            <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/kegiatan/kegiatan-1.jpg">
+                            <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="{{ asset('assets/kegiatan/thumbnail' . $k->thumbnail) }}">
                           </div>
                           <div class="col-6 center-v">
-                            <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">20 Januari 2021</p>
-                            <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">Kompetisi Cerita Gambar Rempah dan Budaya Bahari</h3>
+                            <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">{{ $k->created_at->isoFormat('dddd, D MMMM Y'); }}</p>
+                            <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">{{ $k->judul_indo }}</h3>
                           </div>
                         </div>
-                        <a href="https://upanastudio.com" class="stretched-link"></a>
+                        <a href="detail-kegiatan.html" class="stretched-link"></a>
                       </div>
                     </div>
                   </div>
-                  <div class="col-lg-4 mb-1">
-                    <div class="card no-border no-background">
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-6">
-                            <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/kegiatan/kegiatan-1.jpg">
-                          </div>
-                          <div class="col-6 center-v">
-                            <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">20 Januari 2021</p>
-                            <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">Kompetisi Cerita Gambar Rempah dan Budaya Bahari</h3>
-                          </div>
-                        </div>
-                        <a href="https://upanastudio.com" class="stretched-link"></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 mb-1">
-                    <div class="card no-border no-background">
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-6">
-                            <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/kegiatan/kegiatan-1.jpg">
-                          </div>
-                          <div class="col-6 center-v">
-                            <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">20 Januari 2021</p>
-                            <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">Kompetisi Cerita Gambar Rempah dan Budaya Bahari</h3>
-                          </div>
-                        </div>
-                        <a href="https://upanastudio.com" class="stretched-link"></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 mb-1">
-                    <div class="card no-border no-background">
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-6">
-                            <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/kegiatan/kegiatan-1.jpg">
-                          </div>
-                          <div class="col-6 center-v">
-                            <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">20 Januari 2021</p>
-                            <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">Kompetisi Cerita Gambar Rempah dan Budaya Bahari</h3>
-                          </div>
-                        </div>
-                        <a href="https://upanastudio.com" class="stretched-link"></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 mb-1">
-                    <div class="card no-border no-background">
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-6">
-                            <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/kegiatan/kegiatan-1.jpg">
-                          </div>
-                          <div class="col-6 center-v">
-                            <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">20 Januari 2021</p>
-                            <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">Kompetisi Cerita Gambar Rempah dan Budaya Bahari</h3>
-                          </div>
-                        </div>
-                        <a href="https://upanastudio.com" class="stretched-link"></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 mb-1">
-                    <div class="card no-border no-background">
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-6">
-                            <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/kegiatan/kegiatan-1.jpg">
-                          </div>
-                          <div class="col-6 center-v">
-                            <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">20 Januari 2021</p>
-                            <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">Kompetisi Cerita Gambar Rempah dan Budaya Bahari</h3>
-                          </div>
-                        </div>
-                        <a href="https://upanastudio.com" class="stretched-link"></a>
-                      </div>
-                    </div>
-                  </div>
+                  @endforeach
                 </div>
               </div>
             </div>
@@ -244,54 +88,24 @@
           <div class="row justify-content-center">
             <div class="col-lg-12">
               <div class="row">
+                @foreach( $kerjasama as $k )
                 <div class="col-lg-4 mb-1">
                   <div class="card no-border card-artikel">
-                    <img src="assets/img/artikel-berita/artikel-1.png" class="card-img-top" alt="...">
+                    <img src="{{ asset('assets/kerjasama/thumbnail/' . $k->thumbnail) }}" class="card-img-top" alt="...">
                     <div class="card-body">
-                      <h3 class="card-title judul-artikel">Perjalanan Jalur Rempah Nusantara</h3>
-                      <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
+                      <h3 class="card-title judul-artikel">{{ $k->judul_indo }}</h3>
+                      <p class="card-text des-artikel minimize">{{ $k->konten_indo }}</p>
                       <p class="penulis-artikel">
-                        Ahmad Rifaldi
+                        {{ $k->penulis }}
                       </p>
                       <p class="tgl-artikel">
-                        20 November 2021
+                        {{ $k->created_at->isoFormat('dddd, D MMMM Y'); }}
                       </p>
                     </div>
                     <a href="detail-kerjasama.html" class="stretched-link"></a>
                   </div>
                 </div>
-                <div class="col-lg-4 mb-1">
-                  <div class="card no-border card-artikel">
-                    <img src="assets/img/artikel-berita/artikel-2.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h3 class="card-title judul-artikel">Perjalanan Jalur Rempah Nusantara</h3>
-                      <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
-                      <p class="penulis-artikel">
-                        Ahmad Rifaldi
-                      </p>
-                      <p class="tgl-artikel">
-                        20 November 2021
-                      </p>
-                    </div>
-                    <a href="detail-kerjasama.html" class="stretched-link"></a>
-                  </div>
-                </div>
-                <div class="col-lg-4 mb-1">
-                  <div class="card no-border card-artikel">
-                    <img src="assets/img/artikel-berita/artikel-3.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h3 class="card-title judul-artikel">Perjalanan Jalur Rempah Nusantara</h3>
-                      <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
-                      <p class="penulis-artikel">
-                        Ahmad Rifaldi
-                      </p>
-                      <p class="tgl-artikel">
-                        20 November 2021
-                      </p>
-                    </div>
-                    <a href="detail-kerjasama.html" class="stretched-link"></a>
-                  </div>
-                </div>
+                @endforeach
               </div>
             </div>
           </div>
@@ -314,7 +128,7 @@
                         <p class="des-card-info">Merangkai Budaya Nusantara Melalui Jalur Rempahs</p>
                       </div>
                     </div>
-                    <a href="tentang-jalur.html" class="stretched-link"></a>
+                    <a href="{{ route('tentangjalur') }}" class="stretched-link"></a>
                   </div>
                 </div>
                 <div class="col-lg-4 mb-2">
@@ -328,7 +142,7 @@
                         <p class="des-card-info">Merangkai Budaya Nusantara Melalui Jalur Rempahs</p>
                       </div>
                     </div>
-                    <a href="tentang-jejak.html" class="stretched-link"></a>
+                    <a href="{{ route('tentangjejak') }}" class="stretched-link"></a>
                   </div>
                 </div>
                 <div class="col-lg-4 mb-2">
@@ -342,7 +156,7 @@
                         <p class="des-card-info">Merangkai Budaya Nusantara Melalui Jalur Rempahs</p>
                       </div>
                     </div>
-                    <a href="tentang-masa-depan.html" class="stretched-link"></a>
+                    <a href="{{ route('tentangmasadepan') }}" class="stretched-link"></a>
                   </div>
                 </div>
               </div>

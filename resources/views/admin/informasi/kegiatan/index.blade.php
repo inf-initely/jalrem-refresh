@@ -5,7 +5,7 @@
 @endsection
 
 @section('topbar-title')
-    Kerjasama
+    Kegiatan
 @endsection
 
 @section('content')
@@ -18,10 +18,10 @@
             <div class="card-header py-3">
               <div class="row">
                 <div class="col-6">
-                  <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">List Kerjasama</h2>
+                  <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">List Kegiatan</h2>
                 </div>
                 <div class="col-6 text-end">
-                  <a href="{{ route('admin.kerjasama.add') }}" class="btn btn-primary">
+                  <a href="{{ route('admin.kegiatan.add') }}" class="btn btn-primary">
                     <i class="fa fa-plus mr-1"></i> Tambah
                   </a>
                 </div>
@@ -33,14 +33,14 @@
                   <tr>
                     <th>No.</th>
                     <th>Tanggal</th>
-                    <th>Judul Kerjasama</th>
+                    <th>Judul Kegiatan</th>
                     <th>Penulis</th>
                     <th>Status</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach( $kerjasama as $k )
+                  @foreach( $kegiatan as $k )
                   <tr>
                     <td>#</td>
                     <td>{{ $k->created_at->isoFormat('DD/MM/YYYY'); }}</td>
@@ -53,12 +53,12 @@
                       <a href="../public/detail-berita.html" class="btn btn-sm btn-outline-primary">
                         View
                       </a>
-                      <a href="{{ route('admin.kerjasama.edit', $k->id) }}" class="btn btn-sm btn-outline-info">
+                      <a href="{{ route('admin.kegiatan.edit', $k->id) }}" class="btn btn-sm btn-outline-info">
                         Edit
                       </a>
-                      <button class="btn btn-sm btn-outline-danger btn-hapus">
+                      <a href="{{ route('admin.kegiatan.delete', $k->id) }}" class="btn btn-sm btn-outline-danger btn-hapus">
                         Hapus
-                      </button>
+                      </a>
                     </td>
                   </tr>
                   @endforeach

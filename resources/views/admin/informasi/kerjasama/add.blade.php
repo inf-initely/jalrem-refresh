@@ -68,7 +68,7 @@
                       </div>
                       <div class="mb-3">
                         <label for="keywordsEN" class="form-label">Keywords</label>
-                        <input name="keywords_english" id="keywordsID" type="text" class="form-control tagin" data-separator=",">
+                        <input name="keywords_english" id="keywordsID" type="text" class="form-control tagin" data-separator=" ">
                         <little>gunakan tombol "," (koma) untuk memisahkan keyword</little>
                       </div>
                   </div>
@@ -91,10 +91,8 @@
                     <div class="mb-3">
                       <h5>Panduan unggah gambar</h5>
                       <ol>
-                        <li>Lorem Ipsum Dolor Sit Amet</li>
-                        <li>Lorem Ipsum Dolor Sit Amet</li>
-                        <li>Lorem Ipsum Dolor Sit Amet</li>
-                        <li>Lorem Ipsum Dolor Sit Amet</li>
+                        <li>Resolusi gambar yang di unggah, <b>1280 x 720</b></li>
+                        <li>Ukuran gambar tidak lebih dari <b>1 Mb</b></li>
                       </ol>
                     </div>
                   </div>

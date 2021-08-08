@@ -32,6 +32,7 @@
                     <thead>
                       <tr>
                         <th>No.</th>
+                        <th>Tanggal</th>
                         <th>Judul Artikel</th>
                         <th>Penulis</th>
                         <th>Status</th>
@@ -42,6 +43,7 @@
                       @foreach( $audio as $a )
                       <tr>
                         <td>#</td>
+                        <td>{{ $a->created_at->isoFormat('DD/MM/YYYY') }}</td>
                         <td>{{ $a->judul_indo }}</td>
                         <td>{{ $a->penulis }}</td>
                         <td>

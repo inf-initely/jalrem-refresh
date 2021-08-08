@@ -154,56 +154,26 @@
             </div>
           </header>
           <section class="row justify-content-center" data-aos="flip-up">
+            @foreach( $kegiatan as $k )
             <div class="col-md-12 col-lg-4 mb-4">
               <div class="card no-border card-kegiatan">
                 <div class="card-body">
                   <div class="row">
                     <div class="col-6">
-                      <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/kegiatan/kegiatan-1.jpg">
+                      <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="{{ asset('assets/kegiatan/thumbnail/' . $k->thumbnail) }}">
                     </div>
                     <div class="col-6 center-v">
-                      <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">20 Januari 2021</p>
-                      <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">Kompetisi Cerita Gambar Rempah dan Budaya Bahari</h3>
+                      <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">{{ $k->created_at->isoFormat('dddd, D MMMM Y'); }}</p>
+                      <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">{{ $k->judul_indo }}</h3>
                     </div>
                   </div>
                   <a href="{{ route('event_detail') }}" class="stretched-link"></a>
                 </div>
               </div>
             </div>
-            <div class="col-md-12 col-lg-4 mb-4">
-              <div class="card no-border card-kegiatan">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-6">
-                      <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/kegiatan/kegiatan-1.jpg">
-                    </div>
-                    <div class="col-6 center-v">
-                      <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">20 Januari 2021</p>
-                      <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">Kompetisi Cerita Gambar Rempah dan Budaya Bahari</h3>
-                    </div>
-                  </div>
-                  <a href="{{ route('event_detail') }}" class="stretched-link"></a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-12 col-lg-4 mb-4">
-              <div class="card no-border card-kegiatan">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-6">
-                      <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/kegiatan/kegiatan-1.jpg">
-                    </div>
-                    <div class="col-6 center-v">
-                      <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">20 Januari 2021</p>
-                      <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">Kompetisi Cerita Gambar Rempah dan Budaya Bahari</h3>
-                    </div>
-                  </div>
-                  <a href="{{ route('event_detail') }}" class="stretched-link"></a>
-                </div>
-              </div>
-            </div>
+            @endforeach
             <div class="col-md-12 text-center d-mobile">
-              <button type="button" class="btn btn-outline-danger">Lihat Semua Kegiatan</button>
+              <a href="{{ route('informasi') }}" class="btn btn-outline-danger">Lihat Semua Kegiatan</a>
             </div>
           </section>
         </div>
@@ -323,6 +293,7 @@
             </div>
           </div>
           <div class="youtube-video">
+            @foreach( $video as $v )
             <div class="p-2">
               <div class="card no-border card-artikel">
                 <div class="video" data-video-id="fj2xxbx_OHQ">
@@ -342,125 +313,11 @@
                   </div>
                 </div>
                 <div class="card-body">
-                  <p class="card-text">Perjalanan Rempah Nusantara</p>
+                  <p class="card-text">{{ $v->judul_indo }}</p>
                 </div>
               </div>
             </div>
-            <div class="p-2">
-              <div class="card no-border card-artikel">
-                <div class="video" data-video-id="fj2xxbx_OHQ">
-                  <!--ganti id sesuai id youtube yang akan ditampilkan-->
-                  <div class="video-layer">
-                    <div class="video-placeholder">
-                      <!-- ^ div is replaced by the YouTube video -->
-                    </div>
-                  </div>
-                  <div class="video-preview video-01">
-                    <!-- this icon would normally be implemented as a character in an icon font or svg spritesheet, or similar -->
-                    <svg viewBox="0 0 74 74">
-                      <circle style="opacity:0.64;stroke:#fff" cx="37" cy="37" r="36.5"></circle>
-                      <circle fill="none" stroke="#fff" cx="37" cy="37" r="36.5"></circle>
-                      <polygon fill="#fff" points="33,22 33,52 48,37"></polygon>
-                    </svg>
-                  </div>
-                </div>
-                <div class="card-body">
-                  <p class="card-text">Perjalanan Rempah Nusantara</p>
-                </div>
-              </div>
-            </div>
-            <div class="p-2">
-              <div class="card no-border card-artikel">
-                <div class="video" data-video-id="fj2xxbx_OHQ">
-                  <!--ganti id sesuai id youtube yang akan ditampilkan-->
-                  <div class="video-layer">
-                    <div class="video-placeholder">
-                      <!-- ^ div is replaced by the YouTube video -->
-                    </div>
-                  </div>
-                  <div class="video-preview video-01">
-                    <!-- this icon would normally be implemented as a character in an icon font or svg spritesheet, or similar -->
-                    <svg viewBox="0 0 74 74">
-                      <circle style="opacity:0.64;stroke:#fff" cx="37" cy="37" r="36.5"></circle>
-                      <circle fill="none" stroke="#fff" cx="37" cy="37" r="36.5"></circle>
-                      <polygon fill="#fff" points="33,22 33,52 48,37"></polygon>
-                    </svg>
-                  </div>
-                </div>
-                <div class="card-body">
-                  <p class="card-text">Perjalanan Rempah Nusantara</p>
-                </div>
-              </div>
-            </div>
-            <div class="p-2">
-              <div class="card no-border card-artikel">
-                <div class="video" data-video-id="fj2xxbx_OHQ">
-                  <!--ganti id sesuai id youtube yang akan ditampilkan-->
-                  <div class="video-layer">
-                    <div class="video-placeholder">
-                      <!-- ^ div is replaced by the YouTube video -->
-                    </div>
-                  </div>
-                  <div class="video-preview video-01">
-                    <!-- this icon would normally be implemented as a character in an icon font or svg spritesheet, or similar -->
-                    <svg viewBox="0 0 74 74">
-                      <circle style="opacity:0.64;stroke:#fff" cx="37" cy="37" r="36.5"></circle>
-                      <circle fill="none" stroke="#fff" cx="37" cy="37" r="36.5"></circle>
-                      <polygon fill="#fff" points="33,22 33,52 48,37"></polygon>
-                    </svg>
-                  </div>
-                </div>
-                <div class="card-body">
-                  <p class="card-text">Perjalanan Rempah Nusantara</p>
-                </div>
-              </div>
-            </div>
-            <div class="p-2">
-              <div class="card no-border card-artikel">
-                <div class="video" data-video-id="fj2xxbx_OHQ">
-                  <!--ganti id sesuai id youtube yang akan ditampilkan-->
-                  <div class="video-layer">
-                    <div class="video-placeholder">
-                      <!-- ^ div is replaced by the YouTube video -->
-                    </div>
-                  </div>
-                  <div class="video-preview video-01">
-                    <!-- this icon would normally be implemented as a character in an icon font or svg spritesheet, or similar -->
-                    <svg viewBox="0 0 74 74">
-                      <circle style="opacity:0.64;stroke:#fff" cx="37" cy="37" r="36.5"></circle>
-                      <circle fill="none" stroke="#fff" cx="37" cy="37" r="36.5"></circle>
-                      <polygon fill="#fff" points="33,22 33,52 48,37"></polygon>
-                    </svg>
-                  </div>
-                </div>
-                <div class="card-body">
-                  <p class="card-text">Perjalanan Rempah Nusantara</p>
-                </div>
-              </div>
-            </div>
-            <div class="p-2">
-              <div class="card no-border card-artikel">
-                <div class="video" data-video-id="fj2xxbx_OHQ">
-                  <!--ganti id sesuai id youtube yang akan ditampilkan-->
-                  <div class="video-layer">
-                    <div class="video-placeholder">
-                      <!-- ^ div is replaced by the YouTube video -->
-                    </div>
-                  </div>
-                  <div class="video-preview video-01">
-                    <!-- this icon would normally be implemented as a character in an icon font or svg spritesheet, or similar -->
-                    <svg viewBox="0 0 74 74">
-                      <circle style="opacity:0.64;stroke:#fff" cx="37" cy="37" r="36.5"></circle>
-                      <circle fill="none" stroke="#fff" cx="37" cy="37" r="36.5"></circle>
-                      <polygon fill="#fff" points="33,22 33,52 48,37"></polygon>
-                    </svg>
-                  </div>
-                </div>
-                <div class="card-body">
-                  <p class="card-text">Perjalanan Rempah Nusantara</p>
-                </div>
-              </div>
-            </div>
+            @endforeach
           </div>
         </section>
         <section class="container" id="twitterJalurRempah">

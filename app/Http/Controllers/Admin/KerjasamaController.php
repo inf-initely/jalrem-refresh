@@ -83,9 +83,9 @@ class KerjasamaController extends Controller
 
     }
 
-    public function edit($articleId)
+    public function edit($kerjasamaId)
     {
-        $kerjasama = Kerjasama::findOrFail($articleId);
+        $kerjasama = Kerjasama::findOrFail($kerjasamaId);
         $rempahs = Rempah::all();
         $lokasi = Lokasi::all();
         $kategori_show = KategoriShow::all();
@@ -93,14 +93,14 @@ class KerjasamaController extends Controller
         return view('admin.informasi.kerjasama.edit', compact('kerjasama', 'rempahs', 'lokasi', 'kategori_show'));
     }
 
-    public function update(Request $request, $articleId)
+    public function update(Request $request, $kerjasamaId)
     {
         $this->validate($request, [
             'judul_indo' => 'required',
             'konten_indo' => 'required',
         ]);
 
-        $kerjasama = Kerjasama::findOrFail($articleId);
+        $kerjasama = Kerjasama::findOrFail($kerjasamaId);
         if( $request->has('thumbnail') ) {
             $this->validate($request, [
                 'thumbnail' => 'required|max:10000|mimes:png,jpg,jpeg',
@@ -152,9 +152,9 @@ class KerjasamaController extends Controller
         return redirect()->route('admin.kerjasama.index');
     }
 
-    public function delete($articleId)
+    public function delete($kerjasamaId)
     {
-        $kerjasama = Kerjasama::findOrFail($articleId);
+        $kerjasama = Kerjasama::findOrFail($kerjasamaId);
         $kerjasama->delete();
 
         return redirect()->route('admin.kerjasama.index');

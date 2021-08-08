@@ -32,6 +32,7 @@
                       <thead>
                         <tr>
                           <th>No.</th>
+                          <th>Tanggal</th>
                           <th>Judul Artikel</th>
                           <th>Penulis</th>
                           <th>Status</th>
@@ -42,6 +43,7 @@
                         @foreach( $foto as $f )
                         <tr>
                           <td>#</td>
+                          <td>{{ $f->created_at->isoFormat('DD/MM/YYYY'); }}</td>
                           <td>{{ $f->judul_indo }}</td>
                           <td>{{ $f->penulis }}</td>
                           <td>

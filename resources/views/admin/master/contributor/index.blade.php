@@ -32,6 +32,7 @@
                       <thead>
                         <tr>
                           <th>No.</th>
+                          <th>Tanggal</th>
                           <th>Nama Kontributor</th>
                           <th>Domisili</th>
                           <th>Kategori</th>
@@ -42,6 +43,7 @@
                         @foreach( $kontributor as $k )
                         <tr>
                           <td>#</td>
+                          <td>{{ $k->created_at->isoFormat('DD/MM/YYYY'); }}</td>
                           <td>{{ $k->nama }}</td>
                           <td>{{ $k->domisili }}</td>
                           <td>{{ $k->kategori }}</td>

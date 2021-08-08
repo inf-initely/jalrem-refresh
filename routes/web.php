@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\RempahController as RempahControllerAdmin;
 use App\Http\Controllers\Admin\KontributorController as KontributorControllerAdmin;
 
 use App\Http\Controllers\Admin\KerjasamaController as KerjasamaControllerAdmin;
+use App\Http\Controllers\Admin\KegiatanController as KegiatanControllerAdmin;
 
 use App\Http\Controllers\Admin\HomeController as HomeControllerAdmin;
 
@@ -101,6 +102,13 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function() {
     Route::get('/informasi/kerjasama/edit/{kerjasamaId}', [KerjasamaControllerAdmin::class, 'edit'])->name('admin.kerjasama.edit');
     Route::post('/informasi/kerjasama/update/{kerjasamaId}', [KerjasamaControllerAdmin::class, 'update'])->name('admin.kerjasama.update');
     Route::get('/informasi/kerjasama/delete/{kerjasamaId}', [KerjasamaControllerAdmin::class, 'delete'])->name('admin.kerjasama.delete');
+
+    Route::get('/informasi/kegiatan', [KegiatanControllerAdmin::class, 'index'])->name('admin.kegiatan.index');
+    Route::get('/informasi/kegiatan/tambah', [KegiatanControllerAdmin::class, 'add'])->name('admin.kegiatan.add');
+    Route::post('/informasi/kegiatan/tambah', [KegiatanControllerAdmin::class, 'store'])->name('admin.kegiatan.store');
+    Route::get('/informasi/kegiatan/edit/{kerjasamaId}', [KegiatanControllerAdmin::class, 'edit'])->name('admin.kegiatan.edit');
+    Route::post('/informasi/kegiatan/update/{kerjasamaId}', [KegiatanControllerAdmin::class, 'update'])->name('admin.kegiatan.update');
+    Route::get('/informasi/kegiatan/delete/{kerjasamaId}', [KegiatanControllerAdmin::class, 'delete'])->name('admin.kegiatan.delete');
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -109,11 +117,12 @@ Route::get('/semua-foto', [FotoController::class, 'index'])->name('photos');
 Route::get('/semua-video', [VideoController::class, 'index'])->name('videos');
 Route::get('/semua-audio', [AudioController::class, 'index'])->name('audios');
 Route::get('/semua-publikasi', [PublikasiController::class, 'index'])->name('publications');
+Route::get('/semua-kegiatan', [KegiatanController::class, 'index'])->name('events');
 
 Route::get('/artikel', [ArtikelController::class, 'index'])->name('article_detail');
 Route::get('/artikel/{articleId}', [ArtikelController::class, 'show'])->name('article_detail');
 
-Route::get('/kegiatan', [KegiatanController::class, 'show'])->name('event_detail');
+Route::get('/kegiatan/{eventId}', [KegiatanController::class, 'show'])->name('event_detail');
 Route::get('/foto', [FotoController::class, 'show'])->name('photo_detail');
 
 Route::get('/informasi', [InformasiController::class, 'index'])->name('informasi');

@@ -43,6 +43,7 @@
                         @foreach( $artikels as $a )
                           <tr>
                             <td>#</td>
+                            <td>{{ $a->created_at->isoFormat('DD/MM/YYYY'); }}</td>
                             <td>{{ $a->judul_indo }}</td>
                             <td>{{ $a->penulis }}</td>
                             <td>

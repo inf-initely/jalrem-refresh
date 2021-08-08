@@ -5,12 +5,12 @@
 @endsection
 
 @section('topbar-title')
-    Kerjasama
+    Kegiatan
 @endsection
 
 @section('content')
           <!-- Begin Page Content -->
-          <form method="post" action="{{ route('admin.kerjasama.update', $kerjasama->id) }}" enctype="multipart/form-data">
+          <form method="post" action="{{ route('admin.kegiatan.store') }}" enctype="multipart/form-data">
           @csrf
           <div class="container-fluid" id="contentWrapper">
             <!-- Page Heading -->
@@ -28,20 +28,20 @@
                   <div class="card-body">
                       <div class="mb-3">
                         <label for="judulArtikelBahasa" class="form-label">Judul</label>
-                        <input required value="{{ $kerjasama->judul_indo }}" type="text" name="judul_indo" class="form-control" id="judulArtikelBahasa" placeholder="masukkan judul kerjasama">
+                        <input required type="text" name="judul_indo" class="form-control" id="judulArtikelBahasa" placeholder="masukkan judul kegiatan">
                       </div>
                       <div class="mb-3">
                         <label for="isiArtikelBahasa" class="form-label">Isi Konten</label>
-                        <textarea required class="form-control editor" name="konten_indo" id="editor" rows="8">{{ $kerjasama->konten_indo }}</textarea>
+                        <textarea required class="form-control editor" name="konten_indo" id="editor" rows="8"></textarea>
                       </div>
                       <div class="mb-3">
                         <label for="metaDesID" class="form-label">Meta Description</label>
-                        <textarea required name="meta_indo" class="form-control" id="metaDesEN" rows="2" maxlength="160" placeholder="masukkan meta description">{{ $kerjasama->meta_indo }}</textarea>
+                        <textarea required name="meta_indo" class="form-control" id="metaDesID" rows="2" maxlength="160" placeholder="masukkan meta description"></textarea>
                         <little>maks 160 karakter</little>
                       </div>
                       <div class="mb-3">
                         <label for="keywordsID" class="form-label">Keywords</label>
-                        <input required name="keywords_indo" id="keywordsID" type="text" class="form-control tagin" value="{{ $kerjasama->keywords_indo }}">
+                        <input required name="keywords_indo" id="keywordsID" type="text" class="form-control tagin">
                         <little>gunakan tombol "," (koma) untuk memisahkan keyword</little>
                       </div>
                   </div>
@@ -55,20 +55,20 @@
                   <div class="card-body">
                       <div class="mb-3">
                         <label for="judulArtikelEnglish" class="form-label">Judul</label>
-                        <input value="{{ $kerjasama->judul_english }}" type="text" class="form-control" name="judul_english" id="judulArtikelEnglish" placeholder="masukkan judul artikel">
+                        <input type="text" class="form-control" name="judul_english" id="judulArtikelEnglish" placeholder="masukkan judul artikel">
                       </div>
                       <div class="mb-3">
                         <label for="isiArtikelEnglish" class="form-label">Isi Konten</label>
-                        <textarea class="form-control editor" name="konten_english" id="isiArtikelEnglish" rows="8">{{ $kerjasama->konten_english }}</textarea>
+                        <textarea class="form-control editor" name="konten_english" id="isiArtikelEnglish" rows="8"></textarea>
                       </div>
                       <div class="mb-3">
                         <label for="metaDesEN" class="form-label">Meta Description</label>
-                        <textarea name="meta_english" class="form-control" id="metaDesEN" rows="2" maxlength="160" placeholder="masukkan meta description">{{ $kerjasama->meta_english }}</textarea>
+                        <textarea name="meta_english" class="form-control" id="metaDesEN" rows="2" maxlength="160" placeholder="masukkan meta description"></textarea>
                         <little>maks 160 karakter</little>
                       </div>
                       <div class="mb-3">
                         <label for="keywordsEN" class="form-label">Keywords</label>
-                        <input name="keywords_english" id="keywordsID" type="text" class="form-control tagin" data-separator="," value="{{ $kerjasama->keywords_english }}">
+                        <input name="keywords_english" id="keywordsID" type="text" class="form-control tagin" data-separator=",">
                         <little>gunakan tombol "," (koma) untuk memisahkan keyword</little>
                       </div>
                   </div>
@@ -82,11 +82,11 @@
                   <div class="card-body ">
                     <div class="row">
                       <div class="col-lg-12 text-center">
-                        <img class="preview mb-3 text-center" src="{{ asset('/assets/kerjasama/thumbnail/' . $kerjasama->thumbnail) }}" />
+                        <img class="preview mb-3 text-center" src="{{ asset('assets/admin/img/noimage.jpg') }}" />
                       </div>
                     </div>
                     <div class="mb-4">
-                      <input class="form-control" name="thumbnail" id="uploadThumbnail" type="file" data-preview=".preview">
+                      <input required class="form-control" id="uploadThumbnail" name="thumbnail" type="file" data-preview=".preview">
                     </div>
                     <div class="mb-3">
                       <h5>Panduan unggah gambar</h5>
@@ -106,61 +106,39 @@
                   <div class="card-body">
                       <div class="mb-3">
                         <label for="lokasiArtikel" class="form-label">Lokasi</label>
-                        <select id="pilihLokasi" name="id_lokasi" class="form-select select2-style" name="id_lokasi" aria-label="Default select example">
+                        <select id="pilihLokasi" class="form-select select2-style" name="id_lokasi" aria-label="Default select example">
                           <option value="" selected>Pilih Lokasi</option>
-                          @foreach( $lokasi as $l ) 
-                            @if( $l->id == $kerjasama->id_lokasi )
-                              <option selected value="{{ $l->id }}">{{ $l->nama_lokasi }}</option>
-                            @else
-                              <option value="{{ $l->id }}">{{ $l->nama_lokasi }}</option>
-                            @endif
+                          @foreach( $lokasi as $l )
+                            <option value="{{ $l->id }}">{{ $l->nama_lokasi }}</option>
                           @endforeach
                         </select>
                       </div>
                       <div class="mb-3">
                         <label for="isiArtikelEnglish" class="form-label">Jenis Rempah</label>
                         <div class="px-3 row">
-                          @php $ids = $kerjasama->rempahs->pluck('id'); @endphp
                           @foreach( $rempahs as $r )
                           <div class="col-lg-4">
                             <div class="form-check">
-                              @php
-                                $checked = ''; 
-                                foreach( $ids as $id ) {
-                                  if( $id == $r->id ) {
-                                    $checked = 'checked';
-                                  }
-                                } 
-                                @endphp
-                                <input class="form-check-input" {{ $checked }} name="rempah[]" type="checkbox" value="{{ $r->id }}" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                  {{ $r->jenis_rempah }}
-                                </label>
-                              </div>
+                              <input class="form-check-input" type="checkbox" name="rempah[]" value="{{ $r->id }}" id="flexCheckDefault"">
+                              <label class="form-check-label"" for="flexCheckDefault"">
+                                {{ $r->jenis_rempah }}
+                              </label>
                             </div>
-                            @endforeach
+                          </div>
+                          @endforeach
                         </div>
                       </div>
                       <div class="mb-3">
                         <label for="isiArtikelEnglish" class="form-label">Kategori</label>
                         <div class="px-3 row">
                           <div class="col-lg-4">
-                            @php $ids = $kerjasama->kategori_show->pluck('id'); @endphp
                             @foreach( $kategori_show as $k )
-                              <div class="form-check">
-                                @php
-                                  $checked = ''; 
-                                  foreach( $ids as $id ) {
-                                    if( $id == $k->id ) {
-                                      $checked = 'checked';
-                                    }
-                                  } 
-                                  @endphp
-                                  <input class="form-check-input" {{ $checked }} name="kategori_show[]" type="checkbox" value="{{ $k->id }}" id="flexCheckDefault">
-                                  <label class="form-check-label" for="flexCheckDefault">
-                                    {{ $k->isi }}
-                                  </label>
-                                </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" name="kategori_show[]" value="{{ $k->id }}" id="flexCheckDefault">
+                              <label class="form-check-label" for="flexCheckDefault">
+                                {{ $k->isi }}
+                              </label>
+                            </div>
                             @endforeach
                           </div>
                         </div>
@@ -170,24 +148,14 @@
                         <div class="px-3 row">
                           <div class="col-lg-4">
                             <div class="form-check">
-                              @if( $kerjasama->penulis == 'Kontributor Umum/Pamong' )
-                                <input checked class="form-check-input" type="checkbox" name="contributor" 
-                                value="contributor" id="flexCheckDefault-contributor"">
-                              @else
-                                <input class="form-check-input" type="checkbox" name="contributor" 
-                                value="contributor" id="flexCheckDefault-contributor"">
-                              @endif
-                                <label class="form-check-label-contributor"" for="flexCheckDefault-contributor"">
+                              <input class="form-check-input" type="checkbox" name="contributor" value="contributor" id="flexCheckDefault">
+                              <label class="form-check-label" for="flexCheckDefault">
                                 Kontributor Umum/Pamong
                               </label>
                             </div>
                             <div class="form-check">
-                              @if( $kerjasama->slider_utama == null )
-                                <input class="form-check-input" type="checkbox" name="slider_utama" value="slider_utama" id="flexCheckDefault-slider"">
-                              @else
-                                <input checked class="form-check-input" type="checkbox" name="slider_utama" value="slider_utama" id="flexCheckDefault-slider"">
-                              @endif
-                              <label class="form-check-label-slider"" for="flexCheckDefault-slider"">
+                              <input class="form-check-input" type="checkbox" name="slider_utama" value="slider_utama" id="flexCheckDefault">
+                              <label class="form-check-label" for="flexCheckDefault">
                                 Tampilkan di Slider Utama
                               </label>
                             </div>
@@ -197,19 +165,9 @@
                       <div class="mb-3">
                         <label for="lokasiArtikel" class="form-label">Jenis Kontributor</label>
                         <select name="contributor_type" class="form-select mb-4" aria-label="select kontributor">
-                          @if( $kerjasama->contributor == 'Kontributor Pamong Budaya' )
-                            <option value="" selected>Jenis Kontributor</option>
-                            <option selected value="Kontributor Pamong Budaya">Kontributor Pamong Budaya</option>
-                            <option value="Kontributor Umum">Kontributor Umum</option>
-                          @elseif( $kerjasama->contributor == 'Kontributor Umum' )
-                            <option value="" selected>Jenis Kontributor</option>
-                            <option value="Kontributor Pamong Budaya">Kontributor Pamong Budaya</option>
-                            <option selected value="Kontributor Umum">Kontributor Umum</option>
-                          @else
-                            <option value="" selected>Jenis Kontributor</option>
-                            <option value="Kontributor Pamong Budaya">Kontributor Pamong Budaya</option>
-                            <option value="Kontributor Umum">Kontributor Umum</option>
-                          @endif
+                          <option selected>Jenis Kontributor</option>
+                          <option value="Kontributor Pamong Budaya">Kontributor Pamong Budaya</option>
+                          <option value="Kontributor Umum">Kontributor Umum</option>
                         </select>
                       </div>
                   </div>
@@ -223,11 +181,7 @@
                   <div class="card-body ">
                     <div class="row">
                       <div class="col-lg-12 text-center">
-                        @if( $kerjasama->slider_file == null )
-                          <img class="preview mb-3 text-center" src="{{ asset('assets/admin/img/noimage.jpg') }}" />
-                        @else
-                          <img class="preview mb-3 text-center" src="{{ asset('assets/kerjasama/slider/' . $kerjasama->slider_file) }}" />
-                        @endif
+                        <img class="preview mb-3 text-center" src="{{ asset('assets/admin/img/noimage.jpg') }}" />
                       </div>
                     </div>
                     <div class="mb-4">

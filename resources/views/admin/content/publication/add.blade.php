@@ -91,10 +91,8 @@
                     <div class="mb-3">
                       <h5>Panduan unggah gambar</h5>
                       <ol>
-                        <li>Lorem Ipsum Dolor Sit Amet</li>
-                        <li>Lorem Ipsum Dolor Sit Amet</li>
-                        <li>Lorem Ipsum Dolor Sit Amet</li>
-                        <li>Lorem Ipsum Dolor Sit Amet</li>
+                        <li>Resolusi gambar yang di unggah, <b>1280 x 720</b></li>
+                        <li>Ukuran gambar tidak lebih dari <b>1 Mb</b></li>
                       </ol>
                     </div>
                   </div>
@@ -121,8 +119,8 @@
                           @foreach( $rempahs as $r )
                           <div class="col-lg-4">
                             <div class="form-check">
-                              <input class="form-check-input-{{ $r->id }}" type="checkbox" name="rempah[]" value="{{ $r->id }}" id="flexCheckDefault-{{ $r->id }}"">
-                              <label class="form-check-label-{{ $r->id }}"" for="flexCheckDefault-{{ $r->id }}"">
+                              <input class="form-check-input" type="checkbox" name="rempah[]" value="{{ $r->id }}" id="flexCheckDefault"">
+                              <label class="form-check-label"" for="flexCheckDefault"">
                                 {{ $r->jenis_rempah }}
                               </label>
                             </div>

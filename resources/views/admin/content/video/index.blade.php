@@ -32,6 +32,7 @@
                     <thead>
                       <tr>
                         <th>No.</th>
+                        <th>Tanggal</th>
                         <th>Judul Artikel</th>
                         <th>Penulis</th>
                         <th>Status</th>
@@ -42,6 +43,7 @@
                       @foreach( $videos as $v )
                       <tr>
                         <td>#</td>
+                        <td>{{ $v->created_at->isoFormat('DD/MM/YYYY'); }}</td>
                         <td>{{ $v->judul_indo }}</td>
                         <td>{{ $v->penulis }}</td>
                         <td>
