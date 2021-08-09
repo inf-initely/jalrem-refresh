@@ -61,6 +61,7 @@ class FotoController extends Controller
             $slider_foto->move($tujuan_upload_file_slider_foto, $filename_slider_foto);
             $slider_foto_array[] = $filename_slider_foto;
         }
+
         $slider_foto_array = serialize($slider_foto_array);
         
 
@@ -78,6 +79,7 @@ class FotoController extends Controller
             'penulis' => $request->penulis != null ? 'Kontributor Umum/Pamong' : 'Admin',
             'slider_file' => $filename_slider,
             'slider_foto' => $slider_foto_array,
+            'caption_slider_foto' => serialize($request->caption_slider_foto),
             'slider_utama' => $request->slider_utama != null ? 1 : 0,
             'contributor' => $request->contributor_type,
             'status' => $request->publish != null ? 'publikasi' : 'draft'
@@ -170,6 +172,7 @@ class FotoController extends Controller
             'penulis' => $request->contributor != null ? 'Kontributor Umum/Pamong' : 'Admin',
             'slider_file' => $filename_slider,
             'slider_foto' => $slider_foto_array,
+            'caption_slider_foto' => serialize($request->caption_slider_foto),
             'slider_utama' => $request->slider_utama != null ? true : false,
             'contributor' => $request->contributor_type,
             'status' => $request->publish != null ? 'publikasi' : 'draft'

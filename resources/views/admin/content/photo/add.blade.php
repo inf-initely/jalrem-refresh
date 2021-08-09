@@ -100,33 +100,48 @@
                 </div>
               </div>
               <div class="col-lg-12 mb-3">
-                <div class="card shadow mb-4">
+                <div class="card shadow mb-4" id="containerSliderFoto">
                   <div class="card-header py-3">
-                    <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">Slider Foto</h2>
-                  </div>
-                  <div class="card-body row">
-                    <div class="col-lg-6">
-                      <input required name="slider_foto[]" id="files" type="file" multiple />
-                    </div>
-                    <div class="col-lg-6 text-right">
-                      <button type="reset" id="btnReset" class="btn btn-danger">
-                        <i class="fa fa-retweet mr-2"></i> Reset
-                      </button>
-                    </div>
-                    <div class="col-lg-12 text-center mt-4 mb-3">
-                      <output id="result" class="row" />
-                    </div>
-                    <div class="col-lg-12">
-                      <div class="mb-3">
-                        <h5>Panduan unggah gambar</h5>
-                        <ol>
-                          <li>Lorem Ipsum Dolor Sit Amet</li>
-                          <li>Lorem Ipsum Dolor Sit Amet</li>
-                          <li>Lorem Ipsum Dolor Sit Amet</li>
-                          <li>Lorem Ipsum Dolor Sit Amet</li>
-                        </ol>
+                    <div class="row">
+                      <div class="col-6">
+                        <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">Slider</h2>
+                      </div>
+                      <div class="col-6 text-end">
+                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalPanduan">
+                          <i class="fa fa-book"></i> Panduan
+                        </button>
                       </div>
                     </div>
+                  </div>
+                  <div class="card-body row" id="fotoSliderBody">
+                    <div class="col-md-12 wrapper-foto-slider">
+                      <div class="row">
+                        <div class="col-sm-4">
+                          <img class="sliderPreview" src="{{ asset('assets/admin/img/noimage.jpg') }}" width="100%">
+                        </div>
+                        <div class="col-sm-7">
+                          <div class="row">
+                            <div class="col-12 mb-2">
+                              <input required class="form-control" name="slider_foto[]" id="uploadThumbnail" type="file" data-preview=".sliderPreview">
+                            </div>
+                            <div class="col-12 mb-2">
+                              <textarea name="caption_slider_foto[]" required maxlength="100" class="form-control" id="captionFoto" rows="2" placeholder="masukkan caption disini"></textarea>
+                              <little><sup>*</sup> maksimsal 100 karakter</little>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-1">
+                          <button type="button" class="btn btn-danger btn-hapus-foto" disabled="">
+                            <i class="fa fa-trash-alt"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer text-center">
+                    <button type="button" class="btn btn-primary" id="tambahFoto">
+                      <i class="fa fa-plus"></i> Tambah Foto
+                    </button>
                   </div>
                 </div>
               </div>
@@ -213,7 +228,7 @@
                   <div class="card-body ">
                     <div class="row">
                       <div class="col-lg-12 text-center">
-                        <img class="preview mb-3 text-center" src="{{ asset('assets/admin/img/noimage.jpg') }}" />
+                        <img class="mb-3 text-center" src="{{ asset('assets/admin/img/noimage.jpg') }}" />
                       </div>
                     </div>
                     <div class="mb-4">

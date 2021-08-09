@@ -28,6 +28,7 @@ class CreateFotosTable extends Migration
             $table->string('penulis');
             $table->string('contributor')->nullable();
             $table->json('slider_foto');
+            $table->json('caption_slider_foto');
             $table->string('slider_file')->nullable();
             $table->boolean('slider_utama')->default(false);
             $table->enum('status', ['publikasi', 'draft']);

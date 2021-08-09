@@ -38,6 +38,69 @@ $(document).ready(function() {
   }).draw();
 });
 </script>
+
+<script>
+var i = 1;
+  var x = 1;
+  $("#tambahFoto").click(function() {
+    i++;
+    if (x < 10) {
+      x++;
+      document.querySelector('#fotoSliderBody').insertAdjacentHTML(
+        'beforeend',
+        `<div class="col-md-12 wrapper-foto-slider" data-id="` + i + `">
+            <div class="row">
+              <div class="col-sm-4">
+                <img src="{{ asset('assets/admin/img/noimage.jpg') }}" width="100%" class="sliderPreview` + i + `" name="preview-slider` + i + `">
+              </div>
+              <div class="col-sm-7">
+                <div class="row">
+                  <div class="col-12 mb-2">
+                    <input required class="form-control" name="slider_foto[]" id="uploadThumbnail" type="file" data-preview=".sliderPreview` + i + `" name="uploadThumbnail` + i + `">
+                  </div>
+                  <div class="col-12 mb-2">
+                    <textarea name="caption_slider_foto[]"  required maxlength="100" class="form-control" id="captionFoto" rows="2" placeholder="masukkan caption disini" name="captionFoto` + i + `"></textarea>
+                    <little><sup>*</sup> maksimsal 100 karakter</little>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-1">
+                <button class="btn btn-danger btn-hapus-foto" data-id="` + i + `">
+                  <i class="fa fa-trash-alt"></i>
+                </button>
+              </div>
+            </div>
+          </div>`
+      )
+    } else {
+      alert("Sudah melebihi batas")
+    }
+    console.log(x);
+
+
+  });
+
+  $('#fotoSliderBody').on('click', '.btn-hapus-foto', function(e) {
+    x--;
+    console.log(x);
+    let id = $(this).data('id');
+    // alert(id);
+    $('.wrapper-foto-slider[data-id="' + id + '"]').remove();
+  });
+  </script>
+  <script>
+  $(function() {
+    $("input[data-preview]").change(function() {
+      var input = $(this);
+      var oFReader = new FileReader();
+      oFReader.readAsDataURL(this.files[0]);
+      oFReader.onload = function(oFREvent) {
+        $(input.data('preview')).attr('src', oFREvent.target.result);
+      };
+    });
+  })
+  </script>
+
 <script>
   for (const el of document.querySelectorAll('.tagin')) {
     tagin(el)
