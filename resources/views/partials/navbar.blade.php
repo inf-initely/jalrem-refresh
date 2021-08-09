@@ -110,8 +110,8 @@
         <button class="btn icon-search mr-4" data-bs-toggle="modal" data-bs-target="#searchModal">
           <i class="fa fa-search clr-black"></i>
         </button>
-        <a href="{{ route('login') }}" class="btn btn-danger mr-4" style="margin-right:1rem">
-          Masuk
+        <a target="_blank" href="https://artsandculture.google.com/" class="btn btn-danger mr-4" style="margin-right:1rem">
+          Pameran Jalur Rempah
         </a>
       </div>
     </div>
@@ -173,8 +173,8 @@
         <button class="btn icon-search mr-4" data-bs-toggle="modal" data-bs-target="#searchModal">
           <i class="fa fa-search clr-white"></i>
         </button>
-        <a href="{{ route('login') }}" class="btn btn-danger mr-4" style="margin-right:1rem">
-          Masuk
+        <a target="_blank" href="https://artsandculture.google.com/" class="btn btn-danger mr-4" style="margin-right:1rem">
+          Pameran Jalur Rempah
         </a>
       </div>
     </div>
