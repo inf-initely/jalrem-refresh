@@ -11,66 +11,18 @@
                 <h2 class="sub-judul text-center">Terbaru</h2>
               </header>
               <div class="feature">
+                @foreach( $artikel as $a )
                 <div>
                   <div class="card no-border card-artikel no-background">
-                    <img src="assets/img/artikel-berita/artikel-1.png" class="card-img-top" alt="...">
+                    <img src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}" class="card-img-top" alt="...">
                     <div class="card-body">
-                      <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                      <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
+                      <h3 class="card-title judul-artikel">{{ $a->judul_indo }}</h3>
+                      <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p>
                     </div>
                     <a href="detail-berita.html" class="stretched-link"></a>
                   </div>
                 </div>
-                <div>
-                  <div class="card no-border card-artikel no-background">
-                    <img src="assets/img/artikel-berita/artikel-1.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                      <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
-                    </div>
-                    <a href="detail-berita.html" class="stretched-link"></a>
-                  </div>
-                </div>
-                <div>
-                  <div class="card no-border card-artikel no-background">
-                    <img src="assets/img/artikel-berita/artikel-1.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                      <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JC...</p>
-                    </div>
-                    <a href="detail-berita.html" class="stretched-link"></a>
-                  </div>
-                </div>
-                <div>
-                  <div class="card no-border card-artikel no-background">
-                    <img src="assets/img/artikel-berita/artikel-1.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                      <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JC...</p>
-                    </div>
-                    <a href="detail-berita.html" class="stretched-link"></a>
-                  </div>
-                </div>
-                <div>
-                  <div class="card no-border card-artikel no-background">
-                    <img src="assets/img/artikel-berita/artikel-1.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                      <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JC...</p>
-                    </div>
-                    <a href="detail-berita.html" class="stretched-link"></a>
-                  </div>
-                </div>
-                <div>
-                  <div class="card no-border card-artikel no-background">
-                    <img src="assets/img/artikel-berita/artikel-1.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                      <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JC...</p>
-                    </div>
-                    <a href="detail-berita.html" class="stretched-link"></a>
-                  </div>
-                </div>
+                @endforeach
               </div>
             </div>
           </div>
@@ -87,36 +39,18 @@
             </div>
           </header>
           <section class="row justify-content-center">
+            @foreach( $artikel as $a )
             <div class="col-md-6 col-lg-4 mb-4">
               <div class="card no-border no-background card-body">
-                <img src="assets/img/berita-detail/gambar6.png" class="card-img-top mb-4" alt="...">
-                <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
-                <p class="penulis-artikel">Ahmad Rifaldi</p>
-                <p class="tgl-artikel">20 November 2021</p>
-                <a href="detail-berita.html" class="stretched-link"></a>
+                <img src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}" class="card-img-top mb-4" alt="...">
+                <h3 class="card-title judul-artikel">{{ $a->judul_indo }}</h3>
+                <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p>
+                <p class="penulis-artikel">{{ $a->penulis }}</p>
+                <p class="tgl-artikel">{{ $a->created_at->isoFormat('dddd, D MMMM Y'); }}</p>
+                <a href="{{ route('article_detail', $a->id) }}" class="stretched-link"></a>
               </div>
             </div>
-            <div class="col-md-6 col-lg-4 mb-4">
-              <div class="card no-border no-background card-body">
-                <img src="assets/img/berita-detail/gambar7.png" class="card-img-top mb-4" alt="...">
-                <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
-                <p class="penulis-artikel">Ahmad Rifaldi</p>
-                <p class="tgl-artikel">20 November 2021</p>
-                <a href="detail-berita.html" class="stretched-link"></a>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-4 mb-4">
-              <div class="card no-border no-background card-body">
-                <img src="assets/img/berita-detail/gambar8.png" class="card-img-top mb-4" alt="...">
-                <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
-                <p class="penulis-artikel">Ahmad Rifaldi</p>
-                <p class="tgl-artikel">20 November 2021</p>
-                <a href="detail-berita.html" class="stretched-link"></a>
-              </div>
-            </div>
+            @endforeach
           </section>
         </div>
       </section>
@@ -149,260 +83,49 @@
                 <div class="tab-content mt-5" id="pills-tabContent">
                   <div class="tab-pane fade show active" id="tab-artikel" role="tabpanel" aria-labelledby="tab-artikel-tab">
                     <div class="row justify-content-center">
+                      @foreach( $artikel as $a )
                       <div class="col-md-6 col-lg-4 mb-4">
                         <div class="card no-border card-artikel">
-                          <img src="assets/img/artikel-berita/artikel-1.png" class="card-img-top" alt="...">
+                          <img src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}" class="card-img-top" alt="...">
                           <div class="card-body">
-                            <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                            <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
+                            <h3 class="card-title judul-artikel">{{ $a->judul_indo }}</h3>
+                            <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p>
                             <p class="penulis-artikel">
-                              Ahmad Rifaldi
+                              {{ $a->penulis }}
                             </p>
                             <p class="tgl-artikel">
-                              20 November 2021
+                              {{ $a->created_at->isoFormat('dddd, D MMMM Y'); }}
                             </p>
                           </div>
-                          <a href="detail-berita.html" class="stretched-link"></a>
+                          <a href="{{ route('article_detail', $a->id) }}" class="stretched-link"></a>
                         </div>
                       </div>
-                      <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="card no-border card-artikel">
-                          <img src="assets/img/artikel-berita/artikel-2.png" class="card-img-top" alt="...">
-                          <div class="card-body">
-                            <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                            <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
-                            <p class="penulis-artikel">
-                              Ahmad Rifaldi
-                            </p>
-                            <p class="tgl-artikel">
-                              20 November 2021
-                            </p>
-                          </div>
-                          <a href="detail-berita.html" class="stretched-link"></a>
-                        </div>
-                      </div>
-                      <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="card no-border card-artikel">
-                          <img src="assets/img/artikel-berita/artikel-3.png" class="card-img-top" alt="...">
-                          <div class="card-body">
-                            <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                            <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
-                            <p class="penulis-artikel">
-                              Ahmad Rifaldi
-                            </p>
-                            <p class="tgl-artikel">
-                              20 November 2021
-                            </p>
-                          </div>
-                          <a href="detail-berita.html" class="stretched-link"></a>
-                        </div>
-                      </div>
-                      <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="card no-border card-artikel">
-                          <img src="assets/img/artikel-berita/artikel-1.png" class="card-img-top" alt="...">
-                          <div class="card-body">
-                            <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                            <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
-                            <p class="penulis-artikel">
-                              Ahmad Rifaldi
-                            </p>
-                            <p class="tgl-artikel">
-                              20 November 2021
-                            </p>
-                          </div>
-                          <a href="detail-berita.html" class="stretched-link"></a>
-                        </div>
-                      </div>
-                      <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="card no-border card-artikel">
-                          <img src="assets/img/artikel-berita/artikel-2.png" class="card-img-top" alt="...">
-                          <div class="card-body">
-                            <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                            <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
-                            <p class="penulis-artikel">
-                              Ahmad Rifaldi
-                            </p>
-                            <p class="tgl-artikel">
-                              20 November 2021
-                            </p>
-                          </div>
-                          <a href="detail-berita.html" class="stretched-link"></a>
-                        </div>
-                      </div>
-                      <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="card no-border card-artikel">
-                          <img src="assets/img/artikel-berita/artikel-3.png" class="card-img-top" alt="...">
-                          <div class="card-body">
-                            <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                            <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
-                            <p class="penulis-artikel">
-                              Ahmad Rifaldi
-                            </p>
-                            <p class="tgl-artikel">
-                              20 November 2021
-                            </p>
-                          </div>
-                          <a href="detail-berita.html" class="stretched-link"></a>
-                        </div>
-                      </div>
-                      <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="card no-border card-artikel">
-                          <img src="assets/img/artikel-berita/artikel-1.png" class="card-img-top" alt="...">
-                          <div class="card-body">
-                            <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                            <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
-                            <p class="penulis-artikel">
-                              Ahmad Rifaldi
-                            </p>
-                            <p class="tgl-artikel">
-                              20 November 2021
-                            </p>
-                          </div>
-                          <a href="detail-berita.html" class="stretched-link"></a>
-                        </div>
-                      </div>
-                      <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="card no-border card-artikel">
-                          <img src="assets/img/artikel-berita/artikel-2.png" class="card-img-top" alt="...">
-                          <div class="card-body">
-                            <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                            <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
-                            <p class="penulis-artikel">
-                              Ahmad Rifaldi
-                            </p>
-                            <p class="tgl-artikel">
-                              20 November 2021
-                            </p>
-                          </div>
-                          <a href="detail-berita.html" class="stretched-link"></a>
-                        </div>
-                      </div>
-                      <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="card no-border card-artikel">
-                          <img src="assets/img/artikel-berita/artikel-3.png" class="card-img-top" alt="...">
-                          <div class="card-body">
-                            <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                            <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
-                            <p class="penulis-artikel">
-                              Ahmad Rifaldi
-                            </p>
-                            <p class="tgl-artikel">
-                              20 November 2021
-                            </p>
-                          </div>
-                          <a href="detail-berita.html" class="stretched-link"></a>
-                        </div>
-                      </div>
+                      @endforeach
                     </div>
                   </div>
                   <div class="tab-pane fade" id="tab-foto" role="tabpanel" aria-labelledby="tab-foto-tab">
                     <div class="row justify-content-center">
+                      @foreach( $foto as $f )
                       <div class="col-lg-4 mb-4">
                         <div class="img-bg-wrap">
-                          <img src="assets/img/hero/hero-3.jpg">
+                          <img src="{{ asset('storage/assets/foto/thumbnail/' . $f->thumbnail) }}">
                           <div class="text-img">
-                            <p class="judul-img">Ternate Maluku Utara dalam Visualisasi dari Masa ke Masa</p>
-                            <p class="author-img">Ahmad Rifaldi</p>
-                            <p class="tgl-img">20 November 2021</p>
+                            <p class="judul-img">{{ $f->judul_indo }}</p>
+                            <p class="author-img">{{ $f->penulis }}</p>
+                            <p class="tgl-img">{{ $f->created_at->isoFormat('dddd, D MMMM Y'); }}</p>
                           </div>
-                          <a class="stretched-link lightbox" href="detail-foto.html"></a>
+                          <a class="stretched-link lightbox" href="{{ route('photo_detail', $f->id) }}"></a>
                         </div>
                       </div>
-                      <div class="col-lg-4 mb-4">
-                        <div class="img-bg-wrap">
-                          <img src="assets/img/hero/hero-3.jpg">
-                          <div class="text-img">
-                            <p class="judul-img">Ternate Maluku Utara dalam Visualisasi dari Masa ke Masa</p>
-                            <p class="author-img">Ahmad Rifaldi</p>
-                            <p class="tgl-img">20 November 2021</p>
-                          </div>
-                          <a class="stretched-link lightbox" href="detail-foto.html"></a>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 mb-4">
-                        <div class="img-bg-wrap">
-                          <img src="assets/img/hero/hero-3.jpg">
-                          <div class="text-img">
-                            <p class="judul-img">Ternate Maluku Utara dalam Visualisasi dari Masa ke Masa</p>
-                            <p class="author-img">Ahmad Rifaldi</p>
-                            <p class="tgl-img">20 November 2021</p>
-                          </div>
-                          <a class="stretched-link lightbox" href="detail-foto.html"></a>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 mb-4">
-                        <div class="img-bg-wrap">
-                          <img src="assets/img/hero/hero-3.jpg">
-                          <div class="text-img">
-                            <p class="judul-img">Ternate Maluku Utara dalam Visualisasi dari Masa ke Masa</p>
-                            <p class="author-img">Ahmad Rifaldi</p>
-                            <p class="tgl-img">20 November 2021</p>
-                          </div>
-                          <a class="stretched-link lightbox" href="detail-foto.html"></a>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 mb-4">
-                        <div class="img-bg-wrap">
-                          <img src="assets/img/hero/hero-3.jpg">
-                          <div class="text-img">
-                            <p class="judul-img">Ternate Maluku Utara dalam Visualisasi dari Masa ke Masa</p>
-                            <p class="author-img">Ahmad Rifaldi</p>
-                            <p class="tgl-img">20 November 2021</p>
-                          </div>
-                          <a class="stretched-link lightbox" href="detail-foto.html"></a>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 mb-4">
-                        <div class="img-bg-wrap">
-                          <img src="assets/img/hero/hero-3.jpg">
-                          <div class="text-img">
-                            <p class="judul-img">Ternate Maluku Utara dalam Visualisasi dari Masa ke Masa</p>
-                            <p class="author-img">Ahmad Rifaldi</p>
-                            <p class="tgl-img">20 November 2021</p>
-                          </div>
-                          <a class="stretched-link lightbox" href="detail-foto.html"></a>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 mb-4">
-                        <div class="img-bg-wrap">
-                          <img src="assets/img/hero/hero-3.jpg">
-                          <div class="text-img">
-                            <p class="judul-img">Ternate Maluku Utara dalam Visualisasi dari Masa ke Masa</p>
-                            <p class="author-img">Ahmad Rifaldi</p>
-                            <p class="tgl-img">20 November 2021</p>
-                          </div>
-                          <a class="stretched-link lightbox" href="detail-foto.html"></a>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 mb-4">
-                        <div class="img-bg-wrap">
-                          <img src="assets/img/hero/hero-3.jpg">
-                          <div class="text-img">
-                            <p class="judul-img">Ternate Maluku Utara dalam Visualisasi dari Masa ke Masa</p>
-                            <p class="author-img">Ahmad Rifaldi</p>
-                            <p class="tgl-img">20 November 2021</p>
-                          </div>
-                          <a class="stretched-link lightbox" href="detail-foto.html"></a>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 mb-4">
-                        <div class="img-bg-wrap">
-                          <img src="assets/img/hero/hero-3.jpg">
-                          <div class="text-img">
-                            <p class="judul-img">Ternate Maluku Utara dalam Visualisasi dari Masa ke Masa</p>
-                            <p class="author-img">Ahmad Rifaldi</p>
-                            <p class="tgl-img">20 November 2021</p>
-                          </div>
-                          <a class="stretched-link lightbox" href="detail-foto.html"></a>
-                        </div>
-                      </div>
+                      @endforeach
                     </div>
                   </div>
                   <div class="tab-pane fade" id="tab-video" role="tabpanel" aria-labelledby="tab-video-tab">
                     <div class="row justify-content-center">
+                      @foreach( $video as $v ) 
                       <div class="col-md-12 col-lg-4 mb-4">
                         <div class="card no-border card-artikel">
-                          <div class="video media-video" data-video-id="fj2xxbx_OHQ">
+                          <div class="video media-video" data-video-id="{{ $v->youtube_key }}">
                             <!--ganti id sesuai id youtube yang akan ditampilkan-->
                             <div class="video-layer">
                               <div class="video-placeholder">
@@ -419,302 +142,44 @@
                             </div>
                           </div>
                           <div class="card-body">
-                            <p class="card-text">Perjalanan Rempah Nusantara</p>
+                            <p class="card-text">{{ $v->judul_indo }}</p>
                           </div>
                         </div>
                       </div>
-                      <div class="col-md-12 col-lg-4 mb-4">
-                        <div class="card no-border card-artikel">
-                          <div class="video media-video" data-video-id="HNrjT-2V2Ns">
-                            <!--ganti id sesuai id youtube yang akan ditampilkan-->
-                            <div class="video-layer">
-                              <div class="video-placeholder">
-                                <!-- ^ div is replaced by the YouTube video -->
-                              </div>
-                            </div>
-                            <div class="video-preview video-02">
-                              <!-- this icon would normally be implemented as a character in an icon font or svg spritesheet, or similar -->
-                              <svg viewBox="0 0 74 74">
-                                <circle style="opacity:0.64;stroke:#fff" cx="37" cy="37" r="36.5"></circle>
-                                <circle fill="none" stroke="#fff" cx="37" cy="37" r="36.5"></circle>
-                                <polygon fill="#fff" points="33,22 33,52 48,37"></polygon>
-                              </svg>
-                            </div>
-                          </div>
-                          <div class="card-body">
-                            <p class="card-text">Teaser Jalur Rempah RI</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-12 col-lg-4 mb-4">
-                        <div class="card no-border card-artikel">
-                          <div class="video media-video" data-video-id="fj2xxbx_OHQ">
-                            <!--ganti id sesuai id youtube yang akan ditampilkan-->
-                            <div class="video-layer">
-                              <div class="video-placeholder">
-                                <!-- ^ div is replaced by the YouTube video -->
-                              </div>
-                            </div>
-                            <div class="video-preview video-01">
-                              <!-- this icon would normally be implemented as a character in an icon font or svg spritesheet, or similar -->
-                              <svg viewBox="0 0 74 74">
-                                <circle style="opacity:0.64;stroke:#fff" cx="37" cy="37" r="36.5"></circle>
-                                <circle fill="none" stroke="#fff" cx="37" cy="37" r="36.5"></circle>
-                                <polygon fill="#fff" points="33,22 33,52 48,37"></polygon>
-                              </svg>
-                            </div>
-                          </div>
-                          <div class="card-body">
-                            <p class="card-text">Perjalanan Rempah Nusantara</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-12 col-lg-4 mb-4">
-                        <div class="card no-border card-artikel">
-                          <div class="video media-video" data-video-id="HNrjT-2V2Ns">
-                            <!--ganti id sesuai id youtube yang akan ditampilkan-->
-                            <div class="video-layer">
-                              <div class="video-placeholder">
-                                <!-- ^ div is replaced by the YouTube video -->
-                              </div>
-                            </div>
-                            <div class="video-preview video-02">
-                              <!-- this icon would normally be implemented as a character in an icon font or svg spritesheet, or similar -->
-                              <svg viewBox="0 0 74 74">
-                                <circle style="opacity:0.64;stroke:#fff" cx="37" cy="37" r="36.5"></circle>
-                                <circle fill="none" stroke="#fff" cx="37" cy="37" r="36.5"></circle>
-                                <polygon fill="#fff" points="33,22 33,52 48,37"></polygon>
-                              </svg>
-                            </div>
-                          </div>
-                          <div class="card-body">
-                            <p class="card-text">Teaser Jalur Rempah RI</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-12 col-lg-4 mb-4">
-                        <div class="card no-border card-artikel">
-                          <div class="video media-video" data-video-id="fj2xxbx_OHQ">
-                            <!--ganti id sesuai id youtube yang akan ditampilkan-->
-                            <div class="video-layer">
-                              <div class="video-placeholder">
-                                <!-- ^ div is replaced by the YouTube video -->
-                              </div>
-                            </div>
-                            <div class="video-preview video-01">
-                              <!-- this icon would normally be implemented as a character in an icon font or svg spritesheet, or similar -->
-                              <svg viewBox="0 0 74 74">
-                                <circle style="opacity:0.64;stroke:#fff" cx="37" cy="37" r="36.5"></circle>
-                                <circle fill="none" stroke="#fff" cx="37" cy="37" r="36.5"></circle>
-                                <polygon fill="#fff" points="33,22 33,52 48,37"></polygon>
-                              </svg>
-                            </div>
-                          </div>
-                          <div class="card-body">
-                            <p class="card-text">Perjalanan Rempah Nusantara</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-12 col-lg-4 mb-4">
-                        <div class="card no-border card-artikel">
-                          <div class="video media-video" data-video-id="HNrjT-2V2Ns">
-                            <!--ganti id sesuai id youtube yang akan ditampilkan-->
-                            <div class="video-layer">
-                              <div class="video-placeholder">
-                                <!-- ^ div is replaced by the YouTube video -->
-                              </div>
-                            </div>
-                            <div class="video-preview video-02">
-                              <!-- this icon would normally be implemented as a character in an icon font or svg spritesheet, or similar -->
-                              <svg viewBox="0 0 74 74">
-                                <circle style="opacity:0.64;stroke:#fff" cx="37" cy="37" r="36.5"></circle>
-                                <circle fill="none" stroke="#fff" cx="37" cy="37" r="36.5"></circle>
-                                <polygon fill="#fff" points="33,22 33,52 48,37"></polygon>
-                              </svg>
-                            </div>
-                          </div>
-                          <div class="card-body">
-                            <p class="card-text">Teaser Jalur Rempah RI</p>
-                          </div>
-                        </div>
-                      </div>
+                      @endforeach
                     </div>
                   </div>
                   <div class="tab-pane fade" id="tab-publikasi" role="tabpanel" aria-labelledby="tab-publikasi-tab">
                     <div class="row justify-content-center">
+                      @foreach( $publikasi as $p )
                       <div class="col-md-6 col-lg-4 mb-4">
                         <div class="card no-border card-artikel">
-                          <img src="assets/img/artikel-berita/artikel-1.png" class="card-img-top" alt="...">
+                          <img src="{{ asset('storage/assets/publikasi/thumbnail/' . $p->thumbnail) }}" class="card-img-top" alt="...">
                           <div class="card-body">
-                            <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                            <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
+                            <h3 class="card-title judul-artikel">{{ $p->judul_indo }}</h3>
+                            <p class="card-text des-artikel minimize">{!! Str::limit($p->konten_indo, 50, $end='...') !!}</p>
                             <p class="penulis-artikel">
-                              Ahmad Rifaldi
+                              {{ $p->penulis }}
                             </p>
                             <p class="tgl-artikel">
-                              20 November 2021
+                              {{ $p->created_at->isoFormat('dddd, D MMMM Y'); }}
                             </p>
                           </div>
-                          <a href="detail-berita.html" class="stretched-link"></a>
+                          <a href="{{ route('publication_detail', $p->id) }}" class="stretched-link"></a>
                         </div>
                       </div>
-                      <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="card no-border card-artikel">
-                          <img src="assets/img/artikel-berita/artikel-2.png" class="card-img-top" alt="...">
-                          <div class="card-body">
-                            <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                            <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
-                            <p class="penulis-artikel">
-                              Ahmad Rifaldi
-                            </p>
-                            <p class="tgl-artikel">
-                              20 November 2021
-                            </p>
-                          </div>
-                          <a href="detail-berita.html" class="stretched-link"></a>
-                        </div>
-                      </div>
-                      <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="card no-border card-artikel">
-                          <img src="assets/img/artikel-berita/artikel-3.png" class="card-img-top" alt="...">
-                          <div class="card-body">
-                            <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                            <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
-                            <p class="penulis-artikel">
-                              Ahmad Rifaldi
-                            </p>
-                            <p class="tgl-artikel">
-                              20 November 2021
-                            </p>
-                          </div>
-                          <a href="detail-berita.html" class="stretched-link"></a>
-                        </div>
-                      </div>
-                      <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="card no-border card-artikel">
-                          <img src="assets/img/artikel-berita/artikel-1.png" class="card-img-top" alt="...">
-                          <div class="card-body">
-                            <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                            <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
-                            <p class="penulis-artikel">
-                              Ahmad Rifaldi
-                            </p>
-                            <p class="tgl-artikel">
-                              20 November 2021
-                            </p>
-                          </div>
-                          <a href="detail-berita.html" class="stretched-link"></a>
-                        </div>
-                      </div>
-                      <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="card no-border card-artikel">
-                          <img src="assets/img/artikel-berita/artikel-2.png" class="card-img-top" alt="...">
-                          <div class="card-body">
-                            <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                            <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
-                            <p class="penulis-artikel">
-                              Ahmad Rifaldi
-                            </p>
-                            <p class="tgl-artikel">
-                              20 November 2021
-                            </p>
-                          </div>
-                          <a href="detail-berita.html" class="stretched-link"></a>
-                        </div>
-                      </div>
-                      <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="card no-border card-artikel">
-                          <img src="assets/img/artikel-berita/artikel-3.png" class="card-img-top" alt="...">
-                          <div class="card-body">
-                            <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                            <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
-                            <p class="penulis-artikel">
-                              Ahmad Rifaldi
-                            </p>
-                            <p class="tgl-artikel">
-                              20 November 2021
-                            </p>
-                          </div>
-                          <a href="detail-berita.html" class="stretched-link"></a>
-                        </div>
-                      </div>
-                      <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="card no-border card-artikel">
-                          <img src="assets/img/artikel-berita/artikel-1.png" class="card-img-top" alt="...">
-                          <div class="card-body">
-                            <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                            <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
-                            <p class="penulis-artikel">
-                              Ahmad Rifaldi
-                            </p>
-                            <p class="tgl-artikel">
-                              20 November 2021
-                            </p>
-                          </div>
-                          <a href="detail-berita.html" class="stretched-link"></a>
-                        </div>
-                      </div>
-                      <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="card no-border card-artikel">
-                          <img src="assets/img/artikel-berita/artikel-2.png" class="card-img-top" alt="...">
-                          <div class="card-body">
-                            <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                            <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
-                            <p class="penulis-artikel">
-                              Ahmad Rifaldi
-                            </p>
-                            <p class="tgl-artikel">
-                              20 November 2021
-                            </p>
-                          </div>
-                          <a href="detail-berita.html" class="stretched-link"></a>
-                        </div>
-                      </div>
-                      <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="card no-border card-artikel">
-                          <img src="assets/img/artikel-berita/artikel-3.png" class="card-img-top" alt="...">
-                          <div class="card-body">
-                            <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                            <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
-                            <p class="penulis-artikel">
-                              Ahmad Rifaldi
-                            </p>
-                            <p class="tgl-artikel">
-                              20 November 2021
-                            </p>
-                          </div>
-                          <a href="detail-berita.html" class="stretched-link"></a>
-                        </div>
-                      </div>
+                      @endforeach
                     </div>
                   </div>
                   <div class="tab-pane fade" id="tab-audio" role="tabpanel" aria-labelledby="tab-audio-tab">
                     <div class="row justify-content-center">
+                      @foreach( $audio as $a )
                       <div class="col-md-6 col-lg-4 mb-4">
-                        <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/620692998&color=%231a150d&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-                        <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/ellamft" title="ellamft" target="_blank" style="color: #cccccc; text-decoration: none;">ellamft</a> · <a href="https://soundcloud.com/ellamft/luruh-isyana-sarasvati-ft-rara-sekar-cover-with-maydina" title="Luruh - Isyana Sarasvati ft. Rara Sekar (Cover with Maydina)" target="_blank" style="color: #cccccc; text-decoration: none;">Luruh - Isyana Sarasvati ft. Rara Sekar (Cover with Maydina)</a></div>
+                        <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/{{ $a->cloud_key }}&color=%231a150d&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+                        <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/ellamft" title="ellamft" target="_blank" style="color: #cccccc; text-decoration: none;">ellamft</a> · <a href="https://soundcloud.com/ellamft/luruh-isyana-sarasvati-ft-rara-sekar-cover-with-maydina" title="Luruh - Isyana Sarasvati ft. Rara Sekar (Cover with Maydina)" target="_blank" style="color: #cccccc; text-decoration: none;">{{ $a->judul_indo }}</a></div>
                         <main></main>
                       </div>
-                      <div class="col-md-6 col-lg-4 mb-4">
-                        <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/192806339&color=%231a150d&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-                        <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/ellamft" title="ellamft" target="_blank" style="color: #cccccc; text-decoration: none;">ellamft</a> · <a href="https://soundcloud.com/ellamft/janji-bunga-matahari-christianbong-version" title="Janji Bunga Matahari (ひまわりの約束) - ChristianBong version" target="_blank" style="color: #cccccc; text-decoration: none;">Janji Bunga Matahari (ひまわりの約束) - ChristianBong version</a></div>
-                      </div>
-                      <div class="col-md-6 col-lg-4 mb-4">
-                        <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/311206050&color=%231a150d&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-                        <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/ellamft" title="ellamft" target="_blank" style="color: #cccccc; text-decoration: none;">ellamft</a> · <a href="https://soundcloud.com/ellamft/city-of-stars-ryan-ft-emma-cover" title="CITY OF STARS (Ryan ft Emma) Cover" target="_blank" style="color: #cccccc; text-decoration: none;">CITY OF STARS (Ryan ft Emma) Cover</a></div>
-                      </div>
-                      <div class="col-md-6 col-lg-4 mb-4">
-                        <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/266560796&color=%231a150d&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-                        <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/ellamft" title="ellamft" target="_blank" style="color: #cccccc; text-decoration: none;">ellamft</a> · <a href="https://soundcloud.com/ellamft/benci-untuk-mencinta-naif-cover-guitar-by-acousticlub" title="Benci Untuk Mencinta - Naif cover (guitar by: acousticlub)" target="_blank" style="color: #cccccc; text-decoration: none;">Benci Untuk Mencinta - Naif cover (guitar by: acousticlub)</a></div>
-                      </div>
-                      <div class="col-md-6 col-lg-4 mb-4">
-                        <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/221001249&color=%231a150d&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-                        <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/ellamft" title="ellamft" target="_blank" style="color: #cccccc; text-decoration: none;">ellamft</a> · <a href="https://soundcloud.com/ellamft/bimbang-melly-goeslaw-cover-guitar-by-bachtiarachmad" title="Bimbang - Melly Goeslaw (Cover) &amp; Guitar by @bachtiarachmad" target="_blank" style="color: #cccccc; text-decoration: none;">Bimbang - Melly Goeslaw (Cover) &amp; Guitar by @bachtiarachmad</a></div>
-                      </div>
-                      <div class="col-md-6 col-lg-4 mb-4">
-                        <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/217057819&color=%231a150d&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-                        <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/ellamft" title="ellamft" target="_blank" style="color: #cccccc; text-decoration: none;">ellamft</a> · <a href="https://soundcloud.com/ellamft/dont-you-remember-by-adele-cover" title="Don&#x27;t You Remember By Adele (Cover)" target="_blank" style="color: #cccccc; text-decoration: none;">Don&#x27;t You Remember By Adele (Cover)</a></div>
-                      </div>
+                      @endforeach
                     </div>
                   </div>
                 </div>

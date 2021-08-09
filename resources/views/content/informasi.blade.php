@@ -30,7 +30,7 @@
                     <div class="card-body">
                       <div class="row">
                         <div class="col-6">
-                          <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="{{ asset('assets/kegiatan/thumbnail' . $k->thumbnail) }}">
+                          <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="{{ asset('storage/assets/kegiatan/thumbnail' . $k->thumbnail) }}">
                         </div>
                         <div class="col-6 center-v">
                           <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">{{ $k->created_at->isoFormat('dddd, D MMMM Y'); }}</p>
@@ -59,7 +59,7 @@
                       <div class="card-body">
                         <div class="row">
                           <div class="col-6">
-                            <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="{{ asset('assets/kegiatan/thumbnail' . $k->thumbnail) }}">
+                            <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="{{ asset('storage/assets/kegiatan/thumbnail' . $k->thumbnail) }}">
                           </div>
                           <div class="col-6 center-v">
                             <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">{{ $k->created_at->isoFormat('dddd, D MMMM Y'); }}</p>
@@ -91,7 +91,7 @@
                 @foreach( $kerjasama as $k )
                 <div class="col-lg-4 mb-1">
                   <div class="card no-border card-artikel">
-                    <img src="{{ asset('assets/kerjasama/thumbnail/' . $k->thumbnail) }}" class="card-img-top" alt="...">
+                    <img src="{{ asset('storage/assets/kerjasama/thumbnail/' . $k->thumbnail) }}" class="card-img-top" alt="...">
                     <div class="card-body">
                       <h3 class="card-title judul-artikel">{{ $k->judul_indo }}</h3>
                       <p class="card-text des-artikel minimize">{{ $k->konten_indo }}</p>

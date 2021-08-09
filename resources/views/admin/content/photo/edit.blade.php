@@ -123,7 +123,7 @@
                         <div class="col-sm-7">
                           <div class="row">
                             <div class="col-12 mb-2">
-                              <input required class="form-control" name="slider_foto[]" id="uploadThumbnail" type="file" data-preview=".sliderPreview">
+                              <input class="form-control" name="slider_foto[]" id="uploadThumbnail" type="file" data-preview=".sliderPreview">
                             </div>
                             <div class="col-12 mb-2">
                               <textarea name="caption_slider_foto[]" required maxlength="100" class="form-control" id="captionFoto" rows="2" placeholder="masukkan caption disini">{{ unserialize($foto->caption_slider_foto)[$i] }}</textarea>

@@ -6,11 +6,11 @@
 
 @section('content')
 <header id="hero">
-    <img class="hero-img-2" src="{{ asset('storage/assets/artikel/thumbnail/' . $artikel->thumbnail) }}">
+    <img class="hero-img-2" src="{{ asset('storage/assets/publikasi/thumbnail/' . $publikasi->thumbnail) }}">
     <div class="text-hero-2">
       <div class="">
         <div class="col-lg-12 text-center">
-          <h1>Artikel</h1>
+          <h1>Publikasi</h1>
         </div>
       </div>
     </div>
@@ -24,26 +24,26 @@
           <div class="row justify-content-center">
             <div class="col-lg-8">
               <header>
-                <h2 class="sub-judul">{{ $artikel->judul_indo }}</h2>
+                <h2 class="sub-judul">{{ $publikasi->judul_indo }}</h2>
               </header>
               <section id="desTentang">
-                {!! $artikel->konten_indo !!}
+                {!! $publikasi->konten_indo !!}
               </section>
             </div>
             <div class="col-lg-4">
               <div class="row mb-4">
                 <div class="col-md-12 wrap-aside">
                   <header>
-                    <h2 class="sub-judul">Berita Populer</h2>
+                    <h2 class="sub-judul">Publikasi Populer</h2>
                   </header>
                   <div class="row">
-                    @foreach( $artikelPopuler as $a )
+                    @foreach( $publikasiPopuler as $a )
                     <div class="col-12 mb-2">
                       <div class="card no-border no-background">
                         <div class="card-body">
                           <div class="row">
                             <div class="col-5">
-                              <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}">
+                              <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="{{ asset('storage/assets/publikasi/thumbnail/' . $a->thumbnail) }}">
                             </div>
                             <div class="col-7 center-v">
                               <h3 class="judul-berita-aside" id="jdlKegiatan" name="jdlKegiatan">{{ $a->judul_indo }}</h3>
@@ -61,16 +61,16 @@
               <div class="row">
                 <div class="col-md-12 wrap-aside">
                   <header>
-                    <h2 class="sub-judul">Berita Terbaru</h2>
+                    <h2 class="sub-judul">Publikasi Terbaru</h2>
                   </header>
                   <div class="row">
-                    @foreach( $artikelTerbaru as $a )
+                    @foreach( $publikasiTerbaru as $a )
                     <div class="col-12 mb-2">
                       <div class="card no-border no-background">
                         <div class="card-body">
                           <div class="row">
                             <div class="col-5">
-                              <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}">
+                              <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="{{ asset('storage/assets/publikasi/thumbnail/' . $a->thumbnail) }}">
                             </div>
                             <div class="col-7 center-v">
                               <h3 class="judul-berita-aside" id="jdlKegiatan" name="jdlKegiatan">{{ $a->judul_indo }}</h3>
@@ -93,17 +93,17 @@
       <section class="container mt-5">
         <header class="row justify-content-center mb-2">
           <div class="col-md-6">
-            <h2 class="sub-judul aside-judul">Berita Terkait</h2>
+            <h2 class="sub-judul aside-judul">Publikasi Terkait</h2>
             <p>Berbagai upaya dilakukan untuk melestarikan jalur rempah, salah satunya dengan melakukan berbagai kegiatan.</p>
           </div>
           <div class="col-md-6 center-v text-end">
           </div>
         </header>
         <section class="row justify-content-center">
-          @foreach( $artikelPopuler as $a )
+          @foreach( $publikasiPopuler as $a )
           <div class="col-md-6 col-lg-4 mb-4">
             <div class="card no-border no-background card-body">
-              <img src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}" class="card-img-top mb-4" alt="...">
+              <img src="{{ asset('storage/assets/publikasi/thumbnail/' . $a->thumbnail) }}" class="card-img-top mb-4" alt="...">
               <h3 class="card-title judul-artikel">{{ $a->judul_indo }}</h3>
               <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p>
               <p class="penulis-artikel">{{ $a->penulis }}</p>

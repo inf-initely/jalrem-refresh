@@ -68,7 +68,7 @@
                   </div>
                   <div class="mb-3">
                     <label for="keywordsEN" class="form-label">Keywords</label>
-                    <input name="keywords_english" value="{{ $artikel->keywords_english }}" id="keywordsEN" type="text" class="form-control tagin" data-separator=" ">
+                    <input name="keywords_english" value="{{ $artikel->keywords_english }}" id="keywordsEN" type="text" class="form-control tagin" data-separator=",">
                     <little>gunakan tombol "," (koma) untuk memisahkan keyword</little>
                   </div>
               </div>

@@ -10,7 +10,9 @@ class ArtikelController extends Controller
 {
     public function index()
     {
-        return view('content.articles');
+        $artikel = Artikel::where('status', 'publikasi')->get();
+
+        return view('content.articles', compact('artikel'));
     }
 
     public function show($articleId)

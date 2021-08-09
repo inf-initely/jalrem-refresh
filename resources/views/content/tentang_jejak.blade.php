@@ -179,14 +179,14 @@
                   <div class="card no-border card-media">
                     <div class="card-body row">
                       <div class="col-3 ">
-                        <img src="assets/img/icon-track.png" width="100%">
+                        <img src="assets/img/icon/jalur_1.svg" width="80%">
                       </div>
                       <div class="col-9 center-v">
                         <h3 class="judul-card-info">Jalur</h3>
                         <p class="des-card-info">Merangkai Budaya Nusantara Melalui Jalur Rempahs</p>
                       </div>
                     </div>
-                    <a href="tentang-jalur.html" class="stretched-link"></a>
+                    <a href="{{ route('tentangjalur') }}" class="stretched-link"></a>
                   </div>
                 </div>
                 <div class="col-lg-4 mb-2">
@@ -200,7 +200,7 @@
                         <p class="des-card-info">Merangkai Budaya Nusantara Melalui Jalur Rempahs</p>
                       </div>
                     </div>
-                    <a href="tentang-jejak.html" class="stretched-link"></a>
+                    <a href="{{ route('tentangjejak') }}" class="stretched-link"></a>
                   </div>
                 </div>
                 <div class="col-lg-4 mb-2">
@@ -214,7 +214,7 @@
                         <p class="des-card-info">Merangkai Budaya Nusantara Melalui Jalur Rempahs</p>
                       </div>
                     </div>
-                    <a href="tentang-masa-depan.html" class="stretched-link"></a>
+                    <a href="{{ route('tentangmasadepan') }}" class="stretched-link"></a>
                   </div>
                 </div>
               </div>
@@ -290,24 +290,25 @@ $(document).ready(function() {
     $(".navbar").addClass("bg-nav");
     $(".navbar").removeClass("bg-trans");
   }
+  $(".navbar").addClass("bg-trans");
 });
 $(window).scroll(function() {
 
-  if ($(window).width() >= 1000) {
-    var scroll = $(window).scrollTop();
-    //>=, not <=
-    if (scroll >= 50) {
-      //clearHeader, not clearheader - caps H
-      $(".navbar").addClass("bg-nav");
-      $(".navbar").removeClass("bg-trans");
-    } else {
-      $(".navbar").addClass("bg-trans");
-      $(".navbar").removeClass("bg-nav");
-    }
-  } else {
+if ($(window).width() >= 1000) {
+  var scroll = $(window).scrollTop();
+  //>=, not <=
+  if (scroll >= 50) {
+    //clearHeader, not clearheader - caps H
     $(".navbar").addClass("bg-nav");
     $(".navbar").removeClass("bg-trans");
+  } else {
+    $(".navbar").addClass("bg-trans");
+    // $(".navbar").removeClass("bg-nav");
   }
+} else {
+  $(".navbar").addClass("bg-nav");
+  $(".navbar").removeClass("bg-trans");
+}
 
 }); //missing );
 </script>

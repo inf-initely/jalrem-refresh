@@ -119,11 +119,13 @@ Route::get('/semua-audio', [AudioController::class, 'index'])->name('audios');
 Route::get('/semua-publikasi', [PublikasiController::class, 'index'])->name('publications');
 Route::get('/semua-kegiatan', [KegiatanController::class, 'index'])->name('events');
 
-Route::get('/artikel', [ArtikelController::class, 'index'])->name('article_detail');
 Route::get('/artikel/{articleId}', [ArtikelController::class, 'show'])->name('article_detail');
-
+Route::get('/foto/{photoId}', [FotoController::class, 'show'])->name('photo_detail');
+Route::get('/video/{videoId}', [VideoController::class, 'show'])->name('video_detail');
+Route::get('/audio/{audioId}', [AudioController::class, 'show'])->name('audio_detail');
+Route::get('/publikasi/{publicationId}', [PublikasiController::class, 'show'])->name('publication_detail');
 Route::get('/kegiatan/{eventId}', [KegiatanController::class, 'show'])->name('event_detail');
-Route::get('/foto', [FotoController::class, 'show'])->name('photo_detail');
+Route::get('/kerjasama/{kerjasamaId}', [KerjasamaController::class, 'show'])->name('kerjasama_detail');
 
 Route::get('/informasi', [InformasiController::class, 'index'])->name('informasi');
 Route::get('/konten', [KontenController::class, 'index'])->name('konten');
