@@ -82,7 +82,7 @@
                   <div class="card-body ">
                     <div class="row">
                       <div class="col-lg-12 text-center">
-                        <img class="preview mb-3 text-center" src="{{ asset('assets/foto/thumbnail/' .$foto->thumbnail) }}" />
+                        <img class="preview mb-3 text-center" src="{{ asset('storage/assets/foto/thumbnail/' .$foto->thumbnail) }}" />
                       </div>
                     </div>
                     <div class="mb-4">
@@ -115,7 +115,7 @@
                     <div class="row">
                       @foreach( unserialize($foto->slider_foto) as $s )
                         <div class="col-lg-4">
-                          <img class="output_multiple_image mb-3" src="{{ asset('assets/foto/slider_foto/' . $s) }}" alt="">
+                          <img class="output_multiple_image mb-3" src="{{ asset('storage/assets/foto/slider_foto/' . $s) }}" alt="">
                         </div>
                         @endforeach
                     </div>
@@ -262,7 +262,7 @@
                         @if( $foto->slider_file == null )
                           <img class="preview mb-3 text-center" src="{{ asset('assets/admin/img/noimage.jpg') }}" />
                         @else
-                          <img class="preview mb-3 text-center" src="{{ asset('assets/foto/slider/' . $foto->slider_file) }}" />
+                          <img class="preview mb-3 text-center" src="{{ asset('storage/assets/foto/slider/' . $foto->slider_file) }}" />
                         @endif
                       </div>
                     </div>

@@ -39,14 +39,14 @@ class KegiatanController extends Controller
 
         // UPLOAD THUMBNAIL
         $thumbnail = $request->file('thumbnail');
-        $tujuan_upload_file_thumbnail = 'assets/kegiatan/thumbnail';
+        $tujuan_upload_file_thumbnail = storage_path('app/public/assets/kegiatan/thumbnail');
         $filename_thumbnail = uniqid() . '.' . $thumbnail->getClientOriginalExtension();
         $thumbnail->move($tujuan_upload_file_thumbnail, $filename_thumbnail);
 
         // UPLOAD FILE SLIDER UTAMA(NULLABLE)
         if( $request->has('slider') ) {
             $slider = $request->file('slider');
-            $tujuan_upload_file_slider = 'assets/kegiatan/slider';
+            $tujuan_upload_file_slider = storage_path('app/public/assets/kegiatan/slider', $kegiatan->slider_file);
             $filename_slider = uniqid() . '.' . $slider->getClientOriginalExtension();
             $slider->move($tujuan_upload_file_slider, $filename_slider);
         } else {
@@ -105,12 +105,12 @@ class KegiatanController extends Controller
             ]);
 
             $thumbnail = $request->file('thumbnail');
-            $tujuan_upload_file = 'assets/kegiatan/thumbnail';
+            $tujuan_upload_file = storage_path('app/public/assets/kegiatan/thumbnail', $kegiatan->thumbnail);
             $filename_thumbnail = uniqid() . '.' . $thumbnail->getClientOriginalExtension();
             $thumbnail->move($tujuan_upload_file, $filename_thumbnail);
 
             // unlink('assets/kegiatan/thumbnail/' . $kegiatan->thumbnail );
-            File::delete('assets/kegiatan/thumbnail/' . $kegiatan->thumbnail);
+            File::delete(storage_path('app/public/assets/kegiatan/thumbnail', $kegiatan->thumbnail));
         } else {
             $filename_thumbnail = $kegiatan->thumbnail;
         }
@@ -118,11 +118,11 @@ class KegiatanController extends Controller
         // UPLOAD FILE SLIDER UTAMA(NULLABLE)
         if( $request->has('slider') ) {
             $slider = $request->file('slider');
-            $tujuan_upload_file_slider = 'assets/kegiatan/slider';
+            $tujuan_upload_file_slider = storage_path('app/public/assets/kegiatan/slider');
             $filename_slider = uniqid() . '.' . $slider->getClientOriginalExtension();
             $slider->move($tujuan_upload_file_slider, $filename_slider);
 
-            File::delete('assets/kegiatan/slider/' . $kegiatan->slider_file);            
+            File::delete(storage_path('app/public/assets/kegiatan/slider', $kegiatan->slider_file));            
         } else {
             $filename_slider = $kegiatan->slider_file;
         }
@@ -153,6 +153,11 @@ class KegiatanController extends Controller
     public function delete($kegiatanId)
     {
         $kegiatan = Kegiatan::findOrFail($kegiatanId);
+
+        if( $kegiatan->slider_file != null )
+            File::delete(storage_path('app/public/assets/kegiatan/slider', $kegiatan->slider_file));   
+
+        File::delete(storage_path('app/public/assets/kegiatan/thumbnail', $kegiatan->thumbnail));
         $kegiatan->delete();
 
         return redirect()->route('admin.kegiatan.index');

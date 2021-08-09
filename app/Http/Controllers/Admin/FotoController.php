@@ -40,14 +40,14 @@ class FotoController extends Controller
 
         // UPLOAD THUMBNAIL
         $thumbnail = $request->file('thumbnail');
-        $tujuan_upload_file_thumbnail = 'assets/foto/thumbnail';
+        $tujuan_upload_file_thumbnail = storage_path('app/public/assets/foto/thumbnail');
         $filename_thumbnail = uniqid() . '.' . $thumbnail->getClientOriginalExtension();
         $thumbnail->move($tujuan_upload_file_thumbnail, $filename_thumbnail);
 
         // UPLOAD FILE SLIDER UTAMA(NULLABLE)
         if( $request->has('slider') ) {
             $slider = $request->file('slider');
-            $tujuan_upload_file_slider = 'assets/foto/slider';
+            $tujuan_upload_file_slider = storage_path('app/public/assets/foto/slider');
             $filename_slider = uniqid() . '.' . $slider->getClientOriginalExtension();
             $slider->move($tujuan_upload_file_slider, $filename_slider);
         } else {
@@ -56,7 +56,7 @@ class FotoController extends Controller
 
         // UPLOAD SLIDER FOTO
         foreach( $request->file('slider_foto') as $slider_foto ) {
-            $tujuan_upload_file_slider_foto = 'assets/foto/slider_foto';
+            $tujuan_upload_file_slider_foto = storage_path('app/public/assets/foto/slider_foto');;
             $filename_slider_foto = uniqid() . '.' . $slider_foto->getClientOriginalExtension();
             $slider_foto->move($tujuan_upload_file_slider_foto, $filename_slider_foto);
             $slider_foto_array[] = $filename_slider_foto;
@@ -116,11 +116,11 @@ class FotoController extends Controller
             ]);
             // UPLOAD THUMBNAIL
             $thumbnail = $request->file('thumbnail');
-            $tujuan_upload_file_thumbnail = 'assets/foto/thumbnail';
+            $tujuan_upload_file_thumbnail = storage_path('app/public/assets/foto/thumbnail');;
             $filename_thumbnail = uniqid() . '.' . $thumbnail->getClientOriginalExtension();
             $thumbnail->move($tujuan_upload_file_thumbnail, $filename_thumbnail);
 
-            File::delete('assets/foto/thumbnail/' . $foto->thumbnail);
+            File::delete(storage_path('app/public/assets/foto/thumbnail', $foto->thumbnail));
         } else {
             $filename_thumbnail = $foto->thumbnail;
         }
@@ -129,11 +129,11 @@ class FotoController extends Controller
         // UPLOAD FILE SLIDER UTAMA(NULLABLE)
         if( $request->has('slider') ) {
             $slider = $request->file('slider');
-            $tujuan_upload_file_slider = 'assets/foto/slider';
+            $tujuan_upload_file_slider = storage_path('app/public/assets/foto/slider');;
             $filename_slider = uniqid() . '.' . $slider->getClientOriginalExtension();
             $slider->move($tujuan_upload_file_slider, $filename_slider);
 
-            File::delete('assets/foto/slider/' . $foto->slider_file);            
+            File::delete(storage_path('app/public/assets/foto/slider', $foto->slider));            
         } else {
             $filename_slider = $foto->slider_file;
         }
@@ -146,8 +146,10 @@ class FotoController extends Controller
                 $filename_slider_foto = uniqid() . '.' . $slider_foto->getClientOriginalExtension();
                 $slider_foto->move($tujuan_upload_file_slider_foto, $filename_slider_foto);
                 $slider_foto_array[] = $filename_slider_foto;
-
-                File::delete('assets/foto/slider_foto/' . $artikel->thumbnail);
+                
+                foreach( unserialize($foto->slider_foto) as $sf_lama ) {
+                    File::delete(storage_path('app/public/assets/foto/slider_foto', $sf_lama));
+                }
             }
             $slider_foto_array = serialize($slider_foto_array);
         } else {
@@ -185,6 +187,14 @@ class FotoController extends Controller
     public function delete($photoId)
     {
         $foto = Foto::findOrFail($photoId);
+
+        if( $foto->slider_file != null )
+            File::delete(storage_path('app/public/assets/foto/slider', $foto->slider_file));   
+        
+        foreach( unserialize($foto->slider_foto) as $sf_lama ) {
+            File::delete(storage_path('app/public/assets/foto/slider_foto', $sf_lama));
+        }
+        File::delete(storage_path('app/public/assets/foto/thumbnail', $foto->thumbnail));
         $foto->delete();
 
         return redirect()->route('admin.photo.index');

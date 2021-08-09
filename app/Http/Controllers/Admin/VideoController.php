@@ -40,7 +40,7 @@ class VideoController extends Controller
         // UPLOAD FILE SLIDER UTAMA(NULLABLE)
         if( $request->has('slider') ) {
             $slider = $request->file('slider');
-            $tujuan_upload_file_slider = 'assets/video/slider';
+            $tujuan_upload_file_slider = storage_path('app/public/assets/video/slider');
             $filename_slider = uniqid() . '.' . $slider->getClientOriginalExtension();
             $slider->move($tujuan_upload_file_slider, $filename_slider);
         } else {
@@ -97,11 +97,11 @@ class VideoController extends Controller
         // UPLOAD FILE SLIDER UTAMA(NULLABLE)
         if( $request->has('slider') ) {
             $slider = $request->file('slider');
-            $tujuan_upload_file_slider = 'assets/video/slider';
+            $tujuan_upload_file_slider = storage_path('app/public/assets/publikasi/slider');
             $filename_slider = uniqid() . '.' . $slider->getClientOriginalExtension();
             $slider->move($tujuan_upload_file_slider, $filename_slider);
 
-            File::delete('assets/video/slider/' . $video->slider_file);            
+            File::delete(storage_path('app/public/assets/publikasi/slider', $video->slider_file));            
         } else {
             $filename_slider = $video->slider_file;
         }
@@ -136,6 +136,10 @@ class VideoController extends Controller
     public function delete($videoId)
     {
         $video = Video::findOrFail($videoId);
+        if( $video->slider_file != null )
+            File::delete(storage_path('app/public/assets/publi$video/slider', $video->slider_file));   
+
+        File::delete(storage_path('app/public/assets/publi$video/thumbnail', $video->thumbnail));
         $video->delete();
 
         return redirect()->route('admin.video.index');

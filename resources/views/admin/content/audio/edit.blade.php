@@ -213,7 +213,7 @@
                     @if( $audio->slider_file == null )
                       <img class="preview mb-3 text-center" src="{{ asset('assets/admin/img/noimage.jpg') }}" />
                     @else
-                      <img class="preview mb-3 text-center" src="{{ asset('assets/audio/slider/' . $audio->slider_file) }}" />
+                      <img class="preview mb-3 text-center" src="{{ asset('storage/assets/audio/slider/' . $audio->slider_file) }}" />
                     @endif
                   </div>
                 </div>

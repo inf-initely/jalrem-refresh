@@ -26,14 +26,15 @@
           <div class="row justify-content-center">
             <div class="col-lg-11">
               <div class="row">
+                @foreach( $artikel as $a )
                 <div class="col-lg-6 mb-1">
                   <div class="card no-border no-background">
                     <div class="card-body row">
                       <div class="col-5 center-v">
-                        <img src="assets/img/artikel-berita/artikel-3.png" width="100%">
+                        <img src="{{ asset('assets/artikel/thumbnail/' . $a->thumbnail) }}" width="100%">
                       </div>
                       <div class="col-7 center-v">
-                        <a href="#" class="text-danger m-0 p-0 text-decoration-none wilayah"><small>Sulawesi Selatan</small></a>
+                        <a href="#" class="text-danger m-0 p-0 text-decoration-none wilayah"><small>{{ $a->lokasi->nama_lokasi }}</small></a>
                         <h3 class="judul-artikel judul-artikel-tentang"><a href="detail-berita.html" class="text-decoration-none clr-black">Sejarah Pala, Rempah yang Pernah Dihargai Sama dengan 7 Ekor Lembu Gemuk</a> </h3>
                         <p class="des-artikel des-artikel-tentang minimize">Lorem Ipsum is simply dummy text of the printing and typLorem Ipsum is simply dummy text of the printing and typ...Lorem Ipsum is simply dummy text of the printing and typ...</p>
                         <div class="wrap-tag-rempah">
@@ -45,7 +46,7 @@
                     </div>
                   </div>
                 </div>
-                
+                @endforeach
               </div>
             </div>
           </div>

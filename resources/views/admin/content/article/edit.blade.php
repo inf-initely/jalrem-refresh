@@ -82,7 +82,7 @@
               <div class="card-body ">
                 <div class="row">
                   <div class="col-lg-12 text-center">
-                    <img class="preview mb-3 text-center" src="{{ asset('/assets/artikel/thumbnail/' . $artikel->thumbnail) }}" />
+                    <img class="preview mb-3 text-center" src="{{ asset('storage/assets/artikel/thumbnail/' . $artikel->thumbnail) }}" />
                   </div>
                 </div>
                 <div class="mb-4">
@@ -226,7 +226,7 @@
                     @if( $artikel->slider_file == null )
                       <img class="preview mb-3 text-center" src="{{ asset('assets/admin/img/noimage.jpg') }}" />
                     @else
-                      <img class="preview mb-3 text-center" src="{{ asset('assets/artikel/slider/' . $artikel->slider_file) }}" />
+                      <img class="preview mb-3 text-center" src="{{ asset('storage/assets/artikel/slider/' . $artikel->slider_file) }}" />
                     @endif
                   </div>
                 </div>
