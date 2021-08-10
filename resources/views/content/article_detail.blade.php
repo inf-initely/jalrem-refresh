@@ -25,10 +25,43 @@
             <div class="col-lg-8">
               <header>
                 <h2 class="sub-judul">{{ $artikel->judul_indo }}</h2>
+                <div class="info-penulis">
+                  <span class="txt-penulis" class="mr-3" id="penulis" name="penulis">Ahmad Rifaldi</span> |
+                  <span class="txt-penulis" id="tglArtikel" name="tglArtikel">20 November 2021</span>
+                </div>
               </header>
-              <section id="desTentang">
+              <article id="desTentang">
                 {!! $artikel->konten_indo !!}
-              </section>
+              </article>
+              <div id="disclaimer" class="mt-4">
+                <p>Konten ini dibuat oleh kontributor website Jalur Rempah. <br>
+                  Laman Kontributor merupakan platform dari website Jalur Rempah yang digagas khusus untuk masyarakat luas untuk mengirimkan konten (berupa tulisan, foto, dan video) dan membagikan pengalamannya tentang Jalur Rempah. Setiap konten dari kontributor adalah tanggung jawab kontributor sepenuhnya.</p>
+              </div>
+              <div id="share">
+                <h3>Share :</h3>
+                <ul class="list-group list-group-horizontal">
+                  <li class="list-group-item">
+                    <a href="#">
+                      <img src="assets/img/icon-media-sosial/icon-whatsapp.svg" width="30px">
+                    </a>
+                  </li>
+                  <li class="list-group-item">
+                    <a href="#">
+                      <img src="assets/img/icon-media-sosial/icon-facebook.svg" width="30px">
+                    </a>
+                  </li>
+                  <li class="list-group-item">
+                    <a href="#">
+                      <img src="assets/img/icon-media-sosial/icon-line.svg" width="30px">
+                    </a>
+                  </li>
+                  <li class="list-group-item">
+                    <a href="#">
+                      <img src="assets/img/icon-media-sosial/icon-linkedin.svg" width="30px">
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
             <div class="col-lg-4">
               <div class="row mb-4">
