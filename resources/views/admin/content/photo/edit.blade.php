@@ -249,11 +249,11 @@
                       <div class="mb-3">
                         <label for="lokasiArtikel" class="form-label">Jenis Kontributor</label>
                         <select name="contributor_type" class="form-select mb-4" aria-label="select kontributor">
-                          @if( $artikel->contributor == 'pamong budaya' )
+                          @if( $foto->contributor == 'pamong budaya' )
                             <option value="" selected>Jenis Kontributor</option>
                             <option selected value="pamong budaya">Kontributor Pamong Budaya</option>
                             <option value="umum">Kontributor Umum</option>
-                          @elseif( $artikel->contributor == 'umum' )
+                          @elseif( $foto->contributor == 'umum' )
                             <option value="" selected>Jenis Kontributor</option>
                             <option value="pamong budaya">Kontributor Pamong Budaya</option>
                             <option selected value="umum">Kontributor Umum</option>

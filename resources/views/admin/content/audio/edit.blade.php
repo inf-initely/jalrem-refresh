@@ -170,11 +170,11 @@
                         </div>
                         <div class="form-check">
                           @if( $audio->slider_utama == null )
-                            <input class="form-check-input-slider" type="checkbox" name="slider_utama" value="slider_utama" id="flexCheckDefault-slider"">
+                            <input class="form-check-input" type="checkbox" name="slider_utama" value="slider_utama" id="flexCheckDefault">
                           @else
-                            <input checked class="form-check-input-slider" type="checkbox" name="slider_utama" value="slider_utama" id="flexCheckDefault-slider"">
+                            <input checked class="form-check-input" type="checkbox" name="slider_utama" value="slider_utama" id="flexCheckDefault">
                           @endif
-                          <label class="form-check-label-slider"" for="flexCheckDefault-slider"">
+                          <label class="form-check-label"" for="flexCheckDefault-slider"">
                             Tampilkan di Slider Utama
                           </label>
                         </div>
@@ -184,11 +184,11 @@
                   <div class="mb-3">
                     <label for="lokasiArtikel" class="form-label">Jenis Kontributor</label>
                     <select name="contributor_type" class="form-select mb-4" aria-label="select kontributor">
-                      @if( $artikel->contributor == 'pamong budaya' )
+                      @if( $audio->contributor == 'pamong budaya' )
                         <option value="" selected>Jenis Kontributor</option>
                         <option selected value="pamong budaya">Kontributor Pamong Budaya</option>
                         <option value="umum">Kontributor Umum</option>
-                      @elseif( $artikel->contributor == 'umum' )
+                      @elseif( $audio->contributor == 'umum' )
                         <option value="" selected>Jenis Kontributor</option>
                         <option value="pamong budaya">Kontributor Pamong Budaya</option>
                         <option selected value="umum">Kontributor Umum</option>

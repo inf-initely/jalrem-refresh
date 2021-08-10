@@ -64,7 +64,7 @@
                     </div>
                     <div class="mb-3">
                       <label for="keywordsEN" class="form-label">Keywords</label>
-                      <input value="{{ $video->keywords_english }}" name="keywords_english" id="keywordsEN" type="text" class="form-control tagin" data-separator=" ">
+                      <input value="{{ $video->keywords_english }}" name="keywords_english" id="keywordsEN" type="text" class="form-control tagin" data-separator=",">
                       <little>gunakan tombol "," (koma) untuk memisahkan keyword</little>
                     </div>
                   </form>
@@ -184,11 +184,11 @@
                     <div class="mb-3">
                       <label for="lokasiArtikel" class="form-label">Jenis Kontributor</label>
                       <select name="contributor_type" class="form-select mb-4" aria-label="select kontributor">
-                        @if( $artikel->contributor == 'pamong budaya' )
+                        @if( $video->contributor == 'pamong budaya' )
                           <option value="" selected>Jenis Kontributor</option>
                           <option selected value="pamong budaya">Kontributor Pamong Budaya</option>
                           <option value="umum">Kontributor Umum</option>
-                        @elseif( $artikel->contributor == 'umum' )
+                        @elseif( $video->contributor == 'umum' )
                           <option value="" selected>Jenis Kontributor</option>
                           <option value="pamong budaya">Kontributor Pamong Budaya</option>
                           <option selected value="umum">Kontributor Umum</option>

@@ -148,9 +148,9 @@
                         <div class="px-3 row">
                           <div class="col-lg-4">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" name="contributor" value="contributor" id="flexCheckDefault">
+                              <input class="form-check-input" type="checkbox" name="contributor" value="kontributor umum/pamong budaya" id="flexCheckDefault">
                               <label class="form-check-label" for="flexCheckDefault">
-                                Kontributor Umum/Pamong
+                                Kontributor Umum/Pamong Budaya
                               </label>
                             </div>
                             <div class="form-check">
@@ -166,8 +166,8 @@
                         <label for="lokasiArtikel" class="form-label">Jenis Kontributor</label>
                         <select name="contributor_type" class="form-select mb-4" aria-label="select kontributor">
                           <option selected>Jenis Kontributor</option>
-                          <option value="Kontributor Pamong Budaya">Kontributor Pamong Budaya</option>
-                          <option value="Kontributor Umum">Kontributor Umum</option>
+                          <option value="pamong budaya">Kontributor Pamong Budaya</option>
+                          <option value="umum">Kontributor Umum</option>
                         </select>
                       </div>
                   </div>

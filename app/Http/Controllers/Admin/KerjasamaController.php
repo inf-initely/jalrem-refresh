@@ -35,7 +35,6 @@ class KerjasamaController extends Controller
         $this->validate($request, [
             'judul_indo' => 'required',
             'konten_indo' => 'required',
-            'meta_indo' => 'required',
             'thumbnail' => 'required|max:10000|mimes:png,jpg,jpeg',
         ]);
 

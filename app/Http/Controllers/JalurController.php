@@ -10,7 +10,7 @@ class JalurController extends Controller
 {
     public function index()
     {
-        $artikel = Artikel::all();
+        $artikel = Artikel::where('status', 'publikasi')->get();
 
         return view('content.tentang_jalur', compact('artikel'));
     }

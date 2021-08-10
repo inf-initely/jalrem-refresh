@@ -197,11 +197,11 @@
                       <div class="mb-3">
                         <label for="lokasiArtikel" class="form-label">Jenis Kontributor</label>
                         <select name="contributor_type" class="form-select mb-4" aria-label="select kontributor">
-                          @if( $artikel->contributor == 'pamong budaya' )
+                          @if( $kegiatan->contributor == 'pamong budaya' )
                             <option value="" selected>Jenis Kontributor</option>
                             <option selected value="pamong budaya">Kontributor Pamong Budaya</option>
                             <option value="umum">Kontributor Umum</option>
-                          @elseif( $artikel->contributor == 'umum' )
+                          @elseif( $kegiatan->contributor == 'umum' )
                             <option value="" selected>Jenis Kontributor</option>
                             <option value="pamong budaya">Kontributor Pamong Budaya</option>
                             <option selected value="umum">Kontributor Umum</option>
@@ -226,7 +226,7 @@
                         @if( $kegiatan->slider_file == null )
                           <img class="preview mb-3 text-center" src="{{ asset('assets/admin/img/noimage.jpg') }}" />
                         @else
-                          <img class="preview mb-3 text-center" src="{{ asset('storage/assets/kerjasama/slider/' . $kegiatan->slider_file) }}" />
+                          <img class="preview mb-3 text-center" src="{{ asset('storage/assets/kegiatan/slider/' . $kegiatan->slider_file) }}" />
                         @endif
                       </div>
                     </div>

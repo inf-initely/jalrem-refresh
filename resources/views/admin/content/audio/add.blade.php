@@ -131,14 +131,14 @@
                     <div class="px-3 row">
                       <div class="col-lg-4">
                         <div class="form-check">
-                          <input class="form-check-input-contributor" type="checkbox" name="penulis" value="Kontributor Umum/Pamong" id="flexCheckDefault-contributor"">
-                          <label class="form-check-label-contributor"" for="flexCheckDefault-contributor"">
+                          <input class="form-check-input" type="checkbox" name="contributor" value="Kontributor Umum/Pamong" id="flexCheckDefault">
+                          <label class="form-check-label" for="flexCheckDefault">
                             Kontributor Umum/Pamong
                           </label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input-slider" type="checkbox" name="slider_utama" value="slider_utama" id="flexCheckDefault-slider"">
-                          <label class="form-check-label-slider"" for="flexCheckDefault-slider"">
+                          <input class="form-check-input" type="checkbox" name="slider_utama" value="slider_utama" id="flexCheckDefault">
+                          <label class="form-check-label" for="flexCheckDefault">
                             Tampilkan di Slider Utama
                           </label>
                         </div>
@@ -149,8 +149,8 @@
                     <label for="lokasiArtikel" class="form-label">Jenis Kontributor</label>
                     <select name="contributor_type" class="form-select mb-4" aria-label="select kontributor">
                       <option value="" selected>Jenis Kontributor</option>
-                      <option value="Kontributor Pamong Budaya">Kontributor Pamong Budaya</option>
-                      <option value="Kontributor Umum">Kontributor Umum</option>
+                      <option value="pamong budaya">Kontributor Pamong Budaya</option>
+                      <option value="umum">Kontributor Umum</option>
                     </select>
                   </div>
               </div>

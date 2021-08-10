@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 use App\Models\Kegiatan;
 use App\Models\Rempah;
@@ -33,7 +34,6 @@ class KegiatanController extends Controller
         $this->validate($request, [
             'judul_indo' => 'required',
             'konten_indo' => 'required',
-            'meta_indo' => 'required',
             'thumbnail' => 'required|max:10000|mimes:png,jpg,jpeg',
         ]);
 
@@ -46,7 +46,7 @@ class KegiatanController extends Controller
         // UPLOAD FILE SLIDER UTAMA(NULLABLE)
         if( $request->has('slider') ) {
             $slider = $request->file('slider');
-            $tujuan_upload_file_slider = storage_path('app/public/assets/kegiatan/slider', $kegiatan->slider_file);
+            $tujuan_upload_file_slider = storage_path('app/public/assets/kegiatan/slider');
             $filename_slider = uniqid() . '.' . $slider->getClientOriginalExtension();
             $slider->move($tujuan_upload_file_slider, $filename_slider);
         } else {

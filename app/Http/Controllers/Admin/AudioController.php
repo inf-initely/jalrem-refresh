@@ -59,7 +59,7 @@ class AudioController extends Controller
             'penulis' => $request->contributor != null ? 'kontributor umum/pamong budaya' : 'admin',
             'cloud_key' => $request->cloud_key,
             'slider_file' => $filename_slider,
-            'contributor' => $request->contributor,
+            'contributor' => $request->contributor_type,
             'status' => $request->publish != null ? 'publikasi' : 'draft'
         ]);
 

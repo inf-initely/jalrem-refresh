@@ -170,7 +170,7 @@
                         <div class="px-3 row">
                           <div class="col-lg-4">
                             <div class="form-check">
-                              @if( $kegiatan->penulis == 'kontributor umum/pamong budaya' )
+                              @if( $kerjasama->penulis == 'kontributor umum/pamong budaya' )
                                 <input checked class="form-check-input" type="checkbox" name="contributor" 
                                 value="contributor" id="flexCheckDefault-contributor"">
                               @else
@@ -197,11 +197,11 @@
                       <div class="mb-3">
                         <label for="lokasiArtikel" class="form-label">Jenis Kontributor</label>
                         <select name="contributor_type" class="form-select mb-4" aria-label="select kontributor">
-                          @if( $artikel->contributor == 'pamong budaya' )
+                          @if( $kerjasama->contributor == 'pamong budaya' )
                             <option value="" selected>Jenis Kontributor</option>
                             <option selected value="pamong budaya">Kontributor Pamong Budaya</option>
                             <option value="umum">Kontributor Umum</option>
-                          @elseif( $artikel->contributor == 'umum' )
+                          @elseif( $kerjasama->contributor == 'umum' )
                             <option value="" selected>Jenis Kontributor</option>
                             <option value="pamong budaya">Kontributor Pamong Budaya</option>
                             <option selected value="umum">Kontributor Umum</option>
