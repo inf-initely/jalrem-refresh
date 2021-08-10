@@ -14,7 +14,7 @@
     top: 0;
     left: 17.5%;
     width: 82.5%;
-    z-index: 1;
+    z-index: 5;
   }
 
   #contentWrapper {
@@ -32,7 +32,7 @@
   }
 
   #logoNavbar {
-    width: 150px;
+    width: 110px;
   }
 
   .logo-shrink {
@@ -65,12 +65,14 @@
 .sidebar .nav-item .collapse .collapse-inner .collapse-item,
 .sidebar .nav-item .collapsing .collapse-inner .collapse-item {
   color: #fff;
+  margin-bottom: 5px;
 }
 
 .sidebar .nav-item .collapse .collapse-inner .collapse-item.active,
 .sidebar .nav-item .collapsing .collapse-inner .collapse-item.active {
   color: #fff;
   background-color: rgb(216, 148, 72);
+
 }
 
 .sidebar .nav-item .collapse .collapse-inner .collapse-item:hover,
@@ -133,11 +135,56 @@
   line-height: 25px;
 }
 
-.output_multiple_image{
+.output_multiple_image {
   width: 100%;
 }
 
-.wrap-text-perbaikan{
+.wrap-text-perbaikan {
   min-height: 60vh;
   margin-top: 20vh;
+}
+
+.wrapper-foto-slider {
+  padding: .75rem;
+  background-color: rgba(242, 242, 242, 0.4);
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+.center-v {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+little {
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+
+.btn-primary-jarem {
+  background-color: #DC3646;
+  border-color: #DC3646;
+  color: #fff;
+  /*width: 300px;*/
+}
+
+.btn-primary-jarem:hover,
+.btn-primary-jarem:focus,
+.btn-primary-jarem:active {
+  background-color: #BE8A4F;
+  border-color: #BE8A4F;
+  color: #fff;
+}
+
+.sidebar-dark hr.sidebar-divider {
+  border-top: 1px solid rgba(255, 255, 255, 1);
+}
+
+.form-label {
+  color: #202020;
+}
+
+.tagin-tag{
+  padding: 0px 7px;
 }

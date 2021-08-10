@@ -1,20 +1,24 @@
 @extends('layout.app')
 
 @section('content')
-<header id="hero">
+  <header id="hero">
     <img class="hero-img-2 hero-peta " src="https://jalurrempah.kemdikbud.go.id/wp-content/uploads/2020/09/Peta-indonesia-u-JR.jpg">
     <div class="wrap-hero-text wrap-hero-text-bg" id="wrapHeroText">
       <div class="row">
         <div class="col-md-12">
           <header>
-            <h2 class="sub-judul sub-judul-hero">Titik-Titik Jalur Rempah</h2>
+            <h2 class="sub-judul sub-judul-hero text-end">Titik-Titik Jalur Rempah</h2>
           </header>
           <p>Jalur Rempah mencakup berbagai lintasan dari timur Asia hingga barat Eropa terhubung dengan Benua Amerika, Afrika dan Australia. Suatu lintasan peradaban bermacam bentuk, garis lurus, lingkaran, silang, bahkan berbentuk jejaring.<span id="dots">...</span><span id="more"><br><br>
               Di Indonesia, wujud jalur perniagaan rempah mencakup banyak hal. Tidak hanya berdiri di satu titik penghasil rempah, namun juga mencakup berbagai titik yang bisa dijumpai di Indonesia dan membentuk suatu lintasan peradaban yang berkelanjutan.<br><br>
               Program Jalur Rempah melihat kembali lintasan jalur perdagangan rempah dari satu titik ke titik lainnya, menghidupkan kembali beragam kisahnya, menghubungkan kembali berbagai jejaknya.<br><br>
               Menghidupkan kembali narasi sejarah yang umumnya tidak memperlihatkan peran orang Indonesia dalam pembentukan Jalur Rempah.<br><br>
               Program ini bertekad keras mencatat peran mereka yang berada di titik-titik perdagangan rempah, menghubungkan serangkaian benang merah yang belum terdokumentasikan dan tampak samar-samar dalam narasi sejarah.</span></p>
-          <button class="btn btn-sm btn-outline-secondary" onclick="readMore()" id="btnReadmore">Read more</button>
+          <div class="row">
+            <div class="col text-end">
+              <button class="btn btn-sm btn-outline-secondary" onclick="readMore()" id="btnReadmore">Lihat Selengkapnya</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -26,26 +30,30 @@
           <div class="row justify-content-center">
             <div class="col-lg-11">
               <div class="row">
+                @foreach( $artikel as $a )
                 <div class="col-lg-6 mb-1">
                   <div class="card no-border no-background">
                     <div class="card-body row">
                       <div class="col-5 center-v">
-                        <img src="assets/img/artikel-berita/artikel-3.png" width="100%">
+                        <img src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}" width="100%">
                       </div>
                       <div class="col-7 center-v">
-                        <a href="#" class="text-danger m-0 p-0 text-decoration-none wilayah"><small>Sulawesi Selatan</small></a>
-                        <h3 class="judul-artikel judul-artikel-tentang"><a href="detail-berita.html" class="text-decoration-none clr-black">Sejarah Pala, Rempah yang Pernah Dihargai Sama dengan 7 Ekor Lembu Gemuk</a> </h3>
-                        <p class="des-artikel des-artikel-tentang minimize">Lorem Ipsum is simply dummy text of the printing and typLorem Ipsum is simply dummy text of the printing and typ...Lorem Ipsum is simply dummy text of the printing and typ...</p>
+                        <a href="#" class="text-danger m-0 p-0 text-decoration-none wilayah"><small>{{ $a->lokasi->nama_lokasi ?? '' }}</small></a>
+                        <h3 class="judul-artikel judul-artikel-tentang"><a href="{{ route('article_detail', $a->id) }}" class="text-decoration-none clr-black">{{ $a->judul_indo }}</a> </h3>
+                        <p class="des-artikel des-artikel-tentang minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p>
                         <div class="wrap-tag-rempah">
-                          <a href="funfact.html" class="text-danger text-decoration-none">Pala</a>|
-                          <a href="funfact.html" class="text-danger text-decoration-none">Bawang</a>|
-                          <a href="funfact.html" class="text-danger text-decoration-none">Kulu-Kulu</a>
+                          @if( $a->rempahs != null )
+                            @foreach( $a->rempahs as $r )
+                              <a href="funfact.html" class="text-danger text-decoration-none">{{ $r }}</a>
+                              |
+                            @endforeach
+                          @endif
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                
+                @endforeach
               </div>
             </div>
           </div>
@@ -60,14 +68,14 @@
                   <div class="card no-border card-media">
                     <div class="card-body row">
                       <div class="col-3 ">
-                        <img src="assets/img/icon-track.png" width="100%">
+                        <img src="assets/img/icon/jalur_1.svg" width="80%">
                       </div>
                       <div class="col-9 center-v">
                         <h3 class="judul-card-info">Jalur</h3>
                         <p class="des-card-info">Merangkai Budaya Nusantara Melalui Jalur Rempahs</p>
                       </div>
                     </div>
-                    <a href="tentang-jalur.html" class="stretched-link"></a>
+                    <a href="{{ route('tentangjalur') }}" class="stretched-link"></a>
                   </div>
                 </div>
                 <div class="col-lg-4 mb-2">
@@ -81,7 +89,7 @@
                         <p class="des-card-info">Merangkai Budaya Nusantara Melalui Jalur Rempahs</p>
                       </div>
                     </div>
-                    <a href="tentang-jejak.html" class="stretched-link"></a>
+                    <a href="{{ route('tentangjejak') }}" class="stretched-link"></a>
                   </div>
                 </div>
                 <div class="col-lg-4 mb-2">
@@ -95,7 +103,7 @@
                         <p class="des-card-info">Merangkai Budaya Nusantara Melalui Jalur Rempahs</p>
                       </div>
                     </div>
-                    <a href="tentang-masa-depan.html" class="stretched-link"></a>
+                    <a href="{{ route('tentangmasadepan') }}" class="stretched-link"></a>
                   </div>
                 </div>
               </div>
@@ -118,24 +126,25 @@ $(document).ready(function() {
     $(".navbar").addClass("bg-nav");
     $(".navbar").removeClass("bg-trans");
   }
+  $(".navbar").addClass("bg-trans");
 });
 $(window).scroll(function() {
 
-  if ($(window).width() >= 1000) {
-    var scroll = $(window).scrollTop();
-    //>=, not <=
-    if (scroll >= 50) {
-      //clearHeader, not clearheader - caps H
-      $(".navbar").addClass("bg-nav");
-      $(".navbar").removeClass("bg-trans");
-    } else {
-      $(".navbar").addClass("bg-trans");
-      $(".navbar").removeClass("bg-nav");
-    }
-  } else {
+if ($(window).width() >= 1000) {
+  var scroll = $(window).scrollTop();
+  //>=, not <=
+  if (scroll >= 50) {
+    //clearHeader, not clearheader - caps H
     $(".navbar").addClass("bg-nav");
     $(".navbar").removeClass("bg-trans");
+  } else {
+    $(".navbar").addClass("bg-trans");
+    // $(".navbar").removeClass("bg-nav");
   }
+} else {
+  $(".navbar").addClass("bg-nav");
+  $(".navbar").removeClass("bg-trans");
+}
 
 }); //missing );
 </script>

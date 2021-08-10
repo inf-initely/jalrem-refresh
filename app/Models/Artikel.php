@@ -13,6 +13,11 @@ class Artikel extends Model implements Viewable
     
     protected $guarded = [];
 
+    public function lokasi()
+    {
+        return $this->belongsTo('App\Models\Lokasi', 'id_lokasi', 'id');
+    }
+
     public function rempahs()
     {
         return $this->belongsToMany('App\Models\Rempah', 'artikel_rempah', 'id_artikel', 'id_rempah');

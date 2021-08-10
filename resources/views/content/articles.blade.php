@@ -23,150 +23,24 @@
               </header>
               <section id="tabLine">
                 <div class="row justify-content-center">
+                  @foreach( $artikel as $a )
                   <div class="col-md-6 col-lg-4 mb-4">
                     <div class="card no-border card-artikel">
-                      <img src="assets/img/artikel-berita/artikel-1.png" class="card-img-top" alt="...">
+                      <img src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}" class="card-img-top" alt="...">
                       <div class="card-body">
-                        <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                        <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
+                        <h3 class="card-title judul-artikel">{{ $a->judul_indo }}</h3>
+                        <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p>
                         <p class="penulis-artikel">
-                          Ahmad Rifaldi
+                          {{ $a->penulis }}
                         </p>
                         <p class="tgl-artikel">
-                          20 November 2021
+                          {{ $a->created_at->isoFormat('dddd, D MMMM Y'); }}
                         </p>
                       </div>
                       <a href="list-berita.html" class="stretched-link"></a>
                     </div>
                   </div>
-                  <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card no-border card-artikel">
-                      <img src="assets/img/artikel-berita/artikel-2.png" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                        <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
-                        <p class="penulis-artikel">
-                          Ahmad Rifaldi
-                        </p>
-                        <p class="tgl-artikel">
-                          20 November 2021
-                        </p>
-                      </div>
-                      <a href="list-berita.html" class="stretched-link"></a>
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card no-border card-artikel">
-                      <img src="assets/img/artikel-berita/artikel-3.png" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                        <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
-                        <p class="penulis-artikel">
-                          Ahmad Rifaldi
-                        </p>
-                        <p class="tgl-artikel">
-                          20 November 2021
-                        </p>
-                      </div>
-                      <a href="list-berita.html" class="stretched-link"></a>
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card no-border card-artikel">
-                      <img src="assets/img/artikel-berita/artikel-1.png" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                        <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
-                        <p class="penulis-artikel">
-                          Ahmad Rifaldi
-                        </p>
-                        <p class="tgl-artikel">
-                          20 November 2021
-                        </p>
-                      </div>
-                      <a href="list-berita.html" class="stretched-link"></a>
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card no-border card-artikel">
-                      <img src="assets/img/artikel-berita/artikel-2.png" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                        <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
-                        <p class="penulis-artikel">
-                          Ahmad Rifaldi
-                        </p>
-                        <p class="tgl-artikel">
-                          20 November 2021
-                        </p>
-                      </div>
-                      <a href="list-berita.html" class="stretched-link"></a>
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card no-border card-artikel">
-                      <img src="assets/img/artikel-berita/artikel-3.png" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                        <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
-                        <p class="penulis-artikel">
-                          Ahmad Rifaldi
-                        </p>
-                        <p class="tgl-artikel">
-                          20 November 2021
-                        </p>
-                      </div>
-                      <a href="list-berita.html" class="stretched-link"></a>
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card no-border card-artikel">
-                      <img src="assets/img/artikel-berita/artikel-1.png" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                        <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
-                        <p class="penulis-artikel">
-                          Ahmad Rifaldi
-                        </p>
-                        <p class="tgl-artikel">
-                          20 November 2021
-                        </p>
-                      </div>
-                      <a href="list-berita.html" class="stretched-link"></a>
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card no-border card-artikel">
-                      <img src="assets/img/artikel-berita/artikel-2.png" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                        <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
-                        <p class="penulis-artikel">
-                          Ahmad Rifaldi
-                        </p>
-                        <p class="tgl-artikel">
-                          20 November 2021
-                        </p>
-                      </div>
-                      <a href="list-berita.html" class="stretched-link"></a>
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card no-border card-artikel">
-                      <img src="assets/img/artikel-berita/artikel-3.png" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                        <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
-                        <p class="penulis-artikel">
-                          Ahmad Rifaldi
-                        </p>
-                        <p class="tgl-artikel">
-                          20 November 2021
-                        </p>
-                      </div>
-                      <a href="list-berita.html" class="stretched-link"></a>
-                    </div>
-                  </div>
+                  @endforeach
                 </div>
                 <div class="row">
                   <div class="col-12">

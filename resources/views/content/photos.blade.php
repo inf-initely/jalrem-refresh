@@ -23,105 +23,19 @@
               </header>
               <section id="tabLine">
                 <div class="row justify-content-center">
+                  @foreach( $foto as $f )
                   <div class="col-lg-4 mb-4">
                     <div class="img-bg-wrap">
-                      <img src="assets/img/hero/hero-3.jpg">
+                      <img src="{{ asset('storage/assets/foto/thumbnail/' . $f->thumbnail) }}">
                       <div class="text-img">
-                        <p class="judul-img">Ternate Maluku Utara dalam Visualisasi dari Masa ke Masa</p>
-                        <p class="author-img">Ahmad Rifaldi</p>
-                        <p class="tgl-img">20 November 2021</p>
+                        <p class="judul-img">{{ $f->judul_indo }}</p>
+                        <p class="author-img">{{ $f->penulis }}</p>
+                        <p class="tgl-img">{{ $f->created_at->isoFormat('dddd, D MMMM Y'); }}</p>
                       </div>
-                      <a class="stretched-link lightbox" href="detail-foto.html"></a>
+                      <a class="stretched-link lightbox" href="{{ route('photo_detail', $f->id) }}"></a>
                     </div>
                   </div>
-                  <div class="col-lg-4 mb-4">
-                    <div class="img-bg-wrap">
-                      <img src="assets/img/hero/hero-3.jpg">
-                      <div class="text-img">
-                        <p class="judul-img">Ternate Maluku Utara dalam Visualisasi dari Masa ke Masa</p>
-                        <p class="author-img">Ahmad Rifaldi</p>
-                        <p class="tgl-img">20 November 2021</p>
-                      </div>
-                      <a class="stretched-link lightbox" href="detail-foto.html"></a>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 mb-4">
-                    <div class="img-bg-wrap">
-                      <img src="assets/img/hero/hero-3.jpg">
-                      <div class="text-img">
-                        <p class="judul-img">Ternate Maluku Utara dalam Visualisasi dari Masa ke Masa</p>
-                        <p class="author-img">Ahmad Rifaldi</p>
-                        <p class="tgl-img">20 November 2021</p>
-                      </div>
-                      <a class="stretched-link lightbox" href="detail-foto.html"></a>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 mb-4">
-                    <div class="img-bg-wrap">
-                      <img src="assets/img/hero/hero-3.jpg">
-                      <div class="text-img">
-                        <p class="judul-img">Ternate Maluku Utara dalam Visualisasi dari Masa ke Masa</p>
-                        <p class="author-img">Ahmad Rifaldi</p>
-                        <p class="tgl-img">20 November 2021</p>
-                      </div>
-                      <a class="stretched-link lightbox" href="detail-foto.html"></a>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 mb-4">
-                    <div class="img-bg-wrap">
-                      <img src="assets/img/hero/hero-3.jpg">
-                      <div class="text-img">
-                        <p class="judul-img">Ternate Maluku Utara dalam Visualisasi dari Masa ke Masa</p>
-                        <p class="author-img">Ahmad Rifaldi</p>
-                        <p class="tgl-img">20 November 2021</p>
-                      </div>
-                      <a class="stretched-link lightbox" href="detail-foto.html"></a>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 mb-4">
-                    <div class="img-bg-wrap">
-                      <img src="assets/img/hero/hero-3.jpg">
-                      <div class="text-img">
-                        <p class="judul-img">Ternate Maluku Utara dalam Visualisasi dari Masa ke Masa</p>
-                        <p class="author-img">Ahmad Rifaldi</p>
-                        <p class="tgl-img">20 November 2021</p>
-                      </div>
-                      <a class="stretched-link lightbox" href="detail-foto.html"></a>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 mb-4">
-                    <div class="img-bg-wrap">
-                      <img src="assets/img/hero/hero-3.jpg">
-                      <div class="text-img">
-                        <p class="judul-img">Ternate Maluku Utara dalam Visualisasi dari Masa ke Masa</p>
-                        <p class="author-img">Ahmad Rifaldi</p>
-                        <p class="tgl-img">20 November 2021</p>
-                      </div>
-                      <a class="stretched-link lightbox" href="detail-foto.html"></a>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 mb-4">
-                    <div class="img-bg-wrap">
-                      <img src="assets/img/hero/hero-3.jpg">
-                      <div class="text-img">
-                        <p class="judul-img">Ternate Maluku Utara dalam Visualisasi dari Masa ke Masa</p>
-                        <p class="author-img">Ahmad Rifaldi</p>
-                        <p class="tgl-img">20 November 2021</p>
-                      </div>
-                      <a class="stretched-link lightbox" href="detail-foto.html"></a>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 mb-4">
-                    <div class="img-bg-wrap">
-                      <img src="assets/img/hero/hero-3.jpg">
-                      <div class="text-img">
-                        <p class="judul-img">Ternate Maluku Utara dalam Visualisasi dari Masa ke Masa</p>
-                        <p class="author-img">Ahmad Rifaldi</p>
-                        <p class="tgl-img">20 November 2021</p>
-                      </div>
-                      <a class="stretched-link lightbox" href="detail-foto.html"></a>
-                    </div>
-                  </div>
+                  @endforeach
                 </div>
                 <div class="row">
                   <div class="col-12">

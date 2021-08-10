@@ -23,9 +23,10 @@
               </header>
               <section id="tabLine">
                 <div class="row justify-content-center">
+                  @foreach( $video as $v )
                   <div class="col-md-12 col-lg-4 mb-4">
                     <div class="card no-border card-artikel">
-                      <div class="video media-video" data-video-id="fj2xxbx_OHQ">
+                      <div class="video media-video" data-video-id="{{ $v->youtube_key }}">
                         <!--ganti id sesuai id youtube yang akan ditampilkan-->
                         <div class="video-layer">
                           <div class="video-placeholder">
@@ -42,125 +43,11 @@
                         </div>
                       </div>
                       <div class="card-body">
-                        <p class="card-text">Perjalanan Rempah Nusantara</p>
+                        <p class="card-text">{{ $v->judul_indo }}</p>
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-12 col-lg-4 mb-4">
-                    <div class="card no-border card-artikel">
-                      <div class="video media-video" data-video-id="HNrjT-2V2Ns">
-                        <!--ganti id sesuai id youtube yang akan ditampilkan-->
-                        <div class="video-layer">
-                          <div class="video-placeholder">
-                            <!-- ^ div is replaced by the YouTube video -->
-                          </div>
-                        </div>
-                        <div class="video-preview video-02">
-                          <!-- this icon would normally be implemented as a character in an icon font or svg spritesheet, or similar -->
-                          <svg viewBox="0 0 74 74">
-                            <circle style="opacity:0.64;stroke:#fff" cx="37" cy="37" r="36.5"></circle>
-                            <circle fill="none" stroke="#fff" cx="37" cy="37" r="36.5"></circle>
-                            <polygon fill="#fff" points="33,22 33,52 48,37"></polygon>
-                          </svg>
-                        </div>
-                      </div>
-                      <div class="card-body">
-                        <p class="card-text">Teaser Jalur Rempah RI</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-12 col-lg-4 mb-4">
-                    <div class="card no-border card-artikel">
-                      <div class="video media-video" data-video-id="fj2xxbx_OHQ">
-                        <!--ganti id sesuai id youtube yang akan ditampilkan-->
-                        <div class="video-layer">
-                          <div class="video-placeholder">
-                            <!-- ^ div is replaced by the YouTube video -->
-                          </div>
-                        </div>
-                        <div class="video-preview video-01">
-                          <!-- this icon would normally be implemented as a character in an icon font or svg spritesheet, or similar -->
-                          <svg viewBox="0 0 74 74">
-                            <circle style="opacity:0.64;stroke:#fff" cx="37" cy="37" r="36.5"></circle>
-                            <circle fill="none" stroke="#fff" cx="37" cy="37" r="36.5"></circle>
-                            <polygon fill="#fff" points="33,22 33,52 48,37"></polygon>
-                          </svg>
-                        </div>
-                      </div>
-                      <div class="card-body">
-                        <p class="card-text">Perjalanan Rempah Nusantara</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-12 col-lg-4 mb-4">
-                    <div class="card no-border card-artikel">
-                      <div class="video media-video" data-video-id="HNrjT-2V2Ns">
-                        <!--ganti id sesuai id youtube yang akan ditampilkan-->
-                        <div class="video-layer">
-                          <div class="video-placeholder">
-                            <!-- ^ div is replaced by the YouTube video -->
-                          </div>
-                        </div>
-                        <div class="video-preview video-02">
-                          <!-- this icon would normally be implemented as a character in an icon font or svg spritesheet, or similar -->
-                          <svg viewBox="0 0 74 74">
-                            <circle style="opacity:0.64;stroke:#fff" cx="37" cy="37" r="36.5"></circle>
-                            <circle fill="none" stroke="#fff" cx="37" cy="37" r="36.5"></circle>
-                            <polygon fill="#fff" points="33,22 33,52 48,37"></polygon>
-                          </svg>
-                        </div>
-                      </div>
-                      <div class="card-body">
-                        <p class="card-text">Teaser Jalur Rempah RI</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-12 col-lg-4 mb-4">
-                    <div class="card no-border card-artikel">
-                      <div class="video media-video" data-video-id="fj2xxbx_OHQ">
-                        <!--ganti id sesuai id youtube yang akan ditampilkan-->
-                        <div class="video-layer">
-                          <div class="video-placeholder">
-                            <!-- ^ div is replaced by the YouTube video -->
-                          </div>
-                        </div>
-                        <div class="video-preview video-01">
-                          <!-- this icon would normally be implemented as a character in an icon font or svg spritesheet, or similar -->
-                          <svg viewBox="0 0 74 74">
-                            <circle style="opacity:0.64;stroke:#fff" cx="37" cy="37" r="36.5"></circle>
-                            <circle fill="none" stroke="#fff" cx="37" cy="37" r="36.5"></circle>
-                            <polygon fill="#fff" points="33,22 33,52 48,37"></polygon>
-                          </svg>
-                        </div>
-                      </div>
-                      <div class="card-body">
-                        <p class="card-text">Perjalanan Rempah Nusantara</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-12 col-lg-4 mb-4">
-                    <div class="card no-border card-artikel">
-                      <div class="video media-video" data-video-id="HNrjT-2V2Ns">
-                        <!--ganti id sesuai id youtube yang akan ditampilkan-->
-                        <div class="video-layer">
-                          <div class="video-placeholder">
-                            <!-- ^ div is replaced by the YouTube video -->
-                          </div>
-                        </div>
-                        <div class="video-preview video-02">
-                          <!-- this icon would normally be implemented as a character in an icon font or svg spritesheet, or similar -->
-                          <svg viewBox="0 0 74 74">
-                            <circle style="opacity:0.64;stroke:#fff" cx="37" cy="37" r="36.5"></circle>
-                            <circle fill="none" stroke="#fff" cx="37" cy="37" r="36.5"></circle>
-                            <polygon fill="#fff" points="33,22 33,52 48,37"></polygon>
-                          </svg>
-                        </div>
-                      </div>
-                      <div class="card-body">
-                        <p class="card-text">Teaser Jalur Rempah RI</p>
-                      </div>
-                    </div>
-                  </div>
+                  @endforeach
                 </div>
                 <div class="row">
                   <div class="col-12">

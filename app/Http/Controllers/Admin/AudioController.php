@@ -40,7 +40,7 @@ class AudioController extends Controller
         // UPLOAD FILE SLIDER UTAMA(NULLABLE)
         if( $request->has('slider') ) {
             $slider = $request->file('slider');
-            $tujuan_upload_file_slider = 'assets/audio/slider';
+            $tujuan_upload_file_slider = storage_path('app/public/assets/audio/slider');
             $filename_slider = uniqid() . '.' . $slider->getClientOriginalExtension();
             $slider->move($tujuan_upload_file_slider, $filename_slider);
         } else {
@@ -96,11 +96,11 @@ class AudioController extends Controller
         // UPLOAD FILE SLIDER UTAMA(NULLABLE)
         if( $request->has('slider') ) {
             $slider = $request->file('slider');
-            $tujuan_upload_file_slider = 'assets/audio/slider';
+            $tujuan_upload_file_slider = storage_path('app/public/assets/audio/slider');
             $filename_slider = uniqid() . '.' . $slider->getClientOriginalExtension();
             $slider->move($tujuan_upload_file_slider, $filename_slider);
 
-            File::delete('assets/audio/slider/' . $audio->slider_file);            
+            File::delete(storage_path('app/public/assets/audio/slider', $audio->slider_file));            
         } else {
             $filename_slider = $audio->slider_file;
         }
@@ -135,6 +135,11 @@ class AudioController extends Controller
     public function delete($audioId)
     {
         $audio = Audio::findOrFail($audioId);
+
+        if( $audio->slider_file != null )
+            File::delete(storage_path('app/public/assets/audio/slider', $audio->slider_file));   
+            
+        File::delete(storage_path('app/public/assets/audio/thumbnail', $audio->thumbnail));
         $audio->delete();
 
         return redirect()->route('admin.audio.index');

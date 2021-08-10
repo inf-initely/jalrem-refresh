@@ -10,7 +10,8 @@ class Foto extends Model
     use HasFactory;
 
     protected $casts = [
-        'slider_foto' => 'array'
+        'slider_foto' => 'array',
+        'caption_slider_foto' => 'array',
     ];
 
     protected $guarded = [];

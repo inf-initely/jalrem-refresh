@@ -170,11 +170,11 @@
                           </div>
                           <div class="form-check">
                             @if( $video->slider_utama == null )
-                              <input class="form-check-input" type="checkbox" name="slider_utama" value="slider_utama" id="flexCheckDefault"">
+                              <input class="form-check-input" type="checkbox" name="slider_utama" value="slider_utama" id="flexCheckDefault">
                             @else
-                              <input checked class="form-check-input" type="checkbox" name="slider_utama" value="slider_utama" id="flexCheckDefault"">
+                              <input checked class="form-check-input" type="checkbox" name="slider_utama" value="slider_utama" id="flexCheckDefault">
                             @endif
-                            <label class="form-check-label"" for="flexCheckDefault"">
+                            <label class="form-check-label" for="flexCheckDefault">
                               Tampilkan di Slider Utama
                             </label>
                           </div>
@@ -213,7 +213,7 @@
                       @if( $video->slider_file == null )
                         <img class="preview mb-3 text-center" src="{{ asset('assets/admin/img/noimage.jpg') }}" />
                       @else
-                        <img class="preview mb-3 text-center" src="{{ asset('assets/video/slider/' . $video->slider_file) }}" />
+                        <img class="preview mb-3 text-center" src="{{ asset('storage/assets/video/slider/' . $video->slider_file) }}" />
                       @endif
                     </div>
                   </div>

@@ -6,7 +6,7 @@
 
 @section('content')
 <header id="hero">
-    <img class="hero-img-2" src="{{ asset('assets/artikel/thumbnail/' . $artikel->thumbnail) }}">
+    <img class="hero-img-2" src="{{ asset('storage/assets/artikel/thumbnail/' . $artikel->thumbnail) }}">
     <div class="text-hero-2">
       <div class="">
         <div class="col-lg-12 text-center">
@@ -43,7 +43,7 @@
                         <div class="card-body">
                           <div class="row">
                             <div class="col-5">
-                              <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="{{ asset('assets/artikel/thumbnail/' . $a->thumbnail) }}">
+                              <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}">
                             </div>
                             <div class="col-7 center-v">
                               <h3 class="judul-berita-aside" id="jdlKegiatan" name="jdlKegiatan">{{ $a->judul_indo }}</h3>
@@ -70,7 +70,7 @@
                         <div class="card-body">
                           <div class="row">
                             <div class="col-5">
-                              <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="{{ asset('assets/artikel/thumbnail/' . $a->thumbnail) }}">
+                              <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}">
                             </div>
                             <div class="col-7 center-v">
                               <h3 class="judul-berita-aside" id="jdlKegiatan" name="jdlKegiatan">{{ $a->judul_indo }}</h3>
@@ -103,9 +103,9 @@
           @foreach( $artikelPopuler as $a )
           <div class="col-md-6 col-lg-4 mb-4">
             <div class="card no-border no-background card-body">
-              <img src="{{ asset('assets/artikel/thumbnail/' . $a->thumbnail) }}" class="card-img-top mb-4" alt="...">
+              <img src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}" class="card-img-top mb-4" alt="...">
               <h3 class="card-title judul-artikel">{{ $a->judul_indo }}</h3>
-              <p class="card-text des-artikel minimize">{!! $a->konten_indo !!}</p>
+              <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p>
               <p class="penulis-artikel">{{ $a->penulis }}</p>
               <p class="tgl-artikel">{{ $a->created_at->isoFormat('dddd, D MMMM Y'); }}</p>
               <a href="detail-berita.html" class="stretched-link"></a>

@@ -41,14 +41,14 @@ class KerjasamaController extends Controller
 
         // UPLOAD THUMBNAIL
         $thumbnail = $request->file('thumbnail');
-        $tujuan_upload_file_thumbnail = 'assets/kerjasama/thumbnail';
+        $tujuan_upload_file_thumbnail = storage_path('app/public/assets/kerjasama/thumbnail');
         $filename_thumbnail = uniqid() . '.' . $thumbnail->getClientOriginalExtension();
         $thumbnail->move($tujuan_upload_file_thumbnail, $filename_thumbnail);
 
         // UPLOAD FILE SLIDER UTAMA(NULLABLE)
         if( $request->has('slider') ) {
             $slider = $request->file('slider');
-            $tujuan_upload_file_slider = 'assets/kerjasama/slider';
+            $tujuan_upload_file_slider = storage_path('app/public/assets/kerjasama/slider');
             $filename_slider = uniqid() . '.' . $slider->getClientOriginalExtension();
             $slider->move($tujuan_upload_file_slider, $filename_slider);
         } else {
@@ -107,12 +107,12 @@ class KerjasamaController extends Controller
             ]);
 
             $thumbnail = $request->file('thumbnail');
-            $tujuan_upload_file = 'assets/kerjasama/thumbnail';
+            $tujuan_upload_file = storage_path('app/public/assets/kerjasama/thumbnail', $kerjasama->thumbnail);
             $filename_thumbnail = uniqid() . '.' . $thumbnail->getClientOriginalExtension();
             $thumbnail->move($tujuan_upload_file, $filename_thumbnail);
 
             // unlink('assets/kerjasama/thumbnail/' . $kerjasama->thumbnail );
-            File::delete('assets/kerjasama/thumbnail/' . $kerjasama->thumbnail);
+            File::delete(storage_path('app/public/assets/kerjasama/thumbnail', $kerjasama->thumbnail));
         } else {
             $filename_thumbnail = $kerjasama->thumbnail;
         }
@@ -120,11 +120,11 @@ class KerjasamaController extends Controller
         // UPLOAD FILE SLIDER UTAMA(NULLABLE)
         if( $request->has('slider') ) {
             $slider = $request->file('slider');
-            $tujuan_upload_file_slider = 'assets/kerjasama/slider';
+            $tujuan_upload_file_slider = storage_path('app/public/assets/kerjasama/slider');
             $filename_slider = uniqid() . '.' . $slider->getClientOriginalExtension();
             $slider->move($tujuan_upload_file_slider, $filename_slider);
 
-            File::delete('assets/kerjasama/slider/' . $kerjasama->slider_file);            
+            File::delete(storage_path('app/public/assets/kegiatan/slider', $kegiatan->slider_file));            
         } else {
             $filename_slider = $kerjasama->slider_file;
         }
@@ -155,6 +155,11 @@ class KerjasamaController extends Controller
     public function delete($kerjasamaId)
     {
         $kerjasama = Kerjasama::findOrFail($kerjasamaId);
+        if( $kerjasama->slider_file != null )
+            File::delete(storage_path('app/public/assets/kerjasama/slider', $kerjasama->slider_file));   
+
+        File::delete(storage_path('app/public/assets/kerjasama/thumbnail', $kerjasama->thumbnail));
+        
         $kerjasama->delete();
 
         return redirect()->route('admin.kerjasama.index');

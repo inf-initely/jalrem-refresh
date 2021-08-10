@@ -63,6 +63,7 @@
   <script>
     CKEDITOR.replaceAll('editor')
   </script>
+  @yield('js')
 </body>
 
 </html>

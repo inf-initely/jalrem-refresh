@@ -39,14 +39,14 @@ class ArtikelController extends Controller
 
         // UPLOAD THUMBNAIL
         $thumbnail = $request->file('thumbnail');
-        $tujuan_upload_file_thumbnail = 'assets/artikel/thumbnail';
+        $tujuan_upload_file_thumbnail = storage_path('app/public/assets/artikel/thumbnail');
         $filename_thumbnail = uniqid() . '.' . $thumbnail->getClientOriginalExtension();
         $thumbnail->move($tujuan_upload_file_thumbnail, $filename_thumbnail);
 
         // UPLOAD FILE SLIDER UTAMA(NULLABLE)
         if( $request->has('slider') ) {
             $slider = $request->file('slider');
-            $tujuan_upload_file_slider = 'assets/artikel/slider';
+            $tujuan_upload_file_slider = storage_path('app/public/assets/artikel/slider');
             $filename_slider = uniqid() . '.' . $slider->getClientOriginalExtension();
             $slider->move($tujuan_upload_file_slider, $filename_slider);
         } else {
@@ -109,8 +109,8 @@ class ArtikelController extends Controller
             $filename_thumbnail = uniqid() . '.' . $thumbnail->getClientOriginalExtension();
             $thumbnail->move($tujuan_upload_file, $filename_thumbnail);
 
-            // unlink('assets/artikel/thumbnail/' . $artikel->thumbnail );
-            File::delete('assets/artikel/thumbnail/' . $artikel->thumbnail);
+            // unlink(storage_path('app/public/assets/artikel/thumbnail') . $artikel->thumbnail );
+            File::delete(storage_path('app/public/assets/artikel/thumbnail', $artikel->thumbnail));
         } else {
             $filename_thumbnail = $artikel->thumbnail;
         }
@@ -118,11 +118,11 @@ class ArtikelController extends Controller
         // UPLOAD FILE SLIDER UTAMA(NULLABLE)
         if( $request->has('slider') ) {
             $slider = $request->file('slider');
-            $tujuan_upload_file_slider = 'assets/artikel/slider';
+            $tujuan_upload_file_slider = storage_path('app/public/assets/artikel/slider');
             $filename_slider = uniqid() . '.' . $slider->getClientOriginalExtension();
             $slider->move($tujuan_upload_file_slider, $filename_slider);
 
-            File::delete('assets/artikel/slider/' . $artikel->slider_file);            
+            File::delete(storage_path('app/public/assets/artikel/slider', $artikel->slider_file));            
         } else {
             $filename_slider = $artikel->slider_file;
         }
@@ -152,7 +152,12 @@ class ArtikelController extends Controller
     public function delete($articleId)
     {
         $artikel = Artikel::findOrFail($articleId);
-        $artikel->delete();
+
+        if( $artikel->slider_file != null )
+            File::delete(storage_path('app/public/assets/artikel/slider', $artikel->slider_file));   
+
+        File::delete(storage_path('app/public/assets/artikel/thumbnail', $artikel->thumbnail));
+        $artikel->delete();   
 
         return redirect()->route('admin.article.index');
     }
