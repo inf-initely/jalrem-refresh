@@ -145,7 +145,7 @@
                   <div class="card no-border card-media">
                     <div class="card-body row">
                       <div class="col-3 ">
-                        <img src="assets/img/icon-event.png" width="100%">
+                        <img src="assets/img/icon/jejak_1.svg" width="80%">
                       </div>
                       <div class="col-9 center-v">
                         <h3 class="judul-card-info">Jejak</h3>
@@ -159,14 +159,14 @@
                   <div class="card no-border card-media">
                     <div class="card-body row">
                       <div class="col-3 ">
-                        <img src="assets/img/icon-time.png" width="100%">
+                        <img src="assets/img/icon/masa-depan_1.svg" width="80%">
                       </div>
                       <div class="col-9 center-v">
                         <h3 class="judul-card-info">Masa Depan</h3>
                         <p class="des-card-info">Merangkai Budaya Nusantara Melalui Jalur Rempahs</p>
                       </div>
                     </div>
-                    <a href="{{ route('tentangmasadepan') }}" class="stretched-link"></a>
+                    <a href="#" class="stretched-link"></a>
                   </div>
                 </div>
               </div>
