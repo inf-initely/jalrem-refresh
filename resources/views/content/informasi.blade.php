@@ -18,7 +18,6 @@
           <header class="row justify-content-start mb-2">
             <div class="col-md-6">
               <h2 class="sub-judul">Kegiatan Saat Ini</h2>
-              <p>Berbagai upaya dilakukan untuk melestarikan jalur rempah, salah satunya dengan melakukan berbagai kegiatan.</p>
             </div>
           </header>
           <div class="row justify-content-center">
@@ -44,33 +43,230 @@
                 @endforeach
               </div>
             </div>
-            <header class="row justify-content-start mb-2 m-5">
-              <div class="col-md-6">
-                <h2 class="sub-judul">Kegiatan Sebelumnya</h2>
-                <p>Berbagai upaya dilakukan untuk melestarikan jalur rempah, salah satunya dengan melakukan berbagai kegiatan.</p>
-              </div>
-            </header>
-            <div class="row justify-content-center">
-              <div class="col-lg-12">
-                <div class="row">
-                  @foreach( $kegiatan_sebelumnya as $k )
-                  <div class="col-lg-4 mb-1">
-                    <div class="card no-border no-background">
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-6">
-                            <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="{{ asset('storage/assets/kegiatan/thumbnail' . $k->thumbnail) }}">
-                          </div>
-                          <div class="col-6 center-v">
-                            <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">{{ $k->created_at->isoFormat('dddd, D MMMM Y'); }}</p>
-                            <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">{{ $k->judul_indo }}</h3>
-                          </div>
+          </div>
+        </div>
+      </section>
+      <section id="kegiatanSebelumnya">
+        <div class="container">
+          <header class="row justify-content-start mb-2">
+            <div class="col-md-6">
+              <h2 class="sub-judul">Kegiatan Sebelumnya</h2>
+            </div>
+          </header>
+          <!--<div class="row justify-content-center">
+            <div class="col-lg-12">
+              <div class="row">
+                @foreach( $kegiatan_sebelumnya as $k )
+                <div class="col-lg-4 mb-1">
+                  <div class="card no-border no-background">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-6">
+                          <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="{{ asset('storage/assets/kegiatan/thumbnail' . $k->thumbnail) }}">
                         </div>
-                        <a href="detail-kegiatan.html" class="stretched-link"></a>
+                        <div class="col-6 center-v">
+                          <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">{{ $k->created_at->isoFormat('dddd, D MMMM Y'); }}</p>
+                          <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">{{ $k->judul_indo }}</h3>
+                        </div>
                       </div>
+                      <a href="detail-kegiatan.html" class="stretched-link"></a>
                     </div>
                   </div>
-                  @endforeach
+                </div>
+                @endforeach
+              </div>
+            </div>
+          </div> -->
+          <div class="kegiatan-sebelumnya">
+            <div>
+              <div class="card no-border no-background">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-6">
+                      <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/kegiatan/kegiatan-1.jpg">
+                    </div>
+                    <div class="col-6 center-v">
+                      <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">20 Januari 2021</p>
+                      <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">Kompetisi Cerita Gambar Rempah dan Budaya Bahari</h3>
+                    </div>
+                  </div>
+                  <a href="https://upanastudio.com" class="stretched-link"></a>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="card no-border no-background">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-6">
+                      <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/kegiatan/kegiatan-1.jpg">
+                    </div>
+                    <div class="col-6 center-v">
+                      <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">20 Januari 2021</p>
+                      <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">Kompetisi Cerita Gambar Rempah dan Budaya Bahari</h3>
+                    </div>
+                  </div>
+                  <a href="https://upanastudio.com" class="stretched-link"></a>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="card no-border no-background">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-6">
+                      <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/kegiatan/kegiatan-1.jpg">
+                    </div>
+                    <div class="col-6 center-v">
+                      <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">20 Januari 2021</p>
+                      <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">Kompetisi Cerita Gambar Rempah dan Budaya Bahari</h3>
+                    </div>
+                  </div>
+                  <a href="https://upanastudio.com" class="stretched-link"></a>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="card no-border no-background">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-6">
+                      <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/kegiatan/kegiatan-1.jpg">
+                    </div>
+                    <div class="col-6 center-v">
+                      <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">20 Januari 2021</p>
+                      <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">Kompetisi Cerita Gambar Rempah dan Budaya Bahari</h3>
+                    </div>
+                  </div>
+                  <a href="https://upanastudio.com" class="stretched-link"></a>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="card no-border no-background">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-6">
+                      <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/kegiatan/kegiatan-1.jpg">
+                    </div>
+                    <div class="col-6 center-v">
+                      <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">20 Januari 2021</p>
+                      <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">Kompetisi Cerita Gambar Rempah dan Budaya Bahari</h3>
+                    </div>
+                  </div>
+                  <a href="https://upanastudio.com" class="stretched-link"></a>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="card no-border no-background">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-6">
+                      <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/kegiatan/kegiatan-1.jpg">
+                    </div>
+                    <div class="col-6 center-v">
+                      <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">20 Januari 2021</p>
+                      <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">Kompetisi Cerita Gambar Rempah dan Budaya Bahari</h3>
+                    </div>
+                  </div>
+                  <a href="https://upanastudio.com" class="stretched-link"></a>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="card no-border no-background">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-6">
+                      <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/kegiatan/kegiatan-1.jpg">
+                    </div>
+                    <div class="col-6 center-v">
+                      <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">20 Januari 2021</p>
+                      <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">Kompetisi Cerita Gambar Rempah dan Budaya Bahari</h3>
+                    </div>
+                  </div>
+                  <a href="https://upanastudio.com" class="stretched-link"></a>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="card no-border no-background">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-6">
+                      <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/kegiatan/kegiatan-1.jpg">
+                    </div>
+                    <div class="col-6 center-v">
+                      <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">20 Januari 2021</p>
+                      <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">Kompetisi Cerita Gambar Rempah dan Budaya Bahari</h3>
+                    </div>
+                  </div>
+                  <a href="https://upanastudio.com" class="stretched-link"></a>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="card no-border no-background">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-6">
+                      <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/kegiatan/kegiatan-1.jpg">
+                    </div>
+                    <div class="col-6 center-v">
+                      <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">20 Januari 2021</p>
+                      <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">Kompetisi Cerita Gambar Rempah dan Budaya Bahari</h3>
+                    </div>
+                  </div>
+                  <a href="https://upanastudio.com" class="stretched-link"></a>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="card no-border no-background">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-6">
+                      <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/kegiatan/kegiatan-1.jpg">
+                    </div>
+                    <div class="col-6 center-v">
+                      <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">20 Januari 2021</p>
+                      <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">Kompetisi Cerita Gambar Rempah dan Budaya Bahari</h3>
+                    </div>
+                  </div>
+                  <a href="https://upanastudio.com" class="stretched-link"></a>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="card no-border no-background">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-6">
+                      <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/kegiatan/kegiatan-1.jpg">
+                    </div>
+                    <div class="col-6 center-v">
+                      <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">20 Januari 2021</p>
+                      <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">Kompetisi Cerita Gambar Rempah dan Budaya Bahari</h3>
+                    </div>
+                  </div>
+                  <a href="https://upanastudio.com" class="stretched-link"></a>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="card no-border no-background">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-6">
+                      <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/kegiatan/kegiatan-1.jpg">
+                    </div>
+                    <div class="col-6 center-v">
+                      <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">20 Januari 2021</p>
+                      <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">Kompetisi Cerita Gambar Rempah dan Budaya Bahari</h3>
+                    </div>
+                  </div>
+                  <a href="https://upanastudio.com" class="stretched-link"></a>
                 </div>
               </div>
             </div>
@@ -82,7 +278,6 @@
           <header class="row justify-content-start mb-2">
             <div class="col-md-6">
               <h2 class="sub-judul">Kerja Sama</h2>
-              <p>Berbagai upaya dilakukan untuk melestarikan jalur rempah, salah satunya dengan melakukan berbagai kegiatan.</p>
             </div>
           </header>
           <div class="row justify-content-center">
@@ -121,7 +316,7 @@
                   <div class="card no-border card-media">
                     <div class="card-body row">
                       <div class="col-3 ">
-                        <img src="assets/img/icon-track.png" width="100%">
+                        <img src="assets/img/icon/jalur_1.svg" width="80%">
                       </div>
                       <div class="col-9 center-v">
                         <h3 class="judul-card-info">Jalur</h3>
@@ -135,7 +330,7 @@
                   <div class="card no-border card-media">
                     <div class="card-body row">
                       <div class="col-3 ">
-                        <img src="assets/img/icon-event.png" width="100%">
+                        <img src="assets/img/icon/jejak_1.svg" width="80%">
                       </div>
                       <div class="col-9 center-v">
                         <h3 class="judul-card-info">Jejak</h3>
@@ -149,7 +344,7 @@
                   <div class="card no-border card-media">
                     <div class="card-body row">
                       <div class="col-3 ">
-                        <img src="assets/img/icon-time.png" width="100%">
+                        <img src="assets/img/icon/masa-depan_1.svg" width="80%">
                       </div>
                       <div class="col-9 center-v">
                         <h3 class="judul-card-info">Masa Depan</h3>
@@ -171,6 +366,7 @@
 @section('js')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="assets/js/slick.min.js"></script>
 <script>
 $(document).ready(function() {
   if ($(window).width() <= 1000) {
@@ -214,6 +410,37 @@ $(function() {
 
   });
 
+});
+</script>
+<script>
+$('.kegiatan-sebelumnya').slick({
+  dots: true,
+  infinite: true,
+  speed: 1000,
+  slidesToShow: 3,
+  slidesToScroll: 3,
+  responsive: [{
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        infinite: true,
+        dots: true,
+        arrows: false
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
 });
 </script>
 @endsection
