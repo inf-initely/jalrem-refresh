@@ -277,7 +277,7 @@
               </header>
             </div>
           </div>
-          <div class="youtube-video">
+          <div class="youtube-video mt-3">
             @foreach( $video as $v )
             <div class="p-2">
               <div class="card no-border card-artikel">
@@ -313,7 +313,7 @@
               </header>
             </div>
           </div>
-          <div class="row justify-content-center">
+          <div class="row justify-content-center mt-3">
             <div class="col-md-6 col-lg-4 mb-4">
               <div class="tweet" id="1374692986882125826"></div>
             </div>
@@ -333,15 +333,11 @@
               </header>
             </div>
           </div>
-          <div class="row justify-content-center">
-            <div class="col-md-6 col-lg-4 mb-4">
-              <iframe max-width="100%" height="475" src="https://www.instagram.com/p/CQ-6yXOAlAH/embed" frameborder="0"></iframe>
-            </div>
-            <div class="col-md-6 col-lg-4 mb-4">
-              <iframe max-width="100%" height="400" src="https://www.instagram.com/p/CQ8WuZ9h8Ea/embed" frameborder="0"></iframe>
-            </div>
-            <div class="col-md-6 col-lg-4 mb-4">
-              <iframe max-width="100%" height="325" src="https://www.instagram.com/p/CQ5xnOBgg-Z/embed" frameborder="0"></iframe>
+          <div class="row justify-content-center mt-3">
+            <div class="col-md-12">
+              <!-- LightWidget WIDGET -->
+              <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
+              <iframe src="//lightwidget.com/widgets/4efcdf886f385122afbd67a64448bcc2.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;"></iframe>
             </div>
           </div>
         </section>
@@ -429,12 +425,13 @@ $(function() {
   });
 
 });
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script type="text/javascript"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script type="text/javascript" src="assets/js/slick.min.js"></script>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.1.0/flickity.pkgd.min.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
 <script src="http://platform.twitter.com/widgets.js"></script>
 <script>
@@ -591,58 +588,6 @@ $(document).ready(function() {
     ]
   });
 });
-</script>
-<script>
-var options = {
-  autoPlay: 7000,
-  pauseAutoPlayOnHover: false,
-  accessibility: true,
-  prevNextButtons: true,
-  pageDots: true,
-  setGallerySize: false,
-  arrowShape: {
-    x0: 10,
-    x1: 60,
-    y1: 50,
-    x2: 60,
-    y2: 45,
-    x3: 15
-  }
-};
-
-var $carousel = $('[data-carousel]').flickity(options);
-var $slideContent = $('.slide-content');
-var flkty = $carousel.data('flickity');
-var selectedSlide = flkty.selectedElement;
-
-flkty.on('settle', function(index) {
-  selectedSlide = flkty.selectedElement;
-});
-
-flkty.on('change', function(index) {
-  $slideContent.eq(index).removeClass('mask');
-
-  setTimeout(function() {
-    $slideContent.addClass('mask');
-  }, 500);
-});
-
-flkty.on('dragStart', function(event) {
-  var index = 0;
-  selectedSlide = flkty.selectedElement;
-
-  if (event.layerX > 0) { // direction right
-    index = $(selectedSlide).index() + 1;
-  } else { // direction left
-    index = $(selectedSlide).index() - 1;
-  }
-
-  $slideContent.eq(index).removeClass('mask');
-});
-
-setTimeout(function() {
-  $slideContent.addClass('mask');
-}, 500);
 </script>
 <script>
 $(".page-scroll").on('click', function(e) {
