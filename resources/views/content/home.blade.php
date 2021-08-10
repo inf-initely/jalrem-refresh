@@ -147,7 +147,6 @@
           <header class="row justify-content-center mb-2">
             <div class="col-md-6">
               <h2 class="sub-judul">Kegiatan</h2>
-              <p>Berbagai upaya dilakukan untuk melestarikan jalur rempah, salah satunya dengan melakukan berbagai kegiatan.</p>
             </div>
             <div class="col-md-6 center-v text-end d-desktop">
               <a href="{{ route('informasi') }}" class="btn btn-outline-danger">Lihat Semua Kegiatan</a>
@@ -183,7 +182,6 @@
           <header class="row justify-content-center mb-2">
             <div class="col-lg-6">
               <h2 class="sub-judul">Artikel dan Berita</h2>
-              <p>Berbagai upaya dilakukan untuk melestarikan jalur rempah, salah satunya dengan melakukan berbagai kegiatan.</p>
             </div>
             <div class="col-md-6 center-v text-end  d-desktop">
               <a href="{{ route('articles') }}" class="btn btn-outline-danger">Lihat Semua Berita</a>
@@ -288,7 +286,6 @@
             <div class="col-lg-12">
               <header>
                 <h2 class="sub-judul">Youtube Jalur Rempah</h2>
-                <p>Berbagai media dan publikasi yang terkait Jalur Rempah Nusantara</p>
               </header>
             </div>
           </div>
@@ -325,7 +322,6 @@
             <div class="col-lg-12">
               <header>
                 <h2 class="sub-judul">Twitter Jalur Rempah</h2>
-                <p>Berbagai media dan publikasi yang terkait Jalur Rempah Nusantara</p>
               </header>
             </div>
           </div>
@@ -346,7 +342,6 @@
             <div class="col-lg-12">
               <header>
                 <h2 class="sub-judul">Instagram Jalur Rempah</h2>
-                <p>Berbagai media dan publikasi yang terkait Jalur Rempah Nusantara</p>
               </header>
             </div>
           </div>
