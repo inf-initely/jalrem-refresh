@@ -57,7 +57,7 @@ class VideoController extends Controller
             'meta_english' => $request->meta_english,
             'keywords_english' => $request->keywords_english,
             'id_lokasi' => $request->id_lokasi,
-            'penulis' => $request->contributor != null ? 'Kontributor Umum/Pamong' : 'Admin',
+            'penulis' => $request->contributor != null ? 'kontributor umum/pamong budaya' : 'admin',
             'youtube_key' => $request->youtube_key,
             'slider_file' => $filename_slider,
             'contributor' => $request->contributor,
@@ -116,7 +116,7 @@ class VideoController extends Controller
             'meta_english' => $request->meta_english,
             'keywords_english' => $request->keywords_english,
             'id_lokasi' => $request->id_lokasi,
-            'penulis' => $request->contributor != null ? 'Kontributor Umum/Pamong' : 'Admin',
+            'penulis' => $request->contributor != null ? 'kontributor umum/pamong budaya' : 'admin',
             'slider_file' => $filename_slider,
             'youtube_key' => $request->youtube_key,
             'slider_utama' => $request->slider_utama != null ? true : false,
@@ -137,9 +137,9 @@ class VideoController extends Controller
     {
         $video = Video::findOrFail($videoId);
         if( $video->slider_file != null )
-            File::delete(storage_path('app/public/assets/publi$video/slider', $video->slider_file));   
+            File::delete(storage_path('app/public/assets/video/slider', $video->slider_file));   
 
-        File::delete(storage_path('app/public/assets/publi$video/thumbnail', $video->thumbnail));
+        File::delete(storage_path('app/public/assets/video/thumbnail', $video->thumbnail));
         $video->delete();
 
         return redirect()->route('admin.video.index');

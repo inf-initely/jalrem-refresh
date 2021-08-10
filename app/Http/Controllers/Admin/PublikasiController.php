@@ -64,7 +64,7 @@ class PublikasiController extends Controller
             'keywords_english' => $request->keywords_english,
             'thumbnail' => $filename_thumbnail,
             'id_lokasi' => $request->id_lokasi,
-            'penulis' => $request->contributor != null ? 'Kontributor Umum/Pamong' : 'Admin',
+            'penulis' => $request->contributor != null ? 'kontributor umum/pamong budaya' : 'admin',
             'slider_file' => $filename_slider,
             'slider_utama' => $request->slider_utama != null ? 1 : 0,
             'contributor' => $request->contributor_type,
@@ -138,7 +138,7 @@ class PublikasiController extends Controller
             'keywords_english' => $request->keywords_english,
             'thumbnail' => $filename_thumbnail,
             'id_lokasi' => $request->id_lokasi,
-            'penulis' => $request->contributor != null ? 'Kontributor Umum/Pamong' : 'Admin',
+            'penulis' => $request->contributor != null ? 'kontributor umum/pamong budaya' : 'admin',
             'slider_file' => $filename_slider,
             'slider_utama' => $request->slider_utama != null ? 1 : 0,
             'contributor' => $request->contributor_type,
@@ -156,9 +156,9 @@ class PublikasiController extends Controller
     {
         $publikasi = Publikasi::findOrFail($publicationId);
         if( $publikasi->slider_file != null )
-            File::delete(storage_path('app/public/assets/publi$publikasi/slider', $publikasi->slider_file));   
+            File::delete(storage_path('app/public/assets/publikasi/slider', $publikasi->slider_file));   
 
-        File::delete(storage_path('app/public/assets/publi$publikasi/thumbnail', $publikasi->thumbnail));
+        File::delete(storage_path('app/public/assets/publikasi/thumbnail', $publikasi->thumbnail));
         $publikasi->delete();
 
         return redirect()->route('admin.publication.index');

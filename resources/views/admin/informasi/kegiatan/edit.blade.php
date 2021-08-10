@@ -36,12 +36,12 @@
                       </div>
                       <div class="mb-3">
                         <label for="metaDesID" class="form-label">Meta Description</label>
-                        <textarea required name="meta_indo" class="form-control" id="metaDesEN" rows="2" maxlength="160" placeholder="masukkan meta description">{{ $kegiatan->meta_indo }}</textarea>
+                        <textarea name="meta_indo" class="form-control" id="metaDesEN" rows="2" maxlength="160" placeholder="masukkan meta description">{{ $kegiatan->meta_indo }}</textarea>
                         <little>maks 160 karakter</little>
                       </div>
                       <div class="mb-3">
                         <label for="keywordsID" class="form-label">Keywords</label>
-                        <input required name="keywords_indo" id="keywordsID" type="text" class="form-control tagin" value="{{ $kegiatan->keywords_indo }}">
+                        <input name="keywords_indo" id="keywordsID" type="text" class="form-control tagin" value="{{ $kegiatan->keywords_indo }}">
                         <little>gunakan tombol "," (koma) untuk memisahkan keyword</little>
                       </div>
                   </div>
@@ -170,7 +170,7 @@
                         <div class="px-3 row">
                           <div class="col-lg-4">
                             <div class="form-check">
-                              @if( $kegiatan->penulis == 'Kontributor Umum/Pamong' )
+                              @if( $kegiatan->penulis == 'kontributor umum/pamong budaya' )
                                 <input checked class="form-check-input" type="checkbox" name="contributor" 
                                 value="contributor" id="flexCheckDefault-contributor"">
                               @else
@@ -178,7 +178,7 @@
                                 value="contributor" id="flexCheckDefault-contributor"">
                               @endif
                                 <label class="form-check-label-contributor"" for="flexCheckDefault-contributor"">
-                                Kontributor Umum/Pamong
+                                Kontributor Umum/Pamong budaya
                               </label>
                             </div>
                             <div class="form-check">
@@ -197,18 +197,18 @@
                       <div class="mb-3">
                         <label for="lokasiArtikel" class="form-label">Jenis Kontributor</label>
                         <select name="contributor_type" class="form-select mb-4" aria-label="select kontributor">
-                          @if( $kegiatan->contributor == 'Kontributor Pamong Budaya' )
+                          @if( $artikel->contributor == 'pamong budaya' )
                             <option value="" selected>Jenis Kontributor</option>
-                            <option selected value="Kontributor Pamong Budaya">Kontributor Pamong Budaya</option>
-                            <option value="Kontributor Umum">Kontributor Umum</option>
-                          @elseif( $kegiatan->contributor == 'Kontributor Umum' )
+                            <option selected value="pamong budaya">Kontributor Pamong Budaya</option>
+                            <option value="umum">Kontributor Umum</option>
+                          @elseif( $artikel->contributor == 'umum' )
                             <option value="" selected>Jenis Kontributor</option>
-                            <option value="Kontributor Pamong Budaya">Kontributor Pamong Budaya</option>
-                            <option selected value="Kontributor Umum">Kontributor Umum</option>
+                            <option value="pamong budaya">Kontributor Pamong Budaya</option>
+                            <option selected value="umum">Kontributor Umum</option>
                           @else
                             <option value="" selected>Jenis Kontributor</option>
-                            <option value="Kontributor Pamong Budaya">Kontributor Pamong Budaya</option>
-                            <option value="Kontributor Umum">Kontributor Umum</option>
+                            <option value="pamong budaya">Kontributor Pamong Budaya</option>
+                            <option value="umum">Kontributor Umum</option>
                           @endif
                         </select>
                       </div>

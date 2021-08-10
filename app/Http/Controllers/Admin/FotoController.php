@@ -76,7 +76,7 @@ class FotoController extends Controller
             'keywords_english' => $request->keywords_english,
             'thumbnail' => $filename_thumbnail,
             'id_lokasi' => $request->id_lokasi,
-            'penulis' => $request->penulis != null ? 'Kontributor Umum/Pamong' : 'Admin',
+            'penulis' => $request->contributor != null ? 'kontributor umum/pamong budaya' : 'admin',
             'slider_file' => $filename_slider,
             'slider_foto' => $slider_foto_array,
             'caption_slider_foto' => serialize($request->caption_slider_foto),

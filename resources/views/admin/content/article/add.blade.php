@@ -36,12 +36,12 @@
                       </div>
                       <div class="mb-3">
                         <label for="metaDesID" class="form-label">Meta Description</label>
-                        <textarea required name="meta_indo" class="form-control" id="metaDesID" rows="2" maxlength="160" placeholder="masukkan meta description"></textarea>
+                        <textarea name="meta_indo" class="form-control" id="metaDesID" rows="2" maxlength="160" placeholder="masukkan meta description"></textarea>
                         <little>maks 160 karakter</little>
                       </div>
                       <div class="mb-3">
                         <label for="keywordsID" class="form-label">Keywords</label>
-                        <input required name="keywords_indo" id="keywordsID" type="text" class="form-control tagin">
+                        <input name="keywords_indo" id="keywordsID" type="text" class="form-control tagin">
                         <little>gunakan tombol "," (koma) untuk memisahkan keyword</little>
                       </div>
                   </div>
@@ -166,8 +166,8 @@
                         <label for="lokasiArtikel" class="form-label">Jenis Kontributor</label>
                         <select name="contributor_type" class="form-select mb-4" aria-label="select kontributor">
                           <option selected>Jenis Kontributor</option>
-                          <option value="Kontributor Pamong Budaya">Kontributor Pamong Budaya</option>
-                          <option value="Kontributor Umum">Kontributor Umum</option>
+                          <option value="umum">Kontributor Pamong Budaya</option>
+                          <option value="pamong ">Kontributor Umum</option>
                         </select>
                       </div>
                   </div>
