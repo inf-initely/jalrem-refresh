@@ -82,7 +82,7 @@
             </div>
           </div>
           <div class="row justify-content-center content-jelajahi wrap-div" data-aos="fade-left">
-            <div class="col-12 col-md-6 col-lg-6 text-end center-v mb-2 second-div">
+            <div class="col-12 col-md-6 col-lg-6 text-end center-v mb-2 second-div" style="margin-top: 30px;">
               <header>
                 <h2 class="sub-judul">Jejak Rempah Nusantara</h2>
               </header>
@@ -213,9 +213,9 @@
         </section>
         <section class="container" id="media">
           <div class="row">
-            <section class="col-md-4 center-v">
+            <section class="col-md-6 center-v">
               <header>
-                <h2 class="sub-judul">Konten Jalur Rempah</h2>
+                <h2 class="sub-judul">Konten</h2>
                 <p class="des-sub-judul">Berbagai upaya dilakukan untuk melestarikan jalur rempah, salah satunya dengan melakukan berbagai kegiatan.</p>
                 <p class="des-sub-sub-judul">Di masa lampau, kehadiran para pedagang antarbangsa memiliki peranan penting terhadap perkembangan budaya yang masih bisa kita lihat dan rasakan jejaknya.</p>
                 <a href="{{ route('konten') }}" class="btn btn-outline-danger">
@@ -223,28 +223,22 @@
                 </a>
               </header>
             </section>
-            <section class="col-md-8">
+            <section class="offset-md-1 col-md-5">
               <div class="row">
                 <div class="col-md-6">
                   <div class="card no-border card-media card-media-1">
-                    <div class="card-body">
-                      <img src="assets/img/icon-image.png" width="17.5%">
+                    <div class="card-body text-center">
+                      <img src="assets/img/icon-image.png" width="40%">
                       <p class="judul-media">Foto</p>
-                      <p class="des-media">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor.
-                      </p>
                     </div>
                     <a href="{{ route('photos') }}" class="stretched-link"></a>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="card no-border card-media card-media-2">
-                    <div class="card-body">
-                      <img src="assets/img/icon-publication.png" width="17.5%">
+                    <div class="card-body text-center">
+                      <img src="assets/img/icon-publication.png" width="40%">
                       <p class="judul-media">Publikasi</p>
-                      <p class="des-media">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor.
-                      </p>
                     </div>
                     <a href="{{ route('publications') }}" class="stretched-link"></a>
                   </div>
@@ -253,24 +247,18 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="card no-border card-media card-media-3">
-                    <div class="card-body">
-                      <img src="assets/img/icon-video.png" width="17.5%">
+                    <div class="card-body text-center">
+                      <img src="assets/img/icon-video.png" width="40%">
                       <p class="judul-media">Video</p>
-                      <p class="des-media">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor.
-                      </p>
                     </div>
                     <a href="{{ route('videos') }}" class="stretched-link"></a>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="card no-border card-media card-media-4">
-                    <div class="card-body">
-                      <img src="assets/img/icon-sound.png" width="17.5%">
+                    <div class="card-body text-center">
+                      <img src="assets/img/icon-sound.png" width="40%">
                       <p class="judul-media">Audio</p>
-                      <p class="des-media">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor.
-                      </p>
                     </div>
                     <a href="{{ route('audios') }}" class="stretched-link"></a>
                   </div>
@@ -368,7 +356,8 @@
               <header>
                 <h2 class="sub-judul">Mari Berkontribusi</h2>
               </header>
-              <p>Melihat kembali lintasan jalur perdagangan rempah dari satu titik ke titik lainnya, menghidupkan kembali beragam kisahnya, menghubungkan kembali berbagai jejaknya <br>Melihat kembali lintasan jalur perdagangan rempah dari satu titik ke titik lainnya, menghidupkan kembali beragam kisahnya, menghubungkan kembali berbagai jejaknya <br>Melihat kembali lintasan jalur perdagangan rempah dari satu titik ke titik lainnya, menghidupkan kembali beragam kisahnya, menghubungkan kembali berbagai jejaknya</p>
+              <p>Mari mendukung kegiatan Jalur Rempah dengan berkontribusi di website Jalur Rempah. Kami menerima konten dari kontributor berupa <b>artikel, esai, liputan, cerita foto,</b> hingga <b>video</b>
+                dari sudut pandang sejarah, budaya, gastronomi, arkeologi, sastra, kuliner, film, fesyen, seni, dan hal-hal lain terkait Jalur Rempah yang ada di sekitarmu.</p>
             </div>
             <div class="offset-lg-1 col-lg-6 text-center center-v">
               <a href="{{ route('register') }}" class="btn btn-lg btn-secondary btn-primary-jarem">Jadi Kontributor</a>

@@ -25,10 +25,10 @@
           <h3 class="menu-footer">TENTANG</h3>
           <ul>
             <li>
-              <a href="{{ route('tentangjejak') }}">Jejak</a>
+              <a href="{{ route('tentangjalur') }}">Jalur</a>
             </li>
             <li>
-              <a href="{{ route('tentangjalur') }}">Jalur</a>
+              <a href="{{ route('tentangjejak') }}">Jejak</a>
             </li>
             <li>
               <a href="{{ route('tentangmasadepan') }}">Masa Depan</a>
@@ -60,22 +60,22 @@
           <ul class="list-group list-group-horizontal">
             <li class="list-group-item">
               <a target="_blank" href="https://web.facebook.com/jalurrempahri">
-                <img src="{{ asset('assets/img/icon-media-sosial/icon-facebook.png') }}" width="25px">
+                <img src="{{ asset('assets/img/icon-media-sosial/icon-facebook.svg') }}" width="25px">
               </a>
             </li>
             <li class="list-group-item">
               <a target="_blank" href="https://www.youtube.com/channel/UCyhHsv7jCOiE12pGXbkINoA">
-                <img src="{{ asset('assets/img/icon-media-sosial/icon-youtube.png') }}" width="25px">
+                <img src="{{ asset('assets/img/icon-media-sosial/icon-youtube.svg') }}" width="25px">
               </a>
             </li>
             <li class="list-group-item">
               <a target="_blank" href="https://www.instagram.com/jalurrempahri/?hl=id">
-                <img src="{{ asset('assets/img/icon-media-sosial/icon-instagram.png') }}" width="25px">
+                <img src="{{ asset('assets/img/icon-media-sosial/icon-instagram.svg') }}" width="25px">
               </a>
             </li>
             <li class="list-group-item">
               <a target="_blank" href="https://twitter.com/JalurrempahRI">
-                <img src="{{ asset('assets/img/icon-media-sosial/icon-twitter.png') }}" width="25px">
+                <img src="{{ asset('assets/img/icon-media-sosial/icon-twitter.svg') }}" width="25px">
               </a>
             </li>
           </ul>
@@ -85,7 +85,7 @@
     <div class="wrap-footer-down">
       <div class="row text-center">
         <div class="col-12">
-          <p>Copyright © Jalur Rempah Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi 2021</p>
+          <p>Kompleks Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi, Jalan Jenderal Sudirman, Senayan, Jakarta 10270</p>
         </div>
       </div>
     </div>

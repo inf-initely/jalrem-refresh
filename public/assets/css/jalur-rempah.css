@@ -1488,6 +1488,25 @@ footer {
   width: 115px;
 }
 
+.wrap-baca-juga{
+  padding: 1rem;
+  background-color: #FAF5E9;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-left: 4px solid #8B7D5D;
+}
+
+.wrap-baca-juga p{
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom:  0px;
+}
+
+.wrap-baca-juga a{
+  color: #8B7D5D;
+  text-decoration:  none;
+}
+
 @media (max-width: 991.98px) {
 
   .navbar-nav {
