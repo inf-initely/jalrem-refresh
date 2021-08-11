@@ -10,6 +10,7 @@ use App\Models\Audio;
 use App\Models\Rempah;
 use App\Models\Lokasi;
 use App\Models\KategoriShow;
+use App\Models\Kontributor;
 
 class AudioController extends Controller
 {
@@ -25,8 +26,9 @@ class AudioController extends Controller
         $rempahs = Rempah::all();
         $lokasi = Lokasi::all();
         $kategori_show = KategoriShow::all();
+        $kontributor = Kontributor::all();
 
-        return view('admin.content.audio.add', compact('rempahs', 'lokasi', 'kategori_show'));
+        return view('admin.content.audio.add', compact('rempahs', 'lokasi', 'kategori_show', 'kontributor'));
     }
 
     public function store(Request $request)
@@ -34,7 +36,7 @@ class AudioController extends Controller
         $this->validate($request, [
             'judul_indo' => 'required',
             'konten_indo' => 'required',
-            'cloud_key' => 'required'
+            'cloud_key' => 'required|max:50|string'
         ]);
 
         // UPLOAD FILE SLIDER UTAMA(NULLABLE)
@@ -57,9 +59,10 @@ class AudioController extends Controller
             'meta_english' => $request->meta_english,
             'keywords_english' => $request->keywords_english,
             'id_lokasi' => $request->id_lokasi,
-            'penulis' => $request->contributor != null ? 'kontributor umum/pamong budaya' : 'admin',
+            'penulis' => ($request->contributor != null && $request->id_kontributor != null) ? 'kontributor umum/pamong budaya' : 'admin',
+            'id_kontributor' => ($request->contributor != null && $request->id_kontributor != null) ? $request->id_kontributor : null,
+            'slider_file' => $request->slider_utama != null ? $filename_slider : null,
             'cloud_key' => $request->cloud_key,
-            'slider_file' => $filename_slider,
             'contributor' => $request->contributor_type,
             'status' => $request->publish != null ? 'publikasi' : 'draft'
         ]);
@@ -79,8 +82,9 @@ class AudioController extends Controller
         $lokasi = Lokasi::all();
         $rempahs = Rempah::all();
         $kategori_show = KategoriShow::all();
+        $kontributor = Kontributor::all();
 
-        return view('admin.content.audio.edit', compact('audio', 'lokasi', 'kategori_show', 'rempahs'));
+        return view('admin.content.audio.edit', compact('audio', 'lokasi', 'kategori_show', 'rempahs', 'kontributor'));
     }
 
     public function update(Request $request, $audioId) 
@@ -88,7 +92,7 @@ class AudioController extends Controller
         $this->validate($request, [
             'judul_indo' => 'required',
             'konten_indo' => 'required',
-            'cloud_key' => 'required'
+            'cloud_key' => 'required|max:50|string'
         ]);
 
         $audio = Audio::findOrFail($audioId);
@@ -116,8 +120,9 @@ class AudioController extends Controller
             'meta_english' => $request->meta_english,
             'keywords_english' => $request->keywords_english,
             'id_lokasi' => $request->id_lokasi,
-            'penulis' => $request->contributor != null ? 'kontributor umum/pamong budaya' : 'admin',
-            'slider_file' => $filename_slider,
+            'penulis' => ($request->contributor != null && $request->id_kontributor != null) ? 'kontributor umum/pamong budaya' : 'admin',
+            'id_kontributor' => ($request->contributor != null && $request->id_kontributor != null) ? $request->id_kontributor : null,
+            'slider_file' => $request->slider_utama != null ? $filename_slider : null,
             'cloud_key' => $request->cloud_key,
             'slider_utama' => $request->slider_utama != null ? true : false,
             'contributor' => $request->contributor_type,

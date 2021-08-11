@@ -10,6 +10,7 @@ use App\Models\Video;
 use App\Models\Lokasi;
 use App\Models\Rempah;
 use App\Models\KategoriShow;
+use App\Models\Kontributor;
 
 class VideoController extends Controller
 {
@@ -25,8 +26,9 @@ class VideoController extends Controller
         $rempahs = Rempah::all();
         $lokasi = Lokasi::all();
         $kategori_show = KategoriShow::all();
+        $kontributor = Kontributor::all();
 
-        return view('admin.content.video.add', compact('rempahs', 'lokasi', 'kategori_show'));
+        return view('admin.content.video.add', compact('rempahs', 'lokasi', 'kategori_show', 'kontributor'));
     }
 
     public function store(Request $request)
@@ -34,7 +36,7 @@ class VideoController extends Controller
         $this->validate($request, [
             'judul_indo' => 'required',
             'konten_indo' => 'required',
-            'youtube_key' => 'required'
+            'youtube_key' => 'required|string|max:30'
         ]);
 
         // UPLOAD FILE SLIDER UTAMA(NULLABLE)
@@ -57,9 +59,10 @@ class VideoController extends Controller
             'meta_english' => $request->meta_english,
             'keywords_english' => $request->keywords_english,
             'id_lokasi' => $request->id_lokasi,
-            'penulis' => $request->contributor != null ? 'kontributor umum/pamong budaya' : 'admin',
+            'penulis' => ($request->contributor != null && $request->id_kontributor != null) ? 'kontributor umum/pamong budaya' : 'admin',
+            'id_kontributor' => ($request->contributor != null && $request->id_kontributor != null) ? $request->id_kontributor : null,
+            'slider_file' => $request->slider_utama != null ? $filename_slider : null,
             'youtube_key' => $request->youtube_key,
-            'slider_file' => $filename_slider,
             'contributor' => $request->contributor_type,
             'status' => $request->publish != null ? 'publikasi' : 'draft'
         ]);
@@ -79,8 +82,9 @@ class VideoController extends Controller
         $lokasi = Lokasi::all();
         $rempahs = Rempah::all();
         $kategori_show = KategoriShow::all();
+        $kontributor = Kontributor::all();
 
-        return view('admin.content.video.edit', compact('video', 'lokasi', 'kategori_show', 'rempahs'));
+        return view('admin.content.video.edit', compact('video', 'lokasi', 'kategori_show', 'rempahs', 'kontributor'));
     }
 
     public function update(Request $request, $videoId) 
@@ -88,7 +92,7 @@ class VideoController extends Controller
         $this->validate($request, [
             'judul_indo' => 'required',
             'konten_indo' => 'required',
-            'youtube_key' => 'required' 
+            'youtube_key' => 'required|string|max:30' 
         ]);
 
         $video = Video::findOrFail($videoId);
@@ -97,11 +101,11 @@ class VideoController extends Controller
         // UPLOAD FILE SLIDER UTAMA(NULLABLE)
         if( $request->has('slider') ) {
             $slider = $request->file('slider');
-            $tujuan_upload_file_slider = storage_path('app/public/assets/publikasi/slider');
+            $tujuan_upload_file_slider = storage_path('app/public/assets/video/slider');
             $filename_slider = uniqid() . '.' . $slider->getClientOriginalExtension();
             $slider->move($tujuan_upload_file_slider, $filename_slider);
 
-            File::delete(storage_path('app/public/assets/publikasi/slider', $video->slider_file));            
+            File::delete(storage_path('app/public/assets/video/slider', $video->slider_file));            
         } else {
             $filename_slider = $video->slider_file;
         }
@@ -116,8 +120,9 @@ class VideoController extends Controller
             'meta_english' => $request->meta_english,
             'keywords_english' => $request->keywords_english,
             'id_lokasi' => $request->id_lokasi,
-            'penulis' => $request->contributor != null ? 'kontributor umum/pamong budaya' : 'admin',
-            'slider_file' => $filename_slider,
+            'penulis' => ($request->contributor != null && $request->id_kontributor != null) ? 'kontributor umum/pamong budaya' : 'admin',
+            'id_kontributor' => ($request->contributor != null && $request->id_kontributor != null) ? $request->id_kontributor : null,
+            'slider_file' => $request->slider_utama != null ? $filename_slider : null,
             'youtube_key' => $request->youtube_key,
             'slider_utama' => $request->slider_utama != null ? true : false,
             'contributor' => $request->contributor_type,

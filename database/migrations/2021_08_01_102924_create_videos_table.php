@@ -27,6 +27,7 @@ class CreateVideosTable extends Migration
             $table->string('youtube_key');
             $table->enum('penulis', ['admin', 'kontributor umum/pamong budaya']);
             $table->enum('contributor', ['umum', 'pamong budaya'])->nullable();
+            $table->unsignedInteger('id_kontributor')->nullable();
             $table->string('slider_file')->nullable();
             $table->boolean('slider_utama')->default(false);
             $table->enum('status', ['publikasi', 'draft']);

@@ -45,12 +45,12 @@
                         <td>#</td>
                         <td>{{ $p->created_at->isoFormat('DD/MM/YYYY'); }}</td>
                         <td>{{ $p->judul_indo }}</td>
-                        <td>{{ $p->penulis }}</td>
+                        <td>{{ $p->penulis != 'admin' ? $p->kontributor_relasi->nama : 'admin' }}</td>
                         <td>
                           <span class="badge rounded-pill py-1 px-3 {{ $p->status == 'publikasi' ? 'bg-success' : 'bg-secondary' }}">{{ $p->status == 'publikasi' ? 'Aktif' : 'Draft' }}</span>
                         </td>
                         <td>
-                          <a href="../public/detail-berita.html" class="btn btn-sm btn-outline-primary">
+                          <a href="{{ route('publication_detail', $p->id) }}" class="btn btn-sm btn-outline-primary">
                             View
                           </a>
                           <a href="{{ route('admin.publication.edit', $p->id) }}" class="btn btn-sm btn-outline-info">

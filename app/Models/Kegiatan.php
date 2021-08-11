@@ -11,6 +11,11 @@ class Kegiatan extends Model
 
     protected $guarded = [];
 
+    public function kontributor_relasi()
+    {
+        return $this->belongsTo('App\Models\Kontributor', 'id_kontributor', 'id');
+    }
+
     public function rempahs()
     {
         return $this->belongsToMany('App\Models\Rempah', 'kegiatan_rempah', 'id_kegiatan', 'id_rempah');

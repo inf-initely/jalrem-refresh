@@ -17,9 +17,8 @@ class ArtikelController extends Controller
 
     public function show($articleId)
     {
-        $artikel = Artikel::where('status', 'publikasi')->where('id', $articleId)->first();
-        if( !$artikel )
-            return abort(404);
+        $artikel = Artikel::findOrFail($articleId);
+      
         views($artikel)->record();
         $artikelPopuler = Artikel::orderByViews()->take(3)->get();
         // $artikelTerkait = Artikel::

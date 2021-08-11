@@ -26,8 +26,8 @@
               <header>
                 <h2 class="sub-judul">{{ $artikel->judul_indo }}</h2>
                 <div class="info-penulis">
-                  <span class="txt-penulis" class="mr-3" id="penulis" name="penulis">Ahmad Rifaldi</span> |
-                  <span class="txt-penulis" id="tglArtikel" name="tglArtikel">20 November 2021</span>
+                  <span class="txt-penulis" class="mr-3" id="penulis" name="penulis">{{ $artikel->penulis != 'admin' ? $artikel->kontributor_relasi->nama : 'admin' }}</span> |
+                  <span class="txt-penulis" id="tglArtikel" name="tglArtikel">{{ $artikel->created_at->isoFormat('dddd, D MMMM Y') }}</span>
                 </div>
               </header>
               <article id="desTentang">

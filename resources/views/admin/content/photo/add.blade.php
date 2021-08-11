@@ -87,7 +87,7 @@
                       </div>
                     </div>
                     <div class="mb-4">
-                      <input required name="thumbnail" class="form-control" id="uploadThumbnail" type="file" data-preview=".preview">
+                      <input required name="thumbnail" class="form-control" id="uploadThumbnail" type="file" data-preview=".preview" accept="image/png, image/jpeg>
                     </div>
                     <div class="mb-3">
                       <h5>Panduan unggah gambar</h5>
@@ -122,7 +122,7 @@
                         <div class="col-sm-7">
                           <div class="row">
                             <div class="col-12 mb-2">
-                              <input required class="form-control" name="slider_foto[]" id="uploadThumbnail" type="file" data-preview=".sliderPreview">
+                              <input required class="form-control" name="slider_foto[]" id="uploadThumbnail" type="file" data-preview=".sliderPreview" accept="image/png, image/jpeg">
                             </div>
                             <div class="col-12 mb-2">
                               <textarea name="caption_slider_foto[]" required maxlength="100" class="form-control" id="captionFoto" rows="2" placeholder="masukkan caption disini"></textarea>
@@ -195,48 +195,68 @@
                         <div class="px-3 row">
                           <div class="col-lg-4">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" name="contributor" value="kontributor umum/pamong budaya" id="flexCheckDefault">
-                              <label class="form-check-label" for="flexCheckDefault">
-                                Kontributor Umum/Pamong Budaya
+                              <input class="form-check-input" type="checkbox" value="contributor" id="peng-kontributor" name="contributor">
+                              <label class="form-check-label" for="peng-kontributor">
+                                Kontributor Umum/Pamong
                               </label>
                             </div>
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" name="slider_utama" value="slider_utama" id="flexCheckDefault">
-                              <label class="form-check-label" for="flexCheckDefault">
+                              <input class="form-check-input" type="checkbox" name="slider_utama" value="slider_utama" id="peng-slider">
+                              <label class="form-check-label" for="peng-slider">
                                 Tampilkan di Slider Utama
                               </label>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="mb-3">
-                        <label for="lokasiArtikel" class="form-label">Jenis Kontributor</label>
-                        <select name="contributor_type" class="form-select mb-4" aria-label="select kontributor">
-                          <option value="" selected>Jenis Kontributor</option>
-                          <option value="pamong budaya">Kontributor Pamong Budaya</option>
-                          <option value="umum">Kontributor Umum</option>
-                        </select>
-                      </div>
                   </div>
                 </div>
               </div>
-              <div class="col-lg-12 mb-3">
-                <div class="card shadow mb-4">
-                  <div class="card-header py-3">
-                    <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">Foto Slider</h2>
-                  </div>
-                  <div class="card-body ">
-                    <div class="row">
-                      <div class="col-lg-12 text-center">
-                        <img class="mb-3 text-center" src="{{ asset('assets/admin/img/noimage.jpg') }}" />
-                      </div>
-                    </div>
-                    <div class="mb-4">
-                      <input class="form-control" name="slider" id="uploadSlider" type="file" data-preview=".preview">
-                    </div>
-                  </div>
-                </div>
-              </div>
+              
+             </div>
+             <div id="fotoSlider" class="col-lg-12 mb-3" style="display: none;">
+              <div class="card shadow mb-4">
+               <div class="card-header py-3">
+                 <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">Foto Utama</h2>
+               </div>
+               <div class="card-body ">
+                 <div class="row">
+                   <div class="col-lg-12 text-center">
+                     <img class="foto-slider preview mb-3 text-center" src="{{ asset('assets/admin/img/noimage.jpg') }}" />
+                   </div>
+                 </div>
+                 <div class="mb-4">
+                   <input class="form-control" name="slider" id="uploadSlider" type="file" data-preview=".foto-slider" accept="image/png, image/jpeg" >
+                 </div>
+               </div>
+             </div>
+           </div>
+           <div id="kontributor" class="col-lg-12 mb-3" style="display: none;">
+             <div class="card shadow mb-4">
+               <div class="card-header py-3">
+                 <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">Kontributor</h2>
+               </div>
+               <div class="card-body ">
+                 <div class="mb-3">
+                   <label for="jenisKontributor" class="form-label">Jenis Kontributor</label>
+                     <select name="contributor_type" class="form-select mb-4" aria-label="select kontributor">
+                       <option value="" selected>Jenis Kontributor</option>
+                       <option value="pamong budaya">Kontributor Pamong Budaya</option>
+                       <option value="umum ">Kontributor Umum</option>
+                     </select>
+                 </div>
+                 <div class="mb-3">
+                   <label for="namaKontributor" class="form-label">Nama Kontributor</label>
+                   <select id="namaKontributor" name="id_kontributor" class="form-select select2-style" aria-label="Default select example">
+                     <option value="" selected>Pilih Kontributor</option>
+                     @foreach( $kontributor as $k ) 
+                       <option value="{{ $k->id }}">{{ $k->nama }}</option>
+                     @endforeach
+                   </select>
+                 </div>
+               </div>
+             </div>
+           </div>
               <div class="col-lg-12 mb-5 text-center">
                 <button name="draft" value="draft" class="btn btn-lg btn-secondary mr-3">
                   Save as Draft
@@ -269,7 +289,7 @@
                 <div class="col-sm-7">
                   <div class="row">
                     <div class="col-12 mb-2">
-                      <input required class="form-control" name="slider_foto[]" id="uploadThumbnail" type="file" data-preview=".sliderPreview` + i + `" name="uploadThumbnail` + i + `">
+                      <input required class="form-control" name="slider_foto[]" id="uploadThumbnail" type="file" data-preview=".sliderPreview` + i + `" accept="image/png, image/jpeg">
                     </div>
                     <div class="col-12 mb-2">
                       <textarea name="caption_slider_foto[]"  required maxlength="100" class="form-control" id="captionFoto" rows="2" placeholder="masukkan caption disini" name="captionFoto` + i + `"></textarea>
@@ -302,15 +322,29 @@
     });
     </script>
     <script>
-    $(function() {
-      $("input[data-preview]").change(function() {
-        var input = $(this);
-        var oFReader = new FileReader();
-        oFReader.readAsDataURL(this.files[0]);
-        oFReader.onload = function(oFREvent) {
-          $(input.data('preview')).attr('src', oFREvent.target.result);
-        };
+      $(function() {
+        $("input[data-preview]").change(function() {
+          var input = $(this);
+          var oFReader = new FileReader();
+          oFReader.readAsDataURL(this.files[0]);
+          oFReader.onload = function(oFREvent) {
+            $(input.data('preview')).attr('src', oFREvent.target.result);
+          };
+        });
+      })
+    </script>
+  
+    <script>
+      $(document).ready(function() {
+        $("#peng-kontributor").click(function() {
+          $("#kontributor").toggle();
+          $("#namaKontributor").select2();
+        });
+        $("#peng-slider").click(function() {
+          $("#fotoSlider").toggle();
+  
+        });
+  
       });
-    })
     </script>
 @endsection

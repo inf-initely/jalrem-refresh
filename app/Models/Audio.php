@@ -11,6 +11,11 @@ class Audio extends Model
 
     protected $guarded = [];
 
+    public function kontributor_relasi()
+    {
+        return $this->belongsTo('App\Models\Kontributor', 'id_kontributor', 'id');
+    }
+
     public function rempahs()
     {
         return $this->belongsToMany('App\Models\Rempah', 'audio_rempah', 'id_audio', 'id_rempah');

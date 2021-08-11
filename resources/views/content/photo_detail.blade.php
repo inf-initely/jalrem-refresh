@@ -10,7 +10,7 @@
               <header>
                 <h2 class="sub-judul mb-4" id="judulMedia">{{ $foto->judul_indo }}</h2>
                 <p class="penulis-artikel" id="authorMedia">
-                  {{ $foto->penulis }}
+                  {{ $foto->penulis == 'admin' ? 'admin' : $foto->kontributor_relasi->nama }}
                 </p>
                 <p class="tgl-artikel mb-4" id="tglMedia">
                   {{ $foto->created_at->isoFormat('dddd, D MMMM Y') }}

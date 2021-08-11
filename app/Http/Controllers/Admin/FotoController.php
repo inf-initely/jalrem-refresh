@@ -10,6 +10,7 @@ use App\Models\Foto;
 use App\Models\Rempah;
 use App\Models\KategoriShow;
 use App\Models\Lokasi;
+use App\Models\Kontributor;
 
 
 class FotoController extends Controller
@@ -25,8 +26,9 @@ class FotoController extends Controller
         $rempahs = Rempah::all();
         $lokasi = Lokasi::all();
         $kategori_show = KategoriShow::all();
+        $kontributor = Kontributor::all();
 
-        return view('admin.content.photo.add', compact('rempahs', 'lokasi', 'kategori_show'));
+        return view('admin.content.photo.add', compact('rempahs', 'lokasi', 'kategori_show', 'kontributor'));
     }
 
     public function store(Request $request)
@@ -76,8 +78,9 @@ class FotoController extends Controller
             'keywords_english' => $request->keywords_english,
             'thumbnail' => $filename_thumbnail,
             'id_lokasi' => $request->id_lokasi,
-            'penulis' => $request->contributor != null ? 'kontributor umum/pamong budaya' : 'admin',
-            'slider_file' => $filename_slider,
+            'penulis' => ($request->contributor != null && $request->id_kontributor != null) ? 'kontributor umum/pamong budaya' : 'admin',
+            'id_kontributor' => ($request->contributor != null && $request->id_kontributor != null) ? $request->id_kontributor : null,
+            'slider_file' => $request->slider_utama != null ? $filename_slider : null,
             'slider_foto' => $slider_foto_array,
             'caption_slider_foto' => serialize($request->caption_slider_foto),
             'slider_utama' => $request->slider_utama != null ? 1 : 0,
@@ -99,8 +102,10 @@ class FotoController extends Controller
         $lokasi = Lokasi::all();
         $rempahs = Rempah::all();
         $kategori_show = KategoriShow::all();
+        $kontributor = Kontributor::all();
 
-        return view('admin.content.photo.edit', compact('foto', 'lokasi', 'kategori_show', 'rempahs'));
+
+        return view('admin.content.photo.edit', compact('foto', 'lokasi', 'kategori_show', 'rempahs', 'kontributor'));
     }
 
     public function update(Request $request, $photoId)
@@ -109,7 +114,6 @@ class FotoController extends Controller
             'judul_indo' => 'required',
             'konten_indo' => 'required',
         ]);
-
         $foto = Foto::findOrFail($photoId);
 
         if( $request->has('thumbnail') ) {
@@ -143,8 +147,11 @@ class FotoController extends Controller
         // UPLOAD SLIDER FOTO
         if( $request->has('slider_foto') ) {
             $slider_foto_array = [];
+            // for( $i = 0; $i < count($request->slider_foro); $i++ ) }{
+
+            // }
             foreach( $request->file('slider_foto') as $slider_foto ) {
-                $tujuan_upload_file_slider_foto = 'assets/foto/slider_foto';
+                $tujuan_upload_file_slider_foto = storage_path('app/public/assets/foto/slider_foto');
                 $filename_slider_foto = uniqid() . '.' . $slider_foto->getClientOriginalExtension();
                 $slider_foto->move($tujuan_upload_file_slider_foto, $filename_slider_foto);
                 $slider_foto_array[] = $filename_slider_foto;
@@ -169,8 +176,9 @@ class FotoController extends Controller
             'keywords_english' => $request->keywords_english,
             'thumbnail' => $filename_thumbnail,
             'id_lokasi' => $request->id_lokasi,
-            'penulis' => $request->contributor != null ? 'kontributor umum/pamong budaya' : 'admin',
-            'slider_file' => $filename_slider,
+            'penulis' => ($request->contributor != null && $request->id_kontributor != null) ? 'kontributor umum/pamong budaya' : 'admin',
+            'id_kontributor' => ($request->contributor != null && $request->id_kontributor != null) ? $request->id_kontributor : null,
+            'slider_file' => $request->slider_utama != null ? $filename_slider : null,
             'slider_foto' => $slider_foto_array,
             'caption_slider_foto' => serialize($request->caption_slider_foto),
             'slider_utama' => $request->slider_utama != null ? true : false,

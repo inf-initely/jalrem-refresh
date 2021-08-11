@@ -86,7 +86,7 @@
                   </div>
                 </div>
                 <div class="mb-4">
-                  <input class="form-control" name="thumbnail" id="uploadThumbnail" type="file" data-preview=".preview">
+                  <input class="form-control" name="thumbnail" id="uploadThumbnail" type="file" data-preview=".preview" accept="image/png, image/jpeg">
                 </div>
                 <div class="mb-3">
                   <h5>Panduan unggah gambar</h5>
@@ -201,7 +201,7 @@
           <div id="fotoSlider" class="col-lg-12 mb-3" style="display: {{ $artikel->slider_file != null ? 'initial' : 'none' }};">
             <div class="card shadow mb-4">
               <div class="card-header py-3">
-                <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">Foto Slider</h2>
+                <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">Foto Utama</h2>
               </div>
               <div class="card-body ">
                 <div class="row">
@@ -214,7 +214,7 @@
                   </div>
                 </div>
                 <div class="mb-4">
-                  <input class="form-control" name="slider" id="uploadSlider" type="file" data-preview=".preview">
+                  <input class="form-control" name="slider" id="uploadSlider" type="file" data-preview=".preview" accept="image/png, image/jpeg">
                 </div>
               </div>
             </div>

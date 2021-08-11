@@ -11,6 +11,11 @@ class Video extends Model
 
     protected $guarded = [];
 
+    public function kontributor_relasi()
+    {
+        return $this->belongsTo('App\Models\Kontributor', 'id_kontributor', 'id');
+    }
+
     public function rempahs()
     {
         return $this->belongsToMany('App\Models\Rempah', 'video_rempah', 'id_video', 'id_rempah');

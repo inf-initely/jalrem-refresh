@@ -27,6 +27,7 @@ class CreateFotosTable extends Migration
             $table->unsignedInteger('id_lokasi')->nullable();
             $table->enum('penulis', ['admin', 'kontributor umum/pamong budaya']);
             $table->enum('contributor', ['umum', 'pamong budaya'])->nullable();
+            $table->unsignedInteger('id_kontributor')->nullable();
             $table->json('slider_foto');
             $table->json('caption_slider_foto');
             $table->string('slider_file')->nullable();

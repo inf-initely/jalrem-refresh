@@ -13,6 +13,11 @@ class Publikasi extends Model implements Viewable
 
     protected $guarded = [];
 
+    public function kontributor_relasi()
+    {
+        return $this->belongsTo('App\Models\Kontributor', 'id_kontributor', 'id');
+    }
+
     public function rempahs()
     {
         return $this->belongsToMany('App\Models\Rempah', 'publikasi_rempah', 'id_publikasi', 'id_rempah');

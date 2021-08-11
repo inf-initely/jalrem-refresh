@@ -14,4 +14,11 @@ class AudioController extends Controller
 
         return view('content.audios', compact('audio'));
     }
+
+    public function show($audioId)
+    {
+        $audio = Audio::findOrFail($audioId);
+
+        return view('content.audio_detail', compact('audio'));
+    }
 }

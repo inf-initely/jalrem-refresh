@@ -14,6 +14,11 @@ class Foto extends Model
         'caption_slider_foto' => 'array',
     ];
 
+    public function kontributor_relasi()
+    {
+        return $this->belongsTo('App\Models\Kontributor', 'id_kontributor', 'id');
+    }
+
     protected $guarded = [];
 
     public function rempahs()

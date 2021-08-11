@@ -210,7 +210,7 @@
                     <div class="mb-3">
                       <label for="jenisKontributor" class="form-label">Jenis Kontributor</label>
                         <select name="contributor_type" class="form-select mb-4" aria-label="select kontributor">
-                          <option selected>Jenis Kontributor</option>
+                          <option value="" selected>Jenis Kontributor</option>
                           <option value="pamong budaya">Kontributor Pamong Budaya</option>
                           <option value="umum ">Kontributor Umum</option>
                         </select>

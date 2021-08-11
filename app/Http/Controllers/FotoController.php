@@ -17,7 +17,7 @@ class FotoController extends Controller
 
     public function show($photoId)
     {
-        $foto = Foto::where('status', 'publikasi')->where('id', $photoId)->first();
+        $foto = Foto::findOrFail($photoId);
 
         return view('content.photo_detail', compact('foto'));
     }

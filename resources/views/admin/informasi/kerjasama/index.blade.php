@@ -45,7 +45,7 @@
                     <td>#</td>
                     <td>{{ $k->created_at->isoFormat('DD/MM/YYYY'); }}</td>
                     <td>{{ $k->judul_indo }}</td>
-                    <td>{{ $k->penulis }}</td>
+                    <td>{{ $k->penulis != 'admin' ? $k->kontributor_relasi->nama : 'admin' }}</td>
                     <td>
                       <span class="badge rounded-pill py-1 px-3 {{ $k->status == 'publikasi' ? 'bg-success' : 'bg-secondary' }}">{{ $k->status == 'publikasi' ? 'Aktif' : 'Draft' }}</span>
                     </td>

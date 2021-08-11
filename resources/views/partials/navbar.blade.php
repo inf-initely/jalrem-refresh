@@ -54,7 +54,7 @@
     </div>
   </div>
 </nav>
-@elseif( Request::segment(1) == 'konten' || Request::segment(1) == 'kegiatan' || Request::segment(1) == 'foto' )
+@elseif( Request::segment(1) == 'konten' || Request::segment(1) == 'kegiatan' || Request::segment(1) == 'foto' || Request::segment(1) == 'video' )
 <nav class="navbar navbar-expand-lg navbar-dark bg-light sticky-top bg-trans">
   <div class="container">
     <a class="navbar-brand" href="{{ route('home') }}">

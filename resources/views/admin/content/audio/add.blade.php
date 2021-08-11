@@ -109,8 +109,8 @@
                       @foreach( $rempahs as $r )
                       <div class="col-lg-4">
                         <div class="form-check">
-                          <input class="form-check-input-{{ $r->id }}" type="checkbox" name="rempah[]" value="{{ $r->id }}" id="flexCheckDefault-{{ $r->id }}"">
-                          <label class="form-check-label-{{ $r->id }}"" for="flexCheckDefault-{{ $r->id }}"">
+                          <input class="form-check-input" type="checkbox" name="rempah[]" value="{{ $r->id }}" id="flexCheckDefault">
+                          <label class="form-check-label" for="flexCheckDefault">
                             {{ $r->jenis_rempah }}
                           </label>
                         </div>
@@ -138,48 +138,66 @@
                     <div class="px-3 row">
                       <div class="col-lg-4">
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" name="contributor" value="Kontributor Umum/Pamong" id="flexCheckDefault">
-                          <label class="form-check-label" for="flexCheckDefault">
+                          <input class="form-check-input" type="checkbox" name="contributor" value="Kontributor Umum/Pamong" id="peng-kontributor">
+                          <label class="form-check-label" for="peng-kontributor">
                             Kontributor Umum/Pamong
                           </label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" name="slider_utama" value="slider_utama" id="flexCheckDefault">
-                          <label class="form-check-label" for="flexCheckDefault">
+                          <input class="form-check-input" type="checkbox" name="slider_utama" value="slider_utama" id="peng-slider">
+                          <label class="form-check-label" for="peng-slider">
                             Tampilkan di Slider Utama
                           </label>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div class="mb-3">
-                    <label for="lokasiArtikel" class="form-label">Jenis Kontributor</label>
-                    <select name="contributor_type" class="form-select mb-4" aria-label="select kontributor">
-                      <option value="" selected>Jenis Kontributor</option>
-                      <option value="pamong budaya">Kontributor Pamong Budaya</option>
-                      <option value="umum">Kontributor Umum</option>
-                    </select>
-                  </div>
               </div>
             </div>
           </div>
-          <div class="col-lg-12 mb-3">
+          <div id="fotoSlider" class="col-lg-12 mb-3" style="display: none;">
             <div class="card shadow mb-4">
-              <div class="card-header py-3">
-                <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">Foto Slider</h2>
-              </div>
-              <div class="card-body ">
-                <div class="row">
-                  <div class="col-lg-12 text-center">
-                    <img class="preview mb-3 text-center" src="{{ asset('assets/admin/img/noimage.jpg') }}" />
-                  </div>
-                </div>
-                <div class="mb-4">
-                  <input class="form-control" name="slider" id="uploadSlider" type="file" data-preview=".preview">
-                </div>
-              </div>
-            </div>
-          </div>
+             <div class="card-header py-3">
+               <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">Foto Utama</h2>
+             </div>
+             <div class="card-body ">
+               <div class="row">
+                 <div class="col-lg-12 text-center">
+                   <img class="foto-slider preview mb-3 text-center" src="{{ asset('assets/admin/img/noimage.jpg') }}" />
+                 </div>
+               </div>
+               <div class="mb-4">
+                 <input class="form-control" name="slider" id="uploadSlider" type="file" data-preview=".foto-slider" accept="image/png, image/jpeg" >
+               </div>
+             </div>
+           </div>
+         </div>
+         <div id="kontributor" class="col-lg-12 mb-3" style="display: none;">
+           <div class="card shadow mb-4">
+             <div class="card-header py-3">
+               <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">Kontributor</h2>
+             </div>
+             <div class="card-body ">
+               <div class="mb-3">
+                 <label for="jenisKontributor" class="form-label">Jenis Kontributor</label>
+                   <select name="contributor_type" class="form-select mb-4" aria-label="select kontributor">
+                     <option value="" selected>Jenis Kontributor</option>
+                     <option value="pamong budaya">Kontributor Pamong Budaya</option>
+                     <option value="umum ">Kontributor Umum</option>
+                   </select>
+               </div>
+               <div class="mb-3">
+                 <label for="namaKontributor" class="form-label">Nama Kontributor</label>
+                 <select id="namaKontributor" name="id_kontributor" class="form-select select2-style" aria-label="Default select example">
+                   <option value="" selected>Pilih Kontributor</option>
+                   @foreach( $kontributor as $k ) 
+                     <option value="{{ $k->id }}">{{ $k->nama }}</option>
+                   @endforeach
+                 </select>
+               </div>
+             </div>
+           </div>
+         </div>
           <div class="col-lg-12 mb-5 text-center">
             <button name="draft" value="draft" class="btn btn-lg btn-secondary mr-3">
               Save as Draft
@@ -192,4 +210,33 @@
       </div>
       <!-- /.container-fluid -->
     </form>
+@endsection
+
+@section('js')
+  <script>
+    $(function() {
+      $("input[data-preview]").change(function() {
+        var input = $(this);
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(this.files[0]);
+        oFReader.onload = function(oFREvent) {
+          $(input.data('preview')).attr('src', oFREvent.target.result);
+        };
+      });
+    })
+  </script>
+
+  <script>
+    $(document).ready(function() {
+      $("#peng-kontributor").click(function() {
+        $("#kontributor").toggle();
+        $("#namaKontributor").select2();
+      });
+      $("#peng-slider").click(function() {
+        $("#fotoSlider").toggle();
+
+      });
+
+    });
+  </script>
 @endsection

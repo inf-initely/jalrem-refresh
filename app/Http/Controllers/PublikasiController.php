@@ -17,11 +17,10 @@ class PublikasiController extends Controller
 
     public function show($publicationId)
     {
-        $publikasi = Publikasi::where('status', 'publikasi')->where('id', $publicationId)->first();
-        if( !$publikasi )
-            return abort(404);
+        $publikasi = Publikasi::findOrFail($publicationId);
+        
         views($publikasi)->record();
-        $publikasiPopuler = Publikasi::orderByViews()->take(3)->get();
+        $publikasiPopuler = Publikasi::where('status', 'publikasi')->orderByViews()->take(3)->get();
         // $artikelTerkait = Publikasi:
         $publikasiTerbaru = Publikasi::where('status', 'publikasi')->orderBy('created_at', 'desc')->take(3)->get();
 

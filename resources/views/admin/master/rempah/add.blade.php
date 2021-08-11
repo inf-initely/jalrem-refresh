@@ -17,6 +17,11 @@
             <div class="row">
               <div class="col-lg-12 mb-3">
                 <div class="card shadow mb-4">
+                  @if (count($errors) > 0)
+                    <div class="alert alert-danger" role="alert">
+                      {{ $errors->first() }} 
+                    </div>
+                  @endif
                   <div class="card-header py-3">
                     <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">Jenis Rempah</h2>
                   </div>

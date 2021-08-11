@@ -37,6 +37,7 @@
                         </tr>
                       </thead>
                       <tbody>
+                        @foreach( $rempah as $r )
                         <tr>
                           <td>#</td>
                           <td>Cengkeh</td>
@@ -49,54 +50,7 @@
                             </button>
                           </td>
                         </tr>
-                        <tr>
-                          <td>#</td>
-                          <td>Pala</td>
-                          <td>
-                            <a href="edit-konten-artikel.html" class="btn btn-sm btn-outline-info">
-                              Edit
-                            </a>
-                            <button class="btn btn-sm btn-outline-danger btn-hapus">
-                              Hapus
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>#</td>
-                          <td>Kemiri</td>
-                          <td>
-                            <a href="edit-konten-artikel.html" class="btn btn-sm btn-outline-info">
-                              Edit
-                            </a>
-                            <button class="btn btn-sm btn-outline-danger btn-hapus">
-                              Hapus
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>#</td>
-                          <td>Kayu Manis</td>
-                          <td>
-                            <a href="edit-konten-artikel.html" class="btn btn-sm btn-outline-info">
-                              Edit
-                            </a>
-                            <button class="btn btn-sm btn-outline-danger btn-hapus">
-                              Hapus
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>#</td>
-                          <td>Merica</td>
-                          <td>
-                            <a href="edit-konten-artikel.html" class="btn btn-sm btn-outline-info">
-                              Edit
-                            </a>
-                            <button class="btn btn-sm btn-outline-danger btn-hapus">
-                              Hapus
-                            </button>
-                          </td>
-                        </tr>
+                        @endforeach
                       </tbody>
                     </table>
                   </div>
