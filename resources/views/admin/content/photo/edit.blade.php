@@ -115,6 +115,31 @@
                   <div class="card-body row" id="fotoSliderBody">
                     @php
                     for( $i = 0; $i < count(unserialize($foto->slider_foto)); $i++ ) : @endphp
+                    @if( $i != 0 )
+                      <div class="col-md-12 wrapper-foto-slider" data-id="{{ $i + 1 }}">
+                        <div class="row">
+                          <div class="col-sm-4">
+                            <img class="sliderPreview" src="{{ asset('storage/assets/foto/slider_foto/' . unserialize($foto->slider_foto)[$i] ) }}" width="100%">
+                          </div>
+                          <div class="col-sm-7">
+                            <div class="row">
+                              <div class="col-12 mb-2">
+                                <input value="{{ asset('storage/assets/foto/slider_foto/' . unserialize($foto->slider_foto)[$i]) }}" class="form-control" name="slider_foto[]" id="uploadThumbnail" type="file" data-preview=".sliderPreview" accept="image/png, image/jpeg">
+                              </div>
+                              <div class="col-12 mb-2">
+                                <textarea name="caption_slider_foto[]" required maxlength="100" class="form-control" id="captionFoto" rows="2" placeholder="masukkan caption disini">{{ unserialize($foto->caption_slider_foto)[$i] }}</textarea>
+                                <little><sup>*</sup> maksimsal 100 karakter</little>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-sm-1">
+                            <button type="button" class="btn btn-danger btn-hapus-foto" {{ $i == 0 ? 'disabled' : '' }} data-id="{{ $i+1 }}">
+                              <i class="fa fa-trash-alt"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    @else
                     <div class="col-md-12 wrapper-foto-slider">
                       <div class="row">
                         <div class="col-sm-4">
@@ -138,6 +163,7 @@
                         </div>
                       </div>
                     </div>
+                    @endif
                     @php
                         endfor;
                     @endphp
