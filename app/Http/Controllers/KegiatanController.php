@@ -15,8 +15,11 @@ class KegiatanController extends Controller
         return view('content.kegiatan', compact('kegiatan'));
     }
 
-    public function show()
+    public function show($kegiatanId)
     {
-        return view('content.kegiatan_detail');
+        $kegiatan = Kegiatan::findOrFail($kegiatanId);
+        $kegiatanSaatIni = Kegiatan::where('status', 'publikasi')->take(3)->get();
+
+        return view('content.kegiatan_detail', compact('kegiatan', 'kegiatanSaatIni'));
     }
 }

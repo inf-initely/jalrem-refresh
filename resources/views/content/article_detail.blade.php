@@ -34,31 +34,33 @@
                 <img class="mb-3 mt-3" src="{{ asset('storage/assets/artikel/thumbnail/' . $artikel->thumbnail) }}" width="100%">
                 {!! $artikel->konten_indo !!}
               </article>
+              @if( $artikel->penulis != 'admin' )
               <div id="disclaimer" class="mt-4">
                 <p>Konten ini dibuat oleh kontributor website Jalur Rempah. <br>
                   Laman Kontributor merupakan platform dari website Jalur Rempah yang digagas khusus untuk masyarakat luas untuk mengirimkan konten (berupa tulisan, foto, dan video) dan membagikan pengalamannya tentang Jalur Rempah. Setiap konten dari kontributor adalah tanggung jawab kontributor sepenuhnya.</p>
               </div>
+              @endif
               <div id="share">
                 <h3>Share :</h3>
                 <ul class="list-group list-group-horizontal">
                   <li class="list-group-item">
                     <a href="#">
-                      <img src="assets/img/icon-media-sosial/icon-whatsapp.svg" width="30px">
+                      <img src="{{ asset('assets/img/icon-media-sosial/icon-whatsapp.svg') }}" width="30px">
                     </a>
                   </li>
                   <li class="list-group-item">
                     <a href="#">
-                      <img src="assets/img/icon-media-sosial/icon-facebook.svg" width="30px">
+                      <img src="{{ asset('assets/img/icon-media-sosial/icon-facebook.svg') }}" width="30px">
                     </a>
                   </li>
                   <li class="list-group-item">
                     <a href="#">
-                      <img src="assets/img/icon-media-sosial/icon-line.svg" width="30px">
+                      <img src="{{ asset('assets/img/icon-media-sosial/icon-line.svg') }}" width="30px">
                     </a>
                   </li>
                   <li class="list-group-item">
                     <a href="#">
-                      <img src="assets/img/icon-media-sosial/icon-linkedin.svg" width="30px">
+                      <img src="{{ asset('assets/img/icon-media-sosial/icon-linkedin.svg') }}" width="30px">
                     </a>
                   </li>
                 </ul>

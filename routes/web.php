@@ -28,6 +28,7 @@ use App\Http\Controllers\MasaDepanController;
 use App\Http\Controllers\InformasiController;
 use App\Http\Controllers\KontenController;
 use App\Http\Controllers\KegiatanController;
+use App\Http\Controllers\KerjasamaController;
 
 use App\Http\Controllers\AuthController;
 /*
@@ -138,3 +139,8 @@ Route::post('/login', [AuthController::class, 'login_post'])->name('login_post')
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/register', [AuthController::class, 'register_post'])->name('register_post');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});
