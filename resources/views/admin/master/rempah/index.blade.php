@@ -37,21 +37,66 @@
                         </tr>
                       </thead>
                       <tbody>
-                        @foreach( $rempah as $r )
                         <tr>
                           <td>#</td>
-                          <td>{{ $r->jenis_rempah }}</td>
+                          <td>Cengkeh</td>
                           <td>
-                            <a href="{{ route('admin.rempah.edit', $r->id) }}" class="btn btn-sm btn-outline-info">
+                            <a href="edit-konten-artikel.html" class="btn btn-sm btn-outline-info">
                               Edit
                             </a>
-                            <a href="{{ route('admin.rempah.delete', $r->id) }}" class="btn btn-sm btn-outline-danger btn-hapus">
+                            <button class="btn btn-sm btn-outline-danger btn-hapus">
                               Hapus
-                            </a>
+                            </button>
                           </td>
                         </tr>
-                        @endforeach
-                        
+                        <tr>
+                          <td>#</td>
+                          <td>Pala</td>
+                          <td>
+                            <a href="edit-konten-artikel.html" class="btn btn-sm btn-outline-info">
+                              Edit
+                            </a>
+                            <button class="btn btn-sm btn-outline-danger btn-hapus">
+                              Hapus
+                            </button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>#</td>
+                          <td>Kemiri</td>
+                          <td>
+                            <a href="edit-konten-artikel.html" class="btn btn-sm btn-outline-info">
+                              Edit
+                            </a>
+                            <button class="btn btn-sm btn-outline-danger btn-hapus">
+                              Hapus
+                            </button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>#</td>
+                          <td>Kayu Manis</td>
+                          <td>
+                            <a href="edit-konten-artikel.html" class="btn btn-sm btn-outline-info">
+                              Edit
+                            </a>
+                            <button class="btn btn-sm btn-outline-danger btn-hapus">
+                              Hapus
+                            </button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>#</td>
+                          <td>Merica</td>
+                          <td>
+                            <a href="edit-konten-artikel.html" class="btn btn-sm btn-outline-info">
+                              Edit
+                            </a>
+                            <button class="btn btn-sm btn-outline-danger btn-hapus">
+                              Hapus
+                            </button>
+                          </td>
+                        </tr>
                       </tbody>
                     </table>
                   </div>

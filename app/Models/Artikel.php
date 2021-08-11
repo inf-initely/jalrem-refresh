@@ -13,6 +13,11 @@ class Artikel extends Model implements Viewable
     
     protected $guarded = [];
 
+    public function kontributor_relasi()
+    {
+        return $this->belongsTo('App\Models\Kontributor', 'id_kontributor', 'id');
+    }
+
     public function lokasi()
     {
         return $this->belongsTo('App\Models\Lokasi', 'id_lokasi', 'id');

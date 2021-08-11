@@ -10,6 +10,7 @@ use App\Models\Artikel;
 use App\Models\Rempah;
 use App\Models\Lokasi;
 use App\Models\KategoriShow;
+use App\Models\Kontributor;
 
 class ArtikelController extends Controller
 {
@@ -25,8 +26,9 @@ class ArtikelController extends Controller
         $rempahs = Rempah::all();
         $lokasi = Lokasi::all();
         $kategori_show = KategoriShow::all();
+        $kontributor = Kontributor::all();
 
-        return view('admin.content.article.add', compact('rempahs', 'lokasi', 'kategori_show'));
+        return view('admin.content.article.add', compact('rempahs', 'lokasi', 'kategori_show', 'kontributor'));
     }
 
     public function store(Request $request)
@@ -64,8 +66,9 @@ class ArtikelController extends Controller
             'keywords_english' => $request->keywords_english,
             'thumbnail' => $filename_thumbnail,
             'id_lokasi' => $request->id_lokasi,
-            'penulis' => $request->contributor != null ? 'kontributor umum/pamong budaya' : 'admin',
-            'slider_file' => $filename_slider,
+            'penulis' => ($request->contributor != null && $request->id_kontributor != null) ? 'kontributor umum/pamong budaya' : 'admin',
+            'id_kontributor' => ($request->contributor != null && $request->id_kontributor != null) ? $request->id_kontributor : null,
+            'slider_file' => $request->slider_utama != null ? $filename_slider : null,
             'slider_utama' => $request->slider_utama != null ? 1 : 0,
             'contributor' => $request->contributor_type,
             'status' => $request->publish != null ? 'publikasi' : 'draft'
@@ -87,8 +90,9 @@ class ArtikelController extends Controller
         $rempahs = Rempah::all();
         $lokasi = Lokasi::all();
         $kategori_show = KategoriShow::all();
+        $kontributor = Kontributor::all();
 
-        return view('admin.content.article.edit', compact('artikel', 'rempahs', 'lokasi', 'kategori_show'));
+        return view('admin.content.article.edit', compact('artikel', 'rempahs', 'lokasi', 'kategori_show', 'kontributor'));
     }
 
     public function update(Request $request, $articleId)
@@ -105,7 +109,7 @@ class ArtikelController extends Controller
             ]);
 
             $thumbnail = $request->file('thumbnail');
-            $tujuan_upload_file = 'assets/artikel/thumbnail';
+            $tujuan_upload_file = storage_path('app/public/assets/artikel/thumbnail');
             $filename_thumbnail = uniqid() . '.' . $thumbnail->getClientOriginalExtension();
             $thumbnail->move($tujuan_upload_file, $filename_thumbnail);
 
@@ -135,8 +139,9 @@ class ArtikelController extends Controller
             'keywords_english' => $request->keywords_english,
             'thumbnail' => $filename_thumbnail,
             'id_lokasi' => $request->id_lokasi,
-            'penulis' => $request->contributor != null ? 'kontributor umum/pamong budaya' : 'admin',
-            'slider_file' => $filename_slider,
+            'penulis' => $request->contributor != null && $request->id_kontributor != null ? 'kontributor umum/pamong budaya' : 'admin',
+            'id_kontributor' => $request->contributor != null && $request->id_kontributor != null ? $request->id_kontributor : null,
+            'slider_file' => $request->slider_utama != null ? $filename_slider : null,
             'slider_utama' => $request->slider_utama != null ? 1 : 0,
             'contributor' => $request->contributor_type,
             'status' => $request->publish != null ? 'publikasi' : 'draft'

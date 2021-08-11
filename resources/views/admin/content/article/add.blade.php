@@ -28,20 +28,20 @@
                   <div class="card-body">
                       <div class="mb-3">
                         <label for="judulArtikelBahasa" class="form-label">Judul</label>
-                        <input required type="text" name="judul_indo" class="form-control" id="judulArtikelBahasa" placeholder="masukkan judul artikel">
+                        <input required value="{{ old('judul_indo') }}" type="text" name="judul_indo" class="form-control" id="judulArtikelBahasa" placeholder="masukkan judul artikel">
                       </div>
                       <div class="mb-3">
                         <label for="isiArtikelBahasa" class="form-label">Isi Konten</label>
-                        <textarea required class="form-control editor" name="konten_indo" id="editor" rows="8"></textarea>
+                        <textarea required class="form-control editor" name="konten_indo" id="editor" rows="8">{{ old('konten_indo') }}</textarea>
                       </div>
                       <div class="mb-3">
                         <label for="metaDesID" class="form-label">Meta Description</label>
-                        <textarea name="meta_indo" class="form-control" id="metaDesID" rows="2" maxlength="160" placeholder="masukkan meta description"></textarea>
+                        <textarea name="meta_indo" class="form-control" id="metaDesID" rows="2" maxlength="160" placeholder="masukkan meta description">{{ old('meta_indo') }}</textarea>
                         <little>maks 160 karakter</little>
                       </div>
                       <div class="mb-3">
                         <label for="keywordsID" class="form-label">Keywords</label>
-                        <input name="keywords_indo" id="keywordsID" type="text" class="form-control tagin">
+                        <input name="keywords_indo" value="{{ old('keywords_indo') }}" id="keywordsID" type="text" class="form-control tagin">
                         <little>gunakan tombol "," (koma) untuk memisahkan keyword</little>
                       </div>
                   </div>
@@ -55,20 +55,20 @@
                   <div class="card-body">
                       <div class="mb-3">
                         <label for="judulArtikelEnglish" class="form-label">Judul</label>
-                        <input type="text" class="form-control" name="judul_english" id="judulArtikelEnglish" placeholder="masukkan judul artikel">
+                        <input value="{{ old('judul_english') }}" type="text" class="form-control" name="judul_english" id="judulArtikelEnglish" placeholder="masukkan judul artikel">
                       </div>
                       <div class="mb-3">
                         <label for="isiArtikelEnglish" class="form-label">Isi Konten</label>
-                        <textarea class="form-control editor" name="konten_english" id="isiArtikelEnglish" rows="8"></textarea>
+                        <textarea class="form-control editor" name="konten_english" id="isiArtikelEnglish" rows="8">{{ old('konten_english') }}</textarea>
                       </div>
                       <div class="mb-3">
                         <label for="metaDesEN" class="form-label">Meta Description</label>
-                        <textarea name="meta_english" class="form-control" id="metaDesEN" rows="2" maxlength="160" placeholder="masukkan meta description"></textarea>
+                        <textarea name="meta_english" class="form-control" id="metaDesEN" rows="2" maxlength="160" placeholder="masukkan meta description">{{ old('meta_english') }}</textarea>
                         <little>maks 160 karakter</little>
                       </div>
                       <div class="mb-3">
                         <label for="keywordsEN" class="form-label">Keywords</label>
-                        <input name="keywords_english" id="keywordsEN" type="text" class="form-control tagin" data-separator=",">
+                        <input value="{{ old('keywords_english') }}" name="keywords_english" id="keywordsEN" type="text" class="form-control tagin" data-separator=",">
                         <little>gunakan tombol "," (koma) untuk memisahkan keyword</little>
                       </div>
                   </div>
@@ -86,7 +86,7 @@
                       </div>
                     </div>
                     <div class="mb-4">
-                      <input required class="form-control" id="uploadThumbnail" name="thumbnail" type="file" data-preview=".foto-utama" accept="image/png, image/jpeg">
+                      <input required value="{{ old('thumbnail') }}" class="form-control" id="uploadThumbnail" name="thumbnail" type="file" data-preview=".foto-utama" accept="image/png, image/jpeg">
                     </div>
                     <div class="mb-3">
                       <h5>Panduan unggah gambar</h5>
@@ -187,7 +187,7 @@
               <div id="fotoSlider" class="col-lg-12 mb-3" style="display: none;">
                  <div class="card shadow mb-4">
                   <div class="card-header py-3">
-                    <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">Foto Slider</h2>
+                    <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">Foto Utama</h2>
                   </div>
                   <div class="card-body ">
                     <div class="row">
@@ -211,19 +211,17 @@
                       <label for="jenisKontributor" class="form-label">Jenis Kontributor</label>
                         <select name="contributor_type" class="form-select mb-4" aria-label="select kontributor">
                           <option selected>Jenis Kontributor</option>
-                          <option value="umum">Kontributor Pamong Budaya</option>
-                          <option value="pamong ">Kontributor Umum</option>
+                          <option value="pamong budaya">Kontributor Pamong Budaya</option>
+                          <option value="umum ">Kontributor Umum</option>
                         </select>
                     </div>
                     <div class="mb-3">
                       <label for="namaKontributor" class="form-label">Nama Kontributor</label>
-                      <select id="namaKontributor" class="form-select select2-style" aria-label="Default select example">
-                        <option selected>Pilih Kontributor</option>
-                        <option value="1">Kontributor 1</option>
-                        <option value="2">Kontributor 2</option>
-                        <option value="3">Kontributo 3</option>
-                        <option value="4">Kontributo 4</option>
-                        <option value="5">Kontributo 5</option>
+                      <select id="namaKontributor" name="id_kontributor" class="form-select select2-style" aria-label="Default select example">
+                        <option value="" selected>Pilih Kontributor</option>
+                        @foreach( $kontributor as $k ) 
+                          <option value="{{ $k->id }}">{{ $k->nama }}</option>
+                        @endforeach
                       </select>
                     </div>
                   </div>

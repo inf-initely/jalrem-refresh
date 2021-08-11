@@ -28,20 +28,20 @@
                   <div class="card-body">
                       <div class="mb-3">
                         <label for="judulArtikelBahasa" class="form-label">Judul</label>
-                        <input required type="text" name="judul_indo" class="form-control" id="judulArtikelBahasa" placeholder="masukkan judul kerjasama">
+                        <input required value="{{ old('judul_indo') }}" type="text" name="judul_indo" class="form-control" id="judulArtikelBahasa" placeholder="masukkan judul artikel">
                       </div>
                       <div class="mb-3">
                         <label for="isiArtikelBahasa" class="form-label">Isi Konten</label>
-                        <textarea required class="form-control editor" name="konten_indo" id="editor" rows="8"></textarea>
+                        <textarea required class="form-control editor" name="konten_indo" id="editor" rows="8">{{ old('konten_indo') }}</textarea>
                       </div>
                       <div class="mb-3">
                         <label for="metaDesID" class="form-label">Meta Description</label>
-                        <textarea name="meta_indo" class="form-control" id="metaDesID" rows="2" maxlength="160" placeholder="masukkan meta description"></textarea>
+                        <textarea name="meta_indo" class="form-control" id="metaDesID" rows="2" maxlength="160" placeholder="masukkan meta description">{{ old('meta_indo') }}</textarea>
                         <little>maks 160 karakter</little>
                       </div>
                       <div class="mb-3">
                         <label for="keywordsID" class="form-label">Keywords</label>
-                        <input name="keywords_indo" id="keywordsID" type="text" class="form-control tagin">
+                        <input name="keywords_indo" value="{{ old('keywords_indo') }}" id="keywordsID" type="text" class="form-control tagin">
                         <little>gunakan tombol "," (koma) untuk memisahkan keyword</little>
                       </div>
                   </div>
@@ -55,20 +55,20 @@
                   <div class="card-body">
                       <div class="mb-3">
                         <label for="judulArtikelEnglish" class="form-label">Judul</label>
-                        <input type="text" class="form-control" name="judul_english" id="judulArtikelEnglish" placeholder="masukkan judul artikel">
+                        <input value="{{ old('judul_english') }}" type="text" class="form-control" name="judul_english" id="judulArtikelEnglish" placeholder="masukkan judul artikel">
                       </div>
                       <div class="mb-3">
                         <label for="isiArtikelEnglish" class="form-label">Isi Konten</label>
-                        <textarea class="form-control editor" name="konten_english" id="isiArtikelEnglish" rows="8"></textarea>
+                        <textarea class="form-control editor" name="konten_english" id="isiArtikelEnglish" rows="8">{{ old('konten_english') }}</textarea>
                       </div>
                       <div class="mb-3">
                         <label for="metaDesEN" class="form-label">Meta Description</label>
-                        <textarea name="meta_english" class="form-control" id="metaDesEN" rows="2" maxlength="160" placeholder="masukkan meta description"></textarea>
+                        <textarea name="meta_english" class="form-control" id="metaDesEN" rows="2" maxlength="160" placeholder="masukkan meta description">{{ old('meta_english') }}</textarea>
                         <little>maks 160 karakter</little>
                       </div>
                       <div class="mb-3">
                         <label for="keywordsEN" class="form-label">Keywords</label>
-                        <input name="keywords_english" id="keywordsID" type="text" class="form-control tagin" data-separator=" ">
+                        <input value="{{ old('keywords_english') }}" name="keywords_english" id="keywordsEN" type="text" class="form-control tagin" data-separator=",">
                         <little>gunakan tombol "," (koma) untuk memisahkan keyword</little>
                       </div>
                   </div>

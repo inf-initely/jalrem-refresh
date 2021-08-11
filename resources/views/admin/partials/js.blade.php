@@ -24,7 +24,7 @@ $(document).ready(function() {
     "columnDefs": [{
       "searchable": false,
       "orderable": false,
-      "targets": [0, 3]
+      "targets": [0, 2]
     }],
     "order": [
       [1, 'asc']

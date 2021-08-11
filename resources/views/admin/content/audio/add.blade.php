@@ -26,26 +26,24 @@
                 <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">Bahasa</h2>
               </div>
               <div class="card-body">
-                <form>
                   <div class="mb-3">
                     <label for="judulArtikelBahasa" class="form-label">Judul</label>
-                    <input required type="text" name="judul_indo" class="form-control" id="judulArtikelBahasa" placeholder="masukkan judul artikel">
+                    <input required value="{{ old('judul_indo') }}" type="text" name="judul_indo" class="form-control" id="judulArtikelBahasa" placeholder="masukkan judul artikel">
                   </div>
                   <div class="mb-3">
                     <label for="isiArtikelBahasa" class="form-label">Isi Konten</label>
-                    <textarea required class="form-control editor" name="konten_indo" id="isiArtikelBahasa" rows="8"></textarea>
+                    <textarea required class="form-control editor" name="konten_indo" id="editor" rows="8">{{ old('konten_indo') }}</textarea>
                   </div>
                   <div class="mb-3">
                     <label for="metaDesID" class="form-label">Meta Description</label>
-                    <textarea name="meta_indo" class="form-control" id="metaDesID" rows="2" maxlength="160" placeholder="masukkan meta description"></textarea>
+                    <textarea name="meta_indo" class="form-control" id="metaDesID" rows="2" maxlength="160" placeholder="masukkan meta description">{{ old('meta_indo') }}</textarea>
                     <little>maks 160 karakter</little>
                   </div>
                   <div class="mb-3">
                     <label for="keywordsID" class="form-label">Keywords</label>
-                    <input name="keywords_indo" id="keywordsID" type="text" class="form-control tagin">
+                    <input name="keywords_indo" value="{{ old('keywords_indo') }}" id="keywordsID" type="text" class="form-control tagin">
                     <little>gunakan tombol "," (koma) untuk memisahkan keyword</little>
                   </div>
-                </form>
               </div>
             </div>
           </div>
@@ -57,13 +55,22 @@
               <div class="card-body">
                   <div class="mb-3">
                     <label for="judulArtikelEnglish" class="form-label">Judul</label>
-                    <input type="text" name="judul_english" class="form-control" id="judulArtikelEnglish" placeholder="masukkan judul artikel">
+                    <input value="{{ old('judul_english') }}" type="text" class="form-control" name="judul_english" id="judulArtikelEnglish" placeholder="masukkan judul artikel">
                   </div>
                   <div class="mb-3">
                     <label for="isiArtikelEnglish" class="form-label">Isi Konten</label>
-                    <textarea class="form-control editor" name="konten_english" id="isiArtikelEnglish" rows="8"></textarea>
+                    <textarea class="form-control editor" name="konten_english" id="isiArtikelEnglish" rows="8">{{ old('konten_english') }}</textarea>
                   </div>
-                  
+                  <div class="mb-3">
+                    <label for="metaDesEN" class="form-label">Meta Description</label>
+                    <textarea name="meta_english" class="form-control" id="metaDesEN" rows="2" maxlength="160" placeholder="masukkan meta description">{{ old('meta_english') }}</textarea>
+                    <little>maks 160 karakter</little>
+                  </div>
+                  <div class="mb-3">
+                    <label for="keywordsEN" class="form-label">Keywords</label>
+                    <input value="{{ old('keywords_english') }}" name="keywords_english" id="keywordsEN" type="text" class="form-control tagin" data-separator=",">
+                    <little>gunakan tombol "," (koma) untuk memisahkan keyword</little>
+                  </div>
               </div>
             </div>
           </div>
@@ -75,7 +82,7 @@
               <div class="card-body ">
                 <div class="mb-3">
                   <label for="youtubeKey" class="form-label">Sound Cloud Key</label>
-                  <input required type="text" name="cloud_key" class="form-control" id="youtubeKey" placeholder="masukkan youtube key">
+                  <input required value="{{ old('cloud_key') }}" type="text" name="cloud_key" class="form-control" id="youtubeKey" placeholder="masukkan youtube key">
                   <small class="ml-1">Key di dapatkan dari embed code sound cloud</small>
                 </div>
               </div>

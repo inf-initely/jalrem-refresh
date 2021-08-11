@@ -55,6 +55,7 @@ class AudioController extends Controller
             'judul_english' => $request->judul_english,
             'konten_english' => $request->konten_english,
             'meta_english' => $request->meta_english,
+            'keywords_english' => $request->keywords_english,
             'id_lokasi' => $request->id_lokasi,
             'penulis' => $request->contributor != null ? 'kontributor umum/pamong budaya' : 'admin',
             'cloud_key' => $request->cloud_key,

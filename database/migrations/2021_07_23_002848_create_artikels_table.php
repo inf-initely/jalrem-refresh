@@ -26,6 +26,7 @@ class CreateArtikelsTable extends Migration
             $table->string('thumbnail');
             $table->unsignedInteger('id_lokasi')->nullable();
             $table->enum('penulis', ['admin', 'kontributor umum/pamong budaya']);
+            $table->unsignedInteger('id_kontributor')->nullable();
             $table->enum('contributor', ['umum', 'pamong budaya'])->nullable();
             $table->string('slider_file')->nullable();
             $table->boolean('slider_utama')->default(false);

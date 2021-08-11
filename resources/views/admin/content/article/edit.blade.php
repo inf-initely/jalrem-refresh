@@ -171,21 +171,21 @@
                       <div class="col-lg-4">
                         <div class="form-check">
                           @if( $artikel->penulis == 'kontributor umum/pamong budaya' )
-                            <input checked class="form-check-input" type="checkbox" name="contributor" 
-                            value="contributor" id="flexCheckDefault-contributor"">
+                            <input checked class="form-check-input" type="checkbox" name="contributor"  
+                            value="contributor" id="peng-kontributor">
                           @else
-                            <input class="form-check-input" type="checkbox" name="contributor" 
-                            value="contributor" id="flexCheckDefault-contributor"">
+                            <input class="form-check-input" type="checkbox" name="contributor"  
+                            value="contributor" id="peng-kontributor">
                           @endif
-                            <label class="form-check-label-contributor"" for="flexCheckDefault-contributor"">
+                            <label class="form-check-label-contributor" for="flexCheckDefault-contributor"">
                             Kontributor Umum/Pamong budaya
                           </label>
                         </div>
                         <div class="form-check">
                           @if( $artikel->slider_utama == null )
-                            <input class="form-check-input" type="checkbox" name="slider_utama" value="slider_utama" id="flexCheckDefault-slider"">
+                            <input class="form-check-input" type="checkbox" name="slider_utama" value="slider_utama" id="peng-slider">
                           @else
-                            <input checked class="form-check-input" type="checkbox" name="slider_utama" value="slider_utama" id="flexCheckDefault-slider"">
+                            <input checked class="form-check-input" type="checkbox" name="slider_utama" value="slider_utama" id="peng-slider">
                           @endif
                           <label class="form-check-label-slider"" for="flexCheckDefault-slider"">
                             Tampilkan di Slider Utama
@@ -194,28 +194,11 @@
                       </div>
                     </div>
                   </div>
-                  <div class="mb-3">
-                    <label for="lokasiArtikel" class="form-label">Jenis Kontributor</label>
-                    <select name="contributor_type" class="form-select mb-4" aria-label="select kontributor">
-                      @if( $artikel->contributor == 'pamong budaya' )
-                        <option value="" selected>Jenis Kontributor</option>
-                        <option selected value="pamong budaya">Kontributor Pamong Budaya</option>
-                        <option value="umum">Kontributor Umum</option>
-                      @elseif( $artikel->contributor == 'umum' )
-                        <option value="" selected>Jenis Kontributor</option>
-                        <option value="pamong budaya">Kontributor Pamong Budaya</option>
-                        <option selected value="umum">Kontributor Umum</option>
-                      @else
-                        <option value="" selected>Jenis Kontributor</option>
-                        <option value="pamong budaya">Kontributor Pamong Budaya</option>
-                        <option value="umum">Kontributor Umum</option>
-                      @endif
-                    </select>
-                  </div>
+                  
               </div>
             </div>
           </div>
-          <div class="col-lg-12 mb-3">
+          <div id="fotoSlider" class="col-lg-12 mb-3" style="display: {{ $artikel->slider_file != null ? 'initial' : 'none' }};">
             <div class="card shadow mb-4">
               <div class="card-header py-3">
                 <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">Foto Slider</h2>
@@ -236,6 +219,50 @@
               </div>
             </div>
           </div>
+          <div id="kontributor" class="col-lg-12 mb-3" style="display: {{ $artikel->penulis == 'kontributor umum/pamong budaya' ? 'initial' : 'none' }};">
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">Kontributor</h2>
+              </div>
+              <div class="card-body ">
+                <div class="mb-3">
+                  <label for="jenisKontributor" class="form-label">Jenis Kontributor</label>
+                    <select name="contributor_type" class="form-select mb-4" aria-label="select kontributor">
+                      @if( $artikel->contributor == 'pamong budaya' )
+                        <option value="" selected>Jenis Kontributor</option>
+                        <option selected value="pamong budaya">Kontributor Pamong Budaya</option>
+                        <option value="umum">Kontributor Umum</option>
+                      @elseif( $artikel->contributor == 'umum' )
+                        <option value="" selected>Jenis Kontributor</option>
+                        <option value="pamong budaya">Kontributor Pamong Budaya</option>
+                        <option selected value="umum">Kontributor Umum</option>
+                      @else
+                        <option value="" selected>Jenis Kontributor</option>
+                        <option value="pamong budaya">Kontributor Pamong Budaya</option>
+                        <option value="umum">Kontributor Umum</option>
+                      @endif
+                    </select>
+                </div>
+                <div class="mb-3">
+                  <label for="namaKontributor" class="form-label">Nama Kontributor</label>
+                  <select id="namaKontributor" name="id_kontributor" class="form-select select2-style" aria-label="Default select example">
+                    <option value="" selected>Pilih Kontributor</option>
+                    @foreach( $kontributor as $k )
+                      @if( $artikel->id_kontributor )
+                        @if( $k->id == $artikel->kontributor_relasi->id )
+                          <option selected value="{{ $k->id }}">{{ $k->nama }}</option>
+                        @else
+                          <option value="{{ $k->id }}">{{ $k->nama }}</option>
+                        @endif
+                      @else
+                        <option value="{{ $k->id }}">{{ $k->nama }}</option>
+                      @endif
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="col-lg-12 mb-5 text-center">
             <button type="submit" name="draft" value="draft" class="btn btn-lg btn-secondary mr-3">
               Save as Draft
@@ -248,4 +275,35 @@
       </div>
     </form>
       <!-- /.container-fluid -->
+@endsection
+
+@section('js')
+  <script>
+    $(function() {
+      $("input[data-preview]").change(function() {
+        var input = $(this);
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(this.files[0]);
+        oFReader.onload = function(oFREvent) {
+          $(input.data('preview')).attr('src', oFREvent.target.result);
+        };
+      });
+
+     
+    })
+  </script>
+
+  <script>
+    $(document).ready(function() {
+      $("#peng-kontributor").click(function() {
+        $("#kontributor").toggle();
+        $("#namaKontributor").select2();
+      });
+      $("#peng-slider").click(function() {
+        $("#fotoSlider").toggle();
+
+      });
+
+    });
+  </script>
 @endsection
