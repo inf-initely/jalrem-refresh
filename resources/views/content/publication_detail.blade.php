@@ -6,7 +6,7 @@
 
 @section('content')
 <header id="hero">
-    <img class="hero-img-2" src="{{ asset('storage/assets/publikasi/thumbnail/' . $publikasi->thumbnail) }}">
+    <img class="hero-img-2" src="{{ asset('assets/img/hero/hero-2.webp') }}">
     <div class="text-hero-2">
       <div class="">
         <div class="col-lg-12 text-center">
@@ -31,6 +31,7 @@
                 </div>
               </header>
               <section id="desTentang">
+                <img class="mb-3 mt-3" src="{{ asset('storage/assets/publikasi/thumbnail/' . $publikasi->thumbnail) }}" width="100%">
                 {!! $publikasi->konten_indo !!}
               </section>
             </div>

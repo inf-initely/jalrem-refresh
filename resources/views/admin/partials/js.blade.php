@@ -8,7 +8,7 @@
 <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="{{ asset('assets/js/sb-admin-2.min.js') }}"></script>
+<script src="{{ asset('assets/admin/js/sb-admin-2.min.js') }}"></script>
   <script src="{{ asset('assets/js/tagin.min.js') }}"></script>
 <script>
 $("#sidebarToggle").click(function() {

@@ -14,7 +14,7 @@ use App\Models\Audio;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $semua_artikel = Artikel::all();
         $semua_publikasi = Publikasi::all();
@@ -25,8 +25,13 @@ class HomeController extends Controller
         $semua_kerjasama = Kerjasama::all();
 
         $slider = $semua_artikel->merge($semua_publikasi)->merge($semua_video);
-
-        $artikel = Artikel::where('status', 'publikasi')->orderBy('created_at', 'desc')->take(3)->get();
+        
+        if( $request->get('search') != null ) {
+            $artikel = Artikel::where('status', 'publikasi')->where('judul_indo', 'LIKE', $request->get('search'))->orderBy('created_at', 'desc')->take(3)->get();
+        } else {
+            $artikel = Artikel::where('status', 'publikasi')->orderBy('created_at', 'desc')->take(3)->get();
+        }
+        
         $kegiatan = Kegiatan::where('status', 'publikasi')->orderBy('created_at', 'desc')->take(3)->get();
         $video = Video::where('status', 'publikasi')->orderBy('created_at', 'desc')->get();
 

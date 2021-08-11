@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Artikel;
+use Illuminate\Pagination\Paginator;
 
 class ArtikelController extends Controller
 {
     public function index()
     {
-        $artikel = Artikel::where('status', 'publikasi')->get();
+        $artikel = Artikel::where('status', 'publikasi')->paginate(9);
 
         return view('content.articles', compact('artikel'));
     }

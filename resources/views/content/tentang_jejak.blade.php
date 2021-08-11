@@ -51,120 +51,30 @@
           <div class="row justify-content-center">
             <div class="col-lg-11">
               <div class="row">
+                @foreach( $artikel as $a )
                 <div class="col-lg-6 mb-1">
                   <div class="card no-border no-background">
                     <div class="card-body row">
                       <div class="col-5 center-v">
-                        <img src="assets/img/artikel-berita/artikel-3.png" width="100%">
+                        <img src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}" width="100%">
                       </div>
                       <div class="col-7 center-v">
-                        <a href="#" class="text-danger m-0 p-0 text-decoration-none wilayah"><small>Sulawesi Selatan</small></a>
-                        <h3 class="judul-artikel judul-artikel-tentang"><a href="detail-berita.html" class="text-decoration-none clr-black">Sejarah Pala, Rempah yang Pernah Dihargai Sama dengan 7 Ekor Lembu Gemuk</a> </h3>
-                        <p class="des-artikel des-artikel-tentang minimize">Lorem Ipsum is simply dummy text of the printing and typLorem Ipsum is simply dummy text of the printing and typ...Lorem Ipsum is simply dummy text of the printing and typ...</p>
+                        @if( $a->lokasi != null )
+                          <a href="#" class="text-danger m-0 p-0 text-decoration-none wilayah"><small>{{ $a->lokasi->nama_lokasi }}</small></a>
+                        @endif
+                        <h3 class="judul-artikel judul-artikel-tentang"><a href="{{ route('article_detail', $a->id) }}" class="text-decoration-none clr-black">{{ $a->judul_indo }}</a> </h3>
+                        <p class="des-artikel des-artikel-tentang minimize">{!! Str::limit($a->konten_indo, 60, $end='...') !!}</p>
                         <div class="wrap-tag-rempah">
-                          <a href="funfact.html" class="text-danger text-decoration-none">Pala</a>|
-                          <a href="funfact.html" class="text-danger text-decoration-none">Bawang</a>|
-                          <a href="funfact.html" class="text-danger text-decoration-none">Kulu-Kulu</a>
+                          @foreach( $a->rempahs as $r )
+                            <a href="funfact.html" class="text-danger text-decoration-none">{{ $r->jenis_rempah }}</a>|
+                          @endforeach
                         </div>
                       </div>
                     </div>
                   </div>
+                  @endforeach
                 </div>
-                <div class="col-lg-6 mb-1">
-                  <div class="card no-border no-background">
-                    <div class="card-body row">
-                      <div class="col-5 center-v">
-                        <img src="assets/img/artikel-berita/artikel-3.png" width="100%">
-                      </div>
-                      <div class="col-7 center-v">
-                        <a href="#" class="text-danger m-0 p-0 text-decoration-none wilayah"><small>Sulawesi Selatan</small></a>
-                        <h3 class="judul-artikel judul-artikel-tentang"><a href="detail-berita.html" class="text-decoration-none clr-black">Sejarah Pala, Rempah yang Pernah Dihargai Sama dengan 7 Ekor Lembu Gemuk</a> </h3>
-                        <p class="des-artikel des-artikel-tentang minimize">Lorem Ipsum is simply dummy text of the printing and typLorem Ipsum is simply dummy text of the printing and typ...Lorem Ipsum is simply dummy text of the printing and typ...</p>
-                        <div class="wrap-tag-rempah">
-                          <a href="funfact.html" class="text-danger text-decoration-none">Pala</a>|
-                          <a href="funfact.html" class="text-danger text-decoration-none">Bawang</a>|
-                          <a href="funfact.html" class="text-danger text-decoration-none">Kulu-Kulu</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-1">
-                  <div class="card no-border no-background">
-                    <div class="card-body row">
-                      <div class="col-5 center-v">
-                        <img src="assets/img/artikel-berita/artikel-3.png" width="100%">
-                      </div>
-                      <div class="col-7 center-v">
-                        <a href="#" class="text-danger m-0 p-0 text-decoration-none wilayah"><small>Sulawesi Selatan</small></a>
-                        <h3 class="judul-artikel judul-artikel-tentang"><a href="detail-berita.html" class="text-decoration-none clr-black">Sejarah Pala, Rempah yang Pernah Dihargai Sama dengan 7 Ekor Lembu Gemuk</a> </h3>
-                        <p class="des-artikel des-artikel-tentang minimize">Lorem Ipsum is simply dummy text of the printing and typLorem Ipsum is simply dummy text of the printing and typ...Lorem Ipsum is simply dummy text of the printing and typ...</p>
-                        <div class="wrap-tag-rempah">
-                          <a href="funfact.html" class="text-danger text-decoration-none">Pala</a>|
-                          <a href="funfact.html" class="text-danger text-decoration-none">Bawang</a>|
-                          <a href="funfact.html" class="text-danger text-decoration-none">Kulu-Kulu</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-1">
-                  <div class="card no-border no-background">
-                    <div class="card-body row">
-                      <div class="col-5 center-v">
-                        <img src="assets/img/artikel-berita/artikel-3.png" width="100%">
-                      </div>
-                      <div class="col-7 center-v">
-                        <a href="#" class="text-danger m-0 p-0 text-decoration-none wilayah"><small>Sulawesi Selatan</small></a>
-                        <h3 class="judul-artikel judul-artikel-tentang"><a href="detail-berita.html" class="text-decoration-none clr-black">Sejarah Pala, Rempah yang Pernah Dihargai Sama dengan 7 Ekor Lembu Gemuk</a> </h3>
-                        <p class="des-artikel des-artikel-tentang minimize">Lorem Ipsum is simply dummy text of the printing and typLorem Ipsum is simply dummy text of the printing and typ...Lorem Ipsum is simply dummy text of the printing and typ...</p>
-                        <div class="wrap-tag-rempah">
-                          <a href="funfact.html" class="text-danger text-decoration-none">Pala</a>|
-                          <a href="funfact.html" class="text-danger text-decoration-none">Bawang</a>|
-                          <a href="funfact.html" class="text-danger text-decoration-none">Kulu-Kulu</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-1">
-                  <div class="card no-border no-background">
-                    <div class="card-body row">
-                      <div class="col-5 center-v">
-                        <img src="assets/img/artikel-berita/artikel-3.png" width="100%">
-                      </div>
-                      <div class="col-7 center-v">
-                        <a href="#" class="text-danger m-0 p-0 text-decoration-none wilayah"><small>Sulawesi Selatan</small></a>
-                        <h3 class="judul-artikel judul-artikel-tentang"><a href="detail-berita.html" class="text-decoration-none clr-black">Sejarah Pala, Rempah yang Pernah Dihargai Sama dengan 7 Ekor Lembu Gemuk</a> </h3>
-                        <p class="des-artikel des-artikel-tentang minimize">Lorem Ipsum is simply dummy text of the printing and typLorem Ipsum is simply dummy text of the printing and typ...Lorem Ipsum is simply dummy text of the printing and typ...</p>
-                        <div class="wrap-tag-rempah">
-                          <a href="funfact.html" class="text-danger text-decoration-none">Pala</a>|
-                          <a href="funfact.html" class="text-danger text-decoration-none">Bawang</a>|
-                          <a href="funfact.html" class="text-danger text-decoration-none">Kulu-Kulu</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-1">
-                  <div class="card no-border no-background">
-                    <div class="card-body row">
-                      <div class="col-5 center-v">
-                        <img src="assets/img/artikel-berita/artikel-3.png" width="100%">
-                      </div>
-                      <div class="col-7 center-v">
-                        <a href="#" class="text-danger m-0 p-0 text-decoration-none wilayah"><small>Sulawesi Selatan</small></a>
-                        <h3 class="judul-artikel judul-artikel-tentang"><a href="detail-berita.html" class="text-decoration-none clr-black">Sejarah Pala, Rempah yang Pernah Dihargai Sama dengan 7 Ekor Lembu Gemuk</a> </h3>
-                        <p class="des-artikel des-artikel-tentang minimize">Lorem Ipsum is simply dummy text of the printing and typLorem Ipsum is simply dummy text of the printing and typ...Lorem Ipsum is simply dummy text of the printing and typ...</p>
-                        <div class="wrap-tag-rempah">
-                          <a href="funfact.html" class="text-danger text-decoration-none">Pala</a>|
-                          <a href="funfact.html" class="text-danger text-decoration-none">Bawang</a>|
-                          <a href="funfact.html" class="text-danger text-decoration-none">Kulu-Kulu</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                
               </div>
             </div>
           </div>

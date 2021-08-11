@@ -19,7 +19,6 @@
             <div class="col-lg-10">
               <header class="text-center">
                 <h2 class="sub-judul">Publikasi Jalur Rempah</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna.</p>
               </header>
               <section id="tabLine">
                 <div class="row justify-content-center">
@@ -37,28 +36,12 @@
                           {{ $p->created_at->isoFormat('dddd, D MMMM Y'); }}
                         </p>
                       </div>
-                      <a href="detail-berita.html" class="stretched-link"></a>
+                      <a href="{{ route('publication_detail', $p->id) }}" class="stretched-link"></a>
                     </div>
                   </div>
                   @endforeach
                 </div>
-                <div class="row">
-                  <div class="col-12">
-                    <nav aria-label="Page navigation example">
-                      <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                          <a class="page-link" href="#" tabindex="-1">Previous</a>
-                        </li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                          <a class="page-link" href="#">Next</a>
-                        </li>
-                      </ul>
-                    </nav>
-                  </div>
-                </div>
+                {{ $publikasi->links('vendor.pagination.custom') }}
               </section>
             </div>
           </div>

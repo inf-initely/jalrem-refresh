@@ -19,7 +19,6 @@
             <div class="col-lg-10">
               <header class="text-center">
                 <h2 class="sub-judul">Video Jalur Rempah</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna.</p>
               </header>
               <section id="tabLine">
                 <div class="row justify-content-center">
@@ -33,7 +32,7 @@
                             <!-- ^ div is replaced by the YouTube video -->
                           </div>
                         </div>
-                        <div class="video-preview video-01">
+                        <div class="video-preview" style="background: url('https://img.youtube.com/vi/{{ $v->youtube_key }}/hqdefault.jpg') 50% 50% no-repeat; background-size: cover;">
                           <!-- this icon would normally be implemented as a character in an icon font or svg spritesheet, or similar -->
                           <svg viewBox="0 0 74 74">
                             <circle style="opacity:0.64;stroke:#fff" cx="37" cy="37" r="36.5"></circle>
@@ -42,6 +41,7 @@
                           </svg>
                         </div>
                       </div>
+                      <a class="stretched-link lightbox" href="{{ route('video_detail', $v->id) }}"></a>
                       <div class="card-body">
                         <p class="card-text">{{ $v->judul_indo }}</p>
                       </div>
@@ -49,23 +49,7 @@
                   </div>
                   @endforeach
                 </div>
-                <div class="row">
-                  <div class="col-12">
-                    <nav aria-label="Page navigation example">
-                      <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                          <a class="page-link" href="#" tabindex="-1">Previous</a>
-                        </li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                          <a class="page-link" href="#">Next</a>
-                        </li>
-                      </ul>
-                    </nav>
-                  </div>
-                </div>
+                {{ $videos->links('vendor.pagination.custom') }}
               </section>
             </div>
           </div>

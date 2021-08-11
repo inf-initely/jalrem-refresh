@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Artikel;
+
 class JejakController extends Controller
 {
     public function index()
     {
-        return view('content.tentang_jejak');
+        $artikel = Artikel::where('status', 'publikasi')->get();
+
+        return view('content.tentang_jejak', compact('artikel'));
     }
 }

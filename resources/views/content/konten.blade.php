@@ -91,7 +91,7 @@
                             <h3 class="card-title judul-artikel">{{ $a->judul_indo }}</h3>
                             <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p>
                             <p class="penulis-artikel">
-                              {{ $a->penulis }}
+                              {{ $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin' }}
                             </p>
                             <p class="tgl-artikel">
                               {{ $a->created_at->isoFormat('dddd, D MMMM Y'); }}
@@ -111,7 +111,7 @@
                           <img src="{{ asset('storage/assets/foto/thumbnail/' . $f->thumbnail) }}">
                           <div class="text-img">
                             <p class="judul-img">{{ $f->judul_indo }}</p>
-                            <p class="author-img">{{ $f->penulis }}</p>
+                            <p class="author-img">{{ $f->penulis != 'admin' ? $f->kontributor_relasi->nama : 'admin' }}</p>
                             <p class="tgl-img">{{ $f->created_at->isoFormat('dddd, D MMMM Y'); }}</p>
                           </div>
                           <a class="stretched-link lightbox" href="{{ route('photo_detail', $f->id) }}"></a>
@@ -125,11 +125,26 @@
                       @foreach( $video as $v ) 
                       <div class="col-md-12 col-lg-4 mb-4">
                         <div class="card no-border card-artikel">
-                          <img src="{{ asset('storage/assets/video/thumbnail/' . $v->thumbnail) }}" class="card-img-top" alt="...">
-                          <div class="card-body">
-                            <h3 class="card-title judul-artikel">{{ $v->judul_indo }}</h3>
+                          <div class="video media-video" data-video-id="{{ $v->youtube_key }}">
+                            <!--ganti id sesuai id youtube yang akan ditampilkan-->
+                            <div class="video-layer">
+                              <div class="video-placeholder">
+                                <!-- ^ div is replaced by the YouTube video -->
+                              </div>
+                            </div>
+                            <div class="video-preview" style="background: url('https://img.youtube.com/vi/{{ $v->youtube_key }}/hqdefault.jpg') 50% 50% no-repeat; background-size: cover;">
+                              <!-- this icon would normally be implemented as a character in an icon font or svg spritesheet, or similar -->
+                              <svg viewBox="0 0 74 74">
+                                <circle style="opacity:0.64;stroke:#fff" cx="37" cy="37" r="36.5"></circle>
+                                <circle fill="none" stroke="#fff" cx="37" cy="37" r="36.5"></circle>
+                                <polygon fill="#fff" points="33,22 33,52 48,37"></polygon>
+                              </svg>
+                            </div>
                           </div>
-                          <a href="{{ route('video_detail', $v->id) }}" class="stretched-link"></a>
+                          <a class="stretched-link lightbox" href="{{ route('video_detail', $v->id) }}"></a>
+                          <div class="card-body">
+                            <p class="card-text">{{ $v->judul_indo }}</p>
+                          </div>
                         </div>
                       </div>
                       @endforeach
@@ -145,7 +160,7 @@
                             <h3 class="card-title judul-artikel">{{ $p->judul_indo }}</h3>
                             <p class="card-text des-artikel minimize">{!! Str::limit($p->konten_indo, 50, $end='...') !!}</p>
                             <p class="penulis-artikel">
-                              {{ $p->penulis }}
+                              {{ $p->penulis != 'admin' ? $p->kontributor_relasi->nama : 'admin' }}
                             </p>
                             <p class="tgl-artikel">
                               {{ $p->created_at->isoFormat('dddd, D MMMM Y'); }}

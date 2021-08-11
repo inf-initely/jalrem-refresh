@@ -6,7 +6,7 @@
 
 @section('content')
 <header id="hero">
-    <img class="hero-img-2" src="{{ asset('storage/assets/artikel/thumbnail/' . $artikel->thumbnail) }}">
+    <img class="hero-img-2" src="{{ asset('assets/img/hero/hero-2.webp') }}">
     <div class="text-hero-2">
       <div class="">
         <div class="col-lg-12 text-center">

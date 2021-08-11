@@ -196,7 +196,7 @@
                   <h3 class="card-title judul-artikel">{{ $a->judul_indo }}</h3>
                   <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p>
                   <p class="penulis-artikel">
-                    {{ $a->penulis }}
+                    {{ $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin' }}
                   </p>
                   <p class="tgl-artikel">
                     {{ $a->created_at->isoFormat('dddd, D MMMM Y'); }}
@@ -288,7 +288,7 @@
                       <!-- ^ div is replaced by the YouTube video -->
                     </div>
                   </div>
-                  <div class="video-preview video-01">
+                  <div class="video-preview" style="background: url('https://img.youtube.com/vi/{{ $v->youtube_key }}/hqdefault.jpg') 50% 50% no-repeat; background-size: cover;">
                     <!-- this icon would normally be implemented as a character in an icon font or svg spritesheet, or similar -->
                     <svg viewBox="0 0 74 74">
                       <circle style="opacity:0.64;stroke:#fff" cx="37" cy="37" r="36.5"></circle>

@@ -132,7 +132,7 @@
                           </div>
                         </div>
                         <div class="col-sm-1">
-                          <button type="button" class="btn btn-danger btn-hapus-foto" disabled="">
+                          <button type="button" class="btn btn-danger btn-hapus-foto" {{ $i == 0 ? 'disabled' : '' }} data-id="{{ $i+1 }}">
                             <i class="fa fa-trash-alt"></i>
                           </button>
                         </div>

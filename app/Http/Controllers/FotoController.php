@@ -10,7 +10,7 @@ class FotoController extends Controller
 {
     public function index()
     {
-        $foto = Foto::where('status', 'publikasi')->get();
+        $foto = Foto::where('status', 'publikasi')->paginate(9);
 
         return view('content.photos', compact('foto'));
     }

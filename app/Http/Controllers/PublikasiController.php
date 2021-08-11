@@ -10,7 +10,7 @@ class PublikasiController extends Controller
 {
     public function index()
     {
-        $publikasi = Publikasi::where('status', 'publikasi')->get();
+        $publikasi = Publikasi::where('status', 'publikasi')->paginate(9);
 
         return view('content.publications', compact('publikasi'));
     }

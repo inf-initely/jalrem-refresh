@@ -27,7 +27,7 @@
                   <!-- ^ div is replaced by the YouTube video -->
                 </div>
               </div>
-              <div class="video-preview video-01">
+              <div class="video-preview video-01" style="background: url('https://img.youtube.com/vi/{{ $video->youtube_key }}/hqdefault.jpg') 50% 50% no-repeat; background-size: cover; ">
                 <!-- this icon would normally be implemented as a character in an icon font or svg spritesheet, or similar -->
                 <svg viewBox="0 0 74 74">
                   <circle style="opacity:0.64;stroke:#fff" cx="37" cy="37" r="36.5"></circle>

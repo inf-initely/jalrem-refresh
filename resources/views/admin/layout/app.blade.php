@@ -68,7 +68,7 @@
       filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
     };
   </script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  {{-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> --}}
   <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
   <script>
   $('textarea.editor').ckeditor(options);

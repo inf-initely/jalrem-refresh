@@ -16,28 +16,7 @@
                   {{ $kerjasama->created_at->isoFormat('dddd, D MMMM Y') }}
                 </p>
               </header>
-              <div class="slide-video">
-                <div class="row">
-                  <div class="col-lg-12">
-                    <div class="video video-artikel" data-video-id="fj2xxbx_OHQ">
-                      <!--ganti id sesuai id youtube yang akan ditampilkan-->
-                      <div class="video-layer">
-                        <div class="video-placeholder">
-                          <!-- ^ div is replaced by the YouTube video -->
-                        </div>
-                      </div>
-                      <div class="video-preview video-01">
-                        <!-- this icon would normally be implemented as a character in an icon font or svg spritesheet, or similar -->
-                        <svg viewBox="0 0 74 74">
-                          <circle style="opacity:0.64;stroke:#fff" cx="37" cy="37" r="36.5"></circle>
-                          <circle fill="none" stroke="#fff" cx="37" cy="37" r="36.5"></circle>
-                          <polygon fill="#fff" points="33,22 33,52 48,37"></polygon>
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <img class="mb-3 mt-3" src="{{ asset('storage/assets/kerjasama/thumbnail/' . $kerjasama->thumbnail) }}" width="100%">
               <article id="txtMedia" class="mt-3">
                 {!! $kerjasama->konten_indo !!}
               </article>

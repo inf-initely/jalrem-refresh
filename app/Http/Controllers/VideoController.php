@@ -10,7 +10,7 @@ class VideoController extends Controller
 {
     public function index()
     {
-        $video = Video::where('status', 'publikasi')->get();
+        $video = Video::where('status', 'publikasi')->paginate(9);
 
         return view('content.videos', compact('video'));
     }

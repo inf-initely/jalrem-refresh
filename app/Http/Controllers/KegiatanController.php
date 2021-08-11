@@ -10,7 +10,7 @@ class KegiatanController extends Controller
 {
     public function index()
     {
-        $kegiatan = Kegiatan::where('status', 'publikasi')->get();
+        $kegiatan = Kegiatan::where('status', 'publikasi')->paginate(9);
 
         return view('content.kegiatan', compact('kegiatan'));
     }

@@ -28,9 +28,11 @@
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-search">
       <div class="modal-content modal-body-search">
         <div class="modal-body">
-          <div class="input-group mb-3">
-            <input type="text" class="form-control form-control-lg" placeholder="Cari disini...." aria-describedby="btnCari">
-            <a href="hasil-pencarian.html" class="btn btn-lg btn-danger" type="button" id="btnCari"> <i class="fa fa-search mr-2"></i> Cari</a>
+          <div class="mb-3">
+            <form class="input-group" action="">
+              <input type="text" name="search" class="form-control form-control-lg" placeholder="Cari disini...." aria-describedby="btnCari">
+              <button type="submit" class="btn btn-lg btn-danger" type="button" id="btnCari"> <i class="fa fa-search mr-2"></i> Cari</button>
+            </form>
           </div>
         </div>
       </div>
