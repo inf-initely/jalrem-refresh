@@ -1707,6 +1707,9 @@ footer {
         margin-top: -1px;
     }
 
+
+
+
 }
 
 @media (max-width: 575.98px) {
@@ -1823,6 +1826,30 @@ footer {
         width: 50%;
     }
 
+    #wrapHeroText {
+        display: none;
+    }
+
+    .hero-peta {
+        height: 275px;
+        margin-top: 67px;
+        position: relative;
+    }
+
+    #map {
+        height: 92vh;
+        margin-top: 65px;
+    }
+
+    .input-hero {
+        width: 85%;
+        padding-left: 15px;
+
+    }
+
+    .select2-container {
+        width: inherit !important;
+    }
 
 
 }
