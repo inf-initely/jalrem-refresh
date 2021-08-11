@@ -313,15 +313,15 @@
               </header>
             </div>
           </div>
-          <div class="row justify-content-center mt-3">
-            <div class="col-md-6 col-lg-4 mb-4">
-              <div class="tweet" id="1374692986882125826"></div>
+          <div class="row">
+            <div class="col-md-4" id="twitKolom1">
+              <a  class="twitter-timeline" data-height="500" href="https://twitter.com/JalurrempahRI?ref_src=twsrc%5Etfw">Tweets by JalurrempahRI</a>
             </div>
-            <div class="col-md-6 col-lg-4 mb-4">
-              <div class="tweet" id="1412370237035479040"></div>
+            <div class="col-md-4" id="twitKolom2">
+              <a  class="twitter-timeline" data-height="500" href="https://twitter.com/JalurrempahRI?ref_src=twsrc%5Etfw">Tweets by JalurrempahRI</a>
             </div>
-            <div class="col-md-6 col-lg-4 mb-4">
-              <div class="tweet" id="1412370234686599172"></div>
+            <div class="col-md-4" id="twitKolom3">
+              <a  class="twitter-timeline" data-height="500" href="https://twitter.com/JalurrempahRI?ref_src=twsrc%5Etfw">Tweets by JalurrempahRI</a>
             </div>
           </div>
         </section>
@@ -368,7 +368,6 @@
 @section('js')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="http://platform.twitter.com/widgets.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <script>
 $(document).ready(function() {
@@ -433,7 +432,23 @@ $(function() {
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script type="text/javascript" src="assets/js/slick.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
-<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script>
+  $(window).on('load', function() {
+    $("#twitter-widget-0").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(1))").hide();
+    $("#twitter-widget-1").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(2))").hide();
+    $("#twitter-widget-2").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(3))").hide();
+    // $("#twitter-widget-0").contents().find(".timeline-Header").hide();
+    // $("#twitter-widget-1").contents().find(".timeline-Header").hide();
+    // $("#twitter-widget-2").contents().find(".timeline-Header").hide();
+    // $("#twitter-widget-0").contents().find(".timeline-Footer").hide();
+    // $("#twitter-widget-1").contents().find(".timeline-Footer").hide();
+    // $("#twitter-widget-2").contents().find(".timeline-Footer").hide();
+    $("#twitter-widget-0").contents().find(".timeline-LoadMore").hide();
+    $("#twitter-widget-1").contents().find(".timeline-LoadMore").hide();
+    $("#twitter-widget-2").contents().find(".timeline-LoadMore").hide();
+  });
+</script>
 <script>
 $(document).ready(function() {
   if ($(window).width() <= 1000) {
@@ -668,4 +683,6 @@ sliderBgSetting.each(function(indx) {
   }
 });
 </script>
+
+
 @endsection
