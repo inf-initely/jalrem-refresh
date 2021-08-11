@@ -14,11 +14,11 @@ class KontenController extends Controller
 {
     public function index()
     {
-        $artikel = Artikel::where('status', 'publikasi')->get();
-        $foto = Foto::where('status', 'publikasi')->get();
-        $video = Video::where('status', 'publikasi')->get();
-        $publikasi = Publikasi::where('status', 'publikasi')->get();
-        $audio = Audio::where('status', 'publikasi')->get();
+        $artikel = Artikel::where('status', 'publikasi')->paginate(9);
+        $foto = Foto::where('status', 'publikasi')->paginate(9);
+        $video = Video::where('status', 'publikasi')->paginate(9);
+        $publikasi = Publikasi::where('status', 'publikasi')->paginate(9);
+        $audio = Audio::where('status', 'publikasi')->paginate(9);
 
 
         return view('content.konten', compact('artikel', 'foto', 'video', 'publikasi', 'audio'));

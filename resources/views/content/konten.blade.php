@@ -3,7 +3,7 @@
 @section('content')
 <main>
     <div id="content" class="full-bg">
-      <section id="sliderArtikel">
+      {{-- <section id="sliderArtikel">
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-lg-12">
@@ -27,8 +27,8 @@
             </div>
           </div>
         </div>
-      </section>
-      <section id="secBerita" class="d-none">
+      </section> --}}
+      {{-- <section id="secBerita" class="d-none">
         <div class="container">
           <header class="row justify-content-center">
             <div class="col-md-12 text-center">
@@ -51,16 +51,16 @@
               </div>
             </div>
             @endforeach
+            {{ $artikel->links('vendor.pagination.custom') }}
           </section>
         </div>
-      </section>
+      </section> --}}
       <section id="secMedia">
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-lg-12">
               <header class="text-center">
                 <h2 class="sub-judul">Konten Jalur Rempah</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna.</p>
               </header>
               <section id="tabLine">
                 <ul class="nav nav-pills mb-3 nav-tabline justify-content-center" id="pills-tab" role="tablist">
@@ -101,6 +101,7 @@
                         </div>
                       </div>
                       @endforeach
+                      {{ $artikel->links('vendor.pagination.custom') }}
                     </div>
                   </div>
                   <div class="tab-pane fade" id="tab-foto" role="tabpanel" aria-labelledby="tab-foto-tab">
@@ -118,6 +119,7 @@
                         </div>
                       </div>
                       @endforeach
+                      {{ $foto->links('vendor.pagination.custom') }}
                     </div>
                   </div>
                   <div class="tab-pane fade" id="tab-video" role="tabpanel" aria-labelledby="tab-video-tab">
@@ -148,6 +150,7 @@
                         </div>
                       </div>
                       @endforeach
+                      {{ $video->links('vendor.pagination.custom') }}
                     </div>
                   </div>
                   <div class="tab-pane fade" id="tab-publikasi" role="tabpanel" aria-labelledby="tab-publikasi-tab">
@@ -170,6 +173,7 @@
                         </div>
                       </div>
                       @endforeach
+                      {{ $publikasi->links('vendor.pagination.custom') }}
                     </div>
                   </div>
                   <div class="tab-pane fade" id="tab-audio" role="tabpanel" aria-labelledby="tab-audio-tab">

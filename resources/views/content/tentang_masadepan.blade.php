@@ -31,90 +31,22 @@
               <div class="row justify-content-center">
                 <div class="col-lg-11">
                   <div class="row">
+                    @foreach( $artikel as $a ) 
                     <div class="col-lg-6 mb-1">
                       <div class="card no-border no-background">
                         <div class="card-body row">
                           <div class="col-5">
-                            <img src="assets/img/artikel-berita/artikel-1.png" width="100%">
+                            <img src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}" width="100%">
                           </div>
                           <div class="col-7 center-v">
-                            <h3 class="judul-artikel judul-artikel-tentang">Sejarah Pala, Rempah yang Pernah Dihargai Sama dengan 7 Ekor Lembu Gemuk</h3>
-                            <p class="des-artikel des-artikel-tentang minimize">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's on..</p>
+                            <h3 class="judul-artikel judul-artikel-tentang">{{ $a->judul_indo }}</h3>
+                            <p class="des-artikel des-artikel-tentang minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p>
                           </div>
                         </div>
-                        <a href="detail-berita.html" class="stretched-link"></a>
+                        <a href="{{ route('article_detail', $a->id) }}" class="stretched-link"></a>
                       </div>
                     </div>
-                    <div class="col-lg-6 mb-1">
-                      <div class="card no-border no-background">
-                        <div class="card-body row">
-                          <div class="col-5">
-                            <img src="assets/img/artikel-berita/artikel-1.png" width="100%">
-                          </div>
-                          <div class="col-7 center-v">
-                            <h3 class="judul-artikel judul-artikel-tentang">Sejarah Pala, Rempah yang Pernah Dihargai Sama dengan 7 Ekor Lembu Gemuk</h3>
-                            <p class="des-artikel des-artikel-tentang minimize">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's on..</p>
-                          </div>
-                        </div>
-                        <a href="detail-berita.html" class="stretched-link"></a>
-                      </div>
-                    </div>
-                    <div class="col-lg-6 mb-1">
-                      <div class="card no-border no-background">
-                        <div class="card-body row">
-                          <div class="col-5">
-                            <img src="assets/img/artikel-berita/artikel-1.png" width="100%">
-                          </div>
-                          <div class="col-7 center-v">
-                            <h3 class="judul-artikel judul-artikel-tentang">Sejarah Pala, Rempah yang Pernah Dihargai Sama dengan 7 Ekor Lembu Gemuk</h3>
-                            <p class="des-artikel des-artikel-tentang minimize">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's on..</p>
-                          </div>
-                        </div>
-                        <a href="detail-berita.html" class="stretched-link"></a>
-                      </div>
-                    </div>
-                    <div class="col-lg-6 mb-1">
-                      <div class="card no-border no-background">
-                        <div class="card-body row">
-                          <div class="col-5">
-                            <img src="assets/img/artikel-berita/artikel-2.png" width="100%">
-                          </div>
-                          <div class="col-7 center-v">
-                            <h3 class="judul-artikel judul-artikel-tentang">Sejarah Pala, Rempah yang Pernah Dihargai Sama dengan 7 Ekor Lembu Gemuk</h3>
-                            <p class="des-artikel des-artikel-tentang minimize">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's on..</p>
-                          </div>
-                        </div>
-                        <a href="detail-berita.html" class="stretched-link"></a>
-                      </div>
-                    </div>
-                    <div class="col-lg-6 mb-1">
-                      <div class="card no-border no-background">
-                        <div class="card-body row">
-                          <div class="col-5">
-                            <img src="assets/img/artikel-berita/artikel-3.png" width="100%">
-                          </div>
-                          <div class="col-7 center-v">
-                            <h3 class="judul-artikel judul-artikel-tentang">Sejarah Pala, Rempah yang Pernah Dihargai Sama dengan 7 Ekor Lembu Gemuk</h3>
-                            <p class="des-artikel des-artikel-tentang minimize">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's on..</p>
-                          </div>
-                        </div>
-                        <a href="detail-berita.html" class="stretched-link"></a>
-                      </div>
-                    </div>
-                    <div class="col-lg-6 mb-1">
-                      <div class="card no-border no-background">
-                        <div class="card-body row">
-                          <div class="col-5">
-                            <img src="assets/img/artikel-berita/artikel-1.png" width="100%">
-                          </div>
-                          <div class="col-7 center-v">
-                            <h3 class="judul-artikel judul-artikel-tentang">Sejarah Pala, Rempah yang Pernah Dihargai Sama dengan 7 Ekor Lembu Gemuk</h3>
-                            <p class="des-artikel des-artikel-tentang minimize">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's on..</p>
-                          </div>
-                        </div>
-                        <a href="detail-berita.html" class="stretched-link"></a>
-                      </div>
-                    </div>
+                    @endforeach
                   </div>
                 </div>
               </div>
