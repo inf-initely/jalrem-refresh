@@ -57,12 +57,11 @@ $(function() {
   });
 
 });
-
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script type="text/javascript" src="assets/js/slick.min.js"></script>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.1.0/flickity.pkgd.min.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
 <script src="http://platform.twitter.com/widgets.js"></script>
 <script>
@@ -165,7 +164,7 @@ $(tweets).each(function(t, tweet) {
 });
 </script>
 <script>
-AOS.init();
+AOS.init({ disable: 'mobile' });
 </script>
 <script>
 $(document).ready(function() {
