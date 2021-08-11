@@ -22,7 +22,7 @@
         <img class="item-jelajah item-cengkeh" src="assets/img/item-cengkeh.svg">
         <div class="container">
           <div class="row justify-content-center">
-            <div class="col-lg-8">
+            <div class="col-lg-8 pe-5">
               <header>
                 <h2 class="sub-judul">{{ $artikel->judul_indo }}</h2>
                 <div class="info-penulis">
@@ -31,6 +31,7 @@
                 </div>
               </header>
               <article id="desTentang">
+                <img class="mb-3 mt-3" src="{{ asset('storage/assets/artikel/thumbnail/' . $artikel->thumbnail) }}" width="100%">
                 {!! $artikel->konten_indo !!}
               </article>
               <div id="disclaimer" class="mt-4">
