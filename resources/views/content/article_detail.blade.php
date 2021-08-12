@@ -40,7 +40,7 @@
                   Laman Kontributor merupakan platform dari website Jalur Rempah yang digagas khusus untuk masyarakat luas untuk mengirimkan konten (berupa tulisan, foto, dan video) dan membagikan pengalamannya tentang Jalur Rempah. Setiap konten dari kontributor adalah tanggung jawab kontributor sepenuhnya.</p>
               </div>
               @endif
-              <div id="share">
+              <div id="share" class="mt-4">
                 <h3>Share :</h3>
                 <ul class="list-group list-group-horizontal">
                   <li class="list-group-item">
