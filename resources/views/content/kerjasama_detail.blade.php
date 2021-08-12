@@ -44,7 +44,7 @@
 
                       </p>
                     </div>
-                    <a href="list-artikel.html" class="stretched-link"></a>
+                    <a href="{{ route('articles') }}" class="stretched-link"></a>
                   </div>
                 </div>
                 <div class="col mb-1">
