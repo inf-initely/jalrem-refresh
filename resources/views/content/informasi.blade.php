@@ -84,7 +84,7 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col-6">
-                      <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="{{ asset('storage/assets/kegiatan/thumbnail/' . $kegiatan->thumbnail) }}">
+                      <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="{{ asset('storage/assets/kegiatan/thumbnail/' . $k->thumbnail) }}">
                     </div>
                     <div class="col-6 center-v">
                       <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">20 Januari 2021</p>
@@ -125,7 +125,7 @@
                         {{ $k->created_at->isoFormat('dddd, D MMMM Y'); }}
                       </p>
                     </div>
-                    <a href="detail-kerjasama.html" class="stretched-link"></a>
+                    <a href="{{ route('kerjasama_detail', $k->id) }}" class="stretched-link"></a>
                   </div>
                 </div>
                 @endforeach
