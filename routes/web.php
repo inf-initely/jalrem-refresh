@@ -71,7 +71,7 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function() {
     Route::post('/konten/publikasi/tambah', [PublikasiControllerAdmin::class, 'store'])->name('admin.publication.store');
     Route::get('/konten/publikasi/edit/{publicationId}', [PublikasiControllerAdmin::class, 'edit'])->name('admin.publication.edit');
     Route::post('/konten/publikasi/update/{publicationId}', [PublikasiControllerAdmin::class, 'update'])->name('admin.publication.update');
-    Route::get('/konten/publikasi/delete/{publicationId}', [PublikasiController::class, 'delete'])->name('admin.publication.delete');
+    Route::get('/konten/publikasi/delete/{publicationId}', [PublikasiControllerAdmin::class, 'delete'])->name('admin.publication.delete');
     
     Route::get('/konten/audio', [AudioControllerAdmin::class, 'index'])->name('admin.audio.index');
     Route::get('/konten/audio/tambah', [AudioControllerAdmin::class, 'add'])->name('admin.audio.add');
