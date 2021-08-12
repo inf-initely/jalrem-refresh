@@ -91,7 +91,7 @@
                       <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">Kompetisi Cerita Gambar Rempah dan Budaya Bahari</h3>
                     </div>
                   </div>
-                  <a href="https://upanastudio.com" class="stretched-link"></a>
+                  <a href="{{ route('event_detail', $k->id) }}" class="stretched-link"></a>
                 </div>
               </div>
             </div>
