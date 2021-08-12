@@ -19,7 +19,6 @@
             <div class="col-lg-10">
               <header class="text-center">
                 <h2 class="sub-judul">Galeri Foto Jalur Rempah</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna.</p>
               </header>
               <section id="tabLine">
                 <div class="row justify-content-center">

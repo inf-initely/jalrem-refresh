@@ -30,7 +30,7 @@
                   </div>
                   @endforeach
                 </div>
-                {{ $videos->links('vendor.pagination.custom') }}
+                {{ $audio->links('vendor.pagination.custom') }}
               </section>
             </div>
           </div>
