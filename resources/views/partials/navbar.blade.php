@@ -41,7 +41,7 @@
           <a class="nav-link page-scroll" href="#kegiatan">Kegiatan</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link page-scroll" href="#artikelDanBerita">Konten</a>
+          <a class="nav-link page-scroll" href="#media">Konten</a>
         </li>
       </ul>
       <div class="d-flex wrap-side-navbar">
