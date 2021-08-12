@@ -128,6 +128,8 @@ Route::get('/publikasi/{publicationId}', [PublikasiController::class, 'show'])->
 Route::get('/kegiatan/{eventId}', [KegiatanController::class, 'show'])->name('event_detail');
 Route::get('/kerjasama/{kerjasamaId}', [KerjasamaController::class, 'show'])->name('kerjasama_detail');
 
+Route::get('/cari-artikel', [ArtikelController::class, 'search'])->name('article_search');
+
 Route::get('/informasi', [InformasiController::class, 'index'])->name('informasi');
 Route::get('/konten', [KontenController::class, 'index'])->name('konten');
 Route::get('/tentang-jalur', [JalurController::class, 'index'])->name('tentangjalur');

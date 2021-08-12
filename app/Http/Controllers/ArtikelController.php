@@ -27,4 +27,17 @@ class ArtikelController extends Controller
 
         return view('content.article_detail', compact('artikel', 'artikelTerbaru', 'artikelPopuler'));
     }
+
+    public function search(Request $request)
+    {
+        $search = $request->get('search');
+
+        if( $search != null ) {
+            $artikel = Artikel::where('status', 'publikasi')->where('judul_indo', 'LIKE', $request->get('search'))->orderBy('created_at', 'desc')->paginate(9);
+        } else {
+            $artikel = Artikel::where('status', 'publikasi')->orderBy('created_at', 'desc')->paginate(9);
+        }
+
+        return view('content.articles', compact('artikel'));
+    }
 }
