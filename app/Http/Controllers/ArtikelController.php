@@ -33,7 +33,7 @@ class ArtikelController extends Controller
         $search = $request->get('search');
 
         if( $search != null ) {
-            $artikel = Artikel::where('status', 'publikasi')->where('judul_indo', 'LIKE', $request->get('search'))->orderBy('created_at', 'desc')->paginate(9);
+            $artikel = Artikel::where('status', 'publikasi')->where('judul_indo', 'LIKE', '%'.$request->get('search') . '%')->orderBy('created_at', 'desc')->paginate(9);
         } else {
             $artikel = Artikel::where('status', 'publikasi')->orderBy('created_at', 'desc')->paginate(9);
         }

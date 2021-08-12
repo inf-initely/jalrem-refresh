@@ -8,6 +8,14 @@ use Illuminate\Http\Request;
 use App\Models\Kontributor;
 use App\Models\Lokasi;
 
+use App\Models\Artikel;
+use App\Models\Audio;
+use App\Models\Foto;
+use App\Models\Kegiatan;
+use App\Models\Kerjasama;
+use App\Models\Publikasi;
+use App\Models\Video;
+
 class KontributorController extends Controller
 {
     public function index()
@@ -69,11 +77,24 @@ class KontributorController extends Controller
         return redirect()->route('admin.contributor.index');
     }
 
-    public function delete($kontributorId)
+    public function delete(Request $request, $kontributorId)
     {
         $kontributor = Kontributor::findOrFail($kontributorId);
-        $kontributor->delete();
-        
-        return redirect()->route('admin.rempah.index'); 
+
+        $artikel = Artikel::where('id_kontributor', $kontributor->id)->first();
+        $audio = Audio::where('id_kontributor', $kontributor->id)->first();
+        $foto = Foto::where('id_kontributor', $kontributor->id)->first();
+        $kegiatan = Kegiatan::where('id_kontributor', $kontributor->id)->first();
+        $kerjasama = Kerjasama::where('id_kontributor', $kontributor->id)->first();
+        $publikasi = Publikasi::where('id_kontributor', $kontributor->id)->first();
+        $video = Video::where('id_kontributor', $kontributor->id)->first();
+
+        if( is_null($artikel) && is_null($audio) && is_null($foto) && is_null($kegiatan) && is_null($kerjasama) && is_null($publikasi) && is_null($publikasi) && is_null($video) ) {
+            $kontributor->delete();
+        } else {
+            $request->session()->flash('message', 'kontributor tidak bisa dihapus karena memiliki konten di jalur rempah');
+        }
+
+        return redirect()->route('admin.contributor.index'); 
     }
 }

@@ -14,6 +14,11 @@
             <!-- Page Heading -->
             <div class="row">
               <div class="col-lg-12 mb-3">
+                @if(Session::has('message'))
+                  <div class="alert alert-danger" role="alert">
+                    {{ Session::get('message') }}
+                  </div>
+                @endif
                 <div class="card shadow mb-4">
                   <div class="card-header py-3">
                     <div class="row">
@@ -51,9 +56,9 @@
                             <a href="{{ route('admin.contributor.edit', $k->id) }}" class="btn btn-sm btn-outline-info">
                               Edit
                             </a>
-                            <a href="{{ route('admin.contributor.delete', $k->id) }}" class="btn btn-sm btn-outline-danger btn-hapus">
+                            <button class="btn btn-sm btn-outline-danger btn-hapus" data-id="{{ $k->id }}">
                               Hapus
-                            </a>
+                            </button>
                           </td>
                         </tr>
                         @endforeach
@@ -65,4 +70,30 @@
             </div>
           </div>
           <!-- /.container-fluid -->
+@endsection
+
+@section('js')
+  <script>
+    $(document).on('click', '.btn-hapus', function(e) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          let id = $(this).attr("data-id");
+          window.location.href = `/admin/master/kontributor/delete/${id}`
+          Swal.fire(
+            'Deleted!',
+            'Your file has been deleted.',
+            'success'
+          )
+        }
+      })
+    });
+    </script>
 @endsection

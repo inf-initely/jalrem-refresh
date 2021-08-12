@@ -7,6 +7,14 @@ use Illuminate\Http\Request;
 
 use App\Models\Rempah;
 
+use App\Models\Artikel;
+use App\Models\Audio;
+use App\Models\Foto;
+use App\Models\Kegiatan;
+use App\Models\Kerjasama;
+use App\Models\Publikasi;
+use App\Models\Video;
+
 class RempahController extends Controller
 {
     public function index()
@@ -59,10 +67,23 @@ class RempahController extends Controller
         return redirect()->route('admin.rempah.index');
     }
 
-    public function delete($rempahId)
+    public function delete(Request $request, $rempahId)
     {
         $rempah = Rempah::findOrFail($rempahId);
-        $rempah->delete();
+
+        $artikel = Artikel::where('id_kontributor', $rempah->id)->first();
+        $audio = Audio::where('id_kontributor', $rempah->id)->first();
+        $foto = Foto::where('id_kontributor', $rempah->id)->first();
+        $kegiatan = Kegiatan::where('id_kontributor', $rempah->id)->first();
+        $kerjasama = Kerjasama::where('id_kontributor', $rempah->id)->first();
+        $publikasi = Publikasi::where('id_kontributor', $rempah->id)->first();
+        $video = Video::where('id_kontributor', $rempah->id)->first();
+
+        if( is_null($artikel) && is_null($audio) && is_null($foto) && is_null($kegiatan) && is_null($kerjasama) && is_null($publikasi) && is_null($publikasi) && is_null($video) ) {
+            $rempah->delete();
+        } else {
+            $request->session()->flash('message', 'rempah tidak bisa dihapus karena memiliki relasi dengan konten di jalur rempah');
+        }
         
         return redirect()->route('admin.rempah.index'); 
     }

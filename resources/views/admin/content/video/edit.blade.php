@@ -85,7 +85,7 @@
                   <div class="mb-3">
                     <label for="youtubeKey" class="form-label">Youtube Key</label>
                     <input required type="text" name="youtube_key" value="{{ $video->youtube_key }}" class="form-control" id="youtubeKey" placeholder="masukkan youtube key">
-                    <small class="ml-1">Key di dapatkan dari embed code video youtube</small>
+                    <small class="ml-1">Key di dapatkan dari embed code video youtube (contoh: V_jQXle7QVw)</small>
                   </div>
                 </div>
               </div>

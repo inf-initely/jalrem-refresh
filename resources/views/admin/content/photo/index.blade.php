@@ -56,9 +56,9 @@
                             <a href="{{ route('admin.photo.edit', $f->id) }}" class="btn btn-sm btn-outline-info">
                               Edit
                             </a>
-                            <a href="{{ route('admin.photo.delete', $f->id) }}" class="btn btn-sm btn-outline-danger btn-hapus">
+                            <button class="btn btn-sm btn-outline-danger btn-hapus" data-id="{{ $f->id }}">
                               Hapus
-                            </a>
+                            </button>
                           </td>
                         </tr>
                        @endforeach
@@ -71,4 +71,30 @@
           </div>
           <!-- /.container-fluid -->
         
+@endsection
+
+@section('js')
+  <script>
+    $(document).on('click', '.btn-hapus', function(e) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          let id = $(this).attr("data-id");
+          window.location.href = `/admin/konten/foto/delete/${id}`
+          Swal.fire(
+            'Deleted!',
+            'Your file has been deleted.',
+            'success'
+          )
+        }
+      })
+    });
+    </script>
 @endsection
