@@ -45,9 +45,9 @@
                         @foreach( $rempah as $r )
                         <tr>
                           <td>#</td>
-                          <td>Cengkeh</td>
+                          <td>{{ $r->jenis_rempah }}</td>
                           <td>
-                            <a href="edit-konten-artikel.html" class="btn btn-sm btn-outline-info">
+                            <a href="{{ route('admin.rempah.edit', $r->id) }}" class="btn btn-sm btn-outline-info">
                               Edit
                             </a>
                             <button class="btn btn-sm btn-outline-danger btn-hapus" data-id="{{ $r->id }}">
