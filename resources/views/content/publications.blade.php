@@ -28,7 +28,7 @@
                       <img src="{{ asset('storage/assets/publikasi/thumbnail/' . $p->thumbnail) }}" class="card-img-top" alt="...">
                       <div class="card-body">
                         <h3 class="card-title judul-artikel">{{ $p->judul_indo }}</h3>
-                        <p class="card-text des-artikel minimize">{!! Str::limit($p->konten_indo, 50, $end='...') !!}</p>
+                        {{-- <p class="card-text des-artikel minimize">{!! Str::limit($p->konten_indo, 50, $end='...') !!}</p> --}}
                         <p class="penulis-artikel">
                           {{ $p->penulis }}
                         </p>
@@ -36,7 +36,7 @@
                           {{ $p->created_at->isoFormat('dddd, D MMMM Y'); }}
                         </p>
                       </div>
-                      <a href="{{ route('publication_detail', $p->id) }}" class="stretched-link"></a>
+                      <a href="{{ route('publication_detail', $p->slug) }}" class="stretched-link"></a>
                     </div>
                   </div>
                   @endforeach

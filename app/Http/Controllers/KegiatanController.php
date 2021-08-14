@@ -15,9 +15,10 @@ class KegiatanController extends Controller
         return view('content.kegiatan', compact('kegiatan'));
     }
 
-    public function show($kegiatanId)
+    public function show($slug)
     {
-        $kegiatan = Kegiatan::findOrFail($kegiatanId);
+        $kegiatan = Kegiatan::where('slug',$slug)->firstOrFail();
+        
         $kegiatanSaatIni = Kegiatan::where('status', 'publikasi')->take(3)->get();
 
         return view('content.kegiatan_detail', compact('kegiatan', 'kegiatanSaatIni'));

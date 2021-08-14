@@ -5,9 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
+
 class Kegiatan extends Model
 {
-    use HasFactory;
+    use HasFactory, HasSlug;
 
     protected $guarded = [];
 
@@ -25,4 +28,25 @@ class Kegiatan extends Model
     { 
         return $this->belongsToMany('App\Models\KategoriShow', 'kegiatan_kategori_show', 'id_kegiatan', 'id_kategori_show');
     }
+
+    /**
+     * Get the options for generating the slug.
+     */
+    public function getSlugOptions()
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('judul_indo')
+            ->saveSlugsTo('slug');
+    }
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }
+

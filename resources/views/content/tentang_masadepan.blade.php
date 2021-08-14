@@ -43,7 +43,7 @@
                                                     <!-- <p class="des-artikel des-artikel-tentang minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p> -->
                                                 </div>
                                             </div>
-                                            <a href="{{ route('article_detail', $a->id) }}" class="stretched-link"></a>
+                                            <a href="{{ route('article_detail', $a->slug) }}" class="stretched-link"></a>
                                         </div>
                                     </div>
                                     @endforeach

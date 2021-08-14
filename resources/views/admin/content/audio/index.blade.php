@@ -50,7 +50,7 @@
                           <span class="badge rounded-pill py-1 px-3 {{ $a->status == 'publikasi' ? 'bg-success' : 'bg-secondary' }}">{{ $a->status == 'publikasi' ? 'Aktif' : 'Draft' }}</span>
                         </td>
                         <td>
-                          <a href="{{ route('audio_detail', $a->id) }}" class="btn btn-sm btn-outline-primary">
+                          <a href="{{ route('audio_detail', $a->slug) }}" class="btn btn-sm btn-outline-primary">
                             View
                           </a>
                           <a href="{{ route('admin.audio.edit', $a->id) }}" class="btn btn-sm btn-outline-info">

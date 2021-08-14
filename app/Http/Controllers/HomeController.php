@@ -35,7 +35,12 @@ class HomeController extends Controller
         $kegiatan = Kegiatan::where('status', 'publikasi')->orderBy('created_at', 'desc')->take(3)->get();
         $video = Video::where('status', 'publikasi')->orderBy('created_at', 'desc')->get();
 
+        if( $request->get('lg') == 'en' ) {
+            return view('content_english.home', compact('artikel', 'kegiatan', 'video', 'slider'));
+        } 
 
         return view('content.home', compact('artikel', 'kegiatan', 'video', 'slider'));
     }
+
+
 }

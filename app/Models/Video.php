@@ -5,9 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
+
+
 class Video extends Model
 {
-    use HasFactory;
+    use HasFactory, HasSlug;
 
     protected $guarded = [];
 
@@ -24,5 +28,25 @@ class Video extends Model
     public function kategori_show()
     { 
         return $this->belongsToMany('App\Models\KategoriShow', 'video_kategori_show', 'id_video', 'id_kategori_show');
+    }
+
+    /**
+     * Get the options for generating the slug.
+     */
+    public function getSlugOptions()
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('judul_indo')
+            ->saveSlugsTo('slug');
+    }
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 }
