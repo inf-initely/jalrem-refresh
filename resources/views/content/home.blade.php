@@ -313,14 +313,21 @@
               </header>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-4" id="twitKolom1">
+
+          <div class="twitter-jalrem">
+            <div id="twitKolom1" class="p-2">
               <a  class="twitter-timeline" data-height="500" href="https://twitter.com/JalurrempahRI?ref_src=twsrc%5Etfw">Tweets by JalurrempahRI</a>
             </div>
-            <div class="col-md-4" id="twitKolom2">
+            <div id="twitKolom2" class="p-2">
               <a  class="twitter-timeline" data-height="500" href="https://twitter.com/JalurrempahRI?ref_src=twsrc%5Etfw">Tweets by JalurrempahRI</a>
             </div>
-            <div class="col-md-4" id="twitKolom3">
+            <div id="twitKolom3" class="p-2">
+              <a  class="twitter-timeline" data-height="500" href="https://twitter.com/JalurrempahRI?ref_src=twsrc%5Etfw">Tweets by JalurrempahRI</a>
+            </div>
+            <div id="twitKolom4" class="p-2">
+              <a  class="twitter-timeline" data-height="500" href="https://twitter.com/JalurrempahRI?ref_src=twsrc%5Etfw">Tweets by JalurrempahRI</a>
+            </div>
+            <div id="twitKolom5" class="p-2">
               <a  class="twitter-timeline" data-height="500" href="https://twitter.com/JalurrempahRI?ref_src=twsrc%5Etfw">Tweets by JalurrempahRI</a>
             </div>
           </div>
@@ -436,15 +443,14 @@ $(function() {
     $("#twitter-widget-0").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(1))").hide();
     $("#twitter-widget-1").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(2))").hide();
     $("#twitter-widget-2").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(3))").hide();
-    // $("#twitter-widget-0").contents().find(".timeline-Header").hide();
-    // $("#twitter-widget-1").contents().find(".timeline-Header").hide();
-    // $("#twitter-widget-2").contents().find(".timeline-Header").hide();
-    // $("#twitter-widget-0").contents().find(".timeline-Footer").hide();
-    // $("#twitter-widget-1").contents().find(".timeline-Footer").hide();
-    // $("#twitter-widget-2").contents().find(".timeline-Footer").hide();
+    $("#twitter-widget-3").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(4))").hide();
+    $("#twitter-widget-4").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(5))").hide();
+
     $("#twitter-widget-0").contents().find(".timeline-LoadMore").hide();
     $("#twitter-widget-1").contents().find(".timeline-LoadMore").hide();
     $("#twitter-widget-2").contents().find(".timeline-LoadMore").hide();
+    $("#twitter-widget-3").contents().find(".timeline-LoadMore").hide();
+    $("#twitter-widget-4").contents().find(".timeline-LoadMore").hide();
   });
 </script>
 <script>
@@ -570,6 +576,43 @@ $(document).ready(function() {
     speed: 300,
     slidesToShow: 2,
     slidesToScroll: 2,
+    responsive: [{
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          arrows: false
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          arrows: false,
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+      // You can unslick at a given breakpoint now by adding:
+      // settings: "unslick"
+      // instead of a settings object
+    ]
+  });
+
+    $('.twitter-jalrem').slick({
+    dots: true,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 3,
+    slidesToScroll: 1,
     responsive: [{
         breakpoint: 1024,
         settings: {
