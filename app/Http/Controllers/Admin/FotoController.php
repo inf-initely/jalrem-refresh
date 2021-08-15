@@ -150,6 +150,9 @@ class FotoController extends Controller
             // for( $i = 0; $i < count($request->slider_foro); $i++ ) }{
 
             // }
+            // foreach( $i = 0; $i < count($foto->slider_foto) + count($request->file('slider_foto')); $i++ ) {
+                 
+            // }
             foreach( $request->file('slider_foto') as $slider_foto ) {
                 $tujuan_upload_file_slider_foto = storage_path('app/public/assets/foto/slider_foto');
                 $filename_slider_foto = uniqid() . '.' . $slider_foto->getClientOriginalExtension();

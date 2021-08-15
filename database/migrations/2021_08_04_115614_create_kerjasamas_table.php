@@ -23,6 +23,7 @@ class CreateKerjasamasTable extends Migration
             $table->longText('konten_english')->nullable();
             $table->text('meta_english')->nullable();
             $table->string('keywords_english')->nullable();
+            $table->string('slug');
             $table->string('thumbnail');
             $table->unsignedInteger('id_lokasi')->nullable();
             $table->enum('penulis', ['admin', 'kontributor umum/pamong budaya']);

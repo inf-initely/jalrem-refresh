@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class Languege
+class Language
 {
     /**
      * Handle an incoming request.
@@ -16,9 +16,6 @@ class Languege
      */
     public function handle(Request $request, Closure $next)
     {
-        if( $request->get('lg') == 'en' ) {
-        //    return redirect('') 
-        }
-        // return $next($request);
+        return $next($request);
     }
 }

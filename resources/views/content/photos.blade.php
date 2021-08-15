@@ -31,7 +31,7 @@
                         <p class="author-img">{{ $f->penulis }}</p>
                         <p class="tgl-img">{{ $f->created_at->isoFormat('dddd, D MMMM Y'); }}</p>
                       </div>
-                      <a class="stretched-link lightbox" href="{{ route('photo_detail', $f->id) }}"></a>
+                      <a class="stretched-link lightbox" href="{{ route('photo_detail', $f->slug) }}"></a>
                     </div>
                   </div>
                   @endforeach

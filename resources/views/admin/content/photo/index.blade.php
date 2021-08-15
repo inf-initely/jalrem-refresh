@@ -50,7 +50,7 @@
                             <span class="badge rounded-pill py-1 px-3 {{ $f->status == 'publikasi' ? 'bg-success' : 'bg-secondary' }}">{{ $f->status == 'publikasi' ? 'Aktif' : 'Draft' }}</span>
                           </td>
                           <td>
-                            <a href="{{ route('photo_detail', $f->id) }}" class="btn btn-sm btn-outline-primary">
+                            <a href="{{ route('photo_detail', $f->slug) }}" class="btn btn-sm btn-outline-primary">
                               View
                             </a>
                             <a href="{{ route('admin.photo.edit', $f->id) }}" class="btn btn-sm btn-outline-info">

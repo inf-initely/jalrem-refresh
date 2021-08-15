@@ -15,9 +15,9 @@ class FotoController extends Controller
         return view('content.photos', compact('foto'));
     }
 
-    public function show($photoId)
+    public function show($slug)
     {
-        $foto = Foto::findOrFail($photoId);
+        $foto = Foto::where('slug', $slug)->firstOrFail();
 
         return view('content.photo_detail', compact('foto'));
     }

@@ -15,9 +15,9 @@ class PublikasiController extends Controller
         return view('content.publications', compact('publikasi'));
     }
 
-    public function show($publicationId)
+    public function show($slug)
     {
-        $publikasi = Publikasi::findOrFail($publicationId);
+        $publikasi = Publikasi::where('slug', $slug)->firstOrFail();
         
         views($publikasi)->record();
         $publikasiPopuler = Publikasi::where('status', 'publikasi')->orderByViews()->take(3)->get();

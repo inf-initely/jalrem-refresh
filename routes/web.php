@@ -31,6 +31,8 @@ use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\KerjasamaController;
 
 use App\Http\Controllers\AuthController;
+
+// use App\Http\Middleware\Language;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -112,6 +114,7 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function() {
     Route::get('/informasi/kegiatan/delete/{kerjasamaId}', [KegiatanControllerAdmin::class, 'delete'])->name('admin.kegiatan.delete');
 });
 
+// Route::middleware(['language'])->group(function() {
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/semua-artikel', [ArtikelController::class, 'index'])->name('articles');
 Route::get('/semua-foto', [FotoController::class, 'index'])->name('photos');
@@ -120,7 +123,7 @@ Route::get('/semua-audio', [AudioController::class, 'index'])->name('audios');
 Route::get('/semua-publikasi', [PublikasiController::class, 'index'])->name('publications');
 Route::get('/semua-kegiatan', [KegiatanController::class, 'index'])->name('events');
 
-Route::get('/artikel/{articleId}', [ArtikelController::class, 'show'])->name('article_detail');
+Route::get('/artikel/{slug}', [ArtikelController::class, 'show'])->name('article_detail');
 Route::get('/foto/{photoId}', [FotoController::class, 'show'])->name('photo_detail');
 Route::get('/video/{videoId}', [VideoController::class, 'show'])->name('video_detail');
 Route::get('/audio/{audioId}', [AudioController::class, 'show'])->name('audio_detail');
@@ -141,6 +144,8 @@ Route::post('/login', [AuthController::class, 'login_post'])->name('login_post')
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/register', [AuthController::class, 'register_post'])->name('register_post');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// });
 
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {

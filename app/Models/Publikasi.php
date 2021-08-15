@@ -7,9 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use CyrildeWit\EloquentViewable\InteractsWithViews;
 use CyrildeWit\EloquentViewable\Contracts\Viewable;
 
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
+
 class Publikasi extends Model implements Viewable
 {
-    use HasFactory, InteractsWithViews;
+    use HasFactory, InteractsWithViews, HasSlug;
 
     protected $guarded = [];
 
@@ -26,5 +29,25 @@ class Publikasi extends Model implements Viewable
     public function kategori_show()
     { 
         return $this->belongsToMany('App\Models\KategoriShow', 'publikasi_kategori_show', 'id_publikasi', 'id_kategori_show');
+    }
+
+    /**
+     * Get the options for generating the slug.
+     */
+    public function getSlugOptions()
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('judul_indo')
+            ->saveSlugsTo('slug');
+    }
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 }

@@ -13,17 +13,25 @@ class ArtikelController extends Controller
     {
         $artikel = Artikel::where('status', 'publikasi')->paginate(9);
 
+        if( $request->get('lg') == 'en' ) {
+            return view('content_english.articles', compact('artikel'));
+        }
+
         return view('content.articles', compact('artikel'));
     }
 
-    public function show($articleId)
+    public function show(Request $request, $slug)
     {
-        $artikel = Artikel::findOrFail($articleId);
+        $artikel = Artikel::where('slug', $slug)->firstOrFail();
       
         views($artikel)->record();
-        $artikelPopuler = Artikel::where('id', '!=', $articleId)->orderByViews()->take(3)->get();
+        $artikelPopuler = Artikel::where('slug', '!=', $slug)->orderByViews()->take(3)->get();
         // $artikelTerkait = Artikel::
-        $artikelTerbaru = Artikel::where('id', '!=', $articleId)->orderBy('created_at', 'desc')->take(3)->get();
+        $artikelTerbaru = Artikel::where('slug', '!=', $slug)->orderBy('created_at', 'desc')->take(3)->get();
+
+        if( $request->get('lg') == 'en' ) {
+            return view('content.article_detail', compact('artikel', 'artikelTerbaru', 'artikelPopuler'));
+        }
 
         return view('content.article_detail', compact('artikel', 'artikelTerbaru', 'artikelPopuler'));
     }
@@ -36,6 +44,10 @@ class ArtikelController extends Controller
             $artikel = Artikel::where('status', 'publikasi')->where('judul_indo', 'LIKE', '%'.$request->get('search') . '%')->orderBy('created_at', 'desc')->paginate(9);
         } else {
             $artikel = Artikel::where('status', 'publikasi')->orderBy('created_at', 'desc')->paginate(9);
+        }
+
+        if( $request->get('lg') == 'en' ) {
+            return view('content_english.articles', compact('artikel'));
         }
 
         return view('content.articles', compact('artikel'));

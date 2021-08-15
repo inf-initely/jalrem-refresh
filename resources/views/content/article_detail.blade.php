@@ -86,7 +86,7 @@
                               <p class="tgl-berita-aside" id="tglKegiatan" name="tglKegiatan">{{ $a->created_at->isoFormat('dddd, D MMMM Y') }} </p>
                             </div>
                           </div>
-                          <a href="{{ route('article_detail', $a->id) }}" class="stretched-link"></a>
+                          <a href="{{ route('article_detail', $a->slug) }}" class="stretched-link"></a>
                         </div>
                       </div>
                     </div>
@@ -113,7 +113,7 @@
                               <p class="tgl-berita-aside" id="tglKegiatan" name="tglKegiatan">{{ $a->created_at->isoFormat('dddd, D MMMM Y'); }}</p>
                             </div>
                           </div>
-                          <a href="{{ route('article_detail', $a->id) }}" class="stretched-link"></a>
+                          <a href="{{ route('article_detail', $a->slug) }}" class="stretched-link"></a>
                         </div>
                       </div>
                     </div>
@@ -144,7 +144,7 @@
               <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p>
               <p class="penulis-artikel">{{ $a->penulis }}</p>
               <p class="tgl-artikel">{{ $a->created_at->isoFormat('dddd, D MMMM Y'); }}</p>
-              <a href="{{ route('article_detail', $a->id) }}" class="stretched-link"></a>
+              <a href="{{ route('article_detail', $a->slug) }}" class="stretched-link"></a>
             </div>
           </div>
           @endforeach

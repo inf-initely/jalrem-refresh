@@ -15,9 +15,9 @@ class VideoController extends Controller
         return view('content.videos', compact('video'));
     }
 
-    public function show($videoId)
+    public function show($slug)
     {
-        $video = Video::findOrFail($videoId);
+        $video = Video::findOrFail('slug', $slug)->firstOrFail();
 
         return view('content.video_detail', compact('video'));
     }
