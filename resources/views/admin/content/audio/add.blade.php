@@ -158,7 +158,7 @@
           <div id="fotoSlider" class="col-lg-12 mb-3" style="display: none;">
             <div class="card shadow mb-4">
              <div class="card-header py-3">
-               <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">Foto Utama</h2>
+               <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">Foto Slider</h2>
              </div>
              <div class="card-body ">
                <div class="row">
