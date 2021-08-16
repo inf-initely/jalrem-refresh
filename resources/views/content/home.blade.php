@@ -87,7 +87,7 @@
           <img class="item-jelajah item-jelajah-3" src="assets/img/asset-jelajah.png">
           <div class="row justify-content-center content-jelajahi" data-aos="fade-left">
             <div class="col-lg-10 mb-4">
-              <div class="video video-magnet-dunia" data-video-id="fj2xxbx_OHQ">
+              <div class="video video-magnet-dunia" data-video-id="a7CMQ36ixNw">
                 <!--ganti id sesuai id youtube yang akan ditampilkan-->
                 <div class="video-layer">
                   <div class="video-placeholder">
