@@ -3,7 +3,7 @@
 @section('content')
 <header id="hero">
     <div id="map"></div>
-    <div class="wrap-hero-text wrap-hero-text-bg" id="wrapHeroText">
+    <div class="wrap-hero-text wrap-hero-text-bg d-none d-lg-block" id="wrapHeroText">
         <div class="row">
             <div class="col-md-12 text-end">
                 <header>
@@ -46,6 +46,20 @@
 </header>
 <main>
     <div id="content">
+        <section id="narasi" class="d-block d-lg-none px-3">
+            <div class="row">
+                <div class="col-md-12">
+                    <header>
+                        <h2 class="sub-judul sub-judul-hero ">Jejak dan Jalur Rempah</h2>
+                    </header>
+                    <p>Jalur Rempah merupakan sebutan untuk suatu peradaban yang sangat tua, kompleks, dan luas. Jalurnya merupakan jalur budaya; terbentang dari timur Asia hingga barat Eropa, terhubung dengan Benua Amerika, Afrika dan Australia; dan mempengaruhi peradaban global.<span id="dots2" style="display:inline">...</span><span id="more2" style="display:none"><br><br>
+                            Kita dapat melihat peran aktif masyarakat Nusantara dalam pembentukkan peradaban ini. Baik sebagai produsen rempah yang menggerakkan perdagangan lintas batas, maupun sebagai masyarakat yang terbuka bagi banyak bangsa (pendatang) yang memiliki latar belakang budaya yang berbeda.<br><br>
+                            Keterbukaan masyarakat dan hubungan budaya yang melahirkan beragam warisan budaya multikultural dan multietnis ke berbagai medium, termasuk hubungan lintas lautan di dalamnya, menjadi suatu keniscayaan. Tidak hanya antar bangsa, tetapi juga antar sukubangsa. Hubungan budaya antar manusia lintas lautan meninggalkan jejak, dan rangkaian jejak lintas wilayah inilah yang sekaligus membangun jalur.<br><br>
+                            Setiap warisan memiliki nilai budaya yang disimpan dalam berbagai bentuk. Kisah asal usul, nyanyian, musik, tarian, teknologi tradisional, arsitektur bangunan, kepercayaan dan banyak lainnya. Simpanan nilai budaya yang menjadi memori kolektif ini sekaligus menjadi bukti dan jejak Jalur Rempah.</span></p>
+                    <button class="btn btn-sm btn-outline-secondary" onclick="readMore2()" id="btnReadmore2">Lihat Selengkapnya</button>
+                </div>
+            </div>
+        </section>
         <section id="kontenJejak">
             <div class="container">
                 <div class="row justify-content-center">
@@ -338,12 +352,23 @@
             moreText.style.display = "inline";
         }
 
-        // if ($("#wrapHeroText").hasClass("min-h-100")) {
-        //   $("#wrapHeroText").removeClass("min-h-100", 1000);
-        // } else {
-        //   $("#wrapHeroText").addClass("min-h-100", 1000);
-        // }
+    }
 
+    function readMore2(){
+        var dots2 = document.getElementById("dots2");
+        var moreText2 = document.getElementById("more2");
+        var btnText2 = document.getElementById("btnReadmore2");
+
+
+        if (dots2.style.display === "none") {
+            dots2.style.display = "inline";
+            btnText2.innerHTML = "Lihat Selengkapnya";
+            moreText2.style.display = "none";
+        } else {
+            dots2.style.display = "none";
+            btnText2.innerHTML = "Kembali";
+            moreText2.style.display = "inline";
+        }
     }
 </script>
 @endsection

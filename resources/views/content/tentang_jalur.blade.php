@@ -24,8 +24,8 @@
     </div>
 </header>
 <main>
-    <div id="content" class="d-block d-lg-none px-3">
-        <section id="narasi">
+    <div id="content">
+        <section id="narasi" class="d-block d-lg-none px-3">
             <div class="row">
                 <div class="col-md-12">
                     <header>
