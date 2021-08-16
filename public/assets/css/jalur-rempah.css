@@ -323,13 +323,13 @@ section {
 }
 
 .tgl-kegiatan {
-    font-size: 18px;
+    font-size: 11px;
     font-weight: 500;
     color: #E09745;
 }
 
 .judul-kegiatan {
-    font-size: 18px;
+    font-size: 12px;
     font-weight: 500;
     color: #202020;
 }
@@ -1531,7 +1531,7 @@ footer {
 
     .tgl-kegiatan,
     .judul-kegiatan {
-        font-size: 20px;
+        font-size: 11px;
     }
 
     .video {
@@ -1778,7 +1778,7 @@ footer {
 
     .tgl-kegiatan,
     .judul-kegiatan {
-        font-size: 17px;
+        font-size: 11px;
     }
 
     .video {

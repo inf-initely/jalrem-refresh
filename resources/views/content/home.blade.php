@@ -12,7 +12,7 @@
                 <div data-swiper-parallax="300" class="slide-title">
                   <h2 class="title">{{ $s->judul_indo }}</h2>
                 </div>
-                <div data-swiper-parallax="400" class="slide-text">
+                <div data-swiper-parallax="400" class="slide-text d-none">
                   <p class="caption">{!! Str::limit($s->konten_indo, 50, $end='...') !!}</p>
                 </div>
                 <div class="clearfix"></div>
