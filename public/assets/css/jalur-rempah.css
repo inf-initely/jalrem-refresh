@@ -1719,6 +1719,11 @@ footer {
         margin-top: -1px;
     }
 
+    .nav-tabline .nav-link {
+        width: 175px;
+        margin-bottom: 7.5px;
+    }
+
 
 
 
