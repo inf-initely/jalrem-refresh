@@ -12,6 +12,10 @@ class PublikasiController extends Controller
     {
         $publikasi = Publikasi::where('status', 'publikasi')->paginate(9);
 
+        if( $request->get('lg') == 'en' ) {
+            return view('content_english.publications', compact('publikasi'));
+        }
+
         return view('content.publications', compact('publikasi'));
     }
 
@@ -24,6 +28,10 @@ class PublikasiController extends Controller
         // $artikelTerkait = Publikasi:
         $publikasiTerbaru = Publikasi::where('status', 'publikasi')->orderBy('created_at', 'desc')->take(3)->get();
 
+        if( request()->get('lg') == 'en' ) {
+            return view('content_english.publication_detail', compact('publikasi', 'publikasiPopuler', 'publikasiTerbaru'));
+        }
+        
         return view('content.publication_detail', compact('publikasi', 'publikasiPopuler', 'publikasiTerbaru'));
     }
 }

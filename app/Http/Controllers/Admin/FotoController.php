@@ -150,19 +150,22 @@ class FotoController extends Controller
             // for( $i = 0; $i < count($request->slider_foro); $i++ ) }{
 
             // }
-            // foreach( $i = 0; $i < count($foto->slider_foto) + count($request->file('slider_foto')); $i++ ) {
-                 
+            // $slider_foto_container = [];
+            // for( $i = 0; $i < count($foto->slider_foto); $i++ ) {
+            //     $slider_foto_container[] = $foto->slider_foto[$i];
             // }
+            // $slider_foto_array = array_merge(unserialize($foto->slider_foto), $request->file('slider_foto'));
             foreach( $request->file('slider_foto') as $slider_foto ) {
                 $tujuan_upload_file_slider_foto = storage_path('app/public/assets/foto/slider_foto');
                 $filename_slider_foto = uniqid() . '.' . $slider_foto->getClientOriginalExtension();
                 $slider_foto->move($tujuan_upload_file_slider_foto, $filename_slider_foto);
                 $slider_foto_array[] = $filename_slider_foto;
                 
-                foreach( unserialize($foto->slider_foto) as $sf_lama ) {
-                    File::delete(storage_path('app/public/assets/foto/slider_foto', $sf_lama));
-                }
+                // foreach( unserialize($foto->slider_foto) as $sf_lama ) {
+                //     File::delete(storage_path('app/public/assets/foto/slider_foto', $sf_lama));
+                // }
             }
+            $slider_foto_array = array_merge(unserialize($foto->slider_foto), $slider_foto_array);
             $slider_foto_array = serialize($slider_foto_array);
         } else {
             $slider_foto_array = $foto->slider_foto;

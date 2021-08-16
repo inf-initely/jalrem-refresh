@@ -17,6 +17,11 @@ class MasaDepanController extends Controller
         } else {
             $artikel = [];
         }
+
+        if( request()->get('lg') == 'en' ) {
+            return view('content_english.tentang_masadepan', compact('artikel'));
+        }
+
         return view('content.tentang_masadepan', compact('artikel'));
     }
 }

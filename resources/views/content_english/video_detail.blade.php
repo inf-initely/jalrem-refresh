@@ -12,7 +12,7 @@
         <div class="row justify-content-center">
           <article class="col-lg-8">
             <header>
-              <h2 class="sub-judul mb-4" id="judulMedia">{{ $video->judul_indo }}</h2>
+              <h2 class="sub-judul mb-4" id="judulMedia">{{ $video->judul_english ?? $video->judul_indo }}</h2>
               <p class="penulis-artikel" id="authorMedia">
                 {{ $video->penulis != 'admin' ? $video->kontributor_relasi->nama : 'admin' }}
               </p>
@@ -38,7 +38,7 @@
             </div>
             <section></section>
             <article id="txtMedia" class="mt-4">
-              {!! $video->judul_indo !!}
+              {!! $video->judul_english ?? $video->judul_indo !!}
             </article>
           </article>
         </div>

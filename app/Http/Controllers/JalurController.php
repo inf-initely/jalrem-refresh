@@ -18,6 +18,10 @@ class JalurController extends Controller
             $artikel = [];
         }
 
+        if( request()->get('lg') == 'en' ) {
+            return view('content_english.tentang_jalur', compact('artikel'));
+        }
+
         return view('content.tentang_jalur', compact('artikel'));
     }
 }

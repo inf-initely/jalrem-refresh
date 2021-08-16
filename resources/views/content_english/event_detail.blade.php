@@ -8,11 +8,11 @@
           <div class="row justify-content-center">
             <div class="col-lg-8">
               <header>
-                <h2 class="sub-judul mb-4">{{ $kegiatan->judul_indo }}</h2>
+                <h2 class="sub-judul mb-4">{{ $kegiatan->judul_english ?? $kegiatan->judul_indo }}</h2>
               </header>
               <img src="{{ asset('storage/assets/kegiatan/thumbnail/' . $kegiatan->thumbnail) }}" width="100%">
               <section id="desTentang">
-                {{ $kegiatan->konten_indo }}
+                {{ $kegiatan->konten_english ?? $kegiatan->konten_indo }}
               </section>
             </div>
           </div>
@@ -39,10 +39,10 @@
                         </div>
                         <div class="col-6 center-v">
                           <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">{{ $k->created_at->isoFormat('dddd, D MMMM Y'); }}</p>
-                          <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">{{ $k->judul_indo }}</h3>
+                          <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">{{ $k->judul_english ?? $k->judul_indo }}</h3>
                         </div>
                       </div>
-                      <a href="{{ route('event_detail', $k->id) }}" class="stretched-link"></a>
+                      <a href="{{ route('event_detail', $k->slug) }}" class="stretched-link"></a>
                     </div>
                   </div>
                 </div>

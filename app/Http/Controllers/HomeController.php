@@ -26,8 +26,8 @@ class HomeController extends Controller
 
         $slider = $semua_artikel->merge($semua_publikasi)->merge($semua_video);
         
-        if( $request->get('search') != null ) {
-            $artikel = Artikel::where('status', 'publikasi')->where('judul_indo', 'LIKE', $request->get('search'))->orderBy('created_at', 'desc')->take(3)->get();
+        if( request()->get('search') != null ) {
+            $artikel = Artikel::where('status', 'publikasi')->where('judul_indo', 'LIKE', request()->get('search'))->orderBy('created_at', 'desc')->take(3)->get();
         } else {
             $artikel = Artikel::where('status', 'publikasi')->orderBy('created_at', 'desc')->take(3)->get();
         }
@@ -35,7 +35,7 @@ class HomeController extends Controller
         $kegiatan = Kegiatan::where('status', 'publikasi')->orderBy('created_at', 'desc')->take(3)->get();
         $video = Video::where('status', 'publikasi')->orderBy('created_at', 'desc')->get();
 
-        if( $request->get('lg') == 'en' ) {
+        if( request()->get('lg') == 'en' ) {
             return view('content_english.home', compact('artikel', 'kegiatan', 'video', 'slider'));
         } 
 

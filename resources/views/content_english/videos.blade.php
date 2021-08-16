@@ -41,9 +41,9 @@
                           </svg>
                         </div>
                       </div>
-                      <a class="stretched-link lightbox" href="{{ route('video_detail', $v->id) }}"></a>
+                      <a class="stretched-link lightbox" href="{{ route('video_detail', $v->slug) }}"></a>
                       <div class="card-body">
-                        <p class="card-text">{{ $v->judul_indo }}</p>
+                        <p class="card-text">{{ $v->judul_english ?? $v->judul_indo }}</p>
                       </div>
                     </div>
                   </div>

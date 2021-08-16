@@ -18,6 +18,10 @@ class JejakController extends Controller
             $artikel = [];
         }
 
+        if( request()->get('lg') == 'en' ) {
+            return view('content_english.tentang_jejak', compact('artikel'));
+        }
+
         return view('content.tentang_jejak', compact('artikel'));
     }
 }

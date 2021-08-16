@@ -343,8 +343,7 @@
           <div class="row justify-content-center mt-3">
             <div class="col-md-12">
               <!-- LightWidget WIDGET -->
-              <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
-              <iframe src="//lightwidget.com/widgets/4efcdf886f385122afbd67a64448bcc2.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;"></iframe>
+              <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script><iframe src="https://cdn.lightwidget.com/widgets/d94273e72eb659c5b16e7be54b8c35b7.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;"></iframe>
             </div>
           </div>
         </section>

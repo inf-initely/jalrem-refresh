@@ -16,6 +16,10 @@ class InformasiController extends Controller
         $kegiatan_sebelumnya = Kegiatan::where('status', 'publikasi')->where('created_at', '<', Carbon::now())->get();
         $kerjasama = Kerjasama::where('status', 'publikasi')->get();
 
+        if( request()->get('lg') == 'en' ) {
+            return view('content_english.informasi', compact('kegiatan_saat_ini', 'kegiatan_sebelumnya', 'kerjasama'));
+        }
+
         return view('content.informasi', compact('kegiatan_saat_ini', 'kegiatan_sebelumnya', 'kerjasama'));
     }
 }

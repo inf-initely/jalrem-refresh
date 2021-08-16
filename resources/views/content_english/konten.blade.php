@@ -47,7 +47,7 @@
                 <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p>
                 <p class="penulis-artikel">{{ $a->penulis }}</p>
                 <p class="tgl-artikel">{{ $a->created_at->isoFormat('dddd, D MMMM Y'); }}</p>
-                <a href="{{ route('article_detail', $a->id) }}" class="stretched-link"></a>
+                <a href="{{ route('article_detail', $a->slug) }}" class="stretched-link"></a>
               </div>
             </div>
             @endforeach
@@ -88,7 +88,7 @@
                         <div class="card no-border card-artikel">
                           <img src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}" class="card-img-top" alt="...">
                           <div class="card-body">
-                            <h3 class="card-title judul-artikel">{{ $a->judul_indo }}</h3>
+                            <h3 class="card-title judul-artikel">{{ $a->judul_english ?? $a->judul_indo }}</h3>
                             {{-- <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p> --}}
                             <p class="penulis-artikel">
                               {{ $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin' }}
@@ -97,7 +97,7 @@
                               {{ $a->created_at->isoFormat('dddd, D MMMM Y'); }}
                             </p>
                           </div>
-                          <a href="{{ route('article_detail', $a->id) }}" class="stretched-link"></a>
+                          <a href="{{ route('article_detail', $a->slug) }}" class="stretched-link"></a>
                         </div>
                       </div>
                       @endforeach
@@ -111,11 +111,11 @@
                         <div class="img-bg-wrap">
                           <img src="{{ asset('storage/assets/foto/thumbnail/' . $f->thumbnail) }}">
                           <div class="text-img">
-                            <p class="judul-img">{{ $f->judul_indo }}</p>
+                            <p class="judul-img">{{ $f->judul_english ?? $f->judul_indo }}</p>
                             <p class="author-img">{{ $f->penulis != 'admin' ? $f->kontributor_relasi->nama : 'admin' }}</p>
                             <p class="tgl-img">{{ $f->created_at->isoFormat('dddd, D MMMM Y'); }}</p>
                           </div>
-                          <a class="stretched-link lightbox" href="{{ route('photo_detail', $f->id) }}"></a>
+                          <a class="stretched-link lightbox" href="{{ route('photo_detail', $f->slug) }}"></a>
                         </div>
                       </div>
                       @endforeach
@@ -143,9 +143,9 @@
                               </svg>
                             </div>
                           </div>
-                          <a class="stretched-link lightbox" href="{{ route('video_detail', $v->id) }}"></a>
+                          <a class="stretched-link lightbox" href="{{ route('video_detail', $v->slug) }}"></a>
                           <div class="card-body">
-                            <p class="card-text">{{ $v->judul_indo }}</p>
+                            <p class="card-text">{{ $v->judul_english ?? $v->judul_indo }}</p>
                           </div>
                         </div>
                       </div>
@@ -160,8 +160,8 @@
                         <div class="card no-border card-artikel">
                           <img src="{{ asset('storage/assets/publikasi/thumbnail/' . $p->thumbnail) }}" class="card-img-top" alt="...">
                           <div class="card-body">
-                            <h3 class="card-title judul-artikel">{{ $p->judul_indo }}</h3>
-                            <p class="card-text des-artikel minimize">{!! Str::limit($p->konten_indo, 50, $end='...') !!}</p>
+                            <h3 class="card-title judul-artikel">{{ $p->judul_english ?? $p->judul_indo }}</h3>
+                            <p class="card-text des-artikel minimize">{!! Str::limit($p->konten_english ?? $p->konten_indo, 50, $end='...') !!}</p>
                             <p class="penulis-artikel">
                               {{ $p->penulis != 'admin' ? $p->kontributor_relasi->nama : 'admin' }}
                             </p>
@@ -169,7 +169,7 @@
                               {{ $p->created_at->isoFormat('dddd, D MMMM Y'); }}
                             </p>
                           </div>
-                          <a href="{{ route('publication_detail', $p->id) }}" class="stretched-link"></a>
+                          <a href="{{ route('publication_detail', $p->slug) }}" class="stretched-link"></a>
                         </div>
                       </div>
                       @endforeach
@@ -181,7 +181,7 @@
                       @foreach( $audio as $a )
                       <div class="col-md-6 col-lg-4 mb-4">
                         <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/{{ $a->cloud_key }}&color=%231a150d&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-                        <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/ellamft" title="ellamft" target="_blank" style="color: #cccccc; text-decoration: none;">ellamft</a> · <a href="https://soundcloud.com/ellamft/luruh-isyana-sarasvati-ft-rara-sekar-cover-with-maydina" title="Luruh - Isyana Sarasvati ft. Rara Sekar (Cover with Maydina)" target="_blank" style="color: #cccccc; text-decoration: none;">{{ $a->judul_indo }}</a></div>
+                        <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="#" title="ellamft" target="_blank" style="color: #cccccc; text-decoration: none;"></a> · <a href="#" title="{{ $a->judul_english ?? $a->judul_indo }}" target="_blank" style="color: #cccccc; text-decoration: none;">{{ $a->judul_english ?? $a->judul_indo }}</a></div>
                         <main></main>
                       </div>
                       @endforeach

@@ -39,11 +39,11 @@
                                                     <img src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}" width="100%">
                                                 </div>
                                                 <div class="col-7 center-v">
-                                                    <h3 class="judul-artikel judul-artikel-tentang">{{ $a->judul_indo }}</h3>
-                                                    <!-- <p class="des-artikel des-artikel-tentang minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p> -->
+                                                    <h3 class="judul-artikel judul-artikel-tentang">{{ $a->judul_english ?? $a->judul_indo }}</h3>
+                                                    <!-- <p class="des-artikel des-artikel-tentang minimize">{!! Str::limit($a->konten_english ?? $a->konten_indo, 50, $end='...') !!}</p> -->
                                                 </div>
                                             </div>
-                                            <a href="{{ route('article_detail', $a->id) }}" class="stretched-link"></a>
+                                            <a href="{{ route('article_detail', $a->slug) }}" class="stretched-link"></a>
                                         </div>
                                     </div>
                                     @endforeach

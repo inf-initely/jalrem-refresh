@@ -19,7 +19,10 @@ class KontenController extends Controller
         $video = Video::where('status', 'publikasi')->paginate(9);
         $publikasi = Publikasi::where('status', 'publikasi')->paginate(9);
         $audio = Audio::where('status', 'publikasi')->paginate(9);
-
+        
+        if( request()->get('lg') == 'en' ) {
+            return view('content_english.konten', compact('artikel', 'foto', 'video', 'publikasi', 'audio'));
+        }
 
         return view('content.konten', compact('artikel', 'foto', 'video', 'publikasi', 'audio'));
     }

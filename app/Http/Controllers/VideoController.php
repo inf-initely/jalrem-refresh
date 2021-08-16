@@ -12,12 +12,20 @@ class VideoController extends Controller
     {
         $video = Video::where('status', 'publikasi')->paginate(9);
 
+        if( request()->get('lg') == 'en' ) {
+            return view('content_english.videos', compact('video'));
+        }
+
         return view('content.videos', compact('video'));
     }
 
     public function show($slug)
     {
         $video = Video::findOrFail('slug', $slug)->firstOrFail();
+
+        if( request()->get('lg') == 'en' ) {
+            return view('content_english.video_detail', compact('video'));
+        }
 
         return view('content.video_detail', compact('video'));
     }

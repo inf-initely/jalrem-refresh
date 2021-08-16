@@ -163,10 +163,10 @@
                     </div>
                     <div class="col-6 center-v">
                       <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">{{ $k->created_at->isoFormat('dddd, D MMMM Y'); }}</p>
-                      <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">{{ $k->judul_indo }}</h3>
+                      <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">{{ $k->judul_english ?? $k->judul_indo }}</h3>
                     </div>
                   </div>
-                  <a href="{{ route('event_detail', $k->id) }}" class="stretched-link"></a>
+                  <a href="{{ route('event_detail', $k->slug) }}" class="stretched-link"></a>
                 </div>
               </div>
             </div>
@@ -193,8 +193,8 @@
               <div class="card no-border card-artikel">
                 <img src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h3 class="card-title judul-artikel">{{ $a->judul_indo }}</h3>
-                  <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p>
+                  <h3 class="card-title judul-artikel">{{ $a->judul_english ?? $a->judul_indo }}</h3>
+                  <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_english ?? $a->konten_indo, 50, $end='...') !!}</p>
                   <p class="penulis-artikel">
                     {{ $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin' }}
                   </p>
@@ -202,7 +202,7 @@
                     {{ $a->created_at->isoFormat('dddd, D MMMM Y'); }}
                   </p>
                 </div>
-                <a href="{{ route('article_detail', $a->id) }}" class="stretched-link"></a>
+                <a href="{{ route('article_detail', $a->slug) }}" class="stretched-link"></a>
               </div>
             </div>
             @endforeach
@@ -298,7 +298,7 @@
                   </div>
                 </div>
                 <div class="card-body">
-                  <p class="card-text">{{ $v->judul_indo }}</p>
+                  <p class="card-text">{{ $v->judul_english ?? $v->judul_indo }}</p>
                 </div>
               </div>
             </div>
@@ -336,8 +336,7 @@
           <div class="row justify-content-center mt-3">
             <div class="col-md-12">
               <!-- LightWidget WIDGET -->
-              <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
-              <iframe src="//lightwidget.com/widgets/4efcdf886f385122afbd67a64448bcc2.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;"></iframe>
+              <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script><iframe src="https://cdn.lightwidget.com/widgets/d94273e72eb659c5b16e7be54b8c35b7.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;"></iframe>
             </div>
           </div>
         </section>

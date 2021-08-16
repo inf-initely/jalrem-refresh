@@ -24,7 +24,7 @@
           <div class="row justify-content-center">
             <div class="col-lg-8">
               <header>
-                <h2 class="sub-judul">{{ $publikasi->judul_indo }}</h2>
+                <h2 class="sub-judul">{{ $publikasi->judul_english ?? $publikasi->judul_indo }}</h2>
                 <div class="info-penulis">
                   <span class="txt-penulis" class="mr-3" id="penulis" name="penulis">{{ $publikasi->penulis != 'admin' ? $publikasi->kontributor_relasi->nama : 'admin' }}</span> |
                   <span class="txt-penulis" id="tglArtikel" name="tglArtikel">{{ $publikasi->created_at->isoFormat('dddd, D MMMM Y') }}</span>
@@ -51,11 +51,11 @@
                               <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="{{ asset('storage/assets/publikasi/thumbnail/' . $a->thumbnail) }}">
                             </div>
                             <div class="col-7 center-v">
-                              <h3 class="judul-berita-aside" id="jdlKegiatan" name="jdlKegiatan">{{ $a->judul_indo }}</h3>
+                              <h3 class="judul-berita-aside" id="jdlKegiatan" name="jdlKegiatan">{{ $a->judul_english ?? $a->judul_indo }}</h3>
                               <p class="tgl-berita-aside" id="tglKegiatan" name="tglKegiatan">{{ $a->created_at->isoFormat('dddd, D MMMM Y') }} </p>
                             </div>
                           </div>
-                          <a href="{{ route('publication_detail', $a->id) }}" class="stretched-link"></a>
+                          <a href="{{ route('publication_detail', $a->slug) }}" class="stretched-link"></a>
                         </div>
                       </div>
                     </div>
@@ -78,11 +78,11 @@
                               <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="{{ asset('storage/assets/publikasi/thumbnail/' . $a->thumbnail) }}">
                             </div>
                             <div class="col-7 center-v">
-                              <h3 class="judul-berita-aside" id="jdlKegiatan" name="jdlKegiatan">{{ $a->judul_indo }}</h3>
+                              <h3 class="judul-berita-aside" id="jdlKegiatan" name="jdlKegiatan">{{ $a->judul_english ?? $a->judul_indo }}</h3>
                               <p class="tgl-berita-aside" id="tglKegiatan" name="tglKegiatan">{{ $a->created_at->isoFormat('dddd, D MMMM Y'); }}</p>
                             </div>
                           </div>
-                          <a href="{{ route('publication_detail', $a->id) }}" class="stretched-link"></a>
+                          <a href="{{ route('publication_detail', $a->slug) }}" class="stretched-link"></a>
                         </div>
                       </div>
                     </div>
@@ -109,11 +109,11 @@
           <div class="col-md-6 col-lg-4 mb-4">
             <div class="card no-border no-background card-body">
               <img src="{{ asset('storage/assets/publikasi/thumbnail/' . $a->thumbnail) }}" class="card-img-top mb-4" alt="...">
-              <h3 class="card-title judul-artikel">{{ $a->judul_indo }}</h3>
-              <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p>
+              <h3 class="card-title judul-artikel">{{ $a->judul_english ?? $a->judul_indo }}</h3>
+              <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_english ?? $a->konten_indo, 50, $end='...') !!}</p>
               <p class="penulis-artikel">{{ $a->penulis }}</p>
               <p class="tgl-artikel">{{ $a->created_at->isoFormat('dddd, D MMMM Y'); }}</p>
-              <a href="{{ route('publication_detail', $a->id) }}" class="stretched-link"></a>
+              <a href="{{ route('publication_detail', $a->slug) }}" class="stretched-link"></a>
             </div>
           </div>
           @endforeach
