@@ -22,7 +22,7 @@ class KontenController extends Controller
         $audio = Audio::where('status', 'publikasi')->orderBy('created_at', 'desc')->paginate(9);
         
         if( request()->get('lg') == 'en' ) {
-            return view('content_english.konten', compact('artikel', 'foto', 'video', 'publikasi', 'audio'));
+            return view('content_english.konten', compact('artikel', 'foto', 'video', 'publikasi', 'audio', 'artikelSlider'));
         }
 
         return view('content.konten', compact('artikel', 'foto', 'video', 'publikasi', 'audio', 'artikelSlider'));
