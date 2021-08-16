@@ -5,15 +5,15 @@
     <div id="map"></div>
     <div class="wrap-hero-text wrap-hero-text-bg" id="wrapHeroText">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 text-end">
                 <header>
-                    <h2 class="sub-judul sub-judul-hero">Jejak dan Jalur Rempah</h2>
+                    <h2 class="sub-judul sub-judul-hero ">Jejak dan Jalur Rempah</h2>
                 </header>
                 <p>Jalur Rempah merupakan sebutan untuk suatu peradaban yang sangat tua, kompleks, dan luas. Jalurnya merupakan jalur budaya; terbentang dari timur Asia hingga barat Eropa, terhubung dengan Benua Amerika, Afrika dan Australia; dan mempengaruhi peradaban global.<span id="dots">...</span><span id="more"><br><br>
                         Kita dapat melihat peran aktif masyarakat Nusantara dalam pembentukkan peradaban ini. Baik sebagai produsen rempah yang menggerakkan perdagangan lintas batas, maupun sebagai masyarakat yang terbuka bagi banyak bangsa (pendatang) yang memiliki latar belakang budaya yang berbeda.<br><br>
                         Keterbukaan masyarakat dan hubungan budaya yang melahirkan beragam warisan budaya multikultural dan multietnis ke berbagai medium, termasuk hubungan lintas lautan di dalamnya, menjadi suatu keniscayaan. Tidak hanya antar bangsa, tetapi juga antar sukubangsa. Hubungan budaya antar manusia lintas lautan meninggalkan jejak, dan rangkaian jejak lintas wilayah inilah yang sekaligus membangun jalur.<br><br>
                         Setiap warisan memiliki nilai budaya yang disimpan dalam berbagai bentuk. Kisah asal usul, nyanyian, musik, tarian, teknologi tradisional, arsitektur bangunan, kepercayaan dan banyak lainnya. Simpanan nilai budaya yang menjadi memori kolektif ini sekaligus menjadi bukti dan jejak Jalur Rempah.</span></p>
-                <button class="btn btn-sm btn-outline-secondary" onclick="readMore()" id="btnReadmore">Read more</button>
+                <button class="btn btn-sm btn-outline-secondary" onclick="readMore()" id="btnReadmore">Lihat Selengkapnya</button>
             </div>
         </div>
     </div>
@@ -330,11 +330,11 @@
 
         if (dots.style.display === "none") {
             dots.style.display = "inline";
-            btnText.innerHTML = "Read more";
+            btnText.innerHTML = "Lihat Selengkapnya";
             moreText.style.display = "none";
         } else {
             dots.style.display = "none";
-            btnText.innerHTML = "Read less";
+            btnText.innerHTML = "Kembali";
             moreText.style.display = "inline";
         }
 
