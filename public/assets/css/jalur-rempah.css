@@ -1,6 +1,7 @@
 /*font import*/
 /*@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');*/
 @import url('https://fonts.googleapis.com/css2?family=Literata:wght@200;300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
 body {
     /*font-family: 'Poppins', sans-serif;*/
@@ -805,7 +806,13 @@ footer {
 }
 
 .judul-berita-aside {
-    font-size: 16px;
+    font-size: 13px;
+    /*font-family: 'Roboto', sans-serif !important;*/
+}
+
+.tanggal-berita-aside {
+    font-size: 12px;
+    /*font-family: 'Roboto', sans-serif !important;*/
 }
 
 .hero-peta {
@@ -1505,6 +1512,11 @@ footer {
 .wrap-baca-juga a {
     color: #8B7D5D;
     text-decoration: none;
+}
+
+#isiKonten p,
+#txtMedia{
+    font-family: 'Roboto', sans-serif !important;
 }
 
 @media (max-width: 991.98px) {
