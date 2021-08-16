@@ -30,7 +30,7 @@
                   <span class="txt-penulis" id="tglArtikel" name="tglArtikel">{{ $artikel->created_at->isoFormat('dddd, D MMMM Y') }}</span>
                 </div>
               </header>
-              <article id="desTentang">
+              <article id="isiKonten">
                 <img class="mb-3 mt-3" src="{{ asset('storage/assets/artikel/thumbnail/' . $artikel->thumbnail) }}" width="100%">
                 {!! $artikel->konten_indo !!}
               </article>
@@ -61,6 +61,11 @@
                   <li class="list-group-item">
                     <a href="#">
                       <img src="{{ asset('assets/img/icon-media-sosial/icon-linkedin.svg') }}" width="30px">
+                    </a>
+                  </li>
+                  <li class="list-group-item">
+                    <a href="#">
+                      <img src="{{ asset('assets/img/icon-media-sosial/icon-twitter.svg') }}" width="30px">
                     </a>
                   </li>
                 </ul>

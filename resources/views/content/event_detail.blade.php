@@ -11,7 +11,7 @@
                 <h2 class="sub-judul mb-4">{{ $kegiatan->judul_indo }}</h2>
               </header>
               <img src="{{ asset('storage/assets/kegiatan/thumbnail/' . $kegiatan->thumbnail) }}" width="100%">
-              <section id="desTentang">
+              <section id="isiKonten">
                 {{ $kegiatan->konten_indo }}
               </section>
             </div>

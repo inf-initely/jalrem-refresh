@@ -30,7 +30,7 @@
                   <span class="txt-penulis" id="tglArtikel" name="tglArtikel">{{ $publikasi->created_at->isoFormat('dddd, D MMMM Y') }}</span>
                 </div>
               </header>
-              <section id="desTentang">
+              <section id="isiKonten">
                 <img class="mb-3 mt-3" src="{{ asset('storage/assets/publikasi/thumbnail/' . $publikasi->thumbnail) }}" width="100%">
                 {!! $publikasi->konten_indo !!}
               </section>
