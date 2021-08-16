@@ -784,7 +784,8 @@ footer {
 
 .no-background {
     background-color: transparent;
-    box-shadow: 7px 7px 20px -15px rgba(0, 0, 0, 0);
+    box-shadow: 7px 7px 20px -15px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
 }
 
 .media-video {
@@ -1517,6 +1518,10 @@ footer {
 #isiKonten p,
 #txtMedia{
     font-family: 'Roboto', sans-serif !important;
+}
+
+.slick-slider .slick-track, .slick-slider .slick-list{
+    padding-bottom: 10px;
 }
 
 @media (max-width: 991.98px) {
