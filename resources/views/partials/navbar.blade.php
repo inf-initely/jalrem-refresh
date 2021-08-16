@@ -7,17 +7,17 @@
     <ul class="link-bahasa d-block d-lg-none">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="assets/img/bendera/flag-indonesia.png" class="mr-2 flag" width="20px"> INA
+          <img src="assets/img/bendera/flag-indonesia.png" class="mr-2 flag" width="20px"> ID
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
           <li>
             <a class="dropdown-item" href="{{ route('home') }}">
-              <img src="assets/img/bendera/flag-indonesia.png" class="mr-2 flag" width="20px"> INA
+              <img src="assets/img/bendera/flag-indonesia.png" class="mr-2 flag" width="20px"> ID
             </a>
           </li>
           <li>
             <a class="dropdown-item" href="?lg=en">
-              <img src="assets/img/bendera/flag-english.png" class="mr-2 flag" width="20px"> ENG
+              <img src="assets/img/bendera/flag-english.png" class="mr-2 flag" width="20px"> EN
             </a>
           </li>
         </ul>
@@ -49,17 +49,17 @@
           <ul class="link-bahasa d-none d-lg-block">
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="{{ request()->get('lg') == 'en' ? 'assets/img/bendera/flag-english.png' : 'assets/img/bendera/flag-indonesia.png' }}" class="mr-2 flag" width="20px"> {{ request()->get('lg') == 'en' ? 'ENG' : 'INA' }}
+                <img src="{{ request()->get('lg') == 'en' ? 'assets/img/bendera/flag-english.png' : 'assets/img/bendera/flag-indonesia.png' }}" class="mr-2 flag" width="20px"> {{ request()->get('lg') == 'en' ? 'EN' : 'ID' }}
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
                   <a class="dropdown-item" href="{{ route('home') }}">
-                    <img src="assets/img/bendera/flag-indonesia.png" class="mr-2 flag" width="20px"> INA
+                    <img src="assets/img/bendera/flag-indonesia.png" class="mr-2 flag" width="20px"> ID
                   </a>
                 </li>
                 <li>
                   <a class="dropdown-item" href="?lg=en">
-                    <img src="assets/img/bendera/flag-english.png" class="mr-2 flag" width="20px"> ENG
+                    <img src="assets/img/bendera/flag-english.png" class="mr-2 flag" width="20px"> EN
                   </a>
                 </li>
               </ul>
@@ -85,17 +85,17 @@
     <ul class="link-bahasa d-block d-lg-none">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle clr-black" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="{{ request()->get('lg') == 'en' ? 'assets/img/bendera/flag-english.png' : 'assets/img/bendera/flag-indonesia.png' }}" class="mr-2 flag" width="20px"> {{ request()->get('lg') == 'en' ? 'ENG' : 'INA' }}
+          <img src="{{ request()->get('lg') == 'en' ? 'assets/img/bendera/flag-english.png' : 'assets/img/bendera/flag-indonesia.png' }}" class="mr-2 flag" width="20px"> {{ request()->get('lg') == 'en' ? 'EN' : 'ID' }}
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
           <li>
             <a class="dropdown-item" href="{{ route('home') }}">
-              <img src="assets/img/bendera/flag-indonesia.png" class="mr-2 flag" width="20px"> INA
+              <img src="assets/img/bendera/flag-indonesia.png" class="mr-2 flag" width="20px"> ID
             </a>
           </li>
           <li>
             <a class="dropdown-item" href="#">
-              <img src="assets/img/bendera/flag-english.png" class="mr-2 flag" width="20px"> ENG
+              <img src="assets/img/bendera/flag-english.png" class="mr-2 flag" width="20px"> EN
             </a>
           </li>
         </ul>
@@ -134,17 +134,17 @@
           <ul class="link-bahasa d-none d-lg-block">
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle clr-black" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="{{ request()->get('lg') == 'en' ? 'assets/img/bendera/flag-english.png' : 'assets/img/bendera/flag-indonesia.png' }}" class="mr-2 flag" width="20px"> {{ request()->get('lg') == 'en' ? 'ENG' : 'INA' }}
+                <img src="{{ request()->get('lg') == 'en' ? 'assets/img/bendera/flag-english.png' : 'assets/img/bendera/flag-indonesia.png' }}" class="mr-2 flag" width="20px"> {{ request()->get('lg') == 'en' ? 'EN' : 'ID' }}
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
                   <a class="dropdown-item" href="{{ route('home') }}">
-                    <img src="{{ asset('assets/img/bendera/flag-indonesia.png') }}" class="mr-2 flag" width="20px"> INA
+                    <img src="{{ asset('assets/img/bendera/flag-indonesia.png') }}" class="mr-2 flag" width="20px"> ID
                   </a>
                 </li>
                 <li>
                   <a class="dropdown-item" href="?lg=en">
-                    <img src="{{ asset('assets/img/bendera/flag-english.png') }}" class="mr-2 flag" width="20px"> ENG
+                    <img src="{{ asset('assets/img/bendera/flag-english.png') }}" class="mr-2 flag" width="20px"> EN
                   </a>
                 </li>
               </ul>
@@ -170,17 +170,17 @@
     <ul class="link-bahasa d-block d-lg-none">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="{{ request()->get('lg') == 'en' ? 'assets/img/bendera/flag-english.png' : 'assets/img/bendera/flag-indonesia.png' }}" class="mr-2 flag" width="20px"> {{ request()->get('lg') == 'en' ? 'ENG' : 'INA' }}
+          <img src="{{ request()->get('lg') == 'en' ? 'assets/img/bendera/flag-english.png' : 'assets/img/bendera/flag-indonesia.png' }}" class="mr-2 flag" width="20px"> {{ request()->get('lg') == 'en' ? 'EN' : 'ID' }}
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
           <li>
             <a class="dropdown-item" href="{{ route('home') }}">
-              <img src="assets/img/bendera/flag-indonesia.png" class="mr-2 flag" width="20px"> INA
+              <img src="assets/img/bendera/flag-indonesia.png" class="mr-2 flag" width="20px"> ID
             </a>
           </li>
           <li>
             <a class="dropdown-item" href="?lg=en">
-              <img src="assets/img/bendera/flag-english.png" class="mr-2 flag" width="20px"> ENG
+              <img src="assets/img/bendera/flag-english.png" class="mr-2 flag" width="20px"> EN
             </a>
           </li>
         </ul>
@@ -219,17 +219,17 @@
           <ul class="link-bahasa d-none d-lg-block">
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="{{ request()->get('lg') == 'en' ? 'assets/img/bendera/flag-english.png' : 'assets/img/bendera/flag-indonesia.png' }}" class="mr-2 flag" width="20px"> {{ request()->get('lg') == 'en' ? 'ENG' : 'INA' }}
+                <img src="{{ request()->get('lg') == 'en' ? 'assets/img/bendera/flag-english.png' : 'assets/img/bendera/flag-indonesia.png' }}" class="mr-2 flag" width="20px"> {{ request()->get('lg') == 'en' ? 'EN' : 'ID' }}
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
                   <a class="dropdown-item" href="{{ route('home') }}">
-                    <img src="{{ asset('assets/img/bendera/flag-indonesia.png') }}" class="mr-2 flag" width="20px"> INA
+                    <img src="{{ asset('assets/img/bendera/flag-indonesia.png') }}" class="mr-2 flag" width="20px"> ID
                   </a>
                 </li>
                 <li>
                   <a class="dropdown-item" href="?lg=en">
-                    <img src="{{ asset('assets/img/bendera/flag-english.png') }}" class="mr-2 flag" width="20px"> ENG
+                    <img src="{{ asset('assets/img/bendera/flag-english.png') }}" class="mr-2 flag" width="20px"> EN
                   </a>
                 </li>
               </ul>
