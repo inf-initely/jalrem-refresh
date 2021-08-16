@@ -19,7 +19,7 @@
                       <h3 class="card-title judul-artikel">{{ $a->judul_indo }}</h3>
                       <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p>
                     </div>
-                    <a href="detail-berita.html" class="stretched-link"></a>
+                    <a href="{{ route('article_detail', $a->slug) }}" class="stretched-link"></a>
                   </div>
                 </div>
                 @endforeach

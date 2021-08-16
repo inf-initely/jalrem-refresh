@@ -3,7 +3,7 @@
 @section('content')
 <main>
     <div id="content" class="full-bg">
-      {{-- <section id="sliderArtikel">
+      <section id="sliderArtikel">
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-lg-12">
@@ -11,7 +11,7 @@
                 <h2 class="sub-judul text-center">Terbaru</h2>
               </header>
               <div class="feature">
-                @foreach( $artikel as $a )
+                @foreach( $artikelSlider as $a )
                 <div>
                   <div class="card no-border card-artikel no-background">
                     <img src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}" class="card-img-top" alt="...">
@@ -19,7 +19,7 @@
                       <h3 class="card-title judul-artikel">{{ $a->judul_indo }}</h3>
                       <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p>
                     </div>
-                    <a href="detail-berita.html" class="stretched-link"></a>
+                    <a href="{{ route('article_detail', $a->slug) }}" class="stretched-link"></a>
                   </div>
                 </div>
                 @endforeach
@@ -27,8 +27,8 @@
             </div>
           </div>
         </div>
-      </section> --}}
-      {{-- <section id="secBerita" class="d-none">
+      </section> 
+      <section id="secBerita" class="d-none">
         <div class="container">
           <header class="row justify-content-center">
             <div class="col-md-12 text-center">
@@ -54,7 +54,7 @@
             {{ $artikel->links('vendor.pagination.custom') }}
           </section>
         </div>
-      </section> --}}
+      </section>
       <section id="secMedia">
         <div class="container">
           <div class="row justify-content-center">
