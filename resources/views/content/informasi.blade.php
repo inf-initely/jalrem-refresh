@@ -80,7 +80,7 @@
           <div class="kegiatan-sebelumnya">
             @foreach( $kegiatan_sebelumnya as $k )
             <div>
-              <div class="card no-border no-background">
+              <div class="card no-border card-kegiatan">
                 <div class="card-body">
                   <div class="row">
                     <div class="col-6">
