@@ -4,7 +4,7 @@
     <div class="container wrap-footer">
       <div class="row justify-content-center">
         <div class="col-12 col-md-8 col-lg-3 footer-content mb-4">
-          <img class="logo-footer" src="{{ asset('assets/img/logo-footer.png') }}" width="70%">
+          <img class="logo-footer" src="{{ asset('assets/img/logo-footer-2.png') }}" width="70%">
           <p class="footer-alamat">Kompleks Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi, Jalan Jenderal Sudirman, Senayan, Jakarta 10270</p>
         </div>
         <div class="col-12 col-md-6 col-lg-3 mb-4 footer-content">
