@@ -1,6 +1,6 @@
 <footer>
     <img class="footer-bg-1" src="{{ asset('assets/img/asset-jelajah.png') }}" width="50%">
-    <img class="footer-bg-2" src="{{ asset('assets/img/asset-jelajah2.png') }}" width="50%">
+    <img class="footer-bg-2 d-none" src="{{ asset('assets/img/asset-jelajah2.png') }}" width="50%">
     <div class="container wrap-footer">
       <div class="row justify-content-center">
         <div class="col-12 col-md-8 col-lg-3 footer-content mb-4">
