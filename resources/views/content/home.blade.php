@@ -126,7 +126,7 @@
               <header>
                 <h2 class="sub-judul text-center mb-3">Jalur Rempah Magnet Dunia</h2>
               </header>
-              <p class="jelajah-des text-justify">Asimilasi budaya dan keterhubungan antarbangsa di Indonesia tidak terjadi begitu saja. Di masa lampau, kehadiran para pedagang antarbangsa memiliki peranan penting terhadap perkembangan budaya yang masih bisa kita lihat dan rasakan jejaknya. Hal ini disebabkan oleh komoditi rempah yang berasal dari berbagai kepulauan di Nusantara yang terlibat dalam lalu lintas perdagangan di masa lampau, sehingga menjadi salah satu jalur budaya.</p>
+              <p class="jelajah-des text-center">Asimilasi budaya dan keterhubungan antarbangsa di Indonesia tidak terjadi begitu saja. Di masa lampau, kehadiran para pedagang antarbangsa memiliki peranan penting terhadap perkembangan budaya yang masih bisa kita lihat dan rasakan jejaknya. Hal ini disebabkan oleh komoditi rempah yang berasal dari berbagai kepulauan di Nusantara yang terlibat dalam lalu lintas perdagangan di masa lampau, sehingga menjadi salah satu jalur budaya.</p>
             </div>
           </div>
         </div>
