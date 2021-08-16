@@ -12,8 +12,8 @@ class InformasiController extends Controller
 {
     public function index()
     {
-        $kegiatan_saat_ini = Kegiatan::where('status', 'publikasi')->where('created_at', '>=', Carbon::now())->get();
-        $kegiatan_sebelumnya = Kegiatan::where('status', 'publikasi')->where('created_at', '<', Carbon::now())->get();
+        $kegiatan_saat_ini = Kegiatan::where('status', 'publikasi')->where('created_at', '>=', Carbon::now())->orderBy('created_at', 'desc')->get();
+        $kegiatan_sebelumnya = Kegiatan::where('status', 'publikasi')->where('created_at', '<', Carbon::now())->orderBy('created_at', 'desc')->get();
         $kerjasama = Kerjasama::where('status', 'publikasi')->get();
 
         if( request()->get('lg') == 'en' ) {

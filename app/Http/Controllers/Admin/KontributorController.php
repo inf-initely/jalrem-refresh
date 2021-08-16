@@ -20,7 +20,7 @@ class KontributorController extends Controller
 {
     public function index()
     {
-        $kontributor = Kontributor::all();
+        $kontributor = Kontributor::orderBy('created_at', 'desc')->get();
 
         return view('admin.master.contributor.index', compact('kontributor'));
     }

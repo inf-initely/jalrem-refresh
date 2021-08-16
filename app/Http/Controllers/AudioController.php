@@ -10,7 +10,7 @@ class AudioController extends Controller
 {
     public function index()
     {
-        $audio = Audio::where('status', 'publikasi')->paginate(9);
+        $audio = Audio::where('status', 'publikasi')->orderBy('created_at', 'desc')->paginate(9);
 
         if( request()->get('lg') == 'en' ) {
             return view('content_english.audios', compact('audio')); 

@@ -16,7 +16,7 @@ class KerjasamaController extends Controller
 {
     public function index()
     {
-        $kerjasama = Kerjasama::all();
+        $kerjasama = Kerjasama::orderBy('created_at', 'desc')->get();
 
         return view('admin.informasi.kerjasama.index', compact('kerjasama'));
     }

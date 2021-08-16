@@ -10,7 +10,7 @@ class VideoController extends Controller
 {
     public function index()
     {
-        $video = Video::where('status', 'publikasi')->paginate(9);
+        $video = Video::where('status', 'publikasi')->orderBy('created_at', 'desc')->paginate(9);
 
         if( request()->get('lg') == 'en' ) {
             return view('content_english.videos', compact('video'));
@@ -21,7 +21,7 @@ class VideoController extends Controller
 
     public function show($slug)
     {
-        $video = Video::findOrFail('slug', $slug)->firstOrFail();
+        $video = Video::where('slug', $slug)->firstOrFail();
 
         if( request()->get('lg') == 'en' ) {
             return view('content_english.video_detail', compact('video'));

@@ -16,7 +16,7 @@ class AudioController extends Controller
 {
     public function index()
     {
-        $audio = Audio::all();
+        $audio = Audio::orderBy('created_at', 'desc')->get();
         
         return view('admin.content.audio.index', compact('audio'));
     }

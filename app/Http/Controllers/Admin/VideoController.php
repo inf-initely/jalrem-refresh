@@ -16,7 +16,7 @@ class VideoController extends Controller
 {
     public function index()
     {
-        $videos = Video::all();
+        $videos = Video::orderBy('created_at', 'desc')->get();
 
         return view('admin.content.video.index', compact('videos'));
     }

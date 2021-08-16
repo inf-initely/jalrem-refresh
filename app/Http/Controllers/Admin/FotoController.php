@@ -17,7 +17,7 @@ class FotoController extends Controller
 {
     public function index()
     {
-        $foto = Foto::all();
+        $foto = Foto::orderBy('created_at', 'desc')->get();
         return view('admin.content.photo.index', compact('foto'));
     }
 

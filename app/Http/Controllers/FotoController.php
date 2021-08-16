@@ -10,7 +10,7 @@ class FotoController extends Controller
 {
     public function index()
     {
-        $foto = Foto::where('status', 'publikasi')->paginate(9);
+        $foto = Foto::where('status', 'publikasi')->orderBy('created_at', 'desc')->paginate(9);
 
         if( request()->get('lg') == 'en' ) {
             return view('content_english.photos', compact('foto'));

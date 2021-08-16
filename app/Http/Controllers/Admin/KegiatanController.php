@@ -16,7 +16,7 @@ class KegiatanController extends Controller
 {
     public function index()
     {
-        $kegiatan = Kegiatan::all();
+        $kegiatan = Kegiatan::orderBy('created_at', 'desc')->get();
 
         return view('admin.informasi.kegiatan.index', compact('kegiatan'));
     }

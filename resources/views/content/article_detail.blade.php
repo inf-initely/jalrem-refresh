@@ -18,8 +18,8 @@
   <main>
     <div id="content">
       <section id="artikel">
-        <img class="item-jelajah item-kompas" src="assets/img/item-kompas.svg">
-        <img class="item-jelajah item-cengkeh" src="assets/img/item-cengkeh.svg">
+        <img class="item-jelajah item-kompas" src="{{ asset('assets/img/item-kompas.svg') }}">
+        <img class="item-jelajah item-cengkeh" src="{{ asset('assets/img/item-cengkeh.svg') }}">
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-lg-8 pe-5">
@@ -49,7 +49,7 @@
                     </a>
                   </li>
                   <li class="list-group-item">
-                    <a href="#">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ route('article_detail', $artikel->slug) }}">
                       <img src="{{ asset('assets/img/icon-media-sosial/icon-facebook.svg') }}" width="30px">
                     </a>
                   </li>

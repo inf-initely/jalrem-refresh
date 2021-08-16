@@ -14,16 +14,17 @@ class KontenController extends Controller
 {
     public function index()
     {
-        $artikel = Artikel::where('status', 'publikasi')->paginate(9);
-        $foto = Foto::where('status', 'publikasi')->paginate(9);
-        $video = Video::where('status', 'publikasi')->paginate(9);
-        $publikasi = Publikasi::where('status', 'publikasi')->paginate(9);
-        $audio = Audio::where('status', 'publikasi')->paginate(9);
+        $artikelSlider = Artikel::where('status', 'publikasi')->orderBy('created_at', 'desc')->take(5)->get();
+        $artikel = Artikel::where('status', 'publikasi')->orderBy('created_at', 'desc')->paginate(9);
+        $foto = Foto::where('status', 'publikasi')->orderBy('created_at', 'desc')->paginate(9);
+        $video = Video::where('status', 'publikasi')->orderBy('created_at', 'desc')->paginate(9);
+        $publikasi = Publikasi::where('status', 'publikasi')->orderBy('created_at', 'desc')->paginate(9);
+        $audio = Audio::where('status', 'publikasi')->orderBy('created_at', 'desc')->paginate(9);
         
         if( request()->get('lg') == 'en' ) {
             return view('content_english.konten', compact('artikel', 'foto', 'video', 'publikasi', 'audio'));
         }
 
-        return view('content.konten', compact('artikel', 'foto', 'video', 'publikasi', 'audio'));
+        return view('content.konten', compact('artikel', 'foto', 'video', 'publikasi', 'audio', 'artikelSlider'));
     }
 }

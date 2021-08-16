@@ -16,7 +16,7 @@ class PublikasiController extends Controller
 {
     public function index()
     {
-        $publikasi = Publikasi::all();
+        $publikasi = Publikasi::orderBy('created_at', 'desc')->get();
 
         return view('admin.content.publication.index', compact('publikasi'));
     }
