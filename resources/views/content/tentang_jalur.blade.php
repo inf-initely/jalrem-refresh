@@ -3,7 +3,7 @@
 @section('content')
 <header id="hero">
     <img class="hero-img-2 hero-peta " src="https://jalurrempah.kemdikbud.go.id/wp-content/uploads/2020/09/Peta-indonesia-u-JR.jpg">
-    <div class="wrap-hero-text wrap-hero-text-bg" id="wrapHeroText">
+    <div class="wrap-hero-text wrap-hero-text-bg d-none d-lg-block" id="wrapHeroText">
         <div class="row">
             <div class="col-md-12">
                 <header>
@@ -24,7 +24,26 @@
     </div>
 </header>
 <main>
-    <div id="content">
+    <div id="content" class="d-block d-lg-none px-3">
+        <section id="narasi">
+            <div class="row">
+                <div class="col-md-12">
+                    <header>
+                        <h2 class="sub-judul sub-judul-hero">Titik-Titik Jalur Rempah</h2>
+                    </header>
+                    <p>Jalur Rempah mencakup berbagai lintasan dari timur Asia hingga barat Eropa terhubung dengan Benua Amerika, Afrika dan Australia. Suatu lintasan peradaban bermacam bentuk, garis lurus, lingkaran, silang, bahkan berbentuk jejaring.<span id="dots2" style="display:inline">...</span><span id="more2" style="display:none"><br><br>
+                            Di Indonesia, wujud jalur perniagaan rempah mencakup banyak hal. Tidak hanya berdiri di satu titik penghasil rempah, namun juga mencakup berbagai titik yang bisa dijumpai di Indonesia dan membentuk suatu lintasan peradaban yang berkelanjutan.<br><br>
+                            Program Jalur Rempah melihat kembali lintasan jalur perdagangan rempah dari satu titik ke titik lainnya, menghidupkan kembali beragam kisahnya, menghubungkan kembali berbagai jejaknya.<br><br>
+                            Menghidupkan kembali narasi sejarah yang umumnya tidak memperlihatkan peran orang Indonesia dalam pembentukan Jalur Rempah.<br><br>
+                            Program ini bertekad keras mencatat peran mereka yang berada di titik-titik perdagangan rempah, menghubungkan serangkaian benang merah yang belum terdokumentasikan dan tampak samar-samar dalam narasi sejarah.</span></p>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn btn-sm btn-outline-secondary" onclick="readMore2()" id="btnReadmore2">Lihat Selengkapnya</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <section id="kontenJejak">
             <div class="container">
                 <div class="row justify-content-center">
@@ -183,6 +202,7 @@
         var moreText = document.getElementById("more");
         var btnText = document.getElementById("btnReadmore");
 
+
         if (dots.style.display === "none") {
             dots.style.display = "inline";
             btnText.innerHTML = "Lihat Selengkapnya";
@@ -200,5 +220,23 @@
         }
 
     }
+
+    function readMore2(){
+        var dots2 = document.getElementById("dots2");
+        var moreText2 = document.getElementById("more2");
+        var btnText2 = document.getElementById("btnReadmore2");
+
+
+        if (dots2.style.display === "none") {
+            dots2.style.display = "inline";
+            btnText2.innerHTML = "Lihat Selengkapnya";
+            moreText2.style.display = "none";
+        } else {
+            dots2.style.display = "none";
+            btnText2.innerHTML = "Kembali";
+            moreText2.style.display = "inline";
+        }
+    }
+
 </script>
 @endsection
