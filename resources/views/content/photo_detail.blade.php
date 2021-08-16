@@ -52,7 +52,7 @@
                       <img src="{{ asset('assets/img/icon-publication.png') }}" width="25%">
                       <p class="judul-media">Artikel</p>
                       <p class="des-media">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor.
+
                       </p>
                     </div>
                     <a href="{{ route('articles') }}" class="stretched-link"></a>
@@ -64,7 +64,7 @@
                       <img src="{{ asset('assets/img/icon-image.png') }}" width="25%">
                       <p class="judul-media">Foto</p>
                       <p class="des-media">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor.
+
                       </p>
                     </div>
                     <a href="{{ route('photos') }}" class="stretched-link"></a>
@@ -76,7 +76,7 @@
                       <img src="{{ asset('assets/img/icon-video.png') }}" width="25%">
                       <p class="judul-media">Video</p>
                       <p class="des-media">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor.
+
                       </p>
                     </div>
                     <a href="{{ route('videos') }}" class="stretched-link"></a>
@@ -88,7 +88,7 @@
                       <img src="{{ asset('assets/img/icon-publication.png') }}" width="25%">
                       <p class="judul-media">Publikasi</p>
                       <p class="des-media">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor.
+
                       </p>
                     </div>
                     <a href="{{ route('publications') }}" class="stretched-link"></a>
@@ -100,7 +100,7 @@
                       <img src="{{ asset('assets/img/icon-sound.png') }}" width="25%">
                       <p class="judul-media">Audio</p>
                       <p class="des-media">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor.
+
                       </p>
                     </div>
                     <a href="{{ route('audios') }}" class="stretched-link"></a>
