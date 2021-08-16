@@ -22,8 +22,8 @@ $("#sidebarToggle").click(function() {
 $(document).ready(function() {
   var t = $('#listArtikel').DataTable({
     "columnDefs": [{
-      "searchable": false,
-      "orderable": false,
+      "searchable": true,
+      "orderable": true,
       "targets": [0, 2]
     }],
     "order": [
