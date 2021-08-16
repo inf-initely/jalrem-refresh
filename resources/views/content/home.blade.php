@@ -273,7 +273,7 @@
           <div class="row mb-4">
             <div class="col-lg-12">
               <header>
-                <h2 class="sub-judul">Youtube Jalur Rempah</h2>
+                <h2 class="sub-judul">Youtube</h2>
               </header>
             </div>
           </div>
@@ -309,7 +309,7 @@
           <div class="row mb-4">
             <div class="col-lg-12">
               <header>
-                <h2 class="sub-judul">Twitter Jalur Rempah</h2>
+                <h2 class="sub-judul">Twitter</h2>
               </header>
             </div>
           </div>
@@ -336,7 +336,7 @@
           <div class="row">
             <div class="col-lg-12">
               <header>
-                <h2 class="sub-judul">Instagram Jalur Rempah</h2>
+                <h2 class="sub-judul">Instagram</h2>
               </header>
             </div>
           </div>
