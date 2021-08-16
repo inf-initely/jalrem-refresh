@@ -15,7 +15,7 @@
                         Menghidupkan kembali narasi sejarah yang umumnya tidak memperlihatkan peran orang Indonesia dalam pembentukan Jalur Rempah.<br><br>
                         Program ini bertekad keras mencatat peran mereka yang berada di titik-titik perdagangan rempah, menghubungkan serangkaian benang merah yang belum terdokumentasikan dan tampak samar-samar dalam narasi sejarah.</span></p>
                 <div class="row">
-                    <div class="col text-end">
+                    <div class="col-md-12 text-end">
                         <button class="btn btn-sm btn-outline-secondary" onclick="readMore()" id="btnReadmore">Lihat Selengkapnya</button>
                     </div>
                 </div>
@@ -185,11 +185,11 @@
 
         if (dots.style.display === "none") {
             dots.style.display = "inline";
-            btnText.innerHTML = "Read more";
+            btnText.innerHTML = "Lihat Selengkapnya";
             moreText.style.display = "none";
         } else {
             dots.style.display = "none";
-            btnText.innerHTML = "Read less";
+            btnText.innerHTML = "Kembali";
             moreText.style.display = "inline";
         }
 
