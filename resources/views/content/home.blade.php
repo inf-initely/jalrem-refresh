@@ -5,14 +5,15 @@
     <section class="hero-slider hero-style">
       <div class="swiper-container">
         <div class="swiper-wrapper">
+          @foreach( $slider as $s )
           <div class="swiper-slide">
-            <div class="slide-inner slide-bg-image" data-background="assets/img/hero/hero-1.jpg">
+            <div class="slide-inner slide-bg-image" data-background="{{ asset('storage/assets/'. substr($s->getTable(), 0, -1) .'/slider/' . $s->slider_file) }}">
               <div class="container">
                 <div data-swiper-parallax="300" class="slide-title">
-                  <h2 class="title">Jalur Rempah</h2>
+                  <h2 class="title">{{ $s->judul_indo }}</h2>
                 </div>
                 <div data-swiper-parallax="400" class="slide-text">
-                  <p class="caption">Penggalian kembali ekosistem bahari yang berdiri dari jalur dan jejak masa lampau. Suatu sudut pandang dan fondasi dari masa lalu sebagai masa kini. Rangkaian ingatan kolektif sebagai pengetahuan dalam membangun masa depan.</p>
+                  <p class="caption">{!! Str::limit($s->konten_indo, 50, $end='...') !!}</p>
                 </div>
                 <div class="clearfix"></div>
               </div>
@@ -20,37 +21,7 @@
             <!-- end slide-inner -->
           </div>
           <!-- end swiper-slide -->
-          <div class="swiper-slide">
-            <div class="slide-inner slide-bg-image" data-background="assets/img/hero/hero-2.jpg">
-              <div class="container">
-                <div data-swiper-parallax="300" class="slide-title">
-                  <h2 class="title">Jalur Rempah</h2>
-                </div>
-                <div data-swiper-parallax="400" class="slide-text">
-                  <p class="caption">Penggalian kembali ekosistem bahari yang berdiri dari jalur dan jejak masa lampau. Suatu sudut pandang dan fondasi dari masa lalu sebagai masa kini. Rangkaian ingatan kolektif sebagai pengetahuan dalam membangun masa depan.</p>
-                </div>
-              </div>
-              <div class="clearfix"></div>
-            </div>
-          </div>
-          <!-- end slide-inner -->
-          <!-- end swiper-slide -->
-          <div class="swiper-slide">
-            <div class="slide-inner slide-bg-image" data-background="assets/img/hero/hero-3.jpg">
-              <div class="container">
-                <div data-swiper-parallax="300" class="slide-title">
-                  <h2 class="title">Jalur Rempah</h2>
-                </div>
-                <div data-swiper-parallax="400" class="slide-text">
-                  <p class="caption">Penggalian kembali ekosistem bahari yang berdiri dari jalur dan jejak masa lampau. Suatu sudut pandang dan fondasi dari masa lalu sebagai masa kini. Rangkaian ingatan kolektif sebagai pengetahuan dalam membangun masa depan.</p>
-                </div>
-              </div>
-              <div class="clearfix"></div>
-            </div>
-          </div>
-          <!-- end slide-inner --><img src="">
-        </div>
-        <!-- end swiper-slide -->
+          @endforeach
       </div>
       <!-- end swiper-wrapper -->
       <!-- swipper controls -->
