@@ -74,7 +74,7 @@
               <header>
                 <h2 class="sub-judul">Masa Depan</h2>
               </header>
-              <p class="jelajah-des">Melihat kembali lintasan jalur perdagangan rempah dari satu titik ke titik lainnya, menghidupkan kembali beragam kisahnya, menghubungkan kembali berbagai jejaknya.</p>
+              <p class="jelajah-des">Penggalian kembali ekosistem bahari yang berdiri dari rute dan jejak masa lampau. Suatu sudut pandang dan fondasi dari masa lalu sebagai masa kini. Rangkaian ingatan kolektif sebagai pengetahuan dalam membangun masa depan.</p>
               <a href="{{ route('tentangmasadepan') }}" class="btn btn-danger btn-jelajah">
                 lihat selengkapnya
               </a>
