@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 use App\Models\Video;
 
@@ -12,7 +13,7 @@ class VideoController extends Controller
     {
         $video = Video::where('status', 'publikasi')->orderBy('created_at', 'desc')->paginate(9);
 
-        if( request()->get('lg') == 'en' ) {
+        if( Session::get('lg') == 'en' ) {
             return view('content_english.videos', compact('video'));
         }
 
@@ -23,7 +24,7 @@ class VideoController extends Controller
     {
         $video = Video::where('slug', $slug)->firstOrFail();
 
-        if( request()->get('lg') == 'en' ) {
+        if( Session::get('lg') == 'en' ) {
             return view('content_english.video_detail', compact('video'));
         }
 

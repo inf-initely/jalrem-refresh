@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 use App\Models\Artikel;
 use App\Models\Foto;
@@ -21,7 +22,7 @@ class KontenController extends Controller
         $publikasi = Publikasi::where('status', 'publikasi')->orderBy('created_at', 'desc')->paginate(9);
         $audio = Audio::where('status', 'publikasi')->orderBy('created_at', 'desc')->paginate(9);
         
-        if( request()->get('lg') == 'en' ) {
+        if( Session::get('lg') == 'en' ) {
             return view('content_english.konten', compact('artikel', 'foto', 'video', 'publikasi', 'audio', 'artikelSlider'));
         }
 

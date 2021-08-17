@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use App\Models\Kerjasama;
 
 class KerjasamaController extends Controller
@@ -11,7 +12,7 @@ class KerjasamaController extends Controller
     {
         $kerjasama = Kerjasama::where('slug', $slug)->firstOrFail();
 
-        if( request()->get('lg') == 'en' ) {
+        if( Session::get('lg') == 'en' ) {
             return view('content_english.kerjasama_detail', compact('kerjasama'));
         }
         

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 use App\Models\Kegiatan;
 
@@ -12,7 +13,7 @@ class KegiatanController extends Controller
     {
         $kegiatan = Kegiatan::where('status', 'publikasi')->paginate(9);
 
-        if( request()->get('lg') == 'en' ) {
+        if( Session::get('lg') == 'en' ) {
             return view('content_english.kegiatan', compact('kegiatan'));
         }
 
@@ -25,7 +26,7 @@ class KegiatanController extends Controller
         
         $kegiatanSaatIni = Kegiatan::where('status', 'publikasi')->take(3)->get();
 
-        if( request()->get('lg') == 'en' ) {
+        if( Session::get('lg') == 'en' ) {
             return view('content_english.kegiatan_detail', compact('kegiatan', 'kegiatanSaatIni'));
         }
 

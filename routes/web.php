@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 
 use App\Http\Controllers\Admin\ArtikelController as ArtikelControllerAdmin;
 use App\Http\Controllers\Admin\FotoController as FotoControllerAdmin;
@@ -147,6 +148,10 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // });
 
+Route::get('/set_language', function() {
+    Session::put('lg', 'en');
+    return redirect()->back();
+})->name('set_language');
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();

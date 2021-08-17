@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 use App\Models\Artikel;
 use Illuminate\Pagination\Paginator;
@@ -13,7 +14,7 @@ class ArtikelController extends Controller
     {
         $artikel = Artikel::where('status', 'publikasi')->orderBy('created_at', 'desc')->paginate(9);
 
-        if( $request->get('lg') == 'en' ) {
+        if( Session::get('lg') == 'en' ) {
             return view('content_english.articles', compact('artikel'));
         }
 
@@ -29,7 +30,7 @@ class ArtikelController extends Controller
         // $artikelTerkait = Artikel::
         $artikelTerbaru = Artikel::where('slug', '!=', $slug)->orderBy('created_at', 'desc')->take(3)->get();
 
-        if( $request->get('lg') == 'en' ) {
+        if( Session::get('lg') == 'en' ) {
             return view('content.article_detail', compact('artikel', 'artikelTerbaru', 'artikelPopuler'));
         }
 

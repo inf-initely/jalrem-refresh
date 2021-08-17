@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 use App\Models\Audio;
 
@@ -12,7 +13,7 @@ class AudioController extends Controller
     {
         $audio = Audio::where('status', 'publikasi')->orderBy('created_at', 'desc')->paginate(9);
 
-        if( request()->get('lg') == 'en' ) {
+        if( Session::get('lg') == 'en' ) {
             return view('content_english.audios', compact('audio')); 
         }
 
@@ -23,7 +24,7 @@ class AudioController extends Controller
     {
         $audio = Audio::where('slug', $slug)->firstOrFail();
 
-        if( request()->get('lg') == 'en' ) {
+        if( Session::get('lg') == 'en' ) {
             return view('content_english.audio_detail', compact('audio'));   
         }
 

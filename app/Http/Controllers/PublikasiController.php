@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 use App\Models\Publikasi;
 
@@ -12,7 +13,7 @@ class PublikasiController extends Controller
     {
         $publikasi = Publikasi::where('status', 'publikasi')->paginate(9);
 
-        if( $request->get('lg') == 'en' ) {
+        if( Session::get('lg') == 'en' ) {
             return view('content_english.publications', compact('publikasi'));
         }
 

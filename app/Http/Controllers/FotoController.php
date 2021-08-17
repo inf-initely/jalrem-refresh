@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 use App\Models\Foto;
 
@@ -12,7 +13,7 @@ class FotoController extends Controller
     {
         $foto = Foto::where('status', 'publikasi')->orderBy('created_at', 'desc')->paginate(9);
 
-        if( request()->get('lg') == 'en' ) {
+        if( Session::get('lg') == 'en' ) {
             return view('content_english.photos', compact('foto'));
         }
 
@@ -23,7 +24,7 @@ class FotoController extends Controller
     {
         $foto = Foto::where('slug', $slug)->firstOrFail();
         
-        if( request()->get('lg') == 'en' ) {
+        if( Session::get('lg') == 'en' ) {
             return view('content_english.photo_detail', compact('foto'));
         }
 

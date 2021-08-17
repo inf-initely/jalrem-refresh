@@ -5,23 +5,41 @@
     <section class="hero-slider hero-style">
       <div class="swiper-container">
         <div class="swiper-wrapper">
-          @foreach( $slider as $s )
-          <div class="swiper-slide">
-            <div class="slide-inner slide-bg-image" data-background="{{ asset('storage/assets/'. substr($s->getTable(), 0, -1) .'/slider/' . $s->slider_file) }}">
-              <div class="container">
-                <div data-swiper-parallax="300" class="slide-title">
-                  <h2 class="title">{{ $s->judul_indo }}</h2>
+          @if( count($slider) > 0 )
+            @foreach( $slider as $s )
+            <div class="swiper-slide">
+              <div class="slide-inner slide-bg-image" data-background="{{ asset('storage/assets/'. substr($s->getTable(), 0, -1) .'/slider/' . $s->slider_file) }}">
+                <div class="container">
+                  <div data-swiper-parallax="300" class="slide-title">
+                    <h2 class="title">{{ $s->judul_indo }}</h2>
+                  </div>
+                  <div data-swiper-parallax="400" class="slide-text">
+                    <p class="caption">{!! Str::limit($s->konten_indo, 50, $end='...') !!}</p>
+                  </div>
+                  <div class="clearfix"></div>
                 </div>
-                <div data-swiper-parallax="400" class="slide-text">
-                  <p class="caption">{!! Str::limit($s->konten_indo, 50, $end='...') !!}</p>
-                </div>
-                <div class="clearfix"></div>
               </div>
+              <!-- end slide-inner -->
             </div>
-            <!-- end slide-inner -->
-          </div>
-          <!-- end swiper-slide -->
-          @endforeach
+            <!-- end swiper-slide -->
+            @endforeach
+          @else
+            <div class="swiper-slide">
+              <div class="slide-inner slide-bg-image" data-background="assets/img/hero/hero-1.jpg">
+                <div class="container">
+                  <div data-swiper-parallax="300" class="slide-title">
+                    <h2 class="title">Jalur Rempah</h2>
+                  </div>
+                  <div data-swiper-parallax="400" class="slide-text">
+                    <p class="caption">Penggalian kembali ekosistem bahari yang berdiri dari jalur dan jejak masa lampau. Suatu sudut pandang dan fondasi dari masa lalu sebagai masa kini. Rangkaian ingatan kolektif sebagai pengetahuan dalam membangun masa depan.</p>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+              <!-- end slide-inner -->
+            </div>
+            <!-- end swiper-slide -->
+          @endif
       </div>
       <!-- end swiper-wrapper -->
       <!-- swipper controls -->
