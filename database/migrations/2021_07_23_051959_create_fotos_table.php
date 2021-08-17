@@ -24,6 +24,7 @@ class CreateFotosTable extends Migration
             $table->text('meta_english')->nullable();
             $table->string('keywords_english')->nullable();
             $table->string('slug');
+            $table->string('slug_english')->nullable();
             $table->string('thumbnail');
             $table->unsignedInteger('id_lokasi')->nullable();
             $table->enum('penulis', ['admin', 'kontributor umum/pamong budaya']);

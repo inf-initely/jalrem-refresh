@@ -24,6 +24,7 @@ class CreateAudioTable extends Migration
             $table->text('meta_english')->nullable();
             $table->string('keywords_english')->nullable();
             $table->string('slug');
+            $table->string('slug_english')->nullable();
             $table->unsignedInteger('id_lokasi')->nullable();
             $table->string('cloud_key');
             $table->enum('penulis', ['admin', 'kontributor umum/pamong budaya']);

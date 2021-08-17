@@ -55,6 +55,10 @@ class PublikasiController extends Controller
             $filename_slider = null;
         }
 
+        $slug_english = null;
+        if( $request->judul_english )
+            $slug_english = generate_slug($request->judul_english, '-');
+
         $publikasi = Publikasi::create([
             'judul_indo' => $request->judul_indo,
             'konten_indo' => $request->konten_indo,
@@ -65,6 +69,7 @@ class PublikasiController extends Controller
             'meta_english' => $request->meta_english,
             'keywords_english' => $request->keywords_english,
             'thumbnail' => $filename_thumbnail,
+            'slug_english' => $slug_english,
             'id_lokasi' => $request->id_lokasi,
             'penulis' => ($request->contributor != null && $request->id_kontributor != null) ? 'kontributor umum/pamong budaya' : 'admin',
             'id_kontributor' => ($request->contributor != null && $request->id_kontributor != null) ? $request->id_kontributor : null,
@@ -131,6 +136,11 @@ class PublikasiController extends Controller
             $filename_slider = $publikasi->slider_file;
         }
 
+        $slug_english = null;
+        if( !$publikasi->slug_english ) {
+            $slug_english = generate_slug($request->judul_english, '-');
+        }
+
         $publikasi->update([
             'judul_indo' => $request->judul_indo,
             'konten_indo' => $request->konten_indo,
@@ -141,6 +151,7 @@ class PublikasiController extends Controller
             'meta_english' => $request->meta_english,
             'keywords_english' => $request->keywords_english,
             'thumbnail' => $filename_thumbnail,
+            'slug_english' => $slug_english == null ? $publikasi->slug_english : $slug_english,
             'id_lokasi' => $request->id_lokasi,
             'penulis' => ($request->contributor != null && $request->id_kontributor != null) ? 'kontributor umum/pamong budaya' : 'admin',
             'id_kontributor' => ($request->contributor != null && $request->id_kontributor != null) ? $request->id_kontributor : null,

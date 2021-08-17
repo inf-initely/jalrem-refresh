@@ -11,7 +11,7 @@ class ArtikelController extends Controller
 {
     public function index()
     {
-        $artikel = Artikel::where('status', 'publikasi')->paginate(9);
+        $artikel = Artikel::where('status', 'publikasi')->orderBy('created_at', 'desc')->paginate(9);
 
         if( $request->get('lg') == 'en' ) {
             return view('content_english.articles', compact('artikel'));

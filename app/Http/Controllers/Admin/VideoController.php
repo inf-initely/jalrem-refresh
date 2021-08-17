@@ -49,6 +49,10 @@ class VideoController extends Controller
             $filename_slider = null;
         }
 
+        $slug_english = null;
+        if( $request->judul_english )
+            $slug_english = generate_slug($request->judul_english, '-');
+
         $video = Video::create([
             'judul_indo' => $request->judul_indo,
             'konten_indo' => $request->konten_indo,
@@ -58,6 +62,7 @@ class VideoController extends Controller
             'konten_english' => $request->konten_english,
             'meta_english' => $request->meta_english,
             'keywords_english' => $request->keywords_english,
+            'slug_english' => $slug_english,
             'id_lokasi' => $request->id_lokasi,
             'penulis' => ($request->contributor != null && $request->id_kontributor != null) ? 'kontributor umum/pamong budaya' : 'admin',
             'id_kontributor' => ($request->contributor != null && $request->id_kontributor != null) ? $request->id_kontributor : null,
@@ -109,6 +114,11 @@ class VideoController extends Controller
         } else {
             $filename_slider = $video->slider_file;
         }
+
+        $slug_english = null;
+        if( !$video->slug_english ) {
+            $slug_english = generate_slug($request->judul_english, '-');
+        }
         
         $video->update([
             'judul_indo' => $request->judul_indo,
@@ -119,6 +129,7 @@ class VideoController extends Controller
             'konten_english' => $request->konten_english,
             'meta_english' => $request->meta_english,
             'keywords_english' => $request->keywords_english,
+            'slug_english' => $slug_english == null ? $video->slug_english : $slug_english,
             'id_lokasi' => $request->id_lokasi,
             'penulis' => ($request->contributor != null && $request->id_kontributor != null) ? 'kontributor umum/pamong budaya' : 'admin',
             'id_kontributor' => ($request->contributor != null && $request->id_kontributor != null) ? $request->id_kontributor : null,

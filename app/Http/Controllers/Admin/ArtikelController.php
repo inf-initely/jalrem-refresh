@@ -55,6 +55,10 @@ class ArtikelController extends Controller
             $filename_slider = null;
         }
 
+        $slug_english = null;
+        if( $request->judul_english )
+            $slug_english = generate_slug($request->judul_english, '-');
+
         $artikel = Artikel::create([
             'judul_indo' => $request->judul_indo,
             'konten_indo' => $request->konten_indo,
@@ -65,6 +69,7 @@ class ArtikelController extends Controller
             'meta_english' => $request->meta_english,
             'keywords_english' => $request->keywords_english,
             'thumbnail' => $filename_thumbnail,
+            'slug_english' => $slug_english,
             'id_lokasi' => $request->id_lokasi,
             'penulis' => ($request->contributor != null && $request->id_kontributor != null) ? 'kontributor umum/pamong budaya' : 'admin',
             'id_kontributor' => ($request->contributor != null && $request->id_kontributor != null) ? $request->id_kontributor : null,
@@ -131,6 +136,11 @@ class ArtikelController extends Controller
             $filename_slider = $artikel->slider_file;
         }
 
+        $slug_english = null;
+        if( !$artikel->slug_english ) {
+            $slug_english = generate_slug($request->judul_english, '-');
+        }
+
         $artikel->update([
             'judul_indo' => $request->judul_indo,
             'konten_indo' => $request->konten_indo,
@@ -138,6 +148,7 @@ class ArtikelController extends Controller
             'konten_english' => $request->konten_english,
             'keywords_english' => $request->keywords_english,
             'thumbnail' => $filename_thumbnail,
+            'slug_english' => $slug_english == null ? $artikel->slug_english : $slug_english,
             'id_lokasi' => $request->id_lokasi,
             'penulis' => $request->contributor != null && $request->id_kontributor != null ? 'kontributor umum/pamong budaya' : 'admin',
             'id_kontributor' => $request->contributor != null && $request->id_kontributor != null ? $request->id_kontributor : null,
@@ -166,4 +177,5 @@ class ArtikelController extends Controller
 
         return redirect()->route('admin.article.index');
     }
+
 }

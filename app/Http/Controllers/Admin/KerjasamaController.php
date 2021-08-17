@@ -55,6 +55,10 @@ class KerjasamaController extends Controller
             $filename_slider = null;
         }
 
+        $slug_english = null;
+        if( $request->judul_english )
+            $slug_english = generate_slug($request->judul_english, '-');
+
         $kerjasama = Kerjasama::create([
             'judul_indo' => $request->judul_indo,
             'konten_indo' => $request->konten_indo,
@@ -65,6 +69,7 @@ class KerjasamaController extends Controller
             'meta_english' => $request->meta_english,
             'keywords_english' => $request->keywords_english, 
             'thumbnail' => $filename_thumbnail,
+            'slug_english' => $slug_english,
             'id_lokasi' => $request->id_lokasi,
             'penulis' => ($request->contributor != null && $request->id_kontributor != null) ? 'kontributor umum/pamong budaya' : 'admin',
             'id_kontributor' => ($request->contributor != null && $request->id_kontributor != null) ? $request->id_kontributor : null,
@@ -131,6 +136,11 @@ class KerjasamaController extends Controller
             $filename_slider = $kerjasama->slider_file;
         }
 
+        $slug_english = null;
+        if( !$kerjasama->slug_english ) {
+            $slug_english = generate_slug($request->judul_english, '-');
+        }
+
         $kerjasama->update([
             'meta_indo' => $request->meta_indo,
             'keywords_indo' => $request->keywords_indo,
@@ -138,6 +148,7 @@ class KerjasamaController extends Controller
             'konten_english' => $request->konten_english,
             'meta_english' => $request->meta_english,
             'keywords_english' => $request->keywords_english, 
+            'slug_english' => $slug_english == null ? $kerjasama->slug_english : $slug_english,
             'thumbnail' => $filename_thumbnail,
             'id_lokasi' => $request->id_lokasi,
             'penulis' => ($request->contributor != null && $request->id_kontributor != null) ? 'kontributor umum/pamong budaya' : 'admin',
