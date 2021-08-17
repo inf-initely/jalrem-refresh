@@ -22,9 +22,12 @@ class FotoController extends Controller
 
     public function show($slug)
     {
-        $foto = Foto::where('slug', $slug)->firstOrFail();
+        $lg = Session::get('lg');
+        // $slug_field = $lg == 'en' ? 'slug_english' : 'slug';
+
+        $foto = Foto::where('slug', $slug)->orWhere('slug_english', $slug)->firstOrFail();
         
-        if( Session::get('lg') == 'en' ) {
+        if( $lg == 'en' ) {
             return view('content_english.photo_detail', compact('foto'));
         }
 

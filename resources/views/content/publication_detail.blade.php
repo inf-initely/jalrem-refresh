@@ -34,6 +34,11 @@
                 <img class="mb-3 mt-3" src="{{ asset('storage/assets/publikasi/thumbnail/' . $publikasi->thumbnail) }}" width="100%">
                 {!! $publikasi->konten_indo !!}
               </section>
+              @php
+                  $konten_name = 'publication';
+                  $konten = $publikasi;
+              @endphp
+              @include('partials.social-share')
             </div>
             <div class="col-lg-4">
               <div class="row mb-4">

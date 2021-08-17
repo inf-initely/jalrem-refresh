@@ -22,9 +22,12 @@ class AudioController extends Controller
 
     public function show($slug)
     {
-        $audio = Audio::where('slug', $slug)->firstOrFail();
+        $lg = Session::get('lg');
+        // $slug_field = $lg == 'en' ? 'slug_english' : 'slug';
 
-        if( Session::get('lg') == 'en' ) {
+        $audio = Audio::where('slug', $slug)->orWhere('slug_english', $slug)->firstOrFail();
+
+        if( $lg == 'en' ) {
             return view('content_english.audio_detail', compact('audio'));   
         }
 

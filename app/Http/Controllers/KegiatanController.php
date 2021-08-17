@@ -22,11 +22,14 @@ class KegiatanController extends Controller
 
     public function show($slug)
     {
-        $kegiatan = Kegiatan::where('slug',$slug)->firstOrFail();
+        $lg = Session::get('lg');
+        // $slug_field = $lg == 'en' ? 'slug_english' : 'slug';
+
+        $kegiatan = Kegiatan::where('slug', $slug)->orWhere('slug_english', $slug)->firstOrFail();
         
         $kegiatanSaatIni = Kegiatan::where('status', 'publikasi')->take(3)->get();
 
-        if( Session::get('lg') == 'en' ) {
+        if( $lg == 'en' ) {
             return view('content_english.kegiatan_detail', compact('kegiatan', 'kegiatanSaatIni'));
         }
 

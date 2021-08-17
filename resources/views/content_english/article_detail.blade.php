@@ -40,31 +40,11 @@
                   Laman Kontributor merupakan platform dari website Jalur Rempah yang digagas khusus untuk masyarakat luas untuk mengirimkan konten (berupa tulisan, foto, dan video) dan membagikan pengalamannya tentang Jalur Rempah. Setiap konten dari kontributor adalah tanggung jawab kontributor sepenuhnya.</p>
               </div>
               @endif
-              <div id="share" class="mt-4">
-                <h3>Share :</h3>
-                <ul class="list-group list-group-horizontal">
-                  <li class="list-group-item">
-                    <a href="#">
-                      <img src="{{ asset('assets/img/icon-media-sosial/icon-whatsapp.svg') }}" width="30px">
-                    </a>
-                  </li>
-                  <li class="list-group-item">
-                    <a href="#">
-                      <img src="{{ asset('assets/img/icon-media-sosial/icon-facebook.svg') }}" width="30px">
-                    </a>
-                  </li>
-                  <li class="list-group-item">
-                    <a href="#">
-                      <img src="{{ asset('assets/img/icon-media-sosial/icon-line.svg') }}" width="30px">
-                    </a>
-                  </li>
-                  <li class="list-group-item">
-                    <a href="#">
-                      <img src="{{ asset('assets/img/icon-media-sosial/icon-linkedin.svg') }}" width="30px">
-                    </a>
-                  </li>
-                </ul>
-              </div>
+              @php
+                  $konten_name = 'article';
+                  $konten = $artikel;
+              @endphp
+              @include('partials.social-share')
             </div>
             <div class="col-lg-4">
               <div class="row mb-4">
@@ -86,7 +66,7 @@
                               <p class="tgl-berita-aside" id="tglKegiatan" name="tglKegiatan">{{ $a->created_at->isoFormat('dddd, D MMMM Y') }} </p>
                             </div>
                           </div>
-                          <a href="{{ route('article_detail', $a->slug) }}" class="stretched-link"></a>
+                          <a href="{{ route('article_detail', $a->slug_english ?? $a->slug) }}" class="stretched-link"></a>
                         </div>
                       </div>
                     </div>
@@ -113,7 +93,7 @@
                               <p class="tgl-berita-aside" id="tglKegiatan" name="tglKegiatan">{{ $a->created_at->isoFormat('dddd, D MMMM Y'); }}</p>
                             </div>
                           </div>
-                          <a href="{{ route('article_detail', $a->slug) }}" class="stretched-link"></a>
+                          <a href="{{ route('article_detail', $a->slug_english ?? $a->slug) }}" class="stretched-link"></a>
                         </div>
                       </div>
                     </div>
@@ -144,7 +124,7 @@
               <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_english ?? $a->konten_indo, 50, $end='...') !!}</p>
               <p class="penulis-artikel">{{ $a->penulis }}</p>
               <p class="tgl-artikel">{{ $a->created_at->isoFormat('dddd, D MMMM Y'); }}</p>
-              <a href="{{ route('article_detail', $a->slug) }}" class="stretched-link"></a>
+              <a href="{{ route('article_detail', $a->slug_english ?? $a->slug) }}" class="stretched-link"></a>
             </div>
           </div>
           @endforeach

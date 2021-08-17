@@ -30,7 +30,7 @@
                                     {{ $a->created_at->isoFormat('dddd, D MMMM Y'); }}
                                 </p>
                             </div>
-                            <a href="{{ route('article_detail', $a->slug) }}" class="stretched-link"></a>
+                            <a href="{{ route('article_detail', $a->slug_english ?? $a->slug) }}" class="stretched-link"></a>
                         </div>
                     </div>
                     @endforeach

@@ -22,14 +22,18 @@ class PublikasiController extends Controller
 
     public function show($slug)
     {
-        $publikasi = Publikasi::where('slug', $slug)->firstOrFail();
+        $lg = Session::get('lg');
+        // $slug_field = $lg == 'en' ? 'slug_english' : 'slug';
+
+
+        $publikasi = Publikasi::where('slug', $slug)->orWhere('slug_english', $slug)->firstOrFail();
         
         views($publikasi)->record();
-        $publikasiPopuler = Publikasi::where('status', 'publikasi')->orderByViews()->take(3)->get();
-        // $artikelTerkait = Publikasi:
-        $publikasiTerbaru = Publikasi::where('status', 'publikasi')->orderBy('created_at', 'desc')->take(3)->get();
+        $publikasiPopuler = Publikasi::where('slug', '!=', $slug)->orWhere('slug_english', '!=', $slug)->orderByViews()->take(3)->get();
+        // publikasiTerkait = Publikasi::
+        $publikasiTerbaru = Publikasi::where('slug', '!=', $slug)->orWhere('slug_english','!=', $slug)->orderBy('created_at', 'desc')->take(3)->get();
 
-        if( request()->get('lg') == 'en' ) {
+        if( $lg == 'en' ) {
             return view('content_english.publication_detail', compact('publikasi', 'publikasiPopuler', 'publikasiTerbaru'));
         }
         

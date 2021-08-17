@@ -34,6 +34,11 @@
                 <img class="mb-3 mt-3" src="{{ asset('storage/assets/publikasi/thumbnail/' . $publikasi->thumbnail) }}" width="100%">
                 {!! $publikasi->konten_indo !!}
               </section>
+              @php
+                  $konten_name = 'publication';
+                  $konten = $publikasi;
+              @endphp
+              @include('partials.social-share')
             </div>
             <div class="col-lg-4">
               <div class="row mb-4">
@@ -55,7 +60,7 @@
                               <p class="tgl-berita-aside" id="tglKegiatan" name="tglKegiatan">{{ $a->created_at->isoFormat('dddd, D MMMM Y') }} </p>
                             </div>
                           </div>
-                          <a href="{{ route('publication_detail', $a->slug) }}" class="stretched-link"></a>
+                          <a href="{{ route('publication_detail', $a->slug_english ?? $a->slug) }}" class="stretched-link"></a>
                         </div>
                       </div>
                     </div>
@@ -82,7 +87,7 @@
                               <p class="tgl-berita-aside" id="tglKegiatan" name="tglKegiatan">{{ $a->created_at->isoFormat('dddd, D MMMM Y'); }}</p>
                             </div>
                           </div>
-                          <a href="{{ route('publication_detail', $a->slug) }}" class="stretched-link"></a>
+                          <a href="{{ route('publication_detail', $a->slug_english ?? $a->slug) }}" class="stretched-link"></a>
                         </div>
                       </div>
                     </div>
@@ -113,7 +118,7 @@
               <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_english ?? $a->konten_indo, 50, $end='...') !!}</p>
               <p class="penulis-artikel">{{ $a->penulis }}</p>
               <p class="tgl-artikel">{{ $a->created_at->isoFormat('dddd, D MMMM Y'); }}</p>
-              <a href="{{ route('publication_detail', $a->slug) }}" class="stretched-link"></a>
+              <a href="{{ route('publication_detail', $a->slug_english ?? $a->slug) }}" class="stretched-link"></a>
             </div>
           </div>
           @endforeach

@@ -11,10 +11,10 @@
               <div class="slide-inner slide-bg-image" data-background="{{ asset('storage/assets/'. substr($s->getTable(), 0, -1) .'/slider/' . $s->slider_file) }}">
                 <div class="container">
                   <div data-swiper-parallax="300" class="slide-title">
-                    <h2 class="title">{{ $s->judul_indo }}</h2>
+                    <h2 class="title">{{ $s->judul_english ?? $s->judul_indo }}</h2>
                   </div>
                   <div data-swiper-parallax="400" class="slide-text">
-                    <p class="caption">{!! Str::limit($s->konten_indo, 50, $end='...') !!}</p>
+                    <p class="caption">{!! Str::limit($s->konten_english ?? $s->konten_indo, 50, $end='...') !!}</p>
                   </div>
                   <div class="clearfix"></div>
                 </div>
@@ -155,7 +155,7 @@
                       <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">{{ $k->judul_english ?? $k->judul_indo }}</h3>
                     </div>
                   </div>
-                  <a href="{{ route('event_detail', $k->slug) }}" class="stretched-link"></a>
+                  <a href="{{ route('event_detail', $k->slug_english ?? $k->slug) }}" class="stretched-link"></a>
                 </div>
               </div>
             </div>
@@ -191,7 +191,7 @@
                     {{ $a->created_at->isoFormat('dddd, D MMMM Y'); }}
                   </p>
                 </div>
-                <a href="{{ route('article_detail', $a->slug) }}" class="stretched-link"></a>
+                <a href="{{ route('article_detail', $a->slug_english ?? $a->slug) }}" class="stretched-link"></a>
               </div>
             </div>
             @endforeach

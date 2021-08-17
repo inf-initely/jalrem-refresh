@@ -149,7 +149,12 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 // });
 
 Route::get('/set_language', function() {
-    Session::put('lg', 'en');
+    if( Session::get('lg') == null ) {
+        Session::put('lg', 'en');
+    } else {
+        Session::forget('lg');
+    }
+    
     return redirect()->back();
 })->name('set_language');
 

@@ -23,16 +23,18 @@ class ArtikelController extends Controller
 
     public function show(Request $request, $slug)
     {
-        $artikel = Artikel::where('slug', $slug)->firstOrFail();
+        $lg = Session::get('lg');
+        // $slug_field = $lg == 'en' ? 'slug_english' : 'slug';
+
+        $artikel = Artikel::where('slug', $slug)->orWhere('slug_english', $slug)->firstOrFail();
       
         views($artikel)->record();
-        $artikelPopuler = Artikel::where('slug', '!=', $slug)->orderByViews()->take(3)->get();
+        $artikelPopuler = Artikel::where('slug', '!=', $slug)->orWhere('slug_english', '!=', $slug)->orderByViews()->take(3)->get();
         // $artikelTerkait = Artikel::
-        $artikelTerbaru = Artikel::where('slug', '!=', $slug)->orderBy('created_at', 'desc')->take(3)->get();
+        $artikelTerbaru = Artikel::where('slug', '!=', $slug)->orWhere('slug_english', '!=', $slug)->orderBy('created_at', 'desc')->take(3)->get();
 
-        if( Session::get('lg') == 'en' ) {
-            return view('content.article_detail', compact('artikel', 'artikelTerbaru', 'artikelPopuler'));
-        }
+        if( $lg == 'en' ) 
+            return view('content_english.article_detail', compact('artikel', 'artikelTerbaru', 'artikelPopuler'));
 
         return view('content.article_detail', compact('artikel', 'artikelTerbaru', 'artikelPopuler'));
     }

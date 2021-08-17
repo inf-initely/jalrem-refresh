@@ -7,11 +7,11 @@
     <ul class="link-bahasa d-block d-lg-none">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="assets/img/bendera/flag-indonesia.png" class="mr-2 flag" width="20px"> ID
+          <img src="{{ asset('assets/img/bendera/flag-indonesia.png') }}" class="mr-2 flag" width="20px"> ID
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
           <li>
-            <a class="dropdown-item" href="{{ route('home') }}">
+            <a class="dropdown-item" href="{{ route('set_language') }}">
               <img src="{{ asset('assets/img/bendera/flag-indonesia.png') }}" class="mr-2 flag" width="20px"> INA
             </a>
           </li>
@@ -49,11 +49,11 @@
           <ul class="link-bahasa d-none d-lg-block">
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="{{ Session::get('lg') == 'en' ? 'assets/img/bendera/flag-english.png' : 'assets/img/bendera/flag-indonesia.png' }}" class="mr-2 flag" width="20px"> {{ Session::get('lg') == 'en' ? 'EN' : 'ID' }}
+                <img src="{{ Session::get('lg') == 'en' ? asset('assets/img/bendera/flag-english.png') : asset('assets/img/bendera/flag-indonesia.png') }}" class="mr-2 flag" width="20px"> {{ Session::get('lg') == 'en' ? 'EN' : 'ID' }}
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
-                  <a class="dropdown-item" href="{{ route('home') }}">
+                  <a class="dropdown-item" href="{{ route('set_language') }}">
                     <img src="{{ asset('assets/img/bendera/flag-indonesia.png') }}" class="mr-2 flag" width="20px"> INA
                   </a>
                 </li>
@@ -85,16 +85,16 @@
     <ul class="link-bahasa d-block d-lg-none">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle clr-black" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="{{ Session::get('lg') == 'en' ? 'assets/img/bendera/flag-english.png' : 'assets/img/bendera/flag-indonesia.png' }}" class="mr-2 flag" width="20px"> {{ Session::get('lg') == 'en' ? 'EN' : 'ID' }}
+          <img src="{{ Session::get('lg') == 'en' ? asset('assets/img/bendera/flag-english.png') :  asset('assets/img/bendera/flag-indonesia.png') }}" class="mr-2 flag" width="20px"> {{ Session::get('lg') == 'en' ? 'EN' : 'ID' }}
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
           <li>
-            <a class="dropdown-item" href="{{ route('home') }}">
+            <a class="dropdown-item" href="{{ route('set_language') }}">
               <img src="{{ asset('assets/img/bendera/flag-indonesia.png') }}" class="mr-2 flag" width="20px"> INA
             </a>
           </li>
           <li>
-            <a class="dropdown-item" href="#">
+            <a class="dropdown-item" href="{{ route('set_language') }}">
               <img src="{{ asset('assets/img/bendera/flag-english.png') }}" class="mr-2 flag" width="20px"> ENG
             </a>
           </li>
@@ -134,11 +134,11 @@
           <ul class="link-bahasa d-none d-lg-block">
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle clr-black" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="{{ Session::get('lg') == 'en' ? 'assets/img/bendera/flag-english.png' : 'assets/img/bendera/flag-indonesia.png' }}" class="mr-2 flag" width="20px"> {{ Session::get('lg') == 'en' ? 'EN' : 'ID' }}
+                <img src="{{ Session::get('lg') == 'en' ? asset('assets/img/bendera/flag-english.png') : asset('assets/img/bendera/flag-indonesia.png') }}" class="mr-2 flag" width="20px"> {{ Session::get('lg') == 'en' ? 'EN' : 'ID' }}
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
-                  <a class="dropdown-item" href="{{ route('home') }}">
+                  <a class="dropdown-item" href="{{ route('set_language') }}">
                     <img src="{{ asset('assets/img/bendera/flag-indonesia.png') }}" class="mr-2 flag" width="20px"> ID
                   </a>
                 </li>
@@ -170,11 +170,11 @@
     <ul class="link-bahasa d-block d-lg-none">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="{{ Session::get('lg') == 'en' ? 'assets/img/bendera/flag-english.png' : 'assets/img/bendera/flag-indonesia.png' }}" class="mr-2 flag" width="20px"> {{ Session::get('lg') == 'en' ? 'EN' : 'ID' }}
+          <img src="{{ Session::get('lg') == 'en' ? asset('assets/img/bendera/flag-english.png') : asset('assets/img/bendera/flag-indonesia.png') }}" class="mr-2 flag" width="20px"> {{ Session::get('lg') == 'en' ? 'EN' : 'ID' }}
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
           <li>
-            <a class="dropdown-item" href="{{ route('home') }}">
+            <a class="dropdown-item" href="{{ route('set_language') }}">
               <img src="{{ asset('assets/img/bendera/flag-indonesia.png') }}" class="mr-2 flag" width="20px"> INA
             </a>
           </li>
@@ -219,11 +219,11 @@
           <ul class="link-bahasa d-none d-lg-block">
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="{{ Session::get('lg') == 'en' ? 'assets/img/bendera/flag-english.png' : 'assets/img/bendera/flag-indonesia.png' }}" class="mr-2 flag" width="20px"> {{ Session::get('lg') == 'en' ? 'EN' : 'ID' }}
+                <img src="{{ Session::get('lg') == 'en' ? asset('assets/img/bendera/flag-english.png') :  asset('assets/img/bendera/flag-indonesia.png') }}" class="mr-2 flag" width="20px"> {{ Session::get('lg') == 'en' ? 'EN' : 'ID' }}
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
-                  <a class="dropdown-item" href="{{ route('home') }}">
+                  <a class="dropdown-item" href="{{ route('set_language') }}">
                     <img src="{{ asset('assets/img/bendera/flag-indonesia.png') }}" class="mr-2 flag" width="20px"> ID
                   </a>
                 </li>
