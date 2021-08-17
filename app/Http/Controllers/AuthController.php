@@ -24,7 +24,8 @@ class AuthController extends Controller
     {
         $validate = $request->validate([
             'email' => 'required|email',
-            'password' => 'required'
+            'password' => 'required',
+            'captcha' => 'required|captcha'
         ]);
        
         

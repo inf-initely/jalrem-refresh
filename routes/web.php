@@ -32,6 +32,7 @@ use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\KerjasamaController;
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CaptchaServiceController;
 
 // use App\Http\Middleware\Language;
 /*
@@ -147,6 +148,9 @@ Route::post('/register', [AuthController::class, 'register_post'])->name('regist
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // });
+
+// RELOAD CAPTCHA
+Route::get('/reload-captcha', [CaptchaServiceController::class, 'reloadCaptcha']);
 
 Route::get('/set_language', function() {
     if( Session::get('lg') == null ) {

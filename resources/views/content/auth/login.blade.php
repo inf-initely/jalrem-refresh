@@ -51,6 +51,15 @@
                     <i toggle="#inputPassword" class="fa  fa-eye toggle-password"></i>
                   </span>
                 </div>
+                <div class="form-group mt-4 mb-4">
+                  <div class="captcha" style="display: flex;">
+                      <input id="captcha" type="text" class="form-control" placeholder="masukkan Captcha" name="captcha">
+                      <span style="margin-left: 5px; margin-right: 5px;">{!! captcha_img() !!}</span>
+                      <button type="button" class="btn btn-danger" class="reload" id="reload">
+                          &#x21bb;
+                      </button>
+                  </div>
+                </div>
                 <div class="row">
                   <div class="col-12 text-center d-grid gap-2">
                     <button class="btn btn-secondary btn-daftar">
@@ -80,6 +89,19 @@ $(".toggle-password").click(function() {
     input.attr("type", "password");
   }
 });
+</script>
+
+<script type="text/javascript">
+  $('#reload').click(function () {
+      $.ajax({
+          type: 'GET',
+          url: 'reload-captcha',
+          success: function (data) {
+              $(".captcha span").html(data.captcha);
+          }
+      });
+  });
+
 </script>
 
 </html>
