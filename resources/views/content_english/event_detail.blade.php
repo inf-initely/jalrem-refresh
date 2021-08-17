@@ -38,11 +38,11 @@
                           <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="{{ $k->thumbnail }}">
                         </div>
                         <div class="col-6 center-v">
-                          <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">{{ $k->created_at->isoFormat('dddd, D MMMM Y'); }}</p>
+                          <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">{{ $k->created_at->isoFormat('D MMMM Y'); }}</p>
                           <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">{{ $k->judul_english ?? $k->judul_indo }}</h3>
                         </div>
                       </div>
-                      <a href="{{ route('event_detail', $k->slug) }}" class="stretched-link"></a>
+                      <a href="{{ route('event_detail', $k->slug_english ?? $k->slug) }}" class="stretched-link"></a>
                     </div>
                   </div>
                 </div>

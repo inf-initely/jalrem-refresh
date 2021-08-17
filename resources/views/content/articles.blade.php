@@ -27,7 +27,7 @@
                                     {{ $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin' }}
                                 </p>
                                 <p class="tgl-artikel">
-                                    {{ $a->created_at->isoFormat('dddd, D MMMM Y'); }}
+                                    {{ $a->created_at->isoFormat('D MMMM Y'); }}
                                 </p>
                             </div>
                             <a href="{{ route('article_detail', $a->slug) }}" class="stretched-link"></a>

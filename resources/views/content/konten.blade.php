@@ -46,7 +46,7 @@
                 <h3 class="card-title judul-artikel">{{ $a->judul_indo }}</h3>
                 <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p>
                 <p class="penulis-artikel">{{ $a->penulis }}</p>
-                <p class="tgl-artikel">{{ $a->created_at->isoFormat('dddd, D MMMM Y'); }}</p>
+                <p class="tgl-artikel">{{ $a->created_at->isoFormat('D MMMM Y'); }}</p>
                 <a href="{{ route('article_detail', $a->slug) }}" class="stretched-link"></a>
               </div>
             </div>
@@ -94,7 +94,7 @@
                               {{ $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin' }}
                             </p>
                             <p class="tgl-artikel">
-                              {{ $a->created_at->isoFormat('dddd, D MMMM Y'); }}
+                              {{ $a->created_at->isoFormat('D MMMM Y'); }}
                             </p>
                           </div>
                           <a href="{{ route('article_detail', $a->slug) }}" class="stretched-link"></a>
@@ -113,7 +113,7 @@
                           <div class="text-img">
                             <p class="judul-img">{{ $f->judul_indo }}</p>
                             <p class="author-img">{{ $f->penulis != 'admin' ? $f->kontributor_relasi->nama : 'admin' }}</p>
-                            <p class="tgl-img">{{ $f->created_at->isoFormat('dddd, D MMMM Y'); }}</p>
+                            <p class="tgl-img">{{ $f->created_at->isoFormat('D MMMM Y'); }}</p>
                           </div>
                           <a class="stretched-link lightbox" href="{{ route('photo_detail', $f->slug) }}"></a>
                         </div>
@@ -166,7 +166,7 @@
                               {{ $p->penulis != 'admin' ? $p->kontributor_relasi->nama : 'admin' }}
                             </p>
                             <p class="tgl-artikel">
-                              {{ $p->created_at->isoFormat('dddd, D MMMM Y'); }}
+                              {{ $p->created_at->isoFormat('D MMMM Y'); }}
                             </p>
                           </div>
                           <a href="{{ route('publication_detail', $p->slug) }}" class="stretched-link"></a>

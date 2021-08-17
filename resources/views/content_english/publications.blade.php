@@ -33,7 +33,7 @@
                           {{ $p->penulis }}
                         </p>
                         <p class="tgl-artikel">
-                          {{ $p->created_at->isoFormat('dddd, D MMMM Y'); }}
+                          {{ $p->created_at->isoFormat('D MMMM Y'); }}
                         </p>
                       </div>
                       <a href="{{ route('publication_detail', $p->slug_english ?? $p->slug) }}" class="stretched-link"></a>

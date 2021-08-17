@@ -17,7 +17,7 @@
                 {{ $audio->penulis != 'admin' ? $audio->kontributor_relasi->nama : 'admin' }}
               </p>
               <p class="tgl-artikel mb-4" id="tglMedia">
-                {{ $audio->created_at->isoFormat('dddd, D MMMM Y') }}
+                {{ $audio->created_at->isoFormat('D MMMM Y') }}
               </p>
             </header>
             <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/{{ $audio->cloud_key }}&color=%231a150d&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>

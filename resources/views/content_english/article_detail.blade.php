@@ -27,7 +27,7 @@
                 <h2 class="sub-judul">{{ $artikel->judul_english ?? $artikel->judul_indo }}</h2>
                 <div class="info-penulis">
                   <span class="txt-penulis" class="mr-3" id="penulis" name="penulis">{{ $artikel->penulis != 'admin' ? $artikel->kontributor_relasi->nama : 'admin' }}</span> |
-                  <span class="txt-penulis" id="tglArtikel" name="tglArtikel">{{ $artikel->created_at->isoFormat('dddd, D MMMM Y') }}</span>
+                  <span class="txt-penulis" id="tglArtikel" name="tglArtikel">{{ $artikel->created_at->isoFormat('D MMMM Y') }}</span>
                 </div>
               </header>
               <article id="desTentang">
@@ -63,7 +63,7 @@
                             </div>
                             <div class="col-7 center-v">
                               <h3 class="judul-berita-aside" id="jdlKegiatan" name="jdlKegiatan">{{ $a->judul_english ?? $a->judul_indo }}</h3>
-                              <p class="tgl-berita-aside" id="tglKegiatan" name="tglKegiatan">{{ $a->created_at->isoFormat('dddd, D MMMM Y') }} </p>
+                              <p class="tgl-berita-aside" id="tglKegiatan" name="tglKegiatan">{{ $a->created_at->isoFormat('D MMMM Y') }} </p>
                             </div>
                           </div>
                           <a href="{{ route('article_detail', $a->slug_english ?? $a->slug) }}" class="stretched-link"></a>
@@ -90,7 +90,7 @@
                             </div>
                             <div class="col-7 center-v">
                               <h3 class="judul-berita-aside" id="jdlKegiatan" name="jdlKegiatan">{{ $a->judul_english ?? $a->judul_indo }}</h3>
-                              <p class="tgl-berita-aside" id="tglKegiatan" name="tglKegiatan">{{ $a->created_at->isoFormat('dddd, D MMMM Y'); }}</p>
+                              <p class="tgl-berita-aside" id="tglKegiatan" name="tglKegiatan">{{ $a->created_at->isoFormat('D MMMM Y'); }}</p>
                             </div>
                           </div>
                           <a href="{{ route('article_detail', $a->slug_english ?? $a->slug) }}" class="stretched-link"></a>
@@ -123,7 +123,7 @@
               <h3 class="card-title judul-artikel">{{ $a->judul_english ?? $a->judul_indo }}</h3>
               <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_english ?? $a->konten_indo, 50, $end='...') !!}</p>
               <p class="penulis-artikel">{{ $a->penulis }}</p>
-              <p class="tgl-artikel">{{ $a->created_at->isoFormat('dddd, D MMMM Y'); }}</p>
+              <p class="tgl-artikel">{{ $a->created_at->isoFormat('D MMMM Y'); }}</p>
               <a href="{{ route('article_detail', $a->slug_english ?? $a->slug) }}" class="stretched-link"></a>
             </div>
           </div>

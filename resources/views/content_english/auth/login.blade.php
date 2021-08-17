@@ -40,13 +40,13 @@
                 @csrf
                 <div class="input-group mb-4">
                   <span class="input-group-text icon-group" id="icon-email"> <i class="fa fa-envelope"></i> </span>
-                  <input id="inputEmail" type="email" name="email" class="form-control" placeholder="masukkan email" aria-label="email" aria-describedby="icon-email">
+                  <input value="{{ old('email') }}" id="inputEmail" type="email" name="email" class="form-control" placeholder="masukkan email" aria-label="email" aria-describedby="icon-email">
                 </div>
                 <div class="input-group mb-4">
                   <span class="input-group-text icon-group" id="icon-pass">
                     <i class="fa  fa-asterisk"></i>
                   </span>
-                  <input id="inputPassword" type="password" name="password" class="form-control" placeholder="masukkan password" aria-label="password" aria-describedby="icon-pass">
+                  <input value="{{ old('password') }}" id="inputPassword" type="password" name="password" class="form-control" placeholder="masukkan password" aria-label="password" aria-describedby="icon-pass">
                   <span class="input-group-text" id="icon-pass">
                     <i toggle="#inputPassword" class="fa  fa-eye toggle-password"></i>
                   </span>

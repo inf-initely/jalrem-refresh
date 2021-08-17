@@ -17,7 +17,7 @@
                 {{ $video->penulis != 'admin' ? $video->kontributor_relasi->nama : 'admin' }}
               </p>
               <p class="tgl-artikel mb-4" id="tglMedia">
-                {{ $video->created_at->isoFormat('dddd, D MMMM Y') }}
+                {{ $video->created_at->isoFormat('D MMMM Y') }}
               </p>
             </header>
             <div class="video media-video media-video-detail" data-video-id="{{ $video->youtube_key }}">
