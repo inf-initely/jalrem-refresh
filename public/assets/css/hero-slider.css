@@ -181,7 +181,7 @@
 
 @media screen and (min-width: 992px) {
   .hero-style .container {
-    padding-top: 25px;
+    padding-top: 265px;
     padding-left: 25px;
   }
 }
@@ -197,7 +197,7 @@
   font-weight: 600;
   line-height: 1;
   color: #ffffff;
-  margin: 0 0 40px;
+  margin: 0 0 20px;
   text-transform: capitalize;
   transition:all .4s ease;
 }
@@ -217,8 +217,8 @@
 
 @media (max-width: 767px) {
   .hero-style .slide-title h2 {
-    font-size: 20px;
-    margin: 0 0 30px;
+    font-size: 26px;
+    margin: 0 0 20px;
   }
 }
 
@@ -236,8 +236,8 @@
 
 @media (max-width: 767px) {
   .hero-style .slide-text p {
-    font-size: 16px;
-    font-size: 1rem;
+    /*font-size: 16px;*/
+    font-size: .9rem;
     font-weight: normal;
     margin: 0 0 30px;
   }
@@ -290,6 +290,10 @@ i.fa-chevron-circle-right{
   .theme-btn, .theme-btn-s2, .theme-btn-s3 {
     font-size: 13px;
     padding: 15px 25px;
+  }
+
+  .hero-style .container {
+    padding-top: 65vh;
   }
 }
 @media (max-width: 767px){

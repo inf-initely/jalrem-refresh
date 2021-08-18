@@ -9,6 +9,7 @@
             @foreach( $slider as $s )
             <div class="swiper-slide">
               <div class="slide-inner slide-bg-image" data-background="{{ asset('storage/assets/'. substr($s->getTable(), 0, -1) .'/slider/' . $s->slider_file) }}">
+                <div class="layer-masking"></div>
                 <div class="container">
                   <div data-swiper-parallax="300" class="slide-title">
                     <h2 class="title">{{ $s->judul_indo }}</h2>
@@ -26,6 +27,7 @@
           @else
             <div class="swiper-slide">
               <div class="slide-inner slide-bg-image" data-background="assets/img/hero/hero-1.jpg">
+                <div class="layer-masking"></div>
                 <div class="container">
                   <div data-swiper-parallax="300" class="slide-title">
                     <h2 class="title">Jalur Rempah</h2>
