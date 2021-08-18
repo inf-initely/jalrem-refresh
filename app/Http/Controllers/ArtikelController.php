@@ -32,11 +32,12 @@ class ArtikelController extends Controller
         $artikelPopuler = Artikel::where('slug', '!=', $slug)->orWhere('slug_english', '!=', $slug)->orderByViews()->take(3)->get();
         // $artikelTerkait = Artikel::
         $artikelTerbaru = Artikel::where('slug', '!=', $slug)->orWhere('slug_english', '!=', $slug)->orderBy('created_at', 'desc')->take(3)->get();
+        $artikelBacaJuga = Artikel::where('slug', '!=', $slug)->orWhere('slug_english', '!=', $slug)->first();
 
         if( $lg == 'en' ) 
-            return view('content_english.article_detail', compact('artikel', 'artikelTerbaru', 'artikelPopuler'));
+            return view('content_english.article_detail', compact('artikel', 'artikelTerbaru', 'artikelPopuler', 'artikelBacaJuga'));
 
-        return view('content.article_detail', compact('artikel', 'artikelTerbaru', 'artikelPopuler'));
+        return view('content.article_detail', compact('artikel', 'artikelTerbaru', 'artikelPopuler', 'artikelBacaJuga'));
     }
 
     public function search(Request $request)

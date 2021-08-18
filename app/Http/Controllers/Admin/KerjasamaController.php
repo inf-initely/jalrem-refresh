@@ -142,6 +142,8 @@ class KerjasamaController extends Controller
         }
 
         $kerjasama->update([
+            'judul_indo' => $request->judul_indo,
+            'konten_indo' => $request->konten_indo,
             'meta_indo' => $request->meta_indo,
             'keywords_indo' => $request->keywords_indo,
             'judul_english' => $request->judul_english,

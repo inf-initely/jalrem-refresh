@@ -30,6 +30,7 @@ use App\Http\Controllers\InformasiController;
 use App\Http\Controllers\KontenController;
 use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\KerjasamaController;
+use App\Http\Controllers\RempahController;
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CaptchaServiceController;
@@ -140,6 +141,7 @@ Route::get('/konten', [KontenController::class, 'index'])->name('konten');
 Route::get('/tentang-jalur', [JalurController::class, 'index'])->name('tentangjalur');
 Route::get('/tentang-jejak', [JejakController::class, 'index'])->name('tentangjejak');
 Route::get('/tentang-masa-depan', [MasaDepanController::class, 'index'])->name('tentangmasadepan');
+Route::get('/rempah/{rempahId}', [RempahController::class, 'show'])->name('rempah_detail');
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'login_post'])->name('login_post');

@@ -45,6 +45,11 @@
                   $konten = $artikel;
               @endphp
               @include('partials.social-share')
+              @if( $artikelBacaJuga )
+              <div class="wrap-baca-juga">
+                <p>Baca juga: <a href="{{ route('article_detail', $artikelBacaJuga->judul_indo) }}" class="berita-terkait">{{ $artikelBacaJuga->judul_indo }}</a></p>
+              </div>
+              @endif
             </div>
             <div class="col-lg-4">
               <div class="row mb-4">
@@ -122,7 +127,7 @@
               <img src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}" class="card-img-top mb-4" alt="...">
               <h3 class="card-title judul-artikel">{{ $a->judul_english ?? $a->judul_indo }}</h3>
               <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_english ?? $a->konten_indo, 50, $end='...') !!}</p>
-              <p class="penulis-artikel">{{ $a->penulis }}</p>
+              <p class="penulis-artikel">{{ $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin' }}</p>
               <p class="tgl-artikel">{{ $a->created_at->isoFormat('D MMMM Y'); }}</p>
               <a href="{{ route('article_detail', $a->slug_english ?? $a->slug) }}" class="stretched-link"></a>
             </div>
