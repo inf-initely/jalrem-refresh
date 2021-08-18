@@ -28,7 +28,7 @@
           </div>
         </div>
       </section>
-       <section id="secBerita" class="d-none">
+       {{-- <section id="secBerita" class="d-none">
         <div class="container">
           <header class="row justify-content-center">
             <div class="col-md-12 text-center">
@@ -54,7 +54,7 @@
             {{ $artikel->links('vendor.pagination.custom') }}
           </section>
         </div>
-      </section>
+      </section> --}}
       <section id="secMedia">
         <div class="container">
           <div class="row justify-content-center">

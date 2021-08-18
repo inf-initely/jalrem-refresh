@@ -15,7 +15,7 @@ class KontenController extends Controller
 {
     public function index()
     {
-        $artikelSlider = Artikel::where('status', 'publikasi')->orderBy('created_at', 'desc')->take(5)->get();
+        $artikelSlider = Artikel::where('status', 'publikasi')->orderBy('created_at', 'desc')->take(3)->get();
         $artikel = Artikel::where('status', 'publikasi')->orderBy('created_at', 'desc')->paginate(9);
         $foto = Foto::where('status', 'publikasi')->orderBy('created_at', 'desc')->paginate(9);
         $video = Video::where('status', 'publikasi')->orderBy('created_at', 'desc')->paginate(9);
