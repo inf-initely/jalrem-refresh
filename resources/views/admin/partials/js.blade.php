@@ -21,13 +21,14 @@ $("#sidebarToggle").click(function() {
 <script>
 $(document).ready(function() {
   var t = $('#listArtikel').DataTable({
+    
     "columnDefs": [{
       "searchable": true,
       "orderable": true,
       "targets": [0, 2]
     }],
     "order": [
-      [1, 'asc']
+      [1, 'desc']
     ]
   });
 
@@ -37,6 +38,8 @@ $(document).ready(function() {
     });
   }).draw();
 });
+
+  
 </script>
 
 <script>

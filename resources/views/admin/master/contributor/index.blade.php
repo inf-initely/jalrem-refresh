@@ -48,7 +48,7 @@
                         @foreach( $kontributor as $k )
                         <tr>
                           <td>#</td>
-                          <td>{{ $k->created_at->isoFormat('DD/MM/YYYY'); }}</td>
+                          <td>{{ $k->created_at->isoFormat('YYYY/MM/DD'); }}</td>
                           <td>{{ $k->nama }}</td>
                           <td>{{ $k->domisili }}</td>
                           <td>{{ $k->kategori }}</td>

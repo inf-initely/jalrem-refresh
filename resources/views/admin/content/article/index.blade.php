@@ -43,7 +43,7 @@
                         @foreach( $artikels as $a )
                           <tr>
                             <td>#</td>
-                            <td>{{ $a->created_at->isoFormat('DD/MM/YYYY'); }}</td>
+                            <td>{{ $a->created_at->isoFormat('YYYY/MM/DD'); }}</td>
                             <td>{{ $a->judul_indo }}</td>
                             <td>{{ $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin' }}</td>
                             <td>

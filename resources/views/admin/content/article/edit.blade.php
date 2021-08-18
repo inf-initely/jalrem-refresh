@@ -59,7 +59,7 @@
                   </div>
                   <div class="mb-3">
                     <label for="isiArtikelEnglish" class="form-label">Isi Konten</label>
-                    <textarea class="form-control editor" name="konten_english" id="isiArtikelEnglish" rows="8">{{ $artikel->judul_english }}</textarea>
+                    <textarea class="form-control editor" name="konten_english" id="isiArtikelEnglish" rows="8">{{ $artikel->konten_english }}</textarea>
                   </div>
                   <div class="mb-3">
                     <label for="metaDesEN" class="form-label">Meta Description</label>
