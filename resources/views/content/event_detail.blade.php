@@ -10,6 +10,10 @@
               <header>
                 <h2 class="sub-judul mb-4">{{ $kegiatan->judul_indo }}</h2>
               </header>
+              <div class="info-penulis">
+                <span class="txt-penulis" class="mr-3" id="penulis" name="penulis">{{ $kegiatan->penulis != 'admin' ? $kegiatan->kontributor_relasi->nama : 'admin' }}</span> |
+                <span class="txt-penulis" id="tglArtikel" name="tglArtikel">{{ $kegiatan->created_at->isoFormat('D MMMM Y') }}</span>
+              </div>
               <img src="{{ asset('storage/assets/kegiatan/thumbnail/' . $kegiatan->thumbnail) }}" width="100%">
               <article id="isiKonten">
                 {{ $kegiatan->konten_indo }}
