@@ -12,7 +12,7 @@
         </a>
       </li>
       <li class="list-group-item">
-        <a target="_blank" href="#">
+        <a target="_blank" href="https://social-plugins.line.me/lineit/share?url={{ route($konten_name .'_detail', $konten->slug) }}">
           <img src="{{ asset('assets/img/icon-media-sosial/icon-line.svg') }}" width="30px">
         </a>
       </li>
