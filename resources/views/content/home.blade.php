@@ -427,19 +427,29 @@ $(function() {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
 <script src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <script>
-  $(window).on('load', function() {
-    $("#twitter-widget-0").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(1))").hide();
-    $("#twitter-widget-1").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(2))").hide();
-    $("#twitter-widget-2").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(3))").hide();
-    $("#twitter-widget-3").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(4))").hide();
-    $("#twitter-widget-4").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(5))").hide();
+  window.addEventListener("load", function () {
+    setTimeout(otherOperation, 3000);
+}, false);
 
-    $("#twitter-widget-0").contents().find(".timeline-LoadMore").hide();
-    $("#twitter-widget-1").contents().find(".timeline-LoadMore").hide();
-    $("#twitter-widget-2").contents().find(".timeline-LoadMore").hide();
+  function otherOperation() {
+    $("#twitter-widget-3").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(1))").hide();
+    $("#twitter-widget-4").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(2))").hide();
+    $("#twitter-widget-5").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(3))").hide();
+    $("#twitter-widget-6").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(4))").hide();
+    $("#twitter-widget-7").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(5))").hide();
+    $("#twitter-widget-8").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(6))").hide();
+    $("#twitter-widget-9").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(7))").hide();
+
     $("#twitter-widget-3").contents().find(".timeline-LoadMore").hide();
     $("#twitter-widget-4").contents().find(".timeline-LoadMore").hide();
-  });
+    $("#twitter-widget-5").contents().find(".timeline-LoadMore").hide();
+    $("#twitter-widget-6").contents().find(".timeline-LoadMore").hide();
+    $("#twitter-widget-7").contents().find(".timeline-LoadMore").hide();
+    $("#twitter-widget-8").contents().find(".timeline-LoadMore").hide();
+    $("#twitter-widget-9").contents().find(".timeline-LoadMore").hide();
+
+    // alert("YIHAAAA")
+  }
 </script>
 <script>
 $(document).ready(function() {
@@ -522,23 +532,6 @@ function initializeVideoModule(videoModule) {
     }
   });
 }
-</script>
-<script>
-var tweets = $(".tweet");
-
-$(tweets).each(function(t, tweet) {
-
-  var id = $(this).attr('id');
-
-  twttr.widgets.createTweet(
-    id, tweet, {
-      conversation: 'none', // or all
-      cards: 'hidden', // or visible
-      linkColor: '#cc0000', // default is blue
-      theme: 'light' // or dark
-    });
-
-});
 </script>
 <script>
 AOS.init({ disable: 'mobile' });
