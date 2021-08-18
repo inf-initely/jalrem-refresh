@@ -16,7 +16,7 @@
         <section id="sejarahRempah">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-lg-8">
+                    <article class="col-lg-8">
                         <header>
                             <h2 class="sub-judul">Masa Depan dan Jalur Rempah</h2>
                         </header>
@@ -26,7 +26,7 @@
                             <p>Program Jalur Rempah berupaya menampilkan bahari sebagai khazanah, sebuah pemberian alamiah yang membuat Indonesia memiliki panjang pantai lebih dari 95.000 kilometer dan menjadikan negara ini memiliki garis pantai terpanjang kedua di dunia sekaligus negara kepulauan terbesar.</p>
                             <p>Lewat cara pandang ini, program Jalur Rempah menghidupkan kembali gagasan ini melalui identifikasi jejak budaya, potensinya di masa mendatang dan rekonstruksi jalur budaya sebagai sebuah pekerjaan kolektif. Rempah sebagai masa depan: industri, warisan nenek moyang tentang kecantikan, kesehatan, hingga pangan. Sebuah kerja berkelanjutan, menghidupi, juga membahagiakan manusia yang terlibat di dalamnya.</p>
                         </section>
-                    </div>
+                    </article>
                     <section id="artikelTentang">
                         <div class="row justify-content-center">
                             <div class="col-lg-11">

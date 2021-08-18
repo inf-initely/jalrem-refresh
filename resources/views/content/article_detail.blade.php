@@ -22,7 +22,7 @@
         <img class="item-jelajah item-cengkeh" src="{{ asset('assets/img/item-cengkeh.svg') }}">
         <div class="container">
           <div class="row justify-content-center">
-            <div class="col-lg-8 pe-5">
+            <article class="col-lg-8 pe-5">
               <header>
                 <h2 class="sub-judul">{{ $artikel->judul_indo }}</h2>
                 <div class="info-penulis">
@@ -45,7 +45,7 @@
                   $konten = $artikel;
               @endphp
               @include('partials.social-share')
-            </div>
+            </article>
             <div class="col-lg-4">
               <div class="row mb-4">
                 <div class="col-md-12 wrap-aside">

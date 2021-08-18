@@ -6,7 +6,7 @@
       <section id="artikelDanBerita">
         <div class="container">
           <div class="row justify-content-center">
-            <div class="col-lg-8">
+            <article class="col-lg-8">
               <header>
                 <h2 class="sub-judul mb-4" id="judulMedia">{{ $foto->judul_indo }}</h2>
                 <p class="penulis-artikel" id="authorMedia">
@@ -28,10 +28,10 @@
                 </div>
                 @endfor
               </div>
-              <section id="txtMedia">
+              <article id="txtMedia">
                 {!! $foto->konten_indo !!}
-              </section>
-            </div>
+              </article>
+            </article>
           </div>
         </div>
       </section>

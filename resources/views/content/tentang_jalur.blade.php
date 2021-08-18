@@ -5,7 +5,7 @@
     <img class="hero-img-2 hero-peta " src="https://jalurrempah.kemdikbud.go.id/wp-content/uploads/2020/09/Peta-indonesia-u-JR.jpg">
     <div class="wrap-hero-text wrap-hero-text-bg d-none d-lg-block" id="wrapHeroText">
         <div class="row">
-            <div class="col-md-12">
+            <article class="col-md-12">
                 <header>
                     <h2 class="sub-judul sub-judul-hero text-end">Titik-Titik Jalur Rempah</h2>
                 </header>
@@ -19,7 +19,7 @@
                         <button class="btn btn-sm btn-outline-secondary" onclick="readMore()" id="btnReadmore">Lihat Selengkapnya</button>
                     </div>
                 </div>
-            </div>
+            </article>
         </div>
     </div>
 </header>
@@ -27,7 +27,7 @@
     <div id="content">
         <section id="narasi" class="d-block d-lg-none px-3">
             <div class="row">
-                <div class="col-md-12">
+                <article class="col-md-12">
                     <header>
                         <h2 class="sub-judul sub-judul-hero">Titik-Titik Jalur Rempah</h2>
                     </header>
@@ -41,7 +41,7 @@
                             <button class="btn btn-sm btn-outline-secondary" onclick="readMore2()" id="btnReadmore2">Lihat Selengkapnya</button>
                         </div>
                     </div>
-                </div>
+                </article>
             </div>
         </section>
         <section id="kontenJejak">

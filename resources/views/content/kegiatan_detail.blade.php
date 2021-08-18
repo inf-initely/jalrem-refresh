@@ -6,15 +6,15 @@
       <section id="artikelDanBerita">
         <div class="container">
           <div class="row justify-content-center">
-            <div class="col-lg-8">
+            <article class="col-lg-8">
               <header>
                 <h2 class="sub-judul mb-4">{{ $kegiatan->judul_indo }}</h2>
               </header>
               <img src="{{ asset('storage/assets/kegiatan/thumbnail/' . $kegiatan->thumbnail) }}" width="100%">
-              <section id="isiKonten">
+              <article id="isiKonten">
                 {!! $kegiatan->konten_indo !!}
-              </section>
-            </div>
+              </article>
+            </article>
           </div>
         </div>
       </section>

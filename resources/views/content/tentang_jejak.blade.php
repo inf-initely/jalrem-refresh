@@ -5,7 +5,7 @@
     <div id="map"></div>
     <div class="wrap-hero-text wrap-hero-text-bg d-none d-lg-block" id="wrapHeroText">
         <div class="row">
-            <div class="col-md-12 text-end">
+            <article class="col-md-12 text-end">
                 <header>
                     <h2 class="sub-judul sub-judul-hero ">Jejak dan Jalur Rempah</h2>
                 </header>
@@ -14,7 +14,7 @@
                         Keterbukaan masyarakat dan hubungan budaya yang melahirkan beragam warisan budaya multikultural dan multietnis ke berbagai medium, termasuk hubungan lintas lautan di dalamnya, menjadi suatu keniscayaan. Tidak hanya antar bangsa, tetapi juga antar sukubangsa. Hubungan budaya antar manusia lintas lautan meninggalkan jejak, dan rangkaian jejak lintas wilayah inilah yang sekaligus membangun jalur.<br><br>
                         Setiap warisan memiliki nilai budaya yang disimpan dalam berbagai bentuk. Kisah asal usul, nyanyian, musik, tarian, teknologi tradisional, arsitektur bangunan, kepercayaan dan banyak lainnya. Simpanan nilai budaya yang menjadi memori kolektif ini sekaligus menjadi bukti dan jejak Jalur Rempah.</span></p>
                 <button class="btn btn-sm btn-outline-secondary" onclick="readMore()" id="btnReadmore">Lihat Selengkapnya</button>
-            </div>
+            </article>
         </div>
     </div>
     <div class="text-hero-2 input-hero">
@@ -48,7 +48,7 @@
     <div id="content">
         <section id="narasi" class="d-block d-lg-none px-3">
             <div class="row">
-                <div class="col-md-12">
+                <article class="col-md-12">
                     <header>
                         <h2 class="sub-judul sub-judul-hero ">Jejak dan Jalur Rempah</h2>
                     </header>
@@ -57,7 +57,7 @@
                             Keterbukaan masyarakat dan hubungan budaya yang melahirkan beragam warisan budaya multikultural dan multietnis ke berbagai medium, termasuk hubungan lintas lautan di dalamnya, menjadi suatu keniscayaan. Tidak hanya antar bangsa, tetapi juga antar sukubangsa. Hubungan budaya antar manusia lintas lautan meninggalkan jejak, dan rangkaian jejak lintas wilayah inilah yang sekaligus membangun jalur.<br><br>
                             Setiap warisan memiliki nilai budaya yang disimpan dalam berbagai bentuk. Kisah asal usul, nyanyian, musik, tarian, teknologi tradisional, arsitektur bangunan, kepercayaan dan banyak lainnya. Simpanan nilai budaya yang menjadi memori kolektif ini sekaligus menjadi bukti dan jejak Jalur Rempah.</span></p>
                     <button class="btn btn-sm btn-outline-secondary" onclick="readMore2()" id="btnReadmore2">Lihat Selengkapnya</button>
-                </div>
+                </article>
             </div>
         </section>
         <section id="kontenJejak">

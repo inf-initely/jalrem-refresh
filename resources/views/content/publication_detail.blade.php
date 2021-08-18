@@ -22,7 +22,7 @@
         <img class="item-jelajah item-cengkeh" src="{{ asset('assets/img/item-cengkeh.svg') }}">
         <div class="container">
           <div class="row justify-content-center">
-            <div class="col-lg-8">
+            <article class="col-lg-8">
               <header>
                 <h2 class="sub-judul">{{ $publikasi->judul_indo }}</h2>
                 <div class="info-penulis">
@@ -30,16 +30,16 @@
                   <span class="txt-penulis" id="tglArtikel" name="tglArtikel">{{ $publikasi->created_at->isoFormat('D MMMM Y') }}</span>
                 </div>
               </header>
-              <section id="isiKonten">
+              <article id="isiKonten">
                 <img class="mb-3 mt-3" src="{{ asset('storage/assets/publikasi/thumbnail/' . $publikasi->thumbnail) }}" width="100%">
                 {!! $publikasi->konten_indo !!}
-              </section>
+              </article>
               @php
                   $konten_name = 'publication';
                   $konten = $publikasi;
               @endphp
               @include('partials.social-share')
-            </div>
+            </article>
             <div class="col-lg-4">
               <div class="row mb-4">
                 <div class="col-md-12 wrap-aside">
