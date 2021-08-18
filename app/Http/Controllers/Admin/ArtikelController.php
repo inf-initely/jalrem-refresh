@@ -144,7 +144,7 @@ class ArtikelController extends Controller
         $artikel->update([
             'judul_indo' => $request->judul_indo,
             'konten_indo' => $request->konten_indo,
-            'keywords_indo' => $request->keywords_english,
+            'keywords_indo' => $request->keywords_indo,
             'meta_indo' => $request->meta_indo,
             'judul_english' => $request->judul_english,
             'konten_english' => $request->konten_english,
