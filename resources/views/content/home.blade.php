@@ -214,7 +214,7 @@
             </section>
             <section class="offset-md-1 col-md-5">
               <div class="row">
-                <div class="col-md-6">
+                <div class="col-6 col-md-6">
                   <div class="card no-border card-media card-media-1">
                     <div class="card-body text-center">
                       <img src="assets/img/icon-image.png" width="40%">
@@ -223,7 +223,7 @@
                     <a href="{{ route('photos') }}" class="stretched-link"></a>
                   </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-6 col-md-6">
                   <div class="card no-border card-media card-media-2">
                     <div class="card-body text-center">
                       <img src="assets/img/icon-publication.png" width="40%">
@@ -234,7 +234,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-6">
+                <div class="col-6 col-md-6">
                   <div class="card no-border card-media card-media-3">
                     <div class="card-body text-center">
                       <img src="assets/img/icon-video.png" width="40%">
@@ -243,7 +243,7 @@
                     <a href="{{ route('videos') }}" class="stretched-link"></a>
                   </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-6 col-md-6">
                   <div class="card no-border card-media card-media-4">
                     <div class="card-body text-center">
                       <img src="assets/img/icon-sound.png" width="40%">
@@ -305,19 +305,19 @@
 
           <div class="twitter-jalrem">
             <div id="twitKolom1" class="p-2">
-              <a  class="twitter-timeline" data-height="500" href="https://twitter.com/JalurrempahRI?ref_src=twsrc%5Etfw">Tweets by JalurrempahRI</a>
+              <a  class="twitter-timeline" data-height="400" data-chrome="nofooter" href="https://twitter.com/JalurrempahRI?ref_src=twsrc%5Etfw">Tweets by JalurrempahRI</a>
             </div>
             <div id="twitKolom2" class="p-2">
-              <a  class="twitter-timeline" data-height="500" href="https://twitter.com/JalurrempahRI?ref_src=twsrc%5Etfw">Tweets by JalurrempahRI</a>
+              <a  class="twitter-timeline" data-height="400" data-chrome="nofooter" href="https://twitter.com/JalurrempahRI?ref_src=twsrc%5Etfw">Tweets by JalurrempahRI</a>
             </div>
             <div id="twitKolom3" class="p-2">
-              <a  class="twitter-timeline" data-height="500" href="https://twitter.com/JalurrempahRI?ref_src=twsrc%5Etfw">Tweets by JalurrempahRI</a>
+              <a  class="twitter-timeline" data-height="400" data-chrome="nofooter" href="https://twitter.com/JalurrempahRI?ref_src=twsrc%5Etfw">Tweets by JalurrempahRI</a>
             </div>
             <div id="twitKolom4" class="p-2">
-              <a  class="twitter-timeline" data-height="500" href="https://twitter.com/JalurrempahRI?ref_src=twsrc%5Etfw">Tweets by JalurrempahRI</a>
+              <a  class="twitter-timeline" data-height="400" data-chrome="nofooter" href="https://twitter.com/JalurrempahRI?ref_src=twsrc%5Etfw">Tweets by JalurrempahRI</a>
             </div>
             <div id="twitKolom5" class="p-2">
-              <a  class="twitter-timeline" data-height="500" href="https://twitter.com/JalurrempahRI?ref_src=twsrc%5Etfw">Tweets by JalurrempahRI</a>
+              <a  class="twitter-timeline" data-height="400" data-chrome="nofooter" href="https://twitter.com/JalurrempahRI?ref_src=twsrc%5Etfw">Tweets by JalurrempahRI</a>
             </div>
           </div>
         </section>
@@ -428,7 +428,7 @@ $(function() {
 <script src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <script>
   window.addEventListener("load", function () {
-    setTimeout(otherOperation, 3000);
+    setTimeout(otherOperation, 500);
 }, false);
 
   function otherOperation() {
@@ -614,6 +614,7 @@ $(document).ready(function() {
       {
         breakpoint: 480,
         settings: {
+          dots: false,
           arrows: false,
           slidesToShow: 1,
           slidesToScroll: 1
