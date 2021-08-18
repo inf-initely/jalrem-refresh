@@ -22,7 +22,7 @@
         <img class="item-jelajah item-cengkeh" src="{{ asset('assets/img/item-cengkeh.svg') }}">
         <div class="container">
           <div class="row justify-content-center">
-            <article class="col-lg-8 wrap-detail-artikel">
+            <div class="col-lg-8 pe-5">
               <header>
                 <h2 class="sub-judul">{{ $artikel->judul_indo }}</h2>
                 <div class="info-penulis">
@@ -47,7 +47,7 @@
               @include('partials.social-share')
               @if( $artikelBacaJuga )
               <div class="wrap-baca-juga">
-                <p>Baca juga: <a href="{{ route('article_detail', $artikelBacaJuga->judul_indo) }}" class="berita-terkait">{{ $artikelBacaJuga->judul_indo }}</a></p>
+                <p>Baca juga: <a href="{{ route('article_detail', $artikelBacaJuga->slug) }}" class="berita-terkait">{{ $artikelBacaJuga->judul_indo }}</a></p>
               </div>
               @endif
             </div>
