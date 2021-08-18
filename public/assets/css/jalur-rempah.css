@@ -789,7 +789,7 @@ footer {
 }
 
 .media-video {
-  height: 190px;
+    height: 190px;
 }
 
 .media-video-detail {
@@ -1516,12 +1516,17 @@ footer {
 }
 
 #isiKonten p,
-#txtMedia{
+#txtMedia {
     font-family: 'Roboto', sans-serif !important;
 }
 
-.slick-slider .slick-track, .slick-slider .slick-list{
+.slick-slider .slick-track,
+.slick-slider .slick-list {
     padding-bottom: 10px;
+}
+
+.wrap-detail-artikel {
+    padding-right: 3rem;
 }
 
 @media (max-width: 991.98px) {
@@ -1729,6 +1734,9 @@ footer {
         margin-bottom: 7.5px;
     }
 
+    .wrap-detail-artikel {
+        padding-right: .7rem;
+    }
 
 
 
