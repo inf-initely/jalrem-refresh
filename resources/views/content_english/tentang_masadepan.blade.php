@@ -6,7 +6,7 @@
     <div class="text-hero-2">
         <div class="">
             <div class="col-lg-12 text-center">
-                <h1>Masa Depan</h1>
+                <h1>The Future</h1>
             </div>
         </div>
     </div>
@@ -16,17 +16,22 @@
         <section id="sejarahRempah">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-lg-8">
+                    <article class="col-lg-8">
                         <header>
-                            <h2 class="sub-judul">Masa Depan dan Jalur Rempah</h2>
+                            <h2 class="sub-judul">The Future and the Spice Routes</h2>
                         </header>
                         <section id="desTentang">
-                            <p>Program Jalur Rempah berpandangan ke depan. Jejak dan Jalur direkonstruksi sebagai fondasi dari masa lalu sebagai masa kini untuk membangun masa depan.</p>
-                            <p>Suatu cara pandang yang berangkat dari jejak-jejak masa lalu yang terhubung satu sama lain dan membentuk ekosistem kebudayaan, dan memandang laut sebagai simbol kekayaan dan kesejahteraan.</p>
-                            <p>Program Jalur Rempah berupaya menampilkan bahari sebagai khazanah, sebuah pemberian alamiah yang membuat Indonesia memiliki panjang pantai lebih dari 95.000 kilometer dan menjadikan negara ini memiliki garis pantai terpanjang kedua di dunia sekaligus negara kepulauan terbesar.</p>
-                            <p>Lewat cara pandang ini, program Jalur Rempah menghidupkan kembali gagasan ini melalui identifikasi jejak budaya, potensinya di masa mendatang dan rekonstruksi jalur budaya sebagai sebuah pekerjaan kolektif. Rempah sebagai masa depan: industri, warisan nenek moyang tentang kecantikan, kesehatan, hingga pangan. Sebuah kerja berkelanjutan, menghidupi, juga membahagiakan manusia yang terlibat di dalamnya.</p>
+                            <p>
+                                The Spice Routes program is an innovative. The traces and the routes are reconstructed as a foundation from the past, as the present, to build the future.
+                                <br><br>
+                                It acts as a perspective, coming from the traces of the past that are connected and forms a cultural ecosystem, and sees the sea as a symbol of wealth and prosperity.
+                                <br><br>
+                                The Spice Routes program tries to display the maritime as a treasure, a natural gift that brought Indonesia to have more than 95.000 km length of coastline and thus the second country with the longest length of coastline in the world as well as the largest archipelago.
+                                <br><br>
+                                From this point of view, this program revives the idea through the identification of cultural traces, the forthcoming potentials, and the reconstruction of cultural routes as a collective work. In subsequent, spices will expand into: industry, ancestral heritage on beauty, health, and food. Sustainable work, to support and create happiness for the people who are involved in it.
+                            </p>
                         </section>
-                    </div>
+                    </article>
                     <section id="artikelTentang">
                         <div class="row justify-content-center">
                             <div class="col-lg-11">
@@ -66,8 +71,8 @@
                                             <img src="assets/img/icon/jalur_1.svg" width="80%">
                                         </div>
                                         <div class="col-9 center-v">
-                                            <h3 class="judul-card-info">Jalur</h3>
-                                            <p class="des-card-info">Merangkai Budaya Nusantara Melalui Jalur Rempahs</p>
+                                            <h3 class="judul-card-info">The Route</h3>
+                                            <p class="des-card-info">Looking back to the spice trade routes from one point to another, reviving its sundry stories, connecting its numerous traces.</p>
                                         </div>
                                     </div>
                                     <a href="{{ route('tentangjalur') }}" class="stretched-link"></a>
@@ -80,8 +85,8 @@
                                             <img src="assets/img/icon/jejak_1.svg" width="80%">
                                         </div>
                                         <div class="col-9 center-v">
-                                            <h3 class="judul-card-info">Jejak</h3>
-                                            <p class="des-card-info">Merangkai Budaya Nusantara Melalui Jalur Rempahs</p>
+                                            <h3 class="judul-card-info">The Trace</h3>
+                                            <p class="des-card-info">Reviving the globalization trace of the spice trade in the past that created cross-cultural relations.</p>
                                         </div>
                                     </div>
                                     <a href="{{ route('tentangjejak') }}" class="stretched-link"></a>
@@ -94,8 +99,8 @@
                                             <img src="assets/img/icon/masa-depan_1.svg" width="80%">
                                         </div>
                                         <div class="col-9 center-v">
-                                            <h3 class="judul-card-info">Masa Depan</h3>
-                                            <p class="des-card-info">Merangkai Budaya Nusantara Melalui Jalur Rempahs</p>
+                                            <h3 class="judul-card-info">The Future</h3>
+                                            <p class="des-card-info">The excavation of the maritime ecosystem, emerging from the routes and traces in the past.</p>
                                         </div>
                                     </div>
                                     <a href="#" class="stretched-link"></a>

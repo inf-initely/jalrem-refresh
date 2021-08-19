@@ -5,7 +5,7 @@
     <div id="map"></div>
     <div class="wrap-hero-text wrap-hero-text-bg d-none d-lg-block" id="wrapHeroText">
         <div class="row">
-            <div class="col-md-12 text-end">
+            <article class="col-md-12 text-end">
                 <header>
                     <h2 class="sub-judul sub-judul-hero">The Trace of The Spice Routes</h2>
                 </header>
@@ -18,7 +18,7 @@
                     Each trace keeps cultural value in various forms. Stories of origins, songs, music, dances, traditional technologies, building architecture, beliefs, etc. The pile of cultural values that have become collective memories stands as proof and the historical remains of the Spice Routes. The program exists as a means of finding the traces.</span>
                 </p>
                 <button class="btn btn-sm btn-outline-secondary" onclick="readMore()" id="btnReadmore">Read more</button>
-            </div>
+            </article>
         </div>
     </div>
     <div class="text-hero-2 input-hero">

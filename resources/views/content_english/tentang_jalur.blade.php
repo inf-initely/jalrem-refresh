@@ -5,7 +5,7 @@
     <img class="hero-img-2 hero-peta " src="https://jalurrempah.kemdikbud.go.id/wp-content/uploads/2020/09/Peta-indonesia-u-JR.jpg">
     <div class="wrap-hero-text wrap-hero-text-bg d-none d-lg-block" id="wrapHeroText">
         <div class="row">
-            <div class="col-md-12">
+            <article class="col-md-12">
                 <header>
                     <h2 class="sub-judul sub-judul-hero text-end">The Spice Routes’ Points</h2>
                 </header>
@@ -26,7 +26,7 @@
                         <button class="btn btn-sm btn-outline-secondary" onclick="readMore()" id="btnReadmore">Read more</button>
                     </div>
                 </div>
-            </div>
+            </article>
         </div>
     </div>
 </header>
