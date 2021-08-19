@@ -35,8 +35,7 @@
       <section class="container" id="artikel">
         <header class="row justify-content-start mb-2">
           <div class="col-md-6">
-            <h2 class="sub-judul">Media Jalur Rempah</h2>
-            <p>Berbagai media dan publikasi yang terkait Jalur Rempah Nusantara</p>
+            <h2 class="sub-judul">Spice Routes Media</h2>
           </div>
         </header>
         <div class="row justify-content-center">
@@ -46,24 +45,24 @@
                 <div class="card no-border card-media">
                   <div class="card-body">
                     <img src="{{ asset('assets/img/icon-publication.png') }}" width="32.5%">
-                    <p class="judul-media">Artikel</p>
+                    <p class="judul-media">Article</p>
                     <p class="des-media">
 
                     </p>
                   </div>
-                  <a href="{{ route('articles') }}"" class="stretched-link"></a>
+                  <a href="{{ route('articles') }}" class="stretched-link"></a>
                 </div>
               </div>
               <div class="col mb-1">
                 <div class="card no-border card-media">
                   <div class="card-body">
                     <img src="{{ asset('assets/img/icon-image.png') }}" width="32.5%">
-                    <p class="judul-media">Foto</p>
+                    <p class="judul-media">Photo</p>
                     <p class="des-media">
 
                     </p>
                   </div>
-                  <a href="{{ route('photos') }}"" class="stretched-link"></a>
+                  <a href="{{ route('photos') }}" class="stretched-link"></a>
                 </div>
               </div>
               <div class="col mb-1">
@@ -75,19 +74,19 @@
 
                     </p>
                   </div>
-                  <a href="{{ route('videos') }}"" class="stretched-link"></a>
+                  <a href="{{ route('videos') }}" class="stretched-link"></a>
                 </div>
               </div>
               <div class="col mb-1">
                 <div class="card no-border card-media">
                   <div class="card-body">
                     <img src="{{ asset('assets/img/icon-publication.png') }}" width="32.5%">
-                    <p class="judul-media">Publikasi</p>
+                    <p class="judul-media">Publicatiion</p>
                     <p class="des-media">
 
                     </p>
                   </div>
-                  <a href="{{ route('publications') }}"" class="stretched-link"></a>
+                  <a href="{{ route('publications') }}" class="stretched-link"></a>
                 </div>
               </div>
               <div class="col mb-1">

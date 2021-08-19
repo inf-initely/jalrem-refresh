@@ -6,7 +6,7 @@
     <div class="text-hero-2">
         <div class="">
             <div class="col-lg-12 text-center">
-                <h1>Artikel</h1>
+                <h1>Article</h1>
             </div>
         </div>
     </div>
