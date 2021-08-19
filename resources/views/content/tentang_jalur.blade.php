@@ -91,7 +91,7 @@
                                         </div>
                                         <div class="col-9 center-v">
                                             <h3 class="judul-card-info">Jalur</h3>
-                                            <p class="des-card-info">Merangkai Budaya Nusantara Melalui Jalur Rempahs</p>
+                                            <p class="des-card-info-id">Melihat kembali lintasan jalur perdagangan rempah dari satu titik ke titik lainnya, menghidupkan kembali beragam kisahnya, menghubungkan kembali berbagai jejaknya.</p>
                                         </div>
                                     </div>
                                     <a href="#" class="stretched-link"></a>
@@ -105,7 +105,7 @@
                                         </div>
                                         <div class="col-9 center-v">
                                             <h3 class="judul-card-info">Jejak</h3>
-                                            <p class="des-card-info">Merangkai Budaya Nusantara Melalui Jalur Rempahs</p>
+                                            <p class="des-card-info-id">Menghidupkan kembali jejak globalisasi dari perniagaan rempah masa lalu yang menciptakan hubungan lintas budaya.</p>
                                         </div>
                                     </div>
                                     <a href="{{ route('tentangjejak') }}" class="stretched-link"></a>
@@ -119,7 +119,7 @@
                                         </div>
                                         <div class="col-9 center-v">
                                             <h3 class="judul-card-info">Masa Depan</h3>
-                                            <p class="des-card-info">Merangkai Budaya Nusantara Melalui Jalur Rempahs</p>
+                                            <p class="des-card-info-id">Penggalian kembali ekosistem bahari yang berdiri dari rute dan jejak masa lampau. Suatu sudut pandang dan fondasi dari masa lalu sebagai masa kini.</p>
                                         </div>
                                     </div>
                                     <a href="{{ route('tentangmasadepan') }}" class="stretched-link"></a>
