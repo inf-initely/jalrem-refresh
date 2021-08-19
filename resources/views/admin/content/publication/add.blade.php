@@ -119,8 +119,8 @@
                           @foreach( $rempahs as $r )
                           <div class="col-lg-4">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" name="rempah[]" value="{{ $r->id }}" id="flexCheckDefault"">
-                              <label class="form-check-label"" for="flexCheckDefault"">
+                              <input class="form-check-input" type="checkbox" name="rempah[]" value="{{ $r->id }}" id="flexCheckDefault">
+                              <label class="form-check-label" for="flexCheckDefault">
                                 {{ $r->jenis_rempah }}
                               </label>
                             </div>
@@ -135,7 +135,7 @@
                             @foreach( $kategori_show as $k )
                             <div class="form-check">
                               <input class="form-check-input" type="checkbox" name="kategori_show[]" value="{{ $k->id }}" id="flexCheckDefault">
-                              <label class="form-check-label" for="flexCheckDefault"">
+                              <label class="form-check-label" for="flexCheckDefault">
                                 {{ $k->isi }}
                               </label>
                             </div>
@@ -179,6 +179,13 @@
                    <div class="mb-4">
                      <input class="form-control" name="slider" id="uploadSlider" type="file" data-preview=".foto-slider" accept="image/png, image/jpeg" >
                    </div>
+                    <div class="mb-3">
+                      <h5>Panduan unggah gambar</h5>
+                      <ol>
+                        <li>Resolusi gambar yang di unggah, <b>1280 x 720</b></li>
+                        <li>Ukuran gambar tidak lebih dari <b>1 Mb</b></li>
+                      </ol>
+                    </div>
                  </div>
                </div>
              </div>
