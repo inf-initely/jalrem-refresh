@@ -23,7 +23,7 @@
                 </p>
                 <div class="row">
                     <div class="col text-end">
-                        <button class="btn btn-sm btn-outline-secondary" onclick="readMore()" id="btnReadmore">Lihat Selengkapnya</button>
+                        <button class="btn btn-sm btn-outline-secondary" onclick="readMore()" id="btnReadmore">Read more</button>
                     </div>
                 </div>
             </div>

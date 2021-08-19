@@ -3,16 +3,20 @@
 @section('content')
 <header id="hero">
     <div id="map"></div>
-    <div class="wrap-hero-text wrap-hero-text-bg" id="wrapHeroText">
+    <div class="wrap-hero-text wrap-hero-text-bg d-none d-lg-block" id="wrapHeroText">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 text-end">
                 <header>
-                    <h2 class="sub-judul sub-judul-hero">Jejak dan Jalur Rempah</h2>
+                    <h2 class="sub-judul sub-judul-hero">The Trace of The Spice Routes</h2>
                 </header>
-                <p>Jalur Rempah merupakan sebutan untuk suatu peradaban yang sangat tua, kompleks, dan luas. Jalurnya merupakan jalur budaya; terbentang dari timur Asia hingga barat Eropa, terhubung dengan Benua Amerika, Afrika dan Australia; dan mempengaruhi peradaban global.<span id="dots">...</span><span id="more"><br><br>
-                        Kita dapat melihat peran aktif masyarakat Nusantara dalam pembentukkan peradaban ini. Baik sebagai produsen rempah yang menggerakkan perdagangan lintas batas, maupun sebagai masyarakat yang terbuka bagi banyak bangsa (pendatang) yang memiliki latar belakang budaya yang berbeda.<br><br>
-                        Keterbukaan masyarakat dan hubungan budaya yang melahirkan beragam warisan budaya multikultural dan multietnis ke berbagai medium, termasuk hubungan lintas lautan di dalamnya, menjadi suatu keniscayaan. Tidak hanya antar bangsa, tetapi juga antar sukubangsa. Hubungan budaya antar manusia lintas lautan meninggalkan jejak, dan rangkaian jejak lintas wilayah inilah yang sekaligus membangun jalur.<br><br>
-                        Setiap warisan memiliki nilai budaya yang disimpan dalam berbagai bentuk. Kisah asal usul, nyanyian, musik, tarian, teknologi tradisional, arsitektur bangunan, kepercayaan dan banyak lainnya. Simpanan nilai budaya yang menjadi memori kolektif ini sekaligus menjadi bukti dan jejak Jalur Rempah.</span></p>
+                <p>
+                    The Spice Routes is the name given to an ancient, complex, and broad civilization. Forming cultural routes, it spread from the eastern part of Asia to the western part of Europe, connected to the American, African, and Australian continents that it affected the global civilization.<span id="dots">...</span><span id="more"><br><br>
+                    We can see the active role that the people of Nusantara took in forming this civilization. They acted as both the producer of spices who moved the trades across borders and the people that welcomed other nations (newcomers) with different cultural backgrounds.<br><br>
+
+                    The openness of the people and the cultural relationship gave rise to numerous multicultural and multiethnicity footprints to different mediums, including the inter-ocean relation inside it that became inevitable. It was not only limited to relations among nations but also among tribes. The cultural relations among inter-ocean people left footprints. These series of traces across regions then built the routes. <br><br>
+
+                    Each trace keeps cultural value in various forms. Stories of origins, songs, music, dances, traditional technologies, building architecture, beliefs, etc. The pile of cultural values that have become collective memories stands as proof and the historical remains of the Spice Routes. The program exists as a means of finding the traces.</span>
+                </p>
                 <button class="btn btn-sm btn-outline-secondary" onclick="readMore()" id="btnReadmore">Read more</button>
             </div>
         </div>
@@ -46,6 +50,25 @@
 </header>
 <main>
     <div id="content">
+        <section id="narasi" class="d-block d-lg-none px-3">
+            <div class="row">
+                <article class="col-md-12">
+                    <header>
+                        <h2 class="sub-judul sub-judul-hero ">Jejak dan Jalur Rempah</h2>
+                    </header>
+                    <p>
+                        The Spice Routes is the name given to an ancient, complex, and broad civilization. Forming cultural routes, it spread from the eastern part of Asia to the western part of Europe, connected to the American, African, and Australian continents that it affected the global civilization.<span id="dots2" style="display:inline">...</span><span id="more2" style="display:none"><br><br>
+                        We can see the active role that the people of Nusantara took in forming this civilization. They acted as both the producer of spices who moved the trades across borders and the people that welcomed other nations (newcomers) with different cultural backgrounds.<br><br>
+
+                        The openness of the people and the cultural relationship gave rise to numerous multicultural and multiethnicity footprints to different mediums, including the inter-ocean relation inside it that became inevitable. It was not only limited to relations among nations but also among tribes. The cultural relations among inter-ocean people left footprints. These series of traces across regions then built the routes. <br><br>
+
+                        Each trace keeps cultural value in various forms. Stories of origins, songs, music, dances, traditional technologies, building architecture, beliefs, etc. The pile of cultural values that have become collective memories stands as proof and the historical remains of the Spice Routes. The program exists as a means of finding the traces.</span>
+                    </p>
+                    <button class="btn btn-sm btn-outline-secondary" onclick="readMore2()" id="btnReadmore2">Read more</button>
+                </article>
+            </div>
+        </section>
+
         <section id="kontenJejak">
             <div class="container">
                 <div class="row justify-content-center">
@@ -92,8 +115,8 @@
                                             <img src="assets/img/icon/jalur_1.svg" width="80%">
                                         </div>
                                         <div class="col-9 center-v">
-                                            <h3 class="judul-card-info">Jalur</h3>
-                                            <p class="des-card-info">Merangkai Budaya Nusantara Melalui Jalur Rempahs</p>
+                                            <h3 class="judul-card-info">The Route</h3>
+                                            <p class="des-card-info">Looking back to the spice trade routes from one point to another, reviving its sundry stories, connecting its numerous traces.</p>
                                         </div>
                                     </div>
                                     <a href="{{ route('tentangjalur') }}" class="stretched-link"></a>
@@ -106,8 +129,8 @@
                                             <img src="assets/img/icon/jejak_1.svg" width="80%">
                                         </div>
                                         <div class="col-9 center-v">
-                                            <h3 class="judul-card-info">Jejak</h3>
-                                            <p class="des-card-info">Merangkai Budaya Nusantara Melalui Jalur Rempahs</p>
+                                            <h3 class="judul-card-info">The Trace</h3>
+                                            <p class="des-card-info">Reviving the globalization trace of the spice trade in the past that created cross-cultural relations.</p>
                                         </div>
                                     </div>
                                     <a href="#" class="stretched-link"></a>
@@ -120,8 +143,8 @@
                                             <img src="assets/img/icon/masa-depan_1.svg" width="80%">
                                         </div>
                                         <div class="col-9 center-v">
-                                            <h3 class="judul-card-info">Masa Depan</h3>
-                                            <p class="des-card-info">Merangkai Budaya Nusantara Melalui Jalur Rempahs</p>
+                                            <h3 class="judul-card-info">The Future</h3>
+                                            <p class="des-card-info">The excavation of the maritime ecosystem, emerging from the routes and traces in the past.</p>
                                         </div>
                                     </div>
                                     <a href="{{ route('tentangmasadepan') }}" class="stretched-link"></a>
@@ -344,6 +367,23 @@
         //   $("#wrapHeroText").addClass("min-h-100", 1000);
         // }
 
+    }
+
+    function readMore2(){
+        var dots2 = document.getElementById("dots2");
+        var moreText2 = document.getElementById("more2");
+        var btnText2 = document.getElementById("btnReadmore2");
+
+
+        if (dots2.style.display === "none") {
+            dots2.style.display = "inline";
+            btnText2.innerHTML = "Read more";
+            moreText2.style.display = "none";
+        } else {
+            dots2.style.display = "none";
+            btnText2.innerHTML = "Read less";
+            moreText2.style.display = "inline";
+        }
     }
 </script>
 @endsection
