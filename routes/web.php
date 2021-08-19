@@ -31,6 +31,7 @@ use App\Http\Controllers\KontenController;
 use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\KerjasamaController;
 use App\Http\Controllers\RempahController;
+use App\Http\Controllers\KontributorController;
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CaptchaServiceController;
@@ -117,6 +118,9 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function() {
     Route::get('/informasi/kegiatan/delete/{kerjasamaId}', [KegiatanControllerAdmin::class, 'delete'])->name('admin.kegiatan.delete');
 });
 
+Route::get('/kontributor', [KontributorController::class, 'index'])->name('contributor');
+
+
 // Route::middleware(['language'])->group(function() {
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/semua-artikel', [ArtikelController::class, 'index'])->name('articles');
@@ -146,7 +150,7 @@ Route::get('/rempah/{rempahId}', [RempahController::class, 'show'])->name('rempa
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'login_post'])->name('login_post');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
-Route::post('/register', [AuthController::class, 'register_post'])->name('register_post');
+// Route::post('/register', [AuthController::class, 'register_post'])->name('register_post');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // });
