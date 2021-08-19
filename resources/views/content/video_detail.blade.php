@@ -63,7 +63,7 @@
 
                     </p>
                   </div>
-                  <a href="{{ route('articles') }}"" class="stretched-link"></a>
+                  <a href="{{ route('articles') }}" class="stretched-link"></a>
                 </div>
               </div>
               <div class="col mb-1">
@@ -75,7 +75,7 @@
 
                     </p>
                   </div>
-                  <a href="{{ route('photos') }}"" class="stretched-link"></a>
+                  <a href="{{ route('photos') }}" class="stretched-link"></a>
                 </div>
               </div>
               <div class="col mb-1">
@@ -87,7 +87,7 @@
 
                     </p>
                   </div>
-                  <a href="{{ route('videos') }}"" class="stretched-link"></a>
+                  <a href="{{ route('videos') }}" class="stretched-link"></a>
                 </div>
               </div>
               <div class="col mb-1">
@@ -99,7 +99,7 @@
 
                     </p>
                   </div>
-                  <a href="{{ route('publications') }}"" class="stretched-link"></a>
+                  <a href="{{ route('publications') }}" class="stretched-link"></a>
                 </div>
               </div>
               <div class="col mb-1">
