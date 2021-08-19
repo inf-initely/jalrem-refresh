@@ -571,6 +571,7 @@ footer a:hover {
 
 .des-card-info {
     font-size: 14px;
+    min-height: 107px;
 }
 
 
@@ -1747,8 +1748,13 @@ footer {
         padding-right: .7rem;
     }
 
-    .layer-masking{
+    .layer-masking {
         background: linear-gradient(rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, .75) 100%);
+    }
+
+    .des-card-info {
+        font-size: 13px;
+        min-height: 0px;
     }
 
 

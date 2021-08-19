@@ -3,17 +3,24 @@
 @section('content')
 <header id="hero">
     <img class="hero-img-2 hero-peta " src="https://jalurrempah.kemdikbud.go.id/wp-content/uploads/2020/09/Peta-indonesia-u-JR.jpg">
-    <div class="wrap-hero-text wrap-hero-text-bg" id="wrapHeroText">
+    <div class="wrap-hero-text wrap-hero-text-bg d-none d-lg-block" id="wrapHeroText">
         <div class="row">
             <div class="col-md-12">
                 <header>
-                    <h2 class="sub-judul sub-judul-hero text-end">Titik-Titik Jalur Rempah</h2>
+                    <h2 class="sub-judul sub-judul-hero text-end">The Spice Routes’ Points</h2>
                 </header>
-                <p>Jalur Rempah mencakup berbagai lintasan dari timur Asia hingga barat Eropa terhubung dengan Benua Amerika, Afrika dan Australia. Suatu lintasan peradaban bermacam bentuk, garis lurus, lingkaran, silang, bahkan berbentuk jejaring.<span id="dots">...</span><span id="more"><br><br>
-                        Di Indonesia, wujud jalur perniagaan rempah mencakup banyak hal. Tidak hanya berdiri di satu titik penghasil rempah, namun juga mencakup berbagai titik yang bisa dijumpai di Indonesia dan membentuk suatu lintasan peradaban yang berkelanjutan.<br><br>
-                        Program Jalur Rempah melihat kembali lintasan jalur perdagangan rempah dari satu titik ke titik lainnya, menghidupkan kembali beragam kisahnya, menghubungkan kembali berbagai jejaknya.<br><br>
-                        Menghidupkan kembali narasi sejarah yang umumnya tidak memperlihatkan peran orang Indonesia dalam pembentukan Jalur Rempah.<br><br>
-                        Program ini bertekad keras mencatat peran mereka yang berada di titik-titik perdagangan rempah, menghubungkan serangkaian benang merah yang belum terdokumentasikan dan tampak samar-samar dalam narasi sejarah.</span></p>
+                <p>
+                    The Spice Routes covered numerous tracks from the east part of Asia to the west part of Europe, connected with American, African, and Australian Continents. It acted as a civilization trajectory in various forms–straight lines, circles, crossways, that then formed networks.
+                    <span id="dots">...</span><span id="more"><br><br>
+
+                    In Indonesia, the Spice Routes appeared in various forms. Covering broader than merely the spice producer lands, it also reached other points in Indonesia and formed a sustainable civilization trajectory.<br><br>
+
+                    The Spice Routes program is here to respect the tracks of the spice trade from one point to another, enlivening the sundry stories, and connecting the traces.<br><br>
+
+                    Enlivening the historical narration that commonly puts aside the role of Indonesians in the forming of the Spice Routes.<br><br>
+
+                    The Spice Routes determines to record the role of those who stood in the Spice Routes points, connecting the lines that have yet not to be documented and are blurry in the historical narration.</span>
+                </p>
                 <div class="row">
                     <div class="col text-end">
                         <button class="btn btn-sm btn-outline-secondary" onclick="readMore()" id="btnReadmore">Lihat Selengkapnya</button>
@@ -25,6 +32,32 @@
 </header>
 <main>
     <div id="content">
+        <section id="narasi" class="d-block d-lg-none px-3">
+            <div class="row">
+                <article class="col-md-12">
+                    <header>
+                        <h2 class="sub-judul sub-judul-hero">The Spice Routes’ Points</h2>
+                    </header>
+                    <p>
+                        The Spice Routes covered numerous tracks from the east part of Asia to the west part of Europe, connected with American, African, and Australian Continents. It acted as a civilization trajectory in various forms–straight lines, circles, crossways, that then formed networks.
+                        <span id="dots2" style="display:inline">...</span><span id="more2" style="display:none"><br><br>
+
+                        In Indonesia, the Spice Routes appeared in various forms. Covering broader than merely the spice producer lands, it also reached other points in Indonesia and formed a sustainable civilization trajectory.<br><br>
+
+                        The Spice Routes program is here to respect the tracks of the spice trade from one point to another, enlivening the sundry stories, and connecting the traces.<br><br>
+
+                        Enlivening the historical narration that commonly puts aside the role of Indonesians in the forming of the Spice Routes.<br><br>
+
+                        The Spice Routes determines to record the role of those who stood in the Spice Routes points, connecting the lines that have yet not to be documented and are blurry in the historical narration.</span>
+                    </p>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn btn-sm btn-outline-secondary" onclick="readMore2()" id="btnReadmore2">Lihat Selengkapnya</button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
         <section id="kontenJejak">
             <div class="container">
                 <div class="row justify-content-center">
@@ -71,8 +104,8 @@
                                             <img src="assets/img/icon/jalur_1.svg" width="80%">
                                         </div>
                                         <div class="col-9 center-v">
-                                            <h3 class="judul-card-info">Jalur</h3>
-                                            <p class="des-card-info">Merangkai Budaya Nusantara Melalui Jalur Rempahs</p>
+                                            <h3 class="judul-card-info">The Route</h3>
+                                            <p class="des-card-info">Looking back to the spice trade routes from one point to another, reviving its sundry stories, connecting its numerous traces.</p>
                                         </div>
                                     </div>
                                     <a href="#" class="stretched-link"></a>
@@ -85,8 +118,8 @@
                                             <img src="assets/img/icon/jejak_1.svg" width="80%">
                                         </div>
                                         <div class="col-9 center-v">
-                                            <h3 class="judul-card-info">Jejak</h3>
-                                            <p class="des-card-info">Merangkai Budaya Nusantara Melalui Jalur Rempahs</p>
+                                            <h3 class="judul-card-info">The Trace</h3>
+                                            <p class="des-card-info">Reviving the globalization trace of the spice trade in the past that created cross-cultural relations.</p>
                                         </div>
                                     </div>
                                     <a href="{{ route('tentangjejak') }}" class="stretched-link"></a>
@@ -99,8 +132,8 @@
                                             <img src="assets/img/icon/masa-depan_1.svg" width="80%">
                                         </div>
                                         <div class="col-9 center-v">
-                                            <h3 class="judul-card-info">Masa Depan</h3>
-                                            <p class="des-card-info">Merangkai Budaya Nusantara Melalui Jalur Rempahs</p>
+                                            <h3 class="judul-card-info">The Future</h3>
+                                            <p class="des-card-info">The excavation of the maritime ecosystem, emerging from the routes and traces in the past.</p>
                                         </div>
                                     </div>
                                     <a href="{{ route('tentangmasadepan') }}" class="stretched-link"></a>
@@ -199,6 +232,23 @@
             $("#wrapHeroText").addClass("min-h-100", 1000);
         }
 
+    }
+
+    function readMore2(){
+        var dots2 = document.getElementById("dots2");
+        var moreText2 = document.getElementById("more2");
+        var btnText2 = document.getElementById("btnReadmore2");
+
+
+        if (dots2.style.display === "none") {
+            dots2.style.display = "inline";
+            btnText2.innerHTML = "Read more";
+            moreText2.style.display = "none";
+        } else {
+            dots2.style.display = "none";
+            btnText2.innerHTML = "Read less";
+            moreText2.style.display = "inline";
+        }
     }
 </script>
 @endsection
