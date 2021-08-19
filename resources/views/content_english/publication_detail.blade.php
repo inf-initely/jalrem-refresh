@@ -10,7 +10,7 @@
     <div class="text-hero-2">
       <div class="">
         <div class="col-lg-12 text-center">
-          <h1>Publikasi</h1>
+          <h1>Publication</h1>
         </div>
       </div>
     </div>
@@ -44,7 +44,7 @@
               <div class="row mb-4">
                 <div class="col-md-12 wrap-aside">
                   <header>
-                    <h2 class="sub-judul">Publikasi Populer</h2>
+                    <h2 class="sub-judul">Popular Publication</h2>
                   </header>
                   <div class="row">
                     @foreach( $publikasiPopuler as $a )
@@ -71,7 +71,7 @@
               <div class="row">
                 <div class="col-md-12 wrap-aside">
                   <header>
-                    <h2 class="sub-judul">Publikasi Terbaru</h2>
+                    <h2 class="sub-judul">Latest Publication</h2>
                   </header>
                   <div class="row">
                     @foreach( $publikasiTerbaru as $a )

@@ -26,8 +26,7 @@
         <section class="container" id="artikel">
           <header class="row justify-content-start mb-2">
             <div class="col-md-6">
-              <h2 class="sub-judul">Kegiatan Saat Ini</h2>
-              <p>Berbagai upaya dilakukan untuk melestarikan jalur rempah, salah satunya dengan melakukan berbagai kegiatan.</p>
+              <h2 class="sub-judul">Ongoing</h2>
             </div>
           </header>
           <div class="row justify-content-center">

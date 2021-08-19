@@ -18,7 +18,7 @@
           <div class="row justify-content-center">
             <div class="col-lg-10">
               <header class="text-center">
-                <h2 class="sub-judul">Video Jalur Rempah</h2>
+                <h2 class="sub-judul">Spice Routes Video</h2>
               </header>
               <section id="tabLine">
                 <div class="row justify-content-center">

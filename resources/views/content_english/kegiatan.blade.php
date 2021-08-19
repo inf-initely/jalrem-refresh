@@ -6,7 +6,7 @@
     <div class="text-hero-2">
       <div class="">
         <div class="col-lg-12 text-center">
-          <h1>Kegiatan</h1>
+          <h1>Events</h1>
         </div>
       </div>
     </div>
@@ -18,7 +18,7 @@
           <div class="row justify-content-center">
             <div class="col-lg-10">
               <header class="text-center">
-                <h2 class="sub-judul">Kegiatan Jalur Rempah</h2>
+                <h2 class="sub-judul">Spice Routes Events</h2>
               </header>
               <section id="tabLine">
                 <div class="row justify-content-center">

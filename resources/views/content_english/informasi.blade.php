@@ -6,7 +6,7 @@
     <div class="text-hero-2">
       <div class="">
         <div class="col-lg-12 text-center">
-          <h1>Spice Routes Information</h1>
+          <h1>Spice Routes Events</h1>
         </div>
       </div>
     </div>
@@ -17,7 +17,7 @@
         <div class="container" id="artikel">
           <header class="row justify-content-start mb-2">
             <div class="col-md-6">
-              <h2 class="sub-judul">Current activity</h2>
+              <h2 class="sub-judul">Ongoing</h2>
             </div>
           </header>
           <div class="row justify-content-center">
@@ -50,7 +50,7 @@
         <div class="container">
           <header class="row justify-content-start mb-2">
             <div class="col-md-6">
-              <h2 class="sub-judul">Previous activity</h2>
+              <h2 class="sub-judul">Past</h2>
             </div>
           </header>
           <!--<div class="row justify-content-center">

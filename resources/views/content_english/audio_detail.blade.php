@@ -81,7 +81,7 @@
                 <div class="card no-border card-media">
                   <div class="card-body">
                     <img src="{{ asset('assets/img/icon-publication.png') }}" width="32.5%">
-                    <p class="judul-media">Publicatiion</p>
+                    <p class="judul-media">Publication</p>
                     <p class="des-media">
 
                     </p>
