@@ -6,7 +6,7 @@
     <div class="text-hero-2">
       <div class="">
         <div class="col-lg-12 text-center">
-          <h1>Informasi Jalur Rempah</h1>
+          <h1>Spice Routes Information</h1>
         </div>
       </div>
     </div>
@@ -17,7 +17,7 @@
         <div class="container" id="artikel">
           <header class="row justify-content-start mb-2">
             <div class="col-md-6">
-              <h2 class="sub-judul">Kegiatan Saat Ini</h2>
+              <h2 class="sub-judul">Current activity</h2>
             </div>
           </header>
           <div class="row justify-content-center">
@@ -50,7 +50,7 @@
         <div class="container">
           <header class="row justify-content-start mb-2">
             <div class="col-md-6">
-              <h2 class="sub-judul">Kegiatan Sebelumnya</h2>
+              <h2 class="sub-judul">Previous activity</h2>
             </div>
           </header>
           <!--<div class="row justify-content-center">
@@ -105,7 +105,7 @@
         <div class="container">
           <header class="row justify-content-start mb-2">
             <div class="col-md-6">
-              <h2 class="sub-judul">Kerja Sama</h2>
+              <h2 class="sub-judul">Partnership</h2>
             </div>
           </header>
           <div class="row justify-content-center">
@@ -135,58 +135,58 @@
         </div>
       </section>
       <!----------------------------------------------------------->
-      <section id="cardInfo">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-lg-11">
-              <div class="row">
-                <div class="col-lg-4 mb-2">
-                  <div class="card no-border card-media">
-                    <div class="card-body row">
-                      <div class="col-3 ">
-                        <img src="assets/img/icon/jalur_1.svg" width="80%">
-                      </div>
-                      <div class="col-9 center-v">
-                        <h3 class="judul-card-info">Jalur</h3>
-                        <p class="des-card-info">Merangkai Budaya Nusantara Melalui Jalur Rempahs</p>
-                      </div>
+        <section id="cardInfo">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-11">
+                        <div class="row">
+                            <div class="col-lg-4 mb-2">
+                                <div class="card no-border card-media">
+                                    <div class="card-body row">
+                                        <div class="col-3 ">
+                                            <img src="assets/img/icon/jalur_1.svg" width="80%">
+                                        </div>
+                                        <div class="col-9 center-v">
+                                            <h3 class="judul-card-info">The Route</h3>
+                                            <p class="des-card-info">Looking back to the spice trade routes from one point to another, reviving its sundry stories, connecting its numerous traces.</p>
+                                        </div>
+                                    </div>
+                                    <a href="{{ route('tentangjalur') }}" class="stretched-link"></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 mb-2">
+                                <div class="card no-border card-media">
+                                    <div class="card-body row">
+                                        <div class="col-3 ">
+                                            <img src="assets/img/icon/jejak_1.svg" width="80%">
+                                        </div>
+                                        <div class="col-9 center-v">
+                                            <h3 class="judul-card-info">The Trace</h3>
+                                            <p class="des-card-info">Reviving the globalization trace of the spice trade in the past that created cross-cultural relations.</p>
+                                        </div>
+                                    </div>
+                                    <a href="{{ route('tentangjejak') }}" class="stretched-link"></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 mb-2">
+                                <div class="card no-border card-media">
+                                    <div class="card-body row">
+                                        <div class="col-3 ">
+                                            <img src="assets/img/icon/masa-depan_1.svg" width="80%">
+                                        </div>
+                                        <div class="col-9 center-v">
+                                            <h3 class="judul-card-info">The Future</h3>
+                                            <p class="des-card-info">The excavation of the maritime ecosystem, emerging from the routes and traces in the past.</p>
+                                        </div>
+                                    </div>
+                                    <a href="{{ route('tentangmasadepan') }}" class="stretched-link"></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <a href="{{ route('tentangjalur') }}" class="stretched-link"></a>
-                  </div>
                 </div>
-                <div class="col-lg-4 mb-2">
-                  <div class="card no-border card-media">
-                    <div class="card-body row">
-                      <div class="col-3 ">
-                        <img src="assets/img/icon/jejak_1.svg" width="80%">
-                      </div>
-                      <div class="col-9 center-v">
-                        <h3 class="judul-card-info">Jejak</h3>
-                        <p class="des-card-info">Merangkai Budaya Nusantara Melalui Jalur Rempahs</p>
-                      </div>
-                    </div>
-                    <a href="{{ route('tentangjejak') }}" class="stretched-link"></a>
-                  </div>
-                </div>
-                <div class="col-lg-4 mb-2">
-                  <div class="card no-border card-media">
-                    <div class="card-body row">
-                      <div class="col-3 ">
-                        <img src="assets/img/icon/masa-depan_1.svg" width="80%">
-                      </div>
-                      <div class="col-9 center-v">
-                        <h3 class="judul-card-info">Masa Depan</h3>
-                        <p class="des-card-info">Merangkai Budaya Nusantara Melalui Jalur Rempahs</p>
-                      </div>
-                    </div>
-                    <a href="{{ route('tentangmasadepan') }}" class="stretched-link"></a>
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
-        </div>
-      </section>
+        </section>
     </div>
   </main>
 @endsection
