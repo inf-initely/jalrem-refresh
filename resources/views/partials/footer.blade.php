@@ -9,7 +9,7 @@
           <p class="footer-alamat">Kompleks Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi, Jalan Jenderal Sudirman, Senayan, Jakarta 10270</p>
         </div>
         <div class="col-12 col-md-6 col-lg-3 mb-4 footer-content">
-          <h3 class="menu-footer mb-4">contact</h3>
+          <h3 class="menu-footer mb-4">CONTACT</h3>
           <ul>
             <li>
               <p>jalurrempah@kemdikbud.go.id</p>

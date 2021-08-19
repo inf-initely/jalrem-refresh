@@ -72,7 +72,7 @@
           <i class="fa fa-search clr-white"></i>
         </button>
         <a target="_blank" href="https://artsandculture.google.com/" class="btn btn-danger mr-4" style="margin-right:1rem">
-          Exhibition
+          Spice Route Exhibition
         </a>
       </div>
     </div>
@@ -157,7 +157,7 @@
           <i class="fa fa-search clr-black"></i>
         </button>
         <a target="_blank" href="https://artsandculture.google.com/" class="btn btn-danger mr-4" style="margin-right:1rem">
-          Exhibition
+          Spice Route Exhibition
         </a>
       </div>
     </div>
@@ -242,7 +242,7 @@
           <i class="fa fa-search clr-white"></i>
         </button>
         <a target="_blank" href="https://artsandculture.google.com/" class="btn btn-danger mr-4" style="margin-right:1rem">
-          Exhibition
+          Spice Route Exhibition
         </a>
       </div>
     </div>
