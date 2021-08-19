@@ -22,7 +22,7 @@
         <img class="item-jelajah item-cengkeh" src="{{ asset('assets/img/item-cengkeh.svg') }}">
         <div class="container">
           <div class="row justify-content-center">
-            <div class="col-lg-8 pe-5">
+            <div class="col-lg-8 wrap-detail-artikel">
               <header>
                 <h2 class="sub-judul">{{ $artikel->judul_english ?? $artikel->judul_indo }}</h2>
                 <div class="info-penulis">
@@ -30,7 +30,7 @@
                   <span class="txt-penulis" id="tglArtikel" name="tglArtikel">{{ $artikel->created_at->isoFormat('D MMMM Y') }}</span>
                 </div>
               </header>
-              <article id="desTentang">
+              <article id="isiKonten">
                 <img class="mb-3 mt-3" src="{{ asset('storage/assets/artikel/thumbnail/' . $artikel->thumbnail) }}" width="100%">
                 {!! $artikel->konten_english ?? $artikel->konten_indo !!}
               </article>
