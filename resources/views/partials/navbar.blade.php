@@ -54,12 +54,12 @@
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
                   <a class="dropdown-item" href="{{ route('set_language') }}">
-                    <img src="{{ asset('assets/img/bendera/flag-indonesia.png') }}" class="mr-2 flag" width="20px"> INA
+                    <img src="{{ asset('assets/img/bendera/flag-indonesia.png') }}" class="mr-2 flag" width="20px"> ID
                   </a>
                 </li>
                 <li>
                   <a class="dropdown-item" href="{{ route('set_language') }}">
-                    <img src="{{ asset('assets/img/bendera/flag-english.png') }}" class="mr-2 flag" width="20px"> ENG
+                    <img src="{{ asset('assets/img/bendera/flag-english.png') }}" class="mr-2 flag" width="20px"> EN
                   </a>
                 </li>
               </ul>
@@ -90,12 +90,12 @@
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
           <li>
             <a class="dropdown-item" href="{{ route('set_language') }}">
-              <img src="{{ asset('assets/img/bendera/flag-indonesia.png') }}" class="mr-2 flag" width="20px"> INA
+              <img src="{{ asset('assets/img/bendera/flag-indonesia.png') }}" class="mr-2 flag" width="20px"> ID
             </a>
           </li>
           <li>
             <a class="dropdown-item" href="{{ route('set_language') }}">
-              <img src="{{ asset('assets/img/bendera/flag-english.png') }}" class="mr-2 flag" width="20px"> ENG
+              <img src="{{ asset('assets/img/bendera/flag-english.png') }}" class="mr-2 flag" width="20px"> EN
             </a>
           </li>
         </ul>
@@ -175,12 +175,12 @@
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
           <li>
             <a class="dropdown-item" href="{{ route('set_language') }}">
-              <img src="{{ asset('assets/img/bendera/flag-indonesia.png') }}" class="mr-2 flag" width="20px"> INA
+              <img src="{{ asset('assets/img/bendera/flag-indonesia.png') }}" class="mr-2 flag" width="20px"> ID
             </a>
           </li>
           <li>
             <a class="dropdown-item" href="{{ route('set_language') }}">
-              <img src="{{ asset('assets/img/bendera/flag-english.png') }}" class="mr-2 flag" width="20px"> ENG
+              <img src="{{ asset('assets/img/bendera/flag-english.png') }}" class="mr-2 flag" width="20px"> EN
             </a>
           </li>
         </ul>
