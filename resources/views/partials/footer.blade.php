@@ -9,7 +9,7 @@
           <p class="footer-alamat">Kompleks Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi, Jalan Jenderal Sudirman, Senayan, Jakarta 10270</p>
         </div>
         <div class="col-12 col-md-6 col-lg-3 mb-4 footer-content">
-          <h3 class="menu-footer mb-4">KONTAK</h3>
+          <h3 class="menu-footer mb-4">Contact</h3>
           <ul>
             <li>
               <p>jalurrempah@kemdikbud.go.id</p>
@@ -23,33 +23,33 @@
           </ul>
         </div>
         <div class="col-12 col-md-6 col-lg-2 mb-4 footer-content">
-          <h3 class="menu-footer">TENTANG</h3>
+          <h3 class="menu-footer">ABOUT</h3>
           <ul>
             <li>
-              <a href="{{ route('tentangjalur') }}">Jalur</a>
+              <a href="{{ route('tentangjalur') }}">The Route</a>
             </li>
             <li>
-              <a href="{{ route('tentangjejak') }}">Jejak</a>
+              <a href="{{ route('tentangjejak') }}">The Trace</a>
             </li>
             <li>
-              <a href="{{ route('tentangmasadepan') }}">Masa Depan</a>
+              <a href="{{ route('tentangmasadepan') }}">The Future</a>
             </li>
           </ul>
         </div>
         <div class="col-12 col-md-6 col-lg-2 mb-4 footer-content">
-          <h3 class="menu-footer">KONTEN</h3>
+          <h3 class="menu-footer">CONTENT</h3>
           <ul>
             <li>
-              <a href="{{ route('articles') }}">Artikel</a>
+              <a href="{{ route('articles') }}">Article</a>
             </li>
             <li>
-              <a href="{{ route('photos') }}">Foto</a>
+              <a href="{{ route('photos') }}">Photo</a>
             </li>
             <li>
               <a href="{{ route('videos') }}">Video</a>
             </li>
             <li>
-              <a href="{{ route('publications') }}">Publikasi</a>
+              <a href="{{ route('publications') }}">Publication</a>
             </li>
             <li>
               <a href="{{ route('audios') }}">Audio</a>
@@ -57,7 +57,7 @@
           </ul>
         </div>
         <div class="col-12 col-md-6 col-lg-2 mb-4 footer-content">
-          <h3 class="menu-footer">MEDIA SOSIAL</h3>
+          <h3 class="menu-footer">SOCIAL MEDIA</h3>
           <ul class="list-group list-group-horizontal">
             <li class="list-group-item">
               <a target="_blank" href="https://web.facebook.com/jalurrempahri">

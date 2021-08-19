@@ -137,10 +137,10 @@
         <div class="container">
           <header class="row justify-content-center mb-2">
             <div class="col-md-6">
-              <h2 class="sub-judul">Kegiatan</h2>
+              <h2 class="sub-judul">Event</h2>
             </div>
             <div class="col-md-6 center-v text-end d-desktop">
-              <a href="{{ route('informasi') }}" class="btn btn-outline-danger">Lihat Semua Kegiatan</a>
+              <a href="{{ route('informasi') }}" class="btn btn-outline-danger">See All Event</a>
             </div>
           </header>
           <section class="row justify-content-center" data-aos="flip-up">
@@ -163,7 +163,7 @@
             </div>
             @endforeach
             <div class="col-md-12 text-center d-mobile">
-              <a href="{{ route('informasi') }}" class="btn btn-outline-danger">Lihat Semua Kegiatan</a>
+              <a href="{{ route('informasi') }}" class="btn btn-outline-danger">See All Event</a>
             </div>
           </section>
         </div>
@@ -172,10 +172,10 @@
         <section class="container" id="artikel">
           <header class="row justify-content-center mb-2">
             <div class="col-lg-6">
-              <h2 class="sub-judul">Artikel dan Berita</h2>
+              <h2 class="sub-judul">News and Article</h2>
             </div>
             <div class="col-md-6 center-v text-end  d-desktop">
-              <a href="{{ route('articles') }}" class="btn btn-outline-danger">Lihat Semua Berita</a>
+              <a href="{{ route('articles') }}" class="btn btn-outline-danger">See All News and Article</a>
             </div>
           </header>
           <section class="row justify-content-center" data-aos="fade-up">
@@ -198,7 +198,7 @@
             </div>
             @endforeach
             <div class="col-md-12 text-center  d-mobile">
-              <button type="button" class="btn btn-outline-danger">Lihat Semua Berita</button>
+              <button type="button" class="btn btn-outline-danger">See All News and Article</button>
             </div>
           </section>
         </section>
@@ -206,11 +206,11 @@
           <div class="row">
             <section class="col-md-6 center-v">
               <header>
-                <h2 class="sub-judul">Konten</h2>
+                <h2 class="sub-judul">Content</h2>
                 <p class="des-sub-judul">Berbagai upaya dilakukan untuk melestarikan jalur rempah, salah satunya dengan melakukan berbagai kegiatan.</p>
                 <p class="des-sub-sub-judul">Di masa lampau, kehadiran para pedagang antarbangsa memiliki peranan penting terhadap perkembangan budaya yang masih bisa kita lihat dan rasakan jejaknya.</p>
                 <a href="{{ route('konten') }}" class="btn btn-outline-danger">
-                  Lihat Semua Konten
+                  See All Content
                 </a>
               </header>
             </section>
@@ -220,7 +220,7 @@
                   <div class="card no-border card-media card-media-1">
                     <div class="card-body text-center">
                       <img src="assets/img/icon-image.png" width="40%">
-                      <p class="judul-media">Foto</p>
+                      <p class="judul-media">Photo</p>
                     </div>
                     <a href="{{ route('photos') }}" class="stretched-link"></a>
                   </div>
@@ -229,7 +229,7 @@
                   <div class="card no-border card-media card-media-2">
                     <div class="card-body text-center">
                       <img src="assets/img/icon-publication.png" width="40%">
-                      <p class="judul-media">Publikasi</p>
+                      <p class="judul-media">Publication</p>
                     </div>
                     <a href="{{ route('publications') }}" class="stretched-link"></a>
                   </div>
@@ -264,8 +264,7 @@
           <div class="row mb-4">
             <div class="col-lg-12">
               <header>
-                <h2 class="sub-judul">Youtube Jalur Rempah</h2>
-                <p>Berbagai media dan publikasi yang terkait Jalur Rempah Nusantara</p>
+                <h2 class="sub-judul">Youtube</h2>
               </header>
             </div>
           </div>
@@ -414,7 +413,7 @@
           <div class="row mb-4">
             <div class="col-lg-12">
               <header>
-                <h2 class="sub-judul">Twitter Jalur Rempah</h2>
+                <h2 class="sub-judul">Twitter</h2>
               </header>
             </div>
           </div>
@@ -434,7 +433,7 @@
           <div class="row">
             <div class="col-lg-12">
               <header>
-                <h2 class="sub-judul">Instagram Jalur Rempah</h2>
+                <h2 class="sub-judul">Instagram</h2>
               </header>
             </div>
           </div>
@@ -454,13 +453,13 @@
           <div class="row">
             <div class="col-lg-5 clr-white">
               <header>
-                <h2 class="sub-judul">Mari Berkontribusi</h2>
+                <h2 class="sub-judul">let's contribute</h2>
               </header>
-              <p>Mari mendukung kegiatan Jalur Rempah dengan berkontribusi di website Jalur Rempah. Kami menerima konten dari kontributor berupa <b>artikel, esai, liputan, cerita foto,</b> hingga <b>video</b>
-                dari sudut pandang sejarah, budaya, gastronomi, arkeologi, sastra, kuliner, film, fesyen, seni, dan hal-hal lain terkait Jalur Rempah yang ada di sekitarmu.</p>
+              <p>Let's support the Spice Route activities by contributing to the Spice Route website. We accept content from contributors in the form of <b>articles, essays, coverage, photo stories,</b> to <b>videos</b>
+                from the point of view of history, culture, gastronomy, archeology, literature, culinary, film, fashion, art, and anything else related to the Spice Trail that is around you.</p>
             </div>
             <div class="offset-lg-1 col-lg-6 text-center center-v">
-              <a href="{{ route('register') }}" class="btn btn-lg btn-secondary btn-primary-jarem">Jadi Kontributor</a>
+              <a href="{{ route('register') }}" class="btn btn-lg btn-secondary btn-primary-jarem">Become a Contributor</a>
             </div>
           </div>
         </div>
