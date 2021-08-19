@@ -62,22 +62,22 @@
             </div>
             <div class="col-12 col-md-6 col-lg-6 center-v">
               <header>
-                <h2 class="sub-judul">Jalur Rempah</h2>
+                <h2 class="sub-judul">The Route</h2>
               </header>
-              <p class="jelajah-des">Melihat kembali lintasan jalur perdagangan rempah dari satu titik ke titik lainnya, menghidupkan kembali beragam kisahnya, menghubungkan kembali berbagai jejaknya.</p>
+              <p class="jelajah-des">Looking back to the spice trade routes from one point to another, reviving its sundry stories, connecting its numerous traces.</p>
               <a href="{{ route('tentangjalur') }}" class="btn btn-danger btn-jelajah">
-                lihat selengkapnya
+                explore more
               </a>
             </div>
           </div>
           <div class="row justify-content-center content-jelajahi wrap-div" data-aos="fade-left">
             <div class="col-12 col-md-6 col-lg-6 text-end center-v mb-2 second-div" style="margin-top: 30px;">
               <header>
-                <h2 class="sub-judul">Jejak Rempah Nusantara</h2>
+                <h2 class="sub-judul">The Trace</h2>
               </header>
-              <p class="jelajah-des">Menghidupkan kembali jejak globalisasi dari perniagaan rempah masa lalu yang menciptakan hubungan lintas budaya. Menampilkan jejak antar bangsa dan antar suku bangsa sebagai warisan dan pengetahuan hari ini.</p>
+              <p class="jelajah-des">Reviving the globalization trace of the spice trade in the past that created cross-cultural relations. Displaying the traces among nations and tribes as today’s heritage and knowledge.</p>
               <a href="{{ route('tentangjejak') }}" class="btn btn-danger btn-jelajah">
-                lihat selengkapnya
+                explore more
               </a>
             </div>
             <div class="col-12 col-md-6 col-lg-4 first-div mb-2">
@@ -90,11 +90,11 @@
             </div>
             <div class="col-12 col-md-6 col-lg-6 center-v">
               <header>
-                <h2 class="sub-judul">Masa Depan</h2>
+                <h2 class="sub-judul">The Future</h2>
               </header>
-              <p class="jelajah-des">Melihat kembali lintasan jalur perdagangan rempah dari satu titik ke titik lainnya, menghidupkan kembali beragam kisahnya, menghubungkan kembali berbagai jejaknya.</p>
+              <p class="jelajah-des">The excavation of the maritime ecosystem, emerging from the routes and traces in the past. A perspective and foundation from the past for the future. A series of collective memories as knowledge to build the future.</p>
               <a href="{{ route('tentangmasadepan') }}" class="btn btn-danger btn-jelajah">
-                lihat selengkapnya
+                explore more
               </a>
             </div>
           </div>
@@ -124,9 +124,9 @@
             </div>
             <div class=" col-lg-10 center-v">
               <header>
-                <h2 class="sub-judul text-center mb-3">Jalur Rempah Magnet Dunia</h2>
+                <h2 class="sub-judul text-center mb-3">The Spice Routes</h2>
               </header>
-              <p class="jelajah-des text-justify">Asimilasi budaya dan keterhubungan antarbangsa di Indonesia tidak terjadi begitu saja. Di masa lampau, kehadiran para pedagang antarbangsa memiliki peranan penting terhadap perkembangan budaya yang masih bisa kita lihat dan rasakan jejaknya. Hal ini disebabkan oleh komoditi rempah yang berasal dari berbagai kepulauan di Nusantara yang terlibat dalam lalu lintas perdagangan di masa lampau, sehingga menjadi salah satu jalur budaya.</p>
+              <p class="jelajah-des text-justify">The cultural assimilation and its connectedness among nations in Indonesia did not just happen. International traders played a significant role in the cultural development that left the traces we can find today. It is due to the spice commodity, coming from various islands in Nusantara that formed the trade traffic in the past, and thus becoming a cultural route.</p>
             </div>
           </div>
         </div>
