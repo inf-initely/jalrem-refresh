@@ -154,15 +154,16 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 // RELOAD CAPTCHA
 Route::get('/reload-captcha', [CaptchaServiceController::class, 'reloadCaptcha']);
 
-Route::get('/set_language', function() {
-    if( Session::get('lg') == null ) {
-        Session::put('lg', 'en');
-    } else {
-        Session::forget('lg');
-    }
+Route::get('/set_language/en', function() {
+    Session::put('lg', 'en');
     
     return redirect()->back();
-})->name('set_language');
+})->name('set_language_en');
+
+Route::get('/set_language/id', function() {
+    Session::forget('lg');
+    return redirect()->back();
+})->name('set_language_id');
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();

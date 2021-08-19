@@ -74,7 +74,9 @@
   $('textarea.editor').ckeditor(options);
   </script>
   
-  
+  <script>
+    
+  </script>
   @yield('js')
 </body>
 

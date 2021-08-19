@@ -80,7 +80,7 @@
                                             <!-- <p class="des-artikel des-artikel-tentang minimize">{!! Str::limit($a->konten_indo, 60, $end='...') !!}</p> -->
                                             <div class="wrap-tag-rempah">
                                                 @foreach( $a->rempahs as $r )
-                                                <a href="funfact.html" class="text-danger text-decoration-none">{{ $r->jenis_rempah }}</a>|
+                                                <a href="{{ route('rempah_detail', $r->id) }}" class="text-danger text-decoration-none">{{ $r->jenis_rempah }}</a>|
                                                 @endforeach
                                             </div>
                                         </div>
