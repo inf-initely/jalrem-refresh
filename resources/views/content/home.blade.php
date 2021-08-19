@@ -15,7 +15,7 @@
                     <h2 class="title">{{ $s->judul_indo }}</h2>
                   </div>
                   <div data-swiper-parallax="400" class="slide-text">
-                    <p class="caption">{!! Str::limit($s->konten_indo, 50, $end='...') !!}</p>
+                    <p class="caption">{!! Str::limit($s->konten_indo, 160, $end='...') !!}</p>
                   </div>
                   <div class="clearfix"></div>
                 </div>
@@ -185,7 +185,7 @@
                 <img src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h3 class="card-title judul-artikel">{{ $a->judul_indo }}</h3>
-                  <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p>
+                  {{-- <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p> --}}
                   <p class="penulis-artikel">
                     {{ $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin' }}
                   </p>

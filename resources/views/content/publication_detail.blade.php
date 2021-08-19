@@ -115,7 +115,7 @@
             <div class="card no-border no-background card-body">
               <img src="{{ asset('storage/assets/publikasi/thumbnail/' . $a->thumbnail) }}" class="card-img-top mb-4" alt="...">
               <h3 class="card-title judul-artikel">{{ $a->judul_indo }}</h3>
-              <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p>
+              {{-- <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p> --}}
               <p class="penulis-artikel">{{ $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin' }}</p>
               <p class="tgl-artikel">{{ $a->created_at->isoFormat('D MMMM Y'); }}</p>
               <a href="{{ route('publication_detail', $a->slug) }}" class="stretched-link"></a>
