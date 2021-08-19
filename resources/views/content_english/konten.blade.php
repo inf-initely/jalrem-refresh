@@ -8,7 +8,7 @@
           <div class="row justify-content-center">
             <div class="col-lg-12">
               <header class="mb-2">
-                <h2 class="sub-judul text-center">Terbaru</h2>
+                <h2 class="sub-judul text-center">Latest</h2>
               </header>
               <div class="feature">
                 @foreach( $artikelSlider as $a )
@@ -59,21 +59,21 @@
           <div class="row justify-content-center">
             <div class="col-lg-12">
               <header class="text-center">
-                <h2 class="sub-judul">Konten Jalur Rempah</h2>
+                <h2 class="sub-judul">Spice Routes Content</h2>
               </header>
               <section id="tabLine">
                 <ul class="nav nav-pills mb-3 nav-tabline justify-content-center" id="pills-tab" role="tablist">
                   <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="tab-artikel-tab" data-bs-toggle="pill" data-bs-target="#tab-artikel" type="button" role="tab" aria-controls="tab-artikel" aria-selected="true">Artikel</button>
+                    <button class="nav-link active" id="tab-artikel-tab" data-bs-toggle="pill" data-bs-target="#tab-artikel" type="button" role="tab" aria-controls="tab-artikel" aria-selected="true">Article</button>
                   </li>
                   <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="tab-foto-tab" data-bs-toggle="pill" data-bs-target="#tab-foto" type="button" role="tab" aria-controls="tab-foto" aria-selected="false">Foto</button>
+                    <button class="nav-link" id="tab-foto-tab" data-bs-toggle="pill" data-bs-target="#tab-foto" type="button" role="tab" aria-controls="tab-foto" aria-selected="false">Photo</button>
                   </li>
                   <li class="nav-item" role="presentation">
                     <button class="nav-link" id="tab-video-tab" data-bs-toggle="pill" data-bs-target="#tab-video" type="button" role="tab" aria-controls="tab-video" aria-selected="false">Video</button>
                   </li>
                   <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="tab-publikasi-tab" data-bs-toggle="pill" data-bs-target="#tab-publikasi" type="button" role="tab" aria-controls="tab-publikasi" aria-selected="false">Publikasi</button>
+                    <button class="nav-link" id="tab-publikasi-tab" data-bs-toggle="pill" data-bs-target="#tab-publikasi" type="button" role="tab" aria-controls="tab-publikasi" aria-selected="false">Publication</button>
                   </li>
                   <li class="nav-item" role="presentation">
                     <button class="nav-link" id="tab-audio-tab" data-bs-toggle="pill" data-bs-target="#tab-audio" type="button" role="tab" aria-controls="tab-audio" aria-selected="false">Audio</button>
