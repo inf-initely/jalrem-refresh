@@ -41,7 +41,9 @@
                   </div>
                   @endforeach
                 </div>
+                <div class="d-flex justify-content-center">
                 {!! $kegiatan->links() !!}
+                </div>
               </section>
             </div>
           </div>

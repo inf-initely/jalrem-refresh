@@ -36,7 +36,9 @@
                   </div>
                   @endforeach
                 </div>
+                <div class="d-flex justify-content-center">
                 {!! $foto->links() !!}
+                </div>
               </section>
             </div>
           </div>

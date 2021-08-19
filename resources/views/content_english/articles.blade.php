@@ -35,7 +35,9 @@
                     </div>
                     @endforeach
                 </div>
+                <div class="d-flex justify-content-center">
                 {!! $artikel->links() !!}
+                </div>
             </div>
         </section>
     </div>

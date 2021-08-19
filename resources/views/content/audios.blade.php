@@ -30,7 +30,9 @@
                   </div>
                   @endforeach
                 </div>
+                <div class="d-flex justify-content-center">
                 {!! $audio->links() !!}
+                </div>
               </section>
             </div>
           </div>
