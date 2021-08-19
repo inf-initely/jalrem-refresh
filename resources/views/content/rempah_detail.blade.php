@@ -18,15 +18,11 @@
           <div class="row justify-content-center">
             <div class="col-lg-9">
               <header class="mb-3">
-                <h2 class="sub-judul">Cengkeh Ternate</h2>
+                <h2 class="sub-judul">{{ $rempah->jenis_rempah }}</h2>
               </header>
               <div id="desTentang">
-                <p>Telinga kita tentu tidak asing lagi dengan nama dua pulau penghasil rempah yang berdekatan dan sama-sama memiliki kekhasannya dengan berdirinya gunung api. Ya, adalah Ternate dan Tidore.
-                  Dua pulau ini juga dikenal sebagai titik nol Jalur Rempah Nusantara. Selain itu, Ternate dan Tidore diketahui sebagai daerah penghasil cengkeh terbaik dan terbesar. Terutama Ternate yang sempat menjadi kota dagang dengan fasilitas menarik setelah banyak pedagang dari berbagai wilayah di Nusantara hingga bangsa lain menetap dan membuka pos-pos niaga.</p>
-                <img src="assets/img/berita-detail/gambar9.jpeg" width="100%">
-                <!--<h3 class="sub-judul mt-5 mb-3">Jejak Sejarah</h3>
-                <p>Telinga kita tentu tidak asing lagi dengan nama dua pulau penghasil rempah yang berdekatan dan sama-sama memiliki kekhasannya dengan berdirinya gunung api. Ya, adalah Ternate dan Tidore.</p> -->
-                <section>
+                {!! $rempah->keterangan !!}
+                {{-- <section>
                   <ul class="timeline">
                     <li>
                       <div class="timeline-badge primary"><a><i class="glyphicon glyphicon-record" rel="tooltip" title="11 hours ago via Twitter" id=""></i></a></div>
@@ -195,9 +191,9 @@
             </div>
           </div>
         </div>
-      </section>
+      </section> --}}
       <!----------------------------------------------------------->
-      <section id="kisahLainnya" class="full-bg">
+      {{-- <section id="kisahLainnya" class="full-bg">
         <div class="container">
           <header class="row justify-content-center mb-2">
             <div class="col-md-12">
@@ -237,7 +233,7 @@
             </div>
           </section>
         </div>
-      </section>
+      </section> --}}
     </div>
   </main>
 @endsection

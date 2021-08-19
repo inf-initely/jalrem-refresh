@@ -12,7 +12,8 @@ class RempahController extends Controller
     public function show($rempahId)
     {
         $rempah = Rempah::findOrFail($rempahId);
+        $artikelRempah = $rempah->artikel;
 
-        return view('content.rempah_detail', $rempah);
+        return view('content.rempah_detail', compact('rempah', 'artikelRempah'));
     }
 }

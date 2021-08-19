@@ -10,4 +10,9 @@ class Rempah extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function artikel()
+    {
+        return $this->belongsToMany('App\Models\Rempah', 'artikel_rempah', 'id_artikel', 'id_rempah');
+    }
 }
