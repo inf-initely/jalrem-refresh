@@ -24,4 +24,5 @@
     <meta property="twitter:title" content="Jalur Rempah Nusantara">
     <meta property="twitter:description" content="Jalur Rempah adalah jalur budaya untuk pengembangan budaya bahari & literasi maritim diinisiasi oleh Kemdikbudristek RI">
     <meta property="twitter:image" content="{{ asset('assets/img/meta-img.jpg') }}">
+    
 
