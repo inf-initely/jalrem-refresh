@@ -41,7 +41,9 @@
                   </div>
                   @endforeach
                 </div>
-                {{ $kegiatan->links('vendor.pagination.custom') }}
+                <div class="d-flex justify-content-center">
+                {!! $kegiatan->links() !!}
+                </div>
               </section>
             </div>
           </div>

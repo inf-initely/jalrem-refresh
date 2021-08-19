@@ -41,7 +41,9 @@
                   </div>
                   @endforeach
                 </div>
-                {{ $publikasi->links('vendor.pagination.custom') }}
+                <div class="d-flex justify-content-center">
+                {!! $publikasi->links() !!}
+                </div>
               </section>
             </div>
           </div>

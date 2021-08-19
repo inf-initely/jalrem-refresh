@@ -30,7 +30,9 @@
                   </div>
                   @endforeach
                 </div>
-                {{ $audio->links('vendor.pagination.custom') }}
+                <div class="d-flex justify-content-center">
+                {!! $audio->links() !!}
+                </div>
               </section>
             </div>
           </div>

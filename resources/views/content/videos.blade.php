@@ -49,7 +49,9 @@
                   </div>
                   @endforeach
                 </div>
-                {{ $video->links('vendor.pagination.custom') }}
+                <div class="d-flex justify-content-center">
+                {!! $video->links() !!}
+                </div>
               </section>
             </div>
           </div>

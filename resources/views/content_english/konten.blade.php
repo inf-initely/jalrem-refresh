@@ -99,7 +99,9 @@
                         </div>
                       </div>
                       @endforeach
-                      {{ $artikel->links('vendor.pagination.custom') }}
+                      <div class="d-flex justify-content-center">
+                      {!! $artikel->links() !!}
+                      </div>
                     </div>
                   </div>
                   <div class="tab-pane fade" id="tab-foto" role="tabpanel" aria-labelledby="tab-foto-tab">
@@ -117,7 +119,9 @@
                         </div>
                       </div>
                       @endforeach
-                      {{ $foto->links('vendor.pagination.custom') }}
+                      <div class="d-flex justify-content-center">
+                      {!! $foto->links() !!}
+                      </div>
                     </div>
                   </div>
                   <div class="tab-pane fade" id="tab-video" role="tabpanel" aria-labelledby="tab-video-tab">
@@ -148,7 +152,9 @@
                         </div>
                       </div>
                       @endforeach
-                      {{ $video->links('vendor.pagination.custom') }}
+                      <div class="d-flex justify-content-center">
+                      {!! $video->links() !!}
+                      </div>
                     </div>
                   </div>
                   <div class="tab-pane fade" id="tab-publikasi" role="tabpanel" aria-labelledby="tab-publikasi-tab">
@@ -171,7 +177,9 @@
                         </div>
                       </div>
                       @endforeach
-                      {{ $publikasi->links('vendor.pagination.custom') }}
+                      <div class="d-flex justify-content-center">
+                      {!! $publikasi->links() !!}
+                      </div>
                     </div>
                   </div>
                   <div class="tab-pane fade" id="tab-audio" role="tabpanel" aria-labelledby="tab-audio-tab">
@@ -183,6 +191,9 @@
                         <main></main>
                       </div>
                       @endforeach
+                      <div class="d-flex justify-content-center">
+                      {!! $audio->links() !!}
+                      </div>
                     </div>
                   </div>
                 </div>

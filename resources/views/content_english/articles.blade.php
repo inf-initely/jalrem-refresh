@@ -35,7 +35,9 @@
                     </div>
                     @endforeach
                 </div>
-                {{ $artikel->links('vendor.pagination.custom') }}
+                <div class="d-flex justify-content-center">
+                {!! $artikel->links() !!}
+                </div>
             </div>
         </section>
     </div>

@@ -1,6 +1,7 @@
 @extends('layout.app')
 
 @section('content')
+
 <header id="hero">
     <img class="hero-img-2" src="assets/img/hero/hero-4.jpg">
     <div class="text-hero-2">
@@ -35,7 +36,9 @@
                     </div>
                     @endforeach
                 </div>
-                {{ $artikel->links('vendor.pagination.custom') }}
+                <div class="d-flex justify-content-center">
+                {!! $artikel->links() !!}
+                </div>
             </div>
         </section>
     </div>
