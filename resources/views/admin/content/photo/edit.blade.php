@@ -255,7 +255,7 @@
                                 <input class="form-check-input" type="checkbox" name="contributor"  
                                 value="contributor" id="peng-kontributor">
                               @endif
-                                <label class="form-check-label-contributor" for="flexCheckDefault-contributor"">
+                                <label class="form-check-label-contributor" for="flexCheckDefault-contributor">
                                 Kontributor Umum/Pamong budaya
                               </label>
                             </div>
@@ -265,7 +265,7 @@
                               @else
                                 <input checked class="form-check-input" type="checkbox" name="slider_utama" value="slider_utama" id="peng-slider">
                               @endif
-                              <label class="form-check-label-slider"" for="flexCheckDefault-slider"">
+                              <label class="form-check-label-slider" for="flexCheckDefault-slider">
                                 Tampilkan di Slider Utama
                               </label>
                             </div>
@@ -278,7 +278,7 @@
               <div id="fotoSlider" class="col-lg-12 mb-3" style="display: {{ $foto->slider_file != null ? 'initial' : 'none' }};">
                 <div class="card shadow mb-4">
                   <div class="card-header py-3">
-                    <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">Foto Utama</h2>
+                    <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">Foto Slider</h2>
                   </div>
                   <div class="card-body ">
                     <div class="row">
@@ -292,6 +292,13 @@
                     </div>
                     <div class="mb-4">
                       <input class="form-control" name="slider" id="uploadSlider" type="file" data-preview=".preview" accept="image/png, image/jpeg">
+                    </div>
+                    <div class="mb-3">
+                      <h5>Panduan unggah gambar</h5>
+                      <ol>
+                        <li>Resolusi gambar yang di unggah, <b>1280 x 720</b></li>
+                        <li>Ukuran gambar tidak lebih dari <b>1 Mb</b></li>
+                      </ol>
                     </div>
                   </div>
                 </div>
@@ -352,6 +359,24 @@
           </div>
           <!-- /.container-fluid -->
         </form>
+        <!-- Panduan Modal -->
+        <div class="modal fade" id="modalPanduan" tabindex="-1" aria-labelledby="modalPanduanLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalPanduanLabel">Panduan Pengunggahan Gambar Slider</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <ol>
+                  <li>Resolusi gambar yang di unggah, <b>1280 x 720</b></li>
+                  <li>Ukuran gambar tidak lebih dari <b>1 Mb</b></li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+
 @endsection
 
 @section('js')

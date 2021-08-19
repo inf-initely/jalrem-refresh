@@ -207,6 +207,13 @@
                   <div class="mb-4">
                     <input class="form-control" name="slider" id="uploadSlider" type="file" data-preview=".preview" accept="image/png, image/jpeg">
                   </div>
+                   <div class="mb-3">
+                      <h5>Panduan unggah gambar</h5>
+                      <ol>
+                        <li>Resolusi gambar yang di unggah, <b>1280 x 720</b></li>
+                        <li>Ukuran gambar tidak lebih dari <b>1 Mb</b></li>
+                      </ol>
+                  </div>
                 </div>
               </div>
             </div>

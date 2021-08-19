@@ -200,7 +200,7 @@
         <div id="fotoSlider" class="col-lg-12 mb-3" style="display: {{ $publikasi->slider_file != null ? 'initial' : 'none' }};">
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">Foto Utama</h2>
+              <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">Foto Slider</h2>
             </div>
             <div class="card-body ">
               <div class="row">
@@ -215,6 +215,13 @@
               <div class="mb-4">
                 <input class="form-control" name="slider" id="uploadSlider" type="file" data-preview=".preview" accept="image/png, image/jpeg">
               </div>
+                <div class="mb-3">
+                  <h5>Panduan unggah gambar</h5>
+                  <ol>
+                    <li>Resolusi gambar yang di unggah, <b>1280 x 720</b></li>
+                    <li>Ukuran gambar tidak lebih dari <b>1 Mb</b></li>
+                  </ol>
+                </div>
             </div>
           </div>
         </div>
