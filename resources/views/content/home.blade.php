@@ -68,7 +68,7 @@
               </header>
               <p class="jelajah-des">Melihat kembali lintasan jalur perdagangan rempah dari satu titik ke titik lainnya, menghidupkan kembali beragam kisahnya, menghubungkan kembali berbagai jejaknya.</p>
               <a href="{{ route('tentangjalur') }}" class="btn btn-danger btn-jelajah">
-                lihat selengkapnya
+                Jelajahi
               </a>
             </div>
           </div>
@@ -79,7 +79,7 @@
               </header>
               <p class="jelajah-des">Menghidupkan kembali jejak globalisasi dari perniagaan rempah masa lalu yang menciptakan hubungan lintas budaya. Menampilkan jejak antar bangsa dan antar suku bangsa sebagai warisan dan pengetahuan hari ini.</p>
               <a href="{{ route('tentangjejak') }}" class="btn btn-danger btn-jelajah">
-                lihat selengkapnya
+                Jelajahi
               </a>
             </div>
             <div class="col-12 col-md-6 col-lg-4 first-div mb-2">
@@ -96,7 +96,7 @@
               </header>
               <p class="jelajah-des">Penggalian kembali ekosistem bahari yang berdiri dari rute dan jejak masa lampau. Suatu sudut pandang dan fondasi dari masa lalu sebagai masa kini. Rangkaian ingatan kolektif sebagai pengetahuan dalam membangun masa depan.</p>
               <a href="{{ route('tentangmasadepan') }}" class="btn btn-danger btn-jelajah">
-                lihat selengkapnya
+                Jelajahi
               </a>
             </div>
           </div>
@@ -175,7 +175,7 @@
               <h2 class="sub-judul">Artikel dan Berita</h2>
             </div>
             <div class="col-md-6 center-v text-end  d-desktop">
-              <a href="{{ route('articles') }}" class="btn btn-outline-danger">Lihat Semua Berita</a>
+              <a href="{{ route('articles') }}" class="btn btn-outline-danger">Lihat Semua Artikel</a>
             </div>
           </header>
           <section class="row justify-content-center" data-aos="fade-up">

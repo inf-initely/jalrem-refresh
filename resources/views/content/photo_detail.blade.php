@@ -39,7 +39,7 @@
         <section class="container" id="artikel">
           <header class="row justify-content-start mb-2">
             <div class="col-md-6">
-              <h2 class="sub-judul">Media Jalur Rempah</h2>
+              <h2 class="sub-judul">Konten Jalur Rempah</h2>
 
             </div>
           </header>

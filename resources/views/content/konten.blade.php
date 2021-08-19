@@ -32,7 +32,7 @@
           <header class="row justify-content-center">
             <div class="col-md-12 text-center">
               <h2 class="sub-judul aside-judul">Berita</h2>
-              <p>Berbagai upaya dilakukan untuk melestarikan jalur rempah, salah satunya dengan melakukan berbagai kegiatan.</p>
+
             </div>
             <div class="col-md-6 center-v text-end">
             </div>
