@@ -574,6 +574,11 @@ footer a:hover {
     min-height: 107px;
 }
 
+.des-card-info-id{
+    font-size: 14px;
+    min-height: 150px;
+}
+
 
 #exTab3 .nav-pills>li>a {
     border-radius: 4px 4px 0 0;
@@ -1753,6 +1758,11 @@ footer {
     }
 
     .des-card-info {
+        font-size: 13px;
+        min-height: 0px;
+    }
+
+    .des-card-info-id{
         font-size: 13px;
         min-height: 0px;
     }
