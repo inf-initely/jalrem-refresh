@@ -10,7 +10,7 @@
     <div class="text-hero-2">
       <div class="">
         <div class="col-lg-12 text-center">
-          <h1>Artikel</h1>
+          <h1>Article</h1>
         </div>
       </div>
     </div>
@@ -55,7 +55,7 @@
               <div class="row mb-4">
                 <div class="col-md-12 wrap-aside">
                   <header>
-                    <h2 class="sub-judul">Berita Populer</h2>
+                    <h2 class="sub-judul">Popular news</h2>
                   </header>
                   <div class="row">
                     @foreach( $artikelPopuler as $a )
@@ -82,7 +82,7 @@
               <div class="row">
                 <div class="col-md-12 wrap-aside">
                   <header>
-                    <h2 class="sub-judul">Berita Terbaru</h2>
+                    <h2 class="sub-judul">latest news</h2>
                   </header>
                   <div class="row">
                     @foreach( $artikelTerbaru as $a )
@@ -114,8 +114,7 @@
       <section class="container mt-5">
         <header class="row justify-content-center mb-2">
           <div class="col-md-6">
-            <h2 class="sub-judul aside-judul">Berita Terkait</h2>
-            <p>Berbagai upaya dilakukan untuk melestarikan jalur rempah, salah satunya dengan melakukan berbagai kegiatan.</p>
+            <h2 class="sub-judul aside-judul">related news</h2>
           </div>
           <div class="col-md-6 center-v text-end">
           </div>
