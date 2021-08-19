@@ -119,6 +119,7 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function() {
 });
 
 Route::get('/kontributor', [KontributorController::class, 'index'])->name('contributor');
+Route::post('/kontributor/artikel/upload', [KontributorController::class, 'upload'])->name('article_upload_contributor');
 
 
 // Route::middleware(['language'])->group(function() {
@@ -149,7 +150,7 @@ Route::get('/rempah/{rempahId}', [RempahController::class, 'show'])->name('rempa
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'login_post'])->name('login_post');
-Route::get('/register', [AuthController::class, 'register'])->name('register');
+// Route::get('/register', [AuthController::class, 'register'])->name('register');
 // Route::post('/register', [AuthController::class, 'register_post'])->name('register_post');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 

@@ -25,41 +25,44 @@
       </div>
     </div>
   </nav>
+  <form method="POST" action="{{ route('article_upload_contributor') }}" enctype="multipart/form-data">
+    @csrf
   <section id="jelajah">
     <div class="container pb-5 pt-5">
       <img class="item-jelajah item-jelajah-1" src="assets/kontributor/img/item-daun-1.svg">
       <img class="item-jelajah item-jelajah-2" src="assets/kontributor/img/item-daun-2.svg">
-      <form>
         <div class="col-lg-12 mb-4">
           <div class="card shadow">
             <div class="card-header py-3">
               <h2 class="m-0 font-weight-bold text-gray-800 sub-judul-form">Konten Artikel</h2>
             </div>
+            @if (count($errors) > 0)
+              <div class="alert alert-danger" role="alert">
+                {{ $errors->first() }} 
+              </div>
+            @endif
             <div class="card-body ">
               <div class="mb-3">
                 <label for="judulartikel" class="col-form-label">Judul Artikel</label>
-                <input type="text" class="form-control" id="judulartikel">
+                <input required value="{{ old('judul_indo') }}" name="judul_indo" type="text" class="form-control" id="judulartikel">
               </div>
               <div class="mb-3">
                 <label for="isiArtikel" class="col-form-label">Isi Artikel/Foto/Video</label>
-                  <textarea required class="form-control editor" name="konten_indo" id="editor" rows="8">{{ old('konten_indo') }}</textarea>
+                <div class="form-floating">
+                  <textarea required class="form-control editor" name="konten_indo" id="isiArtikelEnglish" rows="8">{{ old('konten_indo') }}</textarea>
+                </div>
               </div>
               <div class="mb-3">
-                <label for="linkItem" class="col-form-label">Foto Utama</label>
-                <input required value="{{ old('thumbnail') }}" class="form-control" id="uploadThumbnail" name="thumbnail" type="file" data-preview=".foto-utama" accept="image/png, image/jpeg">
-                <div class="mb-3">
-                  <h5>Panduan unggah gambar</h5>
-                  <ol>
-                    <li>Resolusi gambar yang di unggah, <b>1280 x 720</b></li>
-                    <li>Ukuran gambar tidak lebih dari <b>1 Mb</b></li>
-                  </ol>
-                </div>
+                <label for="thumbnail" class="col-form-label">Foto Utama</label>
+                <input required type="file" name="thumbnail" class="form-control" id="thumbnail" accept="image/png, image/jpeg">
+              </div>
+              <div class="mb-3">
+                <label for="linkItem" class="col-form-label">Link/Foto/Video/Dsb(Link Google Drive)</label>
+                <input value="{{ old('link') }}" type="text" name="link" class="form-control" id="linkItem">
               </div>
             </div>
           </div>
         </div>
-      </form>
-      <form>
         <div class="col-lg-12 mb-4">
           <div class="card shadow">
             <div class="card-header py-3">
@@ -68,42 +71,31 @@
             <div class="card-body ">
               <div class="mb-3">
                 <label for="namapenulis" class="col-form-label">Nama Penulis</label>
-                <input type="text" class="form-control" id="namapenulis">
+                <input value="{{ old('penulis') }}" name="penulis" required type="text" class="form-control" id="penulis">
               </div>
               <div class="mb-3">
                 <label for="email" class="col-form-label">Email</label>
-                <input type="email" class="form-control" id="email">
+                <input value="{{ old('email') }}" name="email" required type="email" class="form-control" id="email">
               </div>
               <div class="mb-3">
-                <label for="domisili" class="col-sm-2 col-form-label">Domisili</label>
-                <select id="domisili" class="form-select select2-style" aria-label="Default select example">
-                  <option selected>Pilih Lokasi</option>
-                  <optgroup label="Dalam Negeri">
-                    <option value="1">Lokasi 1</option>
-                    <option value="2">Lokasi 2</option>
-                    <option value="3">Lokasi 3</option>
-                    <option value="4">Lokasi 4</option>
-                    <option value="5">Lokasi 5</option>
-                  </optgroup>
-                  <optgroup label="Luar Negeri">
-                    <option value="1a">Location 1</option>
-                    <option value="2a">Location 2</option>
-                    <option value="3a">Location 3</option>
-                    <option value="4a">Location 4</option>
-                    <option value="5a">Location 5</option>
-                  </optgroup>
+                <label for="domisili" class="col-sm-2 col-form-label">Domisili</label> <br>
+                <select required id="domisili" name="domisili" class="form-select select2-style" aria-label="Default select example">
+                  <option value="" selected>Pilih Lokasi</option>
+                  @foreach ($lokasi as $l)
+                    <option value="{{ $l->id }}">{{ $l->nama_lokasi }}</option>    
+                  @endforeach
                 </select>
               </div>
               <div class="mb-3">
                 <label for="atribusi" class="col-form-label">Atribusi</label>
-                <input type="text" class="form-control" id="atribusi">
+                <input value="{{ old('atribusi') }}" required name="atribusi" type="text" class="form-control" id="atribusi">
               </div>
               <div class="mb-3">
                 <label for="atribusi2" class="col-sm-2 col-form-label">Kategori</label>
-                <select class="form-select" aria-label="Default select example">
-                  <option selected></option>
-                  <option value="1">Umum</option>
-                  <option value="2">Pamong Budaya</option>
+                <select required name="kategori" class="form-select" aria-label="Default select example">
+                  <option value="" selected></option>
+                  <option value="umum">Umum</option>
+                  <option value="pamong budaya">Pamong Budaya</option>
                 </select>
               </div>
             </div>
@@ -117,6 +109,7 @@
       </div>
     </div>
   </section>
+  </form>
   <footer>
     <div class="container-fluid">
       <div class="row text-center">
@@ -129,10 +122,10 @@
   </div>
   <!-- Optional JavaScript; choose one of the two! -->
   <!-- Option 1: Bootstrap Bundle with Popper -->
-  <script src="{{ asset('assets/kontributor/vendor/jquery/jquery.min.js') }}"></script>
+  <script src="assets/kontributor/vendor/jquery/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-  <script src="https://cdn.ckeditor.com/ckeditor5/29.0.0/decoupled-document/ckeditor.js"></script>
+  {{-- <script src="https://cdn.ckeditor.com/ckeditor5/29.0.0/decoupled-document/ckeditor.js"></script> --}}
   <script>
   $(function() {
     $("input[data-preview]").change(function() {
@@ -163,8 +156,8 @@
       console.error(error);
     });
   </script>
-  <script src="https://cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
-  <script src="{{ asset('assets/admin/vendor/jquery/jquery.min.js') }}"></script>
+
+  <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
   <script>
     var options = {
       filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
@@ -178,5 +171,6 @@
   <script>
   $('textarea.editor').ckeditor(options);
   </script>
+  
 
 </html>
