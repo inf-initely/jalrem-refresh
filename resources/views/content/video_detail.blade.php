@@ -49,7 +49,6 @@
         <header class="row justify-content-start mb-2">
           <div class="col-md-6">
             <h2 class="sub-judul">Media Jalur Rempah</h2>
-            <p>Berbagai media dan publikasi yang terkait Jalur Rempah Nusantara</p>
           </div>
         </header>
         <div class="row justify-content-center">
