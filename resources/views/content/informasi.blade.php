@@ -117,9 +117,9 @@
                     <img src="{{ asset('storage/assets/kerjasama/thumbnail/' . $k->thumbnail) }}" class="card-img-top" alt="...">
                     <div class="card-body">
                       <h3 class="card-title judul-artikel">{{ $k->judul_indo }}</h3>
-                      <p class="card-text des-artikel minimize">{{ $k->konten_indo }}</p>
+                      {{-- <p class="card-text des-artikel minimize">{{ $k->konten_indo }}</p> --}}
                       <p class="penulis-artikel">
-                        {{ $k->penulis }}
+                        {{-- {{ $k->penulis }} --}}
                       </p>
                       <p class="tgl-artikel">
                         {{ $k->created_at->isoFormat('D MMMM Y'); }}

@@ -41,7 +41,7 @@
                   </div>
                   @endforeach
                 </div>
-                {{ $kegiatan->links('vendor.pagination.custom') }}
+                {!! $kegiatan->links() !!}
               </section>
             </div>
           </div>

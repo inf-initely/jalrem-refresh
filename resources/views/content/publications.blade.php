@@ -41,7 +41,7 @@
                   </div>
                   @endforeach
                 </div>
-                {{ $publikasi->links('vendor.pagination.custom') }}
+                {!! $publikasi->links() !!}
               </section>
             </div>
           </div>
