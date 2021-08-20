@@ -28,7 +28,7 @@
                       <img src="{{ asset('storage/assets/foto/thumbnail/' . $f->thumbnail) }}">
                       <div class="text-img">
                         <p class="judul-img">{{ $f->judul_english ?? $f->judul_indo }}</p>
-                        <p class="author-img">{{ $f->penulis }}</p>
+                        <p class="author-img">{{ $f->penulis != 'admin' ? $f->kontributor_relasi->nama : 'admin' }}</p>
                         <p class="tgl-img">{{ $f->created_at->isoFormat('D MMMM Y'); }}</p>
                       </div>
                       <a class="stretched-link lightbox" href="{{ route('photo_detail', $f->slug_english ?? $f->slug) }}"></a>

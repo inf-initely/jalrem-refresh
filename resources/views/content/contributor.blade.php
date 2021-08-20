@@ -17,7 +17,7 @@
 <body>
   <nav class="navbar navbar-light bg-light bg-gradient-primary sticky-top">
     <div class="container">
-      <a href="../public-id/index.html" class="navbar-brand">
+      <a href="{{ route('home') }}" class="navbar-brand">
         <img id="logoNavbar" src="assets/kontributor/img/logo/logo-navbar.png" height="50px">
       </a>
       <div class="d-flex">
