@@ -116,7 +116,7 @@
                                         </div>
                                         <div class="col-9 center-v">
                                             <h3 class="judul-card-info">The Route</h3>
-                                            <p class="des-card-info">Looking back to the spice trade routes from one point to another, reviving its sundry stories, connecting its numerous traces.</p>
+                                            <p class="des-card-info">Looking back to the spice trade routes from one point to another.</p>
                                         </div>
                                     </div>
                                     <a href="{{ route('tentangjalur') }}" class="stretched-link"></a>
@@ -130,7 +130,7 @@
                                         </div>
                                         <div class="col-9 center-v">
                                             <h3 class="judul-card-info">The Trace</h3>
-                                            <p class="des-card-info">Reviving the globalization trace of the spice trade in the past that created cross-cultural relations.</p>
+                                            <p class="des-card-info">Reviving the globalization trace of the spice trade in the past.</p>
                                         </div>
                                     </div>
                                     <a href="#" class="stretched-link"></a>
@@ -144,7 +144,7 @@
                                         </div>
                                         <div class="col-9 center-v">
                                             <h3 class="judul-card-info">The Future</h3>
-                                            <p class="des-card-info">The excavation of the maritime ecosystem, emerging from the routes and traces in the past.</p>
+                                            <p class="des-card-info">The excavation of the maritime ecosystem, emerging from traces in the past.</p>
                                         </div>
                                     </div>
                                     <a href="{{ route('tentangmasadepan') }}" class="stretched-link"></a>
