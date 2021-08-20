@@ -8,6 +8,15 @@ use App\Models\Kerjasama;
 
 class KerjasamaController extends Controller
 {
+    public function index()
+    {
+        $kerjasama = Kerjasama::where('status', 'publikasi')->paginate(9);
+        if( Session::get('lg') == 'en' ) {
+            return view('content_english.kerjasama', compact('kerjasama'));
+        }
+
+        return view('content.kerjasama', compact('kerjasama'));
+    }
     public function show($slug)
     {
         $lg = Session::get('lg');

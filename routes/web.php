@@ -132,16 +132,18 @@ Route::get('/semua-publikasi', [PublikasiController::class, 'index'])->name('pub
 Route::get('/semua-kegiatan', [KegiatanController::class, 'index'])->name('events');
 
 Route::get('/artikel/{slug}', [ArtikelController::class, 'show'])->name('article_detail');
-Route::get('/foto/{photoId}', [FotoController::class, 'show'])->name('photo_detail');
-Route::get('/video/{videoId}', [VideoController::class, 'show'])->name('video_detail');
-Route::get('/audio/{audioId}', [AudioController::class, 'show'])->name('audio_detail');
-Route::get('/publikasi/{publicationId}', [PublikasiController::class, 'show'])->name('publication_detail');
-Route::get('/kegiatan/{eventId}', [KegiatanController::class, 'show'])->name('event_detail');
-Route::get('/kerjasama/{kerjasamaId}', [KerjasamaController::class, 'show'])->name('kerjasama_detail');
+Route::get('/foto/{slug}', [FotoController::class, 'show'])->name('photo_detail');
+Route::get('/video/{slug}', [VideoController::class, 'show'])->name('video_detail');
+Route::get('/audio/{slug}', [AudioController::class, 'show'])->name('audio_detail');
+Route::get('/publikasi/{slug}', [PublikasiController::class, 'show'])->name('publication_detail');
+Route::get('/kegiatan/{slug}', [KegiatanController::class, 'show'])->name('event_detail');
+Route::get('/kerjasama/{slug}', [KerjasamaController::class, 'show'])->name('kerjasama_detail');
 
 Route::get('/cari-artikel', [ArtikelController::class, 'search'])->name('article_search');
 
 Route::get('/informasi', [InformasiController::class, 'index'])->name('informasi');
+Route::get('/semua-kerjasama', [KerjasamaController::class, 'index'])->name('kerjasama');
+Route::get('/semua-kegiatan', [KegiatanController::class, 'index'])->name('events');
 Route::get('/konten', [KontenController::class, 'index'])->name('konten');
 Route::get('/tentang-jalur', [JalurController::class, 'index'])->name('tentangjalur');
 Route::get('/tentang-jejak', [JejakController::class, 'index'])->name('tentangjejak');

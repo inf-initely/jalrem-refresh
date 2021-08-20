@@ -30,7 +30,7 @@
                         <h3 class="card-title judul-artikel">{{ $k->judul_indo }}</h3>
                         <p class="card-text des-artikel minimize">{!! Str::limit($k->konten_indo, 50, $end='...') !!}</p>
                         <p class="penulis-artikel">
-                          {{ $k->penulis }}
+                          {{ $k->penulis != 'admin' ? $k->kontributor_relasi->nama : 'admin' }}
                         </p>
                         <p class="tgl-artikel">
                           {{ $k->created_at->isoFormat('D MMMM Y'); }}
