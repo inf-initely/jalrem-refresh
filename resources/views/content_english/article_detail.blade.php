@@ -55,7 +55,7 @@
               <div class="row mb-4">
                 <div class="col-md-12 wrap-aside">
                   <header>
-                    <h2 class="sub-judul">Popular news</h2>
+                    <h2 class="sub-judul">Popular content</h2>
                   </header>
                   <div class="row">
                     @foreach( $artikelPopuler as $a )
@@ -82,7 +82,7 @@
               <div class="row">
                 <div class="col-md-12 wrap-aside">
                   <header>
-                    <h2 class="sub-judul">latest news</h2>
+                    <h2 class="sub-judul">Latest content</h2>
                   </header>
                   <div class="row">
                     @foreach( $artikelTerbaru as $a )
@@ -114,7 +114,7 @@
       <section class="container mt-5">
         <header class="row justify-content-center mb-2">
           <div class="col-md-6">
-            <h2 class="sub-judul aside-judul">related news</h2>
+            <h2 class="sub-judul aside-judul">Related content</h2>
           </div>
           <div class="col-md-6 center-v text-end">
           </div>

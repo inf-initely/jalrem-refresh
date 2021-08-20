@@ -128,7 +128,7 @@
               <header>
                 <h2 class="sub-judul text-center mb-3">The Spice Routes</h2>
               </header>
-              <p class="jelajah-des text-justify">The cultural assimilation and its connectedness among nations in Indonesia did not just happen. International traders played a significant role in the cultural development that left the traces we can find today. It is due to the spice commodity, coming from various islands in Nusantara that formed the trade traffic in the past, and thus becoming a cultural route.</p>
+              <p class="jelajah-des text-center">The cultural assimilation and its connectedness among nations in Indonesia did not just happen. International traders played a significant role in the cultural development that left the traces we can find today. It is due to the spice commodity, coming from various islands in Nusantara that formed the trade traffic in the past, and thus becoming a cultural route.</p>
             </div>
           </div>
         </div>
@@ -304,15 +304,21 @@
               </header>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-4" id="twitKolom1">
-              <a  class="twitter-timeline" data-height="500" href="https://twitter.com/JalurrempahRI?ref_src=twsrc%5Etfw">Tweets by JalurrempahRI</a>
+          <div class="twitter-jalrem">
+            <div id="twitKolom1" class="p-2">
+              <a  class="twitter-timeline" data-height="400" data-chrome="nofooter" href="https://twitter.com/JalurrempahRI?ref_src=twsrc%5Etfw">Tweets by JalurrempahRI</a>
             </div>
-            <div class="col-md-4" id="twitKolom2">
-              <a  class="twitter-timeline" data-height="500" href="https://twitter.com/JalurrempahRI?ref_src=twsrc%5Etfw">Tweets by JalurrempahRI</a>
+            <div id="twitKolom2" class="p-2">
+              <a  class="twitter-timeline" data-height="400" data-chrome="nofooter" href="https://twitter.com/JalurrempahRI?ref_src=twsrc%5Etfw">Tweets by JalurrempahRI</a>
             </div>
-            <div class="col-md-4" id="twitKolom3">
-              <a  class="twitter-timeline" data-height="500" href="https://twitter.com/JalurrempahRI?ref_src=twsrc%5Etfw">Tweets by JalurrempahRI</a>
+            <div id="twitKolom3" class="p-2">
+              <a  class="twitter-timeline" data-height="400" data-chrome="nofooter" href="https://twitter.com/JalurrempahRI?ref_src=twsrc%5Etfw">Tweets by JalurrempahRI</a>
+            </div>
+            <div id="twitKolom4" class="p-2">
+              <a  class="twitter-timeline" data-height="400" data-chrome="nofooter" href="https://twitter.com/JalurrempahRI?ref_src=twsrc%5Etfw">Tweets by JalurrempahRI</a>
+            </div>
+            <div id="twitKolom5" class="p-2">
+              <a  class="twitter-timeline" data-height="400" data-chrome="nofooter" href="https://twitter.com/JalurrempahRI?ref_src=twsrc%5Etfw">Tweets by JalurrempahRI</a>
             </div>
           </div>
         </section>
@@ -420,22 +426,30 @@ $(function() {
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script type="text/javascript" src="assets/js/slick.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
-<script src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-<script>
-  $(window).on('load', function() {
-    $("#twitter-widget-0").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(1))").hide();
-    $("#twitter-widget-1").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(2))").hide();
-    $("#twitter-widget-2").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(3))").hide();
-    // $("#twitter-widget-0").contents().find(".timeline-Header").hide();
-    // $("#twitter-widget-1").contents().find(".timeline-Header").hide();
-    // $("#twitter-widget-2").contents().find(".timeline-Header").hide();
-    // $("#twitter-widget-0").contents().find(".timeline-Footer").hide();
-    // $("#twitter-widget-1").contents().find(".timeline-Footer").hide();
-    // $("#twitter-widget-2").contents().find(".timeline-Footer").hide();
-    $("#twitter-widget-0").contents().find(".timeline-LoadMore").hide();
-    $("#twitter-widget-1").contents().find(".timeline-LoadMore").hide();
-    $("#twitter-widget-2").contents().find(".timeline-LoadMore").hide();
-  });
+<script src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><script>
+  window.addEventListener("load", function () {
+    setTimeout(otherOperation, 500);
+}, false);
+
+  function otherOperation() {
+    $("#twitter-widget-3").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(1))").hide();
+    $("#twitter-widget-4").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(2))").hide();
+    $("#twitter-widget-5").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(3))").hide();
+    $("#twitter-widget-6").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(4))").hide();
+    $("#twitter-widget-7").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(5))").hide();
+    $("#twitter-widget-8").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(6))").hide();
+    $("#twitter-widget-9").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(7))").hide();
+
+    $("#twitter-widget-3").contents().find(".timeline-LoadMore").hide();
+    $("#twitter-widget-4").contents().find(".timeline-LoadMore").hide();
+    $("#twitter-widget-5").contents().find(".timeline-LoadMore").hide();
+    $("#twitter-widget-6").contents().find(".timeline-LoadMore").hide();
+    $("#twitter-widget-7").contents().find(".timeline-LoadMore").hide();
+    $("#twitter-widget-8").contents().find(".timeline-LoadMore").hide();
+    $("#twitter-widget-9").contents().find(".timeline-LoadMore").hide();
+
+    // alert("YIHAAAA")
+  }
 </script>
 <script>
 $(document).ready(function() {
@@ -580,6 +594,44 @@ $(document).ready(function() {
       {
         breakpoint: 480,
         settings: {
+          arrows: false,
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+      // You can unslick at a given breakpoint now by adding:
+      // settings: "unslick"
+      // instead of a settings object
+    ]
+  });
+
+      $('.twitter-jalrem').slick({
+    dots: true,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    responsive: [{
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          arrows: false
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          dots: false,
           arrows: false,
           slidesToShow: 1,
           slidesToScroll: 1
