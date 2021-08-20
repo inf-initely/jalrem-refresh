@@ -19,6 +19,9 @@
             <div class="col-md-6">
               <h2 class="sub-judul">Ongoing</h2>
             </div>
+            <div class="col-md-6 center-v text-end">
+              <a href="#" class="btn btn-outline-danger">See all</a>
+            </div>
           </header>
           <div class="row justify-content-center">
             <div class="col-lg-12">
@@ -51,6 +54,9 @@
           <header class="row justify-content-start mb-2">
             <div class="col-md-6">
               <h2 class="sub-judul">Past</h2>
+            </div>
+            <div class="col-md-6 center-v text-end">
+              <a href="#" class="btn btn-outline-danger">See all</a>
             </div>
           </header>
           <!--<div class="row justify-content-center">
@@ -106,6 +112,9 @@
           <header class="row justify-content-start mb-2">
             <div class="col-md-6">
               <h2 class="sub-judul">Partnership</h2>
+            </div>
+            <div class="col-md-6 center-v text-end">
+              <a href="#" class="btn btn-outline-danger">See all</a>
             </div>
           </header>
           <div class="row justify-content-center">
