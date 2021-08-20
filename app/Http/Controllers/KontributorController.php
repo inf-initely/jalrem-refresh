@@ -10,6 +10,8 @@ use App\Models\Rempah;
 use App\Models\Lokasi;
 use App\Models\KategoriShow;
 
+use Alert;
+
 class KontributorController extends Controller
 {
     public function index()
@@ -71,6 +73,8 @@ class KontributorController extends Controller
             'link' => $link,
             'status' => 'draft'
         ]);
+
+        Alert::success('Berhasil', 'Artikel berhasil dikirim');
 
         return redirect()->route('home');
     }

@@ -23,6 +23,7 @@
 
 <body>
   @include('partials.navbar')
+  @include('sweetalert::alert')
   @yield('content')
   <!-- Modal -->
   <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">

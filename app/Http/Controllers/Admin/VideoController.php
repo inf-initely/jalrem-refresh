@@ -12,6 +12,8 @@ use App\Models\Rempah;
 use App\Models\KategoriShow;
 use App\Models\Kontributor;
 
+use Alert;
+
 class VideoController extends Controller
 {
     public function index()
@@ -77,6 +79,8 @@ class VideoController extends Controller
 
         // ATTACH KATEGORI SHOW VIDEO
         $video->kategori_show()->attach($request->kategori_show);
+
+        Alert::success('Berhasil', 'Video berhasil ditambah');
 
         return redirect()->route('admin.video.index');
     }
@@ -145,6 +149,8 @@ class VideoController extends Controller
 
         // SYNC KATEGORI SHOW VIDEO
         $video->kategori_show()->sync($request->kategori_show);
+
+        Alert::success('Berhasil', 'Video berhasil diedit');
 
         return redirect()->route('admin.video.index');
     }

@@ -13,6 +13,7 @@
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
         "mews/captcha": "^3.2",
+        "realrashid/sweet-alert": "^4.0",
         "spatie/laravel-sluggable": "^2.6",
         "techguy/laravel-ckeditor": "^1.4",
         "unisharp/laravel-filemanager": "^2.2"

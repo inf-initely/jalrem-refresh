@@ -16,6 +16,8 @@ use App\Models\Kerjasama;
 use App\Models\Publikasi;
 use App\Models\Video;
 
+use Alert;
+
 class RempahController extends Controller
 {
     public function index()
@@ -42,6 +44,8 @@ class RempahController extends Controller
             'keterangan' => $request->keterangan_rempah
         ]);
 
+        Alert::success('Berhasil', 'Rempah berhasil ditambah');
+
         return redirect()->route('admin.rempah.index');
     }
 
@@ -64,6 +68,8 @@ class RempahController extends Controller
             'jenis_rempah' =>  $request->nama_rempah,
             'keterangan' => $request->keterangan_rempah
         ]);
+
+        Alert::success('Berhasil', 'Rempah berhasil diedit');
 
         return redirect()->route('admin.rempah.index');
     }

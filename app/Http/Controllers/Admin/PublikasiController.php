@@ -85,6 +85,8 @@ class PublikasiController extends Controller
         // ATTACH KATEGORI SHOW ARTIKEL
         $publikasi->kategori_show()->attach($request->kategori_show);
 
+        Alert::success('Berhasil', 'Publikasi berhasil ditambah');
+
         return redirect()->route('admin.publication.index');
 
     }
@@ -164,6 +166,8 @@ class PublikasiController extends Controller
         $publikasi->rempahs()->sync($request->rempah);
 
         $publikasi->kategori_show()->sync($request->kategori_show);
+
+        Alert::success('Berhasil', 'Publikasi berhasil diedit');
 
         return redirect()->route('admin.publication.index');
     }

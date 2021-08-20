@@ -55,6 +55,13 @@
               <div class="mb-3">
                 <label for="thumbnail" class="col-form-label">Foto Utama</label>
                 <input required type="file" name="thumbnail" class="form-control" id="thumbnail" accept="image/png, image/jpeg">
+                <div class="mb-3">
+                  <h5>Panduan unggah gambar</h5>
+                  <ol>
+                    <li>Resolusi gambar yang di unggah, <b>1280 x 720</b></li>
+                    <li>Ukuran gambar tidak lebih dari <b>1 Mb</b></li>
+                  </ol>
+                </div>
               </div>
               <div class="mb-3">
                 <label for="linkItem" class="col-form-label">Link/Foto/Video/Dsb(Link Google Drive)</label>

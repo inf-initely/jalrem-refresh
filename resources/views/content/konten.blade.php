@@ -101,7 +101,9 @@
                       </div>
                       @endforeach
                       <div class="d-flex justify-content-center">
-                      {!! $artikel->links() !!}
+                        <a href="{{ route('articles') }}" class="btn btn-danger mr-4" style="margin-right:1rem">
+                          Lihat Semua
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -121,7 +123,9 @@
                       </div>
                       @endforeach
                       <div class="d-flex justify-content-center">
-                      {!! $foto->links() !!}
+                        <a href="{{ route('photos') }}" class="btn btn-danger mr-4" style="margin-right:1rem">
+                          Lihat Semua
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -154,7 +158,9 @@
                       </div>
                       @endforeach
                       <div class="d-flex justify-content-center">
-                      {!! $video->links() !!}
+                        <a href="{{ route('videos') }}" class="btn btn-danger mr-4" style="margin-right:1rem">
+                          Lihat Semua
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -179,7 +185,9 @@
                       </div>
                       @endforeach
                       <div class="d-flex justify-content-center">
-                      {!! $publikasi->links() !!}
+                        <a href="{{ route('publications') }}" class="btn btn-danger mr-4" style="margin-right:1rem">
+                          Lihat Semua
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -193,7 +201,9 @@
                       </div>
                       @endforeach
                       <div class="d-flex justify-content-center">
-                      {!! $audio->links() !!}
+                        <a href="{{ route('audios') }}" class="btn btn-danger mr-4" style="margin-right:1rem">
+                          Lihat Semua
+                        </a>
                       </div>
                     </div>
                   </div>

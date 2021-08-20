@@ -16,6 +16,8 @@ use App\Models\Kerjasama;
 use App\Models\Publikasi;
 use App\Models\Video;
 
+use Alert;
+
 class KontributorController extends Controller
 {
     public function index()
@@ -47,6 +49,8 @@ class KontributorController extends Controller
             'kategori' => $request->kategori,
         ]);
 
+        Alert::success('Berhasil', 'Kontributor berhasil ditambah');
+
         return redirect()->route('admin.contributor.index');
     }
 
@@ -73,6 +77,8 @@ class KontributorController extends Controller
             'atribusi' => $request->atribusi,
             'kategori' => $request->kategori,
         ]);
+
+        Alert::success('Berhasil', 'Kontributor berhasil diedit');
 
         return redirect()->route('admin.contributor.index');
     }

@@ -12,6 +12,8 @@ use App\Models\Lokasi;
 use App\Models\KategoriShow;
 use App\Models\Kontributor;
 
+use Alert;
+
 class KegiatanController extends Controller
 {
     public function index()
@@ -84,6 +86,8 @@ class KegiatanController extends Controller
 
         // ATTACH KATEGORI SHOW ARTIKEL
         $kegiatan->kategori_show()->attach($request->kategori_show);
+
+        Alert::success('Berhasil', 'Kegiatan berhasil ditambahkan');
 
         return redirect()->route('admin.kegiatan.index');
 
@@ -164,6 +168,8 @@ class KegiatanController extends Controller
         $kegiatan->rempahs()->sync($request->rempah);
 
         $kegiatan->kategori_show()->sync($request->kategori_show);
+        
+        Alert::success('Berhasil', 'Kegiatan berhasil diedit');
 
         return redirect()->route('admin.kegiatan.index');
     }

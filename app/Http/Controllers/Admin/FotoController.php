@@ -12,6 +12,7 @@ use App\Models\KategoriShow;
 use App\Models\Lokasi;
 use App\Models\Kontributor;
 
+use Alert;
 
 class FotoController extends Controller
 {
@@ -96,6 +97,8 @@ class FotoController extends Controller
 
         // ATTACH KATEGORI SHOW FOTO
         $foto->kategori_show()->attach($request->kategori_show);
+
+        Alert::success('Berhasil', 'Foto berhasil ditambahkan');
 
         return redirect()->route('admin.photo.index');
     }
@@ -201,6 +204,8 @@ class FotoController extends Controller
 
         // SYNC KATEGORI SHOW FOTO
         $foto->kategori_show()->sync($request->kategori_show);
+
+        Alert::success('Berhasil', 'Foto berhasil diedit');
 
         return redirect()->route('admin.photo.index');
     }
