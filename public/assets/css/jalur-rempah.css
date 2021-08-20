@@ -1583,6 +1583,16 @@ footer {
    border-left-color: DC3545;
 }
 
+.img-thumbnail{
+    object-fit: cover;
+    height: 230px;
+}
+
+
+.img-thumbnail-slider{
+    object-fit: cover;
+    height: 280px;
+}
 
 @media (max-width: 991.98px) {
 
@@ -1807,6 +1817,14 @@ footer {
         min-height: 0px;
     }
 
+
+    .img-thumbnail{
+        height: 210px;
+    }
+
+    .img-thumbnail-slider{
+        height: 210px;
+    }
 
 
 }

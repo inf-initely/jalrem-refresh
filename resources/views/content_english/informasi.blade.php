@@ -114,7 +114,7 @@
                 @foreach( $kerjasama as $k )
                 <div class="col-lg-4 mb-1">
                   <div class="card no-border card-artikel">
-                    <img src="{{ asset('storage/assets/kerjasama/thumbnail/' . $k->thumbnail) }}" class="card-img-top" alt="...">
+                    <img src="{{ asset('storage/assets/kerjasama/thumbnail/' . $k->thumbnail) }}" class="card-img-top img-thumbnail" alt="...">
                     <div class="card-body">
                       <h3 class="card-title judul-artikel">{{ $k->judul_english ?? $k->judul_indo }}</h3>
                       {{-- <p class="card-text des-artikel minimize">{{ $k->konten_english ?? $k->konten_indo }}</p> --}}

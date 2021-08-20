@@ -25,7 +25,7 @@
                   @foreach( $publikasi as $p )
                   <div class="col-md-6 col-lg-4 mb-4">
                     <div class="card no-border card-artikel">
-                      <img src="{{ asset('storage/assets/publikasi/thumbnail/' . $p->thumbnail) }}" class="card-img-top" alt="...">
+                      <img src="{{ asset('storage/assets/publikasi/thumbnail/' . $p->thumbnail) }}" class="card-img-top img-thumbnail" alt="...">
                       <div class="card-body">
                         <h3 class="card-title judul-artikel">{{ $p->judul_english ?? $p->judul_indo }}</h3>
                         {{-- <p class="card-text des-artikel minimize">{!! Str::limit($p->konten_indo, 50, $end='...') !!}</p> --}}
