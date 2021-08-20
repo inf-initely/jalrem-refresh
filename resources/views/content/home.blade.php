@@ -353,7 +353,7 @@
                 dari sudut pandang sejarah, budaya, gastronomi, arkeologi, sastra, kuliner, film, fesyen, seni, dan hal-hal lain terkait Jalur Rempah yang ada di sekitarmu.</p>
             </div>
             <div class="offset-lg-1 col-lg-6 text-center center-v">
-              <a href="{{ route('register') }}" class="btn btn-lg btn-secondary btn-primary-jarem">Jadi Kontributor</a>
+              <a href="{{ route('contributor') }}" class="btn btn-lg btn-secondary btn-primary-jarem">Jadi Kontributor</a>
             </div>
           </div>
         </div>

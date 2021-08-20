@@ -352,7 +352,7 @@
                 from the point of view of history, culture, gastronomy, archeology, literature, culinary, film, fashion, art, and anything else related to the Spice Trail that is around you.</p>
             </div>
             <div class="offset-lg-1 col-lg-6 text-center center-v">
-              <a href="{{ route('register') }}" class="btn btn-lg btn-secondary btn-primary-jarem">Become a Contributor</a>
+              <a href="{{ route('contributor') }}" class="btn btn-lg btn-secondary btn-primary-jarem">Become a Contributor</a>
             </div>
           </div>
         </div>

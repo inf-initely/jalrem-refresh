@@ -26,6 +26,7 @@ class CreateArtikelsTable extends Migration
             $table->string('slug');
             $table->string('slug_english')->nullable();
             $table->string('thumbnail');
+            $table->string('link')->nullable();
             $table->unsignedInteger('id_lokasi')->nullable();
             $table->enum('penulis', ['admin', 'kontributor umum/pamong budaya']);
             $table->unsignedInteger('id_kontributor')->nullable();
