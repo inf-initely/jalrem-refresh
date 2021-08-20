@@ -113,7 +113,7 @@
           @foreach( $publikasiPopuler as $a )
           <div class="col-md-6 col-lg-4 mb-4">
             <div class="card no-border no-background card-body">
-              <img src="{{ asset('storage/assets/publikasi/thumbnail/' . $a->thumbnail) }}" class="card-img-top img-thumbnail" alt="...">
+              <img src="{{ asset('storage/assets/publikasi/thumbnail/' . $a->thumbnail) }}" class="card-img-top mb-4 img-thumbnail" alt="...">
               <h3 class="card-title judul-artikel">{{ $a->judul_english ?? $a->judul_indo }}</h3>
               {{-- <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_english ?? $a->konten_indo, 50, $end='...') !!}</p> --}}
               <p class="penulis-artikel">{{ $a->penulis != 'admin' ? $artikel->kontributor_relasi->nama : 'admin' }}</p>
