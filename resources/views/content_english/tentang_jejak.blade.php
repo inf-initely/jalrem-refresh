@@ -85,11 +85,11 @@
                                             @if( $a->lokasi != null )
                                             <a href="#" class="text-danger m-0 p-0 text-decoration-none wilayah"><small>{{ $a->lokasi->nama_lokasi }}</small></a>
                                             @endif
-                                            <h3 class="judul-artikel judul-artikel-tentang"><a href="{{ route('article_detail', $a->slug_english ?? $a->slug) }}" class="text-decoration-none clr-black">{{ $a->judul_indo }}</a> </h3>
+                                            <h3 class="judul-artikel judul-artikel-tentang"><a href="{{ route('article_detail', $a->slug_english ?? $a->slug) }}" class="text-decoration-none clr-black">{{ $a->judul_english ?? $a->judul_indo }}</a> </h3>
                                             <!-- <p class="des-artikel des-artikel-tentang minimize">{!! Str::limit($a->konten_english ?? $a->konten_indo, 60, $end='...') !!}</p> -->
                                             <div class="wrap-tag-rempah">
                                                 @foreach( $a->rempahs as $r )
-                                                <a href="funfact.html" class="text-danger text-decoration-none">{{ $r->jenis_rempah }}</a>|
+                                                <a href="{{ route('rempah_detail', $r->id) }}" class="text-danger text-decoration-none">{{ $r->jenis_rempah }}</a>|
                                                 @endforeach
                                             </div>
                                         </div>
