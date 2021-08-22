@@ -101,7 +101,7 @@
                       @endforeach
                       <div class="d-flex justify-content-center">
                         <a href="{{ route('articles') }}" class="btn btn-danger mr-4" style="margin-right:1rem">
-                          Lihat Semua
+                          See All
                         </a>
                       </div>
                     </div>
@@ -123,7 +123,7 @@
                       @endforeach
                       <div class="d-flex justify-content-center">
                         <a href="{{ route('photos') }}" class="btn btn-danger mr-4" style="margin-right:1rem">
-                          Lihat Semua
+                          See All
                         </a>
                       </div>
                     </div>
@@ -158,7 +158,7 @@
                       @endforeach
                       <div class="d-flex justify-content-center">
                         <a href="{{ route('videos') }}" class="btn btn-danger mr-4" style="margin-right:1rem">
-                          Lihat Semua
+                          See All
                         </a>
                       </div>
                     </div>
@@ -185,7 +185,7 @@
                       @endforeach
                       <div class="d-flex justify-content-center">
                         <a href="{{ route('publications') }}" class="btn btn-danger mr-4" style="margin-right:1rem">
-                          Lihat Semua
+                          See All
                         </a>
                       </div>
                     </div>
@@ -201,7 +201,7 @@
                       @endforeach
                       <div class="d-flex justify-content-center">
                         <a href="{{ route('audios') }}" class="btn btn-danger mr-4" style="margin-right:1rem">
-                          Lihat Semua
+                          See All
                         </a>
                       </div>
                     </div>

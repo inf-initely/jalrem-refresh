@@ -44,14 +44,20 @@ class ArtikelController extends Controller
     {
         $search = $request->get('search');
 
+        if( $request->get('lg') == 'en' ) {
+            if( $search != null ) {
+                $artikel = Artikel::where('status', 'publikasi')->where('judul_english', 'LIKE', '%'.$request->get('search') . '%')->orderBy('created_at', 'desc')->paginate(9);
+            } else {
+                $artikel = Artikel::where('status', 'publikasi')->orderBy('created_at', 'desc')->paginate(9);
+            }
+
+            return view('content_english.articles', compact('artikel'));
+        }
+
         if( $search != null ) {
             $artikel = Artikel::where('status', 'publikasi')->where('judul_indo', 'LIKE', '%'.$request->get('search') . '%')->orderBy('created_at', 'desc')->paginate(9);
         } else {
             $artikel = Artikel::where('status', 'publikasi')->orderBy('created_at', 'desc')->paginate(9);
-        }
-
-        if( $request->get('lg') == 'en' ) {
-            return view('content_english.articles', compact('artikel'));
         }
 
         return view('content.articles', compact('artikel'));
