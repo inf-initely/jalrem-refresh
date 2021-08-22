@@ -77,7 +77,7 @@
               <div class="col-lg-12 mb-3">
                 <div class="card shadow mb-4">
                   <div class="card-header py-3">
-                    <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">Thumbnail Kerjasama</h2>
+                    <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">Thumbnail Kegiatan</h2>
                   </div>
                   <div class="card-body ">
                     <div class="row">
