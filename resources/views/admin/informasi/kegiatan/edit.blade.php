@@ -208,7 +208,7 @@
                         @if( $kegiatan->slider_file == null )
                           <img class="preview mb-3 text-center" src="{{ asset('assets/admin/img/noimage.jpg') }}" />
                         @else
-                          <img class="preview mb-3 text-center" src="{{ asset('storage/assets/artikel/slider/' . $kegiatan->slider_file) }}" />
+                          <img class="preview mb-3 text-center" src="{{ asset('storage/assets/kegiatan/slider/' . $kegiatan->slider_file) }}" />
                         @endif
                       </div>
                     </div>

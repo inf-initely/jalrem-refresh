@@ -135,7 +135,7 @@ class KerjasamaController extends Controller
             $filename_slider = uniqid() . '.' . $slider->getClientOriginalExtension();
             $slider->move($tujuan_upload_file_slider, $filename_slider);
 
-            File::delete(storage_path('app/public/assets/kegiatan/slider', $kegiatan->slider_file));            
+            File::delete(storage_path('app/public/assets/kegiatan/slider', $kerjasama->slider_file));            
         } else {
             $filename_slider = $kerjasama->slider_file;
         }
