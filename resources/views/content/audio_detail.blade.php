@@ -25,7 +25,7 @@
             <main></main>
             <section></section>
             <article id="txtMedia" class="mt-4">
-              {!! $audio->judul_indo !!}
+              {!! $audio->konten_indo !!}
             </article>
           </article>
         </div>
