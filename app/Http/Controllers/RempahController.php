@@ -11,6 +11,7 @@ class RempahController extends Controller
 {
     public function show($rempahId)
     {
+        abort(503);
         $rempah = Rempah::findOrFail($rempahId);
         $artikelRempah = $rempah->artikel;
 

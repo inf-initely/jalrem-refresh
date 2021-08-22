@@ -12,6 +12,7 @@ class MasaDepanController extends Controller
 {
     public function index()
     {
+        abort(503);
         $kategori = KategoriShow::where('isi', 'masa depan')->first();
         if( $kategori != null ) {
             $artikel = $kategori->artikel;
