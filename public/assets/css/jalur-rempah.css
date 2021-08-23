@@ -1594,6 +1594,10 @@ footer {
     height: 280px;
 }
 
+#isiKonten > p > img {
+    width: 100% !important;
+}
+
 @media (max-width: 991.98px) {
 
     .navbar-nav {
