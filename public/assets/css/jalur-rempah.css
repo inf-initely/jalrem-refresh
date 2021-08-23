@@ -1598,10 +1598,21 @@ footer {
     width: 100% !important;
 }
 
+#isiKonten >p>iframe{
+     width: 100% !important;
+     height: 475px;
+}
+
 #txtMedia>p>iframe {
     border: 0;
     width: 100%;
     height: 475px;
+}
+
+#txtMedia>p>img {
+    border: 0;
+    width: 100%;
+
 }
 
 #isiKonten {
@@ -1841,6 +1852,10 @@ footer {
     }
 
     #txtMedia>p>iframe {
+        height: 215px;
+    }
+
+     #isiKonten>p>iframe {
         height: 215px;
     }
 
