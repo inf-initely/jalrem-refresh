@@ -11,7 +11,7 @@
                 </header>
                         <p>Jalur Rempah mencakup berbagai lintasan <b>jalur budaya</b> dari timur Asia hingga barat Eropa terhubung dengan Benua Amerika, Afrika dan Australia. Suatu lintasan peradaban bermacam bentuk, garis lurus, lingkaran, silang, bahkan berbentuk jejaring.<span id="dots">...</span><span id="more"><br><br>
                         Di Indonesia, wujud jalur perniagaan rempah mencakup banyak hal. Tidak hanya berdiri di satu titik penghasil rempah, namun juga mencakup berbagai titik yang bisa dijumpai di Indonesia dan membentuk suatu <b>lintasan peradaban yang berkelanjutan.</b><br><br>
-                        Program Jalur Rempah melihat kembali lintasan jalur perdagangan rempah dari satu titik ke titik lainnya, menghidupkan kembali beragam kisahnya, menghubungkan kembali berbagai jejaknya.<br><br>
+                        Program Jalur Rempah mJalur Rempah mencakup berbagai lintasan jalur budaya yang melahirkan peradaban global & menghidupkan kembali peran masyarakat Nusantara berabad-abad lampau.<br><br>
                         Program ini bertekad keras menghidupkan kembali narasi sejarah dengan memperlihatkan <b>peran masyarakat Nusantara</b> dalam pembentukan Jalur Rempah; mendokumentasikan peran mereka yang berada di berbagai wilayah perdagangan rempah; dan merekonstruksi serangkaian benang merah dalam satu bangunan sejarah.</span></p>
                 <div class="row">
                     <div class="col-md-12 text-end">
@@ -32,7 +32,7 @@
                     </header>
                         <p>alur Rempah mencakup berbagai lintasan <b>jalur budaya</b> dari timur Asia hingga barat Eropa terhubung dengan Benua Amerika, Afrika dan Australia. Suatu lintasan peradaban bermacam bentuk, garis lurus, lingkaran, silang, bahkan berbentuk jejaring.<span id="dots2" style="display:inline">...</span><span id="more2" style="display:none"><br><br>
                         Di Indonesia, wujud jalur perniagaan rempah mencakup banyak hal. Tidak hanya berdiri di satu titik penghasil rempah, namun juga mencakup berbagai titik yang bisa dijumpai di Indonesia dan membentuk suatu <b>lintasan peradaban yang berkelanjutan.</b><br><br>
-                        Program Jalur Rempah melihat kembali lintasan jalur perdagangan rempah dari satu titik ke titik lainnya, menghidupkan kembali beragam kisahnya, menghubungkan kembali berbagai jejaknya.<br><br>
+                        Program Jalur Rempah mJalur Rempah mencakup berbagai lintasan jalur budaya yang melahirkan peradaban global & menghidupkan kembali peran masyarakat Nusantara berabad-abad lampau.<br><br>
                         Program ini bertekad keras menghidupkan kembali narasi sejarah dengan memperlihatkan <b>peran masyarakat Nusantara</b> dalam pembentukan Jalur Rempah; mendokumentasikan peran mereka yang berada di berbagai wilayah perdagangan rempah; dan merekonstruksi serangkaian benang merah dalam satu bangunan sejarah.</span></p>
                     <div class="row">
                         <div class="col-md-12">
@@ -84,12 +84,12 @@
                             <div class="col-lg-4 mb-2">
                                 <div class="card no-border card-media">
                                     <div class="card-body row">
-                                        <div class="col-3 ">
-                                            <img src="assets/img/icon/jalur_1.svg" width="80%">
+                                        <div class="col-3 mt-3 text-center">
+                                            <img src="assets/img/icon/jalur_1.svg" height="40px">
                                         </div>
-                                        <div class="col-9 center-v">
+                                        <div class="col-9">
                                             <h3 class="judul-card-info">Jalur</h3>
-                                            <p class="des-card-info-id">Melihat kembali lintasan jalur perdagangan rempah dari satu titik ke titik lainnya.</p>
+                                            <p class="des-card-info-id">Jalur Rempah mencakup berbagai lintasan jalur budaya</p>
                                         </div>
                                     </div>
                                     <a href="#" class="stretched-link"></a>
@@ -98,12 +98,12 @@
                             <div class="col-lg-4 mb-2">
                                 <div class="card no-border card-media">
                                     <div class="card-body row">
-                                        <div class="col-3 ">
-                                            <img src="assets/img/icon/jejak_1.svg" width="80%">
+                                        <div class="col-3 mt-3 text-center">
+                                            <img src="assets/img/icon/jejak_1.svg" height="32px">
                                         </div>
-                                        <div class="col-9 center-v">
+                                        <div class="col-9">
                                             <h3 class="judul-card-info">Jejak</h3>
-                                            <p class="des-card-info-id">Menghidupkan kembali jejak globalisasi dari perniagaan rempah masa lalu.</p>
+                                            <p class="des-card-info-id">Jejak memperlihatkan interaksi budaya pada masa lampau</p>
                                         </div>
                                     </div>
                                     <a href="{{ route('tentangjejak') }}" class="stretched-link"></a>
@@ -112,12 +112,12 @@
                             <div class="col-lg-4 mb-2">
                                 <div class="card no-border card-media">
                                     <div class="card-body row">
-                                        <div class="col-3 ">
-                                            <img src="assets/img/icon/masa-depan_1.svg" width="80%">
+                                        <div class="col-3 mt-3 text-center">
+                                            <img src="assets/img/icon/masa-depan_1.svg" height="40px">
                                         </div>
-                                        <div class="col-9 center-v">
+                                        <div class="col-9">
                                             <h3 class="judul-card-info">Masa Depan</h3>
-                                            <p class="des-card-info-id">Penggalian kembali ekosistem bahari yang berdiri dari jejak masa lampau.</p>
+                                            <p class="des-card-info-id">Sebuah upaya rekontruksi dan revitalisasi jalur budaya bahari</p>
                                         </div>
                                     </div>
                                     <a href="{{ route('tentangmasadepan') }}" class="stretched-link"></a>

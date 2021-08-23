@@ -152,12 +152,12 @@
                 <div class="col-lg-4 mb-2">
                   <div class="card no-border card-media">
                     <div class="card-body row">
-                      <div class="col-3 ">
-                        <img src="assets/img/icon/jalur_1.svg" width="80%">
+                      <div class="col-3 mt-3 text-center">
+                        <img src="assets/img/icon/jalur_1.svg" height="40px">
                       </div>
-                      <div class="col-9 center-v">
+                      <div class="col-9 ">
                         <h3 class="judul-card-info">Jalur</h3>
-                          <p class="des-card-info-id">Melihat kembali lintasan jalur perdagangan rempah dari satu titik ke titik lainnya, menghidupkan kembali beragam kisahnya, menghubungkan kembali berbagai jejaknya.</p>
+                          <p class="des-card-info-id">Jalur Rempah mencakup berbagai lintasan jalur budaya</p>
                       </div>
                     </div>
                     <a href="{{ route('tentangjalur') }}" class="stretched-link"></a>
@@ -166,12 +166,12 @@
                 <div class="col-lg-4 mb-2">
                   <div class="card no-border card-media">
                     <div class="card-body row">
-                      <div class="col-3 ">
-                        <img src="assets/img/icon/jejak_1.svg" width="80%">
+                      <div class="col-3 mt-3 text-center">
+                        <img src="assets/img/icon/jejak_1.svg" height="32px">
                       </div>
-                      <div class="col-9 center-v">
+                      <div class="col-9 ">
                         <h3 class="judul-card-info">Jejak</h3>
-                        <p class="des-card-info-id">Menghidupkan kembali jejak globalisasi dari perniagaan rempah masa lalu yang menciptakan hubungan lintas budaya.</p>
+                        <p class="des-card-info-id">Jejak memperlihatkan interaksi budaya pada masa lampau</p>
                       </div>
                     </div>
                     <a href="{{ route('tentangjejak') }}" class="stretched-link"></a>
@@ -180,12 +180,12 @@
                 <div class="col-lg-4 mb-2">
                   <div class="card no-border card-media">
                     <div class="card-body row">
-                      <div class="col-3 ">
-                        <img src="assets/img/icon/masa-depan_1.svg" width="80%">
+                      <div class="col-3 mt-3 text-center">
+                        <img src="assets/img/icon/masa-depan_1.svg" height="40px">
                       </div>
-                      <div class="col-9 center-v">
+                      <div class="col-9 ">
                         <h3 class="judul-card-info">Masa Depan</h3>
-                        <p class="des-card-info-id">Penggalian kembali ekosistem bahari yang berdiri dari rute dan jejak masa lampau. Suatu sudut pandang dan fondasi dari masa lalu sebagai masa kini.</p>
+                        <p class="des-card-info-id">Sebuah upaya rekontruksi dan revitalisasi jalur budaya bahari</p>
                       </div>
                     </div>
                     <a href="{{ route('tentangmasadepan') }}" class="stretched-link"></a>
