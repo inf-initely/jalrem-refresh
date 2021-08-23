@@ -101,6 +101,19 @@
               <div class="col-lg-12 mb-3">
                 <div class="card shadow mb-4">
                   <div class="card-header py-3">
+                    <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">Tanggal</h2>
+                  </div>
+                  <div class="card-body">
+                    <div class="mb-3">
+                      <label for="tanggalBerakhir" class="form-label">Tanggal Berakhir</label>
+                      <input required value="{{ old('end_date') }}" name="end_date" id="tanggalBerakhir" type="date" class="form-control">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-12 mb-3">
+                <div class="card shadow mb-4">
+                  <div class="card-header py-3">
                     <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">Tag Artikel</h2>
                   </div>
                   <div class="card-body">

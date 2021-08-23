@@ -13,6 +13,7 @@ use App\Models\KategoriShow;
 use App\Models\Kontributor;
 
 use Alert;
+use Carbon\Carbon;
 
 class KegiatanController extends Controller
 {
@@ -39,6 +40,7 @@ class KegiatanController extends Controller
             'judul_indo' => 'required',
             'konten_indo' => 'required',
             'thumbnail' => 'required|max:10000|mimes:png,jpg,jpeg',
+            'end_date' => 'required'
         ]);
 
         // UPLOAD THUMBNAIL
@@ -61,6 +63,14 @@ class KegiatanController extends Controller
         if( $request->judul_english )
             $slug_english = generate_slug($request->judul_english, '-');
 
+        
+        // SET END DATE
+        $end_date = explode('-', $request->end_date);
+        $tanggal = $end_date[2];
+        $bulan = $end_date[1];
+        $tahun = $end_date[0];
+        $end_date_timestamp = Carbon::create($tahun, $bulan, $tanggal, 0)->toDateTimeString();
+
         $kegiatan = Kegiatan::create([
             'judul_indo' => $request->judul_indo,
             'konten_indo' => $request->konten_indo,
@@ -71,6 +81,7 @@ class KegiatanController extends Controller
             'meta_english' => $request->meta_english,
             'keywords_english' => $request->keywords_english, 
             'thumbnail' => $filename_thumbnail,
+            'end_date' => $end_date_timestamp,
             'slug_english' => $slug_english,
             'id_lokasi' => $request->id_lokasi,
             'penulis' => ($request->contributor != null && $request->id_kontributor != null) ? 'kontributor umum/pamong budaya' : 'admin',
@@ -145,6 +156,13 @@ class KegiatanController extends Controller
             $slug_english = generate_slug($request->judul_english, '-');
         }
 
+        // SET END DATE
+        $end_date = explode('-', $request->end_date);
+        $tanggal = $end_date[2];
+        $bulan = $end_date[1];
+        $tahun = $end_date[0];
+        $end_date_timestamp = Carbon::create($tahun, $bulan, $tanggal, 0)->toDateTimeString();
+
         $kegiatan->update([
             'judul_indo' => $request->judul_indo,
             'konten_indo' => $request->konten_indo,
@@ -155,6 +173,7 @@ class KegiatanController extends Controller
             'meta_english' => $request->meta_english,
             'keywords_english' => $request->keywords_english, 
             'thumbnail' => $filename_thumbnail,
+            'end_date' => $end_date_timestamp,
             'slug_english' => $slug_english == null ? $kegiatan->slug_english : $slug_english,
             'id_lokasi' => $request->id_lokasi,
             'penulis' => ($request->contributor != null && $request->id_kontributor != null) ? 'kontributor umum/pamong budaya' : 'admin',

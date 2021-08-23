@@ -272,7 +272,7 @@
             @foreach( $video as $v )
             <div class="p-2">
               <div class="card no-border card-artikel">
-                <div class="video" data-video-id="fj2xxbx_OHQ">
+                <div class="video" data-video-id="{{ $v->youtube_key }}">
                   <!--ganti id sesuai id youtube yang akan ditampilkan-->
                   <div class="video-layer">
                     <div class="video-placeholder">

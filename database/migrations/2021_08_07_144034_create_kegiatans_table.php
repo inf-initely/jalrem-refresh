@@ -26,6 +26,7 @@ class CreateKegiatansTable extends Migration
             $table->string('slug');
             $table->string('slug_english')->nullable();
             $table->string('thumbnail');
+            $table->timestamp('end_date')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->unsignedInteger('id_lokasi')->nullable();
             $table->enum('penulis', ['admin', 'kontributor umum/pamong budaya']);
             $table->enum('contributor', ['umum', 'pamong budaya'])->nullable();
