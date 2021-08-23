@@ -4,7 +4,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-light sticky-top bg-trans">
   <div class="container">
     <a class="navbar-brand" href="{{ route('home') }}">
-      <img src="assets/img/logo/logo.png" width="117px">
+      <img src="assets/img/logo/logo.png" height="50px">
     </a>
     <ul class="link-bahasa d-block d-lg-none">
       <li class="nav-item dropdown">
@@ -82,7 +82,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top bg-trans">
   <div class="container">
     <a class="navbar-brand" href="{{ route('home') }}">
-      <img src="{{ asset('assets/img/logo-footer.png') }}" width="120px">
+      <img src="{{ asset('assets/img/logo/logo-2.png') }}" height="50px">
     </a>
     <ul class="link-bahasa d-block d-lg-none">
       <li class="nav-item dropdown">
@@ -167,7 +167,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-light sticky-top bg-trans">
   <div class="container">
     <a class="navbar-brand" href="{{ route('home') }}">
-      <img src="{{ asset('assets/img/logo/logo.png') }}" width="117px">
+      <img src="{{ asset('assets/img/logo/logo.png') }}" height="50px">
     </a>
     <ul class="link-bahasa d-block d-lg-none">
       <li class="nav-item dropdown">
@@ -257,7 +257,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-light sticky-top bg-trans">
   <div class="container">
     <a class="navbar-brand" href="{{ route('home') }}">
-      <img src="assets/img/logo/logo.png" width="117px">
+      <img src="assets/img/logo/logo.png" height="50px">
     </a>
     <ul class="link-bahasa d-block d-lg-none">
       <li class="nav-item dropdown">
@@ -335,7 +335,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top bg-trans">
   <div class="container">
     <a class="navbar-brand" href="{{ route('home') }}">
-      <img src="{{ asset('assets/img/logo-footer.png') }}" width="120px">
+      <img src="{{ asset('assets/img/logo/logo-2.png') }}" height="50px">
     </a>
     <ul class="link-bahasa d-block d-lg-none">
       <li class="nav-item dropdown">
@@ -420,7 +420,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-light sticky-top bg-trans">
   <div class="container">
     <a class="navbar-brand" href="{{ route('home') }}">
-      <img src="{{ asset('assets/img/logo/logo.png') }}" width="117px">
+      <img src="{{ asset('assets/img/logo/logo.png') }}" height="50px">
     </a>
     <ul class="link-bahasa d-block d-lg-none">
       <li class="nav-item dropdown">
