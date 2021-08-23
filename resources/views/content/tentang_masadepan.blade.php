@@ -21,10 +21,13 @@
                             <h2 class="sub-judul">Masa Depan dan Jalur Rempah</h2>
                         </header>
                         <section id="desTentang">
-                            <p>Program Jalur Rempah berpandangan ke depan. Jejak dan Jalur direkonstruksi sebagai fondasi dari masa lalu sebagai masa kini untuk membangun masa depan.</p>
-                            <p>Suatu cara pandang yang berangkat dari jejak-jejak masa lalu yang terhubung satu sama lain dan membentuk ekosistem kebudayaan, dan memandang laut sebagai simbol kekayaan dan kesejahteraan.</p>
-                            <p>Program Jalur Rempah berupaya menampilkan bahari sebagai khazanah, sebuah pemberian alamiah yang membuat Indonesia memiliki panjang pantai lebih dari 95.000 kilometer dan menjadikan negara ini memiliki garis pantai terpanjang kedua di dunia sekaligus negara kepulauan terbesar.</p>
-                            <p>Lewat cara pandang ini, program Jalur Rempah menghidupkan kembali gagasan ini melalui identifikasi jejak budaya, potensinya di masa mendatang dan rekonstruksi jalur budaya sebagai sebuah pekerjaan kolektif. Rempah sebagai masa depan: industri, warisan nenek moyang tentang kecantikan, kesehatan, hingga pangan. Sebuah kerja berkelanjutan, menghidupi, juga membahagiakan manusia yang terlibat di dalamnya.</p>
+                            <p>Jalur Rempah berpandangan ke depan. Program ini berfokus pada peningkatan kesadaran masyarakat untuk melestarikan, mengembangkan dan memanfaatkan warisan budaya Jalur Rempah (baik Warisan Budaya Tak Benda maupun Cagar Budaya Nasional) untuk modal meningkatkan <b>kesejahteraan bersama yang lestari.</b><br><br>
+
+                           Suatu cara pandang yang berangkat dari jejak-jejak masa lalu yang terhubung satu sama lain dan membentuk ekosistem kebudayaan. Sebuah upaya <b>rekonstruksi dan revitasilasi</b> melalui laut sebagai simbol kekayaan dan kesejahteraan.<br><br>
+
+                           Jalur Rempah berupaya menumbuhkan kebanggaan akan jati diri berbagai wilayah di Indonesia, memperkuat jejaring interaksi budaya antardaerah, dan memperteguh ikatan ke-Indonesiaan melalui <b>jalur budaya bahari</b> yang telah ada sejak ribuan tahun lalu.<br><br>
+
+                           Dengan cara pandang ini, Jalur Rempah membuka kembali persepsi masyarakat di daerah dan dunia internasional terkait peran Indonesia sebagai <b>poros maritim dunia</b> di masa lalu, masa kini, dan masa depan.</p>
                         </section>
                     </article>
                     <section id="artikelTentang">

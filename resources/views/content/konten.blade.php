@@ -59,7 +59,8 @@
           <div class="row justify-content-center">
             <div class="col-lg-12">
               <header class="text-center">
-                <h2 class="sub-judul">Konten Jalur Rempah</h2>
+                <h2 class="sub-judul">Konten</h2>
+                <p>Simak berbagai konten menarik mengenai Jalur Rempah dalam artikel, foto, video, dan audio.</p>
               </header>
               <section id="tabLine">
                 <ul class="nav nav-pills mb-3 nav-tabline justify-content-center" id="pills-tab" role="tablist">

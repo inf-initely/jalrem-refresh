@@ -9,11 +9,10 @@
                 <header>
                     <h2 class="sub-judul sub-judul-hero text-end">Titik-Titik Jalur Rempah</h2>
                 </header>
-                <p>Jalur Rempah mencakup berbagai lintasan dari timur Asia hingga barat Eropa terhubung dengan Benua Amerika, Afrika dan Australia. Suatu lintasan peradaban bermacam bentuk, garis lurus, lingkaran, silang, bahkan berbentuk jejaring.<span id="dots">...</span><span id="more"><br><br>
-                        Di Indonesia, wujud jalur perniagaan rempah mencakup banyak hal. Tidak hanya berdiri di satu titik penghasil rempah, namun juga mencakup berbagai titik yang bisa dijumpai di Indonesia dan membentuk suatu lintasan peradaban yang berkelanjutan.<br><br>
+                        <p>Jalur Rempah mencakup berbagai lintasan <b>jalur budaya</b> dari timur Asia hingga barat Eropa terhubung dengan Benua Amerika, Afrika dan Australia. Suatu lintasan peradaban bermacam bentuk, garis lurus, lingkaran, silang, bahkan berbentuk jejaring.<span id="dots">...</span><span id="more"><br><br>
+                        Di Indonesia, wujud jalur perniagaan rempah mencakup banyak hal. Tidak hanya berdiri di satu titik penghasil rempah, namun juga mencakup berbagai titik yang bisa dijumpai di Indonesia dan membentuk suatu <b>lintasan peradaban yang berkelanjutan.</b><br><br>
                         Program Jalur Rempah melihat kembali lintasan jalur perdagangan rempah dari satu titik ke titik lainnya, menghidupkan kembali beragam kisahnya, menghubungkan kembali berbagai jejaknya.<br><br>
-                        Menghidupkan kembali narasi sejarah yang umumnya tidak memperlihatkan peran orang Indonesia dalam pembentukan Jalur Rempah.<br><br>
-                        Program ini bertekad keras mencatat peran mereka yang berada di titik-titik perdagangan rempah, menghubungkan serangkaian benang merah yang belum terdokumentasikan dan tampak samar-samar dalam narasi sejarah.</span></p>
+                        Program ini bertekad keras menghidupkan kembali narasi sejarah dengan memperlihatkan <b>peran masyarakat Nusantara</b> dalam pembentukan Jalur Rempah; mendokumentasikan peran mereka yang berada di berbagai wilayah perdagangan rempah; dan merekonstruksi serangkaian benang merah dalam satu bangunan sejarah.</span></p>
                 <div class="row">
                     <div class="col-md-12 text-end">
                         <button class="btn btn-sm btn-outline-secondary" onclick="readMore()" id="btnReadmore">Lihat Selengkapnya</button>
@@ -31,11 +30,10 @@
                     <header>
                         <h2 class="sub-judul sub-judul-hero">Titik-Titik Jalur Rempah</h2>
                     </header>
-                    <p>Jalur Rempah mencakup berbagai lintasan dari timur Asia hingga barat Eropa terhubung dengan Benua Amerika, Afrika dan Australia. Suatu lintasan peradaban bermacam bentuk, garis lurus, lingkaran, silang, bahkan berbentuk jejaring.<span id="dots2" style="display:inline">...</span><span id="more2" style="display:none"><br><br>
-                            Di Indonesia, wujud jalur perniagaan rempah mencakup banyak hal. Tidak hanya berdiri di satu titik penghasil rempah, namun juga mencakup berbagai titik yang bisa dijumpai di Indonesia dan membentuk suatu lintasan peradaban yang berkelanjutan.<br><br>
-                            Program Jalur Rempah melihat kembali lintasan jalur perdagangan rempah dari satu titik ke titik lainnya, menghidupkan kembali beragam kisahnya, menghubungkan kembali berbagai jejaknya.<br><br>
-                            Menghidupkan kembali narasi sejarah yang umumnya tidak memperlihatkan peran orang Indonesia dalam pembentukan Jalur Rempah.<br><br>
-                            Program ini bertekad keras mencatat peran mereka yang berada di titik-titik perdagangan rempah, menghubungkan serangkaian benang merah yang belum terdokumentasikan dan tampak samar-samar dalam narasi sejarah.</span></p>
+                        <p>alur Rempah mencakup berbagai lintasan <b>jalur budaya</b> dari timur Asia hingga barat Eropa terhubung dengan Benua Amerika, Afrika dan Australia. Suatu lintasan peradaban bermacam bentuk, garis lurus, lingkaran, silang, bahkan berbentuk jejaring.<span id="dots2" style="display:inline">...</span><span id="more2" style="display:none"><br><br>
+                        Di Indonesia, wujud jalur perniagaan rempah mencakup banyak hal. Tidak hanya berdiri di satu titik penghasil rempah, namun juga mencakup berbagai titik yang bisa dijumpai di Indonesia dan membentuk suatu <b>lintasan peradaban yang berkelanjutan.</b><br><br>
+                        Program Jalur Rempah melihat kembali lintasan jalur perdagangan rempah dari satu titik ke titik lainnya, menghidupkan kembali beragam kisahnya, menghubungkan kembali berbagai jejaknya.<br><br>
+                        Program ini bertekad keras menghidupkan kembali narasi sejarah dengan memperlihatkan <b>peran masyarakat Nusantara</b> dalam pembentukan Jalur Rempah; mendokumentasikan peran mereka yang berada di berbagai wilayah perdagangan rempah; dan merekonstruksi serangkaian benang merah dalam satu bangunan sejarah.</span></p>
                     <div class="row">
                         <div class="col-md-12">
                             <button class="btn btn-sm btn-outline-secondary" onclick="readMore2()" id="btnReadmore2">Lihat Selengkapnya</button>

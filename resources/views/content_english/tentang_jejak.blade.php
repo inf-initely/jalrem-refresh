@@ -10,12 +10,8 @@
                     <h2 class="sub-judul sub-judul-hero">The Trace of The Spice Routes</h2>
                 </header>
                 <p>
-                    The Spice Routes is the name given to an ancient, complex, and broad civilization. Forming cultural routes, it spread from the eastern part of Asia to the western part of Europe, connected to the American, African, and Australian continents that it affected the global civilization.<span id="dots">...</span><span id="more"><br><br>
-                    We can see the active role that the people of Nusantara took in forming this civilization. They acted as both the producer of spices who moved the trades across borders and the people that welcomed other nations (newcomers) with different cultural backgrounds.<br><br>
-
-                    The openness of the people and the cultural relationship gave rise to numerous multicultural and multiethnicity footprints to different mediums, including the inter-ocean relation inside it that became inevitable. It was not only limited to relations among nations but also among tribes. The cultural relations among inter-ocean people left footprints. These series of traces across regions then built the routes. <br><br>
-
-                    Each trace keeps cultural value in various forms. Stories of origins, songs, music, dances, traditional technologies, building architecture, beliefs, etc. The pile of cultural values that have become collective memories stands as proof and the historical remains of the Spice Routes. The program exists as a means of finding the traces.</span>
+                    The Spice Routes is an <b>ancient, complex, and vast civilization that affected the global civilization</b>. Its traces display cultural interactions in the past. <span id="dots">...</span><span id="more"><br><br>
+                   The people of Nusantara’s openness and cultural relations gave rise to multicultural and multiethnic heritage in different mediums. The cultural ties between people left some <b>legacies and a series of traces:</b> the story of the origin, songs, music, dances, traditional technology, building architecture, fashion, culinary, potions, letters, languages, and beliefs. It is a cultural heritage that has become Indonesia’s collective memory as proof and traces of the Spice Routes. </span>
                 </p>
                 <button class="btn btn-sm btn-outline-secondary" onclick="readMore()" id="btnReadmore">Read more</button>
             </article>
@@ -57,12 +53,8 @@
                         <h2 class="sub-judul sub-judul-hero ">Jejak dan Jalur Rempah</h2>
                     </header>
                     <p>
-                        The Spice Routes is the name given to an ancient, complex, and broad civilization. Forming cultural routes, it spread from the eastern part of Asia to the western part of Europe, connected to the American, African, and Australian continents that it affected the global civilization.<span id="dots2" style="display:inline">...</span><span id="more2" style="display:none"><br><br>
-                        We can see the active role that the people of Nusantara took in forming this civilization. They acted as both the producer of spices who moved the trades across borders and the people that welcomed other nations (newcomers) with different cultural backgrounds.<br><br>
-
-                        The openness of the people and the cultural relationship gave rise to numerous multicultural and multiethnicity footprints to different mediums, including the inter-ocean relation inside it that became inevitable. It was not only limited to relations among nations but also among tribes. The cultural relations among inter-ocean people left footprints. These series of traces across regions then built the routes. <br><br>
-
-                        Each trace keeps cultural value in various forms. Stories of origins, songs, music, dances, traditional technologies, building architecture, beliefs, etc. The pile of cultural values that have become collective memories stands as proof and the historical remains of the Spice Routes. The program exists as a means of finding the traces.</span>
+                        The Spice Routes is an <b>ancient, complex, and vast civilization that affected the global civilization</b>. Its traces display cultural interactions in the past.<span id="dots2" style="display:inline">...</span><span id="more2" style="display:none"><br><br>
+                        The people of Nusantara’s openness and cultural relations gave rise to multicultural and multiethnic heritage in different mediums. The cultural ties between people left some <b>legacies and a series of traces:</b> the story of the origin, songs, music, dances, traditional technology, building architecture, fashion, culinary, potions, letters, languages, and beliefs. It is a cultural heritage that has become Indonesia’s collective memory as proof and traces of the Spice Routes. </span>
                     </p>
                     <button class="btn btn-sm btn-outline-secondary" onclick="readMore2()" id="btnReadmore2">Read more</button>
                 </article>

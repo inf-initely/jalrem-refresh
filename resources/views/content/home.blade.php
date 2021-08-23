@@ -64,9 +64,9 @@
             </div>
             <div class="col-12 col-md-6 col-lg-6 center-v">
               <header>
-                <h2 class="sub-judul">Jalur Rempah</h2>
+                <h2 class="sub-judul">Jalur</h2>
               </header>
-              <p class="jelajah-des">Melihat kembali lintasan jalur perdagangan rempah dari satu titik ke titik lainnya, menghidupkan kembali beragam kisahnya, menghubungkan kembali berbagai jejaknya.</p>
+              <p class="jelajah-des">Jalur Rempah mencakup berbagai lintasan jalur budaya yang melahirkan peradaban global & menghidupkan kembali peran masyarakat Nusantara berabad-abad lampau.</p>
               <a href="{{ route('tentangjalur') }}" class="btn btn-danger btn-jelajah">
                 Jelajahi
               </a>
@@ -75,9 +75,9 @@
           <div class="row justify-content-center content-jelajahi wrap-div" data-aos="fade-left">
             <div class="col-12 col-md-6 col-lg-6 text-end center-v mb-2 second-div" style="margin-top: 30px;">
               <header>
-                <h2 class="sub-judul">Jejak Rempah Nusantara</h2>
+                <h2 class="sub-judul">Jejak</h2>
               </header>
-              <p class="jelajah-des">Menghidupkan kembali jejak globalisasi dari perniagaan rempah masa lalu yang menciptakan hubungan lintas budaya. Menampilkan jejak antar bangsa dan antar suku bangsa sebagai warisan dan pengetahuan hari ini.</p>
+              <p class="jelajah-des">Jejak memperlihatkan interaksi budaya pada masa lampau yang masih hidup hingga hari ini. Sebuah peninggalan nilai budaya yang menjadi memori kolektif bangsa.</p>
               <a href="{{ route('tentangjejak') }}" class="btn btn-danger btn-jelajah">
                 Jelajahi
               </a>
@@ -94,7 +94,7 @@
               <header>
                 <h2 class="sub-judul">Masa Depan</h2>
               </header>
-              <p class="jelajah-des">Penggalian kembali ekosistem bahari yang berdiri dari rute dan jejak masa lampau. Suatu sudut pandang dan fondasi dari masa lalu sebagai masa kini. Rangkaian ingatan kolektif sebagai pengetahuan dalam membangun masa depan.</p>
+              <p class="jelajah-des">Sebuah upaya rekontruksi dan revitalisasi jalur budaya bahari. Penggalian kembali potensi untuk kekayaan dan kesejahteraan bersama yang lestari.</p>
               <a href="{{ route('tentangmasadepan') }}" class="btn btn-danger btn-jelajah">
                 Jelajahi
               </a>
@@ -207,8 +207,7 @@
             <section class="col-md-6 center-v">
               <header>
                 <h2 class="sub-judul">Konten</h2>
-                <p class="des-sub-judul">Berbagai upaya dilakukan untuk melestarikan jalur rempah, salah satunya dengan melakukan berbagai kegiatan.</p>
-                <p class="des-sub-sub-judul">Di masa lampau, kehadiran para pedagang antarbangsa memiliki peranan penting terhadap perkembangan budaya yang masih bisa kita lihat dan rasakan jejaknya.</p>
+                <p class="des-sub-judul">Simak berbagai konten menarik mengenai Jalur Rempah dalam artikel, foto, video, dan audio.</p>
                 <a href="{{ route('konten') }}" class="btn btn-outline-danger">
                   Lihat Semua Konten
                 </a>

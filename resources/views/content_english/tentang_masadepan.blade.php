@@ -22,13 +22,13 @@
                         </header>
                         <section id="desTentang">
                             <p>
-                                The Spice Routes program is an innovative. The traces and the routes are reconstructed as a foundation from the past, as the present, to build the future.
-                                <br><br>
-                                It acts as a perspective, coming from the traces of the past that are connected and forms a cultural ecosystem, and sees the sea as a symbol of wealth and prosperity.
-                                <br><br>
-                                The Spice Routes program tries to display the maritime as a treasure, a natural gift that brought Indonesia to have more than 95.000 km length of coastline and thus the second country with the longest length of coastline in the world as well as the largest archipelago.
-                                <br><br>
-                                From this point of view, this program revives the idea through the identification of cultural traces, the forthcoming potentials, and the reconstruction of cultural routes as a collective work. In subsequent, spices will expand into: industry, ancestral heritage on beauty, health, and food. Sustainable work, to support and create happiness for the people who are involved in it.
+                                The Spice Routes is forward-looking. The program focuses on increasing the public's awareness to conserve, develop, and use the Spice Routes cultural heritage (tangible and intangible) as an asset to promote the <b>sustainable prosperity</b> of all. <br><br>
+
+                                It is a point of view that sets off from the traces which link to one another and form a cultural ecosystem—a means of <b>reconstruction and revitalization</b> through the sea as a symbol of wealth and prosperity. <br><br>
+
+                                The Spice Routes strives to grow pride upon identities of various regions in Indonesia, strengthening the cultural interaction network among areas and reinforcing the national bond through the <b>nautical cultural routes</b> that had existed thousands of years ago.<br><br>
+
+                                Through this point of view, the Spice Routes reopen regional and global communities' perspectives concerning the role of Indonesia as the <b>global maritime axis</b> in the past, present, and future.
                             </p>
                         </section>
                     </article>

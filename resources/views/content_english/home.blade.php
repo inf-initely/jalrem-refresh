@@ -33,7 +33,7 @@
                     <h2 class="title">Jalur Rempah</h2>
                   </div>
                   <div data-swiper-parallax="400" class="slide-text">
-                    <p class="caption">Penggalian kembali ekosistem bahari yang berdiri dari jalur dan jejak masa lampau. Suatu sudut pandang dan fondasi dari masa lalu sebagai masa kini. Rangkaian ingatan kolektif sebagai pengetahuan dalam membangun masa depan.</p>
+                    <p class="caption">Respecting the past through our heritage, enlivening the future for the well-being of all.</p>
                   </div>
                   <div class="clearfix"></div>
                 </div>
@@ -64,9 +64,9 @@
             </div>
             <div class="col-12 col-md-6 col-lg-6 center-v">
               <header>
-                <h2 class="sub-judul">The Route</h2>
+                <h2 class="sub-judul">The Routes</h2>
               </header>
-              <p class="jelajah-des">Looking back to the spice trade routes from one point to another, reviving its sundry stories, connecting its numerous traces.</p>
+              <p class="jelajah-des">The Spice Routes covers various cultural routes that gave rise to global civilization & revive the people of Nusantara’s role centuries ago.</p>
               <a href="{{ route('tentangjalur') }}" class="btn btn-danger btn-jelajah">
                 explore more
               </a>
@@ -75,9 +75,9 @@
           <div class="row justify-content-center content-jelajahi wrap-div" data-aos="fade-left">
             <div class="col-12 col-md-6 col-lg-6 text-end center-v mb-2 second-div" style="margin-top: 30px;">
               <header>
-                <h2 class="sub-judul">The Trace</h2>
+                <h2 class="sub-judul">The Traces</h2>
               </header>
-              <p class="jelajah-des">Reviving the globalization trace of the spice trade in the past that created cross-cultural relations. Displaying the traces among nations and tribes as today’s heritage and knowledge.</p>
+              <p class="jelajah-des">The traces display the cultural interactions in the past that still exist today, a cultural heritage that has become Indonesia’s collective memory.</p>
               <a href="{{ route('tentangjejak') }}" class="btn btn-danger btn-jelajah">
                 explore more
               </a>
@@ -94,7 +94,7 @@
               <header>
                 <h2 class="sub-judul">The Future</h2>
               </header>
-              <p class="jelajah-des">The excavation of the maritime ecosystem, emerging from the routes and traces in the past. A perspective and foundation from the past for the future. A series of collective memories as knowledge to build the future.</p>
+              <p class="jelajah-des">A means of reconstruction and revitalization of the maritime cultural routes. Re-excavating the potentials for sustainable wealth and prosperity of all.</p>
               <a href="{{ route('tentangmasadepan') }}" class="btn btn-danger btn-jelajah">
                 explore more
               </a>
@@ -207,8 +207,7 @@
             <section class="col-md-6 center-v">
               <header>
                 <h2 class="sub-judul">Content</h2>
-                <p class="des-sub-judul">Berbagai upaya dilakukan untuk melestarikan jalur rempah, salah satunya dengan melakukan berbagai kegiatan.</p>
-                <p class="des-sub-sub-judul">Di masa lampau, kehadiran para pedagang antarbangsa memiliki peranan penting terhadap perkembangan budaya yang masih bisa kita lihat dan rasakan jejaknya.</p>
+                <p class="des-sub-judul">Follow various exciting contents about the Spice Routes through the articles, photos, videos, and audio.</p>
                 <a href="{{ route('konten') }}" class="btn btn-outline-danger">
                   See All Content
                 </a>

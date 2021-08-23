@@ -10,16 +10,16 @@
                     <h2 class="sub-judul sub-judul-hero text-end">The Spice Routes’ Points</h2>
                 </header>
                 <p>
-                    The Spice Routes covered numerous tracks from the east part of Asia to the west part of Europe, connected with American, African, and Australian Continents. It acted as a civilization trajectory in various forms–straight lines, circles, crossways, that then formed networks.
+                    The Spice Routes covers various <b>cultural routes</b> from East Asia to Western Europe connected to American, African, and Australian Continents. A civilization trajectory in different forms; straight line, circle, crosswise, and even a network.
                     <span id="dots">...</span><span id="more"><br><br>
 
-                    In Indonesia, the Spice Routes appeared in various forms. Covering broader than merely the spice producer lands, it also reached other points in Indonesia and formed a sustainable civilization trajectory.<br><br>
+                   In Indonesia, the spice trade routes cover many things. It stands not only on one spice producer area but also various points in Indonesia, forming a <b>sustainable civilization trajectory.</b><br><br>
 
-                    The Spice Routes program is here to respect the tracks of the spice trade from one point to another, enlivening the sundry stories, and connecting the traces.<br><br>
+                    TThe Spice Routes program recollects the spice trade routes from one point to another, revives its sundry stories and connects the traces. <br><br>
 
                     Enlivening the historical narration that commonly puts aside the role of Indonesians in the forming of the Spice Routes.<br><br>
 
-                    The Spice Routes determines to record the role of those who stood in the Spice Routes points, connecting the lines that have yet not to be documented and are blurry in the historical narration.</span>
+                    The program is determined to revive the historical narrative by revealing the people of Nusantara’s roles in the Spice Routes formation; documenting their roles in the spice trade areas; reconstructing the red thread in one historical construction.</span>
                 </p>
                 <div class="row">
                     <div class="col text-end">
@@ -39,16 +39,16 @@
                         <h2 class="sub-judul sub-judul-hero">The Spice Routes’ Points</h2>
                     </header>
                     <p>
-                        The Spice Routes covered numerous tracks from the east part of Asia to the west part of Europe, connected with American, African, and Australian Continents. It acted as a civilization trajectory in various forms–straight lines, circles, crossways, that then formed networks.
+                        The Spice Routes covers various <b>cultural routes</b> from East Asia to Western Europe connected to American, African, and Australian Continents. A civilization trajectory in different forms; straight line, circle, crosswise, and even a network.
                         <span id="dots2" style="display:inline">...</span><span id="more2" style="display:none"><br><br>
 
-                        In Indonesia, the Spice Routes appeared in various forms. Covering broader than merely the spice producer lands, it also reached other points in Indonesia and formed a sustainable civilization trajectory.<br><br>
+                        In Indonesia, the spice trade routes cover many things. It stands not only on one spice producer area but also various points in Indonesia, forming a <b>sustainable civilization trajectory.</b><br><br>
 
-                        The Spice Routes program is here to respect the tracks of the spice trade from one point to another, enlivening the sundry stories, and connecting the traces.<br><br>
+                        The Spice Routes program recollects the spice trade routes from one point to another, revives its sundry stories and connects the traces. <br><br>
 
                         Enlivening the historical narration that commonly puts aside the role of Indonesians in the forming of the Spice Routes.<br><br>
 
-                        The Spice Routes determines to record the role of those who stood in the Spice Routes points, connecting the lines that have yet not to be documented and are blurry in the historical narration.</span>
+                        The program is determined to revive the historical narrative by revealing the people of Nusantara’s roles in the Spice Routes formation; documenting their roles in the spice trade areas; reconstructing the red thread in one historical construction.</span>
                     </p>
                     <div class="row">
                         <div class="col-md-12">
