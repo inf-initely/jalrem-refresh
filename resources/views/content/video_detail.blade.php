@@ -36,7 +36,6 @@
                 </svg>
               </div>
             </div>
-            <section></section>
             <article id="txtMedia" class="mt-4">
               {!! $video->konten_indo !!}
             </article>
