@@ -134,7 +134,7 @@
                         {{ $k->created_at->isoFormat('D MMMM Y'); }}
                       </p>
                     </div>
-                    <a href="{{ route('kerjasama_detail', $k->slug) }}" class="stretched-link"></a>
+                    <a href="{{ route('kerjasama_detail', $k->slug_english ?? $k->slug) }}" class="stretched-link"></a>
                   </div>
                 </div>
                 @endforeach
