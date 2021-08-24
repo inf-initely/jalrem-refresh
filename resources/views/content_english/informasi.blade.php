@@ -152,10 +152,10 @@
                             <div class="col-lg-4 mb-2">
                                 <div class="card no-border card-media">
                                     <div class="card-body row">
-                                        <div class="col-3 ">
-                                            <img src="assets/img/icon/jalur_1.svg" width="80%">
+                                        <div class="col-3 mt-3 text-center">
+                                            <img src="assets/img/icon/jalur_1.svg" height="40px">
                                         </div>
-                                        <div class="col-9 center-v">
+                                        <div class="col-9">
                                             <h3 class="judul-card-info">The Routes</h3>
                                             <p class="des-card-info">The Spice Routes covers various cultural routes</p>
                                         </div>
@@ -166,10 +166,10 @@
                             <div class="col-lg-4 mb-2">
                                 <div class="card no-border card-media">
                                     <div class="card-body row">
-                                        <div class="col-3 ">
-                                            <img src="assets/img/icon/jejak_1.svg" width="80%">
+                                        <div class="col-3 mt-3 text-center">
+                                            <img src="assets/img/icon/jejak_1.svg" height="32px">
                                         </div>
-                                        <div class="col-9 center-v">
+                                        <div class="col-9">
                                             <h3 class="judul-card-info">The Traces</h3>
                                             <p class="des-card-info">The traces display the cultural interactions in the past</p>
                                         </div>
@@ -180,10 +180,10 @@
                             <div class="col-lg-4 mb-2">
                                 <div class="card no-border card-media">
                                     <div class="card-body row">
-                                        <div class="col-3 ">
-                                            <img src="assets/img/icon/masa-depan_1.svg" width="80%">
+                                        <div class="col-3 mt-3 text-center">
+                                            <img src="assets/img/icon/masa-depan_1.svg" height="40px">
                                         </div>
-                                        <div class="col-9 center-v">
+                                        <div class="col-9">
                                             <h3 class="judul-card-info">The Future</h3>
                                             <p class="des-card-info">A means of reconstruction and revitalization of the maritime</p>
                                         </div>
