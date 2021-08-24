@@ -15,8 +15,8 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.0.5/flickity.min.css"> -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/css/swiper.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/hero-slider.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/jalur-rempah.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/hero-slider.css') }}?v={{ config('app.version') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/jalur-rempah.css') }}?v={{ config('app.version') }}">
     <title>Jalur Rempah</title>
     <link rel="shortcut icon" href="{{ asset('assets/img/logo/favicon.png') }}">
 </head>
