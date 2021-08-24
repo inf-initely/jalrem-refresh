@@ -100,12 +100,12 @@
                             <div class="col-lg-4 mb-2">
                                 <div class="card no-border card-media">
                                     <div class="card-body row">
-                                        <div class="col-3 ">
-                                            <img src="assets/img/icon/jalur_1.svg" width="80%">
+                                        <div class="col-3 mt-3 text-center ">
+                                            <img src="assets/img/icon/jalur_1.svg" height="40px">
                                         </div>
-                                        <div class="col-9 center-v">
-                                            <h3 class="judul-card-info">The Route</h3>
-                                            <p class="des-card-info">Looking back to the spice trade routes from one point to another.</p>
+                                        <div class="col-9">
+                                            <h3 class="judul-card-info">The Routes</h3>
+                                            <p class="des-card-info">The Spice Routes covers various cultural routes</p>
                                         </div>
                                     </div>
                                     <a href="#" class="stretched-link"></a>
@@ -114,12 +114,12 @@
                             <div class="col-lg-4 mb-2">
                                 <div class="card no-border card-media">
                                     <div class="card-body row">
-                                        <div class="col-3 ">
-                                            <img src="assets/img/icon/jejak_1.svg" width="80%">
+                                        <div class="col-3 mt-3 text-center ">
+                                            <img src="assets/img/icon/jejak_1.svg" height="32px">
                                         </div>
-                                        <div class="col-9 center-v">
+                                        <div class="col-9">
                                             <h3 class="judul-card-info">The Trace</h3>
-                                            <p class="des-card-info">Reviving the globalization trace of the spice trade in the past.</p>
+                                            <p class="des-card-info">The traces display the cultural interactions in the past</p>
                                         </div>
                                     </div>
                                     <a href="{{ route('tentangjejak') }}" class="stretched-link"></a>
@@ -128,12 +128,12 @@
                             <div class="col-lg-4 mb-2">
                                 <div class="card no-border card-media">
                                     <div class="card-body row">
-                                        <div class="col-3 ">
-                                            <img src="assets/img/icon/masa-depan_1.svg" width="80%">
+                                        <div class="col-3 mt-3 text-center ">
+                                            <img src="assets/img/icon/masa-depan_1.svg" height="40px">
                                         </div>
-                                        <div class="col-9 center-v">
+                                        <div class="col-9">
                                             <h3 class="judul-card-info">The Future</h3>
-                                            <p class="des-card-info">The excavation of the maritime ecosystem, emerging from traces in the past.</p>
+                                            <p class="des-card-info">A means of reconstruction and revitalization of the maritime</p>
                                         </div>
                                     </div>
                                     <a href="{{ route('tentangmasadepan') }}" class="stretched-link"></a>

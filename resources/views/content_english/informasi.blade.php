@@ -156,8 +156,8 @@
                                             <img src="assets/img/icon/jalur_1.svg" width="80%">
                                         </div>
                                         <div class="col-9 center-v">
-                                            <h3 class="judul-card-info">The Route</h3>
-                                            <p class="des-card-info">Looking back to the spice trade routes from one point to another, reviving its sundry stories, connecting its numerous traces.</p>
+                                            <h3 class="judul-card-info">The Routes</h3>
+                                            <p class="des-card-info">The Spice Routes covers various cultural routes</p>
                                         </div>
                                     </div>
                                     <a href="{{ route('tentangjalur') }}" class="stretched-link"></a>
@@ -170,8 +170,8 @@
                                             <img src="assets/img/icon/jejak_1.svg" width="80%">
                                         </div>
                                         <div class="col-9 center-v">
-                                            <h3 class="judul-card-info">The Trace</h3>
-                                            <p class="des-card-info">Reviving the globalization trace of the spice trade in the past that created cross-cultural relations.</p>
+                                            <h3 class="judul-card-info">The Traces</h3>
+                                            <p class="des-card-info">The traces display the cultural interactions in the past</p>
                                         </div>
                                     </div>
                                     <a href="{{ route('tentangjejak') }}" class="stretched-link"></a>
@@ -185,7 +185,7 @@
                                         </div>
                                         <div class="col-9 center-v">
                                             <h3 class="judul-card-info">The Future</h3>
-                                            <p class="des-card-info">The excavation of the maritime ecosystem, emerging from the routes and traces in the past.</p>
+                                            <p class="des-card-info">A means of reconstruction and revitalization of the maritime</p>
                                         </div>
                                     </div>
                                     <a href="{{ route('tentangmasadepan') }}" class="stretched-link"></a>
