@@ -6,11 +6,17 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "cyrildewit/eloquent-viewable": "^6.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.40",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+        "mews/captcha": "^3.2",
+        "realrashid/sweet-alert": "^4.0",
+        "spatie/laravel-sluggable": "^2.6",
+        "techguy/laravel-ckeditor": "^1.4",
+        "unisharp/laravel-filemanager": "^2.2"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
@@ -30,7 +36,10 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
-        }
+        },
+        "files": [
+            "app/helpers.php"
+        ]
     },
     "scripts": {
         "post-autoload-dump": [

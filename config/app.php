@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'id',
 
     /*
     |--------------------------------------------------------------------------
@@ -162,6 +162,9 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+        
+        CyrildeWit\EloquentViewable\EloquentViewableServiceProvider::class,
+
         /*
          * Package Service Providers...
          */
@@ -174,6 +177,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Mews\Captcha\CaptchaServiceProvider::class,
 
     ],
 
@@ -229,6 +233,24 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        'Captcha' => Mews\Captcha\Facades\Captcha::class,
+
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application Version
+    |--------------------------------------------------------------------------
+    |
+    | This value is the version of your application. This value is used when
+    | the framework needs to place the application's version in a notification
+    | or any other location as required by the application or its packages.
+    | x.0.0 - x is a major change. ex: refactor of system-flow/framework/api/design-system
+    | 1.x.0 - 1 is a minor change. ex: add functionality/feature/refactor
+    | 1.0.x - 0 is a patch change. ex: css-fix/hotfix/bugfix/add-libs/add-dependency-manager
+    | more info: https://semver.org/
+    */
+
+    'version' => env('APP_VERSION', '1.0.0'),
 
 ];

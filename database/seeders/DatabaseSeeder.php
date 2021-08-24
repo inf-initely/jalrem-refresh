@@ -13,6 +13,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        \App\Models\User::factory(1)->create();
+        \App\Models\Kontributor::factory(1)->create();
+        
+        // \App\Models\KategoriShow::factory(1)->create();
+        // \App\Models\KategoriShow::factory(1)->create([
+        //     'isi' => 'Tampilkan di menu Jejak'
+        // ]);
+        // \App\Models\KategoriShow::factory(1)->create([
+        //     'isi' => 'Tampilkan di menu Masa Depan'
+        // ]);
+        // \App\Models\KategoriShow::factory(1)->create([
+        //     'isi' => 'Tampilkan di menu Kerjasama'
+        // ]);
+        // \App\Models\KategoriShow::factory(1)->create([
+        //     'isi' => 'Tampilkan di menu Kegiatan'
+        // ]);
     }
 }

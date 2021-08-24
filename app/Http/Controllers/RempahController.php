@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+
+use App\Models\Rempah;
+
+class RempahController extends Controller
+{
+    public function show($rempahId)
+    {
+        abort(503);
+        $rempah = Rempah::findOrFail($rempahId);
+        $artikelRempah = $rempah->artikel;
+
+        return view('content.rempah_detail', compact('rempah', 'artikelRempah'));
+    }
+}
