@@ -29,7 +29,7 @@
           <div class="card mt-5 mb-2">
             <div class="card-body">
               <h3 class="sub-judul-form">Form Login</h3>
-              <p class="des-form-daftar">These contacts are used to inform about orders</p>
+              <p class="des-form-daftar">Fill the username & password below. Captcha used for authenticate you are not a robot.</p>
               @if (count($errors) > 0)
                 <div class="alert alert-danger" role="alert">
                   {{ $errors->first() }} 
