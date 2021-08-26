@@ -43,24 +43,20 @@ class PublikasiController extends Controller
 
         // UPLOAD THUMBNAIL
         $thumbnail = $request->file('thumbnail');
-        $tujuan_upload_file_thumbnail = storage_path('app/public/assets/publikasi/thumbnail');
-        $filename_thumbnail = uniqid() . '.' . $thumbnail->getClientOriginalExtension();
-        $thumbnail->move($tujuan_upload_file_thumbnail, $filename_thumbnail);
+        $filename_thumbnail = upload_file('app/public/assets/publikasi/thumbnail', $thumbnail);
 
         // UPLOAD FILE SLIDER UTAMA(NULLABLE)
         if( $request->has('slider') ) {
             $slider = $request->file('slider');
-            $tujuan_upload_file_slider = storage_path('app/public/assets/publikasi/slider');
-            $filename_slider = uniqid() . '.' . $slider->getClientOriginalExtension();
-            $slider->move($tujuan_upload_file_slider, $filename_slider);
+            $filename_slider = upload_file('app/public/assets/publikasi/slider', $slider);
         } else {
             $filename_slider = null;
         }
 
-        $slug_english = null;
-        if( $request->judul_english )
-            $slug_english = generate_slug($request->judul_english, '-');
-
+        $slug_english = ( $request->judul_english )
+            ? generate_slug($request->judul_english, '-')
+            : null;
+            
         $publikasi = Publikasi::create([
             'judul_indo' => $request->judul_indo,
             'konten_indo' => $request->konten_indo,
@@ -118,9 +114,7 @@ class PublikasiController extends Controller
             ]);
 
             $thumbnail = $request->file('thumbnail');
-            $tujuan_upload_file = storage_path('app/public/assets/publikasi/thumbnail');
-            $filename_thumbnail = uniqid() . '.' . $thumbnail->getClientOriginalExtension();
-            $thumbnail->move($tujuan_upload_file, $filename_thumbnail);
+            $filename_thumbnail = upload_file('app/public/assets/publikasi/thumbnail', $thumbnail);
 
             // unlink('assets/publikasi/thumbnail/' . $publikasi->thumbnail );
             File::delete(storage_path('app/public/assets/kerjasama/thumbnail', $publikasi->thumbnail));
@@ -131,9 +125,7 @@ class PublikasiController extends Controller
         // UPLOAD FILE SLIDER UTAMA(NULLABLE)
         if( $request->has('slider') ) {
             $slider = $request->file('slider');
-            $tujuan_upload_file_slider = storage_path('app/public/assets/publikasi/slider');
-            $filename_slider = uniqid() . '.' . $slider->getClientOriginalExtension();
-            $slider->move($tujuan_upload_file_slider, $filename_slider);
+            $filename_slider = upload_file('app/public/assets/publikasi/slider', $slider);
 
             File::delete(storage_path('app/public/assets/publikasi/slider', $publikasi->slider_file));            
         } else {

@@ -44,17 +44,14 @@ class AudioController extends Controller
         // UPLOAD FILE SLIDER UTAMA(NULLABLE)
         if( $request->has('slider') ) {
             $slider = $request->file('slider');
-            $tujuan_upload_file_slider = storage_path('app/public/assets/audio/slider');
-            $filename_slider = uniqid() . '.' . $slider->getClientOriginalExtension();
-            $slider->move($tujuan_upload_file_slider, $filename_slider);
+            $filename_slider = upload_file('app/public/assets/audio/slider', $slider);
         } else {
             $filename_slider = null;
         }
-
-        $slug_english = null;
-        if( $request->judul_english )
-            $slug_english = generate_slug($request->judul_english, '-');
-
+        
+        $slug_english = ( $request->judul_english )
+            ? generate_slug($request->judul_english, '-')
+            : null;
         $audio = Audio::create([
             'judul_indo' => $request->judul_indo,
             'konten_indo' => $request->konten_indo,
@@ -110,20 +107,18 @@ class AudioController extends Controller
         // UPLOAD FILE SLIDER UTAMA(NULLABLE)
         if( $request->has('slider') ) {
             $slider = $request->file('slider');
-            $tujuan_upload_file_slider = storage_path('app/public/assets/audio/slider');
-            $filename_slider = uniqid() . '.' . $slider->getClientOriginalExtension();
-            $slider->move($tujuan_upload_file_slider, $filename_slider);
+            $filename_slider = upload_file('app/public/assets/audio/slider', $slider);
 
             File::delete(storage_path('app/public/assets/audio/slider', $audio->slider_file));            
         } else {
             $filename_slider = $audio->slider_file;
         }
 
-        $slug_english = null;
-        if( !$audio->slug_english ) {
-            $slug_english = generate_slug($request->judul_english, '-');
-        }
         
+        $slug_english = ( !$audio->slug_english )
+            ? generate_slug($request->judul_english, '-')
+            : null;
+
         $audio->update([
             'judul_indo' => $request->judul_indo,
             'konten_indo' => $request->konten_indo,

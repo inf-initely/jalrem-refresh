@@ -64,11 +64,6 @@ class KontributorController extends Controller
 
     public function update(Request $request, $kontributorId)
     {
-    //    $this->validate($request, [
-    //         'nama_rempah' => 'required',
-    //         'keterangan_rempah' => 'required'
-    //     ]); 
-        
         $kontributor = Kontributor::findOrFail($kontributorId);
         $kontributor->update([
             'nama' => $request->nama_penulis,
