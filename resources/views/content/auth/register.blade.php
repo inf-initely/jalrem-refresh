@@ -22,7 +22,7 @@
         </div>
         <div class="col-lg-5 wrap-form-daftar center-v">
           <a href="index.html">
-            <img class="logo-daftar mb-4" src="assets/img/logo-footer.png">
+            <img class="logo-daftar mb-4" src="assets/img/logo/logo-2.png">
           </a>
           <h1>Pembuatan Akun</h1>
           <p class="des-form-daftar">Fill in the data for profile. It will take a couple of minutes. You only need a passport</p>
