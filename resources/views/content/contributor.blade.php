@@ -18,7 +18,7 @@
   <nav class="navbar navbar-light bg-light bg-gradient-primary sticky-top">
     <div class="container">
       <a href="{{ route('home') }}" class="navbar-brand">
-        <img id="logoNavbar" src="assets/kontributor/img/logo/logo-navbar.png" height="50px">
+          <img src="{{ asset('assets/img/logo/logo-3.png') }}" height="50px">
       </a>
       <div class="d-flex">
         <h2 class="sub-judul"><i class="fa fa-edit"></i> Kontributor</h2>
