@@ -11,6 +11,7 @@ use App\Models\Video;
 use App\Models\Publikasi;
 use App\Models\Audio;
 
+
 class KontenController extends Controller
 {
     public function index()
@@ -28,4 +29,5 @@ class KontenController extends Controller
 
         return view('content.konten', compact('artikel', 'foto', 'video', 'publikasi', 'audio', 'artikelSlider'));
     }
+
 }

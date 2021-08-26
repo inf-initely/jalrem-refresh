@@ -14,15 +14,12 @@ class JalurController extends Controller
     {
         abort(503);
         $kategori = KategoriShow::where('isi', 'jalur')->first();
-        if( $kategori != null ) {
-            $artikel = $kategori->artikel;
-        } else {
-            $artikel = [];
-        }
+        $artikel = ( $kategori != null )
+            ? $kategori->artikel
+            : [];
 
-        if( Session::get('lg') == 'en' ) {
+        if( Session::get('lg') == 'en' )
             return view('content_english.tentang_jalur', compact('artikel'));
-        }
 
         return view('content.tentang_jalur', compact('artikel'));
     }

@@ -30,3 +30,14 @@ if( !function_exists('generate_slug') ) {
         return $text;
     }
 }
+
+if( !function_exists('upload_file') ) {
+    function upload_file($path, $file)
+    {
+        $tujuan_upload_file = storage_path($path);
+        $filename = uniqid() . '.' . $file->getClientOriginalExtension();
+        $file->move($tujuan_upload_file, $filename);
+
+        return $filename;
+    }
+}
