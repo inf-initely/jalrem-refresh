@@ -18,6 +18,11 @@
               <section id="desTentang">
                 {!! $kegiatan->konten_english ?? $kegiatan->konten_indo !!}
               </section>
+              @php
+                  $konten_name = 'event';
+                  $konten = $kegiatan;
+              @endphp
+              @include('partials.social-share')
             </div>
           </div>
         </div>

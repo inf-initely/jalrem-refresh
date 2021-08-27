@@ -140,7 +140,7 @@ Route::get('/publikasi/{slug}', [PublikasiController::class, 'show'])->name('pub
 Route::get('/kegiatan/{slug}', [KegiatanController::class, 'show'])->name('event_detail');
 Route::get('/kerjasama/{slug}', [KerjasamaController::class, 'show'])->name('kerjasama_detail');
 
-Route::get('/cari-artikel', [SearchController::class, 'search'])->name('article_search');
+Route::get('/cari', [SearchController::class, 'search'])->name('article_search');
 
 Route::get('/informasi', [InformasiController::class, 'index'])->name('informasi');
 Route::get('/semua-kerjasama', [KerjasamaController::class, 'index'])->name('kerjasama');

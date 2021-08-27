@@ -20,6 +20,11 @@
               <article id="txtMedia" class="mt-3">
                 {!! $kerjasama->konten_indo !!}
               </article>
+              @php
+                  $konten_name = 'kerjasama';
+                  $konten = $kerjasama;
+              @endphp
+              @include('partials.social-share')
             </article>
           </div>
         </div>

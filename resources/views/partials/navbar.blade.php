@@ -119,12 +119,12 @@
             About
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            {{-- <li><a class="dropdown-item" href="{{ route('tentangjalur') }}">The Route</a></li>
+            <li><a class="dropdown-item" href="{{ route('tentangjalur') }}">The Route</a></li>
             <li><a class="dropdown-item" href="{{ route('tentangjejak') }}">The Trace</a></li>
-            <li><a class="dropdown-item" href="{{ route('tentangmasadepan') }}">The Future</a></li> --}}
-            <li><a class="dropdown-item" href="#">The Route</a></li>
+            <li><a class="dropdown-item" href="{{ route('tentangmasadepan') }}">The Future</a></li>
+            {{-- <li><a class="dropdown-item" href="#">The Route</a></li>
             <li><a class="dropdown-item" href="#">The Trace</a></li>
-            <li><a class="dropdown-item" href="#">The Future</a></li>
+            <li><a class="dropdown-item" href="#">The Future</a></li> --}}
           </ul>
         </li>
         <li class="nav-item">
@@ -207,12 +207,12 @@
             About
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            {{-- <li><a class="dropdown-item" href="{{ route('tentangjalur') }}">The Route</a></li>
+            <li><a class="dropdown-item" href="{{ route('tentangjalur') }}">The Route</a></li>
             <li><a class="dropdown-item" href="{{ route('tentangjejak') }}">The Trace</a></li>
-            <li><a class="dropdown-item" href="{{ route('tentangmasadepan') }}">The Future</a></li> --}}
-            <li><a class="dropdown-item" href="#">The Route</a></li>
+            <li><a class="dropdown-item" href="{{ route('tentangmasadepan') }}">The Future</a></li>
+            {{-- <li><a class="dropdown-item" href="#">The Route</a></li>
             <li><a class="dropdown-item" href="#">The Trace</a></li>
-            <li><a class="dropdown-item" href="#">The Future</a></li>
+            <li><a class="dropdown-item" href="#">The Future</a></li> --}}
           </ul>
         </li>
         <li class="nav-item">
@@ -378,12 +378,12 @@
             Tentang
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            {{-- <li><a class="dropdown-item" href="{{ route('tentangjalur') }}">Jalur</a></li>
+            <li><a class="dropdown-item" href="{{ route('tentangjalur') }}">Jalur</a></li>
             <li><a class="dropdown-item" href="{{ route('tentangjejak') }}">Jejak</a></li>
-            <li><a class="dropdown-item" href="{{ route('tentangmasadepan') }}">Masa Depan</a></li> --}}
-            <li><a class="dropdown-item" href="#">Jalur</a></li>
+            <li><a class="dropdown-item" href="{{ route('tentangmasadepan') }}">Masa Depan</a></li>
+            {{-- <li><a class="dropdown-item" href="#">Jalur</a></li>
             <li><a class="dropdown-item" href="#">Jejak</a></li>
-            <li><a class="dropdown-item" href="#">Masa Depan</a></li>
+            <li><a class="dropdown-item" href="#">Masa Depan</a></li> --}}
           </ul>
         </li>
         <li class="nav-item">
@@ -466,12 +466,12 @@
             Tentang
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            {{-- <li><a class="dropdown-item" href="{{ route('tentangjalur') }}">Jalur</a></li>
+            <li><a class="dropdown-item" href="{{ route('tentangjalur') }}">Jalur</a></li>
             <li><a class="dropdown-item" href="{{ route('tentangjejak') }}">Jejak</a></li>
-            <li><a class="dropdown-item" href="{{ route('tentangmasadepan') }}">Masa Depan</a></li> --}}
-            <li><a class="dropdown-item" href="#">Jalur</a></li>
+            <li><a class="dropdown-item" href="{{ route('tentangmasadepan') }}">Masa Depan</a></li>
+            {{-- <li><a class="dropdown-item" href="#">Jalur</a></li>
             <li><a class="dropdown-item" href="#">Jejak</a></li>
-            <li><a class="dropdown-item" href="#">Masa Depan</a></li>
+            <li><a class="dropdown-item" href="#">Masa Depan</a></li> --}}
           </ul>
         </li>
         <li class="nav-item">

@@ -12,7 +12,6 @@ class JalurController extends Controller
 {
     public function index()
     {
-        abort(503);
         $kategori = KategoriShow::where('isi', 'jalur')->first();
         $artikel = ( $kategori != null )
             ? $kategori->artikel

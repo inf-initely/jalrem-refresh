@@ -27,6 +27,11 @@
             <article id="txtMedia" class="mt-4">
               {!! $audio->konten_english ?? $audio->konten_indo !!}
             </article>
+            @php
+                $konten_name = 'audio';
+                $konten = $audio;
+            @endphp
+            @include('partials.social-share')
           </article>
         </div>
       </div>

@@ -12,7 +12,6 @@ class JejakController extends Controller
 {
     public function index()
     {
-        abort(503);
         $kategori = KategoriShow::where('isi', 'jejak')->first();
         $artikel = ( $kategori != null )
             ? $kategori->artikel

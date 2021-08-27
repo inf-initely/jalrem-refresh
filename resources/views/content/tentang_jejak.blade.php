@@ -74,11 +74,13 @@
                                             @endif
                                             <h3 class="judul-artikel judul-artikel-tentang"><a href="{{ route('article_detail', $a->slug) }}" class="text-decoration-none clr-black">{{ $a->judul_indo }}</a> </h3>
                                             <!-- <p class="des-artikel des-artikel-tentang minimize">{!! Str::limit($a->konten_indo, 60, $end='...') !!}</p> -->
+                                            @if( $a->rempahs != null )
                                             <div class="wrap-tag-rempah">
-                                                @foreach( $a->rempahs as $r )
-                                                <a href="{{ route('rempah_detail', $r->id) }}" class="text-danger text-decoration-none">{{ $r->jenis_rempah }}</a>|
-                                                @endforeach
+                                                    @foreach( $a->rempahs as $r )
+                                                    <a href="{{ route('rempah_detail', $r->id) }}" class="text-danger text-decoration-none">{{ $r->jenis_rempah }}</a>|
+                                                    @endforeach
                                             </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

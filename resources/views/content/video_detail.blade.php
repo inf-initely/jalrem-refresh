@@ -39,6 +39,11 @@
             <article id="txtMedia" class="mt-4">
               {!! $video->konten_indo !!}
             </article>
+            @php
+                $konten_name = 'video';
+                $konten = $video;
+            @endphp
+            @include('partials.social-share')
           </article>
         </div>
       </div>

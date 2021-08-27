@@ -36,7 +36,7 @@ class SearchController extends Controller
         })->get();
 
         $artikel = $this->paginate($artikel->merge($publikasi)->merge($kegiatan)->merge($kerjasama), 9);
-        $artikel->setPath('cari-artikel?search=' . $search);
+        $artikel->setPath('cari?search=' . $search);
 
 
         if( Session::get('lg') == 'en' )
