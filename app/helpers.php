@@ -41,3 +41,10 @@ if( !function_exists('upload_file') ) {
         return $filename;
     }
 }
+
+if( !function_exists('get_asset_path') ) {
+    function get_asset_path($table, $image, $type = 'thumbnail')
+    {
+        return 'storage/assets/' . substr_replace($table ,"",-1) . '/' .$type. '/' . $image;
+    }
+}

@@ -13,9 +13,8 @@ class PublikasiController extends Controller
     {
         $publikasi = Publikasi::where('status', 'publikasi')->paginate(9);
 
-        if( Session::get('lg') == 'en' ) {
+        if( Session::get('lg') == 'en' )
             return view('content_english.publications', compact('publikasi'));
-        }
 
         return view('content.publications', compact('publikasi'));
     }

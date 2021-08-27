@@ -32,6 +32,7 @@ use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\KerjasamaController;
 use App\Http\Controllers\RempahController;
 use App\Http\Controllers\KontributorController;
+use App\Http\Controllers\SearchController;
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CaptchaServiceController;
@@ -139,7 +140,7 @@ Route::get('/publikasi/{slug}', [PublikasiController::class, 'show'])->name('pub
 Route::get('/kegiatan/{slug}', [KegiatanController::class, 'show'])->name('event_detail');
 Route::get('/kerjasama/{slug}', [KerjasamaController::class, 'show'])->name('kerjasama_detail');
 
-Route::get('/cari-artikel', [ArtikelController::class, 'search'])->name('article_search');
+Route::get('/cari-artikel', [SearchController::class, 'search'])->name('article_search');
 
 Route::get('/informasi', [InformasiController::class, 'index'])->name('informasi');
 Route::get('/semua-kerjasama', [KerjasamaController::class, 'index'])->name('kerjasama');
