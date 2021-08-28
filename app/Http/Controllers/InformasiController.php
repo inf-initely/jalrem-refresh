@@ -15,8 +15,8 @@ class InformasiController extends Controller
     {
         $kerjasama = Kerjasama::where('status', 'publikasi')->take(6)->get();
 
-        $kegiatan_saat_ini = $this->getQueryPublication('>=');
-        $kegiatan_sebelumnya = $this->getQueryPublication('<');
+        $kegiatan_saat_ini = $this->getQueryPublication('>');
+        $kegiatan_sebelumnya = $this->getQueryPublication('<=');
 
         if( Session::get('lg') == 'en' )
             return view('content_english.informasi', compact('kegiatan_saat_ini', 'kegiatan_sebelumnya', 'kerjasama'));
