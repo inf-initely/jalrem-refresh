@@ -6,7 +6,7 @@
     <div class="text-hero-2">
       <div class="">
         <div class="col-lg-12 text-center">
-          <h1>Spice Routes Events</h1>
+          <h1>Information</h1>
         </div>
       </div>
     </div>
@@ -102,7 +102,7 @@
               </div>
             </div>
             @endforeach
-            
+
             </div>
           </div>
         </div>
