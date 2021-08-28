@@ -17,7 +17,7 @@
         <div class="container" id="artikel">
           <header class="row justify-content-start mb-2">
             <div class="col-md-6">
-              <h2 class="sub-judul">Kegiatan Saat Ini</h2>
+              <h2 class="sub-judul">Kegiatan Terkini</h2>
             </div>
             <div class="col-md-6 center-v text-end">
               <a href="{{ route('events') }}" class="btn btn-outline-danger">Lihat Semua</a>
@@ -102,7 +102,7 @@
               </div>
             </div>
             @endforeach
-            
+
             </div>
           </div>
         </div>

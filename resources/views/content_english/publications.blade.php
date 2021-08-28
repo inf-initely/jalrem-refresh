@@ -17,9 +17,6 @@
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-lg-10">
-              <header class="text-center">
-                <h2 class="sub-judul">Spice Routes Publication</h2>
-              </header>
               <section id="tabLine">
                 <div class="row justify-content-center">
                   @foreach( $publikasi as $p )

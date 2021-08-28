@@ -8,7 +8,7 @@
           <div class="row justify-content-center">
             <div class="col-lg-12">
               <header class="mb-2">
-                <h2 class="sub-judul text-center">Latest</h2>
+                <h2 class="sub-judul text-center">The Latest Contents</h2>
               </header>
               <div class="feature">
                 @foreach( $artikelSlider as $a )
@@ -58,7 +58,7 @@
           <div class="row justify-content-center">
             <div class="col-lg-12">
               <header class="text-center">
-                <h2 class="sub-judul">Spice Routes Content</h2>
+                <h2 class="sub-judul">Contents</h2>
               </header>
               <section id="tabLine">
                 <ul class="nav nav-pills mb-3 nav-tabline justify-content-center" id="pills-tab" role="tablist">
@@ -130,7 +130,7 @@
                   </div>
                   <div class="tab-pane fade" id="tab-video" role="tabpanel" aria-labelledby="tab-video-tab">
                     <div class="row justify-content-center">
-                      @foreach( $video as $v ) 
+                      @foreach( $video as $v )
                       <div class="col-md-12 col-lg-4 mb-4">
                         <div class="card no-border card-artikel">
                           <div class="video media-video" data-video-id="{{ $v->youtube_key }}">
@@ -228,7 +228,7 @@
       }
     });
     $(window).scroll(function() {
-    
+
       if ($(window).width() >= 1000) {
         var scroll = $(window).scrollTop();
         //>=, not <=
@@ -244,14 +244,14 @@
         $(".navbar").addClass("bg-nav-baru");
         $(".navbar").removeClass("bg-trans");
       }
-    
+
     }); //missing );
     </script>
     <script>
     var tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";
     document.body.appendChild(tag);
-    
+
     // When the YouTube API code loads, it calls this function, so it must be global
     // and it must be named exactly onYouTubeIframeAPIReady.
     window.onYouTubeIframeAPIReady = function() {
@@ -260,7 +260,7 @@
       videoModules = Array.prototype.slice.call(videoModules);
       videoModules.forEach(initializeVideoModule);
     }
-    
+
     function initializeVideoModule(videoModule) {
       var player = new YT.Player(videoModule.querySelector('.video-placeholder'), {
         videoId: videoModule.dataset.videoId,
@@ -286,20 +286,20 @@
     </script>
     <script>
     $(function() {
-    
+
       var minimized_elements = $('p.minimize');
-    
+
       minimized_elements.each(function() {
         var t = $(this).text();
         if (t.length < 90) return;
-    
+
         $(this).html(
           t.slice(0, 90) + '<span>...' +
           '<span style="display:none;">' + t.slice(90, t.length)
         );
-    
+
       });
-    
+
     });
     </script>
     <script>
