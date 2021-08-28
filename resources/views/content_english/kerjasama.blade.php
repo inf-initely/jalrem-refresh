@@ -22,7 +22,7 @@
                         <div class="card no-border card-artikel">
                             <img src="{{ asset('storage/assets/kerjasama/thumbnail/' . $k->thumbnail) }}" class="card-img-top img-thumbnail" alt="...">
                             <div class="card-body">
-                                <h3 class="card-title judul-artikel">{{ $k->judul_english ?? $k->judul_indo }}</h3>
+                                <h3 class="card-title judul-artikel">{{ $k->judul_english }}</h3>
                                 {{-- <p class="card-text des-artikel minimize">{!! Str::limit($k->konten_indo, 50, $end='...') !!}</p> --}}
                                 <p class="penulis-artikel">
                                     {{ $k->penulis != 'admin' ? $k->kontributor_relasi->nama : 'admin' }}

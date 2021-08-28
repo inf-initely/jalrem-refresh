@@ -12,7 +12,7 @@
         <div class="row justify-content-center">
           <article class="col-lg-8">
             <header>
-              <h2 class="sub-judul mb-4" id="judulMedia">{{ $audio->judul_english ?? $audio->judul_indo }}</h2>
+              <h2 class="sub-judul mb-4" id="judulMedia">{{ $audio->judul_english }}</h2>
               <p class="penulis-artikel" id="authorMedia">
                 {{ $audio->penulis != 'admin' ? $audio->kontributor_relasi->nama : 'admin' }}
               </p>
@@ -25,7 +25,7 @@
             <main></main>
             <section></section>
             <article id="txtMedia" class="mt-4">
-              {!! $audio->konten_english ?? $audio->konten_indo !!}
+              {!! $audio->konten_english !!}
             </article>
             @php
                 $konten_name = 'audio';

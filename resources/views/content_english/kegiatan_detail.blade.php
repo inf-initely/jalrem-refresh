@@ -8,7 +8,7 @@
           <div class="row justify-content-center">
             <div class="col-lg-8">
               <header>
-                <h2 class="sub-judul mb-4">{{ $kegiatan->judul_english ?? $kegiatan->judul_indo }}</h2>
+                <h2 class="sub-judul mb-4">{{ $kegiatan->judul_english }}</h2>
                 <div class="info-penulis">
                   <span class="txt-penulis" class="mr-3" id="penulis" name="penulis">{{ $kegiatan->penulis != 'admin' ? $kegiatan->kontributor_relasi->nama : 'admin' }}</span> |
                   <span class="txt-penulis" id="tglArtikel" name="tglArtikel">{{ $kegiatan->created_at->isoFormat('D MMMM Y') }}</span>
@@ -16,7 +16,7 @@
               </header>
               <img src="{{ asset('storage/assets/kegiatan/thumbnail/' . $kegiatan->thumbnail) }}" width="100%">
               <section id="desTentang">
-                {!! $kegiatan->konten_english ?? $kegiatan->konten_indo !!}
+                {!! $kegiatan->konten_english !!}
               </section>
               @php
                   $konten_name = 'event';
@@ -47,7 +47,7 @@
                         </div>
                         <div class="col-6 center-v">
                           <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">{{ $k->created_at->isoFormat('D MMMM Y'); }}</p>
-                          <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">{{ $k->judul_english ?? $k->judul_indo }}</h3>
+                          <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">{{ $k->judul_english }}</h3>
                         </div>
                       </div>
                       <a href="{{ route('event_detail', $k->slug_english ?? $k->slug) }}" class="stretched-link"></a>

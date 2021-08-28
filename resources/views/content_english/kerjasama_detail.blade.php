@@ -8,7 +8,7 @@
           <div class="row justify-content-center">
             <article class="col-lg-8">
               <header>
-                <h2 class="sub-judul mb-4" id="judulMedia">{{ $kerjasama->judul_english ?? $kerjasama->judul_indo }}</h2>
+                <h2 class="sub-judul mb-4" id="judulMedia">{{ $kerjasama->judul_english }}</h2>
                 <p class="penulis-artikel" id="authorMedia">
                     {{ $kerjasama->penulis != 'admin' ? $kerjasama->kontributor_relasi->nama : 'admin' }}
                 </p>
@@ -18,7 +18,7 @@
               </header>
               <img class="mb-3 mt-3" src="{{ asset('storage/assets/kerjasama/thumbnail/' . $kerjasama->thumbnail) }}" width="100%">
               <article id="txtMedia" class="mt-3">
-                {!! $kerjasama->konten_english ?? $kerjasama->konten_indo !!}
+                {!! $kerjasama->konten_english !!}
               </article>
               @php
                   $konten_name = 'kerjasama';

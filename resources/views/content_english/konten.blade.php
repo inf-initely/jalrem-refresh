@@ -16,7 +16,7 @@
                   <div class="card no-border card-artikel no-background">
                     <img src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}" class="card-img-top img-thumbnail-slider" alt="...">
                     <div class="card-body">
-                      <h3 class="card-title judul-artikel">{{ $a->judul_english ?? $a->judul_indo }}</h3>
+                      <h3 class="card-title judul-artikel">{{ $a->judul_english }}</h3>
                     </div>
                     <a href="{{ route('article_detail', $a->slug_english ?? $a->slug) }}" class="stretched-link"></a>
                   </div>
@@ -41,7 +41,7 @@
             <div class="col-md-6 col-lg-4 mb-4">
               <div class="card no-border no-background card-body">
                 <img src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}" class="card-img-top mb-4" alt="...">
-                <h3 class="card-title judul-artikel">{{ $a->judul_indo }}</h3>
+                <h3 class="card-title judul-artikel" }}</h3>
                 <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p>
                 <p class="penulis-artikel">{{ $a->penulis }}</p>
                 <p class="tgl-artikel">{{ $a->created_at->isoFormat('D MMMM Y'); }}</p>
@@ -86,7 +86,7 @@
                         <div class="card no-border card-artikel">
                           <img src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}" class="card-img-top img-thumbnail" alt="...">
                           <div class="card-body">
-                            <h3 class="card-title judul-artikel">{{ $a->judul_english ?? $a->judul_indo }}</h3>
+                            <h3 class="card-title judul-artikel">{{ $a->judul_english }}</h3>
                             {{-- <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p> --}}
                             <p class="penulis-artikel">
                               {{ $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin' }}
@@ -195,7 +195,7 @@
                       @foreach( $audio as $a )
                       <div class="col-md-6 col-lg-4 mb-4">
                         <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/{{ $a->cloud_key }}&color=%231a150d&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-                        <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="#" title="" target="_blank" style="color: #cccccc; text-decoration: none;"></a> · <a href="{{ route('audio_detail', $a->slug_english ?? $a->slug) }}" title="{{ $a->judul_english ?? $a->judul_indo }}" style="color: #cccccc; text-decoration: none;">{{ $a->judul_english ?? $a->judul_indo }}</a></div>
+                        <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="#" title="" target="_blank" style="color: #cccccc; text-decoration: none;"></a> · <a href="{{ route('audio_detail', $a->slug_english ?? $a->slug) }}" title="{{ $a->judul_english }}" style="color: #cccccc; text-decoration: none;">{{ $a->judul_english }}</a></div>
                         <main></main>
                       </div>
                       @endforeach
