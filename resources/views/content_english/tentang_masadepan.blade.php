@@ -59,6 +59,9 @@
                                         </div>
                                     </div>
                                     @endforeach
+                                    <div class="d-flex justify-content-center mt-2">
+                                        {!! $artikel->links() !!}
+                                    </div>
                                 </div>
                             </div>
                         </div>
