@@ -172,6 +172,13 @@ $(document).ready(function() {
     speed: 300,
     slidesToShow: 1,
     slidesToScroll: 1,
+    responsive: [{
+        breakpoint: 500,
+        settings: {
+          arrows: false,
+
+        }
+    }]
   });
 });
 </script>
