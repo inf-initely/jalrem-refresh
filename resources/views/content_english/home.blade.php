@@ -224,7 +224,7 @@
             </section>
             <section class="offset-md-1 col-md-5">
               <div class="row">
-                <div class="col-md-6">
+                <div class="col-6 col-md-6">
                   <div class="card no-border card-media card-media-1">
                     <div class="card-body text-center">
                       <img src="assets/img/icon-image.png" width="40%">
@@ -233,7 +233,7 @@
                     <a href="{{ route('photos') }}" class="stretched-link"></a>
                   </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-6 col-md-6">
                   <div class="card no-border card-media card-media-2">
                     <div class="card-body text-center">
                       <img src="assets/img/icon-publication.png" width="40%">
@@ -244,7 +244,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-6">
+                <div class="col-6 col-md-6">
                   <div class="card no-border card-media card-media-3">
                     <div class="card-body text-center">
                       <img src="assets/img/icon-video.png" width="40%">
@@ -253,7 +253,7 @@
                     <a href="{{ route('videos') }}" class="stretched-link"></a>
                   </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-6 col-md-6">
                   <div class="card no-border card-media card-media-4">
                     <div class="card-body text-center">
                       <img src="assets/img/icon-sound.png" width="40%">
