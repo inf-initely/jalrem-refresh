@@ -44,16 +44,14 @@ class VideoController extends Controller
         // UPLOAD FILE SLIDER UTAMA(NULLABLE)
         if( $request->has('slider') ) {
             $slider = $request->file('slider');
-            $tujuan_upload_file_slider = storage_path('app/public/assets/video/slider');
-            $filename_slider = uniqid() . '.' . $slider->getClientOriginalExtension();
-            $slider->move($tujuan_upload_file_slider, $filename_slider);
+            $filename_slider = upload_file('app/public/assets/video/slider', $slider);
         } else {
             $filename_slider = null;
         }
 
-        $slug_english = null;
-        if( $request->judul_english )
-            $slug_english = generate_slug($request->judul_english, '-');
+        $slug_english = ( $request->judul_english )
+            ? $slug_english = generate_slug($request->judul_english, '-')
+            : null;
 
         $video = Video::create([
             'judul_indo' => $request->judul_indo,
@@ -110,19 +108,16 @@ class VideoController extends Controller
         // UPLOAD FILE SLIDER UTAMA(NULLABLE)
         if( $request->has('slider') ) {
             $slider = $request->file('slider');
-            $tujuan_upload_file_slider = storage_path('app/public/assets/video/slider');
-            $filename_slider = uniqid() . '.' . $slider->getClientOriginalExtension();
-            $slider->move($tujuan_upload_file_slider, $filename_slider);
+            $filename_slider = upload_file('app/public/assets/video/slider', $slider);
 
             File::delete(storage_path('app/public/assets/video/slider', $video->slider_file));            
         } else {
             $filename_slider = $video->slider_file;
         }
 
-        $slug_english = null;
-        if( !$video->slug_english ) {
-            $slug_english = generate_slug($request->judul_english, '-');
-        }
+        $slug_english = ( !$video->slug_english )
+            ? generate_slug($request->judul_english, '-')
+            : null;
         
         $video->update([
             'judul_indo' => $request->judul_indo,

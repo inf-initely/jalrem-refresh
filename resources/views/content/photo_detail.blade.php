@@ -31,6 +31,11 @@
               <article id="txtMedia">
                 {!! $foto->konten_indo !!}
               </article>
+              @php
+                  $konten_name = 'photo';
+                  $konten = $foto;
+              @endphp
+              @include('partials.social-share')
             </article>
           </div>
         </div>

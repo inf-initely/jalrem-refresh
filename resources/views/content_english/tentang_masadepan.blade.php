@@ -46,12 +46,22 @@
                                                 <div class="col-7 center-v">
                                                     <h3 class="judul-artikel judul-artikel-tentang">{{ $a->judul_english ?? $a->judul_indo }}</h3>
                                                     <!-- <p class="des-artikel des-artikel-tentang minimize">{!! Str::limit($a->konten_english ?? $a->konten_indo, 50, $end='...') !!}</p> -->
+                                                    @if( $a->rempahs != null )
+                                                        <div class="wrap-tag-rempah">
+                                                                @foreach( $a->rempahs as $r )
+                                                                <a href="{{ route('rempah_detail', $r->id) }}" class="text-danger text-decoration-none">{{ $r->jenis_rempah }}</a>|
+                                                                @endforeach
+                                                        </div>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <a href="{{ route('article_detail', $a->slug_english ?? $a->slug) }}" class="stretched-link"></a>
                                         </div>
                                     </div>
                                     @endforeach
+                                    <div class="d-flex justify-content-center mt-2">
+                                        {!! $artikel->links() !!}
+                                    </div>
                                 </div>
                             </div>
                         </div>

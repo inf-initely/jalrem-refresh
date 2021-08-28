@@ -18,6 +18,11 @@
               <article id="isiKonten">
                 {!! $kegiatan->konten_indo !!}
               </article>
+              @php
+                  $konten_name = 'event';
+                  $konten = $kegiatan;
+              @endphp
+              @include('partials.social-share')
             </article>
           </div>
         </div>

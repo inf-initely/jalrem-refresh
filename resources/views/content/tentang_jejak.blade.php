@@ -20,22 +20,21 @@
             <div class="col-11 col-md-10 col-lg-12">
                 <div class="mb-3 row wrap-select">
                     <div class="col-lg-5 mb-3">
-                        <select id="selectLokasi" class="form-select" aria-label="Default select example">
-                            <option selected>Pilih Kategori</option>
-                            <option value="wilayah">Wilayah</option>
-                            <option value="rempah">Jenis Rempah</option>
+                        <select id="selectLokasiRempah" class="form-select" aria-label="Default select example">
+                            <option>Pilih Kategori</option>
+                            <option {{ Request::get('wilayah') ? 'selected' : '' }} value="wilayah">Wilayah</option>
+                            <option {{ Request::get('rempah') ? 'selected' : '' }} value="rempah">Jenis Rempah</option>
                         </select>
                     </div>
                     <div class="col-lg-5 mb-3">
-                        <select id="selectRempah" class="form-select" aria-label="Default select example">
-                            <option selected>Pilih Jenis Rempah</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                        <select id="lokasiRempah" class="form-select" aria-label="Default select example">
+                            @foreach( $value_type as $v )
+                                <option {{ Request::get('rempah') == $v->id || Request::get('wilayah') == $v->id ? 'selected' : '' }} value="{{ $v->id }}">{{ $v->getTable() == 'rempahs' ? $v->jenis_rempah : $v->nama_lokasi }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="col-lg-2 wrap-btn-select">
-                        <button id="btnSelect" class="btn btn-danger btn-select" type="button" id="button-addon2">Telusuri</button>
+                        <button id="btnSelect" class="btn btn-danger btn-select telusuri"">Telusuri</button>
                     </div>
                 </div>
             </div>
@@ -74,18 +73,21 @@
                                             @endif
                                             <h3 class="judul-artikel judul-artikel-tentang"><a href="{{ route('article_detail', $a->slug) }}" class="text-decoration-none clr-black">{{ $a->judul_indo }}</a> </h3>
                                             <!-- <p class="des-artikel des-artikel-tentang minimize">{!! Str::limit($a->konten_indo, 60, $end='...') !!}</p> -->
+                                            @if( $a->rempahs != null )
                                             <div class="wrap-tag-rempah">
-                                                @foreach( $a->rempahs as $r )
-                                                <a href="{{ route('rempah_detail', $r->id) }}" class="text-danger text-decoration-none">{{ $r->jenis_rempah }}</a>|
-                                                @endforeach
+                                                    @foreach( $a->rempahs as $r )
+                                                    <a href="{{ route('rempah_detail', $r->id) }}" class="text-danger text-decoration-none">{{ $r->jenis_rempah }}</a>|
+                                                    @endforeach
                                             </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             @endforeach
-
-                        </div>
+                            <div class="d-flex justify-content-center mt-2">
+                                {!! $artikel->links() !!}
+                            </div>
                     </div>
                 </div>
             </div>
@@ -153,16 +155,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 <script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDH9juhlGHJLtBCZMmO0Q54DwryFcWNs40&callback=initMap&libraries=&v=weekly" async></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{ env('GMAPS_KEY') }}&callback=initMap&libraries=&v=weekly" async></script>
 <script>
     function initMap() {
         const map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 5,
-            center: {
-                lat: -0.8917,
-                lng: 119.8707
-            },
-            mapId: 'ceda280a7ce6c183',
+        zoom: 5,
+        center: { lat: -1.500000, lng: 127.750000 },
+        mapId: 'ceda280a7ce6c183',
         });
         // Create an array of alphabetical characters used to label the markers.
         const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -171,110 +170,42 @@
         // create an array of markers based on a given "locations" array.
         // The map() method here has nothing to do with the Google Maps API.
         const markers = locations.map((location, i) => {
-            return new google.maps.Marker({
-                position: location,
-                label: labels[i % labels.length],
-            });
+        return new google.maps.Marker({
+            position: location,
+            label: labels[i % labels.length],
+        });
         });
         // Add a marker clusterer to manage the markers.
         new MarkerClusterer(map, markers, {
-            imagePath: "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
+        imagePath: "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
         });
     }
-    const locations = [{
-            lat: -31.56391,
-            lng: 147.154312
-        },
-        {
-            lat: -33.718234,
-            lng: 150.363181
-        },
-        {
-            lat: -33.727111,
-            lng: 150.371124
-        },
-        {
-            lat: -33.848588,
-            lng: 151.209834
-        },
-        {
-            lat: -33.851702,
-            lng: 151.216968
-        },
-        {
-            lat: -34.671264,
-            lng: 150.863657
-        },
-        {
-            lat: -35.304724,
-            lng: 148.662905
-        },
-        {
-            lat: -36.817685,
-            lng: 175.699196
-        },
-        {
-            lat: -36.828611,
-            lng: 175.790222
-        },
-        {
-            lat: -37.75,
-            lng: 145.116667
-        },
-        {
-            lat: -37.759859,
-            lng: 145.128708
-        },
-        {
-            lat: -37.765015,
-            lng: 145.133858
-        },
-        {
-            lat: -37.770104,
-            lng: 145.143299
-        },
-        {
-            lat: -37.7737,
-            lng: 145.145187
-        },
-        {
-            lat: -37.774785,
-            lng: 145.137978
-        },
-        {
-            lat: -37.819616,
-            lng: 144.968119
-        },
-        {
-            lat: -38.330766,
-            lng: 144.695692
-        },
-        {
-            lat: -39.927193,
-            lng: 175.053218
-        },
-        {
-            lat: -41.330162,
-            lng: 174.865694
-        },
-        {
-            lat: -42.734358,
-            lng: 147.439506
-        },
-        {
-            lat: -42.734358,
-            lng: 147.501315
-        },
-        {
-            lat: -42.735258,
-            lng: 147.438
-        },
-        {
-            lat: -43.999792,
-            lng: 170.463352
-        },
+    const locations = [
+        { lat: -31.56391, lng: 147.154312 },
+        { lat: -33.718234, lng: 150.363181 },
+        { lat: -33.727111, lng: 150.371124 },
+        { lat: -33.848588, lng: 151.209834 },
+        { lat: -33.851702, lng: 151.216968 },
+        { lat: -34.671264, lng: 150.863657 },
+        { lat: -35.304724, lng: 148.662905 },
+        { lat: -36.817685, lng: 175.699196 },
+        { lat: -36.828611, lng: 175.790222 },
+        { lat: -37.75, lng: 145.116667 },
+        { lat: -37.759859, lng: 145.128708 },
+        { lat: -37.765015, lng: 145.133858 },
+        { lat: -37.770104, lng: 145.143299 },
+        { lat: -37.7737, lng: 145.145187 },
+        { lat: -37.774785, lng: 145.137978 },
+        { lat: -37.819616, lng: 144.968119 },
+        { lat: -38.330766, lng: 144.695692 },
+        { lat: -39.927193, lng: 175.053218 },
+        { lat: -41.330162, lng: 174.865694 },
+        { lat: -42.734358, lng: 147.439506 },
+        { lat: -42.734358, lng: 147.501315 },
+        { lat: -42.735258, lng: 147.438 },
+        { lat: -43.999792, lng: 170.463352 },
     ];
-</script>
+    </script>
 <script>
     $(document).ready(function() {
         if ($(window).width() <= 1000) {
@@ -366,5 +297,40 @@
             moreText2.style.display = "inline";
         }
     }
+</script>
+
+<script>
+    $('#selectLokasiRempah').change(function(e) {
+       let selected = e.target.value;
+       if( selected === 'wilayah' ) {
+        $.get('/get_location_json', function(data, status){
+            let options = "";
+            $('#lokasiRempah').html('');
+            for( let i = 0; i < data.length; i++ ) {
+                options += `<option value=${data[i].id}>${data[i].nama_lokasi}</option>`;
+            }
+            $('#lokasiRempah').append(options);
+            
+            // window.location.href = '?rempah=' + $('#lokasiRempah').val();
+        });
+       } else if( selected === 'rempah' ) {
+        $.get('/get_rempah_json', function(data, status){
+            let options = "";
+            $('#lokasiRempah').html('');
+            for( let i = 0; i < data.length; i++ ) {
+                options += `<option value=${data[i].id}>${data[i].jenis_rempah}</option>`;
+            }
+            $('#lokasiRempah').append(options);
+            // window.location.href = '?lokasi=' + $('#lokasiRempah').val();
+        });
+       }
+    })
+
+    $('#btnSelect').click(function() {
+        let type = $('#selectLokasiRempah').val();
+        let value = $('#lokasiRempah').val();
+
+        window.location.href = `?${type}=${value}`;
+    })
 </script>
 @endsection

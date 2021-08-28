@@ -43,25 +43,19 @@ class FotoController extends Controller
 
         // UPLOAD THUMBNAIL
         $thumbnail = $request->file('thumbnail');
-        $tujuan_upload_file_thumbnail = storage_path('app/public/assets/foto/thumbnail');
-        $filename_thumbnail = uniqid() . '.' . $thumbnail->getClientOriginalExtension();
-        $thumbnail->move($tujuan_upload_file_thumbnail, $filename_thumbnail);
+        $filename_thumbnail = upload_file('app/public/assets/foto/thumbnail', $thumbnail);
 
         // UPLOAD FILE SLIDER UTAMA(NULLABLE)
         if( $request->has('slider') ) {
             $slider = $request->file('slider');
-            $tujuan_upload_file_slider = storage_path('app/public/assets/foto/slider');
-            $filename_slider = uniqid() . '.' . $slider->getClientOriginalExtension();
-            $slider->move($tujuan_upload_file_slider, $filename_slider);
+            $filename_slider = upload_file('app/public/assets/foto/slider', $slider);
         } else {
             $filename_slider = null;
         }
 
         // UPLOAD SLIDER FOTO
         foreach( $request->file('slider_foto') as $slider_foto ) {
-            $tujuan_upload_file_slider_foto = storage_path('app/public/assets/foto/slider_foto');;
-            $filename_slider_foto = uniqid() . '.' . $slider_foto->getClientOriginalExtension();
-            $slider_foto->move($tujuan_upload_file_slider_foto, $filename_slider_foto);
+            $filename_slider_foto = upload_file('app/public/assets/foto/slider_foto', $slider_foto);
             $slider_foto_array[] = $filename_slider_foto;
         }
 
@@ -129,9 +123,7 @@ class FotoController extends Controller
             ]);
             // UPLOAD THUMBNAIL
             $thumbnail = $request->file('thumbnail');
-            $tujuan_upload_file_thumbnail = storage_path('app/public/assets/foto/thumbnail');;
-            $filename_thumbnail = uniqid() . '.' . $thumbnail->getClientOriginalExtension();
-            $thumbnail->move($tujuan_upload_file_thumbnail, $filename_thumbnail);
+            $filename_thumbnail = upload_file('app/public/assets/foto/thumbnail', $thumbnail);
 
             File::delete(storage_path('app/public/assets/foto/thumbnail', $foto->thumbnail));
         } else {
@@ -142,9 +134,7 @@ class FotoController extends Controller
         // UPLOAD FILE SLIDER UTAMA(NULLABLE)
         if( $request->has('slider') ) {
             $slider = $request->file('slider');
-            $tujuan_upload_file_slider = storage_path('app/public/assets/foto/slider');;
-            $filename_slider = uniqid() . '.' . $slider->getClientOriginalExtension();
-            $slider->move($tujuan_upload_file_slider, $filename_slider);
+            $filename_slider = upload_file('app/public/assets/foto/slider', $slider);
 
             File::delete(storage_path('app/public/assets/foto/slider', $foto->slider));            
         } else {
@@ -161,9 +151,7 @@ class FotoController extends Controller
                 $slider_foto_array[] = unserialize($foto->slider_foto)[$i];
             } else if( isset($request->caption_slider_foto[$i]) && isset($request->slider_foto[$i]) ) {
                 $slider_foto = $request->file('slider_foto')[$i];
-                $tujuan_upload_file_slider_foto = storage_path('app/public/assets/foto/slider_foto');
-                $filename_slider_foto = uniqid() . '.' . $slider_foto->getClientOriginalExtension();
-                $slider_foto->move($tujuan_upload_file_slider_foto, $filename_slider_foto);
+                $filename_slider_foto = upload_file('app/public/assets/foto/slider_foto', $slider_foto);
                 $slider_foto_array[] = $filename_slider_foto;
             } else if( !isset($request->caption_slider_foto[$i]) && !isset($request->slider_foto[$i]) ) {
                 unset($slider_foto_array[$i]);

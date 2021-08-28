@@ -31,6 +31,11 @@
               <section id="txtMedia">
                 {!! $foto->konten_english ?? $foto->konten_indo !!}
               </section>
+              @php
+                  $konten_name = 'photo';
+                  $konten = $foto;
+              @endphp
+              @include('partials.social-share')
             </div>
           </div>
         </div>

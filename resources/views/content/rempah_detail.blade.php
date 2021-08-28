@@ -237,15 +237,9 @@
       <section id="rempahLainnya">
         <h2 class="sub-judul">Rempah Lainnya</h2>
         <ul class="tags mt-3">
-          <li><a href="#" class="tag">Wijen</a></li>
-          <li><a href="#" class="tag">Vanili</a></li>
-          <li><a href="#" class="tag">Serai</a></li>
-          <li><a href="#" class="tag">Saffron</a></li>
-          <li><a href="#" class="tag">Pala</a></li>
-          <li><a href="#" class="tag">Lengkuas</a></li>
-          <li><a href="#" class="tag">Lada</a></li>
-          <li><a href="#" class="tag">Kunyit</a></li>
-          <li><a href="#" class="tag">Kluwek</a></li>
+          @foreach( $rempahs as $r )
+            <li><a href="{{ route('rempah_detail', $r->id) }}" class="tag">{{ $r->jenis_rempah }}</a></li>
+          @endforeach
         </ul>
       </section>
 

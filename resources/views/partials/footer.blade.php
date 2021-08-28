@@ -6,7 +6,7 @@
       <div class="row justify-content-center">
         <div class="col-12 col-md-8 col-lg-3 footer-content mb-4">
           <img class="logo-footer" src="{{ asset('assets/img/logo-footer-3.png') }}" width="50%">
-          <p class="footer-alamat">Kompleks Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi, Jalan Jenderal Sudirman, Senayan, Jakarta 10270</p>
+          <p class="footer-alamat">The Ministry of Education, Culture, Research, and Technology, Jl. Jenderal Sudirman, Senayan, Jakarta 10270</p>
         </div>
         <div class="col-12 col-md-6 col-lg-3 mb-4 footer-content">
           <h3 class="menu-footer mb-4">CONTACT</h3>
@@ -37,7 +37,7 @@
           </ul>
         </div>
         <div class="col-12 col-md-6 col-lg-2 mb-4 footer-content">
-          <h3 class="menu-footer">CONTENT</h3>
+          <h3 class="menu-footer">CONTENTS</h3>
           <ul>
             <li>
               <a href="{{ route('articles') }}">Article</a>
@@ -86,7 +86,7 @@
     <div class="wrap-footer-down">
       <div class="row text-center">
         <div class="col-12">
-          <p>Kompleks Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi, Jalan Jenderal Sudirman, Senayan, Jakarta 10270</p>
+          <p>The Ministry of Education, Culture, Research, and Technology, Jl. Jenderal Sudirman, Senayan, Jakarta 10270</p>
         </div>
       </div>
     </div>

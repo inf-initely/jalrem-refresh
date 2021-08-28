@@ -30,3 +30,40 @@ if( !function_exists('generate_slug') ) {
         return $text;
     }
 }
+
+if( !function_exists('upload_file') ) {
+    function upload_file($path, $file)
+    {
+        $tujuan_upload_file = storage_path($path);
+        $filename = uniqid() . '.' . $file->getClientOriginalExtension();
+        $file->move($tujuan_upload_file, $filename);
+
+        return $filename;
+    }
+}
+
+if( !function_exists('get_asset_path') ) {
+    function get_asset_path($table, $image, $type = 'thumbnail')
+    {
+        return 'storage/assets/' . substr_replace($table ,"",-1) . '/' .$type. '/' . $image;
+    }
+}
+
+if( !function_exists('generate_route_content') ) {
+    function generate_route_content($table)
+    {
+        switch($table)
+        {
+            case 'artikels':
+                return 'article';
+            case 'publikasis':
+                return 'publication';
+            case 'kegiatans':
+                return 'event';
+            case 'kerjasamas':
+                return 'kerjasama';
+            default:
+                return '';
+        }
+    }
+}

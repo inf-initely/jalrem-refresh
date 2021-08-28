@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,19 +16,28 @@ class DatabaseSeeder extends Seeder
     {
         \App\Models\User::factory(1)->create();
         \App\Models\Kontributor::factory(1)->create();
-        
-        // \App\Models\KategoriShow::factory(1)->create();
-        // \App\Models\KategoriShow::factory(1)->create([
-        //     'isi' => 'Tampilkan di menu Jejak'
-        // ]);
-        // \App\Models\KategoriShow::factory(1)->create([
-        //     'isi' => 'Tampilkan di menu Masa Depan'
-        // ]);
-        // \App\Models\KategoriShow::factory(1)->create([
-        //     'isi' => 'Tampilkan di menu Kerjasama'
-        // ]);
-        // \App\Models\KategoriShow::factory(1)->create([
-        //     'isi' => 'Tampilkan di menu Kegiatan'
-        // ]);
+        // $data = [
+        //     [
+        //         'isi' => 'Jejak'
+        //     ],
+        //     [
+        //         'isi' => 'Jalur'
+        //     ],
+        //     [
+        //         'isi' => 'Masa Depan'
+        //     ],
+        //     [
+        //         'isi' => 'Kerja Sama'
+        //     ],
+        //     [
+        //         'isi' => 'Kegiatan'
+        //     ],
+        // ];
+        // DB::table('kategori_shows')->insert($data);
+
+        $this->call([
+            LokasiTableSeeder::class,
+            KategoriShowTableSeeder::class,
+        ]);
     }
 }

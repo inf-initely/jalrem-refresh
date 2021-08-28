@@ -12,6 +12,8 @@ use App\Models\Lokasi;
 use App\Models\KategoriShow;
 use App\Models\Kontributor;
 
+use App\Http\Requests\ContentRequest;
+
 use Alert;
 
 class ArtikelController extends Controller
@@ -35,24 +37,14 @@ class ArtikelController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'judul_indo' => 'required',
-            'konten_indo' => 'required',
-            'thumbnail' => 'required|max:10000|mimes:png,jpg,jpeg',
-        ]);
-
         // UPLOAD THUMBNAIL
         $thumbnail = $request->file('thumbnail');
-        $tujuan_upload_file_thumbnail = storage_path('app/public/assets/artikel/thumbnail');
-        $filename_thumbnail = uniqid() . '.' . $thumbnail->getClientOriginalExtension();
-        $thumbnail->move($tujuan_upload_file_thumbnail, $filename_thumbnail);
+        $filename_thumbnail = upload_file('app/public/assets/artikel/thumbnail', $thumbnail);
 
         // UPLOAD FILE SLIDER UTAMA(NULLABLE)
         if( $request->has('slider') ) {
             $slider = $request->file('slider');
-            $tujuan_upload_file_slider = storage_path('app/public/assets/artikel/slider');
-            $filename_slider = uniqid() . '.' . $slider->getClientOriginalExtension();
-            $slider->move($tujuan_upload_file_slider, $filename_slider);
+            $filename_slider = upload_file('app/public/assets/artikel/slider', $slider);
         } else {
             $filename_slider = null;
         }
@@ -118,11 +110,8 @@ class ArtikelController extends Controller
             ]);
 
             $thumbnail = $request->file('thumbnail');
-            $tujuan_upload_file = storage_path('app/public/assets/artikel/thumbnail');
-            $filename_thumbnail = uniqid() . '.' . $thumbnail->getClientOriginalExtension();
-            $thumbnail->move($tujuan_upload_file, $filename_thumbnail);
+            $filename_thumbnail = upload_file('app/public/assets/artikel/thumbnail', $thumbnail);
 
-            // unlink(storage_path('app/public/assets/artikel/thumbnail') . $artikel->thumbnail );
             File::delete(storage_path('app/public/assets/artikel/thumbnail', $artikel->thumbnail));
         } else {
             $filename_thumbnail = $artikel->thumbnail;
@@ -131,9 +120,7 @@ class ArtikelController extends Controller
         // UPLOAD FILE SLIDER UTAMA(NULLABLE)
         if( $request->has('slider') ) {
             $slider = $request->file('slider');
-            $tujuan_upload_file_slider = storage_path('app/public/assets/artikel/slider');
-            $filename_slider = uniqid() . '.' . $slider->getClientOriginalExtension();
-            $slider->move($tujuan_upload_file_slider, $filename_slider);
+            $filename_slider = upload_thumbnail('app/public/assets/artikel/slider', $slider);
 
             File::delete(storage_path('app/public/assets/artikel/slider', $artikel->slider_file));            
         } else {
@@ -141,9 +128,8 @@ class ArtikelController extends Controller
         }
 
         $slug_english = null;
-        if( !$artikel->slug_english ) {
+        if( !$artikel->slug_english )
             $slug_english = generate_slug($request->judul_english, '-');
-        }
 
         $artikel->update([
             'judul_indo' => $request->judul_indo,

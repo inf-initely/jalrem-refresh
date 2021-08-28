@@ -18,7 +18,7 @@
   <nav class="navbar navbar-light bg-light bg-gradient-primary sticky-top">
     <div class="container">
       <a href="{{ route('home') }}" class="navbar-brand">
-        <img id="logoNavbar" src="assets/kontributor/img/logo/logo-navbar.png" height="50px">
+          <img src="{{ asset('assets/img/logo/logo-3.png') }}" height="50px">
       </a>
       <div class="d-flex">
         <h2 class="sub-judul"><i class="fa fa-edit"></i> Kontributor</h2>
@@ -54,7 +54,12 @@
               </div>
               <div class="mb-3">
                 <label for="thumbnail" class="col-form-label">Foto Utama</label>
-                <input required type="file" name="thumbnail" class="form-control" id="thumbnail" accept="image/png, image/jpeg">
+                <div class="row">
+                  <div class="col-lg-12 text-center">
+                    <img class="foto-utama preview mb-3 text-center" src="{{ asset('assets/admin/img/noimage.jpg') }}" />
+                  </div>
+                </div>
+                <input required type="file" name="thumbnail" class="form-control" id="thumbnail" data-preview=".foto-utama" accept="image/png, image/jpeg">
                 <div class="mb-3">
                   <h5>Panduan unggah gambar</h5>
                   <ol>
@@ -134,16 +139,16 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
   {{-- <script src="https://cdn.ckeditor.com/ckeditor5/29.0.0/decoupled-document/ckeditor.js"></script> --}}
   <script>
-  $(function() {
-    $("input[data-preview]").change(function() {
-      var input = $(this);
-      var oFReader = new FileReader();
-      oFReader.readAsDataURL(this.files[0]);
-      oFReader.onload = function(oFREvent) {
-        $(input.data('preview')).attr('src', oFREvent.target.result);
-      };
-    });
-  })
+    $(function() {
+      $("input[data-preview]").change(function() {
+        var input = $(this);
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(this.files[0]);
+        oFReader.onload = function(oFREvent) {
+          $(input.data('preview')).attr('src', oFREvent.target.result);
+        };
+      });
+    })
   </script>
   <script>
   $("#domisili").select2({

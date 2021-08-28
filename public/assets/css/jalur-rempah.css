@@ -1446,7 +1446,7 @@ footer {
 }
 
 .logo-daftar {
-    width: 30%;
+    width: 20%;
 }
 
 .link-bahasa .nav-link {
@@ -1596,6 +1596,7 @@ footer {
 
 #isiKonten>p>img {
     width: 100% !important;
+    height: auto !important;
 }
 
 #isiKonten >p>iframe{
@@ -1612,6 +1613,7 @@ footer {
 #txtMedia>p>img {
     border: 0;
     width: 100%;
+    height: auto !important;
 
 }
 

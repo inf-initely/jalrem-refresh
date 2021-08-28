@@ -64,29 +64,29 @@
             </div>
             <div class="col-12 col-md-6 col-lg-6 center-v">
               <header>
-                <h2 class="sub-judul">The Routes</h2>
+                <h2 class="sub-judul">The Route</h2>
               </header>
               <p class="jelajah-des">The Spice Routes covers various cultural routes that gave rise to global civilization & revive the people of Nusantara’s role centuries ago.</p>
-              {{-- <a href="{{ route('tentangjalur') }}" class="btn btn-danger btn-jelajah">
-                explore more
-              </a> --}}
-              <a href="#" class="btn btn-danger btn-jelajah">
+              <a href="{{ route('tentangjalur') }}" class="btn btn-danger btn-jelajah">
                 explore more
               </a>
+              {{-- <a href="#" class="btn btn-danger btn-jelajah">
+                explore more
+              </a> --}}
             </div>
           </div>
           <div class="row justify-content-center content-jelajahi wrap-div" data-aos="fade-left">
             <div class="col-12 col-md-6 col-lg-6 text-end center-v mb-2 second-div" style="margin-top: 30px;">
               <header>
-                <h2 class="sub-judul">The Traces</h2>
+                <h2 class="sub-judul">The Trace</h2>
               </header>
               <p class="jelajah-des">The traces display the cultural interactions in the past that still exist today, a cultural heritage that has become Indonesia’s collective memory.</p>
-              {{-- <a href="{{ route('tentangjejak') }}" class="btn btn-danger btn-jelajah">
-                explore more
-              </a> --}}
-              <a href="#" class="btn btn-danger btn-jelajah">
+              <a href="{{ route('tentangjejak') }}" class="btn btn-danger btn-jelajah">
                 explore more
               </a>
+              {{-- <a href="#" class="btn btn-danger btn-jelajah">
+                explore more
+              </a> --}}
             </div>
             <div class="col-12 col-md-6 col-lg-4 first-div mb-2">
               <img class="jelajah-img" src="assets/img/jejak.png">
@@ -101,12 +101,12 @@
                 <h2 class="sub-judul">The Future</h2>
               </header>
               <p class="jelajah-des">A means of reconstruction and revitalization of the maritime cultural routes. Re-excavating the potentials for sustainable wealth and prosperity of all.</p>
-              {{-- <a href="{{ route('tentangmasadepan') }}" class="btn btn-danger btn-jelajah">
-                explore more
-              </a> --}}
-              <a href="#" class="btn btn-danger btn-jelajah">
+              <a href="{{ route('tentangmasadepan') }}" class="btn btn-danger btn-jelajah">
                 explore more
               </a>
+              {{-- <a href="#" class="btn btn-danger btn-jelajah">
+                explore more
+              </a> --}}
             </div>
           </div>
         </div>
@@ -146,10 +146,10 @@
         <div class="container">
           <header class="row justify-content-center mb-2">
             <div class="col-md-6">
-              <h2 class="sub-judul">Event</h2>
+              <h2 class="sub-judul">Events</h2>
             </div>
             <div class="col-md-6 center-v text-end d-desktop">
-              <a href="{{ route('informasi') }}" class="btn btn-outline-danger">See All Event</a>
+              <a href="{{ route('informasi') }}" class="btn btn-outline-danger">See All Events</a>
             </div>
           </header>
           <section class="row justify-content-center" data-aos="flip-up">
@@ -184,7 +184,7 @@
               <h2 class="sub-judul">News and Article</h2>
             </div>
             <div class="col-md-6 center-v text-end  d-desktop">
-              <a href="{{ route('articles') }}" class="btn btn-outline-danger">See All News and Article</a>
+              <a href="{{ route('articles') }}" class="btn btn-outline-danger">See All News and Articles</a>
             </div>
           </header>
           <section class="row justify-content-center" data-aos="fade-up">
@@ -215,10 +215,10 @@
           <div class="row">
             <section class="col-md-6 center-v">
               <header>
-                <h2 class="sub-judul">Content</h2>
+                <h2 class="sub-judul">Contents</h2>
                 <p class="des-sub-judul">Follow various exciting contents about the Spice Routes through the articles, photos, videos, and audio.</p>
                 <a href="{{ route('konten') }}" class="btn btn-outline-danger">
-                  See All Content
+                  See All Contents
                 </a>
               </header>
             </section>

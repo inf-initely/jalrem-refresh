@@ -253,4 +253,8 @@ return [
 
     'version' => env('APP_VERSION', '1.0.0'),
 
+
+
+    'datastudio_url' => env('DATASTUDIO_URL', 'https://datastudio.google.com/embed/reporting/405b7bb5-8698-431a-8139-8623c8cdbb5e/page/S33B'),
+
 ];

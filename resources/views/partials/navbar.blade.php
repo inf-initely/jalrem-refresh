@@ -40,10 +40,10 @@
           <a class="nav-link page-scroll" href="#jelajah">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link page-scroll" href="#kegiatan">Event</a>
+          <a class="nav-link page-scroll" href="#media">Contents</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link page-scroll" href="#media">Content</a>
+          <a class="nav-link page-scroll" href="#kegiatan">Events</a>
         </li>
       </ul>
       <div class="d-flex wrap-side-navbar">
@@ -72,7 +72,7 @@
           <i class="fa fa-search clr-white"></i>
         </button>
         <a target="_blank" href="https://artsandculture.google.com/" class="btn btn-danger mr-4" style="margin-right:1rem">
-          Spice Route Exhibition
+          The Spice Routes Exhibition
         </a>
       </div>
     </div>
@@ -119,16 +119,16 @@
             About
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            {{-- <li><a class="dropdown-item" href="{{ route('tentangjalur') }}">The Route</a></li>
+            <li><a class="dropdown-item" href="{{ route('tentangjalur') }}">The Route</a></li>
             <li><a class="dropdown-item" href="{{ route('tentangjejak') }}">The Trace</a></li>
-            <li><a class="dropdown-item" href="{{ route('tentangmasadepan') }}">The Future</a></li> --}}
-            <li><a class="dropdown-item" href="#">The Route</a></li>
+            <li><a class="dropdown-item" href="{{ route('tentangmasadepan') }}">The Future</a></li>
+            {{-- <li><a class="dropdown-item" href="#">The Route</a></li>
             <li><a class="dropdown-item" href="#">The Trace</a></li>
-            <li><a class="dropdown-item" href="#">The Future</a></li>
+            <li><a class="dropdown-item" href="#">The Future</a></li> --}}
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ Request::segment(1) == 'konten' || Request::segment(1) == 'foto' ? 'active' : '' }}" href="{{ route('konten') }}">Content</a>
+          <a class="nav-link {{ Request::segment(1) == 'konten' || Request::segment(1) == 'foto' ? 'active' : '' }}" href="{{ route('konten') }}">Contents</a>
         </li>
         <li class="nav-item">
           <a class="nav-link {{ Request::segment(1) == 'informasi' || Request::segment(1) == 'kegiatan' ? 'active' : '' }}" href="{{ route('informasi') }}">Information</a>
@@ -160,7 +160,7 @@
           <i class="fa fa-search clr-black"></i>
         </button>
         <a target="_blank" href="https://artsandculture.google.com/" class="btn btn-danger mr-4" style="margin-right:1rem">
-          Spice Route Exhibition
+          The Spice Routes Exhibition
         </a>
       </div>
     </div>
@@ -207,16 +207,16 @@
             About
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            {{-- <li><a class="dropdown-item" href="{{ route('tentangjalur') }}">The Route</a></li>
+            <li><a class="dropdown-item" href="{{ route('tentangjalur') }}">The Route</a></li>
             <li><a class="dropdown-item" href="{{ route('tentangjejak') }}">The Trace</a></li>
-            <li><a class="dropdown-item" href="{{ route('tentangmasadepan') }}">The Future</a></li> --}}
-            <li><a class="dropdown-item" href="#">The Route</a></li>
+            <li><a class="dropdown-item" href="{{ route('tentangmasadepan') }}">The Future</a></li>
+            {{-- <li><a class="dropdown-item" href="#">The Route</a></li>
             <li><a class="dropdown-item" href="#">The Trace</a></li>
-            <li><a class="dropdown-item" href="#">The Future</a></li>
+            <li><a class="dropdown-item" href="#">The Future</a></li> --}}
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ Request::segment(1) == 'konten' ? 'active' : '' }}" href="{{ route('konten') }}">Content</a>
+          <a class="nav-link {{ Request::segment(1) == 'konten' ? 'active' : '' }}" href="{{ route('konten') }}">Contents</a>
         </li>
         <li class="nav-item">
           <a class="nav-link {{ Request::segment(1) == 'informasi' ? 'active' : '' }}" href="{{ route('informasi') }}">Information</a>
@@ -248,7 +248,7 @@
           <i class="fa fa-search clr-white"></i>
         </button>
         <a target="_blank" href="https://artsandculture.google.com/" class="btn btn-danger mr-4" style="margin-right:1rem">
-          Spice Route Exhibition
+          The Spice Routes Exhibition
         </a>
       </div>
     </div>
@@ -299,10 +299,10 @@
           <a class="nav-link page-scroll" href="#jelajah">Tentang</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link page-scroll" href="#kegiatan">Kegiatan</a>
+          <a class="nav-link page-scroll" href="#media">Konten</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link page-scroll" href="#media">Konten</a>
+          <a class="nav-link page-scroll" href="#kegiatan">Kegiatan</a>
         </li>
       </ul>
       <div class="d-flex wrap-side-navbar">
@@ -378,12 +378,12 @@
             Tentang
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            {{-- <li><a class="dropdown-item" href="{{ route('tentangjalur') }}">Jalur</a></li>
+            <li><a class="dropdown-item" href="{{ route('tentangjalur') }}">Jalur</a></li>
             <li><a class="dropdown-item" href="{{ route('tentangjejak') }}">Jejak</a></li>
-            <li><a class="dropdown-item" href="{{ route('tentangmasadepan') }}">Masa Depan</a></li> --}}
-            <li><a class="dropdown-item" href="#">Jalur</a></li>
+            <li><a class="dropdown-item" href="{{ route('tentangmasadepan') }}">Masa Depan</a></li>
+            {{-- <li><a class="dropdown-item" href="#">Jalur</a></li>
             <li><a class="dropdown-item" href="#">Jejak</a></li>
-            <li><a class="dropdown-item" href="#">Masa Depan</a></li>
+            <li><a class="dropdown-item" href="#">Masa Depan</a></li> --}}
           </ul>
         </li>
         <li class="nav-item">
@@ -466,12 +466,12 @@
             Tentang
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            {{-- <li><a class="dropdown-item" href="{{ route('tentangjalur') }}">Jalur</a></li>
+            <li><a class="dropdown-item" href="{{ route('tentangjalur') }}">Jalur</a></li>
             <li><a class="dropdown-item" href="{{ route('tentangjejak') }}">Jejak</a></li>
-            <li><a class="dropdown-item" href="{{ route('tentangmasadepan') }}">Masa Depan</a></li> --}}
-            <li><a class="dropdown-item" href="#">Jalur</a></li>
+            <li><a class="dropdown-item" href="{{ route('tentangmasadepan') }}">Masa Depan</a></li>
+            {{-- <li><a class="dropdown-item" href="#">Jalur</a></li>
             <li><a class="dropdown-item" href="#">Jejak</a></li>
-            <li><a class="dropdown-item" href="#">Masa Depan</a></li>
+            <li><a class="dropdown-item" href="#">Masa Depan</a></li> --}}
           </ul>
         </li>
         <li class="nav-item">
