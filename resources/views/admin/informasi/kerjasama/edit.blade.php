@@ -28,7 +28,7 @@
                   <div class="card-body">
                       <div class="mb-3">
                         <label for="judulArtikelBahasa" class="form-label">Judul</label>
-                        <input required value="{{ $kerjasama->judul_indo }}" type="text" name="judul_indo" class="form-control" id="judulArtikelBahasa" placeholder="masukkan judul kerjasama">
+                        <input required value="{{ $kerjasama->judul_indo }}" type="text" name="judul_indo" class="form-control" id="judulArtikelBahasa" placeholder="masukkan judul kerja sama">
                       </div>
                       <div class="mb-3">
                         <label for="isiArtikelBahasa" class="form-label">Isi Konten</label>
@@ -77,7 +77,7 @@
               <div class="col-lg-12 mb-3">
                 <div class="card shadow mb-4">
                   <div class="card-header py-3">
-                    <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">Thumbnail Kerjasama</h2>
+                    <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">Thumbnail Kerja sama</h2>
                   </div>
                   <div class="card-body ">
                     <div class="row">
