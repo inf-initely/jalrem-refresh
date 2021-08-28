@@ -11,10 +11,16 @@ class RempahController extends Controller
 {
     public function show($rempahId)
     {
-        abort(503);
         $rempah = Rempah::findOrFail($rempahId);
         $artikelRempah = $rempah->artikel;
 
         return view('content.rempah_detail', compact('rempah', 'artikelRempah'));
+    }
+
+    public function getJSON()
+    {
+        $rempah = Rempah::all();
+
+        return response()->json($rempah);
     }
 }
