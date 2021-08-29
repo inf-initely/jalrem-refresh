@@ -12,10 +12,10 @@
                 <div class="layer-masking"></div>
                 <div class="container">
                   <div data-swiper-parallax="300" class="slide-title">
-                    <h2 class="title">{{ $s->judul_english ?? $s->judul_indo }}</h2>
+                    <h2 class="title">{{ $s->judul_english }}</h2>
                   </div>
                   <div data-swiper-parallax="400" class="slide-text">
-                    <p class="caption">{!! Str::limit($s->konten_english ?? $s->konten_indo, 160, $end='...') !!}</p>
+                    <p class="caption">{!! Str::limit($s->konten_english, 160, $end='...') !!}</p>
                   </div>
                   <div class="clearfix"></div>
                 </div>
@@ -67,12 +67,12 @@
                 <h2 class="sub-judul">The Route</h2>
               </header>
               <p class="jelajah-des">The Spice Routes covers various cultural routes that gave rise to global civilization & revive the people of Nusantara’s role centuries ago.</p>
-              <a href="{{ route('tentangjalur') }}" class="btn btn-danger btn-jelajah">
-                explore more
-              </a>
-              {{-- <a href="#" class="btn btn-danger btn-jelajah">
+              {{-- <a href="{{ route('tentangjalur') }}" class="btn btn-danger btn-jelajah">
                 explore more
               </a> --}}
+              <a href="#" class="btn btn-danger btn-jelajah">
+                explore more
+              </a>
             </div>
           </div>
           <div class="row justify-content-center content-jelajahi wrap-div" data-aos="fade-left">
@@ -81,12 +81,12 @@
                 <h2 class="sub-judul">The Trace</h2>
               </header>
               <p class="jelajah-des">The traces display the cultural interactions in the past that still exist today, a cultural heritage that has become Indonesia’s collective memory.</p>
-              <a href="{{ route('tentangjejak') }}" class="btn btn-danger btn-jelajah">
-                explore more
-              </a>
-              {{-- <a href="#" class="btn btn-danger btn-jelajah">
+              {{-- <a href="{{ route('tentangjejak') }}" class="btn btn-danger btn-jelajah">
                 explore more
               </a> --}}
+              <a href="#" class="btn btn-danger btn-jelajah">
+                explore more
+              </a>
             </div>
             <div class="col-12 col-md-6 col-lg-4 first-div mb-2">
               <img class="jelajah-img" src="assets/img/jejak.png">
@@ -101,12 +101,12 @@
                 <h2 class="sub-judul">The Future</h2>
               </header>
               <p class="jelajah-des">A means of reconstruction and revitalization of the maritime cultural routes. Re-excavating the potentials for sustainable wealth and prosperity of all.</p>
-              <a href="{{ route('tentangmasadepan') }}" class="btn btn-danger btn-jelajah">
-                explore more
-              </a>
-              {{-- <a href="#" class="btn btn-danger btn-jelajah">
+              {{-- <a href="{{ route('tentangmasadepan') }}" class="btn btn-danger btn-jelajah">
                 explore more
               </a> --}}
+              <a href="#" class="btn btn-danger btn-jelajah">
+                explore more
+              </a>
             </div>
           </div>
         </div>
@@ -163,7 +163,7 @@
                     </div>
                     <div class="col-6 center-v">
                       <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">{{ $k->created_at->isoFormat('D MMMM Y'); }}</p>
-                      <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">{{ $k->judul_english ?? $k->judul_indo }}</h3>
+                      <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">{{ $k->judul_english }}</h3>
                     </div>
                   </div>
                   <a href="{{ route('event_detail', $k->slug_english ?? $k->slug) }}" class="stretched-link"></a>
@@ -193,7 +193,7 @@
               <div class="card no-border card-artikel">
                 <img src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}" class="card-img-top img-thumbnail" alt="...">
                 <div class="card-body">
-                  <h3 class="card-title judul-artikel">{{ $a->judul_english ?? $a->judul_indo }}</h3>
+                  <h3 class="card-title judul-artikel">{{ $a->judul_english }}</h3>
                   {{-- <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_english ?? $a->konten_indo, 50, $end='...') !!}</p> --}}
                   <p class="penulis-artikel">
                     {{ $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin' }}
@@ -224,7 +224,7 @@
             </section>
             <section class="offset-md-1 col-md-5">
               <div class="row">
-                <div class="col-md-6">
+                <div class="col-6 col-md-6">
                   <div class="card no-border card-media card-media-1">
                     <div class="card-body text-center">
                       <img src="assets/img/icon-image.png" width="40%">
@@ -233,7 +233,7 @@
                     <a href="{{ route('photos') }}" class="stretched-link"></a>
                   </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-6 col-md-6">
                   <div class="card no-border card-media card-media-2">
                     <div class="card-body text-center">
                       <img src="assets/img/icon-publication.png" width="40%">
@@ -244,7 +244,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-6">
+                <div class="col-6 col-md-6">
                   <div class="card no-border card-media card-media-3">
                     <div class="card-body text-center">
                       <img src="assets/img/icon-video.png" width="40%">
@@ -253,7 +253,7 @@
                     <a href="{{ route('videos') }}" class="stretched-link"></a>
                   </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-6 col-md-6">
                   <div class="card no-border card-media card-media-4">
                     <div class="card-body text-center">
                       <img src="assets/img/icon-sound.png" width="40%">
@@ -297,7 +297,7 @@
                   </div>
                 </div>
                 <div class="card-body">
-                  <p class="card-text">{{ $v->judul_english ?? $v->judul_indo }}</p>
+                  <p class="card-text">{{ $v->judul_english }}</p>
                 </div>
               </div>
             </div>

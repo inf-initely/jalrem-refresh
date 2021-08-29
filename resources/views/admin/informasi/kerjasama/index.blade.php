@@ -18,7 +18,7 @@
             <div class="card-header py-3">
               <div class="row">
                 <div class="col-6">
-                  <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">List Kerjasama</h2>
+                  <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">List Kerja sama</h2>
                 </div>
                 <div class="col-6 text-end">
                   <a href="{{ route('admin.kerjasama.add') }}" class="btn btn-primary">
@@ -33,7 +33,7 @@
                   <tr>
                     <th>No.</th>
                     <th>Tanggal</th>
-                    <th>Judul Kerjasama</th>
+                    <th>Judul Kerja sama</th>
                     <th>Penulis</th>
                     <th>Status</th>
                     <th>Aksi</th>

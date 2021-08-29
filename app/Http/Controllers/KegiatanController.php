@@ -11,10 +11,13 @@ class KegiatanController extends Controller
 {
     public function index()
     {
-        $kegiatan = Kegiatan::where('status', 'publikasi')->paginate(9);
+        $kegiatan = Kegiatan::where('status', 'publikasi');
 
-        if( Session::get('lg') == 'en' )
+        if( Session::get('lg') == 'en' ) {
+            $kegiatan = $kegiatan->where('judul_english', '!=', null)->paginate(9);
             return view('content_english.kegiatan', compact('kegiatan'));
+        }
+        $kegiatan = $kegiatan->paginate(9);
 
         return view('content.kegiatan', compact('kegiatan'));
     }

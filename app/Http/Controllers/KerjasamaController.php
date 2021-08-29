@@ -10,9 +10,14 @@ class KerjasamaController extends Controller
 {
     public function index()
     {
-        $kerjasama = Kerjasama::where('status', 'publikasi')->paginate(9);
-        if( Session::get('lg') == 'en' )
+        $kerjasama = Kerjasama::where('status', 'publikasi');
+
+        if( Session::get('lg') == 'en' ) {
+            $kerjasama = $kerjasama->where('judul_english', '!=', null)->paginate(9);
             return view('content_english.kerjasama', compact('kerjasama'));
+        }
+        
+        $kerjasama = $kerjasama->paginate(9);
 
         return view('content.kerjasama', compact('kerjasama'));
     }

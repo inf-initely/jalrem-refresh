@@ -17,9 +17,6 @@
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-lg-10">
-              <header class="text-center">
-                <h2 class="sub-judul">Spice Routes Video</h2>
-              </header>
               <section id="tabLine">
                 <div class="row justify-content-center">
                   @foreach( $video as $v )
@@ -43,7 +40,7 @@
                       </div>
                       <a class="stretched-link lightbox" href="{{ route('video_detail', $v->slug_english ?? $v->slug) }}"></a>
                       <div class="card-body">
-                        <p class="card-text">{{ $v->judul_english ?? $v->judul_indo }}</p>
+                        <p class="card-text">{{ $v->judul_english }}</p>
                       </div>
                     </div>
                   </div>

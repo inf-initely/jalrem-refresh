@@ -1599,9 +1599,9 @@ footer {
     height: auto !important;
 }
 
-#isiKonten >p>iframe{
-     width: 100% !important;
-     height: 475px;
+#isiKonten>p>iframe {
+    width: 100% !important;
+    height: 475px;
 }
 
 #txtMedia>p>iframe {
@@ -1857,9 +1857,19 @@ footer {
         height: 215px;
     }
 
-     #isiKonten>p>iframe {
+    #isiKonten>p>iframe {
         height: 215px;
     }
+
+    .btn-primary-jarem {
+        width: auto;
+    }
+
+    footer {
+        z-index: 3 !important;
+    }
+
+
 
 
 }

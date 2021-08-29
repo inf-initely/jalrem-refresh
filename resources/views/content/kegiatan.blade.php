@@ -17,9 +17,6 @@
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-lg-10">
-              <header class="text-center">
-                <h2 class="sub-judul">Kegiatan Jalur Rempah</h2>
-              </header>
               <section id="tabLine">
                 <div class="row justify-content-center">
                   @foreach( $kegiatan as $k )

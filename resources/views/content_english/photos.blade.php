@@ -17,9 +17,6 @@
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-lg-10">
-              <header class="text-center">
-                <h2 class="sub-judul">Spice Routes Photo Gallery</h2>
-              </header>
               <section id="tabLine">
                 <div class="row justify-content-center">
                   @foreach( $foto as $f )
@@ -27,7 +24,7 @@
                     <div class="img-bg-wrap">
                       <img src="{{ asset('storage/assets/foto/thumbnail/' . $f->thumbnail) }}">
                       <div class="text-img">
-                        <p class="judul-img">{{ $f->judul_english ?? $f->judul_indo }}</p>
+                        <p class="judul-img">{{ $f->judul_english }}</p>
                         <p class="author-img">{{ $f->penulis != 'admin' ? $f->kontributor_relasi->nama : 'admin' }}</p>
                         <p class="tgl-img">{{ $f->created_at->isoFormat('D MMMM Y'); }}</p>
                       </div>

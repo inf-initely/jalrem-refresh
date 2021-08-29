@@ -6,7 +6,7 @@
     <div class="text-hero-2">
       <div class="">
         <div class="col-lg-12 text-center">
-          <h1>Spice Routes Events</h1>
+          <h1>Information</h1>
         </div>
       </div>
     </div>
@@ -36,7 +36,7 @@
                         </div>
                         <div class="col-6 center-v">
                           <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">{{ $k->created_at->isoFormat('D MMMM Y'); }}</p>
-                          <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">{{ $k->judul_english ?? $k->judul_indo }}</h3>
+                          <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">{{ $k->judul_english }}</h3>
                         </div>
                       </div>
                       <a href="{{ route('event_detail', $k->slug_english ?? $k->slug) }}" class="stretched-link"></a>
@@ -72,7 +72,7 @@
                         </div>
                         <div class="col-6 center-v">
                           <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">{{ $k->created_at->isoFormat('D MMMM Y'); }}</p>
-                          <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">{{ $k->judul_indo }}</h3>
+                          <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan" }}</h3>
                         </div>
                       </div>
                       <a href="detail-kegiatan.html" class="stretched-link"></a>
@@ -94,7 +94,7 @@
                     </div>
                     <div class="col-6 center-v">
                       <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">{{ $k->created_at->isoFormat('D MMMM Y'); }}</p>
-                      <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">{{ $k->judul_english ?? $k->judul_indo }}</h3>
+                      <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">{{ $k->judul_english }}</h3>
                     </div>
                   </div>
                   <a href="{{ route('event_detail', $k->slug_english ?? $k->slug) }}" class="stretched-link"></a>
@@ -102,7 +102,7 @@
               </div>
             </div>
             @endforeach
-            
+
             </div>
           </div>
         </div>
@@ -125,7 +125,7 @@
                   <div class="card no-border card-artikel">
                     <img src="{{ asset('storage/assets/kerjasama/thumbnail/' . $k->thumbnail) }}" class="card-img-top img-thumbnail" alt="...">
                     <div class="card-body">
-                      <h3 class="card-title judul-artikel">{{ $k->judul_english ?? $k->judul_indo }}</h3>
+                      <h3 class="card-title judul-artikel">{{ $k->judul_english }}</h3>
                       {{-- <p class="card-text des-artikel minimize">{{ $k->konten_english ?? $k->konten_indo }}</p> --}}
                       <p class="penulis-artikel">
                         {{-- {{ $k->penulis }} --}}

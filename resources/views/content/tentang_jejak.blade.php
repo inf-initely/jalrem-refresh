@@ -34,7 +34,7 @@
                         </select>
                     </div>
                     <div class="col-lg-2 wrap-btn-select">
-                        <button id="btnSelect" class="btn btn-danger btn-select telusuri"">Telusuri</button>
+                        <button id="btnSelect" class="btn btn-danger btn-select telusuri">Telusuri</button>
                     </div>
                 </div>
             </div>
@@ -49,7 +49,7 @@
                     <header>
                         <h2 class="sub-judul sub-judul-hero ">Jejak dan Jalur Rempah</h2>
                     </header>
-                    <p>JJalur Rempah merupakan suatu <b> peradaban yang sangat tua, kompleks, luas, dan memengaruhi peradaban global.</b> Jejaknya memperlihatkan interaksi budaya pada masa lampau.<span id="dots2" style="display:inline">...</span><span id="more2" style="display:none"><br><br>
+                    <p>Jalur Rempah merupakan suatu <b> peradaban yang sangat tua, kompleks, luas, dan memengaruhi peradaban global.</b> Jejaknya memperlihatkan interaksi budaya pada masa lampau.<span id="dots2" style="display:inline">...</span><span id="more2" style="display:none"><br><br>
                     Dari keterbukaan masyarakat Nusantara dan hubungan budaya yang terjalin, lahir beragam warisan budaya multikultural dan multietnis ke berbagai medium. Hubungan budaya antarmanusia ini meninggalkan <b>warisan dan serangkaian jejak yang masih hidup hingga hari ini</b>: kisah asal usul, nyanyian, musik, tarian, teknologi tradisional, arsitektur bangunan, fesyen, kuliner, ramuan, aksara, bahasa, hingga kepercayaan. Sebuah peninggalan nilai budaya yang menjadi memori kolektif bangsa sebagai bukti dan jejak dari Jalur Rempah.</span></p>
                     <button class="btn btn-sm btn-outline-secondary" onclick="readMore2()" id="btnReadmore2">Lihat Selengkapnya</button>
                 </article>
@@ -58,7 +58,7 @@
         <section id="kontenJejak">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-lg-11">
+                    <div class="col-lg-11 mt-4">
                         <div class="row">
                             @foreach( $artikel as $a )
                             <div class="col-lg-6 mb-1">

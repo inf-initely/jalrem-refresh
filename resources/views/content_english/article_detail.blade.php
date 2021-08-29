@@ -24,7 +24,7 @@
           <div class="row justify-content-center">
             <div class="col-lg-8 wrap-detail-artikel">
               <header>
-                <h2 class="sub-judul">{{ $artikel->judul_english ?? $artikel->judul_indo }}</h2>
+                <h2 class="sub-judul">{{ $artikel->judul_english }}</h2>
                 <div class="info-penulis">
                   <span class="txt-penulis" class="mr-3" id="penulis" name="penulis">{{ $artikel->penulis != 'admin' ? $artikel->kontributor_relasi->nama : 'admin' }}</span> |
                   <span class="txt-penulis" id="tglArtikel" name="tglArtikel">{{ $artikel->created_at->isoFormat('D MMMM Y') }}</span>
@@ -32,7 +32,7 @@
               </header>
               <article id="isiKonten">
                 <img class="mb-3 mt-3" src="{{ asset('storage/assets/artikel/thumbnail/' . $artikel->thumbnail) }}" width="100%">
-                {!! $artikel->konten_english ?? $artikel->konten_indo !!}
+                {!! $artikel->konten_english !!}
               </article>
               @if( $artikel->penulis != 'admin' )
               <div id="disclaimer" class="mt-4">
@@ -47,7 +47,7 @@
               @include('partials.social-share')
               @if( $artikelBacaJuga )
               <div class="wrap-baca-juga">
-                <p>Baca juga: <a href="{{ route('article_detail', $artikelBacaJuga->slug_english ?? $artikelBacaJuga->slug_indo) }}" class="berita-terkait">{{ $artikelBacaJuga->judul_english ?? $artikelBacaJuga->judul_indo }}</a></p>
+                <p>Baca juga: <a href="{{ route('article_detail', $artikelBacaJuga->slug_english ?? $artikelBacaJuga->slug_indo) }}" class="berita-terkait">{{ $artikelBacaJuga->judul_english }}</a></p>
               </div>
               @endif
             </div>
@@ -67,7 +67,7 @@
                               <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}">
                             </div>
                             <div class="col-7 center-v">
-                              <h3 class="judul-berita-aside" id="jdlKegiatan" name="jdlKegiatan">{{ $a->judul_english ?? $a->judul_indo }}</h3>
+                              <h3 class="judul-berita-aside" id="jdlKegiatan" name="jdlKegiatan">{{ $a->judul_english }}</h3>
                               <p class="tgl-berita-aside" id="tglKegiatan" name="tglKegiatan">{{ $a->created_at->isoFormat('D MMMM Y') }} </p>
                             </div>
                           </div>
@@ -94,7 +94,7 @@
                               <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}">
                             </div>
                             <div class="col-7 center-v">
-                              <h3 class="judul-berita-aside" id="jdlKegiatan" name="jdlKegiatan">{{ $a->judul_english ?? $a->judul_indo }}</h3>
+                              <h3 class="judul-berita-aside" id="jdlKegiatan" name="jdlKegiatan">{{ $a->judul_english }}</h3>
                               <p class="tgl-berita-aside" id="tglKegiatan" name="tglKegiatan">{{ $a->created_at->isoFormat('D MMMM Y'); }}</p>
                             </div>
                           </div>
@@ -124,7 +124,7 @@
           <div class="col-md-6 col-lg-4 mb-4">
             <div class="card no-border no-background card-body">
               <img src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}" class="card-img-top mb-4 img-thumbnail" alt="...">
-              <h3 class="card-title judul-artikel">{{ $a->judul_english ?? $a->judul_indo }}</h3>
+              <h3 class="card-title judul-artikel">{{ $a->judul_english }}</h3>
               {{-- <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_english ?? $a->konten_indo, 50, $end='...') !!}</p> --}}
               <p class="penulis-artikel">{{ $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin' }}</p>
               <p class="tgl-artikel">{{ $a->created_at->isoFormat('D MMMM Y'); }}</p>

@@ -11,12 +11,13 @@ class AudioController extends Controller
 {
     public function index()
     {
-        $audio = Audio::where('status', 'publikasi')->orderBy('created_at', 'desc')->paginate(9);
+        $audio = Audio::where('status', 'publikasi')->orderBy('created_at', 'desc');
 
         if( Session::get('lg') == 'en' ) {
+            $audio = $audio->where('judul_english', '!=', null)->paginate(9);
             return view('content_english.audios', compact('audio')); 
         }
-
+        $audio = $audio->paginate(9);
         return view('content.audios', compact('audio'));
     }
 

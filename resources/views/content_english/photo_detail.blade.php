@@ -8,7 +8,7 @@
           <div class="row justify-content-center">
             <div class="col-lg-8">
               <header>
-                <h2 class="sub-judul mb-4" id="judulMedia">{{ $foto->judul_english ?? $foto->judul_indo }}</h2>
+                <h2 class="sub-judul mb-4" id="judulMedia">{{ $foto->judul_english }}</h2>
                 <p class="penulis-artikel" id="authorMedia">
                   {{ $foto->penulis == 'admin' ? 'admin' : $foto->kontributor_relasi->nama }}
                 </p>
@@ -29,7 +29,7 @@
                 @endfor
               </div>
               <section id="txtMedia">
-                {!! $foto->konten_english ?? $foto->konten_indo !!}
+                {!! $foto->konten_english !!}
               </section>
               @php
                   $konten_name = 'photo';
@@ -172,6 +172,13 @@ $(document).ready(function() {
     speed: 300,
     slidesToShow: 1,
     slidesToScroll: 1,
+    responsive: [{
+        breakpoint: 500,
+        settings: {
+          arrows: false,
+
+        }
+    }]
   });
 });
 </script>

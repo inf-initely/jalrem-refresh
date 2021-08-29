@@ -8,7 +8,7 @@
           <div class="row justify-content-center">
             <div class="col-lg-12">
               <header class="mb-2">
-                <h2 class="sub-judul text-center">Latest</h2>
+                <h2 class="sub-judul text-center">The Latest Contents</h2>
               </header>
               <div class="feature">
                 @foreach( $artikelSlider as $a )
@@ -16,7 +16,7 @@
                   <div class="card no-border card-artikel no-background">
                     <img src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}" class="card-img-top img-thumbnail-slider" alt="...">
                     <div class="card-body">
-                      <h3 class="card-title judul-artikel">{{ $a->judul_english ?? $a->judul_indo }}</h3>
+                      <h3 class="card-title judul-artikel">{{ $a->judul_english }}</h3>
                     </div>
                     <a href="{{ route('article_detail', $a->slug_english ?? $a->slug) }}" class="stretched-link"></a>
                   </div>
@@ -41,7 +41,7 @@
             <div class="col-md-6 col-lg-4 mb-4">
               <div class="card no-border no-background card-body">
                 <img src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}" class="card-img-top mb-4" alt="...">
-                <h3 class="card-title judul-artikel">{{ $a->judul_indo }}</h3>
+                <h3 class="card-title judul-artikel" }}</h3>
                 <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p>
                 <p class="penulis-artikel">{{ $a->penulis }}</p>
                 <p class="tgl-artikel">{{ $a->created_at->isoFormat('D MMMM Y'); }}</p>
@@ -58,7 +58,7 @@
           <div class="row justify-content-center">
             <div class="col-lg-12">
               <header class="text-center">
-                <h2 class="sub-judul">Spice Routes Content</h2>
+                <h2 class="sub-judul">Contents</h2>
               </header>
               <section id="tabLine">
                 <ul class="nav nav-pills mb-3 nav-tabline justify-content-center" id="pills-tab" role="tablist">
@@ -86,7 +86,7 @@
                         <div class="card no-border card-artikel">
                           <img src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}" class="card-img-top img-thumbnail" alt="...">
                           <div class="card-body">
-                            <h3 class="card-title judul-artikel">{{ $a->judul_english ?? $a->judul_indo }}</h3>
+                            <h3 class="card-title judul-artikel">{{ $a->judul_english }}</h3>
                             {{-- <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p> --}}
                             <p class="penulis-artikel">
                               {{ $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin' }}
@@ -130,7 +130,7 @@
                   </div>
                   <div class="tab-pane fade" id="tab-video" role="tabpanel" aria-labelledby="tab-video-tab">
                     <div class="row justify-content-center">
-                      @foreach( $video as $v ) 
+                      @foreach( $video as $v )
                       <div class="col-md-12 col-lg-4 mb-4">
                         <div class="card no-border card-artikel">
                           <div class="video media-video" data-video-id="{{ $v->youtube_key }}">
@@ -195,7 +195,7 @@
                       @foreach( $audio as $a )
                       <div class="col-md-6 col-lg-4 mb-4">
                         <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/{{ $a->cloud_key }}&color=%231a150d&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-                        <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="#" title="" target="_blank" style="color: #cccccc; text-decoration: none;"></a> · <a href="{{ route('audio_detail', $a->slug_english ?? $a->slug) }}" title="{{ $a->judul_english ?? $a->judul_indo }}" style="color: #cccccc; text-decoration: none;">{{ $a->judul_english ?? $a->judul_indo }}</a></div>
+                        <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="#" title="" target="_blank" style="color: #cccccc; text-decoration: none;"></a> · <a href="{{ route('audio_detail', $a->slug_english ?? $a->slug) }}" title="{{ $a->judul_english }}" style="color: #cccccc; text-decoration: none;">{{ $a->judul_english }}</a></div>
                         <main></main>
                       </div>
                       @endforeach
@@ -228,7 +228,7 @@
       }
     });
     $(window).scroll(function() {
-    
+
       if ($(window).width() >= 1000) {
         var scroll = $(window).scrollTop();
         //>=, not <=
@@ -244,14 +244,14 @@
         $(".navbar").addClass("bg-nav-baru");
         $(".navbar").removeClass("bg-trans");
       }
-    
+
     }); //missing );
     </script>
     <script>
     var tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";
     document.body.appendChild(tag);
-    
+
     // When the YouTube API code loads, it calls this function, so it must be global
     // and it must be named exactly onYouTubeIframeAPIReady.
     window.onYouTubeIframeAPIReady = function() {
@@ -260,7 +260,7 @@
       videoModules = Array.prototype.slice.call(videoModules);
       videoModules.forEach(initializeVideoModule);
     }
-    
+
     function initializeVideoModule(videoModule) {
       var player = new YT.Player(videoModule.querySelector('.video-placeholder'), {
         videoId: videoModule.dataset.videoId,
@@ -286,20 +286,20 @@
     </script>
     <script>
     $(function() {
-    
+
       var minimized_elements = $('p.minimize');
-    
+
       minimized_elements.each(function() {
         var t = $(this).text();
         if (t.length < 90) return;
-    
+
         $(this).html(
           t.slice(0, 90) + '<span>...' +
           '<span style="display:none;">' + t.slice(90, t.length)
         );
-    
+
       });
-    
+
     });
     </script>
     <script>

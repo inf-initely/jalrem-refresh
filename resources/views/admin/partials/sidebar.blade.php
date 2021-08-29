@@ -37,7 +37,7 @@
       <div id="collapseTwoa" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
         <div class="bg-submenu-nav py-2 collapse-inner rounded">
           <a class="collapse-item {{ Request::segment(3) == 'kegiatan' ? 'active' : '' }}" href="{{ route('admin.kegiatan.index') }}"><i class="fas fa-fw fa-newspaper mr-1"></i> Kegiatan</a>
-          <a class="collapse-item {{ Request::segment(3) == 'kerjasama' ? 'active' : '' }}" href="{{ route('admin.kerjasama.index') }}"><i class="fas fa-fw fa-image mr-1"></i>Kerjasama</a>
+          <a class="collapse-item {{ Request::segment(3) == 'kerjasama' ? 'active' : '' }}" href="{{ route('admin.kerjasama.index') }}"><i class="fas fa-fw fa-image mr-1"></i>Kerja sama</a>
         </div>
       </div>
     </li>
@@ -57,12 +57,12 @@
       </div>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="user.html">
+      <a class="nav-link" href="#">
         <i class="fas fa-fw fa-user-circle"></i>
         <span>User</span></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="pengaturan.html">
+      <a class="nav-link" href="#">
         <i class="fas fa-fw fa-cog"></i>
         <span>Pengaturan</span></a>
     </li>
