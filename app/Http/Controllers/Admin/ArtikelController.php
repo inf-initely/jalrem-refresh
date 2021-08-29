@@ -120,7 +120,7 @@ class ArtikelController extends Controller
         // UPLOAD FILE SLIDER UTAMA(NULLABLE)
         if( $request->has('slider') ) {
             $slider = $request->file('slider');
-            $filename_slider = upload_thumbnail('app/public/assets/artikel/slider', $slider);
+            $filename_slider = upload_file('app/public/assets/artikel/slider', $slider);
 
             File::delete(storage_path('app/public/assets/artikel/slider', $artikel->slider_file));            
         } else {
