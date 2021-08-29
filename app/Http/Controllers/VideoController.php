@@ -11,11 +11,13 @@ class VideoController extends Controller
 {
     public function index()
     {
-        $video = Video::where('status', 'publikasi')->orderBy('created_at', 'desc')->paginate(9);
+        $video = Video::where('status', 'publikasi')->orderBy('created_at', 'desc');
 
         if( Session::get('lg') == 'en' ) {
+            $video = $video->where('judul_english', '!=', null)->paginate(9);
             return view('content_english.videos', compact('video'));
         }
+        $video = $video->paginate(9);
 
         return view('content.videos', compact('video'));
     }

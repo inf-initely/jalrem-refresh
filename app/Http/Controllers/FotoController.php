@@ -11,10 +11,13 @@ class FotoController extends Controller
 {
     public function index()
     {
-        $foto = Foto::where('status', 'publikasi')->orderBy('created_at', 'desc')->paginate(9);
+        $foto = Foto::where('status', 'publikasi')->orderBy('created_at', 'desc');
 
-        if( Session::get('lg') == 'en' )
+        if( Session::get('lg') == 'en' ){
+            $foto = $foto->where('judul_english', '!=', null)->paginate(9);
             return view('content_english.photos', compact('foto'));
+        }
+        $foto = $foto->paginate(9);
 
         return view('content.photos', compact('foto'));
     }

@@ -12,11 +12,14 @@ class ArtikelController extends Controller
 {
 
     public function index(){
-        $artikel = Artikel::where('status', 'publikasi')->orderBy('created_at', 'desc')->paginate(9);
+        $artikel = Artikel::where('status', 'publikasi')->orderBy('created_at', 'desc');
 
         if(Session::get('lg') == 'en' ) {
+            $artikel = $artikel->where('judul_english', '!=', null)->paginate(9);
             return view('content_english.articles', compact('artikel'));
         }
+
+        $artikel = $artikel->paginate(9);
 
         return view('content.articles', compact('artikel'));
     }
@@ -24,18 +27,26 @@ class ArtikelController extends Controller
     public function show(Request $request, $slug)
     {
         // $slug_field = $lg == 'en' ? 'slug_english' : 'slug';
-        $query_without_this_article = Artikel::where('slug', '!=', $slug)->orWhere('slug_english', '!=', $slug);
+        $query_without_this_article = Artikel::where('slug', '!=', $slug)->where('slug_english', '!=', $slug);
         $query_this_article = Artikel::where('slug', $slug)->orWhere('slug_english', $slug);
 
         $artikel = $query_this_article->firstOrFail();
       
         views($artikel)->record();
-        $artikelPopuler = $query_without_this_article->orderByViews()->take(3)->get();
-        $artikelTerbaru = $query_without_this_article->orderBy('created_at', 'desc')->take(3)->get();
-        $artikelBacaJuga = $query_without_this_article->first();
+        $artikelPopuler = $query_without_this_article->orderByViews();
+        $artikelTerbaru = $query_without_this_article->orderBy('created_at', 'desc');
+        $artikelBacaJuga = $query_without_this_article;
 
-        if(Session::get('lg') == 'en' ) 
+        if(Session::get('lg') == 'en' ) {
+            $artikelPopuler = $artikelPopuler->where('judul_english', '!=', null)->take(3)->get();
+            $artikelTerbaru = $artikelTerbaru->where('judul_english', '!=', null)->take(3)->get();
+            $artikelBacaJuga = $artikelBacaJuga->where('judul_english', '!=', null)->first();
+            
             return view('content_english.article_detail', compact('artikel', 'artikelTerbaru', 'artikelPopuler', 'artikelBacaJuga'));
+        }
+        $artikelPopuler = $artikelPopuler->take(3)->get();
+        $artikelTerbaru = $artikelTerbaru->take(3)->get();
+        $artikelBacaJuga = $artikelBacaJuga->first();
 
         return view('content.article_detail', compact('artikel', 'artikelTerbaru', 'artikelPopuler', 'artikelBacaJuga'));
     }
@@ -48,7 +59,7 @@ class ArtikelController extends Controller
 
             $artikel = Artikel::when($search != null, function($query) use ($search) {
                 $query->where('status', 'publikasi')->orderBy('created_at', 'desc')->where('judul_english', 'LIKE', '%'.$search . '%');
-            })->paginate(9);
+            })->where('judul_english', '!=', null)->paginate(9);
 
             return view('content_english.articles', compact('artikel'));
         }

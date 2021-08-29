@@ -17,28 +17,51 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        $semua_artikel = Artikel::where('status', 'publikasi')->where('slider_utama', 1)->get();
-        $semua_publikasi = Publikasi::where('status', 'publikasi')->where('slider_utama', 1)->get();
-        $semua_video = Video::where('status', 'publikasi')->where('slider_utama', 1)->get();
-        $semua_audio = Audio::where('status', 'publikasi')->where('slider_utama', 1)->get();
-        $semua_foto = Foto::where('status', 'publikasi')->where('slider_utama', 1)->get();
-        $semua_kegiatan = Kegiatan::where('status', 'publikasi')->where('slider_utama', 1)->get();
-        $semua_kerjasama = Kerjasama::where('status', 'publikasi')->where('slider_utama', 1)->get();
+        $semua_artikel = Artikel::where('status', 'publikasi')->where('slider_utama', 1);
+        $semua_publikasi = Publikasi::where('status', 'publikasi')->where('slider_utama', 1);
+        $semua_video = Video::where('status', 'publikasi')->where('slider_utama', 1);
+        $semua_audio = Audio::where('status', 'publikasi')->where('slider_utama', 1);
+        $semua_foto = Foto::where('status', 'publikasi')->where('slider_utama', 1);
+        $semua_kegiatan = Kegiatan::where('status', 'publikasi')->where('slider_utama', 1);
+        $semua_kerjasama = Kerjasama::where('status', 'publikasi')->where('slider_utama', 1);
 
-        $slider = $semua_artikel->merge($semua_publikasi)->merge($semua_video)->merge($semua_audio)->merge($semua_foto)->merge($semua_kegiatan)->merge($semua_kerjasama);
         
         if( request()->get('search') != null ) {
-            $artikel = Artikel::where('status', 'publikasi')->where('judul_indo', 'LIKE', request()->get('search'))->orderBy('created_at', 'desc')->take(3)->get();
+            $artikel = Artikel::where('status', 'publikasi')->where('judul_indo', 'LIKE', request()->get('search'))->orderBy('created_at', 'desc');
         } else {
-            $artikel = Artikel::where('status', 'publikasi')->orderBy('created_at', 'desc')->take(3)->get();
+            $artikel = Artikel::where('status', 'publikasi')->orderBy('created_at', 'desc');
         }
         
-        $kegiatan = Kegiatan::where('status', 'publikasi')->orderBy('created_at', 'desc')->take(3)->get();
-        $video = Video::where('status', 'publikasi')->orderBy('created_at', 'desc')->take(6)->get();
+        $kegiatan = Kegiatan::where('status', 'publikasi')->orderBy('created_at', 'desc');
+        $video = Video::where('status', 'publikasi')->orderBy('created_at', 'desc');
 
         if( Session::get('lg') == 'en' ) {
+            $semua_artikel = $semua_artikel->where('judul_english', '!=', null)->get();
+            $semua_audio = $semua_audio->where('judul_english', '!=', null)->get();
+            $semua_foto = $semua_foto->where('judul_english', '!=', null)->get();
+            $semua_kegiatan = $semua_kegiatan->where('judul_english', '!=', null)->get();
+            $semua_kerjasama = $semua_kerjasama->where('judul_english', '!=', null)->get();
+
+            $artikel = $artikel->where('judul_english', '!=', null)->take(3)->get();
+
+            $kegiatan = $kegiatan->where('judul_english', '!=', null)->take(3)->get();
+            $video = $video->where('judul_english', '!=', null)->take(6)->get();
+
+            $slider = $semua_artikel->merge($semua_publikasi)->merge($semua_video)->merge($semua_audio)->merge($semua_foto)->merge($semua_kegiatan)->merge($semua_kerjasama);
+
             return view('content_english.home', compact('artikel', 'kegiatan', 'video', 'slider'));
         } 
+        $semua_artikel = $semua_artikel->get();
+        $semua_audio = $semua_audio->get();
+        $semua_foto = $semua_foto->get();
+        $semua_kegiatan = $semua_kegiatan->get();
+        $semua_kerjasama = $semua_kerjasama->get();
+
+        $artikel = $artikel->take(3)->get();
+        $slider = $semua_artikel->merge($semua_publikasi)->merge($semua_video)->merge($semua_audio)->merge($semua_foto)->merge($semua_kegiatan)->merge($semua_kerjasama);
+
+        $kegiatan = $kegiatan->take(3)->get();
+        $video = $video->take(6)->get();
 
         return view('content.home', compact('artikel', 'kegiatan', 'video', 'slider'));
     }
