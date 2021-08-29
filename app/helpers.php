@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 if( !function_exists('generate_slug') ) {
     function generate_slug($text, $divider) {
@@ -19,9 +19,9 @@ if( !function_exists('generate_slug') ) {
 
         // lowercase
         $text = strtolower($text);
-        
+
         if (empty($text)) {
-            return 'n-a';
+            return null;
         }
 
         // 4 number unique code
