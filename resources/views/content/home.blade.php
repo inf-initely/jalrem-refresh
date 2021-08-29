@@ -15,7 +15,7 @@
                     <h2 class="title">{{ $s->judul_indo }}</h2>
                   </div>
                   <div data-swiper-parallax="400" class="slide-text">
-                    <p class="caption">{!! Str::limit($s->konten_indo, 160, $end='...') !!}</p>
+                    <p class="caption">{!! Str::limit($s->meta_indo, 160, $end='...') !!}</p>
                   </div>
                   <div class="clearfix"></div>
                 </div>

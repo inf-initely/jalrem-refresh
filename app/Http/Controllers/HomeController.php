@@ -41,6 +41,8 @@ class HomeController extends Controller
             $semua_foto = $semua_foto->where('judul_english', '!=', null)->get();
             $semua_kegiatan = $semua_kegiatan->where('judul_english', '!=', null)->get();
             $semua_kerjasama = $semua_kerjasama->where('judul_english', '!=', null)->get();
+            $semua_video = $semua_video->where('judul_english', '!=', null)->get();
+            $semua_publikasi = $semua_publikasi->where('judul_english', '!=', null)->get();
 
             $artikel = $artikel->where('judul_english', '!=', null)->take(3)->get();
 
@@ -56,6 +58,8 @@ class HomeController extends Controller
         $semua_foto = $semua_foto->get();
         $semua_kegiatan = $semua_kegiatan->get();
         $semua_kerjasama = $semua_kerjasama->get();
+        $semua_video = $semua_video->get();
+        $semua_publikasi = $semua_publikasi->get();
 
         $artikel = $artikel->take(3)->get();
         $slider = $semua_artikel->merge($semua_publikasi)->merge($semua_video)->merge($semua_audio)->merge($semua_foto)->merge($semua_kegiatan)->merge($semua_kerjasama);
