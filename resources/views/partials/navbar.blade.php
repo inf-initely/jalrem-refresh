@@ -71,7 +71,7 @@
         <button class="btn icon-search mr-4 d-none d-lg-block" data-bs-toggle="modal" data-bs-target="#searchModal">
           <i class="fa fa-search clr-white"></i>
         </button>
-        <a target="_blank" href="https://artsandculture.google.com/" class="btn btn-danger mr-4" style="margin-right:1rem">
+        <a target="_blank" href="https://pameran-jalurrempah.kemdikbud.go.en/en" class="btn btn-danger mr-4" style="margin-right:1rem">
           The Spice Routes Exhibition
         </a>
       </div>
@@ -159,7 +159,7 @@
         <button class="btn icon-search mr-4 d-none d-lg-block" data-bs-toggle="modal" data-bs-target="#searchModal">
           <i class="fa fa-search clr-black"></i>
         </button>
-        <a target="_blank" href="https://artsandculture.google.com/" class="btn btn-danger mr-4" style="margin-right:1rem">
+        <a target="_blank" href="https://pameran-jalurrempah.kemdikbud.go.en/en" class="btn btn-danger mr-4" style="margin-right:1rem">
           The Spice Routes Exhibition
         </a>
       </div>
@@ -247,7 +247,7 @@
         <button class="btn icon-search mr-4 d-none d-lg-block" data-bs-toggle="modal" data-bs-target="#searchModal">
           <i class="fa fa-search clr-white"></i>
         </button>
-        <a target="_blank" href="https://artsandculture.google.com/" class="btn btn-danger mr-4" style="margin-right:1rem">
+        <a target="_blank" href="https://pameran-jalurrempah.kemdikbud.go.en/en" class="btn btn-danger mr-4" style="margin-right:1rem">
           The Spice Routes Exhibition
         </a>
       </div>
@@ -330,7 +330,7 @@
         <button class="btn icon-search mr-4 d-none d-lg-block" data-bs-toggle="modal" data-bs-target="#searchModal">
           <i class="fa fa-search clr-white"></i>
         </button>
-        <a target="_blank" href="https://artsandculture.google.com/" class="btn btn-danger mr-4" style="margin-right:1rem">
+        <a target="_blank" href="https://pameran-jalurrempah.kemdikbud.go.id/id" class="btn btn-danger mr-4" style="margin-right:1rem">
           Pameran Jalur Rempah
         </a>
       </div>
@@ -418,7 +418,7 @@
         <button class="btn icon-search mr-4 d-none d-lg-block" data-bs-toggle="modal" data-bs-target="#searchModal">
           <i class="fa fa-search clr-black"></i>
         </button>
-        <a target="_blank" href="https://artsandculture.google.com/" class="btn btn-danger mr-4" style="margin-right:1rem">
+        <a target="_blank" href="https://pameran-jalurrempah.kemdikbud.go.id/id" class="btn btn-danger mr-4" style="margin-right:1rem">
           Pameran Jalur Rempah
         </a>
       </div>
@@ -506,7 +506,7 @@
         <button class="btn icon-search mr-4 d-none d-lg-block" data-bs-toggle="modal" data-bs-target="#searchModal">
           <i class="fa fa-search clr-white"></i>
         </button>
-        <a target="_blank" href="https://artsandculture.google.com/" class="btn btn-danger mr-4" style="margin-right:1rem">
+        <a target="_blank" href="https://pameran-jalurrempah.kemdikbud.go.id/id" class="btn btn-danger mr-4" style="margin-right:1rem">
           Pameran Jalur Rempah
         </a>
       </div>
