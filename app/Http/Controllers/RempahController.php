@@ -15,6 +15,9 @@ class RempahController extends Controller
         $rempahs = Rempah::all();
         $artikelRempah = $rempah->artikel;
 
+        if( Session::get('lg') == 'en' )
+            return view('content_english.rempah_detail', compact('rempah', 'artikelRempah', 'rempahs'));
+
         return view('content.rempah_detail', compact('rempah', 'artikelRempah', 'rempahs'));
     }
 

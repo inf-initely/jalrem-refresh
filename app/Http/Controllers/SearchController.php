@@ -9,6 +9,9 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Session;
 
 use App\Models\Artikel;
+use App\Models\Foto;
+use App\Models\Video;
+use App\Models\Audio;
 use App\Models\Publikasi;
 use App\Models\Kegiatan;
 use App\Models\Kerjasama;
@@ -24,18 +27,41 @@ class SearchController extends Controller
 
         $artikel = Artikel::when($search_condition, function($query) use ($search, $lg) {
             $query->where('status', 'publikasi')->orderBy('created_at', 'desc')->where('judul_' . $lg , 'LIKE', '%'.$search . '%');
+        })->when($lg == 'english', function($query) use ($lg, $search) {
+            $query->where('judul_english', '!=', null);
+        })->get();
+        $foto = Foto::when($search_condition, function($query) use ($search, $lg) {
+            $query->where('status', 'publikasi')->orderBy('created_at', 'desc')->where('judul_' . $lg , 'LIKE', '%'.$search . '%');
+        })->when($lg == 'english', function($query) use ($lg, $search) {
+            $query->where('judul_english', '!=', null);
+        })->get();
+        $audio = Audio::when($search_condition, function($query) use ($search, $lg) {
+            $query->where('status', 'publikasi')->orderBy('created_at', 'desc')->where('judul_' . $lg , 'LIKE', '%'.$search . '%');
+        })->when($lg == 'english', function($query) use ($lg, $search) {
+            $query->where('judul_english', '!=', null);
+        })->get();
+        $video = Video::when($search_condition, function($query) use ($search, $lg) {
+            $query->where('status', 'publikasi')->orderBy('created_at', 'desc')->where('judul_' . $lg , 'LIKE', '%'.$search . '%');
+        })->when($lg == 'english', function($query) use ($lg, $search) {
+            $query->where('judul_english', '!=', null);
         })->get();
         $publikasi = Publikasi::when($search_condition, function($query) use ($search, $lg) {
             $query->where('status', 'publikasi')->orderBy('created_at', 'desc')->where('judul_' . $lg , 'LIKE', '%'.$search . '%');
+        })->when($lg == 'english', function($query) use ($lg, $search) {
+            $query->where('judul_english', '!=', null);
         })->get();
         $kegiatan = Kegiatan::when($search_condition, function($query) use ($search, $lg) {
             $query->where('status', 'publikasi')->orderBy('created_at', 'desc')->where('judul_' . $lg , 'LIKE', '%'.$search . '%');
+        })->when($lg == 'english', function($query) use ($lg, $search) {
+            $query->where('judul_english', '!=', null);
         })->get();
         $kerjasama = Kerjasama::when($search_condition, function($query) use ($search, $lg) {
             $query->where('status', 'publikasi')->orderBy('created_at', 'desc')->where('judul_' . $lg , 'LIKE', '%'.$search . '%');
+        })->when($lg == 'english', function($query) use ($lg, $search) {
+            $query->where('judul_english', '!=', null);
         })->get();
 
-        $artikel = $this->paginate($artikel->merge($publikasi)->merge($kegiatan)->merge($kerjasama), 9);
+        $artikel = $this->paginate($artikel->merge($publikasi)->merge($kegiatan)->merge($kerjasama)->merge($foto)->merge($audio)->merge($video), 9);
         $artikel->setPath('cari?search=' . $search);
 
 

@@ -45,6 +45,10 @@ class JejakController extends Controller
             $artikel = $kategori->artikel;
         }
 
+        $artikel = $artikel->filter(function($item) {
+            return $item->status == 'publikasi';
+        });
+
         // $artikel = array_merge($artikel, $artikelRempah, $artikelWilayah);
         
         $artikel = ( $kategori != null )
@@ -52,6 +56,7 @@ class JejakController extends Controller
             : [];
 
         $artikel->setPath('/tentang-jejak?rempah=' . $rempahId . '&wilayah=' . $lokasiId);
+
         // dd($kategori->artikel);
         
         if( Session::get('lg') == 'en' )

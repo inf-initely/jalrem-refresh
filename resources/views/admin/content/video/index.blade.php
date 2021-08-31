@@ -35,6 +35,7 @@
                         <th>Tanggal</th>
                         <th>Judul Artikel</th>
                         <th>Penulis</th>
+                        <th>Slider Utama</th>
                         <th>Status</th>
                         <th>Aksi</th>
                       </tr>
@@ -46,6 +47,9 @@
                         <td>{{ $v->created_at->isoFormat('YYYY/MM/DD'); }}</td>
                         <td>{{ $v->judul_indo }}</td>
                         <td>{{ $v->penulis }}</td>
+                        <td>
+                          <span class="badge rounded-pill py-1 px-3 {{ $v->slider_utama ? 'bg-success' : 'bg-secondary' }}">{{ $v->slider_utama ? 'Aktif' : 'Tidak Aktif' }}</span>
+                        </td>
                         <td>
                           <span class="badge rounded-pill py-1 px-3 {{ $v->status == 'publikasi' ? 'bg-success' : 'bg-secondary' }}">{{ $v->status == 'publikasi' ? 'Aktif' : 'Draft' }}</span>
                         </td>

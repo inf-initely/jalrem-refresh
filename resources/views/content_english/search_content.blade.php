@@ -18,22 +18,56 @@
             <div class="container">
                 <div class="row justify-content-center">
                     @foreach( $artikel as $a )
-                    <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="card no-border card-artikel">
-                            <img src="{{ asset(get_asset_path($a->getTable(), $a->thumbnail, 'thumbnail')) }}" class="card-img-top img-thumbnail" alt="...">
-                            <div class="card-body">
-                                <h3 class="card-title judul-artikel">{{ $a->judul_english }}</h3>
-                                {{-- <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p> --}}
-                                <p class="penulis-artikel">
-                                    {{ $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin' }}
-                                </p>
-                                <p class="tgl-artikel">
-                                    {{ $a->created_at->isoFormat('D MMMM Y'); }}
-                                </p>
+                        @if( $a->getTable() == 'videos' )
+                        <div class="col-md-6 col-lg-4 mb-4">
+                            <div class="card no-border card-artikel">
+                              <div class="video media-video" data-video-id="{{ $a->youtube_key }}">
+                                <!--ganti id sesuai id youtube yang akan ditampilkan-->
+                                <div class="video-layer">
+                                  <div class="video-placeholder">
+                                    <!-- ^ div is replaced by the YouTube video -->
+                                  </div>
+                                </div>
+                                <div class="video-preview" style="background: url('https://img.youtube.com/vi/{{ $a->youtube_key }}/hqdefault.jpg') 50% 50% no-repeat; background-size: cover;">
+                                  <!-- this icon would normally be implemented as a character in an icon font or svg spritesheet, or similar -->
+                                  <svg viewBox="0 0 74 74">
+                                    <circle style="opacity:0.64;stroke:#fff" cx="37" cy="37" r="36.5"></circle>
+                                    <circle fill="none" stroke="#fff" cx="37" cy="37" r="36.5"></circle>
+                                    <polygon fill="#fff" points="33,22 33,52 48,37"></polygon>
+                                  </svg>
+                                </div>
+                              </div>
+                              <a class="stretched-link lightbox" href="{{ route('video_detail', $a->slug_english ?? $a->slug) }}"></a>
+                              <div class="card-body">
+                                <p class="card-text">{{ $a->judul_english }}</p>
+                              </div>
                             </div>
-                            <a href="{{ route(generate_route_content($a->getTable()) .'_detail', $a->slug_english ?? $a->slug) }}" class="stretched-link"></a>
-                        </div>
-                    </div>
+                          </div>
+                        @elseif( $a->getTable() == 'audios' )
+                         <div class="col-md-6 col-lg-4 mb-4">
+                            <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/{{ $a->cloud_key }}&color=%231a150d&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+                            <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="#" title="" target="_blank" style="color: #cccccc; text-decoration: none;"></a> · <a href="{{ route('audio_detail', $a->slug_english ?? $a->slug) }}" title="{{ $a->judul_english }}" style="color: #cccccc; text-decoration: none;">{{ $a->judul_english }}</a></div>
+                            <main></main>
+                          </div>
+                        @else
+                            <div class="col-md-6 col-lg-4 mb-4">
+                                <div class="card no-border card-artikel">
+                                    <img src="{{ asset(get_asset_path($a->getTable(), $a->thumbnail, 'thumbnail')) }}" class="card-img-top img-thumbnail" alt="...">
+                                    <div class="card-body">
+                                        <h3 class="card-title judul-artikel">{{ $a->judul_english }}</h3>
+                                        {{-- <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p> --}}
+                                        <p class="penulis-artikel">
+                                            {{ $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin' }}
+                                        </p>
+                                        <p class="tgl-artikel">
+                                            {{ $a->created_at->isoFormat('D MMMM Y'); }}
+                                        </p>
+                                    </div>
+                                    <a href="{{ route(generate_route_content($a->getTable()) .'_detail', $a->slug_english ?? $a->slug) }}" class="stretched-link"></a>
+                                </div>
+                            </div>
+                        @endif
+                    
                     @endforeach
                 </div>
                 <div class="d-flex justify-content-center">
@@ -93,4 +127,42 @@
 
     });
 </script>
+
+<script>
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.body.appendChild(tag);
+    
+    // When the YouTube API code loads, it calls this function, so it must be global
+    // and it must be named exactly onYouTubeIframeAPIReady.
+    window.onYouTubeIframeAPIReady = function() {
+      var videoModules = document.querySelectorAll('.video');
+      // for Internet Explorer 11 and below, convert array-like NodeList to an actual Array.
+      videoModules = Array.prototype.slice.call(videoModules);
+      videoModules.forEach(initializeVideoModule);
+    }
+    
+    function initializeVideoModule(videoModule) {
+      var player = new YT.Player(videoModule.querySelector('.video-placeholder'), {
+        videoId: videoModule.dataset.videoId,
+        events: {
+          onStateChange: function(event) {
+            var isEnded = event.data === YT.PlayerState.ENDED;
+            // 'playing' css class controls fading the video and preivew images in/out.
+            // Internet Explorer 11 and below do not support a second argument to `toggle`
+            // videoModule.classList.toggle('playing', !isEnded);
+            videoModule.classList[isEnded ? 'remove' : 'add']('playing');
+            // if the video is done playing, remove it and re-initialize
+            if (isEnded) {
+              player.destroy();
+              videoModule.querySelector('.video-layer').innerHTML = (
+                '<div class="video-placeholder"></div>'
+              );
+              initializeVideoModule(videoModule);
+            }
+          }
+        }
+      });
+    }
+    </script>
 @endsection
