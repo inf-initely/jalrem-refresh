@@ -34,11 +34,22 @@ if( !function_exists('generate_slug') ) {
 if( !function_exists('upload_file') ) {
     function upload_file($path, $file)
     {
-        $tujuan_upload_file = storage_path($path);
-        $filename = uniqid() . '.' . $file->getClientOriginalExtension();
-        $file->move($tujuan_upload_file, $filename);
+        // try {
+        //     $fileSystem = new Filesystem();
+            
+        //     if( !$fileSystem->exists($path) ) {
+        //         File::makeDirectory($path);
+        //     }
 
-        return $filename;
+
+
+            $tujuan_upload_file = storage_path($path);
+            $filename = uniqid() . '.' . $file->getClientOriginalExtension();
+            $file->move($tujuan_upload_file, $filename);
+
+            return $filename;    
+        // }catch(\Exception $e) {
+        // }
     }
 }
 

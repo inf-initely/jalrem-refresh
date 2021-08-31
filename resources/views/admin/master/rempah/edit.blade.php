@@ -32,7 +32,20 @@
                       </div>
                       <div class="mb-3">
                         <label for="keteranganRempah" class="form-label">Keterangan Rempah</label>
-                        <textarea required name="keterangan_rempah" class="form-control" id="isiArtikelBahasa" rows="8">{{ $rempah->keterangan }}</textarea>
+                        <textarea required name="keterangan" class="form-control" id="isiArtikelBahasa" rows="8">{{ $rempah->keterangan }}</textarea>
+                        <!-- <div id="toolbar-container"></div> -->
+                        <!-- This container will become the editable. -->
+                        <!-- <div id="editor" style="border: 1px solid #F5F6F9;">
+                          <p>This is the initial editor content.</p>
+                        </div> -->
+                      </div>
+                      <div class="mb-3">
+                        <label for="namaRempah" class="form-label">Nama Rempah(Bahasa Inggris)</label>
+                        <input name="nama_rempah_english" value="{{ $rempah->jenis_rempah_english }}" type="text" class="form-control" id="namaRempah" placeholder="masukkan nama rempah(Bahasa Inggris)">
+                      </div>
+                      <div class="mb-3">
+                        <label for="keteranganRempah" class="form-label">Keterangan Rempah(Bahasa Inggris)</label>
+                        <textarea name="keterangan_rempah" class="form-control" id="isiArtikelBahasa" rows="8">{{ $rempah->keterangan_english }}</textarea>
                         <!-- <div id="toolbar-container"></div> -->
                         <!-- This container will become the editable. -->
                         <!-- <div id="editor" style="border: 1px solid #F5F6F9;">

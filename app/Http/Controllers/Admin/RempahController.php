@@ -36,12 +36,14 @@ class RempahController extends Controller
     {
         $this->validate($request, [
             'nama_rempah' => 'required',
-            'keterangan_rempah' => 'required'
+            'keterangan_rempah' => 'required',
         ]);  
 
         Rempah::create([
             'jenis_rempah' => $request->nama_rempah,
-            'keterangan' => $request->keterangan_rempah
+            'keterangan' => $request->keterangan_rempah,
+            'jenis_rempah_english' => $request->nama_rempah_english,
+            'keterangan_english' => $request->keterangan_english,
         ]);
 
         Alert::success('Berhasil', 'Rempah berhasil ditambah');
@@ -60,13 +62,15 @@ class RempahController extends Controller
     {
        $this->validate($request, [
             'nama_rempah' => 'required',
-            'keterangan_rempah' => 'required'
+            'keterangan_rempah' => 'required',
         ]); 
         
         $rempah = Rempah::findOrFail($rempahId);
         $rempah->update([
             'jenis_rempah' =>  $request->nama_rempah,
-            'keterangan' => $request->keterangan_rempah
+            'keterangan' => $request->keterangan_rempah,
+            'jenis_rempah_english' =>  $request->nama_rempah_english,
+            'keterangan_english' => $request->keterangan_english
         ]);
 
         Alert::success('Berhasil', 'Rempah berhasil diedit');
