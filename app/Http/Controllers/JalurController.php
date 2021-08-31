@@ -16,8 +16,11 @@ class JalurController extends Controller
     public function index()
     {
         $kategori = KategoriShow::where('isi', 'jalur')->first();
+        $artikel = $kategori->artikel->filter(function($item) {
+            return $item->status == 'publikasi';
+        });
         $artikel = ( $kategori != null )
-            ? $this->paginate($kategori->artikel, 6)
+            ? $this->paginate($artikel, 6)
             : [];
 
         $artikel->setPath('/tentang-jalur');
