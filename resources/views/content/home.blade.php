@@ -60,7 +60,7 @@
           <img class="item-jelajah item-jelajah-2" src="assets/img/item-daun-2.svg">
           <div class="row justify-content-center content-jelajahi" data-aos="fade-right">
             <div class="col-12 col-md-6 col-lg-4 mb-2">
-              <img class="jelajah-img" src="assets/img/jalur.png">
+              <img class="jelajah-img" src="assets/img/jalur.webp">
             </div>
             <div class="col-12 col-md-6 col-lg-6 center-v">
               <header>
@@ -89,12 +89,12 @@
               </a>
             </div>
             <div class="col-12 col-md-6 col-lg-4 first-div mb-2">
-              <img class="jelajah-img" src="assets/img/jejak.png">
+              <img class="jelajah-img" src="assets/img/jejak.webp">
             </div>
           </div>
           <div class="row justify-content-center content-jelajahi" data-aos="fade-right">
             <div class="col-12 col-md-6 col-lg-4 mb-2">
-              <img class="jelajah-img" src="assets/img/masa-depan.png">
+              <img class="jelajah-img" src="assets/img/masa-depan.webp">
             </div>
             <div class="col-12 col-md-6 col-lg-6 center-v">
               <header>
