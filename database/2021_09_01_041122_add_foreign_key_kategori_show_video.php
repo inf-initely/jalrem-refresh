@@ -1,10 +1,10 @@
- <?php
+<?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFotoKategoriShow extends Migration
+class AddForeignKeyKategoriShowVideo extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateFotoKategoriShow extends Migration
      */
     public function up()
     {
-        Schema::create('foto_kategori_show', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedInteger('id_foto');
-            $table->unsignedInteger('id_kategori_show');
-            $table->timestamps();
+        Schema::table('videos', function (Blueprint $table) {
+            $table->foreign('id')->references('id_foto')->on('foto_kategori_show')->onDelete('cascade');
         });
     }
 
@@ -28,6 +25,8 @@ class CreateFotoKategoriShow extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('foto_kategori_show');
+        Schema::table('videos', function (Blueprint $table) {
+            //
+        });
     }
 }
