@@ -19,6 +19,11 @@ class Kerjasama extends Model
         return $this->belongsTo('App\Models\Kontributor', 'id_kontributor', 'id');
     }
 
+    public function lokasi()
+    {
+        return $this->belongsTo('App\Models\Lokasi', 'id_lokasi', 'id');
+    }
+
     public function rempahs()
     {
         return $this->belongsToMany('App\Models\Rempah', 'kerjasama_rempah', 'id_kerjasama', 'id_rempah');
