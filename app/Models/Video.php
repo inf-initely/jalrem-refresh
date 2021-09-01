@@ -20,6 +20,11 @@ class Video extends Model
         return $this->belongsTo('App\Models\Kontributor', 'id_kontributor', 'id');
     }
 
+    public function lokasi()
+    {
+        return $this->belongsTo('App\Models\Lokasi', 'id_lokasi', 'id');
+    }
+
     public function rempahs()
     {
         return $this->belongsToMany('App\Models\Rempah', 'video_rempah', 'id_video', 'id_rempah');

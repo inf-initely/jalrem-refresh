@@ -19,6 +19,32 @@ class MasaDepanController extends Controller
         $artikel = $kategori->artikel->filter(function($item) {
             return $item->status == 'publikasi';
         });
+        $foto = $kategori->foto->filter(function($item) {
+            return $item->status == 'publikasi';
+        });
+        $audio = $kategori->audio->filter(function($item) {
+            return $item->status == 'publikasi';
+        });
+        $video = $kategori->video->filter(function($item) {
+            return $item->status == 'publikasi';
+        });
+        $publikasi = $kategori->publikasi->filter(function($item) {
+            return $item->status == 'publikasi';
+        });
+        $kerjasama = $kategori->kerjasama->filter(function($item) {
+            return $item->status == 'publikasi';
+        });
+        $kegiatan = $kategori->kegiatan->filter(function($item) {
+            return $item->status == 'publikasi';
+        });
+        $artikel = $artikel->merge($foto)->merge($audio)->merge($video)->merge($publikasi)->merge($kerjasama)->merge($kegiatan);
+        
+        if( Session::get('lg') == 'en' ) {
+            $artikel = $artikel->filter(function($item) {
+                return $item->judul_english != null;
+            });
+        }
+        
         $artikel = ( $kategori != null )
            ? $this->paginate($artikel, 6)
            : [];

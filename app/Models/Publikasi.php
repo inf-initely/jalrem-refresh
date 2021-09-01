@@ -21,6 +21,11 @@ class Publikasi extends Model implements Viewable
         return $this->belongsTo('App\Models\Kontributor', 'id_kontributor', 'id');
     }
 
+    public function lokasi()
+    {
+        return $this->belongsTo('App\Models\Lokasi', 'id_lokasi', 'id');
+    }    
+
     public function rempahs()
     {
         return $this->belongsToMany('App\Models\Rempah', 'publikasi_rempah', 'id_publikasi', 'id_rempah');

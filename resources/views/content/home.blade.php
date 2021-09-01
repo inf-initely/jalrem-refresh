@@ -67,12 +67,12 @@
                 <h2 class="sub-judul">Jalur</h2>
               </header>
               <p class="jelajah-des">Jalur Rempah mencakup berbagai lintasan jalur budaya yang melahirkan peradaban global & menghidupkan kembali peran masyarakat Nusantara berabad-abad lampau.</p>
-              {{-- <a href="{{ route('tentangjalur') }}" class="btn btn-danger btn-jelajah">
-                Jelajahi
-              </a> --}}
-              <a href="#" class="btn btn-danger btn-jelajah">
+              <a href="{{ route('tentangjalur') }}" class="btn btn-danger btn-jelajah">
                 Jelajahi
               </a>
+              {{-- <a href="#" class="btn btn-danger btn-jelajah">
+                Jelajahi
+              </a> --}}
             </div>
           </div>
           <div class="row justify-content-center content-jelajahi wrap-div" data-aos="fade-left">
@@ -81,12 +81,12 @@
                 <h2 class="sub-judul">Jejak</h2>
               </header>
               <p class="jelajah-des">Jejak memperlihatkan interaksi budaya pada masa lampau yang masih hidup hingga hari ini. Sebuah peninggalan nilai budaya yang menjadi memori kolektif bangsa.</p>
-              {{-- <a href="{{ route('tentangjejak') }}" class="btn btn-danger btn-jelajah">
-                Jelajahi
-              </a> --}}
-              <a href="#" class="btn btn-danger btn-jelajah">
+              <a href="{{ route('tentangjejak') }}" class="btn btn-danger btn-jelajah">
                 Jelajahi
               </a>
+              {{-- <a href="#" class="btn btn-danger btn-jelajah">
+                Jelajahi
+              </a> --}}
             </div>
             <div class="col-12 col-md-6 col-lg-4 first-div mb-2">
               <img class="jelajah-img" src="assets/img/jejak.webp">
@@ -101,12 +101,12 @@
                 <h2 class="sub-judul">Masa Depan</h2>
               </header>
               <p class="jelajah-des">Sebuah upaya rekontruksi dan revitalisasi jalur budaya bahari. Penggalian kembali potensi untuk kekayaan dan kesejahteraan bersama yang lestari.</p>
-              {{-- <a href="{{ route('tentangmasadepan') }}" class="btn btn-danger btn-jelajah">
-                Jelajahi
-              </a> --}}
-              <a href="#" class="btn btn-danger btn-jelajah">
+              <a href="{{ route('tentangmasadepan') }}" class="btn btn-danger btn-jelajah">
                 Jelajahi
               </a>
+              {{-- <a href="#" class="btn btn-danger btn-jelajah">
+                Jelajahi
+              </a> --}}
             </div>
           </div>
         </div>
