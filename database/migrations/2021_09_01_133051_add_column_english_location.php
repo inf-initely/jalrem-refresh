@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddForeignKeyKategoriShowAudio extends Migration
+class AddColumnEnglishLocation extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddForeignKeyKategoriShowAudio extends Migration
      */
     public function up()
     {
-        Schema::table('audio', function (Blueprint $table) {
-            $table->foreign('id')->references('id_audio')->on('audio_kategori_show')->onDelete('cascade');
+        Schema::table('lokasis', function (Blueprint $table) {
+            $table->string('nama_lokasi_english')->nullable();
         });
     }
 
@@ -25,7 +25,7 @@ class AddForeignKeyKategoriShowAudio extends Migration
      */
     public function down()
     {
-        Schema::table('audio', function (Blueprint $table) {
+        Schema::table('lokasis', function (Blueprint $table) {
             //
         });
     }
