@@ -67,6 +67,8 @@ if( !function_exists('generate_route_content') ) {
         {
             case 'artikels':
                 return 'article';
+            case 'fotos':
+                return 'photo';
             case 'publikasis':
                 return 'publication';
             case 'kegiatans':
