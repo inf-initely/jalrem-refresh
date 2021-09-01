@@ -350,3 +350,7 @@ sliderBgSetting.each(function(indx) {
   }
 });
 </script>
+
+<script>
+  $('iframe').attr('allowfullscreen', '');
+</script>
