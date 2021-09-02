@@ -14,7 +14,7 @@ class AddForeignKeyKategoriShowArtikel extends Migration
     public function up()
     {
         Schema::table('artikels', function (Blueprint $table) {
-            $table->foreign('id')->references('id_artikel')->on('artikel_kategori_show')->onDelete('cascade');
+            // $table->foreign('id')->references('id_artikel')->on('artikel_kategori_show')->onDelete('cascade');
         });
     }
 

@@ -14,7 +14,7 @@ class AddForeignKeyKategoriShowVideo extends Migration
     public function up()
     {
         Schema::table('videos', function (Blueprint $table) {
-            $table->foreign('id')->references('id_foto')->on('foto_kategori_show')->onDelete('cascade');
+            // $table->foreign('id')->references('id_foto')->on('foto_kategori_show')->onDelete('cascade');
         });
     }
 

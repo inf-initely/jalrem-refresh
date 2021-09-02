@@ -14,7 +14,7 @@ class AddForeignKeyKategoriShowFoto extends Migration
     public function up()
     {
         Schema::table('fotos', function (Blueprint $table) {
-            $table->foreign('id')->references('id_foto')->on('foto_kategori_show')->onDelete('cascade');
+            // $table->foreign('id')->references('id_foto')->on('foto_kategori_show')->onDelete('cascade');
         });
     }
 

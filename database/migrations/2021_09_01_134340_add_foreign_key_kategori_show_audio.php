@@ -14,7 +14,7 @@ class AddForeignKeyKategoriShowAudio extends Migration
     public function up()
     {
         Schema::table('audio', function (Blueprint $table) {
-            $table->foreign('id')->references('id_audio')->on('audio_kategori_show')->onDelete('cascade');
+            // $table->foreign('id')->references('id_audio')->on('audio_kategori_show')->onDelete('cascade');
         });
     }
 
