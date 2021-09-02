@@ -43,7 +43,7 @@ class RempahController extends Controller
             'jenis_rempah' => $request->nama_rempah,
             'keterangan' => $request->keterangan_rempah,
             'jenis_rempah_english' => $request->nama_rempah_english,
-            'keterangan_english' => $request->keterangan_english,
+            'keterangan_english' => $request->keterangan_rempah_english,
         ]);
 
         Alert::success('Berhasil', 'Rempah berhasil ditambah');
@@ -70,7 +70,7 @@ class RempahController extends Controller
             'jenis_rempah' =>  $request->nama_rempah,
             'keterangan' => $request->keterangan_rempah,
             'jenis_rempah_english' =>  $request->nama_rempah_english,
-            'keterangan_english' => $request->keterangan_english
+            'keterangan_english' => $request->keterangan_rempah_english
         ]);
 
         Alert::success('Berhasil', 'Rempah berhasil diedit');
