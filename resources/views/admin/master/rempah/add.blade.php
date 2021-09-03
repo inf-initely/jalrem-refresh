@@ -46,7 +46,7 @@
                       </div>
                       <div class="mb-3">
                         <label for="keteranganRempah" class="form-label">Keterangan Rempah(Bahasa Inggris)</label>
-                        <textarea name="keterangan_english" class="form-control" id="isiArtikelBahasa" rows="8"></textarea>
+                        <textarea name="keterangan_rempah_english" class="form-control" id="isiArtikelBahasa" rows="8"></textarea>
                         <!-- <div id="toolbar-container"></div> -->
                         <!-- This container will become the editable. -->
                         <!-- <div id="editor" style="border: 1px solid #F5F6F9;">
