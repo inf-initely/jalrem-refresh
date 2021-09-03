@@ -9,21 +9,21 @@
           <p class="footer-alamat">The Ministry of Education, Culture, Research, and Technology, Jl. Jenderal Sudirman, Senayan, Jakarta 10270</p>
         </div>
         <div class="col-12 col-md-6 col-lg-3 mb-4 footer-content">
-          <h3 class="menu-footer mb-4">CONTACT</h3>
+          <h3 class="menu-footer mb-3">CONTACT</h3>
           <ul>
             <li>
-              <p>jalurrempah@kemdikbud.go.id</p>
+              jalurrempah@kemdikbud.go.id
             </li>
             <li>
-              <p>021-5703303 / 021-57903020</p>
+              021-5703303 / 021-57903020
             </li>
             <li>
-              <p>021-5733125</p>
+              021-5733125
             </li>
           </ul>
         </div>
         <div class="col-12 col-md-6 col-lg-2 mb-4 footer-content">
-          <h3 class="menu-footer">ABOUT</h3>
+          <h3 class="menu-footer mb-3">ABOUT</h3>
           <ul>
             <li>
               <a href="{{ route('tentangjalur') }}">The Route</a>
@@ -37,7 +37,7 @@
           </ul>
         </div>
         <div class="col-12 col-md-6 col-lg-2 mb-4 footer-content">
-          <h3 class="menu-footer">CONTENTS</h3>
+          <h3 class="menu-footer mb-3">CONTENTS</h3>
           <ul>
             <li>
               <a href="{{ route('articles') }}">Article</a>
@@ -57,7 +57,7 @@
           </ul>
         </div>
         <div class="col-12 col-md-6 col-lg-2 mb-4 footer-content">
-          <h3 class="menu-footer">SOCIAL MEDIA</h3>
+          <h3 class="menu-footer mb-3">SOCIAL MEDIA</h3>
           <ul class="list-group list-group-horizontal">
             <li class="list-group-item">
               <a target="_blank" href="https://web.facebook.com/jalurrempahri">
@@ -103,21 +103,21 @@
           <p class="footer-alamat">Kompleks Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi, Jalan Jenderal Sudirman, Senayan, Jakarta 10270</p>
         </div>
         <div class="col-12 col-md-6 col-lg-3 mb-4 footer-content">
-          <h3 class="menu-footer mb-4">KONTAK</h3>
+          <h3 class="menu-footer mb-3">KONTAK</h3>
           <ul>
             <li>
-              <p>jalurrempah@kemdikbud.go.id</p>
+              jalurrempah@kemdikbud.go.id
             </li>
             <li>
-              <p>021-5703303 / 021-57903020</p>
+              021-5703303 / 021-57903020
             </li>
             <li>
-              <p>021-5733125</p>
+              021-5733125
             </li>
           </ul>
         </div>
         <div class="col-12 col-md-6 col-lg-2 mb-4 footer-content">
-          <h3 class="menu-footer">TENTANG</h3>
+          <h3 class="menu-footer mb-3">TENTANG</h3>
           <ul>
             <li>
               <a href="{{ route('tentangjalur') }}">Jalur</a>
@@ -131,7 +131,7 @@
           </ul>
         </div>
         <div class="col-12 col-md-6 col-lg-2 mb-4 footer-content">
-          <h3 class="menu-footer">KONTEN</h3>
+          <h3 class="menu-footer mb-3">KONTEN</h3>
           <ul>
             <li>
               <a href="{{ route('articles') }}">Artikel</a>
@@ -151,7 +151,7 @@
           </ul>
         </div>
         <div class="col-12 col-md-6 col-lg-2 mb-4 footer-content">
-          <h3 class="menu-footer">MEDIA SOSIAL</h3>
+          <h3 class="menu-footer mb-3">MEDIA SOSIAL</h3>
           <ul class="list-group list-group-horizontal">
             <li class="list-group-item">
               <a target="_blank" href="https://web.facebook.com/jalurrempahri">
