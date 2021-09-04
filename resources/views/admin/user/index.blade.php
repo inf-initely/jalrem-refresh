@@ -5,7 +5,7 @@
 @endsection
 
 @section('topbar-title')
-    Konten - Master Data
+    Konten - User Data
 @endsection
 
 @section('content')
@@ -23,10 +23,10 @@
                   <div class="card-header py-3">
                     <div class="row">
                       <div class="col-6">
-                        <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">List Kontributor</h2>
+                        <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">List User</h2>
                       </div>
                       <div class="col-6 text-end">
-                        <a href="{{ route('admin.contributor.add') }}" class="btn btn-primary">
+                        <a href="{{ route('admin.user.add') }}" class="btn btn-primary">
                           <i class="fa fa-plus mr-1"></i> Tambah
                         </a>
                       </div>
@@ -37,28 +37,26 @@
                       <thead>
                         <tr>
                           <th>No.</th>
-                          <th>Tanggal</th>
-                          <th>Nama Kontributor</th>
-                          <th>Domisili</th>
-                          <th>Kategori</th>
+                          <th>Nama</th>
+                          {{-- <th>Role</th> --}}
+                          <th>Status</th>
                           <th>Aksi</th>
                         </tr>
                       </thead>
                       <tbody>
-                        @foreach( $kontributor as $k )
+                        @foreach( $users as $u )
                         <tr>
                           <td>#</td>
-                          <td>{{ $k->created_at->isoFormat('YYYY/MM/DD'); }}</td>
-                          <td>{{ Str::limit($k->nama, 50, $end='...') }}</td>
-                          <td>{{ Str::limit($k->domisili, 50, $end='...') }}</td>
-                          <td>{{ $k->kategori }}</td>
+                          <td>{{ Str::limit($u->nama, 50, $end='...') }}</td>
+                          {{-- <td>-</td> --}}
+                          <td> <span class="badge rounded-pill py-1 px-3 bg-{{ $u->is_active ? 'success' : 'info' }}">{{ $u->is_active ? 'Aktif' : 'Non Aktif' }}</span></td>
                           <td>
-                            <a href="{{ route('admin.contributor.edit', $k->id) }}" class="btn btn-sm btn-outline-info">
+                            <a href="{{ route('admin.user.edit', $u->id) }}" class="btn btn-sm btn-outline-info">
                               Edit
                             </a>
-                            <button class="btn btn-sm btn-outline-danger btn-hapus" data-id="{{ $k->id }}">
-                              Hapus
-                            </button>
+                            <a href="{{ route('admin.user.action', $u->id) }}" class="btn btn-sm btn-outline-danger btn-nonaktif">
+                              {{ $u->is_active ? 'Non Aktif' : 'Aktif' }}
+                            </a>
                           </td>
                         </tr>
                         @endforeach

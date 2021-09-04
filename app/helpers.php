@@ -71,6 +71,10 @@ if( !function_exists('generate_route_content') ) {
                 return 'photo';
             case 'publikasis':
                 return 'publication';
+            case 'videos':
+                return 'video';
+            case 'audio':
+                return 'audio';
             case 'kegiatans':
                 return 'event';
             case 'kerjasamas':

@@ -12,7 +12,7 @@
                 <div class="layer-masking"></div>
                 <div class="container">
                   <div data-swiper-parallax="300" class="slide-title">
-                    <h2 class="title">{{ $s->judul_indo }}</h2>
+                    <h2 class="title"><a style="text-decoration: none; color: #fff;" href="{{ route(generate_route_content($s->getTable()) . '_detail', $s->slug) }}">{{ $s->judul_indo }}</a></h2>
                   </div>
                   <div data-swiper-parallax="400" class="slide-text">
                     <p class="caption">{!! Str::limit($s->meta_indo, 160, $end='...') !!}</p>
