@@ -74,6 +74,59 @@
 @endsection
 
 @section('js')
+    <!-- Bootstrap core JavaScript-->
+    <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js') }}"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="{{ asset('assets/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('assets/js/sb-admin-2.min.js') }}"></script>
+    <script>
+    $("#sidebarToggle").click(function() {
+    $("#topNavbar").toggleClass("shrink");
+    $("#contentWrapper").toggleClass("content-shrink");
+    $("#logoNavbar").toggleClass("logo-shrink")
+    $("footer").toggleClass("footer-shrink")
+    });
+    </script>
+    <script>
+    $(document).on('click', '#btnSimpan', function(e) {
+    Swal.fire({
+        title: 'Ingin Menyimpan User?',
+        showDenyButton: true,
+        showCancelButton: false,
+        confirmButtonText: `Simpan`,
+        denyButtonText: `Batal`,
+    }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+        Swal.fire('Tersimpan!', '', 'success')
+        } else if (result.isDenied) {
+        Swal.fire('Dibatalkan', '', 'info')
+        }
+    })
+    });
+    </script>
+    <script>
+    $("#domisili").select2({
+    placeholder: "Pilih Domisili",
+    allowClear: true
+    });
+    </script>
+    <script>
+    $(".toggle-password").click(function() {
+
+    $(this).toggleClass("fa-eye fa-eye-slash");
+    var input = $($(this).attr("toggle"));
+    if (input.attr("type") == "password") {
+        input.attr("type", "text");
+    } else {
+        input.attr("type", "password");
+    }
+    });
+    </script>
   <script>
     $(document).on('click', '.btn-hapus', function(e) {
       Swal.fire({
