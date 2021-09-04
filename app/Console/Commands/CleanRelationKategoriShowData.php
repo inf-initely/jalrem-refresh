@@ -3,6 +3,13 @@
 namespace App\Console\Commands;
 
 use App\Models\Artikel;
+use App\Models\Audio;
+use App\Models\Foto;
+use App\Models\Kegiatan;
+use App\Models\Kerjasama;
+use App\Models\Publikasi;
+use App\Models\Video;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 
@@ -20,7 +27,7 @@ class CleanRelationKategoriShowData extends Command
      *
      * @var string
      */
-    protected $description = 'Clean old data that have no relation or already deleted from the main table but sil exist in relation table';
+    protected $description = 'Clean old data that have no relation or already deleted from the main table but still exist in relation table';
 
     /**
      * Create a new command instance.
@@ -39,15 +46,15 @@ class CleanRelationKategoriShowData extends Command
      */
     public function handle()
     {
+        DB::beginTransaction();
         $count = 0;
         //artikel kategori show
         $artikel_kategori_show = DB::table('artikel_kategori_show')->get();
         foreach ($artikel_kategori_show as $artikel) {
-            DB::beginTransaction();
+            DB::table('artikel_kategori_show')->where('id', $artikel->id)->update(['created_at' => Carbon::now(), 'updated_at' => Carbon::now()]);
             try {
                 if (!Artikel::where('id', $artikel->id_artikel)->exists()) {
                     DB::table('artikel_kategori_show')->where('id_artikel', $artikel->id_artikel)->delete();
-                    DB::commit();
                     $count++;
                 }
             } catch (\Throwable $th) {
@@ -55,15 +62,18 @@ class CleanRelationKategoriShowData extends Command
                 $this->info('Delete data failed.', $th);
             }
         }
+
+        $this->info('Total data artikel_kategori_show: ' .  $count);
+
+        $count = 0;
 
         //foto kategori show
         $foto_kategori_show = DB::table('foto_kategori_show')->get();
         foreach ($foto_kategori_show as $foto) {
-            DB::beginTransaction();
+            DB::table('foto_kategori_show')->where('id', $foto->id)->update(['created_at' => Carbon::now(), 'updated_at' => Carbon::now()]);
             try {
-                if (!Artikel::where('id', $foto->id_foto)->exists()) {
+                if (!Foto::where('id', $foto->id_foto)->exists()) {
                     DB::table('foto_kategori_show')->where('id_foto', $foto->id_foto)->delete();
-                    DB::commit();
                     $count++;
                 }
             } catch (\Throwable $th) {
@@ -71,15 +81,18 @@ class CleanRelationKategoriShowData extends Command
                 $this->info('Delete data failed.', $th);
             }
         }
+
+        $this->info('Total data foto_kategori_show: ' .  $count);
+
+        $count  = 0;
 
         //audio kategori show
         $audio_kategori_show = DB::table('audio_kategori_show')->get();
         foreach ($audio_kategori_show as $audio) {
-            DB::beginTransaction();
+            DB::table('audio_kategori_show')->where('id', $audio->id)->update(['created_at' => Carbon::now(), 'updated_at' => Carbon::now()]);
             try {
-                if (!Artikel::where('id', $audio->id_audio)->exists()) {
+                if (!Audio::where('id', $audio->id_audio)->exists()) {
                     DB::table('audio_kategori_show')->where('id_audio', $audio->id_audio)->delete();
-                    DB::commit();
                     $count++;
                 }
             } catch (\Throwable $th) {
@@ -87,15 +100,18 @@ class CleanRelationKategoriShowData extends Command
                 $this->info('Delete data failed.', $th);
             }
         }
+
+        $this->info('Total data audio_kategori_show: ' .  $count);
+
+        $count = 0;
 
         //video kategori show
         $video_kategori_show = DB::table('video_kategori_show')->get();
         foreach ($video_kategori_show as $video) {
-            DB::beginTransaction();
+            DB::table('video_kategori_show')->where('id', $video->id)->update(['created_at' => Carbon::now(), 'updated_at' => Carbon::now()]);
             try {
-                if (!Artikel::where('id', $video->id_video)->exists()) {
+                if (!Video::where('id', $video->id_video)->exists()) {
                     DB::table('video_kategori_show')->where('id_video', $video->id_video)->delete();
-                    DB::commit();
                     $count++;
                 }
             } catch (\Throwable $th) {
@@ -104,15 +120,17 @@ class CleanRelationKategoriShowData extends Command
             }
         }
 
+        $this->info('Total data video_kategori_show: ' .  $count);
+
+        $count = 0 ;
 
         //publikasi kategori show
         $publikasi_kategori_show = DB::table('publikasi_kategori_show')->get();
         foreach ($publikasi_kategori_show as $publikasi) {
-            DB::beginTransaction();
+            DB::table('publikasi_kategori_show')->where('id', $publikasi->id)->update(['created_at' => Carbon::now(), 'updated_at' => Carbon::now()]);
             try {
-                if (!Artikel::where('id', $publikasi->id_publikasi)->exists()) {
+                if (!Publikasi::where('id', $publikasi->id_publikasi)->exists()) {
                     DB::table('publikasi_kategori_show')->where('id_publikasi', $publikasi->id_publikasi)->delete();
-                    DB::commit();
                     $count++;
                 }
             } catch (\Throwable $th) {
@@ -120,15 +138,18 @@ class CleanRelationKategoriShowData extends Command
                 $this->info('Delete data failed.', $th);
             }
         }
+
+        $this->info('Total data publikasi_kategori_show: ' .  $count);
+
+        $count = 0;
 
         //kerjasama kategori show
         $kerjasama_kategori_show = DB::table('kerjasama_kategori_show')->get();
         foreach ($kerjasama_kategori_show as $kerjasama) {
-            DB::beginTransaction();
+            DB::table('kerjasama_kategori_show')->where('id', $kerjasama->id)->update(['created_at' => Carbon::now(), 'updated_at' => Carbon::now()]);
             try {
-                if (!Artikel::where('id', $kerjasama->id_kerjasama)->exists()) {
+                if (!Kerjasama::where('id', $kerjasama->id_kerjasama)->exists()) {
                     DB::table('kerjasama_kategori_show')->where('id_kerjasama', $kerjasama->id_kerjasama)->delete();
-                    DB::commit();
                     $count++;
                 }
             } catch (\Throwable $th) {
@@ -136,15 +157,18 @@ class CleanRelationKategoriShowData extends Command
                 $this->info('Delete data failed.', $th);
             }
         }
+
+        $this->info('Total data kerjasama_kategori_show: ' .  $count);
+
+        $count = 0;
 
         //kegiatan kategori show
         $kegiatan_kategori_show = DB::table('kegiatan_kategori_show')->get();
         foreach ($kegiatan_kategori_show as $kegiatan) {
-            DB::beginTransaction();
+            DB::table('kegiatan_kategori_show')->where('id', $kegiatan->id)->update(['created_at' => Carbon::now(), 'updated_at' => Carbon::now()]);
             try {
-                if (!Artikel::where('id', $kegiatan->id_kegiatan)->exists()) {
+                if (!Kegiatan::where('id', $kegiatan->id_kegiatan)->exists()) {
                     DB::table('kegiatan_kategori_show')->where('id_kegiatan', $kegiatan->id_kegiatan)->delete();
-                    DB::commit();
                     $count++;
                 }
             } catch (\Throwable $th) {
@@ -153,7 +177,8 @@ class CleanRelationKategoriShowData extends Command
             }
         }
 
-        
-        $this->info('Total data: ' .  $count);
+        $this->info('Total data kegiatan_kategori_show: ' .  $count);
+
+        DB::commit();
     }
 }
