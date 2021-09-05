@@ -33,7 +33,7 @@ class KontenController extends Controller
 
             return view('content_english.konten', compact('artikel', 'foto', 'video', 'publikasi', 'audio', 'artikelSlider'));
         }
-        $artikelSlider = $artikelSlider->get();
+        $artikelSlider = $artikelSlider->take(3)->get();
         $artikel = $artikel->take(9)->get();
         $foto = $foto->take(9)->get();
         $video = $video->take(9)->get();
