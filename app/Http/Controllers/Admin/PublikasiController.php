@@ -27,7 +27,7 @@ class PublikasiController extends Controller
     {
         $rempahs = Rempah::all();
         $lokasi = Lokasi::all();
-        $kategori_show = KategoriShow::all();
+        $kategori_show = KategoriShow::take(3)->get();
         $kontributor = Kontributor::all();
 
         return view('admin.content.publication.add', compact('rempahs', 'lokasi', 'kategori_show', 'kontributor'));
@@ -94,7 +94,7 @@ class PublikasiController extends Controller
         $publikasi = Publikasi::findOrFail($publicationId);
         $rempahs = Rempah::all();
         $lokasi = Lokasi::all();
-        $kategori_show = KategoriShow::all();
+        $kategori_show = KategoriShow::take(3)->get();
         $kontributor = Kontributor::all();
 
         return view('admin.content.publication.edit', compact('publikasi', 'rempahs', 'lokasi', 'kategori_show', 'kontributor'));
