@@ -77,7 +77,7 @@ class UserController extends Controller
                 'nama' => $request->nama,
                 'email' => $request->email,
                 'domisili' => $request->domisili,
-                'password' => $request->password
+                'password' => bcrypt($request->password)
             ]);
         }else {
             $user->update([
