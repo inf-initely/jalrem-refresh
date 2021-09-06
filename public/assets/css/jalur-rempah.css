@@ -1620,6 +1620,14 @@ footer {
     /*height: 475px;*/
 }
 
+#isiKonten [title~=YouTube] {
+    height: 475px;
+}
+
+#txtMedia [title~=YouTube] {
+    height: 475px;
+}
+
 #txtMedia>p>img {
     border: 0;
     width: 100%;
@@ -1631,7 +1639,7 @@ footer {
     margin-top: 1.75rem;
 }
 
-.tentang-thumbnail{
+.tentang-thumbnail {
     object-fit: cover;
     height: 130px;
 }
@@ -1870,6 +1878,14 @@ footer {
 
     #txtMedia>p>iframe {
         /*height: 215px;*/
+    }
+
+    #isiKonten [title~=YouTube] {
+        height: 215px;
+    }
+
+    #txtMedia [title~=YouTube] {
+        height: 215px;
     }
 
     #isiKonten>p>iframe {
