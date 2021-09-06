@@ -180,6 +180,8 @@ return [
         App\Providers\TelescopeServiceProvider::class,
         Mews\Captcha\CaptchaServiceProvider::class,
 
+        Intervention\Image\ImageServiceProvider::class,
+
     ],
 
     /*
@@ -236,6 +238,7 @@ return [
 
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
 
+        'Image' => 'Intervention\Image\Facades\Image::class',
     ],
 
     /*
@@ -244,7 +247,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | This value is the version of your application. This value is used when
-    | the framework needs to place the application's version in a notification
+    | the framework needs to place the applications version in a notification
     | or any other location as required by the application or its packages.
     | x.0.0 - x is a major change. ex: refactor of system-flow/framework/api/design-system
     | 1.x.0 - 1 is a minor change. ex: add functionality/feature/refactor
