@@ -28,7 +28,7 @@ class KegiatanController extends Controller
     {
         $rempahs = Rempah::all();
         $lokasi = Lokasi::all();
-        $kategori_show = KategoriShow::all();
+        $kategori_show = KategoriShow::take(3)->get();
         $kontributor = Kontributor::all();
 
         return view('admin.informasi.kegiatan.add', compact('rempahs', 'lokasi', 'kategori_show', 'kontributor'));
@@ -105,7 +105,7 @@ class KegiatanController extends Controller
         $kegiatan = Kegiatan::findOrFail($kegiatanId);
         $rempahs = Rempah::all();
         $lokasi = Lokasi::all();
-        $kategori_show = KategoriShow::all();
+        $kategori_show = KategoriShow::take(3)->get();
         $kontributor = Kontributor::all();
 
         return view('admin.informasi.kegiatan.edit', compact('kegiatan', 'rempahs', 'lokasi', 'kategori_show', 'kontributor'));

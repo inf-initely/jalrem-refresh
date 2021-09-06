@@ -27,7 +27,7 @@ class KerjasamaController extends Controller
     {
         $rempahs = Rempah::all();
         $lokasi = Lokasi::all();
-        $kategori_show = KategoriShow::all();
+        $kategori_show = KategoriShow::take(3)->get();
         $kontributor = Kontributor::all();
 
         return view('admin.informasi.kerjasama.add', compact('rempahs', 'lokasi', 'kategori_show', 'kontributor'));
@@ -94,7 +94,7 @@ class KerjasamaController extends Controller
         $kerjasama = Kerjasama::findOrFail($kerjasamaId);
         $rempahs = Rempah::all();
         $lokasi = Lokasi::all();
-        $kategori_show = KategoriShow::all();
+        $kategori_show = KategoriShow::take(3)->get();
         $kontributor = Kontributor::all();
 
         return view('admin.informasi.kerjasama.edit', compact('kerjasama', 'rempahs', 'lokasi', 'kategori_show', 'kontributor'));

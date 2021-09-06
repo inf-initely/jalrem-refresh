@@ -27,7 +27,7 @@ class AudioController extends Controller
     {
         $rempahs = Rempah::all();
         $lokasi = Lokasi::all();
-        $kategori_show = KategoriShow::all();
+        $kategori_show = KategoriShow::take(3)->get();
         $kontributor = Kontributor::all();
 
         return view('admin.content.audio.add', compact('rempahs', 'lokasi', 'kategori_show', 'kontributor'));
@@ -87,7 +87,7 @@ class AudioController extends Controller
         $audio = Audio::findOrFail($audioId);
         $lokasi = Lokasi::all();
         $rempahs = Rempah::all();
-        $kategori_show = KategoriShow::all();
+        $kategori_show = KategoriShow::take(3)->get();
         $kontributor = Kontributor::all();
 
         return view('admin.content.audio.edit', compact('audio', 'lokasi', 'kategori_show', 'rempahs', 'kontributor'));
