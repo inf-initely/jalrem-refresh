@@ -26,7 +26,7 @@ class FotoController extends Controller
     {
         $rempahs = Rempah::all();
         $lokasi = Lokasi::all();
-        $kategori_show = KategoriShow::all();
+        $kategori_show = KategoriShow::take(3)->get();
         $kontributor = Kontributor::all();
 
         return view('admin.content.photo.add', compact('rempahs', 'lokasi', 'kategori_show', 'kontributor'));
@@ -102,7 +102,7 @@ class FotoController extends Controller
         $foto = Foto::findOrFail($photoId);
         $lokasi = Lokasi::all();
         $rempahs = Rempah::all();
-        $kategori_show = KategoriShow::all();
+        $kategori_show = KategoriShow::take(3)->get();
         $kontributor = Kontributor::all();
 
 

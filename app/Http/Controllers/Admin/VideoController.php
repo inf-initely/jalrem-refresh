@@ -27,7 +27,7 @@ class VideoController extends Controller
     {
         $rempahs = Rempah::all();
         $lokasi = Lokasi::all();
-        $kategori_show = KategoriShow::all();
+        $kategori_show = KategoriShow::take(3)->get();
         $kontributor = Kontributor::all();
 
         return view('admin.content.video.add', compact('rempahs', 'lokasi', 'kategori_show', 'kontributor'));
@@ -88,7 +88,7 @@ class VideoController extends Controller
         $video = Video::findOrFail($videoId);
         $lokasi = Lokasi::all();
         $rempahs = Rempah::all();
-        $kategori_show = KategoriShow::all();
+        $kategori_show = KategoriShow::take(3)->get();
         $kontributor = Kontributor::all();
 
         return view('admin.content.video.edit', compact('video', 'lokasi', 'kategori_show', 'rempahs', 'kontributor'));

@@ -32,7 +32,7 @@ class JejakController extends Controller
         $value_type = []; // untuk menampikan isi rempah jika sebelumnya memilih rempah dan wilayah jika sebelumnya memilih wilayah
         if( $rempah ) {
             $artikelRempah = $this->loopingArtikel($rempah, $artikelRempah, $kategori);
-            $value_type = Rempah::all();
+            $value_type = Rempah::orderBy('jenis_rempah', 'asc')->get();
             $artikel = collect($artikelRempah);
         } else if( $lokasi ) {
             foreach( $kategori->artikel as $ka ) {

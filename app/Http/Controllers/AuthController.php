@@ -31,6 +31,13 @@ class AuthController extends Controller
         
         $credentials = $request->only('email', 'password');
         if (auth()->attempt($credentials)) {
+            if( !auth()->user()->is_active ) {
+                $error = [
+                    'message' => 'user was not active'
+                ];
+                auth()->logout();
+                return redirect()->route('login')->withErrors($error);
+            }
             return redirect()->route('admin.home');
         }
   

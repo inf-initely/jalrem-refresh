@@ -30,7 +30,7 @@ class ArtikelController extends Controller
     {
         $rempahs = Rempah::all();
         $lokasi = Lokasi::all();
-        $kategori_show = KategoriShow::all();
+        $kategori_show = KategoriShow::take(3)->get();
         $kontributor = Kontributor::all();
 
         return view('admin.content.article.add', compact('rempahs', 'lokasi', 'kategori_show', 'kontributor'));
@@ -91,7 +91,7 @@ class ArtikelController extends Controller
         $artikel = Artikel::findOrFail($articleId);
         $rempahs = Rempah::all();
         $lokasi = Lokasi::all();
-        $kategori_show = KategoriShow::all();
+        $kategori_show = KategoriShow::take(3)->get();
         $kontributor = Kontributor::all();
 
         return view('admin.content.article.edit', compact('artikel', 'rempahs', 'lokasi', 'kategori_show', 'kontributor'));
