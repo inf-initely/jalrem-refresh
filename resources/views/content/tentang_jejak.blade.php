@@ -58,7 +58,7 @@
         <section id="kontenJejak">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-lg-11 mt-4">
+                    <div class="col-lg-11 mt-3">
                         <div class="row">
                             @foreach( $artikel as $a )
                             @if( $a->getTable() == 'videos' )
@@ -125,11 +125,11 @@
                                 </div>
                             </div>
                             @else
-                                <div class="col-lg-6 mb-1">
+                                <div class="col-lg-6 mb-2">
                                     <div class="card no-border no-background">
                                         <div class="card-body row">
                                             <div class="col-5 center-v">
-                                                <img src="{{ asset(get_asset_path($a->getTable(), $a->thumbnail)) }}" width="100%">
+                                                <img class="tentang-thumbnail" src="{{ asset(get_asset_path($a->getTable(), $a->thumbnail)) }}" width="100%">
                                             </div>
                                             <div class="col-7 center-v">
                                                 <a href="#" class="text-danger m-0 p-0 text-decoration-none wilayah"><small>{{ $a->lokasi->nama_lokasi ?? '' }}</small></a>

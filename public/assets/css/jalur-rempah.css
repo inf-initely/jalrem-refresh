@@ -1631,6 +1631,11 @@ footer {
     margin-top: 1.75rem;
 }
 
+.tentang-thumbnail{
+    object-fit: cover;
+    height: 130px;
+}
+
 @media (max-width: 991.98px) {
 
     .navbar-nav {
