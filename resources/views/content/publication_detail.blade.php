@@ -178,6 +178,8 @@ $(function() {
 });
 </script>
 <script>
-  $("iframe").prop('allowfullscreen', "allowfullscreen");
-</script><main></main>
+$(document).ready(function() {
+      $("iframe").attr("allowfullscreen", "allowfullscreen");
+    });
+</script>
 @endsection

@@ -110,6 +110,8 @@
     });
     </script>
     <script>
-      $("iframe").prop('allowfullscreen', "allowfullscreen");
+$(document).ready(function() {
+      $("iframe").attr("allowfullscreen", "allowfullscreen");
+    });
     </script>
 @endsection
