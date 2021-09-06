@@ -1,5 +1,7 @@
 <?php
 
+use App\Images;
+
 if( !function_exists('generate_slug') ) {
     function generate_slug($text, $divider) {
         // replace non letter or digits by divider
@@ -34,11 +36,27 @@ if( !function_exists('generate_slug') ) {
 if( !function_exists('upload_file') ) {
     function upload_file($path, $file)
     {
-        $tujuan_upload_file = storage_path($path);
-        $filename = uniqid() . '.' . $file->getClientOriginalExtension();
-        $file->move($tujuan_upload_file, $filename);
+        // try {
+        //     $fileSystem = new Filesystem();
+            
+        //     if( !$fileSystem->exists($path) ) {
+        //         File::makeDirectory($path);
+        //     }
 
-        return $filename;
+
+
+            // $tujuan_upload_file = storage_path($path);
+            // $filename = uniqid() . '.' . $file->getClientOriginalExtension();
+            // $file->move($tujuan_upload_file, $filename);
+
+            $image = Image::make($file->getRealPath())->resize(720, 480);
+            $filename = uniqid() . '.webp';
+            $path = $path . '/' . $filename;
+            Image::make($image)->save(storage_path($path));
+            
+            return $filename;    
+        // }catch(\Exception $e) {
+        // }
     }
 }
 
@@ -56,8 +74,14 @@ if( !function_exists('generate_route_content') ) {
         {
             case 'artikels':
                 return 'article';
+            case 'fotos':
+                return 'photo';
             case 'publikasis':
                 return 'publication';
+            case 'videos':
+                return 'video';
+            case 'audio':
+                return 'audio';
             case 'kegiatans':
                 return 'event';
             case 'kerjasamas':

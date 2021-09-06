@@ -535,6 +535,13 @@ footer a {
     color: #202020;
     text-decoration: none;
     font-size: 13px;
+    margin-bottom: 7px;
+}
+
+footer li {
+    font-size: 13px;
+    color: #202020;
+    margin-bottom: 7px;
 }
 
 footer a:hover {
@@ -933,7 +940,8 @@ footer {
 .icon-search {
     line-height: .5;
     margin-right: 15px;
-    margin-top: -1px;
+    /*margin-top: -1px;*/
+    margin-top: 3px;
 }
 
 /*Language select*/
@@ -1463,7 +1471,7 @@ footer {
 .list-group-item {
     background-color: transparent;
     border-color: transparent;
-    padding: .4rem;
+    padding: 0rem .6rem .4rem 0rem;
 }
 
 .list-group-item:hover img {
@@ -1818,7 +1826,7 @@ footer {
     .icon-search {
         line-height: .5;
         margin-right: 0px;
-        margin-top: -1px;
+        margin-top: 2px;
     }
 
     .nav-tabline .nav-link {
@@ -1867,6 +1875,12 @@ footer {
 
     footer {
         z-index: 3 !important;
+    }
+
+    .list-group-item {
+        background-color: transparent;
+        border-color: transparent;
+        padding: .4rem;
     }
 
 

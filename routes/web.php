@@ -15,6 +15,8 @@ use App\Http\Controllers\Admin\KontributorController as KontributorControllerAdm
 use App\Http\Controllers\Admin\KerjasamaController as KerjasamaControllerAdmin;
 use App\Http\Controllers\Admin\KegiatanController as KegiatanControllerAdmin;
 
+use App\Http\Controllers\Admin\UserController as UserControllerAdmin;
+
 use App\Http\Controllers\Admin\HomeController as HomeControllerAdmin;
 
 use App\Http\Controllers\HomeController;
@@ -118,6 +120,13 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function() {
     Route::get('/informasi/kegiatan/edit/{kerjasamaId}', [KegiatanControllerAdmin::class, 'edit'])->name('admin.kegiatan.edit');
     Route::post('/informasi/kegiatan/update/{kerjasamaId}', [KegiatanControllerAdmin::class, 'update'])->name('admin.kegiatan.update');
     Route::get('/informasi/kegiatan/delete/{kerjasamaId}', [KegiatanControllerAdmin::class, 'delete'])->name('admin.kegiatan.delete');
+
+    Route::get('/user', [UserControllerAdmin::class, 'index'])->name('admin.user.index');
+    Route::get('/user/tambah', [UserControllerAdmin::class, 'add'])->name('admin.user.add');
+    Route::post('/user/tambah', [UserControllerAdmin::class, 'store'])->name('admin.user.store');
+    Route::get('/user/edit/{id}', [UserControllerAdmin::class, 'edit'])->name('admin.user.edit');
+    Route::post('/user/update/{id}', [UserControllerAdmin::class, 'update'])->name('admin.user.update');
+    Route::get('/user/action/{id}', [UserControllerAdmin::class, 'action'])->name('admin.user.action');
 });
 
 Route::get('/kontributor', [KontributorController::class, 'index'])->name('contributor');

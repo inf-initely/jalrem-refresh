@@ -22,6 +22,9 @@ class User extends Authenticatable
         'role',
         'contributor',
         'password',
+        'nama',
+        'domisili',
+        'is_active'
     ];
 
     /**
@@ -42,4 +45,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function lokasi()
+    {
+        return $this->belongsTo('App\Models\Lokasi', 'domisili', 'id');
+    }
 }

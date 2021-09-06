@@ -22,6 +22,11 @@ class Foto extends Model
         return $this->belongsTo('App\Models\Kontributor', 'id_kontributor', 'id');
     }
 
+    public function lokasi()
+    {
+        return $this->belongsTo('App\Models\Lokasi', 'id_lokasi', 'id');
+    }
+
     protected $guarded = [];
 
     public function rempahs()

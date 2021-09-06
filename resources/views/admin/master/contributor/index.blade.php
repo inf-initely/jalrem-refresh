@@ -49,8 +49,8 @@
                         <tr>
                           <td>#</td>
                           <td>{{ $k->created_at->isoFormat('YYYY/MM/DD'); }}</td>
-                          <td>{{ $k->nama }}</td>
-                          <td>{{ $k->domisili }}</td>
+                          <td>{{ Str::limit($k->nama, 50, $end='...') }}</td>
+                          <td>{{ Str::limit($k->domisili, 50, $end='...') }}</td>
                           <td>{{ $k->kategori }}</td>
                           <td>
                             <a href="{{ route('admin.contributor.edit', $k->id) }}" class="btn btn-sm btn-outline-info">

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File; 
+use Illuminate\Support\Facades\File;
 
 use App\Models\Artikel;
 use App\Models\Rempah;
@@ -13,8 +13,9 @@ use App\Models\KategoriShow;
 use App\Models\Kontributor;
 
 use App\Http\Requests\ContentRequest;
+use RealRashid\SweetAlert\Facades\Alert;
 
-use Alert;
+// use Alert;
 
 class ArtikelController extends Controller
 {
@@ -25,7 +26,7 @@ class ArtikelController extends Controller
         return view('admin.content.article.index', compact('artikels'));
     }
 
-    public function add() 
+    public function add()
     {
         $rempahs = Rempah::all();
         $lokasi = Lokasi::all();
@@ -122,7 +123,7 @@ class ArtikelController extends Controller
             $slider = $request->file('slider');
             $filename_slider = upload_file('app/public/assets/artikel/slider', $slider);
 
-            File::delete(storage_path('app/public/assets/artikel/slider', $artikel->slider_file));            
+            File::delete(storage_path('app/public/assets/artikel/slider', $artikel->slider_file));
         } else {
             $filename_slider = $artikel->slider_file;
         }
@@ -165,10 +166,10 @@ class ArtikelController extends Controller
         $artikel = Artikel::findOrFail($articleId);
 
         if( $artikel->slider_file != null )
-            File::delete(storage_path('app/public/assets/artikel/slider', $artikel->slider_file));   
+            File::delete(storage_path('app/public/assets/artikel/slider', $artikel->slider_file));
 
         File::delete(storage_path('app/public/assets/artikel/thumbnail', $artikel->thumbnail));
-        $artikel->delete();   
+        $artikel->delete();
 
         return redirect()->route('admin.article.index');
     }

@@ -43,72 +43,72 @@
             <h2 class="sub-judul">Spice Routes Media</h2>
           </div>
         </header>
-        <div class="row justify-content-center">
-          <div class="col-lg-12">
-            <div class="row text-center">
-              <div class="col mb-1">
-                <div class="card no-border card-media">
-                  <div class="card-body">
-                    <img src="{{ asset('assets/img/icon-publication.png') }}" width="32.5%">
-                    <p class="judul-media">Article</p>
-                    <p class="des-media">
+          <div class="row justify-content-center">
+            <div class="col-lg-12">
+              <div class="row text-center">
+                <div class="col-6 col-lg-4 col-xl-3 mb-1">
+                  <div class="card no-border card-media">
+                    <div class="card-body">
+                      <img src="{{ asset('assets/img/icon-publication.png') }}" width="25%">
+                      <p class="judul-media">Artikel</p>
+                      <p class="des-media">
 
-                    </p>
+                      </p>
+                    </div>
+                    <a href="{{ route('articles') }}" class="stretched-link"></a>
                   </div>
-                  <a href="{{ route('articles') }}" class="stretched-link"></a>
                 </div>
-              </div>
-              <div class="col mb-1">
-                <div class="card no-border card-media">
-                  <div class="card-body">
-                    <img src="{{ asset('assets/img/icon-image.png') }}" width="32.5%">
-                    <p class="judul-media">Photo</p>
-                    <p class="des-media">
+                <div class="col-6 col-lg-4 col-xl-3 mb-1">
+                  <div class="card no-border card-media">
+                    <div class="card-body">
+                      <img src="{{ asset('assets/img/icon-image.png') }}" width="25%">
+                      <p class="judul-media">Foto</p>
+                      <p class="des-media">
 
-                    </p>
+                      </p>
+                    </div>
+                    <a href="{{ route('photos') }}" class="stretched-link"></a>
                   </div>
-                  <a href="{{ route('photos') }}" class="stretched-link"></a>
                 </div>
-              </div>
-              <div class="col mb-1">
-                <div class="card no-border card-media">
-                  <div class="card-body">
-                    <img src="{{ asset('assets/img/icon-video.png') }}" width="32.5%">
-                    <p class="judul-media">Video</p>
-                    <p class="des-media">
+                <div class="col-6 col-lg-4 col-xl-3 mb-1">
+                  <div class="card no-border card-media">
+                    <div class="card-body">
+                      <img src="{{ asset('assets/img/icon-video.png') }}" width="25%">
+                      <p class="judul-media">Video</p>
+                      <p class="des-media">
 
-                    </p>
+                      </p>
+                    </div>
+                    <a href="{{ route('videos') }}" class="stretched-link"></a>
                   </div>
-                  <a href="{{ route('videos') }}" class="stretched-link"></a>
                 </div>
-              </div>
-              <div class="col mb-1">
-                <div class="card no-border card-media">
-                  <div class="card-body">
-                    <img src="{{ asset('assets/img/icon-publication.png') }}" width="32.5%">
-                    <p class="judul-media">Publication</p>
-                    <p class="des-media">
+                <div class="col-6 col-lg-4 col-xl-3 mb-1">
+                  <div class="card no-border card-media">
+                    <div class="card-body">
+                      <img src="{{ asset('assets/img/icon-publication.png') }}" width="25%">
+                      <p class="judul-media">Publikasi</p>
+                      <p class="des-media">
 
-                    </p>
+                      </p>
+                    </div>
+                    <a href="{{ route('publications') }}" class="stretched-link"></a>
                   </div>
-                  <a href="{{ route('publications') }}" class="stretched-link"></a>
                 </div>
-              </div>
-              <div class="col mb-1">
-                <div class="card no-border card-media">
-                  <div class="card-body">
-                    <img src="{{ asset('assets/img/icon-sound.png') }}" width="32.5%">
-                    <p class="judul-media">Audio</p>
-                    <p class="des-media">
+                <div class="col-6 col-lg-4 col-xl-3 mb-1">
+                  <div class="card no-border card-media">
+                    <div class="card-body">
+                      <img src="{{ asset('assets/img/icon-sound.png') }}" width="25%">
+                      <p class="judul-media">Audio</p>
+                      <p class="des-media">
 
-                    </p>
+                      </p>
+                    </div>
+                    <a href="{{ route('audios') }}" class="stretched-link"></a>
                   </div>
-                  <a href="{{ route('audios') }}" class="stretched-link"></a>
                 </div>
               </div>
             </div>
           </div>
-        </div>
       </section>
     </section>
   </div>

@@ -32,17 +32,58 @@ class JejakController extends Controller
         $value_type = []; // untuk menampikan isi rempah jika sebelumnya memilih rempah dan wilayah jika sebelumnya memilih wilayah
         if( $rempah ) {
             $artikelRempah = $this->loopingArtikel($rempah, $artikelRempah, $kategori);
-            $value_type = Rempah::all();
-            $artikel = $artikelRempah;
+            $value_type = Rempah::orderBy('jenis_rempah', 'asc')->get();
+            $artikel = collect($artikelRempah);
         } else if( $lokasi ) {
             foreach( $kategori->artikel as $ka ) {
                 if( $ka->id_lokasi == $lokasi->id )
                     $artikelWilayah[] = $ka;
             }
+
+            foreach( $kategori->foto as $ka ) {
+                if( $ka->id_lokasi == $lokasi->id )
+                    $artikelWilayah[] = $ka;
+            }
+
+            foreach( $kategori->audio as $ka ) {
+                if( $ka->id_lokasi == $lokasi->id )
+                    $artikelWilayah[] = $ka;
+            }
+
+            foreach( $kategori->video as $ka ) {
+                if( $ka->id_lokasi == $lokasi->id )
+                    $artikelWilayah[] = $ka;
+            }
+
+            foreach( $kategori->publikasi as $ka ) {
+                if( $ka->id_lokasi == $lokasi->id )
+                    $artikelWilayah[] = $ka;
+            }
+
+            foreach( $kategori->kerjasama as $ka ) {
+                if( $ka->id_lokasi == $lokasi->id )
+                    $artikelWilayah[] = $ka;
+            }
+
+            foreach( $kategori->kegiatan as $ka ) {
+                if( $ka->id_lokasi == $lokasi->id )
+                    $artikelWilayah[] = $ka;
+            }
+
             $value_type = Lokasi::all();
-            $artikel = $artikelWilayah;
+            $artikel = collect($artikelWilayah);
         } else {
-            $artikel = $kategori->artikel;
+            $artikel = $kategori->artikel->merge($kategori->foto)->merge($kategori->audio)->merge($kategori->video)->merge($kategori->publikasi)->merge($kategori->kerjasama)->merge($kategori->kegiatan);
+        }
+
+        $artikel = $artikel->filter(function($item) {
+            return $item->status == 'publikasi';
+        });
+
+        if( Session::get('lg') == 'en' ) {
+            $artikel = $artikel->filter(function($item) {
+                return $item->judul_english != null;
+            });
         }
 
         // $artikel = array_merge($artikel, $artikelRempah, $artikelWilayah);
@@ -52,6 +93,7 @@ class JejakController extends Controller
             : [];
 
         $artikel->setPath('/tentang-jejak?rempah=' . $rempahId . '&wilayah=' . $lokasiId);
+
         // dd($kategori->artikel);
         
         if( Session::get('lg') == 'en' )
@@ -71,6 +113,48 @@ class JejakController extends Controller
     {
         foreach( $kategori->artikel as $ka ) {
             foreach( $type->artikel as $ta ) {
+                if( $ka->id == $ta->id )
+                    $container[] = $ka;
+            }
+        }
+
+        foreach( $kategori->foto as $ka ) {
+            foreach( $type->foto as $ta ) {
+                if( $ka->id == $ta->id )
+                    $container[] = $ka;
+            }
+        }
+
+        foreach( $kategori->audio as $ka ) {
+            foreach( $type->audio as $ta ) {
+                if( $ka->id == $ta->id )
+                    $container[] = $ka;
+            }
+        }
+
+        foreach( $kategori->video as $ka ) {
+            foreach( $type->video as $ta ) {
+                if( $ka->id == $ta->id )
+                    $container[] = $ka;
+            }
+        }
+
+        foreach( $kategori->publikasi as $ka ) {
+            foreach( $type->publikasi as $ta ) {
+                if( $ka->id == $ta->id )
+                    $container[] = $ka;
+            }
+        }
+
+        foreach( $kategori->kerjasama as $ka ) {
+            foreach( $type->kerjasama as $ta ) {
+                if( $ka->id == $ta->id )
+                    $container[] = $ka;
+            }
+        }
+
+        foreach( $kategori->kegiatan as $ka ) {
+            foreach( $type->kegiatan as $ta ) {
                 if( $ka->id == $ta->id )
                     $container[] = $ka;
             }

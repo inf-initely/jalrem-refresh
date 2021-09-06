@@ -12,7 +12,7 @@
                 <div class="layer-masking"></div>
                 <div class="container">
                   <div data-swiper-parallax="300" class="slide-title">
-                    <h2 class="title">{{ $s->judul_indo }}</h2>
+                    <h2 class="title"><a style="text-decoration: none; color: #fff;" href="{{ route(generate_route_content($s->getTable()) . '_detail', $s->slug) }}">{{ $s->judul_indo }}</a></h2>
                   </div>
                   <div data-swiper-parallax="400" class="slide-text">
                     <p class="caption">{!! Str::limit($s->meta_indo, 160, $end='...') !!}</p>
@@ -67,12 +67,12 @@
                 <h2 class="sub-judul">Jalur</h2>
               </header>
               <p class="jelajah-des">Jalur Rempah mencakup berbagai lintasan jalur budaya yang melahirkan peradaban global & menghidupkan kembali peran masyarakat Nusantara berabad-abad lampau.</p>
-              {{-- <a href="{{ route('tentangjalur') }}" class="btn btn-danger btn-jelajah">
-                Jelajahi
-              </a> --}}
-              <a href="#" class="btn btn-danger btn-jelajah">
+              <a href="{{ route('tentangjalur') }}" class="btn btn-danger btn-jelajah">
                 Jelajahi
               </a>
+              {{-- <a href="#" class="btn btn-danger btn-jelajah">
+                Jelajahi
+              </a> --}}
             </div>
           </div>
           <div class="row justify-content-center content-jelajahi wrap-div" data-aos="fade-left">
@@ -81,12 +81,12 @@
                 <h2 class="sub-judul">Jejak</h2>
               </header>
               <p class="jelajah-des">Jejak memperlihatkan interaksi budaya pada masa lampau yang masih hidup hingga hari ini. Sebuah peninggalan nilai budaya yang menjadi memori kolektif bangsa.</p>
-              {{-- <a href="{{ route('tentangjejak') }}" class="btn btn-danger btn-jelajah">
-                Jelajahi
-              </a> --}}
-              <a href="#" class="btn btn-danger btn-jelajah">
+              <a href="{{ route('tentangjejak') }}" class="btn btn-danger btn-jelajah">
                 Jelajahi
               </a>
+              {{-- <a href="#" class="btn btn-danger btn-jelajah">
+                Jelajahi
+              </a> --}}
             </div>
             <div class="col-12 col-md-6 col-lg-4 first-div mb-2">
               <img class="jelajah-img" src="assets/img/jejak.webp">
@@ -101,12 +101,12 @@
                 <h2 class="sub-judul">Masa Depan</h2>
               </header>
               <p class="jelajah-des">Sebuah upaya rekontruksi dan revitalisasi jalur budaya bahari. Penggalian kembali potensi untuk kekayaan dan kesejahteraan bersama yang lestari.</p>
-              {{-- <a href="{{ route('tentangmasadepan') }}" class="btn btn-danger btn-jelajah">
-                Jelajahi
-              </a> --}}
-              <a href="#" class="btn btn-danger btn-jelajah">
+              <a href="{{ route('tentangmasadepan') }}" class="btn btn-danger btn-jelajah">
                 Jelajahi
               </a>
+              {{-- <a href="#" class="btn btn-danger btn-jelajah">
+                Jelajahi
+              </a> --}}
             </div>
           </div>
         </div>
@@ -400,6 +400,42 @@
     $("#twitter-widget-8").contents().find(".timeline-LoadMore").hide();
     $("#twitter-widget-9").contents().find(".timeline-LoadMore").hide();
 
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.body.appendChild(tag);
+
+    // When the YouTube API code loads, it calls this function, so it must be global
+    // and it must be named exactly onYouTubeIframeAPIReady.
+    window.onYouTubeIframeAPIReady = function() {
+      var videoModules = document.querySelectorAll('.video');
+      // for Internet Explorer 11 and below, convert array-like NodeList to an actual Array.
+      videoModules = Array.prototype.slice.call(videoModules);
+      videoModules.forEach(initializeVideoModule);
+    }
+
+    function initializeVideoModule(videoModule) {
+      var player = new YT.Player(videoModule.querySelector('.video-placeholder'), {
+        videoId: videoModule.dataset.videoId,
+        events: {
+          onStateChange: function(event) {
+            var isEnded = event.data === YT.PlayerState.ENDED;
+            // 'playing' css class controls fading the video and preivew images in/out.
+            // Internet Explorer 11 and below do not support a second argument to `toggle`
+            // videoModule.classList.toggle('playing', !isEnded);
+            videoModule.classList[isEnded ? 'remove' : 'add']('playing');
+            // if the video is done playing, remove it and re-initialize
+            if (isEnded) {
+              player.destroy();
+              videoModule.querySelector('.video-layer').innerHTML = (
+                '<div class="video-placeholder"></div>'
+              );
+              initializeVideoModule(videoModule);
+            }
+          }
+        }
+      });
+    }
+
     // alert("YIHAAAA")
   }
 </script>
@@ -449,41 +485,7 @@ $(function() {
 });
 </script>
 <script>
-var tag = document.createElement('script');
-tag.src = "https://www.youtube.com/iframe_api";
-document.body.appendChild(tag);
 
-// When the YouTube API code loads, it calls this function, so it must be global
-// and it must be named exactly onYouTubeIframeAPIReady.
-window.onYouTubeIframeAPIReady = function() {
-  var videoModules = document.querySelectorAll('.video');
-  // for Internet Explorer 11 and below, convert array-like NodeList to an actual Array.
-  videoModules = Array.prototype.slice.call(videoModules);
-  videoModules.forEach(initializeVideoModule);
-}
-
-function initializeVideoModule(videoModule) {
-  var player = new YT.Player(videoModule.querySelector('.video-placeholder'), {
-    videoId: videoModule.dataset.videoId,
-    events: {
-      onStateChange: function(event) {
-        var isEnded = event.data === YT.PlayerState.ENDED;
-        // 'playing' css class controls fading the video and preivew images in/out.
-        // Internet Explorer 11 and below do not support a second argument to `toggle`
-        // videoModule.classList.toggle('playing', !isEnded);
-        videoModule.classList[isEnded ? 'remove' : 'add']('playing');
-        // if the video is done playing, remove it and re-initialize
-        if (isEnded) {
-          player.destroy();
-          videoModule.querySelector('.video-layer').innerHTML = (
-            '<div class="video-placeholder"></div>'
-          );
-          initializeVideoModule(videoModule);
-        }
-      }
-    }
-  });
-}
 </script>
 <script>
 AOS.init({ disable: 'mobile' });

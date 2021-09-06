@@ -64,21 +64,66 @@
                     <div class="col-lg-11">
                         <div class="row">
                             @foreach( $artikel as $a )
+                            @if( $a->getTable() == 'videos' )
                             <div class="col-lg-6 mb-1">
                                 <div class="card no-border no-background">
                                     <div class="card-body row">
                                         <div class="col-5 center-v">
-                                            <img src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}" width="100%">
+                                            <div class="video media-video" style="height: 170px;" data-video-id="{{ $a->youtube_key }}">
+                                                <!--ganti id sesuai id youtube yang akan ditampilkan-->
+                                                <div class="video-layer">
+                                                    <div class="video-placeholder">
+                                                    <!-- ^ div is replaced by the YouTube video -->
+                                                    </div>
+                                                </div>
+                                                <div class="video-preview" style="background: url('https://img.youtube.com/vi/{{ $a->youtube_key }}/hqdefault.jpg') 50% 50% no-repeat; background-size: cover;">
+                                                    <!-- this icon would normally be implemented as a character in an icon font or svg spritesheet, or similar -->
+                                                    <svg viewBox="0 0 74 74">
+                                                    <circle style="opacity:0.64;stroke:#fff" cx="37" cy="37" r="36.5"></circle>
+                                                    <circle fill="none" stroke="#fff" cx="37" cy="37" r="36.5"></circle>
+                                                    <polygon fill="#fff" points="33,22 33,52 48,37"></polygon>
+                                                    </svg>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="col-7 center-v">
-                                            <a href="#" class="text-danger m-0 p-0 text-decoration-none wilayah"><small>{{ $a->lokasi->nama_lokasi ?? '' }}</small></a>
-                                            <h3 class="judul-artikel judul-artikel-tentang"><a href="{{ route('article_detail', $a->slug_english ?? $a->slug) }}" class="text-decoration-none clr-black">{{ $a->judul_english }}</a> </h3>
-                                            <!-- <p class="des-artikel des-artikel-tentang minimize">{!! Str::limit($a->konten_english, 50, $end='...') !!}</p> -->
+                                            <a href="#" class="text-danger m-0 p-0 text-decoration-none wilayah"><small>{{ $a->lokasi->nama_lokasi_english ?? '' }}</small></a>
+                                            <h3 class="judul-artikel judul-artikel-tentang"><a href="{{ route('video_detail', $a->slug) }}" class="text-decoration-none clr-black">{{ $a->judul_english }}</a> </h3>
+                                            <!-- <p class="des-artikel des-artikel-tentang minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p> -->
                                             <div class="wrap-tag-rempah">
                                                 @if( $a->rempahs != null )
                                                 @foreach( $a->rempahs as $r )
-                                                <a href="{{ route('rempah_detail', $r->id) }}" class="text-danger text-decoration-none">{{ $r->jenis_rempah }}</a>
-                                                |
+                                                    @if( $r->jenis_rempah_english )
+                                                        <a href="{{ route('rempah_detail', $r->id) }}" class="text-danger text-decoration-none">{{ $r->jenis_rempah_english }}</a>
+                                                        |
+                                                    @endif
+                                                @endforeach
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                            @elseif( $a->getTable() == 'audio' )
+                            <div class="col-lg-6 mb-1">
+                                <div class="card no-border no-background">
+                                    <div class="card-body row">
+                                        <div class="col-5 center-v">
+                                            <iframe width="100%" height="150" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/{{ $a->cloud_key }}&color=%231a150d&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+                                            <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="#" title="" target="_blank" style="color: #cccccc; text-decoration: none;"></a> · <a href="{{ route('audio_detail', $a->slug) }}" title="{{ $a->judul_english }}" style="color: #cccccc; text-decoration: none;">{{ $a->judul_english }}</a></div>
+                                            <main></main>
+                                        </div>
+                                        <div class="col-7 center-v">
+                                            <a href="#" class="text-danger m-0 p-0 text-decoration-none wilayah"><small>{{ $a->lokasi->nama_lokasi_english ?? '' }}</small></a>
+                                            <h3 class="judul-artikel judul-artikel-tentang"><a href="{{ route('audio_detail', $a->slug) }}" class="text-decoration-none clr-black">{{ $a->judul_english }}</a> </h3>
+                                            <!-- <p class="des-artikel des-artikel-tentang minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p> -->
+                                            <div class="wrap-tag-rempah">
+                                                @if( $a->rempahs != null )
+                                                @foreach( $a->rempahs as $r )
+                                                    @if( $r->jenis_rempah_english )
+                                                        <a href="{{ route('rempah_detail', $r->id) }}" class="text-danger text-decoration-none">{{ $r->jenis_rempah_english }}</a>
+                                                        |
+                                                    @endif
                                                 @endforeach
                                                 @endif
                                             </div>
@@ -86,6 +131,32 @@
                                     </div>
                                 </div>
                             </div>
+                            @else
+                                <div class="col-lg-6 mb-1">
+                                    <div class="card no-border no-background">
+                                        <div class="card-body row">
+                                            <div class="col-5 center-v">
+                                                <img src="{{ asset(get_asset_path($a->getTable(), $a->thumbnail)) }}" width="100%">
+                                            </div>
+                                            <div class="col-7 center-v">
+                                                <a href="#" class="text-danger m-0 p-0 text-decoration-none wilayah"><small>{{ $a->lokasi->nama_lokasi_english ?? '' }}</small></a>
+                                                <h3 class="judul-artikel judul-artikel-tentang"><a href="{{ route(generate_route_content($a->getTable()) . '_detail', $a->slug) }}" class="text-decoration-none clr-black">{{ $a->judul_english }}</a> </h3>
+                                                <!-- <p class="des-artikel des-artikel-tentang minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p> -->
+                                                <div class="wrap-tag-rempah">
+                                                    @if( $a->rempahs != null )
+                                                    @foreach( $a->rempahs as $r )
+                                                        @if( $r->jenis_rempah_english )
+                                                            <a href="{{ route('rempah_detail', $r->id) }}" class="text-danger text-decoration-none">{{ $r->jenis_rempah_english }}</a>
+                                                            |
+                                                        @endif
+                                                    @endforeach
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
                             @endforeach
                             <div class="d-flex justify-content-center mt-2">
                                 {!! $artikel->links() !!}
@@ -254,4 +325,42 @@
         }
     }
 </script>
+
+<script>
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.body.appendChild(tag);
+    
+    // When the YouTube API code loads, it calls this function, so it must be global
+    // and it must be named exactly onYouTubeIframeAPIReady.
+    window.onYouTubeIframeAPIReady = function() {
+      var videoModules = document.querySelectorAll('.video');
+      // for Internet Explorer 11 and below, convert array-like NodeList to an actual Array.
+      videoModules = Array.prototype.slice.call(videoModules);
+      videoModules.forEach(initializeVideoModule);
+    }
+    
+    function initializeVideoModule(videoModule) {
+      var player = new YT.Player(videoModule.querySelector('.video-placeholder'), {
+        videoId: videoModule.dataset.videoId,
+        events: {
+          onStateChange: function(event) {
+            var isEnded = event.data === YT.PlayerState.ENDED;
+            // 'playing' css class controls fading the video and preivew images in/out.
+            // Internet Explorer 11 and below do not support a second argument to `toggle`
+            // videoModule.classList.toggle('playing', !isEnded);
+            videoModule.classList[isEnded ? 'remove' : 'add']('playing');
+            // if the video is done playing, remove it and re-initialize
+            if (isEnded) {
+              player.destroy();
+              videoModule.querySelector('.video-layer').innerHTML = (
+                '<div class="video-placeholder"></div>'
+              );
+              initializeVideoModule(videoModule);
+            }
+          }
+        }
+      });
+    }
+    </script>
 @endsection
