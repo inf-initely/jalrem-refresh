@@ -377,11 +377,11 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script type="text/javascript" src="assets/js/slick.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
-<script src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-<script>
+<script src="https://platform.twitter.com/widgets.js" charset="utf-8" defer=""></script>
+<script defer="">
   window.addEventListener("load", function () {
     setTimeout(otherOperation, 500);
-}, false);
+  }, false);
 
   function otherOperation() {
     $("#twitter-widget-3").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(1))").hide();
@@ -483,9 +483,6 @@ $(function() {
   });
 
 });
-</script>
-<script>
-
 </script>
 <script>
 AOS.init({ disable: 'mobile' });

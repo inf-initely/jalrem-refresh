@@ -201,4 +201,9 @@ $(function() {
     });
   }
   </script>
+  <script>
+    $(document).ready(function() {
+      $("iframe").attr("allowfullscreen", "allowfullscreen");
+    });
+</script>
 @endsection

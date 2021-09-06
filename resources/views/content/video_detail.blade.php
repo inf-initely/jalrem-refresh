@@ -213,4 +213,11 @@ $(function() {
     });
   }
   </script>
+  <script>
+    $(document).ready(function() {
+$(document).ready(function() {
+      $("iframe").attr("allowfullscreen", "allowfullscreen");
+    });
+    }); //missing );
+  </script>
 @endsection

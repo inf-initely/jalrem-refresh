@@ -75,14 +75,14 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function() {
     Route::get('/konten/video/edit/{videoId}', [VideoControllerAdmin::class, 'edit'])->name('admin.video.edit');
     Route::post('/konten/video/update/{videoId}', [VideoControllerAdmin::class, 'update'])->name('admin.video.update');
     Route::get('/konten/video/delete/{videoId}', [VideoControllerAdmin::class, 'delete'])->name('admin.video.delete');
-    
+
     Route::get('/konten/publikasi', [PublikasiControllerAdmin::class, 'index'])->name('admin.publication.index');
     Route::get('/konten/publikasi/tambah', [PublikasiControllerAdmin::class, 'add'])->name('admin.publication.add');
     Route::post('/konten/publikasi/tambah', [PublikasiControllerAdmin::class, 'store'])->name('admin.publication.store');
     Route::get('/konten/publikasi/edit/{publicationId}', [PublikasiControllerAdmin::class, 'edit'])->name('admin.publication.edit');
     Route::post('/konten/publikasi/update/{publicationId}', [PublikasiControllerAdmin::class, 'update'])->name('admin.publication.update');
     Route::get('/konten/publikasi/delete/{publicationId}', [PublikasiControllerAdmin::class, 'delete'])->name('admin.publication.delete');
-    
+
     Route::get('/konten/audio', [AudioControllerAdmin::class, 'index'])->name('admin.audio.index');
     Route::get('/konten/audio/tambah', [AudioControllerAdmin::class, 'add'])->name('admin.audio.add');
     Route::post('/konten/audio/tambah', [AudioControllerAdmin::class, 'store'])->name('admin.audio.store');
@@ -174,7 +174,7 @@ Route::get('/reload-captcha', [CaptchaServiceController::class, 'reloadCaptcha']
 
 Route::get('/set_language/en', function() {
     Session::put('lg', 'en');
-    
+
     return redirect()->back();
 })->name('set_language_en');
 
@@ -191,3 +191,8 @@ Route::get('/set_language/id', function() {
 // JSON
 Route::get('get_rempah_json', [RempahController::class, 'getJSON'])->name('get_rempah_json');
 Route::get('get_location_json', [LokasiController::class, 'getJSON'])->name('get_location_json');
+
+// route for test sentry on prods
+Route::get('/debug-sentry', function () {
+    if (! app()->environment('production')) throw new Exception('Test Sentry error!');
+});
