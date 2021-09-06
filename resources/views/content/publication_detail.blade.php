@@ -177,4 +177,7 @@ $(function() {
 
 });
 </script>
+<script>
+  $("iframe").prop('allowfullscreen', "allowfullscreen");
+</script><main></main>
 @endsection

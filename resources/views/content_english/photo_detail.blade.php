@@ -199,5 +199,6 @@ $(document).ready(function() {
 
 });
 </script>
-</script>
-@endsection
+<script>
+  $("iframe").prop('allowfullscreen', "allowfullscreen");
+</script>@endsection

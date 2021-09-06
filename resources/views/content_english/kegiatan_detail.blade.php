@@ -113,4 +113,7 @@
 
     });
     </script>
+    <script>
+      $("iframe").prop('allowfullscreen', "allowfullscreen");
+    </script>
 @endsection
