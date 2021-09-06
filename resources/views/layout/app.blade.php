@@ -15,14 +15,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
       @include('partials.head')
     <!-- Bootstrap CSS -->
-    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" crossorigin="anonymous">
+
     <link href="{{ asset('assets/css/fontawesome.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/slick.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/slick-theme.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.0.5/flickity.min.css"> -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/css/swiper.min.css">
+    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/hero-slider.css') }}?v={{ config('app.version') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/jalur-rempah.css') }}?v={{ config('app.version') }}">
     <title>Jalur Rempah</title>

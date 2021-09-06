@@ -1610,13 +1610,11 @@ footer {
 #isiKonten>p>iframe {
     width: 100% !important;
     /*height: 475px;*/
-    height: auto;
 }
 
 #txtMedia>p>iframe {
     border: 0;
     width: 100%;
-    height: auto;
     /*height: 475px;*/
 }
 
@@ -1880,16 +1878,18 @@ footer {
         /*height: 215px;*/
     }
 
+
+
+    #isiKonten>p>iframe {
+        /*height: 215px;*/
+    }
+
     #isiKonten [title~=YouTube] {
         height: 215px;
     }
 
     #txtMedia [title~=YouTube] {
         height: 215px;
-    }
-
-    #isiKonten>p>iframe {
-        /*height: 215px;*/
     }
 
     .btn-primary-jarem {
