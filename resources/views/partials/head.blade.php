@@ -2,8 +2,37 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="title" content="Jalur Rempah Nusantara">
-    <meta name="description" content="Jalur Rempah adalah jalur budaya untuk pengembangan budaya bahari & literasi maritim diinisiasi oleh Kemdikbudristek RI">
+
+    <!-- HALAMAN HOME -->
+    <meta name="description" content="Jalur Rempah adalah jalur budaya untuk pengembangan budaya bahari & literasi maritim diinisiasi oleh Kemdikbudristek RI.">
     <meta name="keywords" content="rempah, kemdikbud, kemendikbud">
+    <!-- END HALAMAN HOME -->
+
+    <!-- HALAMAN JALUR -->
+    <meta name="description" content="Memperkuat jejaring interaksi budaya antar daerah yang telah diikat dengan jalur budaya rempah sejak ribuan tahun lalu.">
+    <meta name="keywords" content="jalur">
+    <!-- END HALAMAN JALUR -->
+
+    <!-- HALAMAN JEJAK -->
+    <meta name="description" content="Meningkatkan kesadaran masyarakat dalam melestarikan, mengembangkan & memanfaatkan jejak warisan budaya Jalur Rempah.">
+    <meta name="keywords" content="jejak">
+    <!-- END HALAMAN JEJAK -->
+
+    <!-- HALAMAN MASA DEPAN -->
+    <meta name="description" content="Melihat Jalur Rempah dalam persepsi masyarakat terkait peran Indonesia di masa lalu dan potensinya di masa depan.">
+    <meta name="keywords" content="jejak">
+    <!-- END HALAMAN MASA DEPAN -->
+
+    <!-- HALAMAN KONTEN -->
+    <meta name="description" content="Dapatkan berbagai konten menarik mengenai Program Jalur Rempah seperti artikel, foto, video, audio, hinggap publikasi">
+    <meta name="keywords" content="">
+    <!-- END HALAMAN KONTEN -->
+
+    <!-- HALAMAN INFORMASI -->
+    <meta name="description" content="Dapatkan informasi lengkap mengenai Program Jalur Rempah di berbagai wilayah di Indonesia secara daring & luring.">
+    <meta name="keywords" content="">
+    <!-- END HALAMAN INFORMASI -->
+
     <meta name="robots" content="index, follow">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="language" content="id">
@@ -24,5 +53,7 @@
     <meta property="twitter:title" content="Jalur Rempah Nusantara">
     <meta property="twitter:description" content="Jalur Rempah adalah jalur budaya untuk pengembangan budaya bahari & literasi maritim diinisiasi oleh Kemdikbudristek RI">
     <meta property="twitter:image" content="{{ asset('assets/img/meta-img.jpg') }}">
+
+
     
 
