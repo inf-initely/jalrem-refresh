@@ -12,6 +12,7 @@
   <link href="{{ asset('assets/kontributor/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="{{ asset('assets/kontributor/img/logo/favicon.PNG') }}">
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/kontributor/css/style.css') }}">
+  <link rel="shortcut icon" href="{{ asset('assets/img/logo/favicon.png') }}">
 </head>
 
 <body>
