@@ -116,22 +116,7 @@
           <img class="item-jelajah item-jelajah-3" src="assets/img/asset-jelajah.png">
           <div class="row justify-content-center content-jelajahi" data-aos="fade-left">
             <div class="col-lg-10 mb-4">
-              <div class="video video-magnet-dunia" data-video-id="fj2xxbx_OHQ">
-                <!--ganti id sesuai id youtube yang akan ditampilkan-->
-                <div class="video-layer">
-                  <div class="video-placeholder">
-                    <!-- ^ div is replaced by the YouTube video -->
-                  </div>
-                </div>
-                <div class="video-preview video-01">
-                  <!-- this icon would normally be implemented as a character in an icon font or svg spritesheet, or similar -->
-                  <svg viewBox="0 0 74 74">
-                    <circle style="opacity:0.64;stroke:#fff" cx="37" cy="37" r="36.5"></circle>
-                    <circle fill="none" stroke="#fff" cx="37" cy="37" r="36.5"></circle>
-                    <polygon fill="#fff" points="33,22 33,52 48,37"></polygon>
-                  </svg>
-                </div>
-              </div>
+              <div class="ytdefer video video-magnet-dunia" data-alt="Enter optional img alt text here" data-title="Enter optional img title here" data-src="a7CMQ36ixNw"></div>
             </div>
             <div class=" col-lg-10 center-v">
               <header>
@@ -280,22 +265,7 @@
             @foreach( $video as $v )
             <div class="p-2">
               <div class="card no-border card-artikel">
-                <div class="video" data-video-id="{{ $v->youtube_key }}">
-                  <!--ganti id sesuai id youtube yang akan ditampilkan-->
-                  <div class="video-layer">
-                    <div class="video-placeholder">
-                      <!-- ^ div is replaced by the YouTube video -->
-                    </div>
-                  </div>
-                  <div class="video-preview" style="background: url('https://img.youtube.com/vi/{{ $v->youtube_key }}/hqdefault.jpg') 50% 50% no-repeat; background-size: cover;">
-                    <!-- this icon would normally be implemented as a character in an icon font or svg spritesheet, or similar -->
-                    <svg viewBox="0 0 74 74">
-                      <circle style="opacity:0.64;stroke:#fff" cx="37" cy="37" r="36.5"></circle>
-                      <circle fill="none" stroke="#fff" cx="37" cy="37" r="36.5"></circle>
-                      <polygon fill="#fff" points="33,22 33,52 48,37"></polygon>
-                    </svg>
-                  </div>
-                </div>
+                <div class="ytdefer video" data-alt="youtube jalur rempah" data-src="{{ $v->youtube_key }}"></div>
                 <div class="card-body">
                   <p class="card-text">{{ $v->judul_english }}</p>
                 </div>
@@ -373,6 +343,7 @@
 <script type="text/javascript"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script type="text/javascript" src="assets/js/ytdefer.min.js"></script>
 <script type="text/javascript" src="assets/js/slick.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
 <script src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -398,43 +369,6 @@
     $("#twitter-widget-7").contents().find(".timeline-LoadMore").hide();
     $("#twitter-widget-8").contents().find(".timeline-LoadMore").hide();
     $("#twitter-widget-9").contents().find(".timeline-LoadMore").hide();
-
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    document.body.appendChild(tag);
-
-    // When the YouTube API code loads, it calls this function, so it must be global
-    // and it must be named exactly onYouTubeIframeAPIReady.
-    window.onYouTubeIframeAPIReady = function() {
-      var videoModules = document.querySelectorAll('.video');
-      // for Internet Explorer 11 and below, convert array-like NodeList to an actual Array.
-      videoModules = Array.prototype.slice.call(videoModules);
-      videoModules.forEach(initializeVideoModule);
-    }
-
-    function initializeVideoModule(videoModule) {
-      var player = new YT.Player(videoModule.querySelector('.video-placeholder'), {
-        videoId: videoModule.dataset.videoId,
-        events: {
-          onStateChange: function(event) {
-            var isEnded = event.data === YT.PlayerState.ENDED;
-            // 'playing' css class controls fading the video and preivew images in/out.
-            // Internet Explorer 11 and below do not support a second argument to `toggle`
-            // videoModule.classList.toggle('playing', !isEnded);
-            videoModule.classList[isEnded ? 'remove' : 'add']('playing');
-            // if the video is done playing, remove it and re-initialize
-            if (isEnded) {
-              player.destroy();
-              videoModule.querySelector('.video-layer').innerHTML = (
-                '<div class="video-placeholder"></div>'
-              );
-              initializeVideoModule(videoModule);
-            }
-          }
-        }
-      });
-    }
-
     // alert("YIHAAAA")
   }
 </script>
@@ -675,6 +609,10 @@ sliderBgSetting.each(function(indx) {
     $(this).css("background-image", "url(" + $(this).data("background") + ")");
   }
 });
+</script>
+
+<script>
+window.addEventListener('load', ytdefer_setup);
 </script>
 
 
