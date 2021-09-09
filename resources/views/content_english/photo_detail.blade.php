@@ -35,7 +35,7 @@
                   $konten_name = 'photo';
                   $konten = $foto;
               @endphp
-              @include('partials.social-share')
+              @include('partials.social-share-en')
             </div>
           </div>
         </div>

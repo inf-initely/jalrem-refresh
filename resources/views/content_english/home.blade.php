@@ -100,7 +100,7 @@
               <header>
                 <h2 class="sub-judul">The Future</h2>
               </header>
-              <p class="jelajah-des">A means of reconstruction and revitalization of the maritime cultural routes. Re-excavating the potentials for sustainable wealth and prosperity of all.</p>
+              <p class="jelajah-des">A means of reconstruction and revitalization of the nautical cultural routes. Re-excavating the potentials for sustainable wealth and prosperity of all.</p>
               <a href="{{ route('tentangmasadepan') }}" class="btn btn-danger btn-jelajah">
                 explore more
               </a>
@@ -354,13 +354,12 @@
           <div class="row">
             <div class="col-lg-5 clr-white">
               <header>
-                <h2 class="sub-judul">let's contribute</h2>
+                <h2 class="sub-judul">Let's Contribute</h2>
               </header>
-              <p>Let's support the Spice Route activities by contributing to the Spice Route website. We accept content from contributors in the form of <b>articles, essays, coverage, photo stories,</b> to <b>videos</b>
-                from the point of view of history, culture, gastronomy, archeology, literature, culinary, film, fashion, art, and anything else related to the Spice Trail that is around you.</p>
+              <p>Support the Spice Routes' activities by contributing to the website. We welcome various contents from contributors in the forms of articles, essays, coverage, photo stories, and videos from historical, cultural, gastronomic, archaeological, literary, culinary, film, fashion, art, and other perspectives related to the Spice Routes around you. </p>
             </div>
             <div class="offset-lg-1 col-lg-6 text-center center-v">
-              <a href="{{ route('contributor') }}" class="btn btn-lg btn-secondary btn-primary-jarem">Become a Contributor</a>
+              <a href="{{ route('contributor') }}" class="btn btn-lg btn-secondary btn-primary-jarem">Join Us</a>
             </div>
           </div>
         </div>

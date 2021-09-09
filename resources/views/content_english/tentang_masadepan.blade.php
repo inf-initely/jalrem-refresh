@@ -182,7 +182,7 @@
                                         </div>
                                         <div class="col-9">
                                             <h3 class="judul-card-info">The Future</h3>
-                                            <p class="des-card-info">A means of reconstruction and revitalization of the maritime</p>
+                                            <p class="des-card-info">A means of reconstruction and revitalization of the nautical cultural routes</p>
                                         </div>
                                     </div>
                                     <a href="#" class="stretched-link"></a>

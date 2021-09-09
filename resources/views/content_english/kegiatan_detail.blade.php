@@ -22,7 +22,7 @@
                   $konten_name = 'event';
                   $konten = $kegiatan;
               @endphp
-              @include('partials.social-share')
+              @include('partials.social-share-en')
             </div>
           </div>
         </div>

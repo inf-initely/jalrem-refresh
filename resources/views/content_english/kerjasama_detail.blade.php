@@ -24,7 +24,7 @@
                   $konten_name = 'kerjasama';
                   $konten = $kerjasama;
               @endphp
-              @include('partials.social-share')
+              @include('partials.social-share-en')
             </article>
           </div>
         </div>
