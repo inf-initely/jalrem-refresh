@@ -104,7 +104,6 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://metatags.io/">
     <meta property="og:title" content="Jalur Rempah Nusantara">
     <meta property="og:description" content="Jalur Rempah adalah jalur budaya untuk pengembangan budaya bahari & literasi maritim diinisiasi oleh Kemdikbudristek RI">
     <meta property="og:image" content="{{ asset('assets/img/meta-img.jpg') }}">
@@ -112,7 +111,6 @@
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://metatags.io/">
     <meta property="twitter:title" content="Jalur Rempah Nusantara">
     <meta property="twitter:description" content="Jalur Rempah adalah jalur budaya untuk pengembangan budaya bahari & literasi maritim diinisiasi oleh Kemdikbudristek RI">
     <meta property="twitter:image" content="{{ asset('assets/img/meta-img.jpg') }}">
