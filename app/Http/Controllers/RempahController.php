@@ -9,16 +9,18 @@ use App\Models\Rempah;
 
 class RempahController extends Controller
 {
-    public function show($rempahId)
+    public function show($rempahName)
     {
-        $rempah = Rempah::findOrFail($rempahId);
+        $rempah = Rempah::where('jenis_rempah', $rempahName)->orWhere('jenis_rempah_english', $rempahName)->firstOrFail();
         $rempahs = Rempah::all();
-        $artikelRempah = $rempah->artikel;
+        $artikel_rempah = $rempah->artikel->filter(function($item) use ($rempah) {
+            return ($item->status == 'publikasi' && $item->id != $rempah->id);
+        })->sortByDesc('created_at')->slice(0, 5);
 
         if( Session::get('lg') == 'en' )
             return view('content_english.rempah_detail', compact('rempah', 'artikelRempah', 'rempahs'));
 
-        return view('content.rempah_detail', compact('rempah', 'artikelRempah', 'rempahs'));
+        return view('content.rempah_detail', compact('rempah', 'artikel_rempah', 'rempahs'));
     }
 
     public function getJSON()

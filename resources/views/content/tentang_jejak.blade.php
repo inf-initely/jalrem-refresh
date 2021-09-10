@@ -90,7 +90,7 @@
                                             <div class="wrap-tag-rempah">
                                                 @if( $a->rempahs != null )
                                                 @foreach( $a->rempahs as $r )
-                                                <a href="{{ route('rempah_detail', $r->id) }}" class="text-danger text-decoration-none">{{ $r->jenis_rempah }}</a>
+                                                <a href="{{ route('rempah_detail', $r->jenis_rempah) }}" class="text-danger text-decoration-none">{{ $r->jenis_rempah }}</a>
                                                 |
                                                 @endforeach
                                                 @endif
@@ -115,7 +115,7 @@
                                             <div class="wrap-tag-rempah">
                                                 @if( $a->rempahs != null )
                                                 @foreach( $a->rempahs as $r )
-                                                <a href="{{ route('rempah_detail', $r->id) }}" class="text-danger text-decoration-none">{{ $r->jenis_rempah }}</a>
+                                                <a href="{{ route('rempah_detail', $r->jenis_rempah) }}" class="text-danger text-decoration-none">{{ $r->jenis_rempah }}</a>
                                                 |
                                                 @endforeach
                                                 @endif
@@ -138,7 +138,7 @@
                                                 <div class="wrap-tag-rempah">
                                                     @if( $a->rempahs != null )
                                                     @foreach( $a->rempahs as $r )
-                                                    <a href="{{ route('rempah_detail', $r->id) }}" class="text-danger text-decoration-none">{{ $r->jenis_rempah }}</a>
+                                                    <a href="{{ route('rempah_detail', $r->jenis_rempah) }}" class="text-danger text-decoration-none">{{ $r->jenis_rempah }}</a>
                                                     |
                                                     @endforeach
                                                     @endif

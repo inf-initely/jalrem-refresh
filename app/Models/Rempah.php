@@ -13,7 +13,7 @@ class Rempah extends Model
 
     public function artikel()
     {
-        return $this->belongsToMany('App\Models\Rempah', 'artikel_rempah', 'id_rempah', 'id_artikel');
+        return $this->belongsToMany('App\Models\Artikel', 'artikel_rempah', 'id_rempah', 'id_artikel');
     }
 
     public function foto()
