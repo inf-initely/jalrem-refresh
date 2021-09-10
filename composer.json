@@ -18,6 +18,7 @@
         "mews/captcha": "^3.2",
         "realrashid/sweet-alert": "^4.0",
         "sentry/sentry-laravel": "^2.8",
+        "spatie/laravel-sitemap": "^5.9",
         "spatie/laravel-sluggable": "^2.6",
         "techguy/laravel-ckeditor": "^1.4",
         "unisharp/laravel-filemanager": "^2.2"

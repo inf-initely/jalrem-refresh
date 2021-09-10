@@ -36,6 +36,7 @@ use App\Http\Controllers\RempahController;
 use App\Http\Controllers\KontributorController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\LokasiController;
+use App\Http\Controllers\RedirectController;
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CaptchaServiceController;
@@ -196,3 +197,5 @@ Route::get('get_location_json', [LokasiController::class, 'getJSON'])->name('get
 Route::get('/debug-sentry', function () {
     if (! app()->environment('production')) throw new Exception('Test Sentry error!');
 });
+
+Route::get('/{slug}', [RedirectController::class, 'index'])->name('index');
