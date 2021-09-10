@@ -397,7 +397,7 @@
             let options = "";
             $('#lokasiRempah').html('');
             for( let i = 0; i < data.length; i++ ) {
-                options += `<option value=${data[i].id}>${data[i].jenis_rempah}</option>`;
+                options += `<option value=${data[i].id}>${data[i].jenis_rempah_english}</option>`;
             }
             $('#lokasiRempah').append(options);
             // window.location.href = '?lokasi=' + $('#lokasiRempah').val();
