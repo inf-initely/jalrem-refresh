@@ -38,7 +38,7 @@
                   $konten_name = 'publication';
                   $konten = $publikasi;
               @endphp
-              @include('partials.social-share')
+              @include('partials.social-share-en')
             </div>
             <div class="col-lg-4">
               <div class="row mb-4">

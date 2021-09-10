@@ -24,7 +24,7 @@
                   $konten_name = 'kerjasama';
                   $konten = $kerjasama;
               @endphp
-              @include('partials.social-share')
+              @include('partials.social-share-en')
             </article>
           </div>
         </div>
@@ -39,7 +39,7 @@
           <div class="row justify-content-center">
             <div class="col-lg-12">
               <div class="row text-center">
-                <div class="col-6 col-lg-4 col-xl-3 mb-1">
+                <div class="col mb-2">
                   <div class="card no-border card-media">
                     <div class="card-body">
                       <img src="{{ asset('assets/img/icon-publication.png') }}" width="25%">
@@ -51,7 +51,7 @@
                     <a href="{{ route('articles') }}" class="stretched-link"></a>
                   </div>
                 </div>
-                <div class="col-6 col-lg-4 col-xl-3 mb-1">
+                <div class="col mb-2">
                   <div class="card no-border card-media">
                     <div class="card-body">
                       <img src="{{ asset('assets/img/icon-image.png') }}" width="25%">
@@ -63,7 +63,7 @@
                     <a href="{{ route('photos') }}" class="stretched-link"></a>
                   </div>
                 </div>
-                <div class="col-6 col-lg-4 col-xl-3 mb-1">
+                <div class="col mb-2">
                   <div class="card no-border card-media">
                     <div class="card-body">
                       <img src="{{ asset('assets/img/icon-video.png') }}" width="25%">
@@ -75,7 +75,7 @@
                     <a href="{{ route('videos') }}" class="stretched-link"></a>
                   </div>
                 </div>
-                <div class="col-6 col-lg-4 col-xl-3 mb-1">
+                <div class="col mb-2">
                   <div class="card no-border card-media">
                     <div class="card-body">
                       <img src="{{ asset('assets/img/icon-publication.png') }}" width="25%">
@@ -87,7 +87,7 @@
                     <a href="{{ route('publications') }}" class="stretched-link"></a>
                   </div>
                 </div>
-                <div class="col-6 col-lg-4 col-xl-3 mb-1">
+                <div class="col mb-2">
                   <div class="card no-border card-media">
                     <div class="card-body">
                       <img src="{{ asset('assets/img/icon-sound.png') }}" width="25%">
