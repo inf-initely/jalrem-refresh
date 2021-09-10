@@ -13,6 +13,7 @@ use Alert;
 
 class UserController extends Controller
 {
+
     public function index()
     {
         $users = User::where('role', 'admin')->where('id', '!=', auth()->user()->id)->orderBy('created_at', 'desc')->get();
