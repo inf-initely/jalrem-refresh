@@ -67,7 +67,7 @@
                                                         @if( $a->rempahs != null )
                                                         @foreach( $a->rempahs as $r )
                                                             @if( $r->jenis_rempah_english )
-                                                                <a href="{{ route('rempah_detail', $r->id) }}" class="text-danger text-decoration-none">{{ $r->jenis_rempah_english }}</a>
+                                                                <a href="{{ route('rempah_detail', $r->jenis_rempah_english) }}" class="text-danger text-decoration-none">{{ $r->jenis_rempah_english }}</a>
                                                                 |
                                                             @endif
                                                         @endforeach
@@ -94,7 +94,7 @@
                                                         @if( $a->rempahs != null )
                                                         @foreach( $a->rempahs as $r )
                                                             @if( $r->jenis_rempah_english )
-                                                                <a href="{{ route('rempah_detail', $r->id) }}" class="text-danger text-decoration-none">{{ $r->jenis_rempah_english }}</a>
+                                                                <a href="{{ route('rempah_detail', $r->jenis_rempah_english) }}" class="text-danger text-decoration-none">{{ $r->jenis_rempah_english }}</a>
                                                                 |
                                                             @endif
                                                         @endforeach
@@ -119,7 +119,7 @@
                                                             @if( $a->rempahs != null )
                                                             @foreach( $a->rempahs as $r )
                                                                 @if( $r->jenis_rempah_english )
-                                                                    <a href="{{ route('rempah_detail', $r->id) }}" class="text-danger text-decoration-none">{{ $r->jenis_rempah_english }}</a>
+                                                                    <a href="{{ route('rempah_detail', $r->jenis_rempah_english) }}" class="text-danger text-decoration-none">{{ $r->jenis_rempah_english }}</a>
                                                                     |
                                                                 @endif
                                                             @endforeach

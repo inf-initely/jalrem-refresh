@@ -35,20 +35,23 @@ class ArtikelController extends Controller
         views($artikel)->record();
         $artikelPopuler = $query_without_this_article->orderByViews();
         $artikelTerbaru = $query_without_this_article->orderBy('created_at', 'desc');
+        $artikelTerbaru = $query_without_this_article;
         $artikelBacaJuga = $query_without_this_article;
 
         if(Session::get('lg') == 'en' ) {
-            $artikelPopuler = $artikelPopuler->where('judul_english', '!=', null)->take(3)->get();
-            $artikelTerbaru = $artikelTerbaru->where('judul_english', '!=', null)->take(3)->get();
-            $artikelBacaJuga = $artikelBacaJuga->where('judul_english', '!=', null)->first();
+            $artikelPopuler = $artikelPopuler->where('judul_english', '!=', null)->get()->random(3)->values();
+            $artikelTerbaru = $artikelTerbaru->where('judul_english', '!=', null)->get()->random(3)->values();
+            $artikelTerkait = $artikelTerkait->where('judul_english', '!=', null)->get()->random(3)->values();
+            $artikelBacaJuga = $artikelBacaJuga->where('judul_english', '!=', null)->get()->random(1)->values()[0];
             
-            return view('content_english.article_detail', compact('artikel', 'artikelTerbaru', 'artikelPopuler', 'artikelBacaJuga'));
+            return view('content_english.article_detail', compact('artikel', 'artikelTerbaru', 'artikelPopuler', 'artikelBacaJuga', 'artikelTerkait'));
         }
-        $artikelPopuler = $artikelPopuler->take(3)->get();
-        $artikelTerbaru = $artikelTerbaru->take(3)->get();
-        $artikelBacaJuga = $artikelBacaJuga->first();
+        $artikelPopuler = $artikelPopuler->get()->random(3)->values();
+        $artikelTerkait = $artikelPopuler->get()->random(3)->values();
+        $artikelTerbaru = $artikelTerbaru->get()->random(3)->values();
+        $artikelBacaJuga = $artikelBacaJuga->get()->random(1)->values()[0];
 
-        return view('content.article_detail', compact('artikel', 'artikelTerbaru', 'artikelPopuler', 'artikelBacaJuga'));
+        return view('content.article_detail', compact('artikel', 'artikelTerbaru', 'artikelPopuler', 'artikelBacaJuga', 'artikelTerkait'));
     }
 
     public function search(Request $request)

@@ -34,16 +34,22 @@ class PublikasiController extends Controller
         $publikasiPopuler = Publikasi::where('slug', '!=', $slug)->where('slug_english', '!=', $slug)->orderByViews();
         // publikasiTerkait = Publikasi::
         $publikasiTerbaru = Publikasi::where('slug', '!=', $slug)->where('slug_english','!=', $slug)->orderBy('created_at', 'desc');
+        $publikasiTerkait = Publikasi::where('slug', '!=', $slug)->where('slug_english','!=', $slug)->orderBy('created_at', 'desc');
+        $publikasiTerbaru = Publikasi::where('slug', '!=', $slug)->where('slug_english','!=', $slug)->orderBy('created_at', 'desc');
+        $publikasiBacaJuga = Publikasi::where('slug', '!=', $slug)->where('slug_english','!=', $slug);
 
         if( $lg == 'en' ) {
-            $publikasiPopuler = $publikasiPopuler->where('judul_english', '!=', null)->take(3)->get();
-            $publikasiTerbaru = $publikasiTerbaru->where('judul_english', '!=', null)->take(3)->get();
+            $publikasiPopuler = $publikasiPopuler->where('judul_english', '!=', null)->get()->random(3)->values();
+            $publikasiTerbaru = $publikasiTerbaru->where('judul_english', '!=', null)->get()->random(3)->values();
+            $publikasiTerkait = $publikasiTerbaru->where('judul_english', '!=', null)->get()->random(3)->values();
+            $publikasiBacaJuga = $publikasiTerbaru->where('judul_english', '!=', null)->get()->random(1)->values();
 
-            return view('content_english.publication_detail', compact('publikasi', 'publikasiPopuler', 'publikasiTerbaru'));
+            return view('content_english.publication_detail', compact('publikasi', 'publikasiPopuler', 'publikasiTerbaru', 'publikasiTerkait', 'publikasiBacaJuga'));
         }
-        $publikasiPopuler = $publikasiPopuler->take(3)->get();
-        $publikasiTerbaru = $publikasiTerbaru->take(3)->get();
+        $publikasiPopuler = $publikasiPopuler->get()->random(3)->values();
+        $publikasiTerbaru = $publikasiTerbaru->get()->random(3)->values();
+        $publikasiTerkait = $publikasiTerkait->get()->random(3)->values();
         
-        return view('content.publication_detail', compact('publikasi', 'publikasiPopuler', 'publikasiTerbaru'));
+        return view('content.publication_detail', compact('publikasi', 'publikasiPopuler', 'publikasiTerbaru', 'publikasiTerkait', 'publikasiBacaJuga'));
     }
 }

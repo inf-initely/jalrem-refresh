@@ -36,6 +36,7 @@ use App\Http\Controllers\RempahController;
 use App\Http\Controllers\KontributorController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\LokasiController;
+use App\Http\Controllers\RedirectController;
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CaptchaServiceController;
@@ -121,12 +122,14 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function() {
     Route::post('/informasi/kegiatan/update/{kerjasamaId}', [KegiatanControllerAdmin::class, 'update'])->name('admin.kegiatan.update');
     Route::get('/informasi/kegiatan/delete/{kerjasamaId}', [KegiatanControllerAdmin::class, 'delete'])->name('admin.kegiatan.delete');
 
-    Route::get('/user', [UserControllerAdmin::class, 'index'])->name('admin.user.index');
-    Route::get('/user/tambah', [UserControllerAdmin::class, 'add'])->name('admin.user.add');
-    Route::post('/user/tambah', [UserControllerAdmin::class, 'store'])->name('admin.user.store');
-    Route::get('/user/edit/{id}', [UserControllerAdmin::class, 'edit'])->name('admin.user.edit');
-    Route::post('/user/update/{id}', [UserControllerAdmin::class, 'update'])->name('admin.user.update');
-    Route::get('/user/action/{id}', [UserControllerAdmin::class, 'action'])->name('admin.user.action');
+    Route::group(['middleware' => 'superadmin', 'prefix' => '/user'], function() {
+        Route::get('/', [UserControllerAdmin::class, 'index'])->name('admin.user.index');
+        Route::get('/tambah', [UserControllerAdmin::class, 'add'])->name('admin.user.add');
+        Route::post('/tambah', [UserControllerAdmin::class, 'store'])->name('admin.user.store');
+        Route::get('/edit/{id}', [UserControllerAdmin::class, 'edit'])->name('admin.user.edit');
+        Route::post('/update/{id}', [UserControllerAdmin::class, 'update'])->name('admin.user.update');
+        Route::get('/action/{id}', [UserControllerAdmin::class, 'action'])->name('admin.user.action');
+    });
 });
 
 Route::get('/kontributor', [KontributorController::class, 'index'])->name('contributor');
@@ -159,7 +162,7 @@ Route::get('/konten', [KontenController::class, 'index'])->name('konten');
 Route::get('/tentang-jalur', [JalurController::class, 'index'])->name('tentangjalur');
 Route::get('/tentang-jejak', [JejakController::class, 'index'])->name('tentangjejak');
 Route::get('/tentang-masa-depan', [MasaDepanController::class, 'index'])->name('tentangmasadepan');
-Route::get('/rempah/{rempahId}', [RempahController::class, 'show'])->name('rempah_detail');
+Route::get('/rempah/{rempahName}', [RempahController::class, 'show'])->name('rempah_detail');
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'login_post'])->name('login_post');
@@ -196,3 +199,5 @@ Route::get('get_location_json', [LokasiController::class, 'getJSON'])->name('get
 Route::get('/debug-sentry', function () {
     if (! app()->environment('production')) throw new Exception('Test Sentry error!');
 });
+
+Route::get('/{slug}', [RedirectController::class, 'index'])->name('index');

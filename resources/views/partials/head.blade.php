@@ -2,7 +2,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
     @if( Session::get('lg') == 'en' )
         <meta name="language" content="en">
 
@@ -94,7 +93,6 @@
             <!-- END HALAMAN INFORMASI -->
 
             @endif
-
     @endif
 
     <meta name="robots" content="index, follow">

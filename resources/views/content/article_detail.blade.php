@@ -120,7 +120,7 @@
           </div>
         </header>
         <section class="row justify-content-center">
-          @foreach( $artikelPopuler as $a )
+          @foreach( $artikelTerkait as $a )
           <div class="col-md-6 col-lg-4 mb-4">
             <div class="card no-border no-background card-body">
               <img src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}" class="card-img-top mb-4 img-thumbnail" alt="...">
