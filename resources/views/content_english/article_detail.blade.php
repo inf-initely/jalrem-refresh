@@ -47,7 +47,7 @@
               @include('partials.social-share-en')
               @if( $artikelBacaJuga )
               <div class="wrap-baca-juga">
-                <p>Read: <a href="{{ route('article_detail', $artikelBacaJuga->slug_english ?? $artikelBacaJuga->slug_indo) }}" class="berita-terkait">{{ $artikelBacaJuga->judul_english }}</a></p>
+                <p>Read: <a href="{{ route('article_detail', $artikelBacaJuga->slug_english ?? $artikelBacaJuga->slug) }}" class="berita-terkait">{{ $artikelBacaJuga->judul_english }}</a></p>
               </div>
               @endif
             </div>
