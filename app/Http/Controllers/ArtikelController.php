@@ -35,7 +35,7 @@ class ArtikelController extends Controller
         views($artikel)->record();
         $artikelPopuler = $query_without_this_article->orderByViews();
         $artikelTerbaru = $query_without_this_article->orderBy('created_at', 'desc');
-        $artikelTerbaru = $query_without_this_article;
+        $artikelTerkait = $query_without_this_article;
         $artikelBacaJuga = $query_without_this_article;
 
         if(Session::get('lg') == 'en' ) {
@@ -47,7 +47,7 @@ class ArtikelController extends Controller
             return view('content_english.article_detail', compact('artikel', 'artikelTerbaru', 'artikelPopuler', 'artikelBacaJuga', 'artikelTerkait'));
         }
         $artikelPopuler = $artikelPopuler->get()->random(3)->values();
-        $artikelTerkait = $artikelPopuler->get()->random(3)->values();
+        $artikelTerkait = $artikelTerkait->get()->random(3)->values();
         $artikelTerbaru = $artikelTerbaru->get()->random(3)->values();
         $artikelBacaJuga = $artikelBacaJuga->get()->random(1)->values()[0];
 

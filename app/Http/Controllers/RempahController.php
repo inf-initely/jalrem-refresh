@@ -18,7 +18,7 @@ class RempahController extends Controller
         })->sortByDesc('created_at')->slice(0, 5);
 
         if( Session::get('lg') == 'en' )
-            return view('content_english.rempah_detail', compact('rempah', 'artikelRempah', 'rempahs'));
+            return view('content_english.rempah_detail', compact('rempah', 'artikel_rempah', 'rempahs'));
 
         return view('content.rempah_detail', compact('rempah', 'artikel_rempah', 'rempahs'));
     }
