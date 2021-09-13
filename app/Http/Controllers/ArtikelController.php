@@ -35,22 +35,37 @@ class ArtikelController extends Controller
         views($artikel)->record();
         $artikelPopuler = $query_without_this_article->orderByViews();
         $artikelTerbaru = $query_without_this_article->orderBy('created_at', 'desc');
-        $artikelTerbaru = $query_without_this_article;
+        $artikelTerkait = $query_without_this_article;
         $artikelBacaJuga = $query_without_this_article;
 
         if(Session::get('lg') == 'en' ) {
-            $artikelPopuler = $artikelPopuler->where('judul_english', '!=', null)->get()->random(3)->values();
-            $artikelTerbaru = $artikelTerbaru->where('judul_english', '!=', null)->get()->random(3)->values();
-            $artikelTerkait = $artikelTerkait->where('judul_english', '!=', null)->get()->random(3)->values();
-            $artikelBacaJuga = $artikelBacaJuga->where('judul_english', '!=', null)->get()->random(1)->values()[0];
+            if( count($query_without_this_article->get()) > 3 ) {
+                $artikelPopuler = $artikelPopuler->where('judul_english', '!=', null)->get()->random(3)->values();
+                $artikelTerbaru = $artikelTerbaru->where('judul_english', '!=', null)->get()->random(3)->values();
+                $artikelTerkait = $artikelTerkait->where('judul_english', '!=', null)->get()->random(3)->values();
+                $artikelBacaJuga = $artikelBacaJuga->where('judul_english', '!=', null)->get()->random(1)->values()[0];
+            } else {
+                $artikelPopuler = $artikelPopuler->where('judul_english', '!=', null)->get();
+                $artikelTerbaru = $artikelTerbaru->where('judul_english', '!=', null)->get();
+                $artikelTerkait = $artikelTerkait->where('judul_english', '!=', null)->get();
+                $artikelBacaJuga = $artikelBacaJuga->where('judul_english', '!=', null)->first();
+            }
+            
             
             return view('content_english.article_detail', compact('artikel', 'artikelTerbaru', 'artikelPopuler', 'artikelBacaJuga', 'artikelTerkait'));
         }
-        $artikelPopuler = $artikelPopuler->get()->random(3)->values();
-        $artikelTerkait = $artikelPopuler->get()->random(3)->values();
-        $artikelTerbaru = $artikelTerbaru->get()->random(3)->values();
-        $artikelBacaJuga = $artikelBacaJuga->get()->random(1)->values()[0];
-
+        if( count($query_without_this_article->get()) > 3 ) {
+            $artikelPopuler = $artikelPopuler->get()->random(3)->values();
+            $artikelTerkait = $artikelTerkait->get()->random(3)->values();
+            $artikelTerbaru = $artikelTerbaru->get()->random(3)->values();
+            $artikelBacaJuga = $artikelBacaJuga->get()->random(1)->values()[0];
+        } else {
+            $artikelPopuler = $artikelPopuler->get();
+            $artikelTerkait = $artikelTerkait->get();
+            $artikelTerbaru = $artikelTerbaru->get();
+            $artikelBacaJuga = $artikelBacaJuga->get()->random(1)->values()[0];
+        }
+    
         return view('content.article_detail', compact('artikel', 'artikelTerbaru', 'artikelPopuler', 'artikelBacaJuga', 'artikelTerkait'));
     }
 
