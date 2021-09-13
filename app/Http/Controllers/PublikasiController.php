@@ -45,13 +45,13 @@ class PublikasiController extends Controller
             if( count($query_without_this_publication->get()) > 3 ) {
                 $publikasiPopuler = $publikasiPopuler->where('judul_english', '!=', null)->get()->random(3)->values();
                 $publikasiTerbaru = $publikasiTerbaru->where('judul_english', '!=', null)->get()->random(3)->values();
-                $publikasiTerkait = $publikasiTerbaru->where('judul_english', '!=', null)->get()->random(3)->values();
-                $publikasiBacaJuga = $publikasiTerbaru->where('judul_english', '!=', null)->get()->random(1)->values()[0];
+                $publikasiTerkait = $publikasiTerkait->where('judul_english', '!=', null)->get()->random(3)->values();
+                $publikasiBacaJuga = $publikasiBacaJuga->where('judul_english', '!=', null)->get()->random(1)->values()[0];
             }else {
                 $publikasiPopuler = $publikasiPopuler->where('judul_english', '!=', null)->get();
                 $publikasiTerbaru = $publikasiTerbaru->where('judul_english', '!=', null)->get();
                 $publikasiTerkait = $publikasiTerkait->where('judul_english', '!=', null)->get();
-                $publikasiBacaJuga = $publikasiTerbaru->where('judul_english', '!=', null)->first();
+                $publikasiBacaJuga = $publikasiBacaJuga->where('judul_english', '!=', null)->first();
             }
             return view('content_english.publication_detail', compact('publikasi', 'publikasiPopuler', 'publikasiTerbaru', 'publikasiTerkait', 'publikasiBacaJuga'));
         }
@@ -59,12 +59,12 @@ class PublikasiController extends Controller
             $publikasiPopuler = $publikasiPopuler->get()->random(3)->values();
             $publikasiTerbaru = $publikasiTerbaru->get()->random(3)->values();
             $publikasiTerkait = $publikasiTerkait->get()->random(3)->values();
-            $publikasiBacaJuga = $publikasiTerbaru->get()->random(1)->values()[0];
+            $publikasiBacaJuga = $publikasiBacaJuga->get()->random(1)->values()[0];
         } else {
             $publikasiPopuler = $publikasiPopuler->get();
             $publikasiTerbaru = $publikasiTerbaru->get();
             $publikasiTerkait = $publikasiTerkait->get();
-            $publikasiBacaJuga = $publikasiTerbaru->first();
+            $publikasiBacaJuga = $publikasiBacaJuga->first();
         }
         
         return view('content.publication_detail', compact('publikasi', 'publikasiPopuler', 'publikasiTerbaru', 'publikasiTerkait', 'publikasiBacaJuga'));
