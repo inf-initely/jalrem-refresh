@@ -46,7 +46,7 @@ class PublikasiController extends Controller
                 $publikasiPopuler = $publikasiPopuler->where('judul_english', '!=', null)->get()->random(3)->values();
                 $publikasiTerbaru = $publikasiTerbaru->where('judul_english', '!=', null)->get()->random(3)->values();
                 $publikasiTerkait = $publikasiTerbaru->where('judul_english', '!=', null)->get()->random(3)->values();
-                $publikasiBacaJuga = $publikasiTerbaru->where('judul_english', '!=', null)->get()->random(1)->values();
+                $publikasiBacaJuga = $publikasiTerbaru->where('judul_english', '!=', null)->get()->random(1)->values()[0];
             }else {
                 $publikasiPopuler = $publikasiPopuler->where('judul_english', '!=', null)->get();
                 $publikasiTerbaru = $publikasiTerbaru->where('judul_english', '!=', null)->get();
@@ -59,7 +59,7 @@ class PublikasiController extends Controller
             $publikasiPopuler = $publikasiPopuler->get()->random(3)->values();
             $publikasiTerbaru = $publikasiTerbaru->get()->random(3)->values();
             $publikasiTerkait = $publikasiTerkait->get()->random(3)->values();
-            $publikasiBacaJuga = $publikasiTerbaru->get()->random(1)->values();
+            $publikasiBacaJuga = $publikasiTerbaru->get()->random(1)->values()[0];
         } else {
             $publikasiPopuler = $publikasiPopuler->get();
             $publikasiTerbaru = $publikasiTerbaru->get();
