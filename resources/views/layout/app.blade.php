@@ -25,7 +25,36 @@
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/hero-slider.css') }}?v={{ config('app.version') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/jalur-rempah.css') }}?v={{ config('app.version') }}">
-    <title>Jalur Rempah</title>
+    @if( Session::get('lg') == 'en' )
+      @if( Request::segment(1) == null )
+        <title>Home - The Spice Routes Indonesia</title>
+         @elseif(Request::segment(1) == "tentang-jalur")
+        <title>Routes - The Spice Routes Indonesia</title>
+        @elseif(Request::segment(1) == "tentang-jejak")
+        <title>The Traces of Spice Routes - Indonesia</title>
+        @elseif(Request::segment(1) == "tentang-masa-depan")
+        <title>Future - The Spice Routes Indonesia</title>
+        @elseif(Request::segment(1) == "konten")
+        <title>Contents - The Spice Routes Indonesia</title>
+        @elseif(Request::segment(1) == "informasi")
+        <title>Information - The Spice Routes Indonesia</title>
+      @endif
+    @else
+      @if( Request::segment(1) == null )
+        <title>Beranda - Jalur Rempah Rempah Kemdikbudristek Republik Indonesia</title>
+        @elseif(Request::segment(1) == "tentang-jalur")
+        <title>Jalur Rempah Nusantara Kemdikbudristek Republik Indonesia</title>
+        @elseif(Request::segment(1) == "tentang-jejak")
+        <title>Jejak Jalur Rempah Kemdikbudristek Republik Indonesia</title>
+        @elseif(Request::segment(1) == "tentang-masa-depan")
+        <title>Masa Depan - Jalur Rempah Kemdikbudristek Republik Indonesia</title>
+        @elseif(Request::segment(1) == "konten")
+        <title>Konten - Jalur Rempah Kemdikbudristek Republik Indonesia</title>
+        @elseif(Request::segment(1) == "informasi")
+        <title>Informasi - Jalur Rempah Kemdikbudristek Republik Indonesia</title>
+      @endif
+    @endif
+
     <link rel="shortcut icon" href="{{ asset('assets/img/logo/favicon.png') }}">
 </head>
 
