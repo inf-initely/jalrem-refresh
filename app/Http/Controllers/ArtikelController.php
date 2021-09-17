@@ -27,8 +27,8 @@ class ArtikelController extends Controller
     public function show(Request $request, $slug)
     {
         // $slug_field = $lg == 'en' ? 'slug_english' : 'slug';
-        $query_without_this_article = Artikel::where('slug', '!=', $slug)->where('slug_english', '!=', $slug);
-        $query_this_article = Artikel::where('slug', $slug)->orWhere('slug_english', $slug);
+        $query_without_this_article = Artikel::where('slug', '!=', $slug)->where('slug_english', '!=', $slug)->where('status', 'publikasi');
+        $query_this_article = Artikel::where('slug', $slug)->orWhere('slug_english', $slug)->where('status', 'publikasi');
 
         $artikel = $query_this_article->firstOrFail();
       

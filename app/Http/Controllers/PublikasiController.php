@@ -26,8 +26,8 @@ class PublikasiController extends Controller
     {
         $lg = Session::get('lg');
         // $slug_field = $lg == 'en' ? 'slug_english' : 'slug';
-        $query_without_this_publication = Publikasi::where('slug', '!=', $slug)->where('slug_english', '!=', $slug);
-        $query_this_publication = Publikasi::where('slug', $slug)->orWhere('slug_english', $slug);
+        $query_without_this_publication = Publikasi::where('slug', '!=', $slug)->where('slug_english', '!=', $slug)->where('status', 'publikasi');
+        $query_this_publication = Publikasi::where('slug', $slug)->orWhere('slug_english', $slug)->where('status', 'publikasi');
 
         $publikasi = $query_this_publication->firstOrFail();
       
