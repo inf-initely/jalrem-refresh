@@ -101,14 +101,15 @@
         </div>
       </section> --}}
       <section id="rempahLainnya">
-        <h2 class="sub-judul">Rempah Lainnya</h2>
-        <ul class="tags mt-3">
-          @foreach( $rempahs as $r )
-            <li><a href="{{ route('rempah_detail', $r->id) }}" class="tag">{{ $r->jenis_rempah }}</a></li>
-          @endforeach
-        </ul>
+        <div class="container">
+          <h2 class="sub-judul">Rempah Lainnya</h2>
+          <ul class="tags mt-3">
+            @foreach( $rempahs as $r )
+              <li><a href="{{ route('rempah_detail', $r->id) }}" class="tag">{{ $r->jenis_rempah }}</a></li>
+            @endforeach
+          </ul>
+        </div>
       </section>
-
     </div>
   </main>
 @endsection
