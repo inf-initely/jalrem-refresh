@@ -196,10 +196,30 @@
                   <div class="tab-pane fade" id="tab-audio" role="tabpanel" aria-labelledby="tab-audio-tab">
                     <div class="row justify-content-center">
                       @foreach( $audio as $a )
-                      <div class="col-md-6 col-lg-4 mb-4">
-                        <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/{{ $a->cloud_key }}&color=%231a150d&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-                        <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="#" title="" target="_blank" style="color: #cccccc; text-decoration: none;"></a> · <a href="{{ route('audio_detail', $a->slug) }}" title="{{ $a->judul_indo }}" style="color: #cccccc; text-decoration: none;">{{ $a->judul_indo }}</a></div>
-                        <main></main>
+                      <div class="col-md-12 col-lg-4 mb-4">
+                        <div class="card no-border card-artikel">
+                          <!-- <div class="ytdefer video media-video" data-alt="youtube jalur rempah" data-src="{{ $a->cloud_key }}"></div> -->
+                          <div class="video media-video" data-video-id="{{ $a->cloud_key }}">
+                            <!--ganti id sesuai id youtube yang akan ditampilkan-->
+                            <div class="video-layer">
+                              <div class="video-placeholder">
+                                <!-- ^ div is replaced by the YouTube video -->
+                              </div>
+                            </div>
+                            <div class="video-preview" style="background: url('https://img.youtube.com/vi/{{ $a->cloud_key }}/hqdefault.jpg') 50% 50% no-repeat; background-size: cover;">
+                              <!-- this icon would normally be implemented as a character in an icon font or svg spritesheet, or similar -->
+                              <svg viewBox="0 0 74 74">
+                                <circle style="opacity:0.64;stroke:#fff" cx="37" cy="37" r="36.5"></circle>
+                                <circle fill="none" stroke="#fff" cx="37" cy="37" r="36.5"></circle>
+                                <polygon fill="#fff" points="33,22 33,52 48,37"></polygon>
+                              </svg>
+                            </div>
+                          </div>
+                          <a class="stretched-link lightbox" href="{{ route('audio_detail', $a->slug) }}"></a>
+                          <div class="card-body">
+                            <p class="card-text">{{ $a->judul_indo }}</p>
+                          </div>
+                        </div>
                       </div>
                       @endforeach
                       <div class="d-flex justify-content-center">

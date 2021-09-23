@@ -81,9 +81,8 @@
               </div>
               <div class="card-body ">
                 <div class="mb-3">
-                  <label for="youtubeKey" class="form-label">Sound Cloud Key</label>
+                  <label for="youtubeKey" class="form-label">Youtube Key</label>
                   <input required value="{{ old('cloud_key') }}" type="text" name="cloud_key" class="form-control" id="youtubeKey" placeholder="masukkan youtube key">
-                  <small class="ml-1">Key di dapatkan dari embed code sound cloud</small>
                 </div>
               </div>
             </div>
@@ -245,5 +244,8 @@
       });
 
     });
+  </script>
+  <script>
+    window.addEventListener('load', ytdefer_setup);
   </script>
 @endsection
