@@ -64,7 +64,7 @@
     </li>
     @endif
     <li class="nav-item">
-      <a class="nav-link" href="#">
+      <a class="nav-link" href="{{ route('admin.setting.index') }}">
         <i class="fas fa-fw fa-cog"></i>
         <span>Pengaturan</span></a>
     </li>

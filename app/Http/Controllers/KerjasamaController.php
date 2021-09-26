@@ -27,6 +27,11 @@ class KerjasamaController extends Controller
 
         $kerjasama = Kerjasama::where('slug', $slug)->orWhere('slug_english', $slug)->firstOrFail();
 
+        // check draft
+        if( $kerjasama->status == 'draft' && !isset(auth()->user()->id) ) {
+            abort(404);
+        }
+
         if( $lg == 'en' )
             return view('content_english.kerjasama_detail', compact('kerjasama'));
         

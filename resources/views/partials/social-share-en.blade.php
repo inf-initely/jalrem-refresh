@@ -17,7 +17,7 @@
         </a>
       </li>
       <li class="list-group-item">
-        <a target="_blank" blank="" href="http://www.linkedin.com/shareArticle?mini=true&amp;url={{ route( $konten_name .'_detail', $konten->slug) }}&amp;title={{ $konten->judul_indo }}&amp;summary={!! Str::limit($konten->konten_indo, 50, $end='...') !!}">
+        <a target="_blank" blank="" href="http://www.linkedin.com/shareArticle?mini=true&amp;url={{ route( $konten_name .'_detail', $konten->slug) }}&amp;title={{ $konten->judul_indo }}">
           <img src="{{ asset('assets/img/icon-media-sosial/icon-linkedin.svg') }}" width="30px">
         </a>
       </li>

@@ -38,6 +38,11 @@ class PublikasiController extends Controller
         $publikasiBacaJuga = $query_without_this_publication;
 
         $publikasi = Publikasi::where('slug', $slug)->orWhere('slug_english', $slug)->firstOrFail();
+
+        // check draft
+        if( $publikasi->status == 'draft' && !isset(auth()->user()->id) ) {
+            abort(404);
+        }
         
         views($publikasi)->record();
 

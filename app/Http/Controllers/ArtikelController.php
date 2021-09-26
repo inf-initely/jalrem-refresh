@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Session;
 use App\Models\Artikel;
 use Illuminate\Pagination\Paginator;
 
+use Auth;
+
 class ArtikelController extends Controller
 {
 
@@ -31,6 +33,11 @@ class ArtikelController extends Controller
         $query_this_article = Artikel::where('slug', $slug)->orWhere('slug_english', $slug)->where('status', 'publikasi');
 
         $artikel = $query_this_article->firstOrFail();
+
+        // check draft
+        if( $artikel->status == 'draft' && !isset(auth()->user()->id) ) {
+            abort(404);
+        }
       
         views($artikel)->record();
         $artikelPopuler = $query_without_this_article->orderByViews();

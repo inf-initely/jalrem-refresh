@@ -28,6 +28,11 @@ class KegiatanController extends Controller
 
         $kegiatan = Kegiatan::where('slug', $slug)->orWhere('slug_english', $slug)->firstOrFail();
         
+        // check draft
+        if( $kegiatan->status == 'draft' && !isset(auth()->user()->id) ) {
+            abort(404);
+        }
+        
         $kegiatanSaatIni = Kegiatan::where('status', 'publikasi')->take(3)->get();
 
         if( $lg == 'en' )
