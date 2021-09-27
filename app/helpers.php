@@ -1,6 +1,7 @@
 <?php
 
 use App\Images;
+use Illuminate\Support\Facades\File;
 
 if( !function_exists('generate_slug') ) {
     function generate_slug($text, $divider) {
@@ -38,7 +39,7 @@ if( !function_exists('upload_file') ) {
     {
         // try {
         //     $fileSystem = new Filesystem();
-            
+
         //     if( !$fileSystem->exists($path) ) {
         //         File::makeDirectory($path);
         //     }
@@ -51,10 +52,15 @@ if( !function_exists('upload_file') ) {
 
             $image = Image::make($file->getRealPath())->resize(720, 480);
             $filename = uniqid() . '.webp';
+            // cek path is exists
+            if( !File::exists(storage_path($path)) ) {
+                File::makeDirectory(storage_path($path));
+            }
+
             $path = $path . '/' . $filename;
             Image::make($image)->save(storage_path($path));
-            
-            return $filename;    
+
+            return $filename;
         // }catch(\Exception $e) {
         // }
     }
