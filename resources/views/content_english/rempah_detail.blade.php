@@ -100,7 +100,7 @@
         <ul class="tags mt-3">
           @foreach( $rempahs as $r )
             @if( $r->jenis_rempah_english )
-                <li><a href="{{ route('rempah_detail', $r->id) }}" class="tag">{{ $r->jenis_rempah_english }}</a></li>
+                <li><a href="{{ route('rempah_detail', $r->jenis_rempah) }}" class="tag">{{ $r->jenis_rempah_english }}</a></li>
             @endif
         @endforeach
         </ul>
