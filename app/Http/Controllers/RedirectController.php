@@ -24,18 +24,16 @@ class RedirectController extends Controller
         $kegiatan = Kegiatan::where('status', 'publikasi')->get();
         $kerjasama = Kerjasama::where('status', 'publikasi')->get();
 
-        $konten = $artikel->merge($foto)->merge($audio)->merge($video)->merge($publikasi)->merge($kegiatan)->merge($kerjasama);
+        $konten = $artikel->mergeRecursive($foto)->mergeRecursive($audio)->mergeRecursive($video)->mergeRecursive($kegiatan)->mergeRecursive($kerjasama)->mergeRecursive($publikasi);
         $konten = $konten->filter(function($item) use($slug) {
             return ($item->slug == $slug || $item->slug_english == $slug);
         })->first();
+    
 
         if( $konten ) {
             return redirect()->route(generate_route_content($konten->getTable()) . '_detail', $slug);
         }
         abort(404);
-
-
-
 
         // if( $slug == 'tentang-jejak' ) {
         //     return redirect()->route('tentangjejak');

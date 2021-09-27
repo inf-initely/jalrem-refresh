@@ -61,7 +61,7 @@ class SearchController extends Controller
             $query->where('judul_english', '!=', null);
         })->get();
 
-        $artikel = $this->paginate($artikel->merge($publikasi)->merge($kegiatan)->merge($kerjasama)->merge($foto)->merge($audio)->merge($video), 9);
+        $artikel = $this->paginate($artikel->mergeRecursive($publikasi)->mergeRecursive($kegiatan)->mergeRecursive($kerjasama)->mergeRecursive($foto)->mergeRecursive($audio)->mergeRecursive($video), 9);
         $artikel->setPath('cari?search=' . $search);
 
 

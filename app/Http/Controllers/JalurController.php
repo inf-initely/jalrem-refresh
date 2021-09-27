@@ -37,7 +37,7 @@ class JalurController extends Controller
         $kegiatan = $kategori->kegiatan->filter(function($item) {
             return $item->status == 'publikasi';
         });
-        $artikel = $artikel->merge($foto)->merge($audio)->merge($video)->merge($publikasi)->merge($kerjasama)->merge($kegiatan);
+        $artikel = $artikel->mergeRecursive($foto)->mergeRecursive($audio)->mergeRecursive($video)->mergeRecursive($publikasi)->mergeRecursive($kerjasama)->mergeRecursive($kegiatan);
         
         if( Session::get('lg') == 'en' ) {
             $artikel = $artikel->filter(function($item) {
