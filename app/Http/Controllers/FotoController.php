@@ -27,6 +27,11 @@ class FotoController extends Controller
         $lg = Session::get('lg');
 
         $foto = Foto::where('slug', $slug)->orWhere('slug_english', $slug)->firstOrFail();
+
+        // check draft
+        if( $foto->status == 'draft' && !isset(auth()->user()->id) ) {
+            abort(404);
+        }
         
         if( $lg == 'en' )
             return view('content_english.photo_detail', compact('foto'));

@@ -24,7 +24,9 @@ class User extends Authenticatable
         'password',
         'nama',
         'domisili',
-        'is_active'
+        'is_active',
+        'photo',
+        'bio'
     ];
 
     /**

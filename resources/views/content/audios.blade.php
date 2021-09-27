@@ -20,10 +20,14 @@
               <section id="tabLine">
                 <div class="row justify-content-center">
                   @foreach( $audio as $a )
-                  <div class="col-md-6 col-lg-4 mb-4">
-                    <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/{{ $a->cloud_key }}&color=%231a150d&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-                    <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="#" title="" target="_blank" style="color: #cccccc; text-decoration: none;"></a> · <a href="{{ route('audio_detail', $a->slug) }}" title="{{ $a->judul_indo }}" style="color: #cccccc; text-decoration: none;">{{ $a->judul_indo }}</a></div>
-                    <main></main>
+                  <div class="col-md-12 col-lg-4 mb-4">
+                    <div class="card no-border card-artikel">
+                      <div class="ytdefer video media-video" data-alt="youtube jalur rempah" data-src="{{ $a->cloud_key }}"></div>
+                      <a class="stretched-link lightbox" href="{{ route('video_detail', $a->slug) }}"></a>
+                      <div class="card-body">
+                        <p class="card-text">{{ $a->judul_indo }}</p>
+                      </div>
+                    </div>
                   </div>
                   @endforeach
                 </div>

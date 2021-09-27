@@ -32,7 +32,7 @@ class JejakController extends Controller
         $value_type = []; // untuk menampikan isi rempah jika sebelumnya memilih rempah dan wilayah jika sebelumnya memilih wilayah
         if( $rempah ) {
             $artikelRempah = $this->loopingArtikel($rempah, $artikelRempah, $kategori);
-            $value_type = Rempah::orderBy('jenis_rempah', 'asc')->get();
+            $value_type = Rempah::orderBy(Session::get('lg') == 'en' ? 'jenis_rempah_english' : 'jenis_rempah', 'asc')->get();
             $artikel = collect($artikelRempah);
         } else if( $lokasi ) {
             foreach( $kategori->artikel as $ka ) {
@@ -73,7 +73,7 @@ class JejakController extends Controller
             $value_type = Lokasi::all();
             $artikel = collect($artikelWilayah);
         } else {
-            $artikel = $kategori->artikel->merge($kategori->foto)->merge($kategori->audio)->merge($kategori->video)->merge($kategori->publikasi)->merge($kategori->kerjasama)->merge($kategori->kegiatan);
+            $artikel = $kategori->artikel->mergeRecursive($kategori->foto)->mergeRecursive($kategori->audio)->mergeRecursive($kategori->video)->mergeRecursive($kategori->publikasi)->mergeRecursive($kategori->kerjasama)->mergeRecursive($kategori->kegiatan);
         }
 
         $artikel = $artikel->filter(function($item) {
@@ -86,7 +86,7 @@ class JejakController extends Controller
             });
         }
 
-        // $artikel = array_merge($artikel, $artikelRempah, $artikelWilayah);
+        // $artikel = array_mergeRecursive($artikel, $artikelRempah, $artikelWilayah);
         
         $artikel = ( $kategori != null )
             ? $this->paginate($artikel,6)

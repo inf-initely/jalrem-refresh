@@ -43,7 +43,7 @@
                                   <h3 class="judul-timeline">{{ Str::limit($a->judul_indo, 50, $end='...') }}</h3>
                                 </div>
                               </div>
-                              <a href="detail-kegiatan.html" class="stretched-link"></a>
+                              <a href="{{ route('article_detail', $a->slug) }}" class="stretched-link"></a>
                             </div>
                           </div>
                         </div>
@@ -101,14 +101,15 @@
         </div>
       </section> --}}
       <section id="rempahLainnya">
-        <h2 class="sub-judul">Rempah Lainnya</h2>
-        <ul class="tags mt-3">
-          @foreach( $rempahs as $r )
-            <li><a href="{{ route('rempah_detail', $r->id) }}" class="tag">{{ $r->jenis_rempah }}</a></li>
-          @endforeach
-        </ul>
+        <div class="container">
+          <h2 class="sub-judul">Rempah Lainnya</h2>
+          <ul class="tags mt-3">
+            @foreach( $rempahs as $r )
+              <li><a href="{{ route('rempah_detail', $r->jenis_rempah) }}" class="tag">{{ $r->jenis_rempah }}</a></li>
+            @endforeach
+          </ul>
+        </div>
       </section>
-
     </div>
   </main>
 @endsection

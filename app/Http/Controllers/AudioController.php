@@ -28,6 +28,11 @@ class AudioController extends Controller
 
         $audio = Audio::where('slug', $slug)->orWhere('slug_english', $slug)->firstOrFail();
 
+        // check draft
+        if( $audio->status == 'draft' && !isset(auth()->user()->id) ) {
+            abort(404);
+        }
+
         if( $lg == 'en' ) {
             return view('content_english.audio_detail', compact('audio'));   
         }

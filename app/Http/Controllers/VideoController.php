@@ -29,6 +29,11 @@ class VideoController extends Controller
 
         $video = Video::where('slug', $slug)->orWhere('slug_english', $slug)->firstOrFail();
 
+        // check draft
+        if( $video->status == 'draft' && !isset(auth()->user()->id) ) {
+            abort(404);
+        }
+
         if( $lg == 'en' ) {
             return view('content_english.video_detail', compact('video'));
         }

@@ -83,9 +83,8 @@
               </div>
               <div class="card-body ">
                 <div class="mb-3">
-                  <label for="youtubeKey" class="form-label">Sound Cloud Key</label>
+                  <label for="youtubeKey" class="form-label">YouTube Key</label>
                   <input required type="text" name="cloud_key" value="{{ $audio->cloud_key }}" class="form-control" id="youtubeKey" placeholder="masukkan youtube key">
-                  <small class="ml-1">Key di dapatkan dari embed code cloud key</small>
                 </div>
               </div>
             </div>

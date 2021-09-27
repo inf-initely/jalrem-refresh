@@ -26,7 +26,7 @@ class RempahController extends Controller
     public function getJSON()
     {
         $lg = Session::get('lg');
-        $rempah = Rempah::orderBy($lg == 'en' ? 'jenis_rempah' : 'jenis_rempah_english' , 'asc')->get();
+        $rempah = Rempah::orderBy($lg == 'en' ? 'jenis_rempah_english' : 'jenis_rempah' , 'asc')->get();
 
         return response()->json($rempah);
     }

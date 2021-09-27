@@ -22,176 +22,37 @@
               </header>
               <div id="desTentang">
                 {{ $rempah->keterangan_english }}
-                {{-- <section>
-                  <ul class="timeline">
-                    <li>
+                <section>
+                  <ul class="@if(count($artikel_rempah) > 0) timeline @endif">
+                    @foreach( $artikel_rempah as $index => $a )
+                    <li class="@if(($loop->index+1)%2 == 0) timeline-inverted @endif">
                       <div class="timeline-badge primary"><a><i class="glyphicon glyphicon-record" rel="tooltip" title="11 hours ago via Twitter" id=""></i></a></div>
                       <div class="timeline-panel">
                         <div class="timeline-heading">
-                          <img class="img-responsive" src="http://lorempixel.com/1600/500/sports/2" />
+                          <img class="img-responsive" src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}" />
                         </div>
                         <div class="timeline-body">
                           <div class="card no-border no-background">
                             <div class="card-body">
                               <div class="row">
                                 <div class="col-md-6 mb-3">
-                                  <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/hero/hero-1.jpg">
+                                  <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}">
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                  <p class="tgl-timeline">Tanggal</p>
-                                  <h3 class="judul-timeline">Lorem Ipsum Dolor Sit Amet</h3>
+                                  <p class="tgl-timeline">{{ $a->created_at->isoFormat('D MMMM Y'); }}</p>
+                                  <h3 class="judul-timeline">{{ Str::limit($a->judul_english, 50, $end='...') }}</h3>
                                 </div>
                               </div>
-                              <a href="detail-kegiatan.html" class="stretched-link"></a>
+                              <a href="{{ route('article_detail', $a->slug_english ?? $a->slug) }}" class="stretched-link"></a>
                             </div>
                           </div>
                         </div>
                       </div>
                     </li>
-                    <li class="timeline-inverted">
-                      <div class="timeline-badge primary"><a><i class="glyphicon glyphicon-record invert" rel="tooltip" title="11 hours ago via Twitter" id=""></i></a></div>
-                      <div class="timeline-panel">
-                        <div class="timeline-body">
-                          <div class="card no-border no-background">
-                            <div class="card-body">
-                              <div class="row">
-                                <div class="col-md-6 mb-3">
-                                  <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/hero/hero-2.jpg">
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                  <p class="tgl-timeline">Tanggal</p>
-                                  <h3 class="judul-timeline">Lorem Ipsum Dolor Sit Amet</h3>
-                                </div>
-                              </div>
-                              <a href="detail-kegiatan.html" class="stretched-link"></a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="timeline-badge primary"><a><i class="glyphicon glyphicon-record" rel="tooltip" title="11 hours ago via Twitter" id=""></i></a></div>
-                      <div class="timeline-panel">
-                        <div class="timeline-heading">
-                          <img class="img-responsive" src="http://lorempixel.com/1600/500/sports/2" />
-                        </div>
-                        <div class="timeline-body">
-                          <div class="card no-border no-background">
-                            <div class="card-body">
-                              <div class="row">
-                                <div class="col-md-6 mb-3">
-                                  <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/hero/hero-3.jpg">
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                  <p class="tgl-timeline">Tanggal</p>
-                                  <h3 class="judul-timeline">Lorem Ipsum Dolor Sit Amet</h3>
-                                </div>
-                              </div>
-                              <a href="detail-kegiatan.html" class="stretched-link"></a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li class="timeline-inverted">
-                      <div class="timeline-badge primary"><a><i class="glyphicon glyphicon-record invert" rel="tooltip" title="11 hours ago via Twitter" id=""></i></a></div>
-                      <div class="timeline-panel">
-                        <div class="timeline-body">
-                          <div class="card no-border no-background">
-                            <div class="card-body">
-                              <div class="row">
-                                <div class="col-md-6 mb-3">
-                                  <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/hero/hero-4.jpg">
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                  <p class="tgl-timeline">Tanggal</p>
-                                  <h3 class="judul-timeline">Lorem Ipsum Dolor Sit Amet</h3>
-                                </div>
-                              </div>
-                              <a href="detail-kegiatan.html" class="stretched-link"></a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="timeline-badge primary"><a><i class="glyphicon glyphicon-record" rel="tooltip" title="11 hours ago via Twitter" id=""></i></a></div>
-                      <div class="timeline-panel">
-                        <div class="timeline-heading">
-                          <img class="img-responsive" src="http://lorempixel.com/1600/500/sports/2" />
-                        </div>
-                        <div class="timeline-body">
-                          <div class="card no-border no-background">
-                            <div class="card-body">
-                              <div class="row">
-                                <div class="col-md-6 mb-3">
-                                  <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/hero/hero-5.jpg">
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                  <p class="tgl-timeline">Tanggal</p>
-                                  <h3 class="judul-timeline">Lorem Ipsum Dolor Sit Amet</h3>
-                                </div>
-                              </div>
-                              <a href="detail-kegiatan.html" class="stretched-link"></a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li class="timeline-inverted">
-                      <div class="timeline-badge primary"><a><i class="glyphicon glyphicon-record invert" rel="tooltip" title="11 hours ago via Twitter" id=""></i></a></div>
-                      <div class="timeline-panel">
-                        <div class="timeline-heading">
-                          <img class="img-responsive" src="http://lorempixel.com/1600/500/sports/2" />
-                        </div>
-                        <div class="timeline-body">
-                          <div class="card no-border no-background">
-                            <div class="card-body">
-                              <div class="row">
-                                <div class="col-md-6 mb-3">
-                                  <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/hero/hero-1.jpg">
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                  <p class="tgl-timeline">Tanggal</p>
-                                  <h3 class="judul-timeline">Lorem Ipsum Dolor Sit Amet</h3>
-                                </div>
-                              </div>
-                              <a href="detail-kegiatan.html" class="stretched-link"></a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="timeline-badge primary"><a><i class="glyphicon glyphicon-record invert" rel="tooltip" title="11 hours ago via Twitter" id=""></i></a></div>
-                      <div class="timeline-panel">
-                        <div class="timeline-body">
-                          <div class="card no-border no-background">
-                            <div class="card-body">
-                              <div class="row">
-                                <div class="col-md-6 mb-3">
-                                  <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="assets/img/hero/hero-2.jpg">
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                  <p class="tgl-timeline">Tanggal</p>
-                                  <h3 class="judul-timeline">Lorem Ipsum Dolor Sit Amet</h3>
-                                </div>
-                              </div>
-                              <a href="detail-kegiatan.html" class="stretched-link"></a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    
+                    @endforeach
                     <li class="clearfix" style="float: none;"></li>
                   </ul>
                 </section>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> --}}
       <!----------------------------------------------------------->
       {{-- <section id="kisahLainnya" class="full-bg">
         <div class="container">
@@ -239,7 +100,7 @@
         <ul class="tags mt-3">
           @foreach( $rempahs as $r )
             @if( $r->jenis_rempah_english )
-                <li><a href="{{ route('rempah_detail', $r->id) }}" class="tag">{{ $r->jenis_rempah_english }}</a></li>
+                <li><a href="{{ route('rempah_detail', $r->jenis_rempah) }}" class="tag">{{ $r->jenis_rempah_english }}</a></li>
             @endif
         @endforeach
         </ul>

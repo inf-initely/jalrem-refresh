@@ -17,6 +17,8 @@ use App\Http\Controllers\Admin\KegiatanController as KegiatanControllerAdmin;
 
 use App\Http\Controllers\Admin\UserController as UserControllerAdmin;
 
+use App\Http\Controllers\Admin\SettingController as SettingControllerAdmin;
+
 use App\Http\Controllers\Admin\HomeController as HomeControllerAdmin;
 
 use App\Http\Controllers\HomeController;
@@ -130,6 +132,9 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function() {
         Route::post('/update/{id}', [UserControllerAdmin::class, 'update'])->name('admin.user.update');
         Route::get('/action/{id}', [UserControllerAdmin::class, 'action'])->name('admin.user.action');
     });
+
+    Route::get('/pengaturan', [SettingControllerAdmin::class, 'index'])->name('admin.setting.index');
+    Route::post('/pengaturan', [SettingControllerAdmin::class, 'update'])->name('admin.setting.update');
 });
 
 Route::get('/kontributor', [KontributorController::class, 'index'])->name('contributor');
@@ -159,10 +164,10 @@ Route::get('/informasi', [InformasiController::class, 'index'])->name('informasi
 Route::get('/semua-kerjasama', [KerjasamaController::class, 'index'])->name('kerjasama');
 Route::get('/semua-kegiatan', [KegiatanController::class, 'index'])->name('events');
 Route::get('/konten', [KontenController::class, 'index'])->name('konten');
-Route::get('/jalur', [JalurController::class, 'index'])->name('tentangjalur');
-Route::get('/jejak', [JejakController::class, 'index'])->name('tentangjejak');
-Route::get('/masa-depan', [MasaDepanController::class, 'index'])->name('tentangmasadepan');
-Route::get('/tag/{rempahName}', [RempahController::class, 'show'])->name('rempah_detail');
+Route::get('/tentang-jalur', [JalurController::class, 'index'])->name('tentangjalur');
+Route::get('/tentang-jejak', [JejakController::class, 'index'])->name('tentangjejak');
+Route::get('/tentang-masa-depan', [MasaDepanController::class, 'index'])->name('tentangmasadepan');
+Route::get('/funfact/{rempahName}', [RempahController::class, 'show'])->name('rempah_detail');
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'login_post'])->name('login_post');
@@ -200,4 +205,4 @@ Route::get('/debug-sentry', function () {
     if (! app()->environment('production')) throw new Exception('Test Sentry error!');
 });
 
-Route::get('/{slug}', [RedirectController::class, 'index'])->name('index');
+Route::get('/{slug}', [RedirectController::class, 'index']);
