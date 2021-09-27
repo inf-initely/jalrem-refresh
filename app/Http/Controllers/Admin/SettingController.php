@@ -33,7 +33,7 @@ class SettingController extends Controller
             $filename_photo = $user->photo;
         }
 
-        if( $request->has('password') ) {
+        if( $request->password ) {
             $request->validate([
                 'password' => 'min:3|max:255',
                 'password_conf' => 'min:3|max:255|same:password',

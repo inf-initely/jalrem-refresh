@@ -54,9 +54,7 @@
                       <div class="mb-3 row">
                         <label for="bio" class="col-sm-2 col-form-label">Bio</label>
                         <div class="col-sm-10">
-                          <textarea name="bio" class="form-control" id="bio" rows="5" placeholder="masukkan bio singkat disini">
-                           {{ auth()->user()->bio }}  
-                          </textarea>
+                          <textarea name="bio" id="" cols="30" rows="7" class="form-control">{{ auth()->user()->bio }}</textarea>
                         </div>
                       </div>
                       <div class="mb-3 row">
