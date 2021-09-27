@@ -23,7 +23,7 @@
                       <h2 class="sub-judul text-center mb-4">Foto Profil</h2>
                       <div class="row justify-content-center">
                         <div class="col-lg-12 text-center mb-3">
-                          <img class="preview-profil-photo avatar-photo text-center" style="width: 100%;" src="{{ asset('storage/assets/user/' . auth()->user()->photo) }}" />
+                          <img class="preview-profil-photo avatar-photo text-center" src="{{ asset('storage/assets/user/' . auth()->user()->photo) }}" />
                         </div>
                         <div class="col-lg-12 mb-4">
                           <input name="photo" class="form-control" id="uploadThumbnail" type="file" data-preview=".avatar-photo" />
