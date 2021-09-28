@@ -21,7 +21,7 @@
                 <div>
                   <div class="wrap-slide-img">
                     <img src="{{ asset('storage/assets/foto/slider_foto/' . unserialize($foto->slider_foto)[$i]) }}" width="100%">
-                    <div class="wrap-text-slide-img">
+                    <div class="wrap-des-foto">
                       <p>{{ unserialize($foto->caption_slider_foto)[$i] }}</p>
                     </div>
                   </div>
