@@ -47,17 +47,17 @@ class PublikasiController extends Controller
         views($publikasi)->record();
 
         if( $lg == 'en' ) {
-            $publikasiPopuler = $publikasiPopuler->where('judul_english', '!=', null)->get();
-            $publikasiTerbaru = $publikasiTerbaru->where('judul_english', '!=', null)->get();
-            $publikasiTerkait = $publikasiTerkait->where('judul_english', '!=', null)->get();
+            $publikasiPopuler = $publikasiPopuler->where('judul_english', '!=', null)->take(3)->get();
+            $publikasiTerbaru = $publikasiTerbaru->where('judul_english', '!=', null)->take(3)->get();
+            $publikasiTerkait = $publikasiTerkait->where('judul_english', '!=', null)->take(3)->get();
             $publikasiBacaJuga = $publikasiBacaJuga->where('judul_english', '!=', null)->first();
-            
+
             return view('content_english.publication_detail', compact('publikasi', 'publikasiPopuler', 'publikasiTerbaru', 'publikasiTerkait', 'publikasiBacaJuga'));
         }
         
-        $publikasiPopuler = $publikasiPopuler->get();
-        $publikasiTerbaru = $publikasiTerbaru->get();
-        $publikasiTerkait = $publikasiTerkait->get();
+        $publikasiPopuler = $publikasiPopuler->take(3)->get();
+        $publikasiTerbaru = $publikasiTerbaru->take(3)->get();
+        $publikasiTerkait = $publikasiTerkait->take(3)->get();
         $publikasiBacaJuga = $publikasiBacaJuga->first();
         
         return view('content.publication_detail', compact('publikasi', 'publikasiPopuler', 'publikasiTerbaru', 'publikasiTerkait', 'publikasiBacaJuga'));
