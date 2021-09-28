@@ -57,7 +57,7 @@
       </div>
     </li>
     @if( auth()->user()->role == 'super admin' )
-    <li class="nav-item">
+    <li class="nav-item {{ Request::segment(2) == 'user' ? 'active' : '' }}">
       <a class="nav-link" href="{{ route('admin.user.index') }}">
         <i class="fas fa-fw fa-user-circle"></i>
         <span>User</span></a>
