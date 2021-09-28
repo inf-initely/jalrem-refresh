@@ -63,7 +63,7 @@
   @include('sweetalert::alert')
   @yield('content')
   <!-- Modal -->
-  <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+  <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true" style="background-color: rgba(0,0,0,.6);">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-search">
       <div class="modal-content modal-body-search">
         <div class="modal-body">
@@ -77,6 +77,7 @@
       </div>
     </div>
   </div>
+
   <!-- End Modal -->
   @include('partials.footer')
 </body>
