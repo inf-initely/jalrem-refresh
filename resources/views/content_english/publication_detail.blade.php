@@ -34,6 +34,12 @@
                 <img class="mb-3 mt-3" src="{{ asset('storage/assets/publikasi/thumbnail/' . $publikasi->thumbnail) }}" width="100%">
                 {!! $publikasi->konten_english !!}
               </section>
+              @if( $publikasi->penulis != 'admin' )
+                <div id="disclaimer" class="mt-4">
+                  <p>Konten ini dibuat oleh kontributor website Jalur Rempah. <br>
+                    Laman Kontributor merupakan platform dari website Jalur Rempah yang digagas khusus untuk masyarakat luas untuk mengirimkan konten (berupa tulisan, foto, dan video) dan membagikan pengalamannya tentang Jalur Rempah. Setiap konten dari kontributor adalah tanggung jawab kontributor sepenuhnya.</p>
+                </div>
+              @endif
               @php
                   $konten_name = 'publication';
                   $konten = $publikasi;
