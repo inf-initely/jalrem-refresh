@@ -1651,6 +1651,16 @@ footer {
     height: 130px;
 }
 
+.wrap-des-foto{
+  padding: 7px;
+  background-color: #202020;
+  color: white;
+}
+
+.wrap-des-foto p{
+    margin-bottom: 0px;
+}
+
 @media (max-width: 991.98px) {
 
     .navbar-nav {
