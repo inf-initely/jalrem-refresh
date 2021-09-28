@@ -40,6 +40,12 @@
               @endphp
               @include('partials.social-share')
             </article>
+            @if( $artikel->penulis != 'admin' )
+              <div id="disclaimer" class="mt-4">
+                <p>Konten ini dibuat oleh kontributor website Jalur Rempah. <br>
+                  Laman Kontributor merupakan platform dari website Jalur Rempah yang digagas khusus untuk masyarakat luas untuk mengirimkan konten (berupa tulisan, foto, dan video) dan membagikan pengalamannya tentang Jalur Rempah. Setiap konten dari kontributor adalah tanggung jawab kontributor sepenuhnya.</p>
+              </div>
+            @endif
             <div class="col-lg-4">
               <div class="row mb-4">
                 <div class="col-md-12 wrap-aside">
