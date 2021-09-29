@@ -9,8 +9,8 @@
                 <header>
                     <h2 class="sub-judul sub-judul-hero ">Jejak dan Jalur Rempah</h2>
                 </header>
-                    <p>Jalur Rempah merupakan suatu <b> peradaban yang sangat tua, kompleks, luas, dan memengaruhi peradaban global.</b> Jejaknya memperlihatkan interaksi budaya pada masa lampau.<span id="dots">...</span><span id="more"><br><br>
-                    Dari keterbukaan masyarakat Nusantara dan hubungan budaya yang terjalin, lahir beragam warisan budaya multikultural dan multietnis ke berbagai medium. Hubungan budaya antarmanusia ini meninggalkan <b>warisan dan serangkaian jejak yang masih hidup hingga hari ini</b>: kisah asal usul, nyanyian, musik, tarian, teknologi tradisional, arsitektur bangunan, fesyen, kuliner, ramuan, aksara, bahasa, hingga kepercayaan. Sebuah peninggalan nilai budaya yang menjadi memori kolektif bangsa sebagai bukti dan jejak dari Jalur Rempah.</span></p>
+                <p>Jalur Rempah merupakan suatu <b> peradaban yang sangat tua, kompleks, luas, dan memengaruhi peradaban global.</b> Jejaknya memperlihatkan interaksi budaya pada masa lampau.<span id="dots">...</span><span id="more"><br><br>
+                        Dari keterbukaan masyarakat Nusantara dan hubungan budaya yang terjalin, lahir beragam warisan budaya multikultural dan multietnis ke berbagai medium. Hubungan budaya antarmanusia ini meninggalkan <b>warisan dan serangkaian jejak yang masih hidup hingga hari ini</b>: kisah asal usul, nyanyian, musik, tarian, teknologi tradisional, arsitektur bangunan, fesyen, kuliner, ramuan, aksara, bahasa, hingga kepercayaan. Sebuah peninggalan nilai budaya yang menjadi memori kolektif bangsa sebagai bukti dan jejak dari Jalur Rempah.</span></p>
                 <button class="btn btn-sm btn-outline-secondary" onclick="readMore()" id="btnReadmore">Lihat Selengkapnya</button>
             </article>
         </div>
@@ -29,7 +29,7 @@
                     <div class="col-lg-5 mb-3">
                         <select id="lokasiRempah" class="form-select" aria-label="Default select example">
                             @foreach( $value_type as $v )
-                                <option {{ Request::get('rempah') == $v->id || Request::get('wilayah') == $v->id ? 'selected' : '' }} value="{{ $v->id }}">{{ $v->getTable() == 'rempahs' ? $v->jenis_rempah : $v->nama_lokasi }}</option>
+                            <option {{ Request::get('rempah') == $v->id || Request::get('wilayah') == $v->id ? 'selected' : '' }} value="{{ $v->id }}">{{ $v->getTable() == 'rempahs' ? $v->jenis_rempah : $v->nama_lokasi }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -50,7 +50,7 @@
                         <h2 class="sub-judul sub-judul-hero ">Jejak dan Jalur Rempah</h2>
                     </header>
                     <p>Jalur Rempah merupakan suatu <b> peradaban yang sangat tua, kompleks, luas, dan memengaruhi peradaban global.</b> Jejaknya memperlihatkan interaksi budaya pada masa lampau.<span id="dots2" style="display:inline">...</span><span id="more2" style="display:none"><br><br>
-                    Dari keterbukaan masyarakat Nusantara dan hubungan budaya yang terjalin, lahir beragam warisan budaya multikultural dan multietnis ke berbagai medium. Hubungan budaya antarmanusia ini meninggalkan <b>warisan dan serangkaian jejak yang masih hidup hingga hari ini</b>: kisah asal usul, nyanyian, musik, tarian, teknologi tradisional, arsitektur bangunan, fesyen, kuliner, ramuan, aksara, bahasa, hingga kepercayaan. Sebuah peninggalan nilai budaya yang menjadi memori kolektif bangsa sebagai bukti dan jejak dari Jalur Rempah.</span></p>
+                            Dari keterbukaan masyarakat Nusantara dan hubungan budaya yang terjalin, lahir beragam warisan budaya multikultural dan multietnis ke berbagai medium. Hubungan budaya antarmanusia ini meninggalkan <b>warisan dan serangkaian jejak yang masih hidup hingga hari ini</b>: kisah asal usul, nyanyian, musik, tarian, teknologi tradisional, arsitektur bangunan, fesyen, kuliner, ramuan, aksara, bahasa, hingga kepercayaan. Sebuah peninggalan nilai budaya yang menjadi memori kolektif bangsa sebagai bukti dan jejak dari Jalur Rempah.</span></p>
                     <button class="btn btn-sm btn-outline-secondary" onclick="readMore2()" id="btnReadmore2">Lihat Selengkapnya</button>
                 </article>
             </div>
@@ -70,15 +70,15 @@
                                                 <!--ganti id sesuai id youtube yang akan ditampilkan-->
                                                 <div class="video-layer">
                                                     <div class="video-placeholder">
-                                                    <!-- ^ div is replaced by the YouTube video -->
+                                                        <!-- ^ div is replaced by the YouTube video -->
                                                     </div>
                                                 </div>
                                                 <div class="video-preview" style="background: url('https://img.youtube.com/vi/{{ $a->youtube_key }}/hqdefault.jpg') 50% 50% no-repeat; background-size: cover;">
                                                     <!-- this icon would normally be implemented as a character in an icon font or svg spritesheet, or similar -->
                                                     <svg viewBox="0 0 74 74">
-                                                    <circle style="opacity:0.64;stroke:#fff" cx="37" cy="37" r="36.5"></circle>
-                                                    <circle fill="none" stroke="#fff" cx="37" cy="37" r="36.5"></circle>
-                                                    <polygon fill="#fff" points="33,22 33,52 48,37"></polygon>
+                                                        <circle style="opacity:0.64;stroke:#fff" cx="37" cy="37" r="36.5"></circle>
+                                                        <circle fill="none" stroke="#fff" cx="37" cy="37" r="36.5"></circle>
+                                                        <polygon fill="#fff" points="33,22 33,52 48,37"></polygon>
                                                     </svg>
                                                 </div>
                                             </div>
@@ -98,7 +98,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div> 
+                            </div>
                             @elseif( $a->getTable() == 'audio' )
                             <div class="col-lg-6 mb-1">
                                 <div class="card no-border no-background">
@@ -125,36 +125,36 @@
                                 </div>
                             </div>
                             @else
-                                <div class="col-lg-6 mb-2">
-                                    <div class="card no-border no-background">
-                                        <div class="card-body row">
-                                            <div class="col-5 center-v">
-                                                <img class="tentang-thumbnail" src="{{ asset(get_asset_path($a->getTable(), $a->thumbnail)) }}" width="100%">
-                                            </div>
-                                            <div class="col-7 center-v">
-                                                <a href="#" class="text-danger m-0 p-0 text-decoration-none wilayah"><small>{{ $a->lokasi->nama_lokasi ?? '' }}</small></a>
-                                                <h3 class="judul-artikel judul-artikel-tentang"><a href="{{ route(generate_route_content($a->getTable()) . '_detail', $a->slug) }}" class="text-decoration-none clr-black">{{ $a->judul_indo }}</a> </h3>
-                                                <!-- <p class="des-artikel des-artikel-tentang minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p> -->
-                                                <div class="wrap-tag-rempah">
-                                                    @if( $a->rempahs != null )
-                                                    @foreach( $a->rempahs as $r )
-                                                    <a href="{{ route('rempah_detail', $r->jenis_rempah) }}" class="text-danger text-decoration-none">{{ $r->jenis_rempah }}</a>
-                                                    |
-                                                    @endforeach
-                                                    @endif
-                                                </div>
+                            <div class="col-lg-6 mb-2">
+                                <div class="card no-border no-background">
+                                    <div class="card-body row">
+                                        <div class="col-5 center-v">
+                                            <img class="tentang-thumbnail" src="{{ asset(get_asset_path($a->getTable(), $a->thumbnail)) }}" width="100%">
+                                        </div>
+                                        <div class="col-7 center-v">
+                                            <a href="#" class="text-danger m-0 p-0 text-decoration-none wilayah"><small>{{ $a->lokasi->nama_lokasi ?? '' }}</small></a>
+                                            <h3 class="judul-artikel judul-artikel-tentang"><a href="{{ route(generate_route_content($a->getTable()) . '_detail', $a->slug) }}" class="text-decoration-none clr-black">{{ $a->judul_indo }}</a> </h3>
+                                            <!-- <p class="des-artikel des-artikel-tentang minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p> -->
+                                            <div class="wrap-tag-rempah">
+                                                @if( $a->rempahs != null )
+                                                @foreach( $a->rempahs as $r )
+                                                <a href="{{ route('rempah_detail', $r->jenis_rempah) }}" class="text-danger text-decoration-none">{{ $r->jenis_rempah }}</a>
+                                                |
+                                                @endforeach
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                             @endif
                             @endforeach
                             <div class="d-flex justify-content-center mt-2">
                                 {!! $artikel->links() !!}
                             </div>
+                        </div>
                     </div>
                 </div>
-            </div>
         </section>
         <section id="cardInfo">
             <div class="container">
@@ -221,55 +221,468 @@
 <script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GMAPS_KEY') }}&callback=initMap&libraries=&v=weekly" async></script>
 <script>
+    const provinceLatLong = [{
+            "id": "1",
+            "name": "ACEH",
+            "latitude": 4.36855,
+            "longitude": 97.0253
+        },
+        {
+            "id": "30",
+            "name": "SUMATERA UTARA",
+            "latitude": 2.19235,
+            "longitude": 99.38122
+        },
+        {
+            "id": "31",
+            "name": "SUMATERA BARAT",
+            "latitude": -1.34225,
+            "longitude": 100.0761
+        },
+        {
+            "id": "25",
+            "name": "RIAU",
+            "latitude": 0.50041,
+            "longitude": 101.54758
+        },
+        {
+            "id": "8",
+            "name": "JAMBI",
+            "latitude": -1.61157,
+            "longitude": 102.7797
+        },
+        {
+            "id": "32",
+            "name": "SUMATERA SELATAN",
+            "latitude": -3.12668,
+            "longitude": 104.09306
+        },
+        {
+            "id": "4",
+            "name": "BENGKULU",
+            "latitude": -3.51868,
+            "longitude": 102.53598
+        },
+        {
+            "id": "19",
+            "name": "LAMPUNG",
+            "latitude": -4.8555,
+            "longitude": 105.0273
+        },
+        {
+            "id": "17",
+            "name": "KEPULAUAN BANGKA BELITUNG",
+            "latitude": -2.75775,
+            "longitude": 107.58394
+        },
+        {
+            "id": "18",
+            "name": "KEPULAUAN RIAU",
+            "latitude": -0.15478,
+            "longitude": 104.58037
+        },
+        {
+            "id": "6",
+            "name": "DKI JAKARTA",
+            "latitude": 6.1745,
+            "longitude": 106.8227
+        },
+        {
+            "id": "9",
+            "name": "JAWA BARAT",
+            "latitude": -6.88917,
+            "longitude": 107.64047
+        },
+        {
+            "id": "10",
+            "name": "JAWA TENGAH",
+            "latitude": -7.30324,
+            "longitude": 110.00441
+        },
+        {
+            "id": "5",
+            "name": "DI YOGYAKARTA",
+            "latitude": 7.7956,
+            "longitude": 110.3695
+        },
+        {
+            "id": "12",
+            "name": "JAWA TIMUR",
+            "latitude": -6.96851,
+            "longitude": 113.98005
+        },
+        {
+            "id": "3",
+            "name": "BANTEN",
+            "latitude": -6.44538,
+            "longitude": 106.13756
+        },
+        {
+            "id": "2",
+            "name": "BALI",
+            "latitude": -8.23566,
+            "longitude": 115.12239
+        },
+        {
+            "id": "22",
+            "name": "NUSA TENGGARA BARAT",
+            "latitude": -8.12179,
+            "longitude": 117.63696
+        },
+        {
+            "id": "34",
+            "name": "NUSA TENGGARA TIMUR",
+            "latitude": -8.56568,
+            "longitude": 120.69786
+        },
+        {
+            "id": "12",
+            "name": "KALIMANTAN BARAT",
+            "latitude": -0.13224,
+            "longitude": 111.09689
+        },
+        {
+            "id": "14",
+            "name": "KALIMANTAN TENGAH",
+            "latitude": -1.49958,
+            "longitude": 113.29033
+        },
+        {
+            "id": "13",
+            "name": "KALIMANTAN SELATAN",
+            "latitude": -2.94348,
+            "longitude": 115.37565
+        },
+        {
+            "id": "15",
+            "name": "KALIMANTAN TIMUR",
+            "latitude": 0.78844,
+            "longitude": 116.242
+        },
+        {
+            "id": "16",
+            "name": "KALIMANTAN UTARA",
+            "latitude": 2.72594,
+            "longitude": 116.911
+        },
+        {
+            "id": "30",
+            "name": "SULAWESI UTARA",
+            "latitude": 0.65557,
+            "longitude": 124.09015
+        },
+        {
+            "id": "28",
+            "name": "SULAWESI TENGAH",
+            "latitude": -1.69378,
+            "longitude": 120.80886
+        },
+        {
+            "id": "27",
+            "name": "SULAWESI SELATAN",
+            "latitude": -3.64467,
+            "longitude": 119.94719
+        },
+        {
+            "id": "29",
+            "name": "SULAWESI TENGGARA",
+            "latitude": -3.54912,
+            "longitude": 121.72796
+        },
+        {
+            "id": "7",
+            "name": "GORONTALO",
+            "latitude": 0.71862,
+            "longitude": 122.45559
+        },
+        {
+            "id": "31",
+            "name": "SULAWESI BARAT",
+            "latitude": -2.49745,
+            "longitude": 119.3919
+        },
+        {
+            "id": "20",
+            "name": "MALUKU",
+            "latitude": -3.11884,
+            "longitude": 129.42078
+        },
+        {
+            "id": "21",
+            "name": "MALUKU UTARA",
+            "latitude": 0.63012,
+            "longitude": 127.97202
+        },
+        {
+            "id": "24",
+            "name": "PAPUA BARAT",
+            "latitude": -1.38424,
+            "longitude": 132.90253
+        },
+        {
+            "id": "23",
+            "name": "PAPUA",
+            "latitude": -3.98857,
+            "longitude": 138.34853
+        }
+    ]
     function initMap() {
-        const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 5,
-        center: { lat: -1.500000, lng: 127.750000 },
-        mapId: 'ceda280a7ce6c183',
-        });
-        // Create an array of alphabetical characters used to label the markers.
-        const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        // Add some markers to the map.
-        // Note: The code uses the JavaScript Array.prototype.map() method to
-        // create an array of markers based on a given "locations" array.
-        // The map() method here has nothing to do with the Google Maps API.
-        const markers = locations.map((location, i) => {
-        return new google.maps.Marker({
-            position: location,
-            label: labels[i % labels.length],
-        });
-        });
-        // Add a marker clusterer to manage the markers.
-        new MarkerClusterer(map, markers, {
-        imagePath: "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
-        });
+        const url = new URL(window.location.href);
+        const wilayah = url.searchParams.get("wilayah");
+        const rempah = url.searchParams.get("rempah");
+
+        if (wilayah != null) {
+            //get value artikel from php
+            const artikle = {!! json_encode($artikel) !!};
+            const totalArtikle = artikle.data.length;
+
+            // get wilayah data from provinceLatLong json
+            const wilayahData = provinceLatLong.filter(
+                (data) => data.id == wilayah
+            );
+
+            // show map
+            const map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 6,
+                center: {
+                    lat: wilayahData[0].latitude,
+                    lng: wilayahData[0].longitude
+                },
+                mapId: "ceda280a7ce6c183",
+            });
+            const contentString = `
+                <div id="content" class="p-1">
+                <div id="siteNotice" class="" >
+                </div>
+                <h4 id="firstHeading" class="firstHeading">${wilayahData[0].name}</h4>
+                <div id="bodyContent">
+                <p><b>${totalArtikle}</b> Artikel</p>
+                </div>
+                </div>`;
+            const infowindow = new google.maps.InfoWindow({
+                content: contentString,
+            });
+            const marker = new google.maps.Marker({
+                position: {
+                    lat: wilayahData[0].latitude,
+                    lng: wilayahData[0].longitude
+                },
+                map,
+                title: "Hello World!",
+                optimized: false,
+            });;
+
+            // show marker
+            infowindow.open({
+                anchor: marker,
+                map,
+                shouldFocus: false,
+            });
+
+        } else if (rempah != null) {
+            //get value artikel
+            const artikleData= {!! json_encode($artikel) !!};
+            const artikleRem = artikleData.data;
+            console.log(artikleRem);
+
+            // container markerdata
+            const markerData = [];
+
+            // iterate artikelRem and push to markerData if not exit in markerData
+            // but if exit in markerData, then just add +1 total artikel 
+            for (let i = 0; i < artikleRem.length; i++) {
+                let artikel = artikleRem[i];
+                let isExist = false;
+                for (let j = 0; j < markerData.length; j++) {
+                    let marker = markerData[j];
+                    if (marker.id == artikel.id_lokasi) {
+                        isExist = true;
+                        marker.totalArtikel += 1;
+                        break;
+                    }
+                }
+                if (!isExist) {
+                    // get lokasi if lokasi artikel same with data from provinceLatLong
+                    let lokasiData = provinceLatLong.filter(
+                        (data) => data.id == artikel.id_lokasi
+                    );
+
+                    markerData.push({
+                        id: artikel.id_lokasi,
+                        lokasi: lokasiData[0],
+                        totalArtikel: 1
+                    });
+                }
+            }
+            console.log(markerData);
+
+            //  show map
+            const map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 5,
+                    center: {
+                        lat: -1.500000,
+                        lng: 127.750000
+                    },
+                    mapId: 'ceda280a7ce6c183',
+            });
+
+            // show marker on map for each markerData
+            for (let i = 0; i < markerData.length; i++) {
+                const lokasi = markerData[i].lokasi;
+                const totalArtikel = markerData[1].totalArtikel;
+
+                const contentString = `
+                <div id="content" class="p-1">
+                <div id="siteNotice" class="" >
+                </div>
+                <h4 id="firstHeading" class="firstHeading">${lokasi.name}</h4>
+                <div id="bodyContent">
+                <p><b>${totalArtikel}</b> Artikel</p>
+                </div>
+                </div>`;
+                const infowindow = new google.maps.InfoWindow({
+                    content: contentString,
+                });
+                const  marker = new google.maps.Marker({
+                    position: {
+                        lat: lokasi.latitude,
+                        lng: lokasi.longitude
+                    },
+                    map,
+                    title: "Hello World!",
+                    optimized: false,
+                });;
+                // setTimeout(() => {
+                    infowindow.open({
+                        anchor: marker,
+                        map,
+                        shouldFocus: false,
+                    });
+                // }, 100);
+            }
+        }  else { 
+            // not wilayah or rempah in url
+
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 5,
+                center: {
+                    lat: -1.500000,
+                    lng: 127.750000
+                },
+                mapId: 'ceda280a7ce6c183',
+            });
+            // Create an array of alphabetical characters used to label the markers.
+            const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            // Add some markers to the map.
+            // Note: The code uses the JavaScript Array.prototype.map() method to
+            // create an array of markers based on a given "locations" array.
+            // The map() method here has nothing to do with the Google Maps API.
+            const markers = locations.map((location, i) => {
+                return new google.maps.Marker({
+                    position: location,
+                    label: labels[i % labels.length],
+                });
+            });
+            // Add a marker clusterer to manage the markers.
+            new MarkerClusterer(map, markers, {
+                imagePath: "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
+            });
+        }
     }
-    const locations = [
-        { lat: -31.56391, lng: 147.154312 },
-        { lat: -33.718234, lng: 150.363181 },
-        { lat: -33.727111, lng: 150.371124 },
-        { lat: -33.848588, lng: 151.209834 },
-        { lat: -33.851702, lng: 151.216968 },
-        { lat: -34.671264, lng: 150.863657 },
-        { lat: -35.304724, lng: 148.662905 },
-        { lat: -36.817685, lng: 175.699196 },
-        { lat: -36.828611, lng: 175.790222 },
-        { lat: -37.75, lng: 145.116667 },
-        { lat: -37.759859, lng: 145.128708 },
-        { lat: -37.765015, lng: 145.133858 },
-        { lat: -37.770104, lng: 145.143299 },
-        { lat: -37.7737, lng: 145.145187 },
-        { lat: -37.774785, lng: 145.137978 },
-        { lat: -37.819616, lng: 144.968119 },
-        { lat: -38.330766, lng: 144.695692 },
-        { lat: -39.927193, lng: 175.053218 },
-        { lat: -41.330162, lng: 174.865694 },
-        { lat: -42.734358, lng: 147.439506 },
-        { lat: -42.734358, lng: 147.501315 },
-        { lat: -42.735258, lng: 147.438 },
-        { lat: -43.999792, lng: 170.463352 },
+    const locations = [{
+            lat: -31.56391,
+            lng: 147.154312
+        },
+        {
+            lat: -33.718234,
+            lng: 150.363181
+        },
+        {
+            lat: -33.727111,
+            lng: 150.371124
+        },
+        {
+            lat: -33.848588,
+            lng: 151.209834
+        },
+        {
+            lat: -33.851702,
+            lng: 151.216968
+        },
+        {
+            lat: -34.671264,
+            lng: 150.863657
+        },
+        {
+            lat: -35.304724,
+            lng: 148.662905
+        },
+        {
+            lat: -36.817685,
+            lng: 175.699196
+        },
+        {
+            lat: -36.828611,
+            lng: 175.790222
+        },
+        {
+            lat: -37.75,
+            lng: 145.116667
+        },
+        {
+            lat: -37.759859,
+            lng: 145.128708
+        },
+        {
+            lat: -37.765015,
+            lng: 145.133858
+        },
+        {
+            lat: -37.770104,
+            lng: 145.143299
+        },
+        {
+            lat: -37.7737,
+            lng: 145.145187
+        },
+        {
+            lat: -37.774785,
+            lng: 145.137978
+        },
+        {
+            lat: -37.819616,
+            lng: 144.968119
+        },
+        {
+            lat: -38.330766,
+            lng: 144.695692
+        },
+        {
+            lat: -39.927193,
+            lng: 175.053218
+        },
+        {
+            lat: -41.330162,
+            lng: 174.865694
+        },
+        {
+            lat: -42.734358,
+            lng: 147.439506
+        },
+        {
+            lat: -42.734358,
+            lng: 147.501315
+        },
+        {
+            lat: -42.735258,
+            lng: 147.438
+        },
+        {
+            lat: -43.999792,
+            lng: 170.463352
+        },
     ];
-    </script>
+</script>
 <script>
     $(document).ready(function() {
         if ($(window).width() <= 1000) {
@@ -345,7 +758,7 @@
 
     }
 
-    function readMore2(){
+    function readMore2() {
         var dots2 = document.getElementById("dots2");
         var moreText2 = document.getElementById("more2");
         var btnText2 = document.getElementById("btnReadmore2");
@@ -365,29 +778,29 @@
 
 <script>
     $('#selectLokasiRempah').change(function(e) {
-       let selected = e.target.value;
-       if( selected === 'wilayah' ) {
-        $.get('/get_location_json', function(data, status){
-            let options = "";
-            $('#lokasiRempah').html('');
-            for( let i = 0; i < data.length; i++ ) {
-                options += `<option value=${data[i].id}>${data[i].nama_lokasi}</option>`;
-            }
-            $('#lokasiRempah').append(options);
-            
-            // window.location.href = '?rempah=' + $('#lokasiRempah').val();
-        });
-       } else if( selected === 'rempah' ) {
-        $.get('/get_rempah_json', function(data, status){
-            let options = "";
-            $('#lokasiRempah').html('');
-            for( let i = 0; i < data.length; i++ ) {
-                options += `<option value=${data[i].id}>${data[i].jenis_rempah}</option>`;
-            }
-            $('#lokasiRempah').append(options);
-            // window.location.href = '?lokasi=' + $('#lokasiRempah').val();
-        });
-       }
+        let selected = e.target.value;
+        if (selected === 'wilayah') {
+            $.get('/get_location_json', function(data, status) {
+                let options = "";
+                $('#lokasiRempah').html('');
+                for (let i = 0; i < data.length; i++) {
+                    options += `<option value=${data[i].id}>${data[i].nama_lokasi}</option>`;
+                }
+                $('#lokasiRempah').append(options);
+
+                // window.location.href = '?rempah=' + $('#lokasiRempah').val();
+            });
+        } else if (selected === 'rempah') {
+            $.get('/get_rempah_json', function(data, status) {
+                let options = "";
+                $('#lokasiRempah').html('');
+                for (let i = 0; i < data.length; i++) {
+                    options += `<option value=${data[i].id}>${data[i].jenis_rempah}</option>`;
+                }
+                $('#lokasiRempah').append(options);
+                // window.location.href = '?lokasi=' + $('#lokasiRempah').val();
+            });
+        }
     })
 
     $('#btnSelect').click(function() {
@@ -402,37 +815,37 @@
     var tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";
     document.body.appendChild(tag);
-    
+
     // When the YouTube API code loads, it calls this function, so it must be global
     // and it must be named exactly onYouTubeIframeAPIReady.
     window.onYouTubeIframeAPIReady = function() {
-      var videoModules = document.querySelectorAll('.video');
-      // for Internet Explorer 11 and below, convert array-like NodeList to an actual Array.
-      videoModules = Array.prototype.slice.call(videoModules);
-      videoModules.forEach(initializeVideoModule);
+        var videoModules = document.querySelectorAll('.video');
+        // for Internet Explorer 11 and below, convert array-like NodeList to an actual Array.
+        videoModules = Array.prototype.slice.call(videoModules);
+        videoModules.forEach(initializeVideoModule);
     }
-    
+
     function initializeVideoModule(videoModule) {
-      var player = new YT.Player(videoModule.querySelector('.video-placeholder'), {
-        videoId: videoModule.dataset.videoId,
-        events: {
-          onStateChange: function(event) {
-            var isEnded = event.data === YT.PlayerState.ENDED;
-            // 'playing' css class controls fading the video and preivew images in/out.
-            // Internet Explorer 11 and below do not support a second argument to `toggle`
-            // videoModule.classList.toggle('playing', !isEnded);
-            videoModule.classList[isEnded ? 'remove' : 'add']('playing');
-            // if the video is done playing, remove it and re-initialize
-            if (isEnded) {
-              player.destroy();
-              videoModule.querySelector('.video-layer').innerHTML = (
-                '<div class="video-placeholder"></div>'
-              );
-              initializeVideoModule(videoModule);
+        var player = new YT.Player(videoModule.querySelector('.video-placeholder'), {
+            videoId: videoModule.dataset.videoId,
+            events: {
+                onStateChange: function(event) {
+                    var isEnded = event.data === YT.PlayerState.ENDED;
+                    // 'playing' css class controls fading the video and preivew images in/out.
+                    // Internet Explorer 11 and below do not support a second argument to `toggle`
+                    // videoModule.classList.toggle('playing', !isEnded);
+                    videoModule.classList[isEnded ? 'remove' : 'add']('playing');
+                    // if the video is done playing, remove it and re-initialize
+                    if (isEnded) {
+                        player.destroy();
+                        videoModule.querySelector('.video-layer').innerHTML = (
+                            '<div class="video-placeholder"></div>'
+                        );
+                        initializeVideoModule(videoModule);
+                    }
+                }
             }
-          }
-        }
-      });
+        });
     }
-    </script>
+</script>
 @endsection
