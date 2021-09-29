@@ -21,9 +21,11 @@
                 <div>
                   <div class="wrap-slide-img">
                     <img src="{{ asset('storage/assets/foto/slider_foto/' . unserialize($foto->slider_foto)[$i]) }}" width="100%">
+                    @if( isset(unserialize($foto->caption_slider_foto_english)[$i]) )
                     <div class="wrap-des-foto">
-                      <p>{{ unserialize($foto->caption_slider_foto)[$i] }}</p>
+                      <p>{{ unserialize($foto->caption_slider_foto_english)[$i] }}</p>
                     </div>
+                    @endif
                   </div>
                 </div>
                 @endfor

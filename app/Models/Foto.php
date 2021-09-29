@@ -15,6 +15,7 @@ class Foto extends Model
     protected $casts = [
         'slider_foto' => 'array',
         'caption_slider_foto' => 'array',
+        'caption_slider_foto_english' => 'array',
     ];
 
     public function kontributor_relasi()

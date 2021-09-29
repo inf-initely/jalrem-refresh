@@ -130,6 +130,10 @@
                                 <textarea name="caption_slider_foto[]" required maxlength="100" class="form-control" id="captionFoto" rows="2" placeholder="masukkan caption disini">{{ unserialize($foto->caption_slider_foto)[$i] }}</textarea>
                                 <little><sup>*</sup> maksimsal 100 karakter</little>
                               </div>
+                              <div class="col-12 mb-2">
+                                <textarea name="caption_slider_foto_english[]" maxlength="100" class="form-control" id="captionFotoEn" rows="2" placeholder="insert caption here">{{ unserialize($foto->caption_slider_foto_english)[$i] }}</textarea>
+                                <little><sup>*</sup>english caption, max 100 character</little>
+                              </div>
                             </div>
                           </div>
                           <div class="col-sm-1">
@@ -153,6 +157,10 @@
                             <div class="col-12 mb-2">
                               <textarea name="caption_slider_foto[]" required maxlength="100" class="form-control" id="captionFoto" rows="2" placeholder="masukkan caption disini">{{ unserialize($foto->caption_slider_foto)[$i] }}</textarea>
                               <little><sup>*</sup> maksimsal 100 karakter</little>
+                            </div>
+                            <div class="col-12 mb-2">
+                              <textarea name="caption_slider_foto_english[]" maxlength="100" class="form-control" id="captionFotoEn" rows="2" placeholder="insert caption here">{{ unserialize($foto->caption_slider_foto_english)[$i] }}</textarea>
+                              <little><sup>*</sup>english caption, max 100 character</little>
                             </div>
                           </div>
                         </div>
@@ -402,6 +410,10 @@
                     <div class="col-12 mb-2">
                       <textarea name="caption_slider_foto[]"  required maxlength="100" class="form-control" id="captionFoto" rows="2" placeholder="masukkan caption disini" name="captionFoto` + i + `"></textarea>
                       <little><sup>*</sup> maksimsal 100 karakter</little>
+                    </div>
+                    <div class="col-12 mb-2">
+                      <textarea name="caption_slider_foto_english[]" maxlength="100" class="form-control" id="captionFotoEn" rows="2" placeholder="insert caption here"></textarea>
+                      <little><sup>*</sup>english caption, max 100 character</little>
                     </div>
                   </div>
                 </div>
