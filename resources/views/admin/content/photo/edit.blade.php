@@ -131,7 +131,7 @@
                                 <little><sup>*</sup> maksimsal 100 karakter</little>
                               </div>
                               <div class="col-12 mb-2">
-                                <textarea name="caption_slider_foto_english[]" maxlength="100" class="form-control" id="captionFotoEn" rows="2" placeholder="insert caption here">{{ unserialize($foto->caption_slider_foto_english)[$i] }}</textarea>
+                                <textarea name="caption_slider_foto_english[]" maxlength="100" class="form-control" id="captionFotoEn" rows="2" placeholder="insert caption here">{{ is_null($foto->caption_slider_foto_english) ? '' : unserialize($foto->caption_slider_foto_english)[$i] }}</textarea>
                                 <little><sup>*</sup>english caption, max 100 character</little>
                               </div>
                             </div>
@@ -159,7 +159,7 @@
                               <little><sup>*</sup> maksimsal 100 karakter</little>
                             </div>
                             <div class="col-12 mb-2">
-                              <textarea name="caption_slider_foto_english[]" maxlength="100" class="form-control" id="captionFotoEn" rows="2" placeholder="insert caption here">{{ unserialize($foto->caption_slider_foto_english)[$i] }}</textarea>
+                              <textarea name="caption_slider_foto_english[]" maxlength="100" class="form-control" id="captionFotoEn" rows="2" placeholder="insert caption here">{{ is_null($foto->caption_slider_foto_english) ? '' : unserialize($foto->caption_slider_foto_english)[$i] }}</textarea>
                               <little><sup>*</sup>english caption, max 100 character</little>
                             </div>
                           </div>
