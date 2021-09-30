@@ -426,15 +426,22 @@
             "longitude": 138.34853
         }
     ]
+    const url = new URL(window.location.href);
+    const wilayah = url.searchParams.get("wilayah");
+    const rempah = url.searchParams.get("rempah");
+    const page = url.searchParams.get("page");
+        
     function initMap() {
-        const url = new URL(window.location.href);
-        const wilayah = url.searchParams.get("wilayah");
-        const rempah = url.searchParams.get("rempah");
-
-        if (wilayah != null) {
+        if (wilayah && !rempah) {
             //get value artikel from php
             const artikle = {!! json_encode($artikel) !!};
-            const totalArtikle = artikle.data.length;
+            let totalArtikle = artikle.data.length;
+
+            // convert object artikelData.data to array if paginate
+            // because paginate convert artikle.data from array to object
+            if (page) {
+                totalArtikle = Object.keys(artikle.data).length
+            }
 
             // get wilayah data from provinceLatLong json
             const wilayahData = provinceLatLong.filter(
@@ -479,11 +486,16 @@
                 shouldFocus: false,
             });
 
-        } else if (rempah != null) {
+        } else if (rempah && !wilayah) {
             //get value artikel
             const artikleData= {!! json_encode($artikel) !!};
-            const artikleRem = artikleData.data;
-            console.log(artikleRem);
+            let artikleRem = artikleData.data;
+
+            // convert object artikelData.data to array if paginate
+            // because paginate convert artikle.data from array to object
+            if (page) {
+                artikleRem = Object.values(artikleData.data);
+            }
 
             // container markerdata
             const markerData = [];
@@ -507,14 +519,16 @@
                         (data) => data.id == artikel.id_lokasi
                     );
 
-                    markerData.push({
-                        id: artikel.id_lokasi,
-                        lokasi: lokasiData[0],
-                        totalArtikel: 1
-                    });
+                    // push to markerData if lokasiData not empty
+                    if (lokasiData.length > 0) {
+                        markerData.push({
+                            id: artikel.id_lokasi,
+                            lokasi: lokasiData[0],
+                            totalArtikel: 1
+                        });
+                    }
                 }
             }
-            console.log(markerData);
 
             //  show map
             const map = new google.maps.Map(document.getElementById("map"), {
@@ -529,7 +543,7 @@
             // show marker on map for each markerData
             for (let i = 0; i < markerData.length; i++) {
                 const lokasi = markerData[i].lokasi;
-                const totalArtikel = markerData[1].totalArtikel;
+                const totalArtikel = markerData[i].totalArtikel;
 
                 const contentString = `
                 <div id="content" class="p-1">
@@ -552,17 +566,14 @@
                     title: "Hello World!",
                     optimized: false,
                 });;
-                // setTimeout(() => {
-                    infowindow.open({
-                        anchor: marker,
-                        map,
-                        shouldFocus: false,
-                    });
-                // }, 100);
+                infowindow.open({
+                    anchor: marker,
+                    map,
+                    shouldFocus: false,
+                });
             }
         }  else { 
             // not wilayah or rempah in url
-
             const map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 5,
                 center: {
