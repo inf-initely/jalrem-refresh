@@ -237,13 +237,13 @@ const provinceLatLong = [{
         },
         {
             "id": "33",
-            "name": "SUMATERA UTARA",
+            "name": "NORTH SUMATERA",
             "latitude": 2.19235,
             "longitude": 99.38122
         },
         {
             "id": "31",
-            "name": "SUMATERA BARAT",
+            "name": "WEST SUMATERA",
             "latitude": -1.14225,
             "longitude": 100.5761
         },
@@ -261,7 +261,7 @@ const provinceLatLong = [{
         },
         {
             "id": "32",
-            "name": "SUMATERA SELATAN",
+            "name": "SOUTH SUMATERA",
             "latitude": -3.12668,
             "longitude": 104.09306
         },
@@ -279,13 +279,13 @@ const provinceLatLong = [{
         },
         {
             "id": "17",
-            "name": "KEPULAUAN BANGKA BELITUNG",
+            "name": "BANGKA BELITUNG ISLANDS",
             "latitude": -2.75775,
             "longitude": 107.58394
         },
         {
             "id": "18",
-            "name": "KEPULAUAN RIAU",
+            "name": "RIAU ISLANDS",
             "latitude": -0.15478,
             "longitude": 104.58037
         },
@@ -297,13 +297,13 @@ const provinceLatLong = [{
         },
         {
             "id": "9",
-            "name": "JAWA BARAT",
+            "name": "WEST JAVA",
             "latitude": -6.88917,
             "longitude": 107.64047
         },
         {
             "id": "10",
-            "name": "JAWA TENGAH",
+            "name": "CENTRAL JAVA",
             "latitude": -7.30324,
             "longitude": 110.00441
         },
@@ -315,7 +315,7 @@ const provinceLatLong = [{
         },
         {
             "id": "11",
-            "name": "JAWA TIMUR",
+            "name": "EAST JAVA",
             "latitude": -7.275973,
             "longitude": 112.808304
         },
@@ -333,67 +333,67 @@ const provinceLatLong = [{
         },
         {
             "id": "22",
-            "name": "NUSA TENGGARA BARAT",
+            "name": "WEST NUSA TENGGARA",
             "latitude": -8.12179,
             "longitude": 117.63696
         },
         {
             "id": "34",
-            "name": "NUSA TENGGARA TIMUR",
+            "name": "EAST NUSA TENGGARA",
             "latitude": -8.56568,
             "longitude": 120.69786
         },
         {
             "id": "12",
-            "name": "KALIMANTAN BARAT",
+            "name": "WEST KALIMANTAN",
             "latitude": -0.13224,
             "longitude": 111.09689
         },
         {
             "id": "14",
-            "name": "KALIMANTAN TENGAH",
+            "name": "CENTRAL KALIMANTAN",
             "latitude": -1.49958,
             "longitude": 113.29033
         },
         {
             "id": "13",
-            "name": "KALIMANTAN SELATAN",
+            "name": "SOUTH KALIMANTAN",
             "latitude": -2.94348,
             "longitude": 115.37565
         },
         {
             "id": "15",
-            "name": "KALIMANTAN TIMUR",
+            "name": "EAST KALIMANTAN",
             "latitude": 0.78844,
             "longitude": 116.242
         },
         {
             "id": "16",
-            "name": "KALIMANTAN UTARA",
+            "name": "NORTH KALIMANTAN",
             "latitude": 2.72594,
             "longitude": 116.911
         },
         {
             "id": "30",
-            "name": "SULAWESI UTARA",
+            "name": "NORTH SULAWESI",
             "latitude": 0.65557,
             "longitude": 124.09015
         },
         {
             "id": "28",
-            "name": "SULAWESI TENGAH",
+            "name": "CENTRAL SULAWESI",
             "latitude": -1.69378,
             "longitude": 120.80886
         },
         {
             "id": "27",
-            "name": "SULAWESI SELATAN",
+            "name": "SOUTH SULAWESI",
             "latitude": -3.64467,
             "longitude": 119.94719
         },
         {
             "id": "29",
-            "name": "SULAWESI TENGGARA",
+            "name": "SOUTHEAST SULAWESI",
             "latitude": -3.54912,
             "longitude": 121.72796
         },
@@ -405,7 +405,7 @@ const provinceLatLong = [{
         },
         {
             "id": "26",
-            "name": "SULAWESI BARAT",
+            "name": "WEST SULAWESI",
             "latitude": -2.49745,
             "longitude": 119.3919
         },
@@ -417,13 +417,13 @@ const provinceLatLong = [{
         },
         {
             "id": "21",
-            "name": "MALUKU UTARA",
+            "name": "NORTH MALUKU",
             "latitude": 0.63012,
             "longitude": 127.97202
         },
         {
             "id": "24",
-            "name": "PAPUA BARAT",
+            "name": "WEST PAPUA",
             "latitude": -1.38424,
             "longitude": 132.90253
         },
@@ -471,7 +471,7 @@ const provinceLatLong = [{
                 </div>
                 <h4 id="firstHeading" class="firstHeading">${wilayahData[0].name}</h4>
                 <div id="bodyContent">
-                <p><b>${totalArtikle}</b> Artikel</p>
+                <p><b>${totalArtikle}</b> Article</p>
                 </div>
                 </div>`;
             const infowindow = new google.maps.InfoWindow({
