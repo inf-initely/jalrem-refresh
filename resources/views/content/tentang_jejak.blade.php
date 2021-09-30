@@ -284,7 +284,7 @@
         {
             "id": "6",
             "name": "DKI JAKARTA",
-            "latitude": 6.1745,
+            "latitude": -6.1745,
             "longitude": 106.8227
         },
         {
