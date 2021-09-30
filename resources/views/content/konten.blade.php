@@ -6,6 +6,7 @@
       -webkit-transform: scale(1.25);
       -moz-transform: scale(1.25);
       transform: scale(1.25);
+      transition: all 1s ease;
     }
 
     .slick-track {
@@ -17,6 +18,7 @@
       margin-left: 35px;
       margin-right: 35px;
       margin-top: 50px;
+
     }
 
     @media (max-width: 991.98px) {
