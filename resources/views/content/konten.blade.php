@@ -1,6 +1,32 @@
 @extends('layout.app')
 
 @section('content')
+<style type="text/css">
+  .slick-center {
+      -webkit-transform: scale(1.25);
+      -moz-transform: scale(1.25);
+      transform: scale(1.25);
+    }
+
+    .slick-track {
+      display: flex !important;
+    }
+
+    .slick-slide {
+      height: inherit !important;
+      margin-left: 35px;
+      margin-right: 35px;
+      margin-top: 50px;
+    }
+
+    @media (max-width: 991.98px) {
+      .slick-slide {
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 50px;
+      }
+    }
+</style>
 <main>
     <div id="content" class="full-bg">
       <section id="sliderArtikel">
