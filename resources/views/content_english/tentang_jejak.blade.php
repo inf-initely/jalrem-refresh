@@ -229,14 +229,14 @@
 <script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDH9juhlGHJLtBCZMmO0Q54DwryFcWNs40&callback=initMap&libraries=&v=weekly" async></script>
 <script>
-    const provinceLatLong = [{
+const provinceLatLong = [{
             "id": "1",
             "name": "ACEH",
             "latitude": 4.36855,
             "longitude": 97.0253
         },
         {
-            "id": "30",
+            "id": "33",
             "name": "SUMATERA UTARA",
             "latitude": 2.19235,
             "longitude": 99.38122
@@ -244,8 +244,8 @@
         {
             "id": "31",
             "name": "SUMATERA BARAT",
-            "latitude": -1.34225,
-            "longitude": 100.0761
+            "latitude": -1.14225,
+            "longitude": 100.5761
         },
         {
             "id": "25",
@@ -310,14 +310,14 @@
         {
             "id": "5",
             "name": "DI YOGYAKARTA",
-            "latitude": 7.7956,
+            "latitude": -7.7956,
             "longitude": 110.3695
         },
         {
-            "id": "12",
+            "id": "11",
             "name": "JAWA TIMUR",
-            "latitude": -6.96851,
-            "longitude": 113.98005
+            "latitude": -7.275973,
+            "longitude": 112.808304
         },
         {
             "id": "3",
@@ -404,7 +404,7 @@
             "longitude": 122.45559
         },
         {
-            "id": "31",
+            "id": "26",
             "name": "SULAWESI BARAT",
             "latitude": -2.49745,
             "longitude": 119.3919
