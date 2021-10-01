@@ -229,55 +229,479 @@
 <script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDH9juhlGHJLtBCZMmO0Q54DwryFcWNs40&callback=initMap&libraries=&v=weekly" async></script>
 <script>
+const provinceLatLong = [{
+            "id": "1",
+            "name": "ACEH",
+            "latitude": 4.36855,
+            "longitude": 97.0253
+        },
+        {
+            "id": "33",
+            "name": "NORTH SUMATERA",
+            "latitude": 2.19235,
+            "longitude": 99.38122
+        },
+        {
+            "id": "31",
+            "name": "WEST SUMATERA",
+            "latitude": -1.14225,
+            "longitude": 100.5761
+        },
+        {
+            "id": "25",
+            "name": "RIAU",
+            "latitude": 0.50041,
+            "longitude": 101.54758
+        },
+        {
+            "id": "8",
+            "name": "JAMBI",
+            "latitude": -1.61157,
+            "longitude": 102.7797
+        },
+        {
+            "id": "32",
+            "name": "SOUTH SUMATERA",
+            "latitude": -3.12668,
+            "longitude": 104.09306
+        },
+        {
+            "id": "4",
+            "name": "BENGKULU",
+            "latitude": -3.51868,
+            "longitude": 102.53598
+        },
+        {
+            "id": "19",
+            "name": "LAMPUNG",
+            "latitude": -4.8555,
+            "longitude": 105.0273
+        },
+        {
+            "id": "17",
+            "name": "BANGKA BELITUNG ISLANDS",
+            "latitude": -2.75775,
+            "longitude": 107.58394
+        },
+        {
+            "id": "18",
+            "name": "RIAU ISLANDS",
+            "latitude": -0.15478,
+            "longitude": 104.58037
+        },
+        {
+            "id": "6",
+            "name": "DKI JAKARTA",
+            "latitude": -6.1745,
+            "longitude": 106.8227
+        },
+        {
+            "id": "9",
+            "name": "WEST JAVA",
+            "latitude": -6.88917,
+            "longitude": 107.64047
+        },
+        {
+            "id": "10",
+            "name": "CENTRAL JAVA",
+            "latitude": -7.30324,
+            "longitude": 110.00441
+        },
+        {
+            "id": "5",
+            "name": "DI YOGYAKARTA",
+            "latitude": -7.7956,
+            "longitude": 110.3695
+        },
+        {
+            "id": "11",
+            "name": "EAST JAVA",
+            "latitude": -7.275973,
+            "longitude": 112.808304
+        },
+        {
+            "id": "3",
+            "name": "BANTEN",
+            "latitude": -6.44538,
+            "longitude": 106.13756
+        },
+        {
+            "id": "2",
+            "name": "BALI",
+            "latitude": -8.23566,
+            "longitude": 115.12239
+        },
+        {
+            "id": "22",
+            "name": "WEST NUSA TENGGARA",
+            "latitude": -8.12179,
+            "longitude": 117.63696
+        },
+        {
+            "id": "34",
+            "name": "EAST NUSA TENGGARA",
+            "latitude": -8.56568,
+            "longitude": 120.69786
+        },
+        {
+            "id": "12",
+            "name": "WEST KALIMANTAN",
+            "latitude": -0.13224,
+            "longitude": 111.09689
+        },
+        {
+            "id": "14",
+            "name": "CENTRAL KALIMANTAN",
+            "latitude": -1.49958,
+            "longitude": 113.29033
+        },
+        {
+            "id": "13",
+            "name": "SOUTH KALIMANTAN",
+            "latitude": -2.94348,
+            "longitude": 115.37565
+        },
+        {
+            "id": "15",
+            "name": "EAST KALIMANTAN",
+            "latitude": 0.78844,
+            "longitude": 116.242
+        },
+        {
+            "id": "16",
+            "name": "NORTH KALIMANTAN",
+            "latitude": 2.72594,
+            "longitude": 116.911
+        },
+        {
+            "id": "30",
+            "name": "NORTH SULAWESI",
+            "latitude": 0.65557,
+            "longitude": 124.09015
+        },
+        {
+            "id": "28",
+            "name": "CENTRAL SULAWESI",
+            "latitude": -1.69378,
+            "longitude": 120.80886
+        },
+        {
+            "id": "27",
+            "name": "SOUTH SULAWESI",
+            "latitude": -3.64467,
+            "longitude": 119.94719
+        },
+        {
+            "id": "29",
+            "name": "SOUTHEAST SULAWESI",
+            "latitude": -3.54912,
+            "longitude": 121.72796
+        },
+        {
+            "id": "7",
+            "name": "GORONTALO",
+            "latitude": 0.71862,
+            "longitude": 122.45559
+        },
+        {
+            "id": "26",
+            "name": "WEST SULAWESI",
+            "latitude": -2.49745,
+            "longitude": 119.3919
+        },
+        {
+            "id": "20",
+            "name": "MALUKU",
+            "latitude": -3.11884,
+            "longitude": 129.42078
+        },
+        {
+            "id": "21",
+            "name": "NORTH MALUKU",
+            "latitude": 0.63012,
+            "longitude": 127.97202
+        },
+        {
+            "id": "24",
+            "name": "WEST PAPUA",
+            "latitude": -1.38424,
+            "longitude": 132.90253
+        },
+        {
+            "id": "23",
+            "name": "PAPUA",
+            "latitude": -3.98857,
+            "longitude": 138.34853
+        }
+    ]
+    const url = new URL(window.location.href);
+    const wilayah = url.searchParams.get("wilayah");
+    const rempah = url.searchParams.get("rempah");
+    const page = url.searchParams.get("page");
+        
     function initMap() {
-      const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 5,
-        center: { lat: -1.500000, lng: 127.750000 },
-        mapId: 'ceda280a7ce6c183',
-      });
-      // Create an array of alphabetical characters used to label the markers.
-      const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-      // Add some markers to the map.
-      // Note: The code uses the JavaScript Array.prototype.map() method to
-      // create an array of markers based on a given "locations" array.
-      // The map() method here has nothing to do with the Google Maps API.
-      const markers = locations.map((location, i) => {
-        return new google.maps.Marker({
-          position: location,
-          label: labels[i % labels.length],
-        });
-      });
-      // Add a marker clusterer to manage the markers.
-      new MarkerClusterer(map, markers, {
-        imagePath: "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
-      });
+        if (wilayah && !rempah) {
+            //get value artikel from php
+            const artikle = {!! json_encode($artikel) !!};
+            let totalArtikle = artikle.data.length;
+
+            // convert object artikelData.data to array if paginate
+            // because paginate convert artikle.data from array to object
+            if (page) {
+                totalArtikle = Object.keys(artikle.data).length
+            }
+
+            // get wilayah data from provinceLatLong json
+            const wilayahData = provinceLatLong.filter(
+                (data) => data.id == wilayah
+            );
+
+            // show map
+            const map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 6,
+                center: {
+                    lat: wilayahData[0].latitude,
+                    lng: wilayahData[0].longitude
+                },
+                mapId: "ceda280a7ce6c183",
+            });
+            const contentString = `
+                <div id="content" class="p-1">
+                <div id="siteNotice" class="" >
+                </div>
+                <h4 id="firstHeading" class="firstHeading">${wilayahData[0].name}</h4>
+                <div id="bodyContent">
+                <p><b>${totalArtikle}</b> Article</p>
+                </div>
+                </div>`;
+            const infowindow = new google.maps.InfoWindow({
+                content: contentString,
+            });
+            const marker = new google.maps.Marker({
+                position: {
+                    lat: wilayahData[0].latitude,
+                    lng: wilayahData[0].longitude
+                },
+                map,
+                title: "Hello World!",
+                optimized: false,
+            });;
+
+            // show marker
+            infowindow.open({
+                anchor: marker,
+                map,
+                shouldFocus: false,
+            });
+
+        } else if (rempah && !wilayah) {
+            //get value artikel
+            const artikleData= {!! json_encode($artikel) !!};
+            let artikleRem = artikleData.data;
+
+            // convert object artikelData.data to array if paginate
+            // because paginate convert artikle.data from array to object
+            if (page) {
+                artikleRem = Object.values(artikleData.data);
+            }
+
+            // container markerdata
+            const markerData = [];
+
+            // iterate artikelRem and push to markerData if not exit in markerData
+            // but if exit in markerData, then just add +1 total artikel 
+            for (let i = 0; i < artikleRem.length; i++) {
+                let artikel = artikleRem[i];
+                let isExist = false;
+                for (let j = 0; j < markerData.length; j++) {
+                    let marker = markerData[j];
+                    if (marker.id == artikel.id_lokasi) {
+                        isExist = true;
+                        marker.totalArtikel += 1;
+                        break;
+                    }
+                }
+                if (!isExist) {
+                    // get lokasi if lokasi artikel same with data from provinceLatLong
+                    let lokasiData = provinceLatLong.filter(
+                        (data) => data.id == artikel.id_lokasi
+                    );
+
+                    // push to markerData if lokasiData not empty
+                    if (lokasiData.length > 0) {
+                        markerData.push({
+                            id: artikel.id_lokasi,
+                            lokasi: lokasiData[0],
+                            totalArtikel: 1
+                        });
+                    }
+                }
+            }
+
+            //  show map
+            const map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 5,
+                    center: {
+                        lat: -1.500000,
+                        lng: 127.750000
+                    },
+                    mapId: 'ceda280a7ce6c183',
+            });
+
+            // show marker on map for each markerData
+            for (let i = 0; i < markerData.length; i++) {
+                const lokasi = markerData[i].lokasi;
+                const totalArtikel = markerData[i].totalArtikel;
+
+                const contentString = `
+                <div id="content" class="p-1">
+                <div id="siteNotice" class="" >
+                </div>
+                <h4 id="firstHeading" class="firstHeading">${lokasi.name}</h4>
+                <div id="bodyContent">
+                <p><b>${totalArtikel}</b> Artikel</p>
+                </div>
+                </div>`;
+                const infowindow = new google.maps.InfoWindow({
+                    content: contentString,
+                });
+                const  marker = new google.maps.Marker({
+                    position: {
+                        lat: lokasi.latitude,
+                        lng: lokasi.longitude
+                    },
+                    map,
+                    title: "Hello World!",
+                    optimized: false,
+                });;
+                infowindow.open({
+                    anchor: marker,
+                    map,
+                    shouldFocus: false,
+                });
+            }
+        }  else { 
+            // not wilayah or rempah in url
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 5,
+                center: {
+                    lat: -1.500000,
+                    lng: 127.750000
+                },
+                mapId: 'ceda280a7ce6c183',
+            });
+            // Create an array of alphabetical characters used to label the markers.
+            const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            // Add some markers to the map.
+            // Note: The code uses the JavaScript Array.prototype.map() method to
+            // create an array of markers based on a given "locations" array.
+            // The map() method here has nothing to do with the Google Maps API.
+            const markers = locations.map((location, i) => {
+                return new google.maps.Marker({
+                    position: location,
+                    label: labels[i % labels.length],
+                });
+            });
+            // Add a marker clusterer to manage the markers.
+            new MarkerClusterer(map, markers, {
+                imagePath: "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
+            });
+        }
     }
-    const locations = [
-      { lat: -31.56391, lng: 147.154312 },
-      { lat: -33.718234, lng: 150.363181 },
-      { lat: -33.727111, lng: 150.371124 },
-      { lat: -33.848588, lng: 151.209834 },
-      { lat: -33.851702, lng: 151.216968 },
-      { lat: -34.671264, lng: 150.863657 },
-      { lat: -35.304724, lng: 148.662905 },
-      { lat: -36.817685, lng: 175.699196 },
-      { lat: -36.828611, lng: 175.790222 },
-      { lat: -37.75, lng: 145.116667 },
-      { lat: -37.759859, lng: 145.128708 },
-      { lat: -37.765015, lng: 145.133858 },
-      { lat: -37.770104, lng: 145.143299 },
-      { lat: -37.7737, lng: 145.145187 },
-      { lat: -37.774785, lng: 145.137978 },
-      { lat: -37.819616, lng: 144.968119 },
-      { lat: -38.330766, lng: 144.695692 },
-      { lat: -39.927193, lng: 175.053218 },
-      { lat: -41.330162, lng: 174.865694 },
-      { lat: -42.734358, lng: 147.439506 },
-      { lat: -42.734358, lng: 147.501315 },
-      { lat: -42.735258, lng: 147.438 },
-      { lat: -43.999792, lng: 170.463352 },
+    const locations = [{
+            lat: -31.56391,
+            lng: 147.154312
+        },
+        {
+            lat: -33.718234,
+            lng: 150.363181
+        },
+        {
+            lat: -33.727111,
+            lng: 150.371124
+        },
+        {
+            lat: -33.848588,
+            lng: 151.209834
+        },
+        {
+            lat: -33.851702,
+            lng: 151.216968
+        },
+        {
+            lat: -34.671264,
+            lng: 150.863657
+        },
+        {
+            lat: -35.304724,
+            lng: 148.662905
+        },
+        {
+            lat: -36.817685,
+            lng: 175.699196
+        },
+        {
+            lat: -36.828611,
+            lng: 175.790222
+        },
+        {
+            lat: -37.75,
+            lng: 145.116667
+        },
+        {
+            lat: -37.759859,
+            lng: 145.128708
+        },
+        {
+            lat: -37.765015,
+            lng: 145.133858
+        },
+        {
+            lat: -37.770104,
+            lng: 145.143299
+        },
+        {
+            lat: -37.7737,
+            lng: 145.145187
+        },
+        {
+            lat: -37.774785,
+            lng: 145.137978
+        },
+        {
+            lat: -37.819616,
+            lng: 144.968119
+        },
+        {
+            lat: -38.330766,
+            lng: 144.695692
+        },
+        {
+            lat: -39.927193,
+            lng: 175.053218
+        },
+        {
+            lat: -41.330162,
+            lng: 174.865694
+        },
+        {
+            lat: -42.734358,
+            lng: 147.439506
+        },
+        {
+            lat: -42.734358,
+            lng: 147.501315
+        },
+        {
+            lat: -42.735258,
+            lng: 147.438
+        },
+        {
+            lat: -43.999792,
+            lng: 170.463352
+        },
     ];
-    </script>
+</script>
 <script>
     $(document).ready(function() {
         if ($(window).width() <= 1000) {

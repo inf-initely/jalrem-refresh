@@ -49,7 +49,7 @@ class HomeController extends Controller
             $kegiatan = $kegiatan->where('judul_english', '!=', null)->take(3)->get();
             $video = $video->where('judul_english', '!=', null)->take(6)->get();
 
-            $slider = $semua_artikel->merge($semua_publikasi)->merge($semua_video)->merge($semua_audio)->merge($semua_foto)->merge($semua_kegiatan)->merge($semua_kerjasama);
+            $slider = $semua_artikel->mergeRecursive($semua_publikasi)->mergeRecursive($semua_video)->mergeRecursive($semua_audio)->mergeRecursive($semua_foto)->mergeRecursive($semua_kegiatan)->mergeRecursive($semua_kerjasama);
 
             return view('content_english.home', compact('artikel', 'kegiatan', 'video', 'slider'));
         } 
@@ -62,7 +62,7 @@ class HomeController extends Controller
         $semua_publikasi = $semua_publikasi->get();
 
         $artikel = $artikel->take(3)->get();
-        $slider = $semua_artikel->merge($semua_publikasi)->merge($semua_video)->merge($semua_audio)->merge($semua_foto)->merge($semua_kegiatan)->merge($semua_kerjasama);
+        $slider = $semua_artikel->mergeRecursive($semua_publikasi)->mergeRecursive($semua_video)->mergeRecursive($semua_audio)->mergeRecursive($semua_foto)->mergeRecursive($semua_kegiatan)->mergeRecursive($semua_kerjasama);
 
         $kegiatan = $kegiatan->take(3)->get();
         $video = $video->take(6)->get();
