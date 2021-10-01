@@ -11,16 +11,64 @@
                 <h2 class="sub-judul text-center">The Latest Contents</h2>
               </header>
               <div class="feature">
-                @foreach( $artikelSlider as $a )
-                <div>
-                  <div class="card no-border card-artikel no-background">
-                    <img src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}" class="card-img-top img-thumbnail-slider" alt="...">
-                    <div class="card-body">
-                      <h3 class="card-title judul-artikel">{{ $a->judul_english }}</h3>
+                @foreach( $kontenSlider as $a )
+                @if( $a->getTable() == 'videos' )
+                  <div class="card no-border card-artikel">
+                    <div class="video media-video img-thumbnail-slider" data-video-id="{{ $a->youtube_key }}">
+                      <!--ganti id sesuai id youtube yang akan ditampilkan-->
+                      <div class="video-layer">
+                        <div class="video-placeholder">
+                          <!-- ^ div is replaced by the YouTube video -->
+                        </div>
+                      </div>
+                      <div class="video-preview" style="background: url('https://img.youtube.com/vi/{{ $a->youtube_key }}/hqdefault.jpg') 50% 50% no-repeat; background-size: cover;">
+                        <!-- this icon would normally be implemented as a character in an icon font or svg spritesheet, or similar -->
+                        <svg viewBox="0 0 74 74">
+                          <circle style="opacity:0.64;stroke:#fff" cx="37" cy="37" r="36.5"></circle>
+                          <circle fill="none" stroke="#fff" cx="37" cy="37" r="36.5"></circle>
+                          <polygon fill="#fff" points="33,22 33,52 48,37"></polygon>
+                        </svg>
+                      </div>
                     </div>
-                    <a href="{{ route('article_detail', $a->slug_english ?? $a->slug) }}" class="stretched-link"></a>
+                    <a class="stretched-link lightbox" href="{{ route('video_detail', $a->slug_english ?? $a->slug) }}"></a>
+                    <div class="card-body">
+                      <p class="card-text">{{ $a->judul_english }}</p>
+                    </div>
                   </div>
-                </div>
+                  @elseif( $a->getTable() == 'audio' )
+                  <div class="card no-border card-artikel">
+                    <div class="video media-video img-thumbnail-slider" data-video-id="{{ $a->cloud_key }}">
+                      <!--ganti id sesuai id youtube yang akan ditampilkan-->
+                      <div class="video-layer">
+                        <div class="video-placeholder">
+                          <!-- ^ div is replaced by the YouTube video -->
+                        </div>
+                      </div>
+                      <div class="video-preview" style="background: url('https://img.youtube.com/vi/{{ $a->cloud_key }}/hqdefault.jpg') 50% 50% no-repeat; background-size: cover;">
+                        <!-- this icon would normally be implemented as a character in an icon font or svg spritesheet, or similar -->
+                        <svg viewBox="0 0 74 74">
+                          <circle style="opacity:0.64;stroke:#fff" cx="37" cy="37" r="36.5"></circle>
+                          <circle fill="none" stroke="#fff" cx="37" cy="37" r="36.5"></circle>
+                          <polygon fill="#fff" points="33,22 33,52 48,37"></polygon>
+                        </svg>
+                      </div>
+                    </div>
+                    <a class="stretched-link lightbox" href="{{ route('audio_detail', $a->slug_english ?? $a->slug) }}"></a>
+                    <div class="card-body">
+                      <p class="card-text">{{ $a->judul_english }}</p>
+                    </div>
+                  </div>    
+                  @else
+                    <div>
+                      <div class="card no-border card-artikel no-background">
+                        <img src="{{ asset('storage/assets/'. substr($a->getTable(), 0, -1) .'/thumbnail/' . $a->thumbnail) }}" class="card-img-top img-thumbnail-slider" alt="...">
+                        <div class="card-body">
+                          <h3 class="card-title judul-artikel">{{ $a->judul_english }}</h3>
+                        </div>
+                        <a href="{{ route(generate_route_content($a->getTable()) . '_detail', $a->slug) }}" class="stretched-link"></a>
+                      </div>
+                    </div>
+                  @endif
                 @endforeach
               </div>
             </div>

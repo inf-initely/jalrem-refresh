@@ -16,31 +16,34 @@ class KontenController extends Controller
 {
     public function index()
     {
-        $artikelSlider = Artikel::where('status', 'publikasi')->orderBy('created_at', 'desc');
         $artikel = Artikel::where('status', 'publikasi')->orderBy('created_at', 'desc');
         $foto = Foto::where('status', 'publikasi')->orderBy('created_at', 'desc');
         $video = Video::where('status', 'publikasi')->orderBy('created_at', 'desc');
         $publikasi = Publikasi::where('status', 'publikasi')->orderBy('created_at', 'desc');
         $audio = Audio::where('status', 'publikasi')->orderBy('created_at', 'desc');
+
         
         if( Session::get('lg') == 'en' ) {
-            $artikelSlider = $artikelSlider->where('judul_english', '!=', null)->take(3)->get();
+            $kontenSlider = $artikel->take(3)->get()->mergeRecursive($foto->take(3)->get())->mergeRecursive($video->take(3)->get())->mergeRecursive($publikasi->take(3)->get())->mergeRecursive($audio->take(3)->get())->filter(function($item) {
+                return $item->slug_english != null;
+            })->sortBy('desc');
             $artikel = $this->getQuery($artikel);
             $foto = $this->getQuery($foto);
             $video = $this->getQuery($video);
             $publikasi = $this->getQuery($publikasi);
             $audio = $this->getQuery($audio);
 
-            return view('content_english.konten', compact('artikel', 'foto', 'video', 'publikasi', 'audio', 'artikelSlider'));
+            return view('content_english.konten', compact('artikel', 'foto', 'video', 'publikasi', 'audio', 'kontenSlider'));
         }
-        $artikelSlider = $artikelSlider->take(3)->get();
+        // $kontenSlider = $kontenSlider->take(5)->get();
+        $kontenSlider = $artikel->take(3)->get()->mergeRecursive($foto->take(3)->get())->mergeRecursive($video->take(3)->get())->mergeRecursive($publikasi->take(3)->get())->mergeRecursive($audio->take(3)->get())->sortBy('desc');
         $artikel = $artikel->take(9)->get();
         $foto = $foto->take(9)->get();
         $video = $video->take(9)->get();
         $publikasi = $publikasi->take(9)->get();
         $audio = $audio->take(9)->get();
 
-        return view('content.konten', compact('artikel', 'foto', 'video', 'publikasi', 'audio', 'artikelSlider'));
+        return view('content.konten', compact('artikel', 'foto', 'video', 'publikasi', 'audio', 'kontenSlider'));
     }
 
     private function getQuery($konten)
