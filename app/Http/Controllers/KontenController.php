@@ -25,7 +25,7 @@ class KontenController extends Controller
         
         if( Session::get('lg') == 'en' ) {
             $kontenSlider = $artikel->take(3)->get()->mergeRecursive($foto->take(3)->get())->mergeRecursive($video->take(3)->get())->mergeRecursive($publikasi->take(3)->get())->mergeRecursive($audio->take(3)->get())->filter(function($item) {
-                return $item->slug_english != null;
+                return ($item->judul_english != null);
             })->sortBy('desc');
             $artikel = $this->getQuery($artikel);
             $foto = $this->getQuery($foto);
