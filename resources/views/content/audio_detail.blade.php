@@ -1,7 +1,7 @@
 @extends('layout.app')
 
-@section('name')
-    
+@section('title')
+    {{ $audio->judul_indo }} - Jalur Rempah Kemdikbudristek Republik Indonesia
 @endsection
 
 @section('content')

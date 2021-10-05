@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@section('title')
+    All Events - Jalur Rempah Kemdikbudristek Republik Indonesia
+@endsection
+
 @section('content')
 <header id="hero">
     <img class="hero-img-2" src="assets/img/hero/hero-4.jpg">

@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@section('title')
+    {{ $foto->judul_english ?? $foto->judul_indo }} - Jalur Rempah Kemdikbudristek Republik Indonesia
+@endsection
+
 @section('content')
 <main>
     <div id="content">

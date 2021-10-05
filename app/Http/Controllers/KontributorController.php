@@ -61,7 +61,7 @@ class KontributorController extends Controller
                 'email' => $email,
                 'domisili' => $domisili,
                 'atribusi' => $atribusi,
-                'kategori' => $atribusi
+                'kategori' => $kategori
             ]);
         }
 

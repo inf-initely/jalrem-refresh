@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@section('title')
+    All Partnership - Jalur Rempah Kemdikbudristek Republik Indonesia
+@endsection
+
 @section('content')
 
 <header id="hero">

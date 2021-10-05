@@ -54,7 +54,7 @@
         <title>Informasi - Jalur Rempah Kemdikbudristek Republik Indonesia</title>
       @endif
     @endif
-
+    <title>@yield('title')</title>
     <link rel="shortcut icon" href="{{ asset('assets/img/logo/favicon.png') }}">
 </head>
 

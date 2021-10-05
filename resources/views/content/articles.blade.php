@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@section('title')
+    Semua Artikel - Jalur Rempah Kemdikbudristek Republik Indonesia
+@endsection
+
 @section('content')
 
 <header id="hero">
