@@ -85,7 +85,8 @@ class FotoController extends Controller
             'caption_slider_foto_english' => serialize($request->caption_slider_foto_english),
             'slider_utama' => $request->slider_utama != null ? 1 : 0,
             'contributor' => $request->contributor_type,
-            'status' => $request->publish != null ? 'publikasi' : 'draft'
+            'status' => $request->publish != null ? 'publikasi' : 'draft',
+            'created_at' => $request->publish_date . " " . $request->publish_time
         ]);
         // ATTACH REMPAH FOTO
         $foto->rempahs()->attach($request->rempah);
@@ -186,7 +187,8 @@ class FotoController extends Controller
             'caption_slider_foto_english' => serialize($request->caption_slider_foto_english),
             'slider_utama' => $request->slider_utama != null ? true : false,
             'contributor' => $request->contributor_type,
-            'status' => $request->publish != null ? 'publikasi' : 'draft'
+            'status' => $request->publish != null ? 'publikasi' : 'draft',
+            'created_at' => $request->publish_date . " " . $request->publish_time
         ]);
 
         // SYNC REMPAH FOTO

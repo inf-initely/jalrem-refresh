@@ -69,7 +69,8 @@ class VideoController extends Controller
             'slider_file' => $request->slider_utama != null ? $filename_slider : null,
             'youtube_key' => $request->youtube_key,
             'contributor' => $request->contributor_type,
-            'status' => $request->publish != null ? 'publikasi' : 'draft'
+            'status' => $request->publish != null ? 'publikasi' : 'draft',
+            'created_at' => $request->publish_date . " " . $request->publish_time
         ]);
 
         // ATTACH REMPAH VIDEO
@@ -136,7 +137,8 @@ class VideoController extends Controller
             'youtube_key' => $request->youtube_key,
             'slider_utama' => $request->slider_utama != null ? true : false,
             'contributor' => $request->contributor_type,
-            'status' => $request->publish != null ? 'publikasi' : 'draft'
+            'status' => $request->publish != null ? 'publikasi' : 'draft',
+            'created_at' => $request->publish_date . " " . $request->publish_time
         ]);
 
         // SYNC REMPAH VIDEO

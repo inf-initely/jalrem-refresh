@@ -68,7 +68,8 @@ class AudioController extends Controller
             'slider_file' => $request->slider_utama != null ? $filename_slider : null,
             'cloud_key' => $request->cloud_key,
             'contributor' => $request->contributor_type,
-            'status' => $request->publish != null ? 'publikasi' : 'draft'
+            'status' => $request->publish != null ? 'publikasi' : 'draft',
+            'created_at' => $request->publish_date . " " . $request->publish_time
         ]);
 
         // ATTACH REMPAH Audio
@@ -136,7 +137,8 @@ class AudioController extends Controller
             'cloud_key' => $request->cloud_key,
             'slider_utama' => $request->slider_utama != null ? true : false,
             'contributor' => $request->contributor_type,
-            'status' => $request->publish != null ? 'publikasi' : 'draft'
+            'status' => $request->publish != null ? 'publikasi' : 'draft',
+            'created_at' => $request->publish_date . " " . $request->publish_time
         ]);
 
         // SYNC REMPAH Audio
