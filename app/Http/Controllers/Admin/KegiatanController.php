@@ -28,7 +28,7 @@ class KegiatanController extends Controller
     {
         $rempahs = Rempah::all();
         $lokasi = Lokasi::all();
-        $kategori_show = KategoriShow::take(3)->get();
+        $kategori_show = KategoriShow::where('id', '!=', 3)->where('id', '!=', 4)->where('id', '!=', 5)->get();
         $kontributor = Kontributor::all();
 
         return view('admin.informasi.kegiatan.add', compact('rempahs', 'lokasi', 'kategori_show', 'kontributor'));
@@ -86,7 +86,7 @@ class KegiatanController extends Controller
             'slider_utama' => $request->slider_utama != null ? 1 : 0,
             'contributor' => $request->contributor_type,
             'status' => $request->publish != null ? 'publikasi' : 'draft',
-            'created_at' => $request->publish_date . " " . $request->publish_time
+            'published_at' => $request->publish_date . " " . $request->publish_time
         ]);
 
         // ATTACH REMPAH ARTIKEL
@@ -106,7 +106,7 @@ class KegiatanController extends Controller
         $kegiatan = Kegiatan::findOrFail($kegiatanId);
         $rempahs = Rempah::all();
         $lokasi = Lokasi::all();
-        $kategori_show = KategoriShow::take(3)->get();
+        $kategori_show = KategoriShow::where('id', '!=', 3)->where('id', '!=', 4)->where('id', '!=', 5)->get();
         $kontributor = Kontributor::all();
 
         return view('admin.informasi.kegiatan.edit', compact('kegiatan', 'rempahs', 'lokasi', 'kategori_show', 'kontributor'));
@@ -175,7 +175,7 @@ class KegiatanController extends Controller
             'slider_utama' => $request->slider_utama != null ? 1 : 0,
             'contributor' => $request->contributor_type,
             'status' => $request->publish != null ? 'publikasi' : 'draft',
-            'created_at' => $request->publish_date . " " . $request->publish_time
+            'published_at' => $request->publish_date . " " . $request->publish_time
         ]);
 
         $kegiatan->rempahs()->sync($request->rempah);

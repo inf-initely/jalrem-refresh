@@ -27,7 +27,7 @@ class VideoController extends Controller
     {
         $rempahs = Rempah::all();
         $lokasi = Lokasi::all();
-        $kategori_show = KategoriShow::take(3)->get();
+        $kategori_show = KategoriShow::where('id', '!=', 3)->where('id', '!=', 4)->where('id', '!=', 5)->get();
         $kontributor = Kontributor::all();
 
         return view('admin.content.video.add', compact('rempahs', 'lokasi', 'kategori_show', 'kontributor'));
@@ -70,7 +70,7 @@ class VideoController extends Controller
             'youtube_key' => $request->youtube_key,
             'contributor' => $request->contributor_type,
             'status' => $request->publish != null ? 'publikasi' : 'draft',
-            'created_at' => $request->publish_date . " " . $request->publish_time
+            'published_at' => $request->publish_date . " " . $request->publish_time
         ]);
 
         // ATTACH REMPAH VIDEO
@@ -89,7 +89,7 @@ class VideoController extends Controller
         $video = Video::findOrFail($videoId);
         $lokasi = Lokasi::all();
         $rempahs = Rempah::all();
-        $kategori_show = KategoriShow::take(3)->get();
+        $kategori_show = KategoriShow::where('id', '!=', 3)->where('id', '!=', 4)->where('id', '!=', 5)->get();
         $kontributor = Kontributor::all();
 
         return view('admin.content.video.edit', compact('video', 'lokasi', 'kategori_show', 'rempahs', 'kontributor'));
@@ -138,7 +138,7 @@ class VideoController extends Controller
             'slider_utama' => $request->slider_utama != null ? true : false,
             'contributor' => $request->contributor_type,
             'status' => $request->publish != null ? 'publikasi' : 'draft',
-            'created_at' => $request->publish_date . " " . $request->publish_time
+            'published_at' => $request->publish_date . " " . $request->publish_time
         ]);
 
         // SYNC REMPAH VIDEO

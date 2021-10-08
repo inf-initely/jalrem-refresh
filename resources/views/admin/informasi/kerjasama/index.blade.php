@@ -45,6 +45,7 @@
                   <tr>
                     <td>#</td>
                     <td>{{ $k->created_at->isoFormat('YYYY/MM/DD'); }}</td>
+                    <td>{{ \Carbon\Carbon::parse($k->published_at)->isoFormat('YYYY/MM/DD') }}</td>
                     <td>{{ $k->judul_indo }}</td>
                     <td>{{ $k->penulis != 'admin' ? $k->kontributor_relasi->nama : 'admin' }}</td>
                     <td>
