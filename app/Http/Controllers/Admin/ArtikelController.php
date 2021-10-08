@@ -21,7 +21,7 @@ class ArtikelController extends Controller
 {
     public function index()
     {
-        $artikels = Artikel::orderBy('created_at', 'desc')->get();
+        $artikels = Artikel::where('id_kontributor', null)->orderBy('created_at', 'desc')->get();
 
         return view('admin.content.article.index', compact('artikels'));
     }
