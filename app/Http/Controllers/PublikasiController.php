@@ -14,10 +14,10 @@ class PublikasiController extends Controller
         $publikasi = Publikasi::where('status', 'publikasi');
 
         if( Session::get('lg') == 'en' ) {
-            $publikasi = $publikasi->where('judul_english', '!=', null)->paginate(9);
+            $publikasi = $publikasi->where('judul_english', '!=', null)->orderBy('published_at', 'desc')->paginate(9);
             return view('content_english.publications', compact('publikasi'));
         }
-        $publikasi = $publikasi->paginate(9);
+        $publikasi = $publikasi->orderBy('published_at', 'desc')->paginate(9);
 
         return view('content.publications', compact('publikasi'));
     }

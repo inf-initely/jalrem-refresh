@@ -30,6 +30,16 @@
                       <a class="stretched-link lightbox" href="{{ route('video_detail', $v->slug) }}"></a>
                       <div class="card-body">
                         <p class="card-text">{{ $v->judul_indo }}</p>
+                        @foreach( $v->kategori_show as $ks )
+                            @if( $ks->isi == 'Indepth' )
+                            <span class="badge rounded-pill py-1 px-3 bg-success">Indepth</span>
+                            @endif
+                        @endforeach
+                        @foreach( $v->kategori_show as $ks )
+                            @if( $ks->isi == 'Jurnal Artikel' )
+                            <span class="badge rounded-pill py-1 px-3 bg-secondary">Jurnal Artikel</span>
+                            @endif
+                        @endforeach
                       </div>
                     </div>
                   </div>

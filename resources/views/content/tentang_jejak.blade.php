@@ -95,6 +95,16 @@
                                                 @endforeach
                                                 @endif
                                             </div>
+                                            @foreach( $a->kategori_show as $ks )
+                                                @if( $ks->isi == 'Indepth' )
+                                                <span class="badge rounded-pill py-1 px-3 bg-success">Indepth</span>
+                                                @endif
+                                            @endforeach
+                                            @foreach( $a->kategori_show as $ks )
+                                                @if( $ks->isi == 'Jurnal Artikel' )
+                                                <span class="badge rounded-pill py-1 px-3 bg-secondary">Jurnal Artikel</span>
+                                                @endif
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -120,6 +130,16 @@
                                                 @endforeach
                                                 @endif
                                             </div>
+                                            @foreach( $a->kategori_show as $ks )
+                                                @if( $ks->isi == 'Indepth' )
+                                                <span class="badge rounded-pill py-1 px-3 bg-success">Indepth</span>
+                                                @endif
+                                            @endforeach
+                                            @foreach( $a->kategori_show as $ks )
+                                                @if( $ks->isi == 'Jurnal Artikel' )
+                                                <span class="badge rounded-pill py-1 px-3 bg-secondary">Jurnal Artikel</span>
+                                                @endif
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -143,6 +163,16 @@
                                                 @endforeach
                                                 @endif
                                             </div>
+                                            @foreach( $a->kategori_show as $ks )
+                                                @if( $ks->isi == 'Indepth' )
+                                                <span class="badge rounded-pill py-1 px-3 bg-success">Indepth</span>
+                                                @endif
+                                            @endforeach
+                                            @foreach( $a->kategori_show as $ks )
+                                                @if( $ks->isi == 'Jurnal Artikel' )
+                                                <span class="badge rounded-pill py-1 px-3 bg-secondary">Jurnal Artikel</span>
+                                                @endif
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>

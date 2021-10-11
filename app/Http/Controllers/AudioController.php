@@ -11,7 +11,7 @@ class AudioController extends Controller
 {
     public function index()
     {
-        $audio = Audio::where('status', 'publikasi')->orderBy('created_at', 'desc');
+        $audio = Audio::where('status', 'publikasi')->where('published_at', '<=', Carbon::now())->orderBy('created_at', 'desc');
 
         if( Session::get('lg') == 'en' ) {
             $audio = $audio->where('judul_english', '!=', null)->paginate(9);

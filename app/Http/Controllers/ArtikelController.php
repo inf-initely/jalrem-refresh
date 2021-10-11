@@ -10,11 +10,13 @@ use Illuminate\Pagination\Paginator;
 
 use Auth;
 
+use Carbon\Carbon;
+
 class ArtikelController extends Controller
 {
 
     public function index(){
-        $artikel = Artikel::where('status', 'publikasi')->orderBy('created_at', 'desc');
+        $artikel = Artikel::where('status', 'publikasi')->where('published_at', '<=', Carbon::now())->orderBy('created_at', 'desc');
 
         if(Session::get('lg') == 'en' ) {
             $artikel = $artikel->where('judul_english', '!=', null)->paginate(9);
@@ -29,8 +31,8 @@ class ArtikelController extends Controller
     public function show(Request $request, $slug)
     {
         // $slug_field = $lg == 'en' ? 'slug_english' : 'slug';
-        $query_without_this_article = Artikel::where('slug', '!=', $slug)->where('slug_english', '!=', $slug)->where('status', 'publikasi');
-        $query_this_article = Artikel::where('slug', $slug)->orWhere('slug_english', $slug)->where('status', 'publikasi');
+        $query_without_this_article = Artikel::where('slug', '!=', $slug)->where('slug_english', '!=', $slug)->where('published_at', '<=', Carbon::now())->where('status', 'publikasi');
+        $query_this_article = Artikel::where('slug', $slug)->orWhere('slug_english', $slug)->where('published_at', '<=', Carbon::now())->where('status', 'publikasi');
 
         $artikel = $query_this_article->firstOrFail();
 
@@ -83,14 +85,14 @@ class ArtikelController extends Controller
         if(Session::get('lg') == 'en' ) {
 
             $artikel = Artikel::when($search != null, function($query) use ($search) {
-                $query->where('status', 'publikasi')->orderBy('created_at', 'desc')->where('judul_english', 'LIKE', '%'.$search . '%');
+                $query->where('status', 'publikasi')->orderBy('created_at', 'desc')->where('judul_english', 'LIKE', '%'.$search . '%')->where('published_at', '<=', Carbon::now());
             })->where('judul_english', '!=', null)->paginate(9);
 
             return view('content_english.articles', compact('artikel'));
         }
 
         $artikel = Artikel::when($search != null, function($query) use ($search) {
-            $query->where('status', 'publikasi')->orderBy('created_at', 'desc')->where('judul_english', 'LIKE', '%'.$search . '%');
+            $query->where('status', 'publikasi')->orderBy('created_at', 'desc')->where('judul_english', 'LIKE', '%'.$search . '%')->where('published_at', '<=', Carbon::now());
         })->paginate(9);
 
         return view('content.articles', compact('artikel'));
