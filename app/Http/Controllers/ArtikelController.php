@@ -43,7 +43,7 @@ class ArtikelController extends Controller
       
         views($artikel)->record();
         $artikelPopuler = $query_without_this_article->orderByViews();
-        $artikelTerbaru = $query_without_this_article->orderBy('created_at', 'desc');
+        $artikelTerbaru = $query_without_this_article->orderBy('published_at', 'desc');
         $artikelTerkait = $query_without_this_article;
         $artikelBacaJuga = $query_without_this_article;
 

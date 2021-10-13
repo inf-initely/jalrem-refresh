@@ -27,7 +27,7 @@
                 <h2 class="sub-judul">{{ $artikel->judul_indo }}</h2>
                 <div class="info-penulis">
                   <span class="txt-penulis" class="mr-3" id="penulis" name="penulis">{{ $artikel->penulis != 'admin' ? $artikel->kontributor_relasi->nama : 'admin' }}</span> |
-                  <span class="txt-penulis" id="tglArtikel" name="tglArtikel">{{ $artikel->created_at->isoFormat('D MMMM Y') }}</span>
+                  <span class="txt-penulis" id="tglArtikel" name="tglArtikel">{{ \Carbon\Carbon::parse($artikel->published_at)->isoFormat('D MMMM Y') }}</span>
                 </div>
               </header>
               <article id="isiKonten">
