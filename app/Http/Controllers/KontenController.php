@@ -16,11 +16,11 @@ class KontenController extends Controller
 {
     public function index()
     {
-        $artikel = Artikel::where('status', 'publikasi')->orderBy('created_at', 'desc');
-        $foto = Foto::where('status', 'publikasi')->orderBy('created_at', 'desc');
-        $video = Video::where('status', 'publikasi')->orderBy('created_at', 'desc');
-        $publikasi = Publikasi::where('status', 'publikasi')->orderBy('created_at', 'desc');
-        $audio = Audio::where('status', 'publikasi')->orderBy('created_at', 'desc');
+        $artikel = Artikel::where('status', 'publikasi')->orderBy('published_at', 'desc');
+        $foto = Foto::where('status', 'publikasi')->orderBy('published_at', 'desc');
+        $video = Video::where('status', 'publikasi')->orderBy('published_at', 'desc');
+        $publikasi = Publikasi::where('status', 'publikasi')->orderBy('published_at', 'desc');
+        $audio = Audio::where('status', 'publikasi')->orderBy('published_at', 'desc');
 
         
         if( Session::get('lg') == 'en' ) {

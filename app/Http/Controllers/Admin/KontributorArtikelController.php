@@ -11,7 +11,7 @@ class KontributorArtikelController extends Controller
 {
     public function index()
     {
-        $artikel = Artikel::where('id_kontributor', '!=', null)->orderBy('created_at', 'desc')->get();
+        $artikel = Artikel::where('id_kontributor', '!=', null)->orderBy('published_at', 'desc')->get();
 
         return view('admin.contributor_article.index', compact('artikel'));
     }

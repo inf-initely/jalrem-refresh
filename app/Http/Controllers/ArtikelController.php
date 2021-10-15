@@ -16,7 +16,7 @@ class ArtikelController extends Controller
 {
 
     public function index(){
-        $artikel = Artikel::where('status', 'publikasi')->where('published_at', '<=', Carbon::now())->orderBy('created_at', 'desc');
+        $artikel = Artikel::where('status', 'publikasi')->where('published_at', '<=', Carbon::now())->orderBy('published_at', 'desc');
 
         if(Session::get('lg') == 'en' ) {
             $artikel = $artikel->where('judul_english', '!=', null)->paginate(9);
@@ -85,14 +85,14 @@ class ArtikelController extends Controller
         if(Session::get('lg') == 'en' ) {
 
             $artikel = Artikel::when($search != null, function($query) use ($search) {
-                $query->where('status', 'publikasi')->orderBy('created_at', 'desc')->where('judul_english', 'LIKE', '%'.$search . '%')->where('published_at', '<=', Carbon::now());
+                $query->where('status', 'publikasi')->orderBy('published_at', 'desc')->where('judul_english', 'LIKE', '%'.$search . '%')->where('published_at', '<=', Carbon::now());
             })->where('judul_english', '!=', null)->paginate(9);
 
             return view('content_english.articles', compact('artikel'));
         }
 
         $artikel = Artikel::when($search != null, function($query) use ($search) {
-            $query->where('status', 'publikasi')->orderBy('created_at', 'desc')->where('judul_english', 'LIKE', '%'.$search . '%')->where('published_at', '<=', Carbon::now());
+            $query->where('status', 'publikasi')->orderBy('published_at', 'desc')->where('judul_english', 'LIKE', '%'.$search . '%')->where('published_at', '<=', Carbon::now());
         })->paginate(9);
 
         return view('content.articles', compact('artikel'));

@@ -11,7 +11,7 @@ class KegiatanController extends Controller
 {
     public function index()
     {
-        $kegiatan = Kegiatan::where('status', 'publikasi');
+        $kegiatan = Kegiatan::where('status', 'publikasi')->where('published_at', '<=', Carbon::now())->orderBy('published_at', 'desc');
 
         if( Session::get('lg') == 'en' ) {
             $kegiatan = $kegiatan->where('judul_english', '!=', null)->paginate(9);

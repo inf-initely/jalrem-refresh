@@ -33,7 +33,7 @@ class PublikasiController extends Controller
       
         views($publikasi)->record();
         $publikasiPopuler = $query_without_this_publication->orderByViews();
-        $publikasiTerbaru = $query_without_this_publication->orderBy('created_at', 'desc');
+        $publikasiTerbaru = $query_without_this_publication->orderBy('published_at', 'desc');
         $publikasiTerkait = $query_without_this_publication;
         $publikasiBacaJuga = $query_without_this_publication;
 

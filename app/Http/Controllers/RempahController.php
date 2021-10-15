@@ -15,7 +15,7 @@ class RempahController extends Controller
         $rempahs = Rempah::all();
         $artikel_rempah = $rempah->artikel->filter(function($item) use ($rempah) {
             return ($item->status == 'publikasi' && $item->id != $rempah->id);
-        })->sortByDesc('created_at')->slice(0, 5);
+        })->sortByDesc('published_at')->slice(0, 5);
 
         if( Session::get('lg') == 'en' )
             return view('content_english.rempah_detail', compact('rempah', 'artikel_rempah', 'rempahs'));

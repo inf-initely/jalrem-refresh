@@ -13,7 +13,7 @@ class FotoController extends Controller
 {
     public function index()
     {
-        $foto = Foto::where('status', 'publikasi')->where('published_at', '<=', Carbon::now())->orderBy('created_at', 'desc');
+        $foto = Foto::where('status', 'publikasi')->where('published_at', '<=', Carbon::now())->orderBy('published_at', 'desc');
 
         if( Session::get('lg') == 'en' ){
             $foto = $foto->where('judul_english', '!=', null)->paginate(9);
