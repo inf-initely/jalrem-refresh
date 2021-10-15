@@ -157,15 +157,21 @@ class ArtikelController extends Controller
         $artikel->rempahs()->sync($request->rempah);
 
         $artikel->kategori_show()->sync($request->kategori_show);
-
         Alert::success('Berhasil', 'Artikel berhasil diedit');
-
-        return redirect()->route('admin.article.index');
+        
+        if( $artikel->id_kontributor == null ) {
+            return redirect()->route('admin.article.index');
+        }
+        return redirect()->route('admin.contributor_article.index');
     }
 
     public function delete($articleId)
     {
         $artikel = Artikel::findOrFail($articleId);
+        $artikel_kontributor = false;
+        if( $article->id_kontributor != null ) {
+            $artikel_kontributor = true;
+        }
 
         if( $artikel->slider_file != null )
             File::delete(storage_path('app/public/assets/artikel/slider', $artikel->slider_file));
@@ -173,6 +179,9 @@ class ArtikelController extends Controller
         File::delete(storage_path('app/public/assets/artikel/thumbnail', $artikel->thumbnail));
         $artikel->delete();
 
+        if( $artikel_kontributor ) {
+            return redirect()->route('admin.contributor_article.index');   
+        }
         return redirect()->route('admin.article.index');
     }
 

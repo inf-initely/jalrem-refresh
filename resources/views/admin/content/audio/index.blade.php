@@ -45,8 +45,8 @@
                       @foreach( $audio as $a )
                       <tr>
                         <td>#</td>
-                        <td>{{ $a->created_at->isoFormat('YYYY/MM/DD') }}</td>
-                        <td>{{ \Carbon\Carbon::parse($a->published_at)->isoFormat('YYYY/MM/DD') }}</td>
+                        <td>{{ $a->created_at->isoFormat('DD/MM/YYYY') }}</td>
+                        <td>{{ \Carbon\Carbon::parse($a->published_at)->isoFormat('DD/MM/YYYY') }}</td>
                         <td>{{ $a->judul_indo }}</td>
                         <td>{{ $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin' }}</td>
                         <td>

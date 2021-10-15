@@ -278,11 +278,11 @@
               <div class="row">
                 <div class='col-lg-6'>
                   <label for="tanggalPublish" class="form-label">Tanggal Publish</label>
-                  <input required name="publish_date" value="{{ explode(" ", $publikasi->created_at)[0] }}" type="date" class="form-control" id="tanggalPublish">
+                  <input required name="publish_date" value="{{ explode(" ", $publikasi->published_at)[0] }}" type="date" class="form-control" id="tanggalPublish">
                 </div>
                 <div class='col-lg-6'>
                   <label for="waktuPublish" class="form-label">Waktu Publish</label>
-                  <input required name="publish_time" value="{{ substr(explode(" ", $publikasi->created_at)[1], 0,5) }}" type="time" class="form-control" id="waktuPublish">
+                  <input required name="publish_time" value="{{ substr(explode(" ", $publikasi->published_at)[1], 0,5) }}" type="time" class="form-control" id="waktuPublish">
                 </div>
               </div>
             </div>

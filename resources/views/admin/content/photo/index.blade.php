@@ -45,8 +45,8 @@
                         @foreach( $foto as $f )
                         <tr>
                           <td>#</td>
-                          <td>{{ $f->created_at->isoFormat('YYYY/MM/DD'); }}</td>
-                          <td>{{ \Carbon\Carbon::parse($f->published_at)->isoFormat('YYYY/MM/DD') }}</td>
+                          <td>{{ $f->created_at->isoFormat('DD/MM/YYYY'); }}</td>
+                          <td>{{ \Carbon\Carbon::parse($f->published_at)->isoFormat('DD/MM/YYYY') }}</td>
                           <td>{{ $f->judul_indo }}</td>
                           <td>{{ $f->penulis != 'admin' ? $f->kontributor_relasi->nama : 'admin' }}</td>
                           <td>

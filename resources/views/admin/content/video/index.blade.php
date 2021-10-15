@@ -45,8 +45,8 @@
                       @foreach( $videos as $v )
                       <tr>
                         <td>#</td>
-                        <td>{{ $v->created_at->isoFormat('YYYY/MM/DD'); }}</td>
-                        <td>{{ \Carbon\Carbon::parse($v->published_at)->isoFormat('YYYY/MM/DD') }}</td>
+                        <td>{{ $v->created_at->isoFormat('DD/MM/YYYY'); }}</td>
+                        <td>{{ \Carbon\Carbon::parse($v->published_at)->isoFormat('DD/MM/YYYY') }}</td>
                         <td>{{ $v->judul_indo }}</td>
                         <td>{{ $v->penulis }}</td>
                         <td>
