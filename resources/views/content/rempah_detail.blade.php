@@ -39,7 +39,7 @@
                                   <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}">
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                  <p class="tgl-timeline">{{ $a->created_at->isoFormat('D MMMM Y'); }}</p>
+                                  <p class="tgl-timeline">{{ \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y'); }}</p>
                                   <h3 class="judul-timeline">{{ Str::limit($a->judul_indo, 50, $end='...') }}</h3>
                                 </div>
                               </div>

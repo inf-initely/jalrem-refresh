@@ -35,7 +35,7 @@
                           <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="{{ asset('storage/assets/kegiatan/thumbnail/' . $k->thumbnail) }}">
                         </div>
                         <div class="col-6 center-v">
-                          <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">{{ $k->created_at->isoFormat('D MMMM Y'); }}</p>
+                          <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">{{ \Carbon\Carbon::parse($k->published_at)->isoFormat('D MMMM Y'); }}</p>
                           <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">{{ $k->judul_indo }}</h3>
                         </div>
                         @foreach( $k->kategori_show as $ks )
@@ -103,7 +103,7 @@
                       <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="{{ asset('storage/assets/kegiatan/thumbnail/' . $k->thumbnail) }}">
                     </div>
                     <div class="col-6 center-v">
-                      <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">{{ $k->created_at->isoFormat('D MMMM Y'); }}</p>
+                      <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">{{ \Carbon\Carbon::parse($k->published_at)->isoFormat('D MMMM Y'); }}</p>
                           <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">{{ $k->judul_indo }}</h3>
                     </div>
                     @foreach( $k->kategori_show as $ks )
@@ -151,7 +151,7 @@
                         {{-- {{ $k->penulis }} --}}
                       </p>
                       <p class="tgl-artikel">
-                        {{ $k->created_at->isoFormat('D MMMM Y'); }}
+                        {{ \Carbon\Carbon::parse($k->published_at)->isoFormat('D MMMM Y'); }}
                       </p>
                       @foreach( $k->kategori_show as $ks )
                           @if( $ks->isi == 'Indepth' )

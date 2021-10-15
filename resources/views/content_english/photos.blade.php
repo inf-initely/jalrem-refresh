@@ -30,7 +30,7 @@
                       <div class="text-img">
                         <p class="judul-img">{{ $f->judul_english }}</p>
                         <p class="author-img">{{ $f->penulis != 'admin' ? $f->kontributor_relasi->nama : 'admin' }}</p>
-                        <p class="tgl-img">{{ $f->created_at->isoFormat('D MMMM Y'); }}</p>
+                        <p class="tgl-img">{{ \Carbon\Carbon::parse($f->published_at)->isoFormat('D MMMM Y'); }}</p>
                       </div>
                       @foreach( $f->kategori_show as $ks )
                         @if( $ks->isi == 'Indepth' )

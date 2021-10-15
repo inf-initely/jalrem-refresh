@@ -60,7 +60,7 @@
                                             {{ $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin' }}
                                         </p>
                                         <p class="tgl-artikel">
-                                            {{ $a->created_at->isoFormat('D MMMM Y'); }}
+                                          {{ \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y'); }}
                                         </p>
                                     </div>
                                     <a href="{{ route(generate_route_content($a->getTable()) .'_detail', $a->slug_english ?? $a->slug) }}" class="stretched-link"></a>

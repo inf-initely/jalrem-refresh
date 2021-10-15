@@ -170,7 +170,7 @@
                               {{ $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin' }}
                             </p>
                             <p class="tgl-artikel">
-                              {{ $a->created_at->isoFormat('D MMMM Y'); }}
+                              {{ \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y'); }}
                             </p>
                             @foreach( $a->kategori_show as $ks )
                               @if( $ks->isi == 'Indepth' )
@@ -203,7 +203,7 @@
                           <div class="text-img">
                             <p class="judul-img">{{ $f->judul_english ?? $f->judul_indo }}</p>
                             <p class="author-img">{{ $f->penulis != 'admin' ? $f->kontributor_relasi->nama : 'admin' }}</p>
-                            <p class="tgl-img">{{ $f->created_at->isoFormat('D MMMM Y'); }}</p>
+                            <p class="tgl-img">{{ \Carbon\Carbon::parse($f->published_at)->isoFormat('D MMMM Y'); }}</p>
                           </div>
                           @foreach( $f->kategori_show as $ks )
                             @if( $ks->isi == 'Indepth' )
@@ -285,7 +285,7 @@
                               {{ $p->penulis != 'admin' ? $p->kontributor_relasi->nama : 'admin' }}
                             </p>
                             <p class="tgl-artikel">
-                              {{ $p->created_at->isoFormat('D MMMM Y'); }}
+                              {{ \Carbon\Carbon::parse($p->published_at)->isoFormat('D MMMM Y'); }}
                             </p>
                             @foreach( $p->kategori_show as $ks )
                               @if( $ks->isi == 'Indepth' )

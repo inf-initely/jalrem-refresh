@@ -17,7 +17,7 @@
                 {{ $video->penulis != 'admin' ? $video->kontributor_relasi->nama : 'admin' }}
               </p>
               <p class="tgl-artikel mb-4" id="tglMedia">
-                {{ $video->created_at->isoFormat('D MMMM Y') }}
+                {{ \Carbon\Carbon::parse($video->published_at)->isoFormat('D MMMM Y'); }}
               </p>
             </header>
             <div class="ytdefer video media-video media-video-detail" data-alt="youtube jalur rempah" data-src="{{ $video->youtube_key }}"></div>

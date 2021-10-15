@@ -31,7 +31,7 @@
                                     {{ $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin' }}
                                 </p>
                                 <p class="tgl-artikel">
-                                    {{ $a->created_at->isoFormat('D MMMM Y'); }}
+                                    {{ \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y'); }}
                                 </p>
                                 @foreach( $a->kategori_show as $ks )
                                     @if( $ks->isi == 'Indepth' )

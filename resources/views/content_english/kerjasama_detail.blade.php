@@ -17,7 +17,7 @@
                     {{ $kerjasama->penulis != 'admin' ? $kerjasama->kontributor_relasi->nama : 'admin' }}
                 </p>
                 <p class="tgl-artikel mb-4" id="tglMedia">
-                  {{ $kerjasama->created_at->isoFormat('D MMMM Y') }}
+                  {{ \Carbon\Carbon::parse($kerjasama->published_at)->isoFormat('D MMMM Y'); }}
                 </p>
               </header>
               <img class="mb-3 mt-3" src="{{ asset('storage/assets/kerjasama/thumbnail/' . $kerjasama->thumbnail) }}" width="100%">

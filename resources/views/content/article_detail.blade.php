@@ -68,7 +68,7 @@
                             </div>
                             <div class="col-7 center-v">
                               <h3 class="judul-berita-aside" id="jdlKegiatan" name="jdlKegiatan">{{ $a->judul_indo }}</h3>
-                              <p class="tgl-berita-aside" id="tglKegiatan" name="tglKegiatan">{{ $a->created_at->isoFormat('D MMMM Y') }} </p>
+                              <p class="tgl-berita-aside" id="tglKegiatan" name="tglKegiatan">{{ \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y'); }} </p>
                             </div>
                           </div>
                           <a href="{{ route('article_detail', $a->slug) }}" class="stretched-link"></a>
@@ -95,7 +95,7 @@
                             </div>
                             <div class="col-7 center-v">
                               <h3 class="judul-berita-aside" id="jdlKegiatan" name="jdlKegiatan">{{ $a->judul_indo }}</h3>
-                              <p class="tgl-berita-aside" id="tglKegiatan" name="tglKegiatan">{{ $a->created_at->isoFormat('D MMMM Y'); }}</p>
+                              <p class="tgl-berita-aside" id="tglKegiatan" name="tglKegiatan">{{ \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y'); }}</p>
                             </div>
                           </div>
                           <a href="{{ route('article_detail', $a->slug) }}" class="stretched-link"></a>
@@ -127,7 +127,7 @@
               <h3 class="card-title judul-artikel">{{ $a->judul_indo }}</h3>
               {{-- <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p> --}}
               <p class="penulis-artikel">{{ $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin' }}</p>
-              <p class="tgl-artikel">{{ $a->created_at->isoFormat('D MMMM Y'); }}</p>
+              <p class="tgl-artikel">{{ \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y'); }}</p>
               <a href="{{ route('article_detail', $a->slug) }}" class="stretched-link"></a>
             </div>
           </div>
