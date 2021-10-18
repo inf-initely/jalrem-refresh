@@ -249,7 +249,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 <script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key={{ env('GMAPS_KEY') }}&callback=initMap&libraries=&v=weekly" async></script>
 <script>
     const provinceLatLong = [{
             "id": "1",
@@ -737,6 +736,7 @@
         },
     ];
 </script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{ env('GMAPS_KEY') }}&callback=initMap&libraries=&v=weekly" async></script>
 <script>
     $(document).ready(function() {
         if ($(window).width() <= 1000) {
