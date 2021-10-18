@@ -743,7 +743,7 @@ const provinceLatLong = [{
         },
     ];
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDH9juhlGHJLtBCZMmO0Q54DwryFcWNs40&callback=initMap&libraries=&v=weekly" async></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{ env('GMAPS_KEY') }}&callback=initMap&libraries=&v=weekly" async></script>
 <script>
     $(document).ready(function() {
         if ($(window).width() <= 1000) {
