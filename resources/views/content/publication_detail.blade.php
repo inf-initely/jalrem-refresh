@@ -33,6 +33,7 @@
               <article id="isiKonten">
                 <img class="mb-3 mt-3" src="{{ asset('storage/assets/publikasi/thumbnail/' . $publikasi->thumbnail) }}" width="100%">
                 {!! $publikasi->konten_indo !!}
+                {!! $publikasi->iframe !!}
               </article>
               @if( $publikasi->penulis != 'admin' )
               <div id="disclaimer" class="mt-4">

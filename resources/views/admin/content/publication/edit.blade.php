@@ -77,6 +77,20 @@
         <div class="col-lg-12 mb-3">
           <div class="card shadow mb-4">
             <div class="card-header py-3">
+              <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">Konten Sematan</h2>
+            </div>
+            <div class="card-body">
+              <div class="mb-3">
+                <label for="kontenSematan" class="form-label">Konten</label>
+                <input value="{{ $publikasi->iframe }}" required type="text" class="form-control" id="kontenSematan" name="iframe" placeholder="<iframe>....</iframe>">
+                <little>gunakan field ini untuk menyematkan flipsnack atau google form</little>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-12 mb-3">
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
               <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">Thumbnail Artikel</h2>
             </div>
             <div class="card-body ">
