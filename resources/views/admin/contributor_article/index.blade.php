@@ -32,9 +32,11 @@
                         <thead>
                           <tr>
                             <th>No.</th>
-                            <th>Tanggal</th>
+                            <th>Tanggal Dibuat</th>
+                            <th>Tanggal Dipublish</th>
+                            <th>Judul Artikel</th>
                             <th>Penulis</th>
-                            <th>Judul</th>
+                            <th>Slider Utama</th>
                             <th>Status</th>
                             <th>Aksi</th>
                           </tr>
@@ -43,11 +45,15 @@
                           @foreach( $artikel as $a )
                           <tr>
                             <td>#</td>
-                            <td>{{ $a->created_at->isoFormat('YYYY/MM/DD'); }}</td>
-                            <td>{{ $a->kontributor_relasi->nama }}</td>
+                            <td>{{ $a->created_at->isoFormat('DD/MM/YYYY'); }}</td>
+                            <td>{{ \Carbon\Carbon::parse($a->published_at)->isoFormat('DD/MM/YYYY') }}</td>
                             <td>{{ $a->judul_indo }}</td>
-                            <td> 
-                              <span class="badge rounded-pill py-1 px-3 {{ $a->kontributor_relasi->kategori == 'pamong' ? 'bg-success' : 'bg-secondary' }}">{{ $a->kontributor_relasi->kategori }}</span>
+                            <td>{{ $a->kontributor_relasi->nama }}</td>
+                            <td>
+                              <span class="badge rounded-pill py-1 px-3 {{ $a->slider_utama ? 'bg-success' : 'bg-secondary' }}">{{ $a->slider_utama ? 'Aktif' : 'Tidak Aktif' }}</span>
+                            </td>
+                            <td>
+                              <span class="badge rounded-pill py-1 px-3 {{ $a->status == 'publikasi' ? 'bg-success' : 'bg-secondary' }}">{{ $a->status == 'publikasi' ? 'Aktif' : 'Draft' }}</span>
                             </td>
                             <td>
                               <a href="{{ route('article_detail', $a->slug) }}" class="btn btn-sm btn-outline-primary">
