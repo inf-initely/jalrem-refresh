@@ -22,7 +22,7 @@ class RempahController extends Controller
 {
     public function index()
     {
-        $rempah = Rempah::orderBy('published_at', 'desc')->get();
+        $rempah = Rempah::all();
 
         return view('admin.master.rempah.index', compact('rempah'));
     }
