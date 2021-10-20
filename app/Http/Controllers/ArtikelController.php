@@ -31,7 +31,7 @@ class ArtikelController extends Controller
     public function show(Request $request, $slug)
     {
         // $slug_field = $lg == 'en' ? 'slug_english' : 'slug';
-        $query_without_this_article = Artikel::where('slug', '!=', $slug)->where('slug_english', '!=', $slug)->where('published_at', '<=', Carbon::now())->where('status', 'publikasi');
+        $query_without_this_article = Artikel::where('published_at', '<=', Carbon::now())->where('status', 'publikasi')->orderBy('published_at', 'desc');
         $query_this_article = Artikel::where('slug', $slug)->orWhere('slug_english', $slug)->where('published_at', '<=', Carbon::now())->where('status', 'publikasi');
 
         $artikel = $query_this_article->firstOrFail();
@@ -43,7 +43,8 @@ class ArtikelController extends Controller
       
         views($artikel)->record();
         $artikelPopuler = $query_without_this_article->orderByViews();
-        $artikelTerbaru = $query_without_this_article->orderBy('published_at', 'desc');
+        $artikelTerbaru = $query_without_this_article;
+        
         $artikelTerkait = $query_without_this_article;
         $artikelBacaJuga = $query_without_this_article;
 
@@ -63,10 +64,12 @@ class ArtikelController extends Controller
             
             return view('content_english.article_detail', compact('artikel', 'artikelTerbaru', 'artikelPopuler', 'artikelBacaJuga', 'artikelTerkait'));
         }
+        
         if( count($query_without_this_article->get()) > 3 ) {
             $artikelPopuler = $artikelPopuler->take(3)->get();
             $artikelTerkait = $artikelTerkait->take(3)->get();
             $artikelTerbaru = $artikelTerbaru->take(3)->get();
+
             $artikelBacaJuga = $artikelBacaJuga->first();
         } else {
             $artikelPopuler = $artikelPopuler->get();

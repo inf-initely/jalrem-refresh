@@ -40,4 +40,5 @@ class FotoController extends Controller
 
         return view('content.photo_detail', compact('foto'));
     }
+
 }
