@@ -13,7 +13,7 @@ class InformasiController extends Controller
 {
     public function index()
     {
-        $kerjasama = Kerjasama::where('status', 'publikasi');
+        $kerjasama = Kerjasama::where('status', 'publikasi')->where('published_at', '<=', Carbon::now());
 
         $kegiatan_saat_ini = $this->getQueryPublication('>');
         $kegiatan_sebelumnya = $this->getQueryPublication('<=');
@@ -34,6 +34,6 @@ class InformasiController extends Controller
 
     private function getQueryPublication($sign)
     {
-        return Kegiatan::where('status', 'publikasi')->where('end_date', $sign, Carbon::now())->orderBy('created_at', 'desc');
+        return Kegiatan::where('status', 'publikasi')->where('published_at', '<=', Carbon::now())->where('end_date', $sign, Carbon::now())->orderBy('published_at', 'desc');
     }
 }

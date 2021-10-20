@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@section('title')
+    Semua Publikasi - Jalur Rempah Kemdikbudristek Republik Indonesia
+@endsection
+
 @section('content')
 <header id="hero">
     <img class="hero-img-2" src="assets/img/hero/hero-4.jpg">
@@ -30,8 +34,18 @@
                           {{ $p->penulis != 'admin' ? $p->kontributor_relasi->nama : 'admin' }}
                         </p>
                         <p class="tgl-artikel">
-                          {{ $p->created_at->isoFormat('D MMMM Y'); }}
+                          {{ \Carbon\Carbon::parse($p->published_at)->isoFormat('D MMMM Y'); }}
                         </p>
+                        @foreach( $p->kategori_show as $ks )
+                            @if( $ks->isi == 'Indepth' )
+                            <span class="badge rounded-pill py-1 px-3 bg-success">Indepth</span>
+                            @endif
+                        @endforeach
+                        @foreach( $p->kategori_show as $ks )
+                            @if( $ks->isi == 'Jurnal Artikel' )
+                            <span class="badge rounded-pill py-1 px-3 bg-secondary">Jurnal Artikel</span>
+                            @endif
+                        @endforeach
                       </div>
                       <a href="{{ route('publication_detail', $p->slug) }}" class="stretched-link"></a>
                     </div>

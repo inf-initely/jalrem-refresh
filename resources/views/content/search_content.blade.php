@@ -41,6 +41,16 @@
                               <div class="card-body">
                                 <p class="card-text">{{ $a->judul_indo }}</p>
                               </div>
+                              @foreach( $a->kategori_show as $ks )
+                                    @if( $ks->isi == 'Indepth' )
+                                    <span class="badge rounded-pill py-1 px-3 bg-success">Indepth</span>
+                                    @endif
+                                @endforeach
+                                @foreach( $a->kategori_show as $ks )
+                                    @if( $ks->isi == 'Jurnal Artikel' )
+                                    <span class="badge rounded-pill py-1 px-3 bg-secondary">Jurnal Artikel</span>
+                                    @endif
+                                @endforeach
                             </div>
                           </div>
                         @elseif( $a->getTable() == 'audio' )
@@ -48,6 +58,16 @@
                             <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/{{ $a->cloud_key }}&color=%231a150d&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
                             <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="#" title="" target="_blank" style="color: #cccccc; text-decoration: none;"></a> · <a href="{{ route('audio_detail', $a->slug) }}" title="{{ $a->judul_indo }}" style="color: #cccccc; text-decoration: none;">{{ $a->judul_indo }}</a></div>
                             <main></main>
+                            @foreach( $a->kategori_show as $ks )
+                                @if( $ks->isi == 'Indepth' )
+                                <span class="badge rounded-pill py-1 px-3 bg-success">Indepth</span>
+                                @endif
+                            @endforeach
+                            @foreach( $a->kategori_show as $ks )
+                                @if( $ks->isi == 'Jurnal Artikel' )
+                                <span class="badge rounded-pill py-1 px-3 bg-secondary">Jurnal Artikel</span>
+                                @endif
+                            @endforeach
                           </div>
                         @else
                             <div class="col-md-6 col-lg-4 mb-4">
@@ -60,8 +80,18 @@
                                             {{ $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin' }}
                                         </p>
                                         <p class="tgl-artikel">
-                                            {{ $a->created_at->isoFormat('D MMMM Y'); }}
+                                            {{ \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y'); }}
                                         </p>
+                                        @foreach( $a->kategori_show as $ks )
+                                            @if( $ks->isi == 'Indepth' )
+                                            <span class="badge rounded-pill py-1 px-3 bg-success">Indepth</span>
+                                            @endif
+                                        @endforeach
+                                        @foreach( $a->kategori_show as $ks )
+                                            @if( $ks->isi == 'Jurnal Artikel' )
+                                            <span class="badge rounded-pill py-1 px-3 bg-secondary">Jurnal Artikel</span>
+                                            @endif
+                                        @endforeach
                                     </div>
                                     <a href="{{ route(generate_route_content($a->getTable()) .'_detail', $a->slug) }}" class="stretched-link"></a>
                                 </div>

@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@section('title')
+    {{ $kegiatan->judul_english ?? $kegiatan->judul_indo }} - Jalur Rempah Kemdikbudristek Republik Indonesia
+@endsection
+
 @section('content')
 <main>
     <div id="content">
@@ -11,7 +15,7 @@
                 <h2 class="sub-judul mb-4">{{ $kegiatan->judul_english }}</h2>
                 <div class="info-penulis">
                   <span class="txt-penulis" class="mr-3" id="penulis" name="penulis">{{ $kegiatan->penulis != 'admin' ? $kegiatan->kontributor_relasi->nama : 'admin' }}</span> |
-                  <span class="txt-penulis" id="tglArtikel" name="tglArtikel">{{ $kegiatan->created_at->isoFormat('D MMMM Y') }}</span>
+                  <span class="txt-penulis" id="tglArtikel" name="tglArtikel">{{ \Carbon\Carbon::parse($kegiatan->published_at)->isoFormat('D MMMM Y'); }}</span>
                 </div>
               </header>
               <img src="{{ asset('storage/assets/kegiatan/thumbnail/' . $kegiatan->thumbnail) }}" width="100%">
@@ -52,7 +56,7 @@
                           <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="{{ asset('storage/assets/kegiatan/thumbnail/' . $k->thumbnail) }}">
                         </div>
                         <div class="col-6 center-v">
-                          <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">{{ $k->created_at->isoFormat('D MMMM Y'); }}</p>
+                          <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">{{ \Carbon\Carbon::parse($k->published_at)->isoFormat('D MMMM Y'); }}</p>
                           <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">{{ $k->judul_english }}</h3>
                         </div>
                       </div>

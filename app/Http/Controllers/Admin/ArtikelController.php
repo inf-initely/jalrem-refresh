@@ -21,7 +21,7 @@ class ArtikelController extends Controller
 {
     public function index()
     {
-        $artikels = Artikel::orderBy('created_at', 'desc')->get();
+        $artikels = Artikel::where('id_kontributor', null)->orderBy('published_at', 'desc')->get();
 
         return view('admin.content.article.index', compact('artikels'));
     }
@@ -30,7 +30,7 @@ class ArtikelController extends Controller
     {
         $rempahs = Rempah::all();
         $lokasi = Lokasi::all();
-        $kategori_show = KategoriShow::take(3)->get();
+        $kategori_show = KategoriShow::where('id', '!=', 3)->where('id', '!=', 4)->where('id', '!=', 5)->get();
         $kontributor = Kontributor::all();
 
         return view('admin.content.article.add', compact('rempahs', 'lokasi', 'kategori_show', 'kontributor'));
@@ -71,7 +71,8 @@ class ArtikelController extends Controller
             'slider_file' => $request->slider_utama != null ? $filename_slider : null,
             'slider_utama' => $request->slider_utama != null ? 1 : 0,
             'contributor' => $request->contributor_type,
-            'status' => $request->publish != null ? 'publikasi' : 'draft'
+            'status' => $request->publish != null ? 'publikasi' : 'draft',
+            'published_at' => $request->publish_date . " " . $request->publish_time
         ]);
 
         // ATTACH REMPAH ARTIKEL
@@ -91,7 +92,7 @@ class ArtikelController extends Controller
         $artikel = Artikel::findOrFail($articleId);
         $rempahs = Rempah::all();
         $lokasi = Lokasi::all();
-        $kategori_show = KategoriShow::take(3)->get();
+        $kategori_show = KategoriShow::where('id', '!=', 3)->where('id', '!=', 4)->where('id', '!=', 5)->get();
         $kontributor = Kontributor::all();
 
         return view('admin.content.article.edit', compact('artikel', 'rempahs', 'lokasi', 'kategori_show', 'kontributor'));
@@ -149,21 +150,28 @@ class ArtikelController extends Controller
             'slider_file' => $request->slider_utama != null ? $filename_slider : null,
             'slider_utama' => $request->slider_utama != null ? 1 : 0,
             'contributor' => $request->contributor_type,
-            'status' => $request->publish != null ? 'publikasi' : 'draft'
+            'status' => $request->publish != null ? 'publikasi' : 'draft',
+            'published_at' => $request->publish_date . " " . $request->publish_time
         ]);
 
         $artikel->rempahs()->sync($request->rempah);
 
         $artikel->kategori_show()->sync($request->kategori_show);
-
         Alert::success('Berhasil', 'Artikel berhasil diedit');
-
-        return redirect()->route('admin.article.index');
+        
+        if( $artikel->id_kontributor == null ) {
+            return redirect()->route('admin.article.index');
+        }
+        return redirect()->route('admin.contributor_article.index');
     }
 
     public function delete($articleId)
     {
         $artikel = Artikel::findOrFail($articleId);
+        $artikel_kontributor = false;
+        if( $article->id_kontributor != null ) {
+            $artikel_kontributor = true;
+        }
 
         if( $artikel->slider_file != null )
             File::delete(storage_path('app/public/assets/artikel/slider', $artikel->slider_file));
@@ -171,6 +179,9 @@ class ArtikelController extends Controller
         File::delete(storage_path('app/public/assets/artikel/thumbnail', $artikel->thumbnail));
         $artikel->delete();
 
+        if( $artikel_kontributor ) {
+            return redirect()->route('admin.contributor_article.index');   
+        }
         return redirect()->route('admin.article.index');
     }
 

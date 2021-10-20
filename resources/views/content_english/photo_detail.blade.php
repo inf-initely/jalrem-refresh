@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@section('title')
+    {{ $foto->judul_english ?? $foto->judul_indo }} - Jalur Rempah Kemdikbudristek Republik Indonesia
+@endsection
+
 @section('content')
 <main>
     <div id="content">
@@ -13,7 +17,7 @@
                   {{ $foto->penulis == 'admin' ? 'admin' : $foto->kontributor_relasi->nama }}
                 </p>
                 <p class="tgl-artikel mb-4" id="tglMedia">
-                  {{ $foto->created_at->isoFormat('D MMMM Y') }}
+                  {{ \Carbon\Carbon::parse($foto->published_at)->isoFormat('D MMMM Y'); }}
                 </p>
               </header>
               <div class="slide-foto">

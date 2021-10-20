@@ -33,7 +33,8 @@ class KontributorController extends Controller
             'penulis' => 'required|string',
             'email' => 'required|email',
             'domisili' => 'required|string',
-            'kategori' => 'required|string'
+            'kategori' => 'required|string',
+            'captcha' => 'required|captcha'
         ]);
 
         $judul_indo = $request->judul_indo;
@@ -60,7 +61,7 @@ class KontributorController extends Controller
                 'email' => $email,
                 'domisili' => $domisili,
                 'atribusi' => $atribusi,
-                'kategori' => $atribusi
+                'kategori' => $kategori
             ]);
         }
 

@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@section('title')
+    All Photos - Jalur Rempah Kemdikbudristek Republik Indonesia
+@endsection
+
 @section('content')
 <header id="hero">
     <img class="hero-img-2" src="assets/img/hero/hero-4.jpg">
@@ -26,8 +30,18 @@
                       <div class="text-img">
                         <p class="judul-img">{{ $f->judul_english }}</p>
                         <p class="author-img">{{ $f->penulis != 'admin' ? $f->kontributor_relasi->nama : 'admin' }}</p>
-                        <p class="tgl-img">{{ $f->created_at->isoFormat('D MMMM Y'); }}</p>
+                        <p class="tgl-img">{{ \Carbon\Carbon::parse($f->published_at)->isoFormat('D MMMM Y'); }}</p>
                       </div>
+                      @foreach( $f->kategori_show as $ks )
+                        @if( $ks->isi == 'Indepth' )
+                          <span class="badge rounded-pill py-1 px-3 bg-success">Indepth</span>
+                        @endif
+                      @endforeach
+                      @foreach( $f->kategori_show as $ks )
+                        @if( $ks->isi == 'Jurnal Artikel' )
+                          <span class="badge rounded-pill py-1 px-3 bg-secondary">Jurnal Artikel</span>
+                        @endif
+                      @endforeach
                       <a class="stretched-link lightbox" href="{{ route('photo_detail', $f->slug_english ?? $f->slug) }}"></a>
                     </div>
                   </div>

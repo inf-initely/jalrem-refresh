@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@section('title')
+    Semua Kerjasama - Jalur Rempah Kemdikbudristek Republik Indonesia
+@endsection
+
 @section('content')
 
 <header id="hero">
@@ -28,8 +32,18 @@
                                     {{ $k->penulis != 'admin' ? $k->kontributor_relasi->nama : 'admin' }}
                                 </p>
                                 <p class="tgl-artikel">
-                                    {{ $k->created_at->isoFormat('D MMMM Y'); }}
+                                    {{ \Carbon\Carbon::parse($k->published_at)->isoFormat('D MMMM Y'); }}
                                 </p>
+                                @foreach( $k->kategori_show as $ks )
+                                    @if( $ks->isi == 'Indepth' )
+                                    <span class="badge rounded-pill py-1 px-3 bg-success">Indepth</span>
+                                    @endif
+                                @endforeach
+                                @foreach( $k->kategori_show as $ks )
+                                    @if( $ks->isi == 'Jurnal Artikel' )
+                                    <span class="badge rounded-pill py-1 px-3 bg-secondary">Jurnal Artikel</span>
+                                    @endif
+                                @endforeach
                             </div>
                             <a href="{{ route('kerjasama_detail', $k->slug) }}" class="stretched-link"></a>
                         </div>

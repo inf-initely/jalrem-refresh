@@ -111,6 +111,15 @@
                   <option value="pamong budaya">Pamong Budaya</option>
                 </select>
               </div>
+              <div class="form-group mt-4 mb-4">
+                <div class="captcha" style="display: flex;">
+                    <input id="captcha" type="text" style="width: 150px;" class="form-control" placeholder="masukkan Captcha" name="captcha">
+                    <span style="margin-left: 5px; margin-right: 5px;">{!! captcha_img() !!}</span>
+                    <button type="button" class="btn btn-danger" class="reload" id="reload">
+                        &#x21bb;
+                    </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -183,6 +192,18 @@
   <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
   <script>
   $('textarea.editor').ckeditor(options);
+  </script>
+  <script type="text/javascript">
+    $('#reload').click(function () {
+        $.ajax({
+            type: 'GET',
+            url: 'reload-captcha',
+            success: function (data) {
+                $(".captcha span").html(data.captcha);
+            }
+        });
+    });
+  
   </script>
   
 

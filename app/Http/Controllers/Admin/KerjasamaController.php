@@ -18,7 +18,7 @@ class KerjasamaController extends Controller
 {
     public function index()
     {
-        $kerjasama = Kerjasama::orderBy('created_at', 'desc')->get();
+        $kerjasama = Kerjasama::orderBy('published_at', 'desc')->get();
 
         return view('admin.informasi.kerjasama.index', compact('kerjasama'));
     }
@@ -27,7 +27,7 @@ class KerjasamaController extends Controller
     {
         $rempahs = Rempah::all();
         $lokasi = Lokasi::all();
-        $kategori_show = KategoriShow::take(3)->get();
+        $kategori_show = KategoriShow::where('id', '!=', 3)->where('id', '!=', 4)->where('id', '!=', 5)->get();
         $kontributor = Kontributor::all();
 
         return view('admin.informasi.kerjasama.add', compact('rempahs', 'lokasi', 'kategori_show', 'kontributor'));
@@ -74,7 +74,8 @@ class KerjasamaController extends Controller
             'slider_file' => $request->slider_utama != null ? $filename_slider : null,
             'slider_utama' => $request->slider_utama != null ? 1 : 0,
             'contributor' => $request->contributor_type,
-            'status' => $request->publish != null ? 'publikasi' : 'draft'
+            'status' => $request->publish != null ? 'publikasi' : 'draft',
+            'published_at' => $request->publish_date . " " . $request->publish_time
         ]);
 
         // ATTACH REMPAH ARTIKEL
@@ -94,7 +95,7 @@ class KerjasamaController extends Controller
         $kerjasama = Kerjasama::findOrFail($kerjasamaId);
         $rempahs = Rempah::all();
         $lokasi = Lokasi::all();
-        $kategori_show = KategoriShow::take(3)->get();
+        $kategori_show = KategoriShow::where('id', '!=', 3)->where('id', '!=', 4)->where('id', '!=', 5)->get();
         $kontributor = Kontributor::all();
 
         return view('admin.informasi.kerjasama.edit', compact('kerjasama', 'rempahs', 'lokasi', 'kategori_show', 'kontributor'));
@@ -154,7 +155,8 @@ class KerjasamaController extends Controller
             'slider_file' => $request->slider_utama != null ? $filename_slider : null,
             'slider_utama' => $request->slider_utama != null ? 1 : 0,
             'contributor' => $request->contributor_type,
-            'status' => $request->publish != null ? 'publikasi' : 'draft'
+            'status' => $request->publish != null ? 'publikasi' : 'draft',
+            'published_at' => $request->publish_date . " " . $request->publish_time
         ]);
 
         $kerjasama->rempahs()->sync($request->rempah);

@@ -14,10 +14,10 @@ class PublikasiController extends Controller
         $publikasi = Publikasi::where('status', 'publikasi');
 
         if( Session::get('lg') == 'en' ) {
-            $publikasi = $publikasi->where('judul_english', '!=', null)->paginate(9);
+            $publikasi = $publikasi->where('judul_english', '!=', null)->orderBy('published_at', 'desc')->paginate(9);
             return view('content_english.publications', compact('publikasi'));
         }
-        $publikasi = $publikasi->paginate(9);
+        $publikasi = $publikasi->orderBy('published_at', 'desc')->paginate(9);
 
         return view('content.publications', compact('publikasi'));
     }
@@ -33,7 +33,7 @@ class PublikasiController extends Controller
       
         views($publikasi)->record();
         $publikasiPopuler = $query_without_this_publication->orderByViews();
-        $publikasiTerbaru = $query_without_this_publication->orderBy('created_at', 'desc');
+        $publikasiTerbaru = $query_without_this_publication->orderBy('published_at', 'desc');
         $publikasiTerkait = $query_without_this_publication;
         $publikasiBacaJuga = $query_without_this_publication;
 

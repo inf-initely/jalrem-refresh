@@ -268,14 +268,33 @@
                </div>
              </div>
            </div>
-              <div class="col-lg-12 mb-5 text-center">
-                <button name="draft" value="draft" class="btn btn-lg btn-secondary mr-3">
-                  Save as Draft
-                </button>
-                <button name="publish" value="publish" class="btn btn-lg btn-success">
-                  Publish
-                </button>
+           <div class="col-lg-12 mb-3">
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h2 class="m-0 font-weight-bold text-gray-800 sub-judul">Tanggal Konten</h2>
               </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class='col-lg-6'>
+                    <label for="tanggalPublish" class="form-label">Tanggal Publish</label>
+                    <input required name="publish_date"  type="date" class="form-control" id="tanggalPublish">
+                  </div>
+                  <div class='col-lg-6'>
+                    <label for="waktuPublish" class="form-label">Waktu Publish</label>
+                    <input required name="publish_time"  type="time" class="form-control" id="waktuPublish">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12 mb-5 text-center">
+            <button name="draft" value="draft" class="btn btn-lg btn-secondary mr-3">
+              Save as Draft
+            </button>
+            <button name="publish" value="publish" class="btn btn-lg btn-success">
+              Publish
+            </button>
+          </div>
             </div>
           </div>
           <!-- /.container-fluid -->

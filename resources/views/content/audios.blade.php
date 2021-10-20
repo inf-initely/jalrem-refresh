@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@section('title')
+    Semua Audio - Jalur Rempah Kemdikbudristek Republik Indonesia
+@endsection
+
 @section('content')
 <header id="hero">
     <img class="hero-img-2" src="assets/img/hero/hero-4.jpg">
@@ -23,10 +27,20 @@
                   <div class="col-md-12 col-lg-4 mb-4">
                     <div class="card no-border card-artikel">
                       <div class="ytdefer video media-video" data-alt="youtube jalur rempah" data-src="{{ $a->cloud_key }}"></div>
-                      <a class="stretched-link lightbox" href="{{ route('video_detail', $a->slug) }}"></a>
+                      <a class="stretched-link lightbox" href="{{ route('audio_detail', $a->slug) }}"></a>
                       <div class="card-body">
                         <p class="card-text">{{ $a->judul_indo }}</p>
                       </div>
+                      @foreach( $a->kategori_show as $ks )
+                          @if( $ks->isi == 'Indepth' )
+                          <span class="badge rounded-pill py-1 px-3 bg-success">Indepth</span>
+                          @endif
+                      @endforeach
+                      @foreach( $a->kategori_show as $ks )
+                          @if( $ks->isi == 'Jurnal Artikel' )
+                          <span class="badge rounded-pill py-1 px-3 bg-secondary">Jurnal Artikel</span>
+                          @endif
+                      @endforeach
                     </div>
                   </div>
                   @endforeach

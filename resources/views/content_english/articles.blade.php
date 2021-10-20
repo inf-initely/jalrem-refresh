@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@section('title')
+    All Articles - Jalur Rempah Kemdikbudristek Republik Indonesia
+@endsection
+
 @section('content')
 <header id="hero">
     <img class="hero-img-2" src="assets/img/hero/hero-4.jpg">
@@ -27,8 +31,18 @@
                                     {{ $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin' }}
                                 </p>
                                 <p class="tgl-artikel">
-                                    {{ $a->created_at->isoFormat('D MMMM Y'); }}
+                                    {{ \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y'); }}
                                 </p>
+                                @foreach( $a->kategori_show as $ks )
+                                    @if( $ks->isi == 'Indepth' )
+                                    <span class="badge rounded-pill py-1 px-3 bg-success">Indepth</span>
+                                    @endif
+                                @endforeach
+                                @foreach( $a->kategori_show as $ks )
+                                    @if( $ks->isi == 'Jurnal Artikel' )
+                                    <span class="badge rounded-pill py-1 px-3 bg-secondary">Jurnal Artikel</span>
+                                    @endif
+                                @endforeach
                             </div>
                             <a href="{{ route('article_detail', $a->slug_english ?? $a->slug) }}" class="stretched-link"></a>
                         </div>

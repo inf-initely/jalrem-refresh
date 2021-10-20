@@ -32,7 +32,8 @@
                     <thead>
                       <tr>
                         <th>No.</th>
-                        <th>Tanggal</th>
+                        <th>Tanggal Dibuat</th>
+                        <th>Tanggal Dipublish</th>
                         <th>Judul Artikel</th>
                         <th>Penulis</th>
                         <th>Slider Utama</th>
@@ -45,6 +46,7 @@
                       <tr>
                         <td>#</td>
                         <td>{{ $p->created_at->isoFormat('DD/MM/YYYY'); }}</td>
+                        <td>{{ \Carbon\Carbon::parse($p->published_at)->isoFormat('DD/MM/YYYY') }}</td>
                         <td>{{ $p->judul_indo }}</td>
                         <td>{{ $p->penulis != 'admin' ? $p->kontributor_relasi->nama : 'admin' }}</td>
                         <td>

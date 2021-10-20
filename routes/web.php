@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\KerjasamaController as KerjasamaControllerAdmin;
 use App\Http\Controllers\Admin\KegiatanController as KegiatanControllerAdmin;
 
 use App\Http\Controllers\Admin\UserController as UserControllerAdmin;
+use App\Http\Controllers\Admin\KontributorArtikelController as KontributorArtikelControllerAdmin;
 
 use App\Http\Controllers\Admin\SettingController as SettingControllerAdmin;
 
@@ -124,6 +125,8 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function() {
     Route::post('/informasi/kegiatan/update/{kerjasamaId}', [KegiatanControllerAdmin::class, 'update'])->name('admin.kegiatan.update');
     Route::get('/informasi/kegiatan/delete/{kerjasamaId}', [KegiatanControllerAdmin::class, 'delete'])->name('admin.kegiatan.delete');
 
+    Route::get('/artikel-kontributor', [KontributorArtikelControllerAdmin::class, 'index'])->name('admin.contributor_article.index');
+    
     Route::group(['middleware' => 'superadmin', 'prefix' => '/user'], function() {
         Route::get('/', [UserControllerAdmin::class, 'index'])->name('admin.user.index');
         Route::get('/tambah', [UserControllerAdmin::class, 'add'])->name('admin.user.add');

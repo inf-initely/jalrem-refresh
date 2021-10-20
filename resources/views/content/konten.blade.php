@@ -170,8 +170,18 @@
                               {{ $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin' }}
                             </p>
                             <p class="tgl-artikel">
-                              {{ $a->created_at->isoFormat('D MMMM Y'); }}
+                              {{ \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y'); }}
                             </p>
+                            @foreach( $a->kategori_show as $ks )
+                              @if( $ks->isi == 'Indepth' )
+                                <span class="badge rounded-pill py-1 px-3 bg-success">Indepth</span>
+                              @endif
+                            @endforeach
+                            @foreach( $a->kategori_show as $ks )
+                              @if( $ks->isi == 'Jurnal Artikel' )
+                                <span class="badge rounded-pill py-1 px-3 bg-secondary">Jurnal Artikel</span>
+                              @endif
+                            @endforeach
                           </div>
                           <a href="{{ route('article_detail', $a->slug) }}" class="stretched-link"></a>
                         </div>
@@ -193,8 +203,18 @@
                           <div class="text-img">
                             <p class="judul-img">{{ $f->judul_indo }}</p>
                             <p class="author-img">{{ $f->penulis != 'admin' ? $f->kontributor_relasi->nama : 'admin' }}</p>
-                            <p class="tgl-img">{{ $f->created_at->isoFormat('D MMMM Y'); }}</p>
+                            <p class="tgl-img">{{ \Carbon\Carbon::parse($f->published_at)->isoFormat('D MMMM Y'); }}</p>
                           </div>
+                          @foreach( $f->kategori_show as $ks )
+                            @if( $ks->isi == 'Indepth' )
+                              <span class="badge rounded-pill py-1 px-3 bg-success">Indepth</span>
+                            @endif
+                          @endforeach
+                          @foreach( $f->kategori_show as $ks )
+                            @if( $ks->isi == 'Jurnal Artikel' )
+                              <span class="badge rounded-pill py-1 px-3 bg-secondary">Jurnal Artikel</span>
+                            @endif
+                          @endforeach
                           <a class="stretched-link lightbox" href="{{ route('photo_detail', $f->slug) }}"></a>
                         </div>
                       </div>
@@ -232,6 +252,16 @@
                           <div class="card-body">
                             <p class="card-text">{{ $v->judul_indo }}</p>
                           </div>
+                          @foreach( $v->kategori_show as $ks )
+                            @if( $ks->isi == 'Indepth' )
+                              <span class="badge rounded-pill py-1 px-3 bg-success">Indepth</span>
+                            @endif
+                          @endforeach
+                          @foreach( $v->kategori_show as $ks )
+                            @if( $ks->isi == 'Jurnal Artikel' )
+                              <span class="badge rounded-pill py-1 px-3 bg-secondary">Jurnal Artikel</span>
+                            @endif
+                          @endforeach
                         </div>
                       </div>
                       @endforeach
@@ -255,8 +285,18 @@
                               {{ $p->penulis != 'admin' ? $p->kontributor_relasi->nama : 'admin' }}
                             </p>
                             <p class="tgl-artikel">
-                              {{ $p->created_at->isoFormat('D MMMM Y'); }}
+                              {{ \Carbon\Carbon::parse($p->published_at)->isoFormat('D MMMM Y'); }}
                             </p>
+                            @foreach( $p->kategori_show as $ks )
+                              @if( $ks->isi == 'Indepth' )
+                                <span class="badge rounded-pill py-1 px-3 bg-success">Indepth</span>
+                              @endif
+                            @endforeach
+                            @foreach( $p->kategori_show as $ks )
+                              @if( $ks->isi == 'Jurnal Artikel' )
+                                <span class="badge rounded-pill py-1 px-3 bg-secondary">Jurnal Artikel</span>
+                              @endif
+                            @endforeach
                           </div>
                           <a href="{{ route('publication_detail', $p->slug) }}" class="stretched-link"></a>
                         </div>
@@ -295,6 +335,16 @@
                           <div class="card-body">
                             <p class="card-text">{{ $a->judul_indo }}</p>
                           </div>
+                          @foreach( $a->kategori_show as $ks )
+                            @if( $ks->isi == 'Indepth' )
+                              <span class="badge rounded-pill py-1 px-3 bg-success">Indepth</span>
+                            @endif
+                          @endforeach
+                          @foreach( $a->kategori_show as $ks )
+                            @if( $ks->isi == 'Jurnal Artikel' )
+                              <span class="badge rounded-pill py-1 px-3 bg-secondary">Jurnal Artikel</span>
+                            @endif
+                          @endforeach
                         </div>
                       </div>
                       @endforeach

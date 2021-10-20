@@ -13,6 +13,8 @@ use App\Models\Kerjasama;
 use App\Models\Video;
 use App\Models\Audio;
 
+use Carbon\Carbon;
+
 class HomeController extends Controller
 {
     public function index(Request $request)
@@ -27,13 +29,13 @@ class HomeController extends Controller
 
         
         if( request()->get('search') != null ) {
-            $artikel = Artikel::where('status', 'publikasi')->where('judul_indo', 'LIKE', request()->get('search'))->orderBy('created_at', 'desc');
+            $artikel = Artikel::where('status', 'publikasi')->where('judul_indo', 'LIKE', request()->get('search'))->orderBy('published_at', 'desc');
         } else {
-            $artikel = Artikel::where('status', 'publikasi')->orderBy('created_at', 'desc');
+            $artikel = Artikel::where('status', 'publikasi')->orderBy('published_at', 'desc');
         }
         
-        $kegiatan = Kegiatan::where('status', 'publikasi')->orderBy('created_at', 'desc');
-        $video = Video::where('status', 'publikasi')->orderBy('created_at', 'desc');
+        $kegiatan = Kegiatan::where('status', 'publikasi')->orderBy('published_at', 'desc');
+        $video = Video::where('status', 'publikasi')->orderBy('published_at', 'desc');
 
         if( Session::get('lg') == 'en' ) {
             $semua_artikel = $semua_artikel->where('judul_english', '!=', null)->get();
@@ -44,10 +46,10 @@ class HomeController extends Controller
             $semua_video = $semua_video->where('judul_english', '!=', null)->get();
             $semua_publikasi = $semua_publikasi->where('judul_english', '!=', null)->get();
 
-            $artikel = $artikel->where('judul_english', '!=', null)->take(3)->get();
+            $artikel = $artikel->where('judul_english', '!=', null)->where('published_at', '<=', Carbon::now())->take(3)->get();
 
-            $kegiatan = $kegiatan->where('judul_english', '!=', null)->take(3)->get();
-            $video = $video->where('judul_english', '!=', null)->take(6)->get();
+            $kegiatan = $kegiatan->where('judul_english', '!=', null)->where('published_at', '<=', Carbon::now())->take(3)->get();
+            $video = $video->where('judul_english', '!=', null)->where('published_at', '<=', Carbon::now())->take(6)->get();
 
             $slider = $semua_artikel->mergeRecursive($semua_publikasi)->mergeRecursive($semua_video)->mergeRecursive($semua_audio)->mergeRecursive($semua_foto)->mergeRecursive($semua_kegiatan)->mergeRecursive($semua_kerjasama);
 
@@ -61,11 +63,11 @@ class HomeController extends Controller
         $semua_video = $semua_video->get();
         $semua_publikasi = $semua_publikasi->get();
 
-        $artikel = $artikel->take(3)->get();
+        $artikel = $artikel->where('published_at', '<=', Carbon::now())->take(3)->get();
         $slider = $semua_artikel->mergeRecursive($semua_publikasi)->mergeRecursive($semua_video)->mergeRecursive($semua_audio)->mergeRecursive($semua_foto)->mergeRecursive($semua_kegiatan)->mergeRecursive($semua_kerjasama);
 
-        $kegiatan = $kegiatan->take(3)->get();
-        $video = $video->take(6)->get();
+        $kegiatan = $kegiatan->where('published_at', '<=', Carbon::now())->take(3)->get();
+        $video = $video->where('published_at', '<=', Carbon::now())->take(6)->get();
 
         return view('content.home', compact('artikel', 'kegiatan', 'video', 'slider'));
     }

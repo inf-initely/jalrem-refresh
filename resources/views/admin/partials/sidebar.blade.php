@@ -42,6 +42,11 @@
       </div>
     </li>
     <!-- Divider -->
+    <li class="nav-item {{ Request::segment(2) == 'artikel-kontributor' ? 'active' : '' }}">
+      <a class="nav-link" href="{{ route('admin.contributor_article.index') }}">
+        <i class="fas fa-fw fa-edit"></i>
+        <span>Kiriman Kontributor</span></a>
+    </li>
     <hr class="sidebar-divider">
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item {{ Request::segment(3) == 'rempah' || Request::segment(3) == 'kontributor' ? 'active' : '' }}">

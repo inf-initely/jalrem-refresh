@@ -32,7 +32,8 @@
                 <thead>
                   <tr>
                     <th>No.</th>
-                    <th>Tanggal</th>
+                    <th>Tanggal Dibuat</th>
+                    <th>Tanggal Dipublish</th>
                     <th>Judul Kegiatan</th>
                     <th>Penulis</th>
                     <th>Slider Utama</th>
@@ -44,7 +45,8 @@
                   @foreach( $kegiatan as $k )
                   <tr>
                     <td>#</td>
-                    <td>{{ $k->created_at->isoFormat('YYYY/MM/DD'); }}</td>
+                    <td>{{ $k->created_at->isoFormat('DD/MM/YYYY'); }}</td>
+                    <td>{{ \Carbon\Carbon::parse($k->published_at)->isoFormat('DD/MM/YYYY') }}</td>
                     <td>{{ $k->judul_indo }}</td>
                     <td>{{ $k->penulis != 'admin' ? $k->kontributor_relasi->nama : 'admin' }}</td>
                     <td>

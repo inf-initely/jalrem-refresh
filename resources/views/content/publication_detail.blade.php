@@ -1,7 +1,7 @@
 @extends('layout.app')
 
-@section('name')
-    
+@section('title')
+    {{ $publikasi->judul_indo }} - Jalur Rempah Kemdikbudristek Republik Indonesia
 @endsection
 
 @section('content')
@@ -27,12 +27,13 @@
                 <h2 class="sub-judul">{{ $publikasi->judul_indo }}</h2>
                 <div class="info-penulis">
                   <span class="txt-penulis" class="mr-3" id="penulis" name="penulis">{{ $publikasi->penulis != 'admin' ? $publikasi->kontributor_relasi->nama : 'admin' }}</span> |
-                  <span class="txt-penulis" id="tglArtikel" name="tglArtikel">{{ $publikasi->created_at->isoFormat('D MMMM Y') }}</span>
+                  <span class="txt-penulis" id="tglArtikel" name="tglArtikel">{{ \Carbon\Carbon::parse($publikasi->published_at)->isoFormat('D MMMM Y') }}</span>
                 </div>
               </header>
               <article id="isiKonten">
                 <img class="mb-3 mt-3" src="{{ asset('storage/assets/publikasi/thumbnail/' . $publikasi->thumbnail) }}" width="100%">
                 {!! $publikasi->konten_indo !!}
+                {!! $publikasi->iframe !!}
               </article>
               @if( $publikasi->penulis != 'admin' )
               <div id="disclaimer" class="mt-4">
@@ -64,7 +65,7 @@
                             </div>
                             <div class="col-7 center-v">
                               <h3 class="judul-berita-aside" id="jdlKegiatan" name="jdlKegiatan">{{ $a->judul_indo }}</h3>
-                              <p class="tgl-berita-aside" id="tglKegiatan" name="tglKegiatan">{{ $a->created_at->isoFormat('D MMMM Y') }} </p>
+                              <p class="tgl-berita-aside" id="tglKegiatan" name="tglKegiatan">{{ \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y'); }} </p>
                             </div>
                           </div>
                           <a href="{{ route('publication_detail', $a->slug) }}" class="stretched-link"></a>
@@ -91,7 +92,7 @@
                             </div>
                             <div class="col-7 center-v">
                               <h3 class="judul-berita-aside" id="jdlKegiatan" name="jdlKegiatan">{{ $a->judul_indo }}</h3>
-                              <p class="tgl-berita-aside" id="tglKegiatan" name="tglKegiatan">{{ $a->created_at->isoFormat('D MMMM Y'); }}</p>
+                              <p class="tgl-berita-aside" id="tglKegiatan" name="tglKegiatan">{{ \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y'); }}</p>
                             </div>
                           </div>
                           <a href="{{ route('publication_detail', $a->slug) }}" class="stretched-link"></a>
@@ -124,7 +125,7 @@
               <h3 class="card-title judul-artikel">{{ $a->judul_indo }}</h3>
               {{-- <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p> --}}
               <p class="penulis-artikel">{{ $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin' }}</p>
-              <p class="tgl-artikel">{{ $a->created_at->isoFormat('D MMMM Y'); }}</p>
+              <p class="tgl-artikel">{{ \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y'); }}</p>
               <a href="{{ route('publication_detail', $a->slug) }}" class="stretched-link"></a>
             </div>
           </div>
