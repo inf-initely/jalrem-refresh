@@ -21,6 +21,7 @@ jobs:
         script: 'cd web/jalurrempah.kemdikbud.go.id/html && chmod +x production_deploy.sh && ./production_deploy.sh'
 
     - name: Send telegram notification
+      if: always()
       uses: haishanh/actions-telegram-notification@v1
       with:
         notification-token: ${{ secrets.NOTIFICATION_TOKEN }}
