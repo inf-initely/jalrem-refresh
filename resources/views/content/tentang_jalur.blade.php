@@ -373,4 +373,74 @@
       });
     }
     </script>
+
+<script>
+    var page = 1
+    var mentok = false;
+    $(window).scroll(function() {
+      if($(window).scrollTop() + $(window).height() >= $(document).height()) {
+         if( !mentok ) {
+            page++;
+            loadMoreData(page);
+         }
+      }
+   });
+   $('.loader').hide();
+
+   function loadMoreData(page) {
+      $.ajax({
+         url: '?page=' + page,
+         type: 'GET',
+         beforeSend: function() {
+            $('.loader').show();
+         }
+      })
+      .done(function(data)
+       {
+         // console.log(data.data[0].profile.photo_url);
+         // if(data.html == " "){
+         //       // $('.ajax-load').html("No more records found");
+         //       return;
+         // }
+         for( let i = 0; i < data.data.length; i++ ) {
+            $('#comments').append(`
+               <div class="d-flex">
+                  <div class="left">
+                     <span>
+                     <img
+                        src="{{ asset('storage/users/profile') }}/`+ data.data[i].photo_profile +`"
+                        class="profile-pict-img img-fluid" alt="">
+                     </span>
+                  </div>
+                  <div class="right">
+                     <h4>
+                        `+ data.data[i].username +`
+                     </h4>
+                     <div class="country d-flex align-items-center">
+                        <span>
+                        {{-- <img class="country-flag img-fluid"
+                           src="images/flag/india.png">
+                        </span> --}}
+                     </div>
+                     <div class="review-description">
+                        <p>
+                           `+ data.data[i].comment +`
+                        </p>
+                     </div>
+                     <span class="publish py-3 d-inline-block w-100">`+ data.data[i].datetime +`</span>
+                  </div>
+               </div>
+               `)
+         }
+         if( data.data.length <= 0 ) {
+             mentok = true;
+         }
+         $('.loader').hide();
+      })
+      .fail(function(jqXHR, ajaxOptions, thrownError)
+      {
+            alert('server not responding...');
+      });
+   }
+ </script>
 @endsection

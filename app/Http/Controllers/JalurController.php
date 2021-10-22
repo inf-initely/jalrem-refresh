@@ -17,31 +17,31 @@ class JalurController extends Controller
     {
         $kategori = KategoriShow::where('isi', 'jalur')->first();
         $artikel = $kategori->artikel->filter(function($item) {
-            return $item->status == 'publikasi';
+            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
         });
         $foto = $kategori->foto->filter(function($item) {
-            return $item->status == 'publikasi';
+            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
         });
         $audio = $kategori->audio->filter(function($item) {
-            return $item->status == 'publikasi';
+            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
         });
         $video = $kategori->video->filter(function($item) {
-            return $item->status == 'publikasi';
+            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
         });
         $publikasi = $kategori->publikasi->filter(function($item) {
-            return $item->status == 'publikasi';
+            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
         });
         $kerjasama = $kategori->kerjasama->filter(function($item) {
-            return $item->status == 'publikasi';
+            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
         });
         $kegiatan = $kategori->kegiatan->filter(function($item) {
-            return $item->status == 'publikasi';
+            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
         });
         $artikel = $artikel->mergeRecursive($foto)->mergeRecursive($audio)->mergeRecursive($video)->mergeRecursive($publikasi)->mergeRecursive($kerjasama)->mergeRecursive($kegiatan);
         
         if( Session::get('lg') == 'en' ) {
             $artikel = $artikel->filter(function($item) {
-                return $item->judul_english != null;
+                return $item->judul_english != null && $item->published_at <= \Carbon\Carbon::now();
             });
         }
 
@@ -53,6 +53,24 @@ class JalurController extends Controller
 
         if( Session::get('lg') == 'en' )
             return view('content_english.tentang_jalur', compact('artikel'));
+        
+        // if( Paginator::resolveCurrentPage() != 1 ) {
+        //     $artikels = [];
+        //     $i = 0;
+        //     foreach( $artikels as $a ) {
+        //         $artikels[$i]['judul'] = Session::get('lg') == 'en' ? $artikel->judul_english : $artikel->judul_indo;
+        //         $artikels[$i]['konten'] = Session::get('lg') ==
+        //          'en' ? Str::limit($artikel->konten_english, 50, $end='...') : Str::limit($artikel->konten_indo, 50, $end='...');
+        //         $artikels[$i]['published_at'] = $artikel->published_at->diffForHumans();
+        //         $i++;
+        //     }
+        //     return response()->json([
+        //         'status' => 'success', 
+        //         'data' => $comments_post
+        //     ]);
+        // } else {
+        //     return view('member.post_detail', compact('post', 'comments'));
+        // }
 
         return view('content.tentang_jalur', compact('artikel'));
     }

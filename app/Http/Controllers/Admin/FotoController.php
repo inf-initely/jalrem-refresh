@@ -26,7 +26,7 @@ class FotoController extends Controller
     {
         $rempahs = Rempah::all();
         $lokasi = Lokasi::all();
-        $kategori_show = KategoriShow::where('id', '!=', 3)->where('id', '!=', 4)->where('id', '!=', 5)->get();
+        $kategori_show = KategoriShow::where('id', '!=', 4)->where('id', '!=', 5)->get();
         $kontributor = Kontributor::all();
 
         return view('admin.content.photo.add', compact('rempahs', 'lokasi', 'kategori_show', 'kontributor'));
@@ -104,7 +104,7 @@ class FotoController extends Controller
         $foto = Foto::findOrFail($photoId);
         $lokasi = Lokasi::all();
         $rempahs = Rempah::all();
-        $kategori_show = KategoriShow::where('id', '!=', 3)->where('id', '!=', 4)->where('id', '!=', 5)->get();
+        $kategori_show = KategoriShow::where('id', '!=', 4)->where('id', '!=', 5)->get();
         $kontributor = Kontributor::all();
 
 

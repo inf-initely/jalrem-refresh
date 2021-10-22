@@ -27,7 +27,7 @@ class KerjasamaController extends Controller
     {
         $rempahs = Rempah::all();
         $lokasi = Lokasi::all();
-        $kategori_show = KategoriShow::where('id', '!=', 3)->where('id', '!=', 4)->where('id', '!=', 5)->get();
+        $kategori_show = KategoriShow::where('id', '!=', 4)->where('id', '!=', 5)->get();
         $kontributor = Kontributor::all();
 
         return view('admin.informasi.kerjasama.add', compact('rempahs', 'lokasi', 'kategori_show', 'kontributor'));
@@ -95,7 +95,7 @@ class KerjasamaController extends Controller
         $kerjasama = Kerjasama::findOrFail($kerjasamaId);
         $rempahs = Rempah::all();
         $lokasi = Lokasi::all();
-        $kategori_show = KategoriShow::where('id', '!=', 3)->where('id', '!=', 4)->where('id', '!=', 5)->get();
+        $kategori_show = KategoriShow::where('id', '!=', 4)->where('id', '!=', 5)->get();
         $kontributor = Kontributor::all();
 
         return view('admin.informasi.kerjasama.edit', compact('kerjasama', 'rempahs', 'lokasi', 'kategori_show', 'kontributor'));

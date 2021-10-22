@@ -28,7 +28,7 @@ class KegiatanController extends Controller
     {
         $rempahs = Rempah::all();
         $lokasi = Lokasi::all();
-        $kategori_show = KategoriShow::where('id', '!=', 3)->where('id', '!=', 4)->where('id', '!=', 5)->get();
+        $kategori_show = KategoriShow::where('id', '!=', 4)->where('id', '!=', 5)->get();
         $kontributor = Kontributor::all();
 
         return view('admin.informasi.kegiatan.add', compact('rempahs', 'lokasi', 'kategori_show', 'kontributor'));
@@ -106,7 +106,7 @@ class KegiatanController extends Controller
         $kegiatan = Kegiatan::findOrFail($kegiatanId);
         $rempahs = Rempah::all();
         $lokasi = Lokasi::all();
-        $kategori_show = KategoriShow::where('id', '!=', 3)->where('id', '!=', 4)->where('id', '!=', 5)->get();
+        $kategori_show = KategoriShow::where('id', '!=', 4)->where('id', '!=', 5)->get();
         $kontributor = Kontributor::all();
 
         return view('admin.informasi.kegiatan.edit', compact('kegiatan', 'rempahs', 'lokasi', 'kategori_show', 'kontributor'));

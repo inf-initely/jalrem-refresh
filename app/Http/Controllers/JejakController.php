@@ -111,49 +111,63 @@ class JejakController extends Controller
 
     private function loopingArtikel($type, $container, $kategori)
     {
-        foreach( $kategori->artikel as $ka ) {
+        foreach( $kategori->artikel->filter(function($item) {
+            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
+        }) as $ka ) {
             foreach( $type->artikel as $ta ) {
                 if( $ka->id == $ta->id )
                     $container[] = $ka;
             }
         }
 
-        foreach( $kategori->foto as $ka ) {
+        foreach( $kategori->foto->filter(function($item) {
+            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
+        }) as $ka ) {
             foreach( $type->foto as $ta ) {
                 if( $ka->id == $ta->id )
                     $container[] = $ka;
             }
         }
 
-        foreach( $kategori->audio as $ka ) {
+        foreach( $kategori->audio->filter(function($item) {
+            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
+        }) as $ka ) {
             foreach( $type->audio as $ta ) {
                 if( $ka->id == $ta->id )
                     $container[] = $ka;
             }
         }
 
-        foreach( $kategori->video as $ka ) {
+        foreach( $kategori->video->filter(function($item) {
+            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
+        }) as $ka ) {
             foreach( $type->video as $ta ) {
                 if( $ka->id == $ta->id )
                     $container[] = $ka;
             }
         }
 
-        foreach( $kategori->publikasi as $ka ) {
+        foreach( $kategori->publikasi->filter(function($item) {
+            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
+        }) as $ka ) {
             foreach( $type->publikasi as $ta ) {
                 if( $ka->id == $ta->id )
                     $container[] = $ka;
             }
         }
 
-        foreach( $kategori->kerjasama as $ka ) {
+        foreach( $kategori->kerjasama->filter(function($item) {
+            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
+        }) as $ka ) {
             foreach( $type->kerjasama as $ta ) {
                 if( $ka->id == $ta->id )
                     $container[] = $ka;
             }
         }
 
-        foreach( $kategori->kegiatan as $ka ) {
+        foreach( $kategori->kegiatan->filter(function($item) {
+            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
+        }) as $ka ) {
             foreach( $type->kegiatan as $ta ) {
                 if( $ka->id == $ta->id )
                     $container[] = $ka;

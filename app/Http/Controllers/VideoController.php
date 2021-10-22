@@ -11,7 +11,7 @@ class VideoController extends Controller
 {
     public function index()
     {
-        $video = Video::where('status', 'publikasi')->orderBy('published_at', 'desc');
+        $video = Video::where('status', 'publikasi')->where('published_at', '<=', \Carbon\Carbon::now())->orderBy('published_at', 'desc');
 
         if( Session::get('lg') == 'en' ) {
             $video = $video->where('judul_english', '!=', null)->paginate(9);

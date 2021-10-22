@@ -47,7 +47,7 @@ class CreatedAtToPublishedAt extends Command
         $fotos = \App\Models\Foto::all();
         foreach( $fotos as $a ) {
             $a->update([
-                'published_at' => \Carbon\Carbon::now()
+                'published_at' => $a->created_at
             ]);
         }
         $audio = \App\Models\Audio::all();
