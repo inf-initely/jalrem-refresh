@@ -17,25 +17,25 @@ class MasaDepanController extends Controller
     {
         $kategori = KategoriShow::where('isi', 'masa depan')->first();
         $artikel = $kategori->artikel->filter(function($item) {
-            return $item->status == 'publikasi';
+            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
         });
         $foto = $kategori->foto->filter(function($item) {
-            return $item->status == 'publikasi';
+            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
         });
         $audio = $kategori->audio->filter(function($item) {
-            return $item->status == 'publikasi';
+            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
         });
         $video = $kategori->video->filter(function($item) {
-            return $item->status == 'publikasi';
+            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
         });
         $publikasi = $kategori->publikasi->filter(function($item) {
-            return $item->status == 'publikasi';
+            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
         });
         $kerjasama = $kategori->kerjasama->filter(function($item) {
-            return $item->status == 'publikasi';
+            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
         });
         $kegiatan = $kategori->kegiatan->filter(function($item) {
-            return $item->status == 'publikasi';
+            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
         });
         $artikel = $artikel->merge($foto)->merge($audio)->merge($video)->merge($publikasi)->merge($kerjasama)->merge($kegiatan);
         

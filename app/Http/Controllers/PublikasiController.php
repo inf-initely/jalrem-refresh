@@ -11,7 +11,7 @@ class PublikasiController extends Controller
 {
     public function index()
     {
-        $publikasi = Publikasi::where('status', 'publikasi');
+        $publikasi = Publikasi::where('status', 'publikasi')->where('published_at', '<=', \Carbon\Carbon::now());
 
         if( Session::get('lg') == 'en' ) {
             $publikasi = $publikasi->where('judul_english', '!=', null)->orderBy('published_at', 'desc')->paginate(9);
