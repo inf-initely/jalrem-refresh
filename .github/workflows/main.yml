@@ -1,0 +1,27 @@
+name:  Deploy production release to server jalur-rempah
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.PUSH_TOKEN }}
+
+    - name: Deploy to production
+      uses: appleboy/ssh-action@master
+      with:
+        username: spice
+        host: 118.98.221.96
+        password: ${{ secrets.SSH_PASSWORD }}
+        script: 'cd web/jalurrempah.kemdikbud.go.id/html && chmod +x production_deploy.sh && ./production_deploy.sh'
+
+    - name: Send telegram notification
+      uses: haishanh/actions-telegram-notification@v1
+      with:
+        notification-token: ${{ secrets.NOTIFICATION_TOKEN }}
+        job-status: ${{ job.status }}
