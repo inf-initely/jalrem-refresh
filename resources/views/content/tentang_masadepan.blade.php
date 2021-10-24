@@ -33,7 +33,7 @@
                     <section id="artikelTentang">
                         <div class="row justify-content-center">
                             <div class="col-lg-11 mt-3">
-                                <div class="row">
+                                <div class="row" id="contents">
                                     @foreach( $artikel as $a )
                                     @if( $a->getTable() == 'videos' )
                                         <div class="col-lg-6 mb-1">
@@ -153,9 +153,9 @@
                                         </div>
                                     @endif
                                     @endforeach
-                                    <div class="d-flex justify-content-center mt-2">
-                                        {!! $artikel->links() !!}
-                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-center mt-2">
+                                    <div class="loader"></div>
                                 </div>
                             </div>
                         </div>
@@ -319,4 +319,188 @@
       });
     }
     </script>
+
+<script>
+    var halaman = 1;
+    var mentok = false;
+    $(window).scroll(function() {
+      if($(window).scrollTop() + $(window).height() >= $(document).height() - 400) {
+         if( !mentok ) {
+            halaman++;
+            loadMoreData(halaman);
+         }
+      }
+   });
+   $('.loader').hide();
+
+   function loadMoreData(halaman) {
+      $.ajax({
+         url: `?page=${halaman}`,
+         type: 'GET',
+         beforeSend: function() {
+            $('.loader').show();
+         }
+      })
+      .done(function(data)
+       {
+         // console.log(data.data[0].profile.photo_url);
+         // if(data.html == " "){
+         //       // $('.ajax-load').html("No more records found");
+         //       return;
+         // }
+         for( let i = 0; i < data.data.length; i++ ) {
+            let kategori_show = data?.data[i]?.kategori_show?.map(item => {
+                if( item == 'Indepth' ) {
+                    return '<span class="badge rounded-pill py-1 px-3 bg-success">Indepth</span>'
+                } else if( item == 'Jurnal Artikel' ) {
+                    return '<span class="badge rounded-pill py-1 px-3 bg-secondary">Jurnal Artikel</span>'
+                }
+                return '<div></div>';
+            }).toString().replaceAll(',', ' ')
+
+            if( kategori_show == undefined ) {
+                kategori_show = '<div></div>';
+            }
+            
+            let content = '';
+            let rempahs = '';
+            if( data?.data[i]?.rempahs == undefined ) {
+                rempahs = `<div></div>`;
+            } else {
+                rempahs = data?.data[i]?.rempahs?.map(item => {
+                    return `<a href="/funfact/${item.jenis_rempah}" class="text-danger text-decoration-none">${item.jenis_rempah}</a>
+                                    |`;
+                })
+            }
+            
+            if( data.data[i].table == 'audio' ) {
+                content = `
+                <div class="col-lg-6 mb-1">
+                    <div class="card no-border no-background">
+                        <div class="card-body row">
+                            <div class="col-5 center-v">
+                                <div class="video media-video" style="height: 170px;" data-video-id="${data.data[i].cloudkey}">
+                                    <!--ganti id sesuai id youtube yang akan ditampilkan-->
+                                    <div class="video-layer">
+                                        <div class="video-placeholder">
+                                            <!-- ^ div is replaced by the YouTube video -->
+                                        </div>
+                                    </div>
+                                    <div class="video-preview" style="background: url('https://img.youtube.com/vi/${data.data[i].cloudkey}/hqdefault.jpg') 50% 50% no-repeat; background-size: cover;">
+                                        <!-- this icon would normally be implemented as a character in an icon font or svg spritesheet, or similar -->
+                                        <svg viewBox="0 0 74 74">
+                                            <circle style="opacity:0.64;stroke:#fff" cx="37" cy="37" r="36.5"></circle>
+                                            <circle fill="none" stroke="#fff" cx="37" cy="37" r="36.5"></circle>
+                                            <polygon fill="#fff" points="33,22 33,52 48,37"></polygon>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-7 center-v">
+                                <a href="#" class="text-danger m-0 p-0 text-decoration-none wilayah"><small>${data.data[i].nama_lokasi}</small></a>
+                                <h3 class="judul-artikel judul-artikel-tentang"><a href="video/${data.data[i].slug}" class="text-decoration-none clr-black">${data.data[i].judul}</a> </h3>
+                                <!-- <p class="des-artikel des-artikel-tentang minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p> -->
+                                <div class="wrap-tag-rempah">
+                                    ${rempahs}
+                                </div>
+                                ${kategori_show}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `
+            } else if( data.data[i].table == 'videos' ) {
+                content = `
+                <div class="col-lg-6 mb-1">
+                    <div class="card no-border no-background">
+                        <div class="card-body row">
+                            <div class="col-5 center-v">
+                                <div class="video media-video" style="height: 170px;" data-video-id="${data.data[i].youtubekey}">
+                                    <!--ganti id sesuai id youtube yang akan ditampilkan-->
+                                    <div class="video-layer">
+                                        <div class="video-placeholder">
+                                            <!-- ^ div is replaced by the YouTube video -->
+                                        </div>
+                                    </div>
+                                    <div class="video-preview" style="background: url('https://img.youtube.com/vi/${data.data[i].youtubekey}/hqdefault.jpg') 50% 50% no-repeat; background-size: cover;">
+                                        <!-- this icon would normally be implemented as a character in an icon font or svg spritesheet, or similar -->
+                                        <svg viewBox="0 0 74 74">
+                                            <circle style="opacity:0.64;stroke:#fff" cx="37" cy="37" r="36.5"></circle>
+                                            <circle fill="none" stroke="#fff" cx="37" cy="37" r="36.5"></circle>
+                                            <polygon fill="#fff" points="33,22 33,52 48,37"></polygon>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-7 center-v">
+                                <a href="#" class="text-danger m-0 p-0 text-decoration-none wilayah"><small>${data.data[i].nama_lokasi}</small></a>
+                                <h3 class="judul-artikel judul-artikel-tentang"><a href="video/${data.data[i].slug}" class="text-decoration-none clr-black">${data.data[i].judul}</a> </h3>
+                                <!-- <p class="des-artikel des-artikel-tentang minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p> -->
+                                <div class="wrap-tag-rempah">
+                                    ${rempahs}
+                                </div>
+                                ${kategori_show}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `
+            } else {
+                let asset = '';
+                switch(data.data[i].table) {
+                    case 'artikels':
+                        asset = 'artikel';
+                        break;
+                    case 'fotos':
+                        asset = 'foto';
+                        break;
+                    case 'publikasis':
+                        asset = 'publikasi';
+                        break;
+                    case 'kegiatans':
+                        asset = 'kegiatan';
+                        break;
+                    case 'kerjasamas':
+                        asset = 'kerjasama';
+                        break;
+                    default:
+                        asset = '';
+                        break;
+                }
+                content = `
+                <div class="col-lg-6 mb-2">
+                    <div class="card no-border no-background">
+                        <div class="card-body row">
+                            <div class="col-5 center-v">
+                                <img class="tentang-thumbnail" src="{{ asset('storage/assets/${asset}/thumbnail/${data.data[i].thumbnail}') }}" width="100%">
+                            </div>
+                            <div class="col-7 center-v">
+                                <a href="#" class="text-danger m-0 p-0 text-decoration-none wilayah"><small>${data.data[i].nama_lokasi}</small></a>
+                                <h3 class="judul-artikel judul-artikel-tentang"><a href="video/${data.data[i].slug}" class="text-decoration-none clr-black">${data.data[i].judul}</a> </h3>
+                                <!-- <p class="des-artikel des-artikel-tentang minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p> -->
+                                <div class="wrap-tag-rempah">
+                                    ${rempahs}
+                                </div>
+                                ${kategori_show}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `
+            }
+
+            $('#contents').append(content);
+         }
+         console.log(data);
+         if( data.data.length <= 0 ) {
+             mentok = true;
+         }
+         $('.loader').hide();
+      })
+      .fail(function(jqXHR, ajaxOptions, thrownError)
+      {
+            alert('server not responding...');
+      });
+   }
+ </script>
 @endsection

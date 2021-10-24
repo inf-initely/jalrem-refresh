@@ -89,17 +89,87 @@ class JejakController extends Controller
         // $artikel = array_mergeRecursive($artikel, $artikelRempah, $artikelWilayah);
         
         $artikel = ( $kategori != null )
-            ? $this->paginate($artikel,6)
+            ? $this->paginate($artikel,9)
             : [];
 
         $artikel->setPath('/tentang-jejak?rempah=' . $rempahId . '&wilayah=' . $lokasiId);
 
         // dd($kategori->artikel);
         
-        if( Session::get('lg') == 'en' )
-            return view('content_english.tentang_jejak', compact('artikel', 'value_type'));
+        if( Session::get('lg') == 'en' ) {
+            if( Paginator::resolveCurrentPage() != 1 ) {
+                $artikels = [];
+                $i = 0;
+                foreach( $artikel as $a ) {
+                    $artikels[$i]['judul'] = Session::get('lg') == 'en' ? $a->judul_english : $a->judul_indo;
+                    
+                    if( $a->getTable() == 'videos' ) {
+                        $artikels[$i]['youtubekey'] = $a->youtube_key;
+                    } else if( $a->getTable() == 'audio' ) {
+                        $artikels[$i]['cloudkey'] = $a->cloud_key;
+                    } else {
+                        $artikels[$i]['thumbnail'] = $a->thumbnail;
+                    }
+    
+                    $j = 0;
+                    foreach( $a->kategori_show as $ks ) {
+                        $artikels[$i]['kategori_show'][$j] = $ks->isi;
+                        $j++;
+                    }
+                    $artikels[$i]['konten'] = Session::get('lg') == 'en' ? \Str::limit($a->konten_english, 50, $end='...') : \Str::limit($a->konten_indo, 50, $end='...');
+                    $artikels[$i]['slug'] = $a->slug;
+                    $artikels[$i]['penulis'] = $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin';
+                    $artikels[$i]['published_at'] = \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y');
+                    $artikels[$i]['table'] = $a->getTable();
+                    $artikels[$i]['nama_lokasi'] = $a->lokasi->nama_lokasi ?? '';
+                    $artikels[$i]['rempahs'] = $a->rempahs;
+                    $i++;
+                }
+                return response()->json([
+                    'status' => 'success', 
+                    'data' => $artikels
+                ]);
+            } else {
+                return view('content_english.tentang_jejak', compact('artikel', 'value_type'));
+            }
 
-        return view('content.tentang_jejak', compact('artikel', 'value_type'));
+        }
+        
+        if( Paginator::resolveCurrentPage() != 1 ) {
+            $artikels = [];
+            $i = 0;
+            foreach( $artikel as $a ) {
+                $artikels[$i]['judul'] = Session::get('lg') == 'en' ? $a->judul_english : $a->judul_indo;
+                
+                if( $a->getTable() == 'videos' ) {
+                    $artikels[$i]['youtubekey'] = $a->youtube_key;
+                } else if( $a->getTable() == 'audio' ) {
+                    $artikels[$i]['cloudkey'] = $a->cloud_key;
+                } else {
+                    $artikels[$i]['thumbnail'] = $a->thumbnail;
+                }
+
+                $j = 0;
+                foreach( $a->kategori_show as $ks ) {
+                    $artikels[$i]['kategori_show'][$j] = $ks->isi;
+                    $j++;
+                }
+                $artikels[$i]['konten'] = Session::get('lg') == 'en' ? \Str::limit($a->konten_english, 50, $end='...') : \Str::limit($a->konten_indo, 50, $end='...');
+                $artikels[$i]['slug'] = $a->slug;
+                $artikels[$i]['penulis'] = $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin';
+                $artikels[$i]['published_at'] = \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y');
+                $artikels[$i]['table'] = $a->getTable();
+                $artikels[$i]['nama_lokasi'] = $a->lokasi->nama_lokasi ?? '';
+                $artikels[$i]['rempahs'] = $a->rempahs;
+                $i++;
+            }
+            return response()->json([
+                'status' => 'success', 
+                'data' => $artikels
+            ]);
+        } else {
+            return view('content.tentang_jejak', compact('artikel', 'value_type'));
+        }
     }
 
     private function paginate($items, $perPage = 15, $page = null, $options = [])

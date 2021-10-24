@@ -22,11 +22,12 @@
           <div class="row justify-content-center">
             <div class="col-lg-10">
               <section id="tabLine">
-                <div class="row justify-content-center">
+                <div class="row justify-content-center" id="videos">
                   @foreach( $video as $v )
                   <div class="col-md-12 col-lg-4 mb-4">
                     <div class="card no-border card-artikel">
-                      <div class="ytdefer video media-video" data-alt="youtube jalur rempah" data-src="{{ $v->youtube_key }}"></div>
+                      <iframe width="100%" height="190" src="//www.youtube.com/embed/{{ $v->youtube_key }}?rel=0&amp;fs=0&amp;showinfo=0" frameborder="0" allowfullscreen>
+                      </iframe>
                       <a class="stretched-link lightbox" href="{{ route('video_detail', $v->slug_english ?? $v->slug) }}"></a>
                       <div class="card-body">
                         <p class="card-text">{{ $v->judul_english }}</p>
@@ -46,7 +47,7 @@
                   @endforeach
                 </div>
                 <div class="d-flex justify-content-center">
-                {!! $video->links() !!}
+                  <div class="loader"></div>
                 </div>
               </section>
             </div>
@@ -109,5 +110,73 @@ $(function() {
 <script>
   window.addEventListener('load', ytdefer_setup);
 </script>
+
+<script>
+  var page = 1
+  var mentok = false;
+  $(window).scroll(function() {
+      if($(window).scrollTop() + $(window).height() >= $(document).height() - 300) {
+          if( !mentok ) {
+          page++;
+          loadMoreData(page);
+          }
+      }
+  });
+  $('.loader').hide();
+  
+  function loadMoreData(page) {
+      $.ajax({
+          url: '?page=' + page,
+          type: 'GET',
+          beforeSend: function() {
+          $('.loader').show();
+          }
+      })
+      .done(function(data)
+      {
+          // console.log(data.data[0].profile.photo_url);
+          // if(data.html == " "){
+          //       // $('.ajax-load').html("No more records found");
+          //       return;
+          // }
+          
+          for( let i = 0; i < data.data.length; i++ ) {
+            let kategori_show = data?.data[i]?.kategori_show?.map(item => {
+                if( item == 'Indepth' ) {
+                    return '<span class="badge rounded-pill py-1 px-3 bg-success">Indepth</span>'
+                } else if( item == 'Jurnal Artikel' ) {
+                    return '<span class="badge rounded-pill py-1 px-3 bg-secondary">Jurnal Artikel</span>'
+                }
+                return '<div></div>';
+            }).toString().replaceAll(',', ' ')
+
+            if( kategori_show == undefined ) {
+                kategori_show = '';
+            }
+            $('#videos').append(`
+            <div class="col-md-12 col-lg-4 mb-4">
+              <div class="card no-border card-artikel">
+                <iframe width="100%" height="190" src="//www.youtube.com/embed/${data.data[i].youtubekey}?rel=0&amp;fs=0&amp;showinfo=0" frameborder="0" allowfullscreen>
+                </iframe>
+                <a class="stretched-link lightbox" href="/video/${data.data[i].slug}"></a>
+                <div class="card-body">
+                  <p class="card-text">${data.data[i].judul}</p>
+                  ${kategori_show}
+                </div>
+              </div>
+            </div>
+                `)
+            }
+            if( data.data.length <= 0 ) {
+                mentok = true;
+            }
+            $('.loader').hide();
+      })
+      .fail(function(jqXHR, ajaxOptions, thrownError)
+      {
+          alert('server not responding...');
+      });
+  }
+  </script>
 
 @endsection

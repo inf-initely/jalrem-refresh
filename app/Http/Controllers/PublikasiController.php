@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
+use Illuminate\Pagination\Paginator;
+
 use App\Models\Publikasi;
 
 class PublikasiController extends Controller
@@ -15,11 +17,59 @@ class PublikasiController extends Controller
 
         if( Session::get('lg') == 'en' ) {
             $publikasi = $publikasi->where('judul_english', '!=', null)->orderBy('published_at', 'desc')->paginate(9);
-            return view('content_english.publications', compact('publikasi'));
+
+            if( Paginator::resolveCurrentPage() != 1 ) {
+                $publications = [];
+                $i = 0;
+                foreach( $publikasi as $a ) {
+                    $publications[$i]['judul'] = Session::get('lg') == 'en' ? $a->judul_english : $a->judul_indo;
+                    $publications[$i]['thumbnail'] = $a->thumbnail;
+                    $j = 0;
+                    foreach( $a->kategori_show as $ks ) {
+                        $publications[$i]['kategori_show'][$j] = $ks->isi;
+                        $j++;
+                    }
+                    $publications[$i]['konten'] = Session::get('lg') == 'en' ? \Str::limit($a->konten_english, 50, $end='...') : \Str::limit($a->konten_indo, 50, $end='...');
+                    $publications[$i]['slug'] = $a->slug;
+                    $publications[$i]['penulis'] = $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin';
+                    $publications[$i]['published_at'] = \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y');
+                    $i++;
+                }
+                return response()->json([
+                    'status' => 'success', 
+                    'data' => $publications
+                ]);
+            } else {
+                return view('content_english.publications', compact('publikasi'));
+            }
+            
         }
         $publikasi = $publikasi->orderBy('published_at', 'desc')->paginate(9);
 
-        return view('content.publications', compact('publikasi'));
+        if( Paginator::resolveCurrentPage() != 1 ) {
+            $publications = [];
+            $i = 0;
+            foreach( $publikasi as $a ) {
+                $publications[$i]['judul'] = Session::get('lg') == 'en' ? $a->judul_english : $a->judul_indo;
+                $publications[$i]['thumbnail'] = $a->thumbnail;
+                $j = 0;
+                foreach( $a->kategori_show as $ks ) {
+                    $publications[$i]['kategori_show'][$j] = $ks->isi;
+                    $j++;
+                }
+                $publications[$i]['konten'] = Session::get('lg') == 'en' ? \Str::limit($a->konten_english, 50, $end='...') : \Str::limit($a->konten_indo, 50, $end='...');
+                $publications[$i]['slug'] = $a->slug;
+                $publications[$i]['penulis'] = $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin';
+                $publications[$i]['published_at'] = \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y');
+                $i++;
+            }
+            return response()->json([
+                'status' => 'success', 
+                'data' => $publications
+            ]);
+        } else {
+            return view('content.publications', compact('publikasi'));
+        }
     }
 
     public function show($slug)

@@ -22,7 +22,7 @@
           <div class="row justify-content-center">
             <div class="col-lg-10">
               <section id="tabLine">
-                <div class="row justify-content-center">
+                <div class="row justify-content-center" id="photos">
                   @foreach( $foto as $f )
                   <div class="col-lg-4 mb-4">
                     <div class="img-bg-wrap">
@@ -48,7 +48,7 @@
                   @endforeach
                 </div>
                 <div class="d-flex justify-content-center">
-                {!! $foto->links() !!}
+                  <div class="loader"></div>
                 </div>
               </section>
             </div>
@@ -106,5 +106,76 @@ $(function() {
   });
 
 });
+</script>
+
+<script>
+  var page = 1
+  var mentok = false;
+  $(window).scroll(function() {
+    if($(window).scrollTop() + $(window).height() >= $(document).height() - 300) {
+       if( !mentok ) {
+          page++;
+          loadMoreData(page);
+       }
+    }
+ });
+ $('.loader').hide();
+
+ function loadMoreData(page) {
+    $.ajax({
+       url: '?page=' + page,
+       type: 'GET',
+       beforeSend: function() {
+          $('.loader').show();
+       }
+    })
+    .done(function(data)
+     {
+       // console.log(data.data[0].profile.photo_url);
+       // if(data.html == " "){
+       //       // $('.ajax-load').html("No more records found");
+       //       return;
+       // }
+       for( let i = 0; i < data.data.length; i++ ) {
+          let kategori_show = data?.data[i]?.kategori_show?.map(item => {
+              if( item == 'Indepth' ) {
+                  return '<span class="badge rounded-pill py-1 px-3 bg-success">Indepth</span>'
+              } else if( item == 'Jurnal Artikel' ) {
+                  return '<span class="badge rounded-pill py-1 px-3 bg-secondary">Jurnal Artikel</span>'
+              }
+              return '<div></div>';
+          }).toString().replaceAll(',', ' ')
+
+          if( kategori_show == undefined ) {
+              kategori_show = '<div></div>';
+          }
+
+          $('#photos').append(`
+              <div class="col-lg-4 mb-4">
+                <div class="img-bg-wrap">
+                  <img src="{{ asset('storage/assets/foto/thumbnail/') }}/${data.data[i].thumbnail}">
+                  <div class="text-img">
+                    <p class="judul-img">${data.data[i].judul}</p>
+                    <p class="author-img">${data.data[i].penulis}</p>
+                    <p class="tgl-img">${data.data[i].published_at}</p>
+                    ${kategori_show}
+                  </div>
+                  
+                  <a class="stretched-link lightbox" href="/foto/${data.data[i].slug}"></a>
+                </div>
+              </div>
+             `)
+       }
+       console.log(data);
+       if( data.data.length <= 0 ) {
+           mentok = true;
+       }
+       $('.loader').hide();
+    })
+    .fail(function(jqXHR, ajaxOptions, thrownError)
+    {
+          alert('server not responding...');
+    });
+ }
 </script>
 @endsection
