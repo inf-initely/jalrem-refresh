@@ -169,7 +169,7 @@ class ArtikelController extends Controller
     {
         $artikel = Artikel::findOrFail($articleId);
         $artikel_kontributor = false;
-        if( $article->id_kontributor != null ) {
+        if( $artikel->id_kontributor != null ) {
             $artikel_kontributor = true;
         }
 

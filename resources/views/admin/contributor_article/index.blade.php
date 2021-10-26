@@ -92,7 +92,7 @@
       }).then((result) => {
         if (result.isConfirmed) {
           let id = $(this).attr("data-id");
-          window.location.href = `/admin/master/kontributor/delete/${id}`
+          window.location.href = `/admin/konten/artikel/delete/${id}`
           Swal.fire(
             'Deleted!',
             'Your file has been deleted.',
