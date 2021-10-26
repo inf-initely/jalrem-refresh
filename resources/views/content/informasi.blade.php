@@ -19,9 +19,7 @@
             <div class="col-md-6">
               <h2 class="sub-judul">Kegiatan Terkini</h2>
             </div>
-            <div class="col-md-6 center-v text-end">
-              <a href="{{ route('events') }}" class="btn btn-outline-danger">Lihat Semua</a>
-            </div>
+
           </header>
           <div class="row justify-content-center">
             <div class="col-lg-12">
@@ -57,6 +55,9 @@
               </div>
             </div>
           </div>
+          <div class="col-12 col-md-6 mt-3">
+              <a href="{{ route('events') }}" class="btn btn-outline-danger">Lihat Semua</a>
+          </div>
         </div>
       </section>
       <section id="kegiatanSebelumnya">
@@ -65,9 +66,7 @@
             <div class="col-md-6">
               <h2 class="sub-judul">Kegiatan Sebelumnya</h2>
             </div>
-            <div class="col-md-6 center-v text-end">
-              <a href="{{ route('events') }}" class="btn btn-outline-danger">Lihat Semua</a>
-            </div>
+
           </header>
           <!--<div class="row justify-content-center">
             <div class="col-lg-12">
@@ -124,6 +123,9 @@
             @endforeach
 
             </div>
+            <div class="col-12 col-md-6 mt-3">
+              <a href="{{ route('events') }}" class="btn btn-outline-danger">Lihat Semua</a>
+            </div>
           </div>
         </div>
       </section>
@@ -132,9 +134,6 @@
           <header class="row justify-content-start mb-2">
             <div class="col-md-6">
               <h2 class="sub-judul">Kerja Sama</h2>
-            </div>
-            <div class="col-md-6 center-v text-end">
-              <a href="{{ route('kerjasama') }}" class="btn btn-outline-danger">Lihat Semua</a>
             </div>
           </header>
           <div class="row justify-content-center">
@@ -170,6 +169,9 @@
                 @endforeach
               </div>
             </div>
+          </div>
+          <div class="col-12 col-md-6 mt-3">
+            <a href="{{ route('kerjasama') }}" class="btn btn-outline-danger">Lihat Semua</a>
           </div>
         </div>
       </section>

@@ -64,7 +64,7 @@
             </div>
             <div class="col-12 col-md-6 col-lg-6 center-v">
               <header>
-                <h2 class="sub-judul">Jalur</h2>
+                <h2 class="sub-judul sub-judul-jelajahi">Jalur</h2>
               </header>
               <p class="jelajah-des">Jalur Rempah mencakup berbagai lintasan jalur budaya yang melahirkan peradaban global & menghidupkan kembali peran masyarakat Nusantara berabad-abad lampau.</p>
               <a href="{{ route('tentangjalur') }}" class="btn btn-danger btn-jelajah">
@@ -75,10 +75,10 @@
               </a> --}}
             </div>
           </div>
-          <div class="row justify-content-center content-jelajahi wrap-div" data-aos="fade-left">
-            <div class="col-12 col-md-6 col-lg-6 text-end center-v mb-2 second-div" style="margin-top: 30px;">
+          <div class="row justify-content-center content-jelajahi wrap-div text-end" data-aos="fade-left">
+            <div class="col-12 col-md-6 col-lg-6 center-v mb-2 second-div sec-jejak">
               <header>
-                <h2 class="sub-judul">Jejak</h2>
+                <h2 class="sub-judul sub-judul-jelajahi">Jejak</h2>
               </header>
               <p class="jelajah-des">Jejak memperlihatkan interaksi budaya pada masa lampau yang masih hidup hingga hari ini. Sebuah peninggalan nilai budaya yang menjadi memori kolektif bangsa.</p>
               <a href="{{ route('tentangjejak') }}" class="btn btn-danger btn-jelajah">
@@ -98,7 +98,7 @@
             </div>
             <div class="col-12 col-md-6 col-lg-6 center-v">
               <header>
-                <h2 class="sub-judul">Masa Depan</h2>
+                <h2 class="sub-judul sub-judul-jelajahi">Masa Depan</h2>
               </header>
               <p class="jelajah-des">Sebuah upaya rekontruksi dan revitalisasi jalur budaya bahari. Penggalian kembali potensi untuk kekayaan dan kesejahteraan bersama yang lestari.</p>
               <a href="{{ route('tentangmasadepan') }}" class="btn btn-danger btn-jelajah">
@@ -116,7 +116,7 @@
           <img class="item-jelajah item-jelajah-3" src="assets/img/asset-jelajah.png">
           <div class="row justify-content-center content-jelajahi" data-aos="fade-left">
             <div class="col-lg-10 mb-4">
-              <div class="ytdefer video video-magnet-dunia" data-alt="Enter optional img alt text here" data-title="Enter optional img title here" data-src="a7CMQ36ixNw"></div>
+              <div class="ytdefer video video-magnet-dunia" data-alt="Enter optional img alt text here" data-title="Enter optional img title here" data-src="a7CMQ36ixNw" style="position: relative !important;"></div>
             </div>
             <div class=" col-lg-10 center-v">
               <header>
