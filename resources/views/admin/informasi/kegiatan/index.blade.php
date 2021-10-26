@@ -56,13 +56,13 @@
                       <span class="badge rounded-pill py-1 px-3 {{ $k->status == 'publikasi' ? 'bg-success' : 'bg-secondary' }}">{{ $k->status == 'publikasi' ? 'Aktif' : 'Draft' }}</span>
                     </td>
                     <td>
-                      <a href="{{ route('event_detail', $k->slug) }}" class="btn btn-sm btn-outline-primary">
+                      <a href="{{ route('event_detail', $k->slug) }}" class="btn btn-sm btn-outline-primary mb-1">
                         View
                       </a>
-                      <a href="{{ route('admin.kegiatan.edit', $k->id) }}" class="btn btn-sm btn-outline-info">
+                      <a href="{{ route('admin.kegiatan.edit', $k->id) }}" class="btn btn-sm btn-outline-info mb-1">
                         Edit
                       </a>
-                      <button class="btn btn-sm btn-outline-danger btn-hapus" data-id="{{ $k->id }}">
+                      <button class="btn btn-sm btn-outline-danger btn-hapus mb-1" data-id="{{ $k->id }}">
                         Hapus
                       </button>
                     </td>

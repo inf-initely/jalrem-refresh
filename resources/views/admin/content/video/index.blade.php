@@ -56,13 +56,13 @@
                           <span class="badge rounded-pill py-1 px-3 {{ $v->status == 'publikasi' ? 'bg-success' : 'bg-secondary' }}">{{ $v->status == 'publikasi' ? 'Aktif' : 'Draft' }}</span>
                         </td>
                         <td>
-                          <a href="{{ route('video_detail', $v->slug) }}" class="btn btn-sm btn-outline-primary">
+                          <a href="{{ route('video_detail', $v->slug) }}" class="btn btn-sm btn-outline-primary mb-1">
                             View
                           </a>
-                          <a href="{{ route('admin.video.edit', $v->id) }}" class="btn btn-sm btn-outline-info">
+                          <a href="{{ route('admin.video.edit', $v->id) }}" class="btn btn-sm btn-outline-info mb-1">
                             Edit
                           </a>
-                          <button class="btn btn-sm btn-outline-danger btn-hapus" data-id="{{ $v->id }}">
+                          <button class="btn btn-sm btn-outline-danger btn-hapus mb-1" data-id="{{ $v->id }}">
                             Hapus
                           </button>
                         </td>
