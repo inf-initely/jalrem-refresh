@@ -97,7 +97,19 @@
                     <a href="{{ route('publications') }}" class="stretched-link"></a>
                   </div>
                 </div>
-                <div class="col mb-2">
+                <div class="col d-none d-lg-block d-xl-none mb-1">
+                  <div class="card no-border card-media">
+                    <div class="card-body">
+                      <img src="{{ asset('assets/img/icon-sound.png') }}" width="32.5%">
+                      <p class="judul-media">Audio</p>
+                      <p class="des-media">
+
+                      </p>
+                    </div>
+                    <a href="{{ route('audios') }}" class="stretched-link"></a>
+                  </div>
+                </div>
+                <div class="col-6 mb-1 d-lg-none d-xl-block">
                   <div class="card no-border card-media">
                     <div class="card-body">
                       <img src="{{ asset('assets/img/icon-sound.png') }}" width="32.5%">
