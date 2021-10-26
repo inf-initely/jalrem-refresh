@@ -109,7 +109,7 @@
                     <a href="{{ route('audios') }}" class="stretched-link"></a>
                   </div>
                 </div>
-                <div class="col-6 mb-1 d-lg-none d-xl-block">
+                <div class="col-6 col-md-3 mb-1 d-lg-none d-xl-block">
                   <div class="card no-border card-media">
                     <div class="card-body">
                       <img src="{{ asset('assets/img/icon-sound.png') }}" width="32.5%">
