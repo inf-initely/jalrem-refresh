@@ -97,19 +97,53 @@ class PublikasiController extends Controller
         views($publikasi)->record();
 
         if( $lg == 'en' ) {
-            $publikasiPopuler = $publikasiPopuler->where('judul_english', '!=', null)->take(3)->get();
-            $publikasiTerbaru = $publikasiTerbaru->where('judul_english', '!=', null)->take(3)->get();
-            $publikasiTerkait = $publikasiTerkait->where('judul_english', '!=', null)->take(3)->get();
-            $publikasiBacaJuga = $publikasiBacaJuga->where('judul_english', '!=', null)->first();
+            $publikasiPopuler = $this->generate_articles_show($publikasi->where('judul_english', '!=', null)->get());
+            $publikasiTerbaru = $query_without_this_publication->orderBy('published_at')->take(3)->get();
+            $publikasiTerkait = $this->generate_articles_show($publikasi->where('judul_english', '!=', null)->get());
+            $publikasiBacaJuga = $this->generate_articles_show($publikasi->where('judul_english', '!=', null)->get(), false);
 
             return view('content_english.publication_detail', compact('publikasi', 'publikasiPopuler', 'publikasiTerbaru', 'publikasiTerkait', 'publikasiBacaJuga'));
+        } else {
+            $artikelPopuler = $this->generate_articles_show($query_without_this_publication->get());
+            $artikelTerbaru = $query_without_this_publication->orderBy('published_at')->take(3)->get();
+            $artikelTerkait = $this->generate_articles_show($query_without_this_publication->get());
+            $artikelBacaJuga = $this->generate_articles_show($query_without_this_publication->get(), false);
+            
+            return view('content.publication_detail', compact('publikasi', 'publikasiPopuler', 'publikasiTerbaru', 'publikasiTerkait', 'publikasiBacaJuga'));
         }
         
-        $publikasiPopuler = $publikasiPopuler->take(3)->get();
-        $publikasiTerbaru = $publikasiTerbaru->take(3)->get();
-        $publikasiTerkait = $publikasiTerkait->take(3)->get();
-        $publikasiBacaJuga = $publikasiBacaJuga->first();
+    }
+
+    private function generate_articles_show($artikel, $is_all = true)
+    {
+        // dd($artikel);
+        if( $is_all ) {
+            $articles = [];
+            $index_container = [];
+            $i = 0;
+            if( count($artikel) > 3  ) {
+                while( $i < 3 ) {
+
+                    // dd(!in_array($index, $index_container));
+                    $index = rand(1, count($artikel)) - 1;
+                    if( !in_array($index, $index_container) ) {
+                        $i++;
+                        // dump($i);
+                        $articles[] = $artikel[$index];
+                        $index_container[] = $index;
+                    }
+                }
+            } else {
+                $articles = $artikel;
+            }
+            
+            // dd('oke');
+            return $articles;
+        } else {
+            $index = rand(1, count($artikel)) - 1;
+            return $artikel[$index];
+        }   
         
-        return view('content.publication_detail', compact('publikasi', 'publikasiPopuler', 'publikasiTerbaru', 'publikasiTerkait', 'publikasiBacaJuga'));
+    
     }
 }

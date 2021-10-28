@@ -89,41 +89,45 @@ class ArtikelController extends Controller
         }
       
         views($artikel)->record();
-        $artikelPopuler = $query_without_this_article->orderByViews();
-        $artikelTerbaru = $query_without_this_article;
         
-        $artikelTerkait = $query_without_this_article;
-        $artikelBacaJuga = $query_without_this_article;
 
         if(Session::get('lg') == 'en' ) {
-            if( count($query_without_this_article->get()) > 3 ) {
-                $artikelPopuler = $artikelPopuler->where('judul_english', '!=', null)->take(3)->get();
-                $artikelTerbaru = $artikelTerbaru->where('judul_english', '!=', null)->take(3)->get();
-                $artikelTerkait = $artikelTerkait->where('judul_english', '!=', null)->take(3)->get();
-                $artikelBacaJuga = $artikelBacaJuga->where('judul_english', '!=', null)->first();
-            } else {
-                $artikelPopuler = $artikelPopuler->where('judul_english', '!=', null)->get();
-                $artikelTerbaru = $artikelTerbaru->where('judul_english', '!=', null)->get();
-                $artikelTerkait = $artikelTerkait->where('judul_english', '!=', null)->get();
-                $artikelBacaJuga = $artikelBacaJuga->where('judul_english', '!=', null)->first();
-            }
+            // if( count($query_without_this_article->get()) > 3 ) {
+            //     $artikelPopuler = $artikelPopuler->where('judul_english', '!=', null)->take(3)->get();
+            //     $artikelTerbaru = $artikelTerbaru->where('judul_english', '!=', null)->take(3)->get();
+            //     $artikelTerkait = $artikelTerkait->where('judul_english', '!=', null)->take(3)->get();
+            //     $artikelBacaJuga = $artikelBacaJuga->where('judul_english', '!=', null)->first();
+            // } else {
+                // $artikel = $artikel->get();
+                $artikelPopuler = $this->generate_articles_show($artikel->where('judul_english', '!=', null)->get());
+                
+                $artikelTerbaru = $query_without_this_article->orderBy('published_at')->take(3)->get();
+                $artikelTerkait = $this->generate_articles_show($artikel->where('judul_english', '!=', null)->get());
+                $artikelBacaJuga = $this->generate_articles_show($artikel->where('judul_english', '!=', null)->get(), false);
+            // }
             
             
             return view('content_english.article_detail', compact('artikel', 'artikelTerbaru', 'artikelPopuler', 'artikelBacaJuga', 'artikelTerkait'));
+        } else {
+            $artikelPopuler = $this->generate_articles_show($query_without_this_article->get());
+            $artikelTerbaru = $query_without_this_article->orderBy('published_at')->take(3)->get();
+            
+            $artikelTerkait = $this->generate_articles_show($query_without_this_article->get());
+            $artikelBacaJuga = $this->generate_articles_show($query_without_this_article->get(), false);
         }
         
-        if( count($query_without_this_article->get()) > 3 ) {
-            $artikelPopuler = $artikelPopuler->take(3)->get();
-            $artikelTerkait = $artikelTerkait->take(3)->get();
-            $artikelTerbaru = $artikelTerbaru->take(3)->get();
+        // if( count($query_without_this_article->get()) > 3 ) {
+        //     $artikelPopuler = $artikelPopuler->take(3)->get();
+        //     $artikelTerkait = $artikelTerkait->take(3)->get();
+        //     $artikelTerbaru = $artikelTerbaru->take(3)->get();
 
-            $artikelBacaJuga = $artikelBacaJuga->first();
-        } else {
-            $artikelPopuler = $artikelPopuler->get();
-            $artikelTerkait = $artikelTerkait->get();
-            $artikelTerbaru = $artikelTerbaru->get();
-            $artikelBacaJuga = $artikelBacaJuga->first();
-        }
+        //     $artikelBacaJuga = $artikelBacaJuga->first();
+        // } else {
+        //     $artikelPopuler = $artikelPopuler->get();
+        //     $artikelTerkait = $artikelTerkait->get();
+        //     $artikelTerbaru = $artikelTerbaru->get();
+        //     $artikelBacaJuga = $artikelBacaJuga->first();
+        // }
     
         return view('content.article_detail', compact('artikel', 'artikelTerbaru', 'artikelPopuler', 'artikelBacaJuga', 'artikelTerkait'));
     }
@@ -146,5 +150,37 @@ class ArtikelController extends Controller
         })->paginate(9);
 
         return view('content.articles', compact('artikel'));
+    }
+
+    private function generate_articles_show($artikel, $is_all = true)
+    {
+        if( $is_all ) {
+            $articles = [];
+            $index_container = [];
+            $i = 0;
+            if( count($artikel) > 1  ) {
+                while( $i < 3 ) {
+
+                    // dd(!in_array($index, $index_container));
+                    $index = rand(1, count($artikel)) - 1;
+                    if( !in_array($index, $index_container) ) {
+                        $i++;
+                        // dump($i);
+                        $articles[] = $artikel[$index];
+                        $index_container[] = $index;
+                    }
+                }
+            } else {
+                $articles = $artikel;
+            }
+            
+            // dd('oke');
+            return $articles;
+        } else {
+            $index = rand(1, count($artikel)) - 1;
+            return $artikel[$index];
+        }   
+        
+    
     }
 }

@@ -32,8 +32,9 @@
                 <thead>
                   <tr>
                     <th>No.</th>
-                    <th>Tanggal</th>
-                    <th>Judul Kerja sama</th>
+                    <th>Tanggal Dibuat</th>
+                    <th>Tanggal Dipublish</th>
+                    <th>Judul Kerjasama</th>
                     <th>Penulis</th>
                     <th>Slider Utama</th>
                     <th>Status</th>
@@ -55,10 +56,10 @@
                       <span class="badge rounded-pill py-1 px-3 {{ $k->status == 'publikasi' ? 'bg-success' : 'bg-secondary' }}">{{ $k->status == 'publikasi' ? 'Aktif' : 'Draft' }}</span>
                     </td>
                     <td>
-                      <a href="{{ route('kerjasama_detail', $k->slug) }}" class="btn btn-sm btn-outline-primary mb-1">
+                      <a href="{{ route('event_detail', $k->slug) }}" class="btn btn-sm btn-outline-primary mb-1">
                         View
                       </a>
-                      <a href="{{ route('admin.kerjasama.edit', $k->id) }}" class="btn btn-sm btn-outline-info mb-1">
+                      <a href="{{ route('admin.kegiatan.edit', $k->id) }}" class="btn btn-sm btn-outline-info mb-1">
                         Edit
                       </a>
                       <button class="btn btn-sm btn-outline-danger btn-hapus mb-1" data-id="{{ $k->id }}">
