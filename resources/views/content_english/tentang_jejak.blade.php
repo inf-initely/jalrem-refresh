@@ -88,7 +88,6 @@
                                         <div class="col-7 center-v">
                                             <a href="#" class="text-danger m-0 p-0 text-decoration-none wilayah"><small>{{ $a->lokasi->nama_lokasi_english ?? '' }}</small></a>
                                             <h3 class="judul-artikel judul-artikel-tentang"><a href="{{ route('video_detail', $a->slug) }}" class="text-decoration-none clr-black">{{ $a->judul_english }}</a> </h3>
-                                            <!-- <p class="des-artikel des-artikel-tentang minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p> -->
                                             <div class="wrap-tag-rempah">
                                                 @if( $a->rempahs != null )
                                                 @foreach( $a->rempahs as $r )
@@ -138,7 +137,6 @@
                                         <div class="col-7 center-v">
                                             <a href="#" class="text-danger m-0 p-0 text-decoration-none wilayah"><small>{{ $a->lokasi->nama_lokasi_english ?? '' }}</small></a>
                                             <h3 class="judul-artikel judul-artikel-tentang"><a href="{{ route('video_detail', $a->slug) }}" class="text-decoration-none clr-black">{{ $a->judul_english }}</a> </h3>
-                                            <!-- <p class="des-artikel des-artikel-tentang minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p> -->
                                             <div class="wrap-tag-rempah">
                                                 @if( $a->rempahs != null )
                                                 @foreach( $a->rempahs as $r )
@@ -173,7 +171,6 @@
                                             <div class="col-7 center-v">
                                                 <a href="#" class="text-danger m-0 p-0 text-decoration-none wilayah"><small>{{ $a->lokasi->nama_lokasi_english ?? '' }}</small></a>
                                                 <h3 class="judul-artikel judul-artikel-tentang"><a href="{{ route(generate_route_content($a->getTable()) . '_detail', $a->slug) }}" class="text-decoration-none clr-black">{{ $a->judul_english }}</a> </h3>
-                                                <!-- <p class="des-artikel des-artikel-tentang minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p> -->
                                                 <div class="wrap-tag-rempah">
                                                     @if( $a->rempahs != null )
                                                     @foreach( $a->rempahs as $r )
@@ -1009,7 +1006,6 @@ const provinceLatLong = [{
                             <div class="col-7 center-v">
                                 <a href="#" class="text-danger m-0 p-0 text-decoration-none wilayah"><small>${data.data[i].nama_lokasi}</small></a>
                                 <h3 class="judul-artikel judul-artikel-tentang"><a href="video/${data.data[i].slug}" class="text-decoration-none clr-black">${data.data[i].judul}</a> </h3>
-                                <!-- <p class="des-artikel des-artikel-tentang minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p> -->
                                 <div class="wrap-tag-rempah">
                                     ${rempahs}
                                 </div>
@@ -1045,7 +1041,6 @@ const provinceLatLong = [{
                             <div class="col-7 center-v">
                                 <a href="#" class="text-danger m-0 p-0 text-decoration-none wilayah"><small>${data.data[i].nama_lokasi}</small></a>
                                 <h3 class="judul-artikel judul-artikel-tentang"><a href="video/${data.data[i].slug}" class="text-decoration-none clr-black">${data.data[i].judul}</a> </h3>
-                                <!-- <p class="des-artikel des-artikel-tentang minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p> -->
                                 <div class="wrap-tag-rempah">
                                     ${rempahs}
                                 </div>
@@ -1087,7 +1082,6 @@ const provinceLatLong = [{
                             <div class="col-7 center-v">
                                 <a href="#" class="text-danger m-0 p-0 text-decoration-none wilayah"><small>{{ $a->lokasi->nama_lokasi ?? '' }}</small></a>
                                 <h3 class="judul-artikel judul-artikel-tentang"><a href="{{ route(generate_route_content($a->getTable()) . '_detail', $a->slug) }}" class="text-decoration-none clr-black">{{ $a->judul_indo }}</a> </h3>
-                                <!-- <p class="des-artikel des-artikel-tentang minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p> -->
                                 <div class="wrap-tag-rempah">
                                     ${rempahs}
                                 </div>
