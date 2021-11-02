@@ -22,11 +22,13 @@
           <div class="row justify-content-center">
             <div class="col-lg-10">
               <section id="tabLine">
-                <div class="row justify-content-center">
+                <div class="row justify-content-center" id="audios">
                   @foreach( $audio as $a )
                   <div class="col-md-12 col-lg-4 mb-4">
                     <div class="card no-border card-artikel">
-                      <div class="ytdefer video media-video" data-alt="youtube jalur rempah" data-src="{{ $a->cloud_key }}"></div>
+                      {{-- <div class="ytdefer video media-video" data-alt="youtube jalur rempah" data-src="{{ $a->cloud_key }}"></div> --}}
+                      <iframe width="100%" height="190" src="//www.youtube.com/embed/{{ $a->cloud_key }}?rel=0&amp;fs=0&amp;showinfo=0" frameborder="0" allowfullscreen>
+                      </iframe>
                       <a class="stretched-link lightbox" href="{{ route('audio_detail', $a->slug_english ?? $a->slug) }}"></a>
                       <div class="card-body">
                         <p class="card-text">{{ $a->judul_english }}</p>
@@ -46,7 +48,7 @@
                   @endforeach
                 </div>
                 <div class="d-flex justify-content-center">
-                {!! $audio->links() !!}
+                    <div class="loader"></div>
                 </div>
               </section>
             </div>
@@ -60,6 +62,7 @@
 @section('js')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="{{ asset('assets/js/ytdefer.min.js') }}"></script>
 <script>
 $(document).ready(function() {
   if ($(window).width() <= 1000) {
@@ -143,4 +146,74 @@ function initializeVideoModule(videoModule) {
   });
 }
 </script>
+<script>
+  window.addEventListener('load', ytdefer_setup);
+</script>
+<script>
+  var page = 1
+  var mentok = false;
+  $(window).scroll(function() {
+      if($(window).scrollTop() + $(window).height() >= $(document).height() - 300) {
+          if( !mentok ) {
+          page++;
+          loadMoreData(page);
+          }
+      }
+  });
+  $('.loader').hide();
+  
+  function loadMoreData(page) {
+      $.ajax({
+          url: '?page=' + page,
+          type: 'GET',
+          beforeSend: function() {
+          $('.loader').show();
+          }
+      })
+      .done(function(data)
+      {
+          // console.log(data.data[0].profile.photo_url);
+          // if(data.html == " "){
+          //       // $('.ajax-load').html("No more records found");
+          //       return;
+          // }
+          
+          for( let i = 0; i < data.data.length; i++ ) {
+            let kategori_show = data?.data[i]?.kategori_show?.map(item => {
+                if( item == 'Indepth' ) {
+                    return '<span class="badge rounded-pill py-1 px-3 bg-success">Indepth</span>'
+                } else if( item == 'Jurnal Artikel' ) {
+                    return '<span class="badge rounded-pill py-1 px-3 bg-secondary">Jurnal Artikel</span>'
+                }
+                return '<div></div>';
+            }).toString().replaceAll(',', ' ')
+
+            if( kategori_show == undefined ) {
+                kategori_show = '<div></div>';
+            }
+            $('#audios').append(`
+            <div class="col-md-12 col-lg-4 mb-4">
+              <div class="card no-border card-artikel">
+                <iframe width="100%" height="190" src="//www.youtube.com/embed/${data.data[i].cloudkey}?rel=0&amp;fs=0&amp;showinfo=0" frameborder="0" allowfullscreen>
+                </iframe>
+                <a class="stretched-link lightbox" href="/audio/${data.data[i].slug}"></a>
+                <div class="card-body">
+                  <p class="card-text">${data.data[i].judul}</p>
+                  ${kategori_show.toString().replaceAll(',', ' ')}
+                </div>
+              </div>
+            </div>
+                `)
+            }
+            if( data.data.length <= 0 ) {
+                mentok = true;
+            }
+            $('.loader').hide();
+      })
+      .fail(function(jqXHR, ajaxOptions, thrownError)
+      {
+          alert('server not responding...');
+      });
+  }
+  </script>
 @endsection

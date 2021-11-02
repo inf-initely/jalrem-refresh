@@ -198,3 +198,10 @@ little {
 .tagin-tag{
   padding: 0px 7px;
 }
+
+
+.btn-outline-primary,
+.btn-outline-info,
+.btn-hapus {
+    width: 65px !important;
+}

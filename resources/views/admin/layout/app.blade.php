@@ -20,7 +20,7 @@
     <link href="{{ asset('assets/admin/css/tagin.css') }}?v={{ config('app.version') }}" rel="stylesheet" >
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css">
     <link href="{{ asset('assets/admin/css/my-style.css' ) }}?v={{ config('app.version') }}" rel="stylesheet">
-    <link rel="shortcut icon" href="{{ asset('assets/admin/img/logo/favicon.png') }}" >
+    <link rel="shortcut icon" href="{{ asset('assets/img/logo/favicon.png') }}" >
 </head>
   <body id="page-top">
     <!-- Page Wrapper -->

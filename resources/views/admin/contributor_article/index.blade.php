@@ -56,13 +56,13 @@
                               <span class="badge rounded-pill py-1 px-3 {{ $a->status == 'publikasi' ? 'bg-success' : 'bg-secondary' }}">{{ $a->status == 'publikasi' ? 'Aktif' : 'Draft' }}</span>
                             </td>
                             <td>
-                              <a href="{{ route('article_detail', $a->slug) }}" class="btn btn-sm btn-outline-primary">
+                              <a href="{{ route('article_detail', $a->slug) }}" class="btn btn-sm btn-outline-primary mb-1">
                                 View
                               </a>
-                              <a href="{{ route('admin.article.edit', $a->id) }}" class="btn btn-sm btn-outline-info">
+                              <a href="{{ route('admin.article.edit', $a->id) }}" class="btn btn-sm btn-outline-info mb-1">
                                 Edit
                               </a>
-                              <button class="btn btn-sm btn-outline-danger btn-hapus" data-id="{{ $a->id }}">
+                              <button class="btn btn-sm btn-outline-danger btn-hapus mb-1" data-id="{{ $a->id }}">
                                 Hapus
                               </button>
                             </td>
@@ -92,7 +92,7 @@
       }).then((result) => {
         if (result.isConfirmed) {
           let id = $(this).attr("data-id");
-          window.location.href = `/admin/master/kontributor/delete/${id}`
+          window.location.href = `/admin/konten/artikel/delete/${id}`
           Swal.fire(
             'Deleted!',
             'Your file has been deleted.',

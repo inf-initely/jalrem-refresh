@@ -21,7 +21,7 @@ class ArtikelController extends Controller
 {
     public function index()
     {
-        $artikels = Artikel::where('id_kontributor', null)->orderBy('published_at', 'desc')->get();
+        $artikels = Artikel::where('id_kontributor', null)->orderBy('created_at', 'desc')->get();
 
         return view('admin.content.article.index', compact('artikels'));
     }
@@ -169,7 +169,7 @@ class ArtikelController extends Controller
     {
         $artikel = Artikel::findOrFail($articleId);
         $artikel_kontributor = false;
-        if( $article->id_kontributor != null ) {
+        if( $artikel->id_kontributor != null ) {
             $artikel_kontributor = true;
         }
 

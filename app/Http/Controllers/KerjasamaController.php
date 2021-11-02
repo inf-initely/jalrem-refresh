@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\Kerjasama;
 
+use Illuminate\Pagination\Paginator;
+
 class KerjasamaController extends Controller
 {
     public function index()
@@ -13,13 +15,62 @@ class KerjasamaController extends Controller
         $kerjasama = Kerjasama::where('status', 'publikasi')->where('published_at', '<=', \Carbon\Carbon::now())->orderBy('published_at', 'desc');
 
         if( Session::get('lg') == 'en' ) {
-            $kerjasama = $kerjasama->where('judul_english', '!=', null)->paginate(9);
-            return view('content_english.kerjasama', compact('kerjasama'));
+            $kerjasama = $kerjasama->where('judul_english', '!=', null)->paginate(1);
+
+            if( Paginator::resolveCurrentPage() != 1 ) {
+                $partnerships = [];
+                $i = 0;
+                foreach( $kerjasama as $a ) {
+                    $partnerships[$i]['judul'] = Session::get('lg') == 'en' ? $a->judul_english : $a->judul_indo;
+                    $partnerships[$i]['thumbnail'] = $a->thumbnail;
+                    $j = 0;
+                    foreach( $a->kategori_show as $ks ) {
+                        $partnerships[$i]['kategori_show'][$j] = $ks->isi;
+                        $j++;
+                    }
+                    $partnerships[$i]['konten'] = Session::get('lg') == 'en' ? \Str::limit($a->konten_english, 50, $end='...') : \Str::limit($a->konten_indo, 50, $end='...');
+                    $partnerships[$i]['slug'] = $a->slug;
+                    $partnerships[$i]['penulis'] = $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin';
+                    $partnerships[$i]['published_at'] = \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y');
+                    $i++;
+                }
+                return response()->json([
+                    'status' => 'success', 
+                    'data' => $partnerships
+                ]);
+            } else {
+                return view('content_english.kerjasama', compact('kerjasama'));
+            }
+
         }
         
-        $kerjasama = $kerjasama->paginate(9);
+        $kerjasama = $kerjasama->paginate(1);
 
-        return view('content.kerjasama', compact('kerjasama'));
+        if( Paginator::resolveCurrentPage() != 1 ) {
+            $partnerships = [];
+            $i = 0;
+            foreach( $kerjasama as $a ) {
+                $partnerships[$i]['judul'] = Session::get('lg') == 'en' ? $a->judul_english : $a->judul_indo;
+                $partnerships[$i]['thumbnail'] = $a->thumbnail;
+                $j = 0;
+                foreach( $a->kategori_show as $ks ) {
+                    $partnerships[$i]['kategori_show'][$j] = $ks->isi;
+                    $j++;
+                }
+                $partnerships[$i]['konten'] = Session::get('lg') == 'en' ? \Str::limit($a->konten_english, 50, $end='...') : \Str::limit($a->konten_indo, 50, $end='...');
+                $partnerships[$i]['slug'] = $a->slug;
+                $partnerships[$i]['penulis'] = $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin';
+                $partnerships[$i]['published_at'] = \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y');
+                $i++;
+            }
+            return response()->json([
+                'status' => 'success', 
+                'data' => $partnerships
+            ]);
+        } else {
+            return view('content.kerjasama', compact('kerjasama'));
+        }
+
     }
     public function show($slug)
     {
