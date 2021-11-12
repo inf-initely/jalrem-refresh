@@ -19,7 +19,9 @@
             <div class="col-md-6">
               <h2 class="sub-judul">Ongoing</h2>
             </div>
-
+            <div class="col-md-6 center-v text-end d-desktop">
+              <a href="{{ route('events') }}" class="btn btn-outline-danger">See all</a>
+            </div>
           </header>
           <div class="row justify-content-center">
             <div class="col-lg-12">
@@ -55,7 +57,7 @@
               </div>
             </div>
           </div>
-          <div class="col-12 col-md-6 mt-3 text-center-sm">
+          <div class="col-md-12 text-center d-mobile mt-2">
               <a href="{{ route('events') }}" class="btn btn-outline-danger">See all</a>
             </div>
         </div>
@@ -66,7 +68,9 @@
             <div class="col-md-6">
               <h2 class="sub-judul">Past</h2>
             </div>
-
+            <div class="col-md-6 center-v text-end d-desktop">
+              <a href="{{ route('events') }}" class="btn btn-outline-danger">See all</a>
+            </div>
           </header>
           <!--<div class="row justify-content-center">
             <div class="col-lg-12">
@@ -123,7 +127,7 @@
               @endforeach
 
               </div>
-              <div class="col-12 col-md-6 mt-3 text-center-sm">
+              <div class="col-md-12 text-center d-mobile mt-2">
                 <a href="{{ route('events') }}" class="btn btn-outline-danger">See all</a>
               </div>
           </div>
@@ -134,6 +138,9 @@
           <header class="row justify-content-start mb-2">
             <div class="col-md-6">
               <h2 class="sub-judul">Partnership</h2>
+            </div>
+            <div class="col-md-6 center-v text-end d-desktop">
+              <a href="{{ route('kerjasama') }}" class="btn btn-outline-danger">See all</a>
             </div>
           </header>
           <div class="row justify-content-center">
@@ -160,7 +167,7 @@
               </div>
             </div>
           </div>
-          <div class="col-12 col-md-6 mt-3 text-center-sm">
+          <div class="col-md-12 text-center d-mobile mt-2">
               <a href="{{ route('kerjasama') }}" class="btn btn-outline-danger">See all</a>
             </div>
         </div>
