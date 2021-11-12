@@ -62,7 +62,7 @@
 
                 <h1 class="mt-3">@yield('code')</h1>
                 <p> @yield('message')</p>
-                <a href="#"> <i class="fas fa-arrow-alt-circle-left"></i> Kembali</a>
+                <a href="#" onclick="goBack()"> <i class="fas fa-arrow-alt-circle-left"></i> Kembali</a>
             </div>
           </div>
       <!-- Optional JavaScript; choose one of the two! -->
@@ -74,4 +74,9 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
         -->
     </body>
+    <script>
+      function goBack() {
+        window.history.back();
+      }
+    </script>
 </html>
