@@ -55,7 +55,7 @@
               </div>
             </div>
           </div>
-          <div class="col-12 col-md-6 mt-3">
+          <div class="col-12 col-md-6 mt-3 text-center-sm">
               <a href="{{ route('events') }}" class="btn btn-outline-danger">Lihat Semua</a>
           </div>
         </div>
@@ -123,7 +123,7 @@
             @endforeach
 
             </div>
-            <div class="col-12 col-md-6 mt-3">
+            <div class="col-12 col-md-6 mt-3 text-center-sm">
               <a href="{{ route('events') }}" class="btn btn-outline-danger">Lihat Semua</a>
             </div>
           </div>
@@ -170,7 +170,7 @@
               </div>
             </div>
           </div>
-          <div class="col-12 col-md-6 mt-3">
+          <div class="col-12 col-md-6 mt-3 text-center-sm">
             <a href="{{ route('kerjasama') }}" class="btn btn-outline-danger">Lihat Semua</a>
           </div>
         </div>

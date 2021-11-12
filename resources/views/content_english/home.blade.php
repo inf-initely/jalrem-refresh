@@ -64,7 +64,7 @@
             </div>
             <div class="col-12 col-md-6 col-lg-6 center-v">
               <header>
-                <h2 class="sub-judul">The Route</h2>
+                <h2 class="sub-judul sub-judul-jelajahi">The Route</h2>
               </header>
               <p class="jelajah-des">The Spice Routes covers various cultural routes that gave rise to global civilization & revive the people of Nusantara’s role centuries ago.</p>
               <a href="{{ route('tentangjalur') }}" class="btn btn-danger btn-jelajah">
@@ -75,10 +75,10 @@
               </a> --}}
             </div>
           </div>
-          <div class="row justify-content-center content-jelajahi wrap-div" data-aos="fade-left">
-            <div class="col-12 col-md-6 col-lg-6 text-end center-v mb-2 second-div" style="margin-top: 30px;">
+          <div class="row justify-content-center content-jelajahi wrap-div text-end" data-aos="fade-left">
+            <div class="col-12 col-md-6 col-lg-6 center-v mb-2 second-div sec-jejak">
               <header>
-                <h2 class="sub-judul">The Trace</h2>
+                <h2 class="sub-judul sub-judul-jelajahi">The Trace</h2>
               </header>
               <p class="jelajah-des">The traces display the cultural interactions in the past that still exist today, a cultural heritage that has become Indonesia’s collective memory.</p>
               <a href="{{ route('tentangjejak') }}" class="btn btn-danger btn-jelajah">
@@ -98,7 +98,7 @@
             </div>
             <div class="col-12 col-md-6 col-lg-6 center-v">
               <header>
-                <h2 class="sub-judul">The Future</h2>
+                <h2 class="sub-judul sub-judul-jelajahi">The Future</h2>
               </header>
               <p class="jelajah-des">A means of reconstruction and revitalization of the nautical cultural routes. Re-excavating the potentials for sustainable wealth and prosperity of all.</p>
               <a href="{{ route('tentangmasadepan') }}" class="btn btn-danger btn-jelajah">
@@ -116,7 +116,7 @@
           <img class="item-jelajah item-jelajah-3" src="assets/img/asset-jelajah.png">
           <div class="row justify-content-center content-jelajahi" data-aos="fade-left">
             <div class="col-lg-10 mb-4">
-              <div class="ytdefer video video-magnet-dunia" data-alt="Enter optional img alt text here" data-title="Enter optional img title here" data-src="a7CMQ36ixNw"></div>
+              <div class="ytdefer video video-magnet-dunia" data-alt="Enter optional img alt text here" data-title="Enter optional img title here" data-src="a7CMQ36ixNw" style="position: relative !important;"></div>
             </div>
             <div class=" col-lg-10 center-v">
               <header>
