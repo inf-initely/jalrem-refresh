@@ -19,9 +19,7 @@
             <div class="col-md-6">
               <h2 class="sub-judul">Ongoing</h2>
             </div>
-            <div class="col-md-6 center-v text-end">
-              <a href="{{ route('events') }}" class="btn btn-outline-danger">See all</a>
-            </div>
+
           </header>
           <div class="row justify-content-center">
             <div class="col-lg-12">
@@ -57,6 +55,9 @@
               </div>
             </div>
           </div>
+          <div class="col-12 col-md-6 mt-3 text-center-sm">
+              <a href="{{ route('events') }}" class="btn btn-outline-danger">See all</a>
+            </div>
         </div>
       </section>
       <section id="kegiatanSebelumnya">
@@ -65,9 +66,7 @@
             <div class="col-md-6">
               <h2 class="sub-judul">Past</h2>
             </div>
-            <div class="col-md-6 center-v text-end">
-              <a href="{{ route('events') }}" class="btn btn-outline-danger">See all</a>
-            </div>
+
           </header>
           <!--<div class="row justify-content-center">
             <div class="col-lg-12">
@@ -94,36 +93,39 @@
             </div>
           </div> -->
           <div class="kegiatan-sebelumnya">
-            @foreach( $kegiatan_sebelumnya as $k )
-            <div>
-              <div class="card no-border no-background">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-6">
-                      <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="{{ asset('storage/assets/kegiatan/thumbnail/' . $k->thumbnail) }}">
+              @foreach( $kegiatan_sebelumnya as $k )
+              <div>
+                <div class="card no-border no-background">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-6">
+                        <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan" src="{{ asset('storage/assets/kegiatan/thumbnail/' . $k->thumbnail) }}">
+                      </div>
+                      <div class="col-6 center-v">
+                        <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">{{ \Carbon\Carbon::parse($k->published_at)->isoFormat('D MMMM Y'); }}</p>
+                        <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">{{ $k->judul_english }}</h3>
+                      </div>
+                      @foreach( $k->kategori_show as $ks )
+                          @if( $ks->isi == 'Indepth' )
+                          <span class="badge rounded-pill py-1 px-3 bg-success">Indepth</span>
+                          @endif
+                      @endforeach
+                      @foreach( $k->kategori_show as $ks )
+                          @if( $ks->isi == 'Jurnal Artikel' )
+                          <span class="badge rounded-pill py-1 px-3 bg-secondary">Jurnal Artikel</span>
+                          @endif
+                      @endforeach
                     </div>
-                    <div class="col-6 center-v">
-                      <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">{{ \Carbon\Carbon::parse($k->published_at)->isoFormat('D MMMM Y'); }}</p>
-                      <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">{{ $k->judul_english }}</h3>
-                    </div>
-                    @foreach( $k->kategori_show as $ks )
-                        @if( $ks->isi == 'Indepth' )
-                        <span class="badge rounded-pill py-1 px-3 bg-success">Indepth</span>
-                        @endif
-                    @endforeach
-                    @foreach( $k->kategori_show as $ks )
-                        @if( $ks->isi == 'Jurnal Artikel' )
-                        <span class="badge rounded-pill py-1 px-3 bg-secondary">Jurnal Artikel</span>
-                        @endif
-                    @endforeach
+                    <a href="{{ route('event_detail', $k->slug_english ?? $k->slug) }}" class="stretched-link"></a>
                   </div>
-                  <a href="{{ route('event_detail', $k->slug_english ?? $k->slug) }}" class="stretched-link"></a>
                 </div>
               </div>
-            </div>
-            @endforeach
+              @endforeach
 
-            </div>
+              </div>
+              <div class="col-12 col-md-6 mt-3 text-center-sm">
+                <a href="{{ route('events') }}" class="btn btn-outline-danger">See all</a>
+              </div>
           </div>
         </div>
       </section>
@@ -132,9 +134,6 @@
           <header class="row justify-content-start mb-2">
             <div class="col-md-6">
               <h2 class="sub-judul">Partnership</h2>
-            </div>
-            <div class="col-md-6 center-v text-end">
-              <a href="{{ route('kerjasama') }}" class="btn btn-outline-danger">See all</a>
             </div>
           </header>
           <div class="row justify-content-center">
@@ -161,6 +160,9 @@
               </div>
             </div>
           </div>
+          <div class="col-12 col-md-6 mt-3 text-center-sm">
+              <a href="{{ route('kerjasama') }}" class="btn btn-outline-danger">See all</a>
+            </div>
         </div>
       </section>
       <!----------------------------------------------------------->
