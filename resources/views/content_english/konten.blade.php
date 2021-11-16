@@ -485,4 +485,12 @@
     <script>
       window.addEventListener('load', ytdefer_setup);
     </script>
+
+    <script>
+      $('.menu-toggle').click(function(){
+         $(".nav2").toggleClass("mobile-nav");
+         $(".nav2").removeClass("temp-pos");
+         $(this).toggleClass("is-active");
+      });
+    </script>
 @endsection
