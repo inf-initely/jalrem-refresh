@@ -114,4 +114,11 @@ $(document).ready(function() {
       $("iframe").attr("allowfullscreen", "allowfullscreen");
     });
     </script>
+    <script>
+      $('.menu-toggle').click(function(){
+         $(".nav2").toggleClass("mobile-nav");
+         $(".nav2").removeClass("temp-pos");
+         $(this).toggleClass("is-active");
+      });
+    </script>
 @endsection

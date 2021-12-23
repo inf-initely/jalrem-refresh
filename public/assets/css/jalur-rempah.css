@@ -107,7 +107,7 @@ a:hover {
 }
 
 .clr-white {
-    color: white;
+    color: white !important;
 }
 
 .wrap-menu-right {
@@ -1942,6 +1942,174 @@ div.gm-style-iw.gm-style-iw-c div.gm-style-iw-d {
         border-color: transparent;
         padding: 0.4rem;
     }
+
+
+    .menu-toggle {
+        margin-top: .5rem;
+    }
+
+    .menu-toggle .bar {
+        width: 25px;
+        height: 3px;
+        background-color: #fff;
+        margin: 5px auto;
+        -webkit-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .menu-toggle:hover {
+        cursor: pointer;
+    }
+
+    #mobile-menu.is-active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    #mobile-menu.is-active .bar:nth-child(1) {
+        -webkit-transform: translateY(8px) rotate(45deg);
+        -ms-transform: translateY(8px) rotate(45deg);
+        -o-transform: translateY(8px) rotate(45deg);
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    #mobile-menu.is-active .bar:nth-child(3) {
+        -webkit-transform: translateY(-8px) rotate(-45deg);
+        -ms-transform: translateY(-8px) rotate(-45deg);
+        -o-transform: translateY(-8px) rotate(-45deg);
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .no-search {
+        transform: translateX(0);
+        transition: transform .5s ease-in-out;
+    }
+
+    /* KEYFRAME ANIMATIONS */
+
+    @-webkit-keyframes gradbar {
+        0% {
+            background-position: 0% 50%
+        }
+
+        50% {
+            background-position: 100% 50%
+        }
+
+        100% {
+            background-position: 0% 50%
+        }
+    }
+
+    @-moz-keyframes gradbar {
+        0% {
+            background-position: 0% 50%
+        }
+
+        50% {
+            background-position: 100% 50%
+        }
+
+        100% {
+            background-position: 0% 50%
+        }
+    }
+
+    @keyframes gradbar {
+        0% {
+            background-position: 0% 50%
+        }
+
+        50% {
+            background-position: 100% 50%
+        }
+
+        100% {
+            background-position: 0% 50%
+        }
+    }
+
+
+    .navbar2 .nav2 li {
+        padding: 15px;
+    }
+
+    .navbar2 .nav2 li:first-child {
+        margin-top: 25px;
+    }
+
+    .navbar2 .nav2 li a {
+        font-size: 1.25rem;
+        /*font-family: "Roboto", serif;*/
+    }
+
+    .navbar2 .nav2 li .active{
+        font-weight: 600;
+    }
+
+    .menu-toggle,
+    .bar {
+        display: block;
+        cursor: pointer;
+    }
+
+    .navbar2 .nav2 {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        justify-content: start;
+        top: 60px;
+        left: 0px;
+        background-color: #fef7e8;
+        width: 75%;
+        height: calc(100vh - 55px);
+        transform: translate(-100%);
+        text-align: left;
+        overflow: hidden;
+        box-shadow: 3px 0px 5px -2px rgba(0, 0, 0, 0.28);
+
+    }
+
+    .bg-nav2 {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+
+
+    .mobile-nav {
+        transform: translate(0%) !important;
+        left: 0px !imfa-newspaper-oportant;
+    }
+
+    .navbar2 .nav-item {
+        margin-right: 0;
+    }
+
+    .navbar2 .nav-item a {
+        color: #212529;
+        font-size: 1.25rem;
+        font-weight: 400;
+        text-decoration: none;
+        transition: color 0.3s ease-out;
+    }
+
+    .navbar2 .fa {
+        /*color: #dc3545;*/
+    }
+
+    #navbarDropdown {
+        margin-top: .5rem;
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .temp-pos {
+        left: -100vw !important;
+    }
+
+
+
 }
 
 @media (max-width: 575.98px) {
@@ -2089,7 +2257,7 @@ div.gm-style-iw.gm-style-iw-c div.gm-style-iw-d {
         padding-bottom: 10px;
     }
 
-    .text-center-sm{
+    .text-center-sm {
         text-align: center;
     }
 
