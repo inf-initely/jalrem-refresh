@@ -993,7 +993,7 @@
                             </div>
                             <div class="col-7 center-v">
                                 <a href="#" class="text-danger m-0 p-0 text-decoration-none wilayah"><small>${data.data[i].nama_lokasi}</small></a>
-                                <h3 class="judul-artikel judul-artikel-tentang"><a href="video/${data.data[i].slug}" class="text-decoration-none clr-black">${data.data[i].judul}</a> </h3>
+                                <h3 class="judul-artikel judul-artikel-tentang"><a href="audio/${data.data[i].slug}" class="text-decoration-none clr-black">${data.data[i].judul}</a> </h3>
                                 <div class="wrap-tag-rempah">
                                     ${rempahs}
                                 </div>
