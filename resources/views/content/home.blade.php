@@ -261,7 +261,7 @@
               </header>
             </div>
           </div>
-          <div class="youtube-video mt-3">
+          <!-- <div class="youtube-video mt-3">
             @foreach( $video as $v )
             <div class="p-2">
               <div class="card no-border card-artikel">
@@ -272,7 +272,8 @@
               </div>
             </div>
             @endforeach
-          </div>
+          </div> -->
+          <div class="tagembed-container" style=" width:100%;height:100%;overflow: auto;"><div class="tagembed-socialwall" data-wall-id="24941" view-url="https://widget.tagembed.com/24941?view">  </div> <script src="//widget.tagembed.com/embed.min.js" type="text/javascript"></script></div>
         </section>
         <section class="container" id="twitterJalurRempah">
           <div class="row mb-4">
@@ -283,7 +284,7 @@
             </div>
           </div>
 
-          <div class="twitter-jalrem">
+          <!-- <div class="twitter-jalrem">
             <div id="twitKolom1" class="p-2">
               <a  class="twitter-timeline" data-height="400" data-chrome="nofooter" href="https://twitter.com/JalurrempahRI?ref_src=twsrc%5Etfw">Tweets by JalurrempahRI</a>
             </div>
@@ -299,7 +300,8 @@
             <div id="twitKolom5" class="p-2">
               <a  class="twitter-timeline" data-height="400" data-chrome="nofooter" href="https://twitter.com/JalurrempahRI?ref_src=twsrc%5Etfw">Tweets by JalurrempahRI</a>
             </div>
-          </div>
+          </div> -->
+          <div class="tagembed-container" style=" width:100%;height:100%;overflow: auto;"><div class="tagembed-socialwall" data-wall-id="24939" view-url="https://widget.tagembed.com/24939?view">  </div> <script src="//widget.tagembed.com/embed.min.js" type="text/javascript"></script></div>
         </section>
         <section class="container" id="instagramJalurRempah">
           <div class="row">
