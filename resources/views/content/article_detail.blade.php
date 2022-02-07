@@ -53,7 +53,7 @@
             </div>
             <div class="col-lg-4">
               <div class="row mb-4">
-                <div class="col-md-12 wrap-aside">
+                <div class="col-md-12">
                   <header>
                     <h2 class="sub-judul">Konten Populer</h2>
                   </header>
@@ -80,7 +80,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-12 wrap-aside">
+                <div class="col-md-12">
                   <header>
                     <h2 class="sub-judul">Konten Terbaru</h2>
                   </header>
