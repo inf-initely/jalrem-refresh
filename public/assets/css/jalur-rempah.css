@@ -1497,7 +1497,7 @@ footer {
 }
 
 #isiKonten p,
-#txtMedia {
+#txtMedia, #isiKonten li {
     font-family: "Roboto", sans-serif !important;
 }
 
