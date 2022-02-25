@@ -273,7 +273,7 @@
             </div>
             @endforeach
           </div> -->
-          <div class="tagembed-container" style=" width:100%;height:100%;overflow: auto;"><div class="tagembed-socialwall" data-wall-id="24941" view-url="https://widget.tagembed.com/24941?view">  </div> <script src="//widget.tagembed.com/embed.min.js" type="text/javascript"></script></div>
+          <div class="tagembed-container" style=" width:100%;height:100%;overflow: auto;"><div class="tagembed-socialwall" data-wall-id="28077" view-url="https://widget.tagembed.com/28077?view">  </div> <script src="//widget.tagembed.com/embed.min.js" type="text/javascript"></script></div>
         </section>
         <section class="container" id="twitterJalurRempah">
           <div class="row mb-4">
@@ -300,7 +300,7 @@
               <a  class="twitter-timeline" data-height="400" data-chrome="nofooter" href="https://twitter.com/JalurrempahRI?ref_src=twsrc%5Etfw">Tweets by JalurrempahRI</a>
             </div>
           </div> -->
-          <div class="tagembed-container" style=" width:100%;height:100%;overflow: auto;"><div class="tagembed-socialwall" data-wall-id="24939" view-url="https://widget.tagembed.com/24939?view">  </div> <script src="//widget.tagembed.com/embed.min.js" type="text/javascript"></script></div>
+          <div class="tagembed-container" style=" width:100%;height:100%;overflow: auto;"><div class="tagembed-socialwall" data-wall-id="28083" view-url="https://widget.tagembed.com/28083?view">  </div> <script src="//widget.tagembed.com/embed.min.js" type="text/javascript"></script></div>
         </section>
         <section class="container" id="instagramJalurRempah">
           <div class="row">
