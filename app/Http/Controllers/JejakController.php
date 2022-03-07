@@ -181,13 +181,19 @@ class JejakController extends Controller
 
     private function loopingArtikel($type, $container, $kategori)
     {
+        // foreach( $kategori->artikel->filter(function($item) {
+        //     return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
+        // }) as $ka ) {
+        //     foreach( $type->artikel as $ta ) {
+        //         if( $ka->id == $ta->id )
+        //             $container[] = $ka;
+        //     }
+        // }
+
         foreach( $kategori->artikel->filter(function($item) {
             return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
         }) as $ka ) {
-            foreach( $type->artikel as $ta ) {
-                if( $ka->id == $ta->id )
-                    $container[] = $ka;
-            }
+            $container[] = $ka;
         }
 
         foreach( $kategori->foto->filter(function($item) {
