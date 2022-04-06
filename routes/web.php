@@ -55,6 +55,9 @@ use App\Http\Controllers\CaptchaServiceController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::any('en/{allsegments}', function($first, $rest = '') {
+    return redirect("{$first}/{$rest}");
+})->where('allsegments','(.*)?');
 
 Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function() {
     Route::get('/', [HomeControllerAdmin::class, 'index'])->name('admin.home');

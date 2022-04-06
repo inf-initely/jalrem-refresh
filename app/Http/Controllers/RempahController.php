@@ -14,7 +14,7 @@ class RempahController extends Controller
         $rempah = Rempah::where('jenis_rempah', $rempahName)->orWhere('jenis_rempah_english', $rempahName)->firstOrFail();
         $rempahs = Rempah::all();
         $artikel_rempah = $rempah->artikel->filter(function($item) use ($rempah) {
-            return ($item->status == 'publikasi' && $item->id != $rempah->id);
+            return ($item->status == 'publikasi'  && $item->published_at <= \Carbon\Carbon::now());
         })->sortByDesc('published_at')->slice(0, 5);
 
         if( Session::get('lg') == 'en' )
