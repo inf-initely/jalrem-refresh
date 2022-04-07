@@ -56,6 +56,7 @@ use App\Http\Controllers\CaptchaServiceController;
 |
 */
 Route::any('en/{allsegments}', function($first, $rest = '') {
+    Session::put('lg', 'en');
     return redirect("{$first}/{$rest}");
 })->where('allsegments','(.*)?');
 
@@ -188,7 +189,6 @@ Route::get('/reload-captcha', [CaptchaServiceController::class, 'reloadCaptcha']
 
 Route::get('/set_language/en', function() {
     Session::put('lg', 'en');
-
     return redirect()->back();
 })->name('set_language_en');
 
