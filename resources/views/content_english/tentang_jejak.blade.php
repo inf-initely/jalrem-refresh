@@ -1,6 +1,14 @@
 @extends('layout.app')
 
 @section('content')
+@php
+    $wilayah = Request::get('wilayah');
+    $rempah = Request::get('rempah');
+
+    $wilayah = !is_string($wilayah) ? null : $wilayah;
+    $rempah = !is_string($rempah) ? null : $rempah;
+@endphp
+
 <header id="hero">
     <div id="map"></div>
     <div class="wrap-hero-text wrap-hero-text-bg d-none d-lg-block" id="wrapHeroText">
@@ -24,14 +32,14 @@
                     <div class="col-lg-5 mb-3">
                         <select id="selectLokasiRempah" class="form-select" aria-label="Default select example">
                             <option>Choose Category</option>
-                            <option {{ Request::get('wilayah') ? 'selected' : '' }} value="wilayah">Location</option>
-                            <option {{ Request::get('rempah') ? 'selected' : '' }} value="rempah">Spice</option>
+                            <option {{ $wilayah ? 'selected' : '' }} value="wilayah">Location</option>
+                            <option {{ $rempah ? 'selected' : '' }} value="rempah">Spice</option>
                         </select>
                     </div>
                     <div class="col-lg-5 mb-3">
                         <select id="lokasiRempah" class="form-select" aria-label="Default select example">
                             @foreach( $value_type as $v )
-                                <option {{ Request::get('rempah') == $v->id || Request::get('wilayah') == $v->id ? 'selected' : '' }} value="{{ $v->id }}">{{ $v->getTable() == 'rempahs' ? $v->jenis_rempah : $v->nama_lokasi_english }}</option>
+                                <option {{ $rempah == $v->id || $wilayah == $v->id ? 'selected' : '' }} value="{{ $v->id }}">{{ $v->getTable() == 'rempahs' ? $v->jenis_rempah : $v->nama_lokasi_english }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -111,7 +119,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div> 
+                            </div>
                             @elseif( $a->getTable() == 'audio' )
                             <div class="col-lg-6 mb-1">
                                 <div class="card no-border no-background">
@@ -160,7 +168,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div> 
+                            </div>
                             @else
                                 <div class="col-lg-6 mb-2">
                                     <div class="card no-border no-background">
@@ -477,7 +485,7 @@ const provinceLatLong = [{
     const wilayah = url.searchParams.get("wilayah");
     const rempah = url.searchParams.get("rempah");
     const page = url.searchParams.get("page");
-        
+
     function initMap() {
         if (wilayah && !rempah) {
             //get value artikel from php
@@ -515,7 +523,7 @@ const provinceLatLong = [{
                                 </g>
                             </svg>
                         </span>
-                        <h4 class="map-info-window-title">${wilayahData[0].name} :</h4> 
+                        <h4 class="map-info-window-title">${wilayahData[0].name} :</h4>
                     </div>
                     <p class="map-info-window-desc"><b>${totalArtikle}</b> Content</p>
                 </div>`;
@@ -554,7 +562,7 @@ const provinceLatLong = [{
             const markerData = [];
 
             // iterate artikelRem and push to markerData if not exit in markerData
-            // but if exit in markerData, then just add +1 total artikel 
+            // but if exit in markerData, then just add +1 total artikel
             for (let i = 0; i < artikleRem.length; i++) {
                 let artikel = artikleRem[i];
                 let isExist = false;
@@ -609,7 +617,7 @@ const provinceLatLong = [{
                                 </g>
                             </svg>
                         </span>
-                        <h4 class="map-info-window-title">${lokasi.name} :</h4> 
+                        <h4 class="map-info-window-title">${lokasi.name} :</h4>
                     </div>
                     <p class="map-info-window-desc"><b>${totalArtikel}</b> Content</p>
                 </div>`;
@@ -631,7 +639,7 @@ const provinceLatLong = [{
                     shouldFocus: false,
                 });
             }
-        }  else { 
+        }  else {
             // not wilayah or rempah in url
             const map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 5.3,
@@ -865,7 +873,7 @@ const provinceLatLong = [{
                 options += `<option value=${data[i].id}>${data[i].nama_lokasi_english}</option>`;
             }
             $('#lokasiRempah').append(options);
-            
+
             // window.location.href = '?rempah=' + $('#lokasiRempah').val();
         });
        } else if( selected === 'rempah' ) {
@@ -893,7 +901,7 @@ const provinceLatLong = [{
     var tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";
     document.body.appendChild(tag);
-    
+
     // When the YouTube API code loads, it calls this function, so it must be global
     // and it must be named exactly onYouTubeIframeAPIReady.
     window.onYouTubeIframeAPIReady = function() {
@@ -902,7 +910,7 @@ const provinceLatLong = [{
       videoModules = Array.prototype.slice.call(videoModules);
       videoModules.forEach(initializeVideoModule);
     }
-    
+
     function initializeVideoModule(videoModule) {
       var player = new YT.Player(videoModule.querySelector('.video-placeholder'), {
         videoId: videoModule.dataset.videoId,
@@ -942,7 +950,7 @@ const provinceLatLong = [{
 
    function loadMoreData(halaman) {
       $.ajax({
-         url: `?rempah={{ Request::get('rempah') }}&wilayah={{ Request::get('wilayah') }}&page=${halaman}`,
+         url: `?rempah={{ $rempah }}&wilayah={{ $wilayah }}&page=${halaman}`,
          type: 'GET',
          beforeSend: function() {
             $('.loader').show();
@@ -968,7 +976,7 @@ const provinceLatLong = [{
             if( kategori_show == undefined ) {
                 kategori_show = '<div></div>';
             }
-            
+
             let content = '';
             let rempahs = '';
             if( data?.data[i]?.rempahs == undefined ) {
@@ -979,7 +987,7 @@ const provinceLatLong = [{
                                     |`;
                 })
             }
-            
+
             if( data.data[i].table == 'audio' ) {
                 content = `
                 <div class="col-lg-6 mb-1">

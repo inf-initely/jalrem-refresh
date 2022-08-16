@@ -1,6 +1,15 @@
 @extends('layout.app')
 
 @section('content')
+
+@php
+    $wilayah = Request::get('wilayah');
+    $rempah = Request::get('rempah');
+
+    $wilayah = !is_string($wilayah) ? null : $wilayah;
+    $rempah = !is_string($rempah) ? null : $rempah;
+@endphp
+
 <header id="hero">
     <div id="map"></div>
     <div class="wrap-hero-text wrap-hero-text-bg d-none d-lg-block" id="wrapHeroText">
@@ -156,7 +165,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div> 
+                            </div>
                             @else
                             <div class="col-lg-6 mb-2">
                                 <div class="card no-border no-background">
@@ -471,7 +480,7 @@
     const wilayah = url.searchParams.get("wilayah");
     const rempah = url.searchParams.get("rempah");
     const page = url.searchParams.get("page");
-        
+
     function initMap() {
         if (wilayah && !rempah) {
             //get value artikel from php
@@ -509,7 +518,7 @@
                                 </g>
                             </svg>
                         </span>
-                        <h4 class="map-info-window-title">${wilayahData[0].name} :</h4> 
+                        <h4 class="map-info-window-title">${wilayahData[0].name} :</h4>
                     </div>
                     <p class="map-info-window-desc"><b>${totalArtikle}</b> Konten</p>
                 </div>`;
@@ -548,7 +557,7 @@
             const markerData = [];
 
             // iterate artikelRem and push to markerData if not exit in markerData
-            // but if exit in markerData, then just add +1 total artikel 
+            // but if exit in markerData, then just add +1 total artikel
             for (let i = 0; i < artikleRem.length; i++) {
                 let artikel = artikleRem[i];
                 let isExist = false;
@@ -603,11 +612,11 @@
                                 </g>
                             </svg>
                         </span>
-                        <h4 class="map-info-window-title">${lokasi.name} :</h4> 
+                        <h4 class="map-info-window-title">${lokasi.name} :</h4>
                     </div>
                     <p class="map-info-window-desc"><b>${totalArtikel}</b> Konten</p>
                 </div>`;
-                
+
                 const infowindow = new google.maps.InfoWindow({
                     content: contentString,
                 });
@@ -626,7 +635,7 @@
                     shouldFocus: false,
                 });
             }
-        }  else { 
+        }  else {
             // not wilayah or rempah in url
             const map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 5.3,
@@ -956,7 +965,7 @@
             if( kategori_show == undefined ) {
                 kategori_show = '<div></div>';
             }
-            
+
             let content = '';
             let rempahs = '';
             if( data?.data[i]?.rempahs == undefined ) {
@@ -967,7 +976,7 @@
                                     |`;
                 })
             }
-            
+
             if( data.data[i].table == 'audio' ) {
                 content = `
                 <div class="col-lg-6 mb-1">
