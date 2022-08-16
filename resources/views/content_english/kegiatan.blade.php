@@ -170,7 +170,7 @@ $(function() {
                 </p>
                 ${kategori_show}
               </div>
-              <a href="{{ route('event_detail', $k->slug) }}" class="stretched-link"></a>
+              <a href="/event_detail/${data.data[i].slug}" class="stretched-link"></a>
             </div>
           </div>
              `)
