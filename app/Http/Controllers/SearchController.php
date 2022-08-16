@@ -20,7 +20,10 @@ class SearchController extends Controller
 {
     public function search(Request $request)
     {
+
         $search = $request->get('search');
+
+        if (!is_string($search)) $search = null;
 
         $search_condition = ($search != null);
         $lg = (Session::get('lg') == 'en') ? 'english' : 'indo';
@@ -67,7 +70,7 @@ class SearchController extends Controller
 
         if( Session::get('lg') == 'en' )
             return view('content_english.search_content', compact('artikel'));
-    
+
 
         return view('content.search_content', compact('artikel'));
     }

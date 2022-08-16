@@ -20,6 +20,9 @@ class JejakController extends Controller
         $rempahId = $request->get('rempah');
         $lokasiId = $request->get('wilayah');
 
+        if (!is_string($rempahId)) $rempahId = null;
+        if (!is_string($lokasiId)) $lokasiId = null;
+
         $kategori = KategoriShow::where('isi', 'jejak')->first();
 
         $rempah = Rempah::find($rempahId);
@@ -87,7 +90,7 @@ class JejakController extends Controller
         }
 
         // $artikel = array_mergeRecursive($artikel, $artikelRempah, $artikelWilayah);
-        
+
         $artikel = ( $kategori != null )
             ? $this->paginate($artikel,9)
             : [];
@@ -95,14 +98,14 @@ class JejakController extends Controller
         $artikel->setPath('/tentang-jejak?rempah=' . $rempahId . '&wilayah=' . $lokasiId);
 
         // dd($kategori->artikel);
-        
+
         if( Session::get('lg') == 'en' ) {
             if( Paginator::resolveCurrentPage() != 1 ) {
                 $artikels = [];
                 $i = 0;
                 foreach( $artikel as $a ) {
                     $artikels[$i]['judul'] = Session::get('lg') == 'en' ? $a->judul_english : $a->judul_indo;
-                    
+
                     if( $a->getTable() == 'videos' ) {
                         $artikels[$i]['youtubekey'] = $a->youtube_key;
                     } else if( $a->getTable() == 'audio' ) {
@@ -110,7 +113,7 @@ class JejakController extends Controller
                     } else {
                         $artikels[$i]['thumbnail'] = $a->thumbnail;
                     }
-    
+
                     $j = 0;
                     foreach( $a->kategori_show as $ks ) {
                         $artikels[$i]['kategori_show'][$j] = $ks->isi;
@@ -126,7 +129,7 @@ class JejakController extends Controller
                     $i++;
                 }
                 return response()->json([
-                    'status' => 'success', 
+                    'status' => 'success',
                     'data' => $artikels
                 ]);
             } else {
@@ -134,13 +137,13 @@ class JejakController extends Controller
             }
 
         }
-        
+
         if( Paginator::resolveCurrentPage() != 1 ) {
             $artikels = [];
             $i = 0;
             foreach( $artikel as $a ) {
                 $artikels[$i]['judul'] = Session::get('lg') == 'en' ? $a->judul_english : $a->judul_indo;
-                
+
                 if( $a->getTable() == 'videos' ) {
                     $artikels[$i]['youtubekey'] = $a->youtube_key;
                 } else if( $a->getTable() == 'audio' ) {
@@ -164,7 +167,7 @@ class JejakController extends Controller
                 $i++;
             }
             return response()->json([
-                'status' => 'success', 
+                'status' => 'success',
                 'data' => $artikels
             ]);
         } else {

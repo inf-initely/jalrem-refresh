@@ -34,7 +34,7 @@ class KontributorController extends Controller
             'email' => 'required|email',
             'domisili' => 'required|string',
             'kategori' => 'required|string',
-            'captcha' => 'required|captcha'
+            'captcha' => 'required|string|captcha'
         ]);
 
         $judul_indo = $request->judul_indo;
