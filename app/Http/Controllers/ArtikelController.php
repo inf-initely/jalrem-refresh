@@ -24,6 +24,15 @@ class ArtikelController extends Controller
             if( Paginator::resolveCurrentPage() != 1 ) {
                 $artikels = [];
                 $i = 0;
+                $response = [
+                    'status' => 'success',
+                    'data' => $artikels
+                ];
+
+                if(!request()->ajax()) {
+                    return response()->json($response);
+                }
+
                 foreach( $artikel as $a ) {
                     $artikels[$i]['judul'] = Session::get('lg') == 'en' ? $a->judul_english : $a->judul_indo;
                     $artikels[$i]['thumbnail'] = $a->thumbnail;
@@ -38,10 +47,8 @@ class ArtikelController extends Controller
                     $artikels[$i]['published_at'] = \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y');
                     $i++;
                 }
-                return response()->json([
-                    'status' => 'success',
-                    'data' => $artikels
-                ]);
+
+                return response()->json($response);
             } else {
                 return view('content_english.articles', compact('artikel'));
             }
@@ -52,6 +59,16 @@ class ArtikelController extends Controller
         if( Paginator::resolveCurrentPage() != 1 ) {
             $artikels = [];
             $i = 0;
+
+            $response = [
+                'status' => 'success',
+                'data' => $artikels
+            ];
+
+            if(!request()->ajax()) {
+                return response()->json($response);
+            }
+
             foreach( $artikel as $a ) {
                 $artikels[$i]['judul'] = Session::get('lg') == 'en' ? $a->judul_english : $a->judul_indo;
                 $artikels[$i]['thumbnail'] = $a->thumbnail;
@@ -66,10 +83,8 @@ class ArtikelController extends Controller
                 $artikels[$i]['published_at'] = \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y');
                 $i++;
             }
-            return response()->json([
-                'status' => 'success',
-                'data' => $artikels
-            ]);
+            return response()->json($response);
+
         } else {
             return view('content.articles', compact('artikel'));
         }
