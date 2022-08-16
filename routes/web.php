@@ -44,6 +44,8 @@ use App\Http\Controllers\RedirectController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CaptchaServiceController;
 
+use function Psy\debug;
+
 // use App\Http\Middleware\Language;
 /*
 |--------------------------------------------------------------------------
@@ -57,7 +59,12 @@ use App\Http\Controllers\CaptchaServiceController;
 */
 Route::group(['middleware' => ['XssSanitizer']], function () {
     Route::any('en/{allsegments}', function($first, $rest = '') {
-    Session::put('lg', 'en');
+        Session::put('lg', 'en');
+        // only allowed $first using alphabet and dash only
+        $first = preg_replace('/[^a-zA-Z-]/', '', $first);
+        // only allowed $rest using alphabet, number and dash only
+        $rest = preg_replace('/[^a-zA-Z0-9-]/', '', $rest);
+
         return redirect("{$first}/{$rest}");
     })->where('allsegments','(.*)?');
 
