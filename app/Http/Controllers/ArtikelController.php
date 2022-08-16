@@ -24,13 +24,12 @@ class ArtikelController extends Controller
             if( Paginator::resolveCurrentPage() != 1 ) {
                 $artikels = [];
                 $i = 0;
-                $response = [
-                    'status' => 'success',
-                    'data' => $artikels
-                ];
 
                 if(!request()->ajax()) {
-                    return response()->json($response);
+                    return response()->json([
+                        'status' => 'success',
+                        'data' => $artikels
+                    ]);
                 }
 
                 foreach( $artikel as $a ) {
@@ -48,7 +47,10 @@ class ArtikelController extends Controller
                     $i++;
                 }
 
-                return response()->json($response);
+                return response()->json([
+                    'status' => 'success',
+                    'data' => $artikels
+                ]);
             } else {
                 return view('content_english.articles', compact('artikel'));
             }
@@ -60,13 +62,11 @@ class ArtikelController extends Controller
             $artikels = [];
             $i = 0;
 
-            $response = [
-                'status' => 'success',
-                'data' => $artikels
-            ];
-
             if(!request()->ajax()) {
-                return response()->json($response);
+                return response()->json([
+                    'status' => 'success',
+                    'data' => $artikels
+                ]);
             }
 
             foreach( $artikel as $a ) {
@@ -83,7 +83,10 @@ class ArtikelController extends Controller
                 $artikels[$i]['published_at'] = \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y');
                 $i++;
             }
-            return response()->json($response);
+            return response()->json([
+                'status' => 'success',
+                'data' => $artikels
+            ]);
 
         } else {
             return view('content.articles', compact('artikel'));
