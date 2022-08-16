@@ -31,14 +31,14 @@
                     <div class="col-lg-5 mb-3">
                         <select id="selectLokasiRempah" class="form-select" aria-label="Default select example">
                             <option>Pilih Kategori</option>
-                            <option {{ Request::get('wilayah') ? 'selected' : '' }} value="wilayah">Wilayah</option>
-                            <option {{ Request::get('rempah') ? 'selected' : '' }} value="rempah">Jenis Rempah</option>
+                            <option {{ $wilayah ? 'selected' : '' }} value="wilayah">Wilayah</option>
+                            <option {{ $rempah ? 'selected' : '' }} value="rempah">Jenis Rempah</option>
                         </select>
                     </div>
                     <div class="col-lg-5 mb-3">
                         <select id="lokasiRempah" class="form-select" aria-label="Default select example">
                             @foreach( $value_type as $v )
-                            <option {{ Request::get('rempah') == $v->id || Request::get('wilayah') == $v->id ? 'selected' : '' }} value="{{ $v->id }}">{{ $v->getTable() == 'rempahs' ? $v->jenis_rempah : $v->nama_lokasi }}</option>
+                            <option {{ $rempah == $v->id || $wilayah == $v->id ? 'selected' : '' }} value="{{ $v->id }}">{{ $v->getTable() == 'rempahs' ? $v->jenis_rempah : $v->nama_lokasi }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -939,7 +939,7 @@
 
    function loadMoreData(halaman) {
       $.ajax({
-         url: `?rempah={{ Request::get('rempah') }}&wilayah={{ Request::get('wilayah') }}&page=${halaman}`,
+         url: `?rempah={{ $rempah }}&wilayah={{ $wilayah }}&page=${halaman}`,
          type: 'GET',
          beforeSend: function() {
             $('.loader').show();
