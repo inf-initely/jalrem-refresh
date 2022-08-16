@@ -38,7 +38,7 @@ class JalurController extends Controller
             return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
         });
         $artikel = $artikel->mergeRecursive($foto)->mergeRecursive($audio)->mergeRecursive($video)->mergeRecursive($publikasi)->mergeRecursive($kerjasama)->mergeRecursive($kegiatan);
-        
+
         if( Session::get('lg') == 'en' ) {
             $artikel = $artikel->filter(function($item) {
                 return $item->judul_english != null && $item->published_at <= \Carbon\Carbon::now();
@@ -55,9 +55,17 @@ class JalurController extends Controller
             if( Paginator::resolveCurrentPage() != 1 ) {
                 $artikels = [];
                 $i = 0;
+
+                if(!request()->ajax()) {
+                    return response()->json([
+                        'status' => 'success',
+                        'data' => $artikels
+                    ]);
+                }
+
                 foreach( $artikel as $a ) {
                     $artikels[$i]['judul'] = Session::get('lg') == 'en' ? $a->judul_english : $a->judul_indo;
-                    
+
                     if( $a->getTable() == 'videos' ) {
                         $artikels[$i]['youtubekey'] = $a->youtube_key;
                     } else if( $a->getTable() == 'audio' ) {
@@ -65,7 +73,7 @@ class JalurController extends Controller
                     } else {
                         $artikels[$i]['thumbnail'] = $a->thumbnail;
                     }
-    
+
                     $j = 0;
                     foreach( $a->kategori_show as $ks ) {
                         $artikels[$i]['kategori_show'][$j] = $ks->isi;
@@ -81,14 +89,14 @@ class JalurController extends Controller
                     $i++;
                 }
                 return response()->json([
-                    'status' => 'success', 
+                    'status' => 'success',
                     'data' => $artikels
                 ]);
             } else {
                 return view('content_english.tentang_jalur', compact('artikel'));
             }
         }
-        
+
         // if( Paginator::resolveCurrentPage() != 1 ) {
         //     $artikels = [];
         //     $i = 0;
@@ -100,7 +108,7 @@ class JalurController extends Controller
         //         $i++;
         //     }
         //     return response()->json([
-        //         'status' => 'success', 
+        //         'status' => 'success',
         //         'data' => $comments_post
         //     ]);
         // } else {
@@ -110,9 +118,17 @@ class JalurController extends Controller
         if( Paginator::resolveCurrentPage() != 1 ) {
             $artikels = [];
             $i = 0;
+
+            if(!request()->ajax()) {
+                return response()->json([
+                    'status' => 'success',
+                    'data' => $artikels
+                ]);
+            }
+
             foreach( $artikel as $a ) {
                 $artikels[$i]['judul'] = Session::get('lg') == 'en' ? $a->judul_english : $a->judul_indo;
-                
+
                 if( $a->getTable() == 'videos' ) {
                     $artikels[$i]['youtubekey'] = $a->youtube_key;
                 } else if( $a->getTable() == 'audio' ) {
@@ -136,7 +152,7 @@ class JalurController extends Controller
                 $i++;
             }
             return response()->json([
-                'status' => 'success', 
+                'status' => 'success',
                 'data' => $artikels
             ]);
         } else {

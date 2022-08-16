@@ -22,6 +22,14 @@ class KegiatanController extends Controller
             if( Paginator::resolveCurrentPage() != 1 ) {
                 $events = [];
                 $i = 0;
+
+                if(!request()->ajax()) {
+                    return response()->json([
+                        'status' => 'success',
+                        'data' => $events
+                    ]);
+                }
+
                 foreach( $kegiatan as $a ) {
                     $events[$i]['judul'] = Session::get('lg') == 'en' ? $a->judul_english : $a->judul_indo;
                     $events[$i]['thumbnail'] = $a->thumbnail;
@@ -37,7 +45,7 @@ class KegiatanController extends Controller
                     $i++;
                 }
                 return response()->json([
-                    'status' => 'success', 
+                    'status' => 'success',
                     'data' => $events
                 ]);
             } else {
@@ -49,6 +57,14 @@ class KegiatanController extends Controller
         if( Paginator::resolveCurrentPage() != 1 ) {
             $events = [];
             $i = 0;
+
+            if(!request()->ajax()) {
+                return response()->json([
+                    'status' => 'success',
+                    'data' => $events
+                ]);
+            }
+
             foreach( $kegiatan as $a ) {
                 $events[$i]['judul'] = Session::get('lg') == 'en' ? $a->judul_english : $a->judul_indo;
                 $events[$i]['thumbnail'] = $a->thumbnail;
@@ -64,7 +80,7 @@ class KegiatanController extends Controller
                 $i++;
             }
             return response()->json([
-                'status' => 'success', 
+                'status' => 'success',
                 'data' => $events
             ]);
         } else {
@@ -78,12 +94,12 @@ class KegiatanController extends Controller
         $lg = Session::get('lg');
 
         $kegiatan = Kegiatan::where('slug', $slug)->orWhere('slug_english', $slug)->firstOrFail();
-        
+
         // check draft
         if( $kegiatan->status == 'draft' && !isset(auth()->user()->id) ) {
             abort(404);
         }
-        
+
         $kegiatanSaatIni = Kegiatan::where('status', 'publikasi')->take(3)->get();
 
         if( $lg == 'en' )

@@ -21,6 +21,14 @@ class VideoController extends Controller
             if( Paginator::resolveCurrentPage() != 1 ) {
                 $videos = [];
                 $i = 0;
+
+                if(!request()->ajax()) {
+                    return response()->json([
+                        'status' => 'success',
+                        'data' => $videos,
+                    ]);
+                }
+
                 foreach( $video as $a ) {
                     $videos[$i]['judul'] = Session::get('lg') == 'en' ? $a->judul_english : $a->judul_indo;
                     $videos[$i]['youtubekey'] = $a->youtube_key;
@@ -36,7 +44,7 @@ class VideoController extends Controller
                     $i++;
                 }
                 return response()->json([
-                    'status' => 'success', 
+                    'status' => 'success',
                     'data' => $videos
                 ]);
             } else {
@@ -49,6 +57,14 @@ class VideoController extends Controller
         if( Paginator::resolveCurrentPage() != 1 ) {
             $videos = [];
             $i = 0;
+
+            if(!request()->ajax()) {
+                return response()->json([
+                    'status' => 'success',
+                    'data' => $videos,
+                ]);
+            }
+
             foreach( $video as $a ) {
                 $videos[$i]['judul'] = Session::get('lg') == 'en' ? $a->judul_english : $a->judul_indo;
                 $videos[$i]['youtubekey'] = $a->youtube_key;
@@ -64,7 +80,7 @@ class VideoController extends Controller
                 $i++;
             }
             return response()->json([
-                'status' => 'success', 
+                'status' => 'success',
                 'data' => $videos
             ]);
         } else {

@@ -20,6 +20,14 @@ class KerjasamaController extends Controller
             if( Paginator::resolveCurrentPage() != 1 ) {
                 $partnerships = [];
                 $i = 0;
+
+                if(!request()->ajax()) {
+                    return response()->json([
+                        'status' => 'success',
+                        'data' => $partnerships
+                    ]);
+                }
+
                 foreach( $kerjasama as $a ) {
                     $partnerships[$i]['judul'] = Session::get('lg') == 'en' ? $a->judul_english : $a->judul_indo;
                     $partnerships[$i]['thumbnail'] = $a->thumbnail;
@@ -35,7 +43,7 @@ class KerjasamaController extends Controller
                     $i++;
                 }
                 return response()->json([
-                    'status' => 'success', 
+                    'status' => 'success',
                     'data' => $partnerships
                 ]);
             } else {
@@ -43,12 +51,20 @@ class KerjasamaController extends Controller
             }
 
         }
-        
+
         $kerjasama = $kerjasama->paginate(1);
 
         if( Paginator::resolveCurrentPage() != 1 ) {
             $partnerships = [];
             $i = 0;
+
+            if(!request()->ajax()) {
+                return response()->json([
+                    'status' => 'success',
+                    'data' => $partnerships
+                ]);
+            }
+
             foreach( $kerjasama as $a ) {
                 $partnerships[$i]['judul'] = Session::get('lg') == 'en' ? $a->judul_english : $a->judul_indo;
                 $partnerships[$i]['thumbnail'] = $a->thumbnail;
@@ -64,7 +80,7 @@ class KerjasamaController extends Controller
                 $i++;
             }
             return response()->json([
-                'status' => 'success', 
+                'status' => 'success',
                 'data' => $partnerships
             ]);
         } else {
@@ -85,7 +101,7 @@ class KerjasamaController extends Controller
 
         if( $lg == 'en' )
             return view('content_english.kerjasama_detail', compact('kerjasama'));
-        
+
         return view('content.kerjasama_detail', compact('kerjasama'));
     }
 }

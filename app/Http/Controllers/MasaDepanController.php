@@ -38,26 +38,34 @@ class MasaDepanController extends Controller
             return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
         });
         $artikel = $artikel->mergeRecursive($foto)->mergeRecursive($audio)->mergeRecursive($video)->mergeRecursive($publikasi)->mergeRecursive($kerjasama)->mergeRecursive($kegiatan);
-        
+
         if( Session::get('lg') == 'en' ) {
             $artikel = $artikel->filter(function($item) {
                 return $item->judul_english != null;
             });
         }
-        
+
         $artikel = ( $kategori != null )
            ? $this->paginate($artikel, 9)
            : [];
-        
+
         $artikel->setPath('/tentang-masa-depan');
 
         if( Session::get('lg') == 'en' ) {
             if( Paginator::resolveCurrentPage() != 1 ) {
                 $artikels = [];
                 $i = 0;
+
+                if(!request()->ajax()) {
+                    return response()->json([
+                        'status' => 'success',
+                        'data' => $artikels
+                    ]);
+                }
+
                 foreach( $artikel as $a ) {
                     $artikels[$i]['judul'] = Session::get('lg') == 'en' ? $a->judul_english : $a->judul_indo;
-                    
+
                     if( $a->getTable() == 'videos' ) {
                         $artikels[$i]['youtubekey'] = $a->youtube_key;
                     } else if( $a->getTable() == 'audio' ) {
@@ -65,7 +73,7 @@ class MasaDepanController extends Controller
                     } else {
                         $artikels[$i]['thumbnail'] = $a->thumbnail;
                     }
-    
+
                     $j = 0;
                     foreach( $a->kategori_show as $ks ) {
                         $artikels[$i]['kategori_show'][$j] = $ks->isi;
@@ -81,7 +89,7 @@ class MasaDepanController extends Controller
                     $i++;
                 }
                 return response()->json([
-                    'status' => 'success', 
+                    'status' => 'success',
                     'data' => $artikels
                 ]);
             } else {
@@ -89,13 +97,21 @@ class MasaDepanController extends Controller
             }
         }
 
-        
+
         if( Paginator::resolveCurrentPage() != 1 ) {
             $artikels = [];
             $i = 0;
+
+            if(!request()->ajax()) {
+                return response()->json([
+                    'status' => 'success',
+                    'data' => $artikels
+                ]);
+            }
+
             foreach( $artikel as $a ) {
                 $artikels[$i]['judul'] = Session::get('lg') == 'en' ? $a->judul_english : $a->judul_indo;
-                
+
                 if( $a->getTable() == 'videos' ) {
                     $artikels[$i]['youtubekey'] = $a->youtube_key;
                 } else if( $a->getTable() == 'audio' ) {
@@ -119,13 +135,13 @@ class MasaDepanController extends Controller
                 $i++;
             }
             return response()->json([
-                'status' => 'success', 
+                'status' => 'success',
                 'data' => $artikels
             ]);
         } else {
             return view('content.tentang_masadepan', compact('artikel'));
         }
-    
+
     }
 
     private function paginate($items, $perPage = 15, $page = null, $options = [])

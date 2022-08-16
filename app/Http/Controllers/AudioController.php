@@ -21,6 +21,14 @@ class AudioController extends Controller
             if( Paginator::resolveCurrentPage() != 1 ) {
                 $audios = [];
                 $i = 0;
+
+                if(!request()->ajax()) {
+                    return response()->json([
+                        'status' => 'success',
+                        'data' => $audios,
+                    ]);
+                }
+
                 foreach( $audio as $a ) {
                     $audios[$i]['judul'] = Session::get('lg') == 'en' ? $a->judul_english : $a->judul_indo;
                     $audios[$i]['cloudkey'] = $a->cloud_key;
@@ -35,17 +43,25 @@ class AudioController extends Controller
                     $i++;
                 }
                 return response()->json([
-                    'status' => 'success', 
+                    'status' => 'success',
                     'data' => $audios
                 ]);
             } else {
-                return view('content_english.audios', compact('audio')); 
+                return view('content_english.audios', compact('audio'));
             }
         }
         $audio = $audio->paginate(9);
         if( Paginator::resolveCurrentPage() != 1 ) {
             $audios = [];
             $i = 0;
+
+            if(!request()->ajax()) {
+                return response()->json([
+                    'status' => 'success',
+                    'data' => $audios,
+                ]);
+            }
+
             foreach( $audio as $a ) {
                 $audios[$i]['judul'] = Session::get('lg') == 'en' ? $a->judul_english : $a->judul_indo;
                 $audios[$i]['cloudkey'] = $a->cloud_key;
@@ -59,7 +75,7 @@ class AudioController extends Controller
                 $i++;
             }
             return response()->json([
-                'status' => 'success', 
+                'status' => 'success',
                 'data' => $audios
             ]);
         } else {
@@ -80,7 +96,7 @@ class AudioController extends Controller
         }
 
         if( $lg == 'en' ) {
-            return view('content_english.audio_detail', compact('audio'));   
+            return view('content_english.audio_detail', compact('audio'));
         }
 
         return view('content.audio_detail', compact('audio'));

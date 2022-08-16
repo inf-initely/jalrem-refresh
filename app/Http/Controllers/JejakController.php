@@ -103,6 +103,14 @@ class JejakController extends Controller
             if( Paginator::resolveCurrentPage() != 1 ) {
                 $artikels = [];
                 $i = 0;
+
+                if(!request()->ajax()) {
+                    return response()->json([
+                        'status' => 'success',
+                        'data' => $artikels
+                    ]);
+                }
+
                 foreach( $artikel as $a ) {
                     $artikels[$i]['judul'] = Session::get('lg') == 'en' ? $a->judul_english : $a->judul_indo;
 
@@ -141,6 +149,14 @@ class JejakController extends Controller
         if( Paginator::resolveCurrentPage() != 1 ) {
             $artikels = [];
             $i = 0;
+
+            if(!request()->ajax()) {
+                return response()->json([
+                    'status' => 'success',
+                    'data' => $artikels
+                ]);
+            }
+
             foreach( $artikel as $a ) {
                 $artikels[$i]['judul'] = Session::get('lg') == 'en' ? $a->judul_english : $a->judul_indo;
 

@@ -21,6 +21,14 @@ class PublikasiController extends Controller
             if( Paginator::resolveCurrentPage() != 1 ) {
                 $publications = [];
                 $i = 0;
+
+                if(!request()->ajax()) {
+                    return response()->json([
+                        'status' => 'success',
+                        'data' => $publications,
+                    ]);
+                }
+
                 foreach( $publikasi as $a ) {
                     $publications[$i]['judul'] = Session::get('lg') == 'en' ? $a->judul_english : $a->judul_indo;
                     $publications[$i]['thumbnail'] = $a->thumbnail;
@@ -36,19 +44,27 @@ class PublikasiController extends Controller
                     $i++;
                 }
                 return response()->json([
-                    'status' => 'success', 
+                    'status' => 'success',
                     'data' => $publications
                 ]);
             } else {
                 return view('content_english.publications', compact('publikasi'));
             }
-            
+
         }
         $publikasi = $publikasi->orderBy('published_at', 'desc')->paginate(9);
 
         if( Paginator::resolveCurrentPage() != 1 ) {
             $publications = [];
             $i = 0;
+
+            if(!request()->ajax()) {
+                return response()->json([
+                    'status' => 'success',
+                    'data' => $publications,
+                ]);
+            }
+
             foreach( $publikasi as $a ) {
                 $publications[$i]['judul'] = Session::get('lg') == 'en' ? $a->judul_english : $a->judul_indo;
                 $publications[$i]['thumbnail'] = $a->thumbnail;
@@ -64,7 +80,7 @@ class PublikasiController extends Controller
                 $i++;
             }
             return response()->json([
-                'status' => 'success', 
+                'status' => 'success',
                 'data' => $publications
             ]);
         } else {
@@ -80,7 +96,7 @@ class PublikasiController extends Controller
         $query_this_publication = Publikasi::where('slug', $slug)->orWhere('slug_english', $slug)->where('status', 'publikasi');
 
         $publikasi = $query_this_publication->firstOrFail();
-      
+
         views($publikasi)->record();
         $publikasiPopuler = $query_without_this_publication->orderByViews();
         $publikasiTerbaru = $query_without_this_publication->orderBy('published_at', 'desc');
@@ -93,7 +109,7 @@ class PublikasiController extends Controller
         if( $publikasi->status == 'draft' && !isset(auth()->user()->id) ) {
             abort(404);
         }
-        
+
         views($publikasi)->record();
 
         if( $lg == 'en' ) {
@@ -108,10 +124,10 @@ class PublikasiController extends Controller
             $artikelTerbaru = $query_without_this_publication->orderBy('published_at')->take(3)->get();
             $artikelTerkait = $this->generate_articles_show($query_without_this_publication->get());
             $artikelBacaJuga = $this->generate_articles_show($query_without_this_publication->get(), false);
-            
+
             return view('content.publication_detail', compact('publikasi', 'publikasiPopuler', 'publikasiTerbaru', 'publikasiTerkait', 'publikasiBacaJuga'));
         }
-        
+
     }
 
     private function generate_articles_show($artikel, $is_all = true)
@@ -136,14 +152,14 @@ class PublikasiController extends Controller
             } else {
                 $articles = $artikel;
             }
-            
+
             // dd('oke');
             return $articles;
         } else {
             $index = rand(1, count($artikel)) - 1;
             return $artikel[$index];
-        }   
-        
-    
+        }
+
+
     }
 }

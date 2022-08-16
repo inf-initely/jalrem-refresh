@@ -22,6 +22,14 @@ class FotoController extends Controller
             if( Paginator::resolveCurrentPage() != 1 ) {
                 $fotos = [];
                 $i = 0;
+
+                if(!request()->ajax()) {
+                    return response()->json([
+                        'status' => 'success',
+                        'data' => $fotos,
+                    ]);
+                }
+
                 foreach( $foto as $a ) {
                     $fotos[$i]['judul'] = Session::get('lg') == 'en' ? $a->judul_english : $a->judul_indo;
                     $fotos[$i]['thumbnail'] = $a->thumbnail;
@@ -37,7 +45,7 @@ class FotoController extends Controller
                     $i++;
                 }
                 return response()->json([
-                    'status' => 'success', 
+                    'status' => 'success',
                     'data' => $fotos
                 ]);
             } else {
@@ -50,6 +58,14 @@ class FotoController extends Controller
         if( Paginator::resolveCurrentPage() != 1 ) {
             $fotos = [];
             $i = 0;
+
+            if(!request()->ajax()) {
+                return response()->json([
+                    'status' => 'success',
+                    'data' => $fotos,
+                ]);
+            }
+
             foreach( $foto as $a ) {
                 $fotos[$i]['judul'] = Session::get('lg') == 'en' ? $a->judul_english : $a->judul_indo;
                 $fotos[$i]['thumbnail'] = $a->thumbnail;
@@ -65,7 +81,7 @@ class FotoController extends Controller
                 $i++;
             }
             return response()->json([
-                'status' => 'success', 
+                'status' => 'success',
                 'data' => $fotos
             ]);
         } else {
@@ -84,7 +100,7 @@ class FotoController extends Controller
         if( $foto->status == 'draft' && !isset(auth()->user()->id) ) {
             abort(404);
         }
-        
+
         if( $lg == 'en' )
             return view('content_english.photo_detail', compact('foto'));
 
