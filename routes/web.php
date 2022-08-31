@@ -57,7 +57,7 @@ use function Psy\debug;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['middleware' => ['XssSanitizer']], function () {
+// Route::group(['middleware' => ['XssSanitizer']], function () {
     Route::any('en/{allsegments}', function($first, $rest = '') {
         Session::put('lg', 'en');
         // only allowed $first using alphabet and dash only
@@ -222,4 +222,4 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
     Route::get('/{slug}', [RedirectController::class, 'index']);
 
 
-});
+// });
