@@ -14,44 +14,11 @@ class KegiatanController extends Controller
 {
     public function index()
     {
+        if( Session::get('lg') == 'en' ) {
+            return redirect()->route('events.english');
+        }
         $kegiatan = Kegiatan::where('status', 'publikasi')->where('published_at', '<=', Carbon::now())->orderBy('published_at', 'desc');
 
-        if( Session::get('lg') == 'en' ) {
-            $kegiatan = $kegiatan->where('judul_english', '!=', null)->paginate(9);
-
-            if( Paginator::resolveCurrentPage() != 1 ) {
-                $events = [];
-                $i = 0;
-
-                if(!request()->ajax()) {
-                    return response()->json([
-                        'status' => 'success',
-                        'data' => $events
-                    ]);
-                }
-
-                foreach( $kegiatan as $a ) {
-                    $events[$i]['judul'] = Session::get('lg') == 'en' ? $a->judul_english : $a->judul_indo;
-                    $events[$i]['thumbnail'] = $a->thumbnail;
-                    $j = 0;
-                    foreach( $a->kategori_show as $ks ) {
-                        $events[$i]['kategori_show'][$j] = $ks->isi;
-                        $j++;
-                    }
-                    $events[$i]['konten'] = Session::get('lg') == 'en' ? \Str::limit($a->konten_english, 50, $end='...') : \Str::limit($a->konten_indo, 50, $end='...');
-                    $events[$i]['slug'] = $a->slug;
-                    $events[$i]['penulis'] = $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin';
-                    $events[$i]['published_at'] = \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y');
-                    $i++;
-                }
-                return response()->json([
-                    'status' => 'success',
-                    'data' => $events
-                ]);
-            } else {
-                return view('content_english.kegiatan', compact('kegiatan'));
-            }
-        }
         $kegiatan = $kegiatan->paginate(9);
 
         if( Paginator::resolveCurrentPage() != 1 ) {
@@ -89,9 +56,56 @@ class KegiatanController extends Controller
 
     }
 
+    public function index_english()
+    {
+        if( Session::get('lg') != 'en' ) {
+            return redirect()->route('events');
+        }
+        $kegiatan = Kegiatan::where('status', 'publikasi')->where('published_at', '<=', Carbon::now())->orderBy('published_at', 'desc');
+
+        $kegiatan = $kegiatan->where('judul_english', '!=', null)->paginate(9);
+
+        if( Paginator::resolveCurrentPage() != 1 ) {
+            $events = [];
+            $i = 0;
+
+            if(!request()->ajax()) {
+                return response()->json([
+                    'status' => 'success',
+                    'data' => $events
+                ]);
+            }
+
+            foreach( $kegiatan as $a ) {
+                $events[$i]['judul'] = Session::get('lg') == 'en' ? $a->judul_english : $a->judul_indo;
+                $events[$i]['thumbnail'] = $a->thumbnail;
+                $j = 0;
+                foreach( $a->kategori_show as $ks ) {
+                    $events[$i]['kategori_show'][$j] = $ks->isi;
+                    $j++;
+                }
+                $events[$i]['konten'] = Session::get('lg') == 'en' ? \Str::limit($a->konten_english, 50, $end='...') : \Str::limit($a->konten_indo, 50, $end='...');
+                $events[$i]['slug'] = $a->slug;
+                $events[$i]['penulis'] = $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin';
+                $events[$i]['published_at'] = \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y');
+                $i++;
+            }
+            return response()->json([
+                'status' => 'success',
+                'data' => $events
+            ]);
+        } else {
+            return view('content_english.kegiatan', compact('kegiatan'));
+        }
+
+    }
+
     public function show($slug)
     {
         $lg = Session::get('lg');
+
+        if( $lg == 'en' )
+            return redirect()->route('event_detail.english', $slug);
 
         $kegiatan = Kegiatan::where('slug', $slug)->orWhere('slug_english', $slug)->firstOrFail();
 
@@ -106,5 +120,24 @@ class KegiatanController extends Controller
             return view('content_english.kegiatan_detail', compact('kegiatan', 'kegiatanSaatIni'));
 
         return view('content.kegiatan_detail', compact('kegiatan', 'kegiatanSaatIni'));
+    }
+
+    public function show_english($slug)
+    {
+        $lg = Session::get('lg');
+        if( $lg != 'en' )
+            return redirect()->route('event_detail', $slug);
+
+        $kegiatan = Kegiatan::where('slug', $slug)->orWhere('slug_english', $slug)->firstOrFail();
+
+        // check draft
+        if( $kegiatan->status == 'draft' && !isset(auth()->user()->id) ) {
+            abort(404);
+        }
+
+        $kegiatanSaatIni = Kegiatan::where('status', 'publikasi')->take(3)->get();
+
+        return view('content_english.kegiatan_detail', compact('kegiatan', 'kegiatanSaatIni'));
+
     }
 }

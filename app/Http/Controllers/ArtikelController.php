@@ -20,40 +20,7 @@ class ArtikelController extends Controller
         $artikel = Artikel::where('status', 'publikasi')->where('published_at', '<=', Carbon::now())->orderBy('published_at', 'desc');
 
         if(Session::get('lg') == 'en' ) {
-            $artikel = $artikel->where('judul_english', '!=', null)->paginate(9);
-            if( Paginator::resolveCurrentPage() != 1 ) {
-                $artikels = [];
-                $i = 0;
-
-                if(!request()->ajax()) {
-                    return response()->json([
-                        'status' => 'success',
-                        'data' => $artikels
-                    ]);
-                }
-
-                foreach( $artikel as $a ) {
-                    $artikels[$i]['judul'] = Session::get('lg') == 'en' ? $a->judul_english : $a->judul_indo;
-                    $artikels[$i]['thumbnail'] = $a->thumbnail;
-                    $j = 0;
-                    foreach( $a->kategori_show as $ks ) {
-                        $artikels[$i]['kategori_show'][$j] = $ks->isi;
-                        $j++;
-                    }
-                    $artikels[$i]['konten'] = Session::get('lg') == 'en' ? Str::limit($a->konten_english, 50, $end='...') : Str::limit($a->konten_indo, 50, $end='...');
-                    $artikels[$i]['slug'] = $a->slug_english ?? $a->slug;
-                    $artikels[$i]['penulis'] = $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin';
-                    $artikels[$i]['published_at'] = \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y');
-                    $i++;
-                }
-
-                return response()->json([
-                    'status' => 'success',
-                    'data' => $artikels
-                ]);
-            } else {
-                return view('content_english.articles', compact('artikel'));
-            }
+            return redirect()->route('article.english');
         }
 
         $artikel = $artikel->paginate(9);
@@ -70,14 +37,14 @@ class ArtikelController extends Controller
             }
 
             foreach( $artikel as $a ) {
-                $artikels[$i]['judul'] = Session::get('lg') == 'en' ? $a->judul_english : $a->judul_indo;
+                $artikels[$i]['judul'] = $a->judul_indo;
                 $artikels[$i]['thumbnail'] = $a->thumbnail;
                 $j = 0;
                 foreach( $a->kategori_show as $ks ) {
                     $artikels[$i]['kategori_show'][$j] = $ks->isi;
                     $j++;
                 }
-                $artikels[$i]['konten'] = Session::get('lg') == 'en' ? \Str::limit($a->konten_english, 50, $end='...') : \Str::limit($a->konten_indo, 50, $end='...');
+                $artikels[$i]['konten'] = \Str::limit($a->konten_indo, 50, $end='...');
                 $artikels[$i]['slug'] = $a->slug;
                 $artikels[$i]['penulis'] = $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin';
                 $artikels[$i]['published_at'] = \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y');
@@ -90,6 +57,50 @@ class ArtikelController extends Controller
 
         } else {
             return view('content.articles', compact('artikel'));
+        }
+    }
+
+    public function index_english(){
+
+        if( Session::get('lg') != 'en' ) {
+            return redirect()->route('articles');
+        }
+
+        $artikel = Artikel::where('status', 'publikasi')->where('published_at', '<=', Carbon::now())->orderBy('published_at', 'desc');
+
+        $artikel = $artikel->where('judul_english', '!=', null)->paginate(9);
+        if( Paginator::resolveCurrentPage() != 1 ) {
+            $artikels = [];
+            $i = 0;
+
+            if(!request()->ajax()) {
+                return response()->json([
+                    'status' => 'success',
+                    'data' => $artikels
+                ]);
+            }
+
+            foreach( $artikel as $a ) {
+                $artikels[$i]['judul'] = $a->judul_english;
+                $artikels[$i]['thumbnail'] = $a->thumbnail;
+                $j = 0;
+                foreach( $a->kategori_show as $ks ) {
+                    $artikels[$i]['kategori_show'][$j] = $ks->isi;
+                    $j++;
+                }
+                $artikels[$i]['konten'] = Str::limit($a->konten_english, 50, $end='...');
+                $artikels[$i]['slug'] = $a->slug_english ?? $a->slug;
+                $artikels[$i]['penulis'] = $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin';
+                $artikels[$i]['published_at'] = \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y');
+                $i++;
+            }
+
+            return response()->json([
+                'status' => 'success',
+                'data' => $artikels
+            ]);
+        } else {
+            return view('content_english.articles', compact('artikel'));
         }
     }
 
@@ -110,30 +121,11 @@ class ArtikelController extends Controller
         views($artikel)->record();
 
 
-        if(Session::get('lg') == 'en' ) {
-            // if( count($query_without_this_article->get()) > 3 ) {
-            //     $artikelPopuler = $artikelPopuler->where('judul_english', '!=', null)->take(3)->get();
-            //     $artikelTerbaru = $artikelTerbaru->where('judul_english', '!=', null)->take(3)->get();
-            //     $artikelTerkait = $artikelTerkait->where('judul_english', '!=', null)->take(3)->get();
-            //     $artikelBacaJuga = $artikelBacaJuga->where('judul_english', '!=', null)->first();
-            // } else {
-                // $artikel = $artikel->get();
-                $artikelPopuler = $this->generate_articles_show($artikel->where('judul_english', '!=', null)->get());
+        $artikelPopuler = $this->generate_articles_show($query_without_this_article->get());
+        $artikelTerbaru = $query_without_this_article->orderBy('published_at')->take(3)->get();
 
-                $artikelTerbaru = $query_without_this_article->orderBy('published_at')->take(3)->get();
-                $artikelTerkait = $this->generate_articles_show($artikel->where('judul_english', '!=', null)->get());
-                $artikelBacaJuga = $this->generate_articles_show($artikel->where('judul_english', '!=', null)->get(), false);
-            // }
-
-
-            return view('content_english.article_detail', compact('artikel', 'artikelTerbaru', 'artikelPopuler', 'artikelBacaJuga', 'artikelTerkait'));
-        } else {
-            $artikelPopuler = $this->generate_articles_show($query_without_this_article->get());
-            $artikelTerbaru = $query_without_this_article->orderBy('published_at')->take(3)->get();
-
-            $artikelTerkait = $this->generate_articles_show($query_without_this_article->get());
-            $artikelBacaJuga = $this->generate_articles_show($query_without_this_article->get(), false);
-        }
+        $artikelTerkait = $this->generate_articles_show($query_without_this_article->get());
+        $artikelBacaJuga = $this->generate_articles_show($query_without_this_article->get(), false);
 
         // if( count($query_without_this_article->get()) > 3 ) {
         //     $artikelPopuler = $artikelPopuler->take(3)->get();
@@ -147,6 +139,33 @@ class ArtikelController extends Controller
         //     $artikelTerbaru = $artikelTerbaru->get();
         //     $artikelBacaJuga = $artikelBacaJuga->first();
         // }
+
+        return view('content.article_detail', compact('artikel', 'artikelTerbaru', 'artikelPopuler', 'artikelBacaJuga', 'artikelTerkait'));
+    }
+
+    public function show_english(Request $request, $slug)
+    {
+        if( Session::get('lg') != 'en' ) {
+            return redirect()->route('article_detail', $slug);
+        }
+        // $slug_field = $lg == 'en' ? 'slug_english' : 'slug';
+        $query_without_this_article = Artikel::where('published_at', '<=', Carbon::now())->where('status', 'publikasi')->orderBy('published_at', 'desc');
+        $query_this_article = Artikel::where('slug', $slug)->orWhere('slug_english', $slug)->where('published_at', '<=', Carbon::now())->where('status', 'publikasi');
+
+        $artikel = $query_this_article->firstOrFail();
+
+        // check draft
+        if( $artikel->status == 'draft' && !isset(auth()->user()->id) ) {
+            abort(404);
+        }
+
+        views($artikel)->record();
+
+        $artikelPopuler = $this->generate_articles_show($artikel->where('judul_english', '!=', null)->get());
+
+        $artikelTerbaru = $query_without_this_article->orderBy('published_at')->take(3)->get();
+        $artikelTerkait = $this->generate_articles_show($artikel->where('judul_english', '!=', null)->get());
+        $artikelBacaJuga = $this->generate_articles_show($artikel->where('judul_english', '!=', null)->get(), false);
 
         return view('content.article_detail', compact('artikel', 'artikelTerbaru', 'artikelPopuler', 'artikelBacaJuga', 'artikelTerkait'));
     }
