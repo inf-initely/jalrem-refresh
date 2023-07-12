@@ -107,86 +107,12 @@
 
     });
 </script>
-
+@include("partials.articles-loader")
 <script>
-    var page = 1
-    var mentok = false;
-    $(window).scroll(function() {
-      if($(window).scrollTop() + $(window).height() >= $(document).height() - 300) {
-         if( !mentok ) {
-            page++;
-            loadMoreData(page);
-         }
-      }
-   });
-   $('.loader').hide();
-
-   function loadMoreData(page) {
-      $.ajax({
-         url: '?page=' + page,
-         type: 'GET',
-         beforeSend: function() {
-            $('.loader').show();
-         }
-      })
-      .done(function(data)
-       {
-         // console.log(data.data[0].profile.photo_url);
-         // if(data.html == " "){
-         //       // $('.ajax-load').html("No more records found");
-         //       return;
-         // }
-         for( let i = 0; i < data.data.length; i++ ) {
-            let kategori_show = data?.data[i]?.kategori_show?.map(item => {
-                if( item == 'Indepth' ) {
-                    return '<span class="badge rounded-pill py-1 px-3 bg-success">Indepth</span>'
-                } else if( item == 'Jurnal Artikel' ) {
-                    return '<span class="badge rounded-pill py-1 px-3 bg-secondary">Jurnal Artikel</span>'
-                }
-                return '<div></div>';
-            }).toString().replaceAll(',', ' ')
-
-            if( kategori_show == undefined ) {
-                kategori_show = '<div></div>';
-            }
-
-            $('#articles').append(`
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card no-border card-artikel">
-                    <img src="{{ asset('storage/assets/artikel/thumbnail')}}/${data.data[i].thumbnail}" class="card-img-top img-thumbnail" alt="...">
-                    <div class="card-body">
-                        <h3 class="card-title judul-artikel">${data.data[i].judul}</h3>
-                        {{-- <p class="card-text des-artikel minimize">{!! ${data.data[i].konten} !!}</p> --}}
-                        <p class="penulis-artikel">
-                            ${data.data[i].penulis}
-                        </p>
-                        <p class="tgl-artikel">
-                            ${data.data[i].published_at}
-                        </p>
-                        ${kategori_show}
-                    </div>
-                    <a href="/artikel/${data.data[i].slug}" class="stretched-link"></a>
-                </div>
-            </div>
-               `)
-         }
-         console.log(data);
-         if( data.data.length <= 0 ) {
-             mentok = true;
-         }
-         $('.loader').hide();
-      })
-      .fail(function(jqXHR, ajaxOptions, thrownError)
-      {
-            alert('server not responding...');
-      });
-   }
- </script>
- <script>
-  $('.menu-toggle').click(function(){
-     $(".nav2").toggleClass("mobile-nav");
-     $(".nav2").removeClass("temp-pos");
-     $(this).toggleClass("is-active");
-  });
+    $('.menu-toggle').click(function(){
+        $(".nav2").toggleClass("mobile-nav");
+        $(".nav2").removeClass("temp-pos");
+        $(this).toggleClass("is-active");
+    });
 </script>
 @endsection
