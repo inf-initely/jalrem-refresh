@@ -312,37 +312,10 @@
     <script type="text/javascript" src="assets/js/slick.min.js"></script>
     <script type="text/javascript" src="assets/js/ytdefer.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
-    <script src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     <script defer="">
         window.addEventListener("load", function() {
             setTimeout(otherOperation, 500);
         }, false);
-
-        function otherOperation() {
-            $("#twitter-widget-3").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(1))")
-                .hide();
-            $("#twitter-widget-4").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(2))")
-                .hide();
-            $("#twitter-widget-5").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(3))")
-                .hide();
-            $("#twitter-widget-6").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(4))")
-                .hide();
-            $("#twitter-widget-7").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(5))")
-                .hide();
-            $("#twitter-widget-8").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(6))")
-                .hide();
-            $("#twitter-widget-9").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(7))")
-                .hide();
-
-            $("#twitter-widget-3").contents().find(".timeline-LoadMore").hide();
-            $("#twitter-widget-4").contents().find(".timeline-LoadMore").hide();
-            $("#twitter-widget-5").contents().find(".timeline-LoadMore").hide();
-            $("#twitter-widget-6").contents().find(".timeline-LoadMore").hide();
-            $("#twitter-widget-7").contents().find(".timeline-LoadMore").hide();
-            $("#twitter-widget-8").contents().find(".timeline-LoadMore").hide();
-            $("#twitter-widget-9").contents().find(".timeline-LoadMore").hide();
-            // alert("YIHAAAA")
-        }
     </script>
     <script>
         $(document).ready(function() {

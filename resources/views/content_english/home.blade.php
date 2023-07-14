@@ -311,37 +311,10 @@
     <script type="text/javascript" src="assets/js/ytdefer.min.js"></script>
     <script type="text/javascript" src="assets/js/slick.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
-    <script src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     <script>
         window.addEventListener("load", function() {
             setTimeout(otherOperation, 500);
         }, false);
-
-        function otherOperation() {
-            $("#twitter-widget-3").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(1))")
-                .hide();
-            $("#twitter-widget-4").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(2))")
-                .hide();
-            $("#twitter-widget-5").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(3))")
-                .hide();
-            $("#twitter-widget-6").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(4))")
-                .hide();
-            $("#twitter-widget-7").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(5))")
-                .hide();
-            $("#twitter-widget-8").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(6))")
-                .hide();
-            $("#twitter-widget-9").contents().find(".timeline-Viewport>ol>.timeline-TweetList-tweet:not(:nth-child(7))")
-                .hide();
-
-            $("#twitter-widget-3").contents().find(".timeline-LoadMore").hide();
-            $("#twitter-widget-4").contents().find(".timeline-LoadMore").hide();
-            $("#twitter-widget-5").contents().find(".timeline-LoadMore").hide();
-            $("#twitter-widget-6").contents().find(".timeline-LoadMore").hide();
-            $("#twitter-widget-7").contents().find(".timeline-LoadMore").hide();
-            $("#twitter-widget-8").contents().find(".timeline-LoadMore").hide();
-            $("#twitter-widget-9").contents().find(".timeline-LoadMore").hide();
-            // alert("YIHAAAA")
-        }
     </script>
     <script>
         $(document).ready(function() {
@@ -463,43 +436,43 @@
                 ]
             });
 
-            $('.twitter-jalrem').slick({
-                dots: true,
-                infinite: true,
-                speed: 300,
-                slidesToShow: 3,
-                slidesToScroll: 1,
-                responsive: [{
-                        breakpoint: 1024,
-                        settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 2,
-                            infinite: true,
-                            dots: true
-                        }
-                    },
-                    {
-                        breakpoint: 600,
-                        settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 2,
-                            arrows: false
-                        }
-                    },
-                    {
-                        breakpoint: 480,
-                        settings: {
-                            dots: false,
-                            arrows: false,
-                            slidesToShow: 1,
-                            slidesToScroll: 1
-                        }
-                    }
-                    // You can unslick at a given breakpoint now by adding:
-                    // settings: "unslick"
-                    // instead of a settings object
-                ]
-            });
+            // $('.twitter-jalrem').slick({
+            //     dots: true,
+            //     infinite: true,
+            //     speed: 300,
+            //     slidesToShow: 3,
+            //     slidesToScroll: 1,
+            //     responsive: [{
+            //             breakpoint: 1024,
+            //             settings: {
+            //                 slidesToShow: 2,
+            //                 slidesToScroll: 2,
+            //                 infinite: true,
+            //                 dots: true
+            //             }
+            //         },
+            //         {
+            //             breakpoint: 600,
+            //             settings: {
+            //                 slidesToShow: 2,
+            //                 slidesToScroll: 2,
+            //                 arrows: false
+            //             }
+            //         },
+            //         {
+            //             breakpoint: 480,
+            //             settings: {
+            //                 dots: false,
+            //                 arrows: false,
+            //                 slidesToShow: 1,
+            //                 slidesToScroll: 1
+            //             }
+            //         }
+            //         // You can unslick at a given breakpoint now by adding:
+            //         // settings: "unslick"
+            //         // instead of a settings object
+            //     ]
+            // });
         });
     </script>
     <script>
