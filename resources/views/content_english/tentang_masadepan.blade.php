@@ -86,7 +86,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div> 
+                                    </div>
                                     @elseif( $a->getTable() == 'audio' )
                                     <div class="col-lg-6 mb-1">
                                         <div class="card no-border no-background">
@@ -230,7 +230,6 @@
 @section('js')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="http://platform.twitter.com/widgets.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <script>
     $(document).ready(function() {
@@ -294,7 +293,7 @@
     var tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";
     document.body.appendChild(tag);
-    
+
     // When the YouTube API code loads, it calls this function, so it must be global
     // and it must be named exactly onYouTubeIframeAPIReady.
     window.onYouTubeIframeAPIReady = function() {
@@ -303,7 +302,7 @@
       videoModules = Array.prototype.slice.call(videoModules);
       videoModules.forEach(initializeVideoModule);
     }
-    
+
     function initializeVideoModule(videoModule) {
       var player = new YT.Player(videoModule.querySelector('.video-placeholder'), {
         videoId: videoModule.dataset.videoId,
@@ -357,7 +356,7 @@
          //       return;
          // }
          if( data.data.length > 0 ) {
-             
+
          }
          for( let i = 0; i < data.data.length; i++ ) {
             let kategori_show = data?.data[i]?.kategori_show?.map(item => {
@@ -372,7 +371,7 @@
             if( kategori_show == undefined ) {
                 kategori_show = '<div></div>';
             }
-            
+
             let content = '';
             let rempahs = '';
             if( data?.data[i]?.rempahs == undefined ) {
@@ -383,7 +382,7 @@
                                     |`;
                 })
             }
-            
+
             if( data.data[i].table == 'audio' ) {
                 content = `
                 <div class="col-lg-6 mb-1">
