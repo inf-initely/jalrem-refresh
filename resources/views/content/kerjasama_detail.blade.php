@@ -57,7 +57,7 @@
                                 <div class="col mb-2">
                                     <div class="card no-border card-media">
                                         <div class="card-body">
-                                            <img src="{{ asset('assets/img/icon-publication.png') }}" width="32.5%">
+                                            <img src="{{ asset('assets/img/icon-publication.webp') }}" width="32.5%">
                                             <p class="judul-media">Artikel</p>
                                             <p class="des-media">
 
@@ -69,7 +69,7 @@
                                 <div class="col mb-2">
                                     <div class="card no-border card-media">
                                         <div class="card-body">
-                                            <img src="{{ asset('assets/img/icon-image.png') }}" width="32.5%">
+                                            <img src="{{ asset('assets/img/icon-image.webp') }}" width="32.5%">
                                             <p class="judul-media">Foto</p>
                                             <p class="des-media">
 
@@ -81,7 +81,7 @@
                                 <div class="col mb-2">
                                     <div class="card no-border card-media">
                                         <div class="card-body">
-                                            <img src="{{ asset('assets/img/icon-video.png') }}" width="32.5%">
+                                            <img src="{{ asset('assets/img/icon-video.webp') }}" width="32.5%">
                                             <p class="judul-media">Video</p>
                                             <p class="des-media">
 
@@ -93,7 +93,7 @@
                                 <div class="col mb-2">
                                     <div class="card no-border card-media">
                                         <div class="card-body">
-                                            <img src="{{ asset('assets/img/icon-publication.png') }}" width="32.5%">
+                                            <img src="{{ asset('assets/img/icon-publication.webp') }}" width="32.5%">
                                             <p class="judul-media">Publikasi</p>
                                             <p class="des-media">
 
@@ -105,7 +105,7 @@
                                 <div class="col d-none d-lg-block d-xl-none mb-1">
                                     <div class="card no-border card-media">
                                         <div class="card-body">
-                                            <img src="{{ asset('assets/img/icon-sound.png') }}" width="32.5%">
+                                            <img src="{{ asset('assets/img/icon-sound.webp') }}" width="32.5%">
                                             <p class="judul-media">Audio</p>
                                             <p class="des-media">
 
@@ -117,7 +117,7 @@
                                 <div class="col-6 col-md-3 mb-1 d-lg-none d-xl-block">
                                     <div class="card no-border card-media">
                                         <div class="card-body">
-                                            <img src="{{ asset('assets/img/icon-sound.png') }}" width="32.5%">
+                                            <img src="{{ asset('assets/img/icon-sound.webp') }}" width="32.5%">
                                             <p class="judul-media">Audio</p>
                                             <p class="des-media">
 

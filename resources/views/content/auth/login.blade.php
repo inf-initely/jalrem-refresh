@@ -19,7 +19,10 @@
         <div id="content">
             <div class="row">
                 <div class="col-lg-7 wrap-img-daftar">
-                    <img id="img-login" src="assets/img/hero/hero-6.jpg">
+                    <img id="img-login"
+                        srcset="assets/img/hero/hero-6-576px.webp 576w, assets/img/hero/hero-6-768px.webp 768w, assets/img/hero/hero-6-992px.webp 992w, assets/img/hero/hero-6-1200px.webp 1200w, assets/img/hero/hero-6.webp"
+                        sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
+                        src="assets/img/hero/hero-6.webp" alt="" />
                 </div>
                 <div class="col-lg-5 wrap-form-daftar center-v">
                     <a href="index.html">

@@ -1,0 +1,66 @@
+<html>
+
+<head>
+    <title>Responsive Image Generator</title>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <td>Input</td>
+                <td>Output</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <div style="display:flex; flex-direction: column;">
+                        <textarea id="input"></textarea>
+                        <fieldset>
+                            <legend>Responsive Size</legend>
+                            <div id="responsives">
+
+                            </div>
+                        </fieldset>
+                    </div>
+                </td>
+                <td>
+                    <textarea id="output" style="width: 500px; height: 100px"></textarea>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+<script>
+    const responsiveSize = [0, 576, 768, 992, 1200]
+    function generateResponsiveInput() {
+        responsives.innerHTML = responsiveSize.map((bp, i) => {
+            const value = bp == 0 ? 'none' : bp
+            const isLast = i == responsiveSize.length - 1
+            return `<input type="radio" name="responsive" value="${i}" id="i${value}" ${isLast ? "checked" : ""} onchange="update()" /><label for="i${value}">${bp == 0 ? 'None' : bp + "px"}</label>`
+        }).join("")
+    }
+    generateResponsiveInput()
+
+    function getResponsiveValue() {
+        const inputs = document.querySelectorAll('input[name=responsive]')
+        const index = Array.from(inputs).find(i => i.checked == true).value
+        const result = responsiveSize.slice(0, parseInt(index) + 1)
+        console.log(result)
+        return result
+    }
+
+    function update() {
+        const value = input.value
+        const res = getResponsiveValue().filter(v => v != 0)
+        const srcset = [...res.map(bp => `${value}-${bp}px.webp ${bp}w`), value + ".webp"].join(", ")
+        const sizes = [...res.map(bp => `(max-width: ${bp}px) ${bp}px`), '100vw'].join(", ")
+        output.value = `<img srcset="${srcset}" sizes="${sizes}" src="${value}.webp" alt=""/>`
+    }
+    input.onkeyup = () => {
+        update()
+    }
+</script>
+
+</html>

@@ -2,7 +2,10 @@
 
 @section('content')
     <header id="hero">
-        <img class="hero-img-2" src="{{ asset('assets/img/hero/hero-5.jpg') }}">
+        <img class="hero-img-2"
+            srcset="assets/img/hero/hero-5-576px.webp 576w, assets/img/hero/hero-5-768px.webp 768w, assets/img/hero/hero-5-992px.webp 992w, assets/img/hero/hero-5-1200px.webp 1200w, assets/img/hero/hero-5.webp"
+            sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
+            src="assets/img/hero/hero-5.webp" alt="" />
         <div class="text-hero-2">
             <div class="">
                 <div class="col-lg-12 text-center">
