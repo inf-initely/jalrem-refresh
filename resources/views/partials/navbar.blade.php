@@ -16,8 +16,8 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li>
                                 <a class="dropdown-item" href="{{ route('set_language_id') }}">
-                                    <img src="{{ asset('assets/img/bendera/flag-indonesia-20px.webp') }}" class="mr-2 flag"
-                                        width="20px"> ID
+                                    <img src="{{ asset('assets/img/bendera/flag-indonesia-20px.webp') }}"
+                                        class="mr-2 flag" width="20px"> ID
                                 </a>
                             </li>
                             <li>
@@ -110,8 +110,8 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="border: 0px">
                             <li>
                                 <a class="dropdown-item" href="{{ route('set_language_id') }}">
-                                    <img src="{{ asset('assets/img/bendera/flag-indonesia-20px.webp') }}" class="mr-2 flag"
-                                        width="20px"> ID
+                                    <img src="{{ asset('assets/img/bendera/flag-indonesia-20px.webp') }}"
+                                        class="mr-2 flag" width="20px"> ID
                                 </a>
                             </li>
                             <li>
@@ -163,7 +163,10 @@
                             </a>
                         </li>
                         <div class="bg-nav2">
-                            <img class="item-jelajah-3" src="assets/img/asset-jelajah.png">
+                            <img class="item-jelajah-3"
+                                srcset="assets/img/asset-jelajah-576px.webp 576w, assets/img/asset-jelajah-768px.webp 768w, assets/img/asset-jelajah-992px.webp 992w, assets/img/asset-jelajah-1200px.webp 1200w, assets/img/asset-jelajah.webp"
+                                sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
+                                src="assets/img/asset-jelajah.webp" alt="" />
                         </div>
                     </ul>
                 </div>
@@ -190,8 +193,8 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li>
                                 <a class="dropdown-item" href="{{ route('set_language_id') }}">
-                                    <img src="{{ asset('assets/img/bendera/flag-indonesia-20px.webp') }}" class="mr-2 flag"
-                                        width="20px"> ID
+                                    <img src="{{ asset('assets/img/bendera/flag-indonesia-20px.webp') }}"
+                                        class="mr-2 flag" width="20px"> ID
                                 </a>
                             </li>
                             <li>
@@ -299,8 +302,8 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="border: 0px">
                             <li>
                                 <a class="dropdown-item" href="{{ route('set_language_id') }}">
-                                    <img src="{{ asset('assets/img/bendera/flag-indonesia-20px.webp') }}" class="mr-2 flag"
-                                        width="20px"> ID
+                                    <img src="{{ asset('assets/img/bendera/flag-indonesia-20px.webp') }}"
+                                        class="mr-2 flag" width="20px"> ID
                                 </a>
                             </li>
                             <li>
@@ -366,7 +369,10 @@
                             </a>
                         </li>
                         <div class="bg-nav2">
-                            <img class="item-jelajah-3" src="assets/img/asset-jelajah.png">
+                            <img class="item-jelajah-3"
+                                srcset="assets/img/asset-jelajah-576px.webp 576w, assets/img/asset-jelajah-768px.webp 768w, assets/img/asset-jelajah-992px.webp 992w, assets/img/asset-jelajah-1200px.webp 1200w, assets/img/asset-jelajah.webp"
+                                sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
+                                src="assets/img/asset-jelajah.webp" alt="" />
                         </div>
                     </ul>
                 </div>
@@ -388,8 +394,8 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li>
                                 <a class="dropdown-item" href="{{ route('set_language_id') }}">
-                                    <img src="{{ asset('assets/img/bendera/flag-indonesia-20px.webp') }}" class="mr-2 flag"
-                                        width="20px"> ID
+                                    <img src="{{ asset('assets/img/bendera/flag-indonesia-20px.webp') }}"
+                                        class="mr-2 flag" width="20px"> ID
                                 </a>
                             </li>
                             <li>
@@ -497,8 +503,8 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="border: 0px">
                             <li>
                                 <a class="dropdown-item" href="{{ route('set_language_id') }}">
-                                    <img src="{{ asset('assets/img/bendera/flag-indonesia-20px.webp') }}" class="mr-2 flag"
-                                        width="20px"> ID
+                                    <img src="{{ asset('assets/img/bendera/flag-indonesia-20px.webp') }}"
+                                        class="mr-2 flag" width="20px"> ID
                                 </a>
                             </li>
                             <li>
@@ -562,7 +568,10 @@
                             </a>
                         </li>
                         <div class="bg-nav2">
-                            <img class="item-jelajah-3" src="assets/img/asset-jelajah.png">
+                            <img class="item-jelajah-3"
+                                srcset="assets/img/asset-jelajah-576px.webp 576w, assets/img/asset-jelajah-768px.webp 768w, assets/img/asset-jelajah-992px.webp 992w, assets/img/asset-jelajah-1200px.webp 1200w, assets/img/asset-jelajah.webp"
+                                sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
+                                src="assets/img/asset-jelajah.webp" alt="" />
                         </div>
                     </ul>
                 </div>
@@ -587,8 +596,8 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li>
                                 <a class="dropdown-item" href="{{ route('set_language_id') }}">
-                                    <img src="{{ asset('assets/img/bendera/flag-indonesia-20px.webp') }}" class="mr-2 flag"
-                                        width="20px"> ID
+                                    <img src="{{ asset('assets/img/bendera/flag-indonesia-20px.webp') }}"
+                                        class="mr-2 flag" width="20px"> ID
                                 </a>
                             </li>
                             <li>
@@ -734,7 +743,10 @@
                             </a>
                         </li>
                         <div class="bg-nav2">
-                            <img class="item-jelajah-3" src="assets/img/asset-jelajah.png">
+                            <img class="item-jelajah-3"
+                                srcset="assets/img/asset-jelajah-576px.webp 576w, assets/img/asset-jelajah-768px.webp 768w, assets/img/asset-jelajah-992px.webp 992w, assets/img/asset-jelajah-1200px.webp 1200w, assets/img/asset-jelajah.webp"
+                                sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
+                                src="assets/img/asset-jelajah.webp" alt="" />
                         </div>
                     </ul>
                 </div>
@@ -935,7 +947,10 @@
                             </a>
                         </li>
                         <div class="bg-nav2">
-                            <img class="item-jelajah-3" src="assets/img/asset-jelajah.png">
+                            <img class="item-jelajah-3"
+                                srcset="assets/img/asset-jelajah-576px.webp 576w, assets/img/asset-jelajah-768px.webp 768w, assets/img/asset-jelajah-992px.webp 992w, assets/img/asset-jelajah-1200px.webp 1200w, assets/img/asset-jelajah.webp"
+                                sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
+                                src="assets/img/asset-jelajah.webp" alt="" />
                         </div>
                     </ul>
                 </div>
@@ -1131,7 +1146,10 @@
                             </a>
                         </li>
                         <div class="bg-nav2">
-                            <img class="item-jelajah-3" src="assets/img/asset-jelajah.png">
+                            <img class="item-jelajah-3"
+                                srcset="assets/img/asset-jelajah-576px.webp 576w, assets/img/asset-jelajah-768px.webp 768w, assets/img/asset-jelajah-992px.webp 992w, assets/img/asset-jelajah-1200px.webp 1200w, assets/img/asset-jelajah.webp"
+                                sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
+                                src="assets/img/asset-jelajah.webp" alt="" />
                         </div>
                     </ul>
                 </div>

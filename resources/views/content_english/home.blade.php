@@ -129,7 +129,10 @@
             </section>
             <section id="magnetDunia">
                 <div class="container">
-                    <img class="item-jelajah item-jelajah-3" src="assets/img/asset-jelajah.png">
+                    <img class="item-jelajah item-jelajah-3"
+                        srcset="assets/img/asset-jelajah-576px.webp 576w, assets/img/asset-jelajah-768px.webp 768w, assets/img/asset-jelajah-992px.webp 992w, assets/img/asset-jelajah-1200px.webp 1200w, assets/img/asset-jelajah.webp"
+                        sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
+                        src="assets/img/asset-jelajah.webp" alt="" />
                     <div class="row justify-content-center content-jelajahi" data-aos="fade-left">
                         <div class="col-lg-10 mb-4">
                             <div class="ytdefer video video-magnet-dunia" data-alt="Enter optional img alt text here"
