@@ -3,11 +3,11 @@
         <img class="footer-bg-1"
             srcset="assets/img/asset-jelajah-576px.webp 576w, assets/img/asset-jelajah-768px.webp 768w, assets/img/asset-jelajah-992px.webp 992w, assets/img/asset-jelajah-1200px.webp 1200w, assets/img/asset-jelajah.webp"
             sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
-            src="assets/img/asset-jelajah.webp" alt="" width="50%" />
+            src="assets/img/asset-jelajah.webp" alt="" width="50%" loading="lazy" />
         <img class="footer-bg-2 d-none"
             srcset="assets/img/asset-jelajah2-576px.webp 576w, assets/img/asset-jelajah2-768px.webp 768w, assets/img/asset-jelajah2-992px.webp 992w, assets/img/asset-jelajah2-1200px.webp 1200w, assets/img/asset-jelajah2.webp"
             sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
-            src="assets/img/asset-jelajah2.webp" alt="" width="50%" />
+            src="assets/img/asset-jelajah2.webp" alt="" width="50%" loading="lazy" />
         <div class="container wrap-footer">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-8 col-lg-3 footer-content mb-4">
@@ -105,11 +105,11 @@
         <img class="footer-bg-1" width="50%"
             srcset="assets/img/asset-jelajah-576px.webp 576w, assets/img/asset-jelajah-768px.webp 768w, assets/img/asset-jelajah-992px.webp 992w, assets/img/asset-jelajah-1200px.webp 1200w, assets/img/asset-jelajah.webp"
             sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
-            src="assets/img/asset-jelajah.webp" alt="" />
-        <img class="footer-bg-2 d-none" width="50%" <img
+            src="assets/img/asset-jelajah.webp" alt="" loading="lazy" />
+        <img class="footer-bg-2 d-none" width="50%"
             srcset="assets/img/asset-jelajah2-576px.webp 576w, assets/img/asset-jelajah2-768px.webp 768w, assets/img/asset-jelajah2-992px.webp 992w, assets/img/asset-jelajah2-1200px.webp 1200w, assets/img/asset-jelajah2.webp"
             sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
-            src="assets/img/asset-jelajah2.webp" alt="" />
+            src="assets/img/asset-jelajah2.webp" alt="" loading="lazy" />
         <div class="container wrap-footer">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-8 col-lg-3 footer-content mb-4">
