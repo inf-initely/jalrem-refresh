@@ -62,14 +62,14 @@
         <div id="content">
             <section id="jelajah">
                 <div class="container">
-                    <img class="item-jelajah item-jelajah-1" src="assets/img/item-daun-1.svg">
-                    <img class="item-jelajah item-jelajah-2" src="assets/img/item-daun-2.svg">
+                    <img class="item-jelajah item-jelajah-1" src="assets/img/item-daun-1.svg" loading="lazy">
+                    <img class="item-jelajah item-jelajah-2" src="assets/img/item-daun-2.svg" loading="lazy">
                     <div class="row justify-content-center content-jelajahi" data-aos="fade-right">
                         <div class="col-12 col-md-6 col-lg-4 mb-2">
                             <img class="jelajah-img"
                                 srcset="assets/img/jalur-576px.webp 576w, assets/img/jalur-768px.webp 768w, assets/img/jalur-992px.webp 992w, assets/img/jalur-1200px.webp 1200w, assets/img/jalur.webp"
                                 sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
-                                src="assets/img/jalur.webp" alt="" />
+                                src="assets/img/jalur.webp" alt="" loading="lazy" />
                         </div>
                         <div class="col-12 col-md-6 col-lg-6 center-v">
                             <header>
@@ -103,7 +103,7 @@
                             <img class="jelajah-img"
                                 srcset="assets/img/jejak-576px.webp 576w, assets/img/jejak-768px.webp 768w, assets/img/jejak-992px.webp 992w, assets/img/jejak-1200px.webp 1200w, assets/img/jejak.webp"
                                 sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
-                                src="assets/img/jejak.webp" alt="" />
+                                src="assets/img/jejak.webp" alt="" loading="lazy" />
                         </div>
                     </div>
                     <div class="row justify-content-center content-jelajahi" data-aos="fade-right">
@@ -111,7 +111,7 @@
                             <img class="jelajah-img"
                                 srcset="assets/img/masa-depan-576px.webp 576w, assets/img/masa-depan-768px.webp 768w, assets/img/masa-depan-992px.webp 992w, assets/img/masa-depan-1200px.webp 1200w, assets/img/masa-depan.webp"
                                 sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
-                                src="assets/img/masa-depan.webp" alt="" />
+                                src="assets/img/masa-depan.webp" alt="" loading="lazy" />
                         </div>
                         <div class="col-12 col-md-6 col-lg-6 center-v">
                             <header>
@@ -134,7 +134,7 @@
                     <img class="item-jelajah item-jelajah-3"
                         srcset="assets/img/asset-jelajah-576px.webp 576w, assets/img/asset-jelajah-768px.webp 768w, assets/img/asset-jelajah-992px.webp 992w, assets/img/asset-jelajah-1200px.webp 1200w, assets/img/asset-jelajah.webp"
                         sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
-                        src="assets/img/asset-jelajah.webp" alt="" />
+                        src="assets/img/asset-jelajah.webp" alt="" loading="lazy" />
                     <div class="row justify-content-center content-jelajahi" data-aos="fade-left">
                         <div class="col-lg-10 mb-4">
                             <div class="ytdefer video video-magnet-dunia" data-alt="Enter optional img alt text here"
@@ -173,7 +173,8 @@
                                         <div class="row">
                                             <div class="col-6">
                                                 <img class="kegiatan-img" id="imgKegiatan" name="imgKegiatan"
-                                                    src="{{ asset('storage/assets/kegiatan/thumbnail/' . $k->thumbnail) }}">
+                                                    src="{{ asset('storage/assets/kegiatan/thumbnail/' . $k->thumbnail) }}"
+                                                    loading="lazy">
                                             </div>
                                             <div class="col-6 center-v">
                                                 <p class="tgl-kegiatan" id="tglKegiatan" name="tglKegiatan">
@@ -209,7 +210,7 @@
                             <div class="col-md-6 col-lg-4 mb-4">
                                 <div class="card no-border card-artikel">
                                     <img src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}"
-                                        class="card-img-top img-thumbnail" alt="...">
+                                        class="card-img-top img-thumbnail" alt="..." loading="lazy">
                                     <div class="card-body">
                                         <h3 class="card-title judul-artikel">{{ $a->judul_indo }}</h3>
                                         {{-- <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p> --}}
@@ -290,7 +291,7 @@
                 <div class="wrap-img-kontributor">
                     <img srcset="assets/img/hero/hero-6-576px.webp 576w, assets/img/hero/hero-6-768px.webp 768w, assets/img/hero/hero-6-992px.webp 992w, assets/img/hero/hero-6-1200px.webp 1200w, assets/img/hero/hero-6.webp"
                         sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
-                        src="assets/img/hero/hero-6.webp" alt="" />
+                        src="assets/img/hero/hero-6.webp" alt="" loading="lazy" />
                 </div>
                 <div class="wrap-text-kontributor">
                     <div class="row">
