@@ -66,7 +66,10 @@
                     <img class="item-jelajah item-jelajah-2" src="assets/img/item-daun-2.svg">
                     <div class="row justify-content-center content-jelajahi" data-aos="fade-right">
                         <div class="col-12 col-md-6 col-lg-4 mb-2">
-                            <img class="jelajah-img" src="assets/img/jalur.webp">
+                            <img class="jelajah-img"
+                                srcset="assets/img/jalur-576px.webp 576w, assets/img/jalur-768px.webp 768w, assets/img/jalur-992px.webp 992w, assets/img/jalur-1200px.webp 1200w, assets/img/jalur.webp"
+                                sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
+                                src="assets/img/jalur.webp" alt="" />
                         </div>
                         <div class="col-12 col-md-6 col-lg-6 center-v">
                             <header>
@@ -97,12 +100,18 @@
               </a> --}}
                         </div>
                         <div class="col-12 col-md-6 col-lg-4 first-div mb-2">
-                            <img class="jelajah-img" src="assets/img/jejak.webp">
+                            <img class="jelajah-img"
+                                srcset="assets/img/jejak-576px.webp 576w, assets/img/jejak-768px.webp 768w, assets/img/jejak-992px.webp 992w, assets/img/jejak-1200px.webp 1200w, assets/img/jejak.webp"
+                                sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
+                                src="assets/img/jejak.webp" alt="" />
                         </div>
                     </div>
                     <div class="row justify-content-center content-jelajahi" data-aos="fade-right">
                         <div class="col-12 col-md-6 col-lg-4 mb-2">
-                            <img class="jelajah-img" src="assets/img/masa-depan.webp">
+                            <img class="jelajah-img"
+                                srcset="assets/img/masa-depan-576px.webp 576w, assets/img/masa-depan-768px.webp 768w, assets/img/masa-depan-992px.webp 992w, assets/img/masa-depan-1200px.webp 1200w, assets/img/masa-depan.webp"
+                                sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
+                                src="assets/img/masa-depan.webp" alt="" />
                         </div>
                         <div class="col-12 col-md-6 col-lg-6 center-v">
                             <header>
@@ -122,7 +131,10 @@
             </section>
             <section id="magnetDunia">
                 <div class="container">
-                    <img class="item-jelajah item-jelajah-3" src="assets/img/asset-jelajah.png">
+                    <img class="item-jelajah item-jelajah-3"
+                        srcset="assets/img/asset-jelajah-576px.webp 576w, assets/img/asset-jelajah-768px.webp 768w, assets/img/asset-jelajah-992px.webp 992w, assets/img/asset-jelajah-1200px.webp 1200w, assets/img/asset-jelajah.webp"
+                        sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
+                        src="assets/img/asset-jelajah.webp" alt="" />
                     <div class="row justify-content-center content-jelajahi" data-aos="fade-left">
                         <div class="col-lg-10 mb-4">
                             <div class="ytdefer video video-magnet-dunia" data-alt="Enter optional img alt text here"
@@ -234,7 +246,7 @@
                                 <div class="col-6 col-md-6">
                                     <div class="card no-border card-media card-media-1">
                                         <div class="card-body text-center">
-                                            <img src="assets/img/icon-image.png" width="40%">
+                                            <img src="assets/img/icon-image.webp" width="40%">
                                             <p class="judul-media">Foto</p>
                                         </div>
                                         <a href="{{ route('photos') }}" class="stretched-link"></a>
@@ -243,7 +255,7 @@
                                 <div class="col-6 col-md-6">
                                     <div class="card no-border card-media card-media-2">
                                         <div class="card-body text-center">
-                                            <img src="assets/img/icon-publication.png" width="40%">
+                                            <img src="assets/img/icon-publication.webp" width="40%">
                                             <p class="judul-media">Publikasi</p>
                                         </div>
                                         <a href="{{ route('publications') }}" class="stretched-link"></a>
@@ -254,7 +266,7 @@
                                 <div class="col-6 col-md-6">
                                     <div class="card no-border card-media card-media-3">
                                         <div class="card-body text-center">
-                                            <img src="assets/img/icon-video.png" width="40%">
+                                            <img src="assets/img/icon-video.webp" width="40%">
                                             <p class="judul-media">Video</p>
                                         </div>
                                         <a href="{{ route('videos') }}" class="stretched-link"></a>
@@ -263,7 +275,7 @@
                                 <div class="col-6 col-md-6">
                                     <div class="card no-border card-media card-media-4">
                                         <div class="card-body text-center">
-                                            <img src="assets/img/icon-sound.png" width="40%">
+                                            <img src="assets/img/icon-sound.webp" width="40%">
                                             <p class="judul-media">Audio</p>
                                         </div>
                                         <a href="{{ route('audios') }}" class="stretched-link"></a>
@@ -276,7 +288,9 @@
             </section>
             <section id="kontributor" class="no-padding ">
                 <div class="wrap-img-kontributor">
-                    <img src="assets/img/hero/hero-6.jpg">
+                    <img srcset="assets/img/hero/hero-6-576px.webp 576w, assets/img/hero/hero-6-768px.webp 768w, assets/img/hero/hero-6-992px.webp 992w, assets/img/hero/hero-6-1200px.webp 1200w, assets/img/hero/hero-6.webp"
+                        sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
+                        src="assets/img/hero/hero-6.webp" alt="" />
                 </div>
                 <div class="wrap-text-kontributor">
                     <div class="row">
@@ -288,7 +302,8 @@
                                 menerima konten dari kontributor berupa <b>artikel, esai, liputan, cerita foto,</b> hingga
                                 <b>video</b>
                                 dari sudut pandang sejarah, budaya, gastronomi, arkeologi, sastra, kuliner, film, fesyen,
-                                seni, dan hal-hal lain terkait Jalur Rempah yang ada di sekitarmu.</p>
+                                seni, dan hal-hal lain terkait Jalur Rempah yang ada di sekitarmu.
+                            </p>
                         </div>
                         <div class="offset-lg-1 col-lg-6 text-center center-v">
                             <a href="{{ route('contributor') }}" class="btn btn-lg btn-secondary btn-primary-jarem">Jadi
@@ -373,9 +388,9 @@
                 var language = $("#selectLanguage option:selected").text();
                 // console.log(language);
                 if (language == "INA") {
-                    $("#languageFlag").attr("src", "assets/img/bendera/flag-indonesia.png");
+                    $("#languageFlag").attr("src", "assets/img/bendera/flag-indonesia-20px.webp");
                 } else {
-                    $("#languageFlag").attr("src", "assets/img/bendera/flag-english.png");
+                    $("#languageFlag").attr("src", "assets/img/bendera/flag-english-20px.webp");
                 }
             });
         });

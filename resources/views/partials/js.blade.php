@@ -3,10 +3,10 @@
 </script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="assets/js/ytdefer.min.js"></script>
+<script defer type="text/javascript" src="assets/js/ytdefer.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script type="text/javascript" src="assets/js/slick.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+<script defer type="text/javascript" src="assets/js/slick.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
 <script>
     $(document).ready(function() {
         if ($(window).width() <= 1000) {
@@ -65,9 +65,9 @@
             var language = $("#selectLanguage option:selected").text();
             // console.log(language);
             if (language == "INA") {
-                $("#languageFlag").attr("src", "assets/img/bendera/flag-indonesia.png");
+                $("#languageFlag").attr("src", "assets/img/bendera/flag-indonesia-20px.webp");
             } else {
-                $("#languageFlag").attr("src", "assets/img/bendera/flag-english.png");
+                $("#languageFlag").attr("src", "assets/img/bendera/flag-english-20px.webp");
             }
         });
     });
