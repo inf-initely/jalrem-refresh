@@ -2,8 +2,9 @@
 <html lang="en" id="home">
 
 <head>
-    @include('partials.head')
-    @include('partials.style')
+    @include('layout.app.head.meta')
+    @include('layout.app.head.style')
+    @yield("head")
     @if (Session::get('lg') == 'en')
         @if (Request::segment(1) == null)
             <title>Home - The Spice Routes Indonesia</title>
