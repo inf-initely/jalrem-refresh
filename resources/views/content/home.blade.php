@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@section("meta_info")
+    home
+@endsection
+
 @section('content')
     <header id="hero">
         <section class="hero-slider hero-style">

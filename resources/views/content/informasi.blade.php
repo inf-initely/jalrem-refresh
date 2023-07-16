@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@section("meta_info")
+    informasi
+@endsection
+
 @section('content')
     <header id="hero">
         <img class="hero-img-2"

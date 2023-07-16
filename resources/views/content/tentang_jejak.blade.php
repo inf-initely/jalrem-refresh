@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@section("meta_info")
+    tentang_jejak
+@endsection
+
 @section('content')
 
     @php
