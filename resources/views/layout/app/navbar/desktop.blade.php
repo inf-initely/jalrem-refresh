@@ -2,7 +2,7 @@
     class="navbar navbar-expand-lg {{ $altnav ? 'navbar-light' : 'navbar-dark' }} bg-light sticky-top bg-trans d-none d-lg-block d-xl-none">
     <div class="container">
         <a class="navbar-brand" href="{{ route('home') }}">
-            <img src="assets/img/logo/{{ $altnav ? 'logo-2.png' : 'logo.png' }}" height="50px">
+            <img src="{{ asset('assets/img/logo/'. ($altnav ? 'logo-2.png' : 'logo.png')) }}" height="50px">
         </a>
         <div class="collapse navbar-collapse {{ $altnav ? 'navbar-baru' : '' }}" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">

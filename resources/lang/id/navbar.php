@@ -10,4 +10,5 @@ return [
     "masa_depan" => "Masa Depan",
     "kegiatan" => "Kegiatan",
     "pameran" => "Pameran Jalur Rempah",
+    "pencarian" => "Pencarian",
 ];

@@ -30,9 +30,9 @@
                     <div class="mb-3">
                         <form class="input-group" action="{{ url('/cari') }}">
                             <input type="text" name="search" class="form-control form-control-lg"
-                                placeholder="Cari disini...." aria-describedby="btnCari">
+                                placeholder="{{__("app_layout.search.placeholder")}}" aria-describedby="btnCari">
                             <button type="submit" class="btn btn-lg btn-danger" type="button" id="btnCari"> <i
-                                    class="fa fa-search mr-2"></i> Cari</button>
+                                    class="fa fa-search mr-2"></i> {{__("app_layout.search.button")}}</button>
                         </form>
                     </div>
                 </div>
@@ -41,7 +41,7 @@
     </div>
 
     <!-- End Modal -->
-    @include('partials.footer')
+    @include('layout.app.footer')
 </body>
 @yield('js')
 

@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-6">
                 <a class="navbar-brand" href="{{ route('home') }}">
-                    <img src="assets/img/logo/logo.png" height="45px">
+                    <img src="{{ asset('assets/img/logo/logo.png') }}" height="45px">
                 </a>
             </div>
             <div class="col"></div>
@@ -85,21 +85,21 @@
                 </li>
                 <li class="nav-item">
                     <a class="page-scroll" data-bs-toggle="modal" data-bs-target="#searchModal">
-                        <i class="fa fa-search"></i> Pencarian
+                        <i class="fa fa-search"></i> {{__("navbar.pencarian")}}
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <a target="_blank" href="https://pameran-jalurrempah.kemdikbud.go.id/id"
                         class="btn btn-danger clr-white">
-                        Pameran Jalur Rempah
+                        {{__("navbar.pameran")}}
                     </a>
                 </li>
                 <div class="bg-nav2">
                     <img class="item-jelajah-3"
-                        srcset="assets/img/asset-jelajah-576px.webp 576w, assets/img/asset-jelajah-768px.webp 768w, assets/img/asset-jelajah-992px.webp 992w, assets/img/asset-jelajah-1200px.webp 1200w, assets/img/asset-jelajah.webp"
+                        srcset="{{ asset('assets/img/asset-jelajah-576px.webp') }} 576w, {{ asset('assets/img/asset-jelajah-768px.webp') }} 768w, {{ asset('assets/img/asset-jelajah-992px.webp') }} 992w, {{ asset('assets/img/asset-jelajah-1200px.webp') }} 1200w, {{ asset('assets/img/asset-jelajah.webp') }}"
                         sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
-                        src="assets/img/asset-jelajah.webp" alt="" />
+                        src="{{ asset('assets/img/asset-jelajah.webp') }}" alt="" />
                 </div>
             </ul>
         </div>
