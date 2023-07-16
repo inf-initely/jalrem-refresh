@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@php
+    $lang = App::getLocale();
+@endphp
+
 @section('meta_info')
     konten
 @endsection
@@ -70,9 +74,9 @@
                                                 </div>
                                             </div>
                                             <a class="stretched-link lightbox"
-                                                href="{{ route('video_detail', $a->slug) }}"></a>
+                                                href="{{ route('video_detail', $a->{"slug_".$lang} ?? $a->slug) }}"></a>
                                             <div class="card-body">
-                                                <p class="card-text">{{ $a->judul_indo }}</p>
+                                                <p class="card-text">{{ $a->{"judul_".$lang} }}</p>
                                             </div>
                                         </div>
                                     @elseif($a->getTable() == 'audio')
@@ -98,9 +102,9 @@
                                                 </div>
                                             </div>
                                             <a class="stretched-link lightbox"
-                                                href="{{ route('audio_detail', $a->slug) }}"></a>
+                                                href="{{ route('audio_detail', $a->{"slug_".$lang} ?? $a->slug) }}"></a>
                                             <div class="card-body">
-                                                <p class="card-text">{{ $a->judul_indo }}</p>
+                                                <p class="card-text">{{ $a->{"judul_".$lang} }}</p>
                                             </div>
                                         </div>
                                     @else
@@ -109,9 +113,9 @@
                                                 <img src="{{ asset('storage/assets/' . substr($a->getTable(), 0, -1) . '/thumbnail/' . $a->thumbnail) }}"
                                                     class="card-img-top img-thumbnail-slider" alt="...">
                                                 <div class="card-body">
-                                                    <h3 class="card-title judul-artikel">{{ $a->judul_indo }}</h3>
+                                                    <h3 class="card-title judul-artikel">{{ $a->{"judul_".$lang} }}</h3>
                                                 </div>
-                                                <a href="{{ route(generate_route_content($a->getTable()) . '_detail', $a->slug) }}"
+                                                <a href="{{ route(generate_route_content($a->getTable()) . '_detail', $a->{"slug_".$lang} ?? $a->slug) }}"
                                                     class="stretched-link"></a>
                                             </div>
                                         </div>
@@ -170,8 +174,7 @@
                                                         <img src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}"
                                                             class="card-img-top img-thumbnail" alt="...">
                                                         <div class="card-body">
-                                                            <h3 class="card-title judul-artikel">{{ $a->judul_indo }}</h3>
-                                                            {{-- <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p> --}}
+                                                            <h3 class="card-title judul-artikel">{{ $a->{"judul_".$lang} }}</h3>
                                                             <p class="penulis-artikel">
                                                                 {{ $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin' }}
                                                             </p>
@@ -192,7 +195,7 @@
                                                                 @endif
                                                             @endforeach
                                                         </div>
-                                                        <a href="{{ route('article_detail', $a->slug) }}"
+                                                        <a href="{{ route('article_detail', $a->{"slug_".$lang} ?? $a->slug) }}"
                                                             class="stretched-link"></a>
                                                     </div>
                                                 </div>
@@ -212,7 +215,7 @@
                                                         <img
                                                             src="{{ asset('storage/assets/foto/thumbnail/' . $f->thumbnail) }}">
                                                         <div class="text-img">
-                                                            <p class="judul-img">{{ $f->judul_indo }}</p>
+                                                            <p class="judul-img">{{ $f->{"judul_".$lang} }}</p>
                                                             <p class="author-img">
                                                                 {{ $f->penulis != 'admin' ? $f->kontributor_relasi->nama : 'admin' }}
                                                             </p>
@@ -276,7 +279,7 @@
                                                         <a class="stretched-link lightbox"
                                                             href="{{ route('video_detail', $v->slug) }}"></a>
                                                         <div class="card-body">
-                                                            <p class="card-text">{{ $v->judul_indo }}</p>
+                                                            <p class="card-text">{{ $v->{"judul_".$lang} }}</p>
                                                         </div>
                                                         @foreach ($v->kategori_show as $ks)
                                                             @if ($ks->isi == 'Indepth')
@@ -309,7 +312,7 @@
                                                         <img src="{{ asset('storage/assets/publikasi/thumbnail/' . $p->thumbnail) }}"
                                                             class="card-img-top img-thumbnail" alt="...">
                                                         <div class="card-body">
-                                                            <h3 class="card-title judul-artikel">{{ $p->judul_indo }}</h3>
+                                                            <h3 class="card-title judul-artikel">{{ $p->{"judul_".$lang} }}</h3>
                                                             {{-- <p class="card-text des-artikel minimize">{!! Str::limit($p->konten_indo, 50, $end='...') !!}</p> --}}
                                                             <p class="penulis-artikel">
                                                                 {{ $p->penulis != 'admin' ? $p->kontributor_relasi->nama : 'admin' }}
@@ -372,9 +375,9 @@
                                                             </div>
                                                         </div>
                                                         <a class="stretched-link lightbox"
-                                                            href="{{ route('audio_detail', $a->slug) }}"></a>
+                                                            href="{{ route('audio_detail', $a->{"slug_".$lang} ?? $a->slug) }}"></a>
                                                         <div class="card-body">
-                                                            <p class="card-text">{{ $a->judul_indo }}</p>
+                                                            <p class="card-text">{{ $a->{"judul_".$lang} }}</p>
                                                         </div>
                                                         @foreach ($a->kategori_show as $ks)
                                                             @if ($ks->isi == 'Indepth')

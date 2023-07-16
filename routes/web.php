@@ -175,6 +175,7 @@ use function Psy\debug;
 
     Route::group(['prefix' => "/en", "middleware" => "switchlocale"], function() {
         Route::get('/', [HomeController::class, 'index_en'])->name('home.english');
+        Route::get('/contents', [KontenController::class, 'index_en'])->name('konten.english');
     });
 
     Route::get('/artikel/{slug}', [ArtikelController::class, 'show'])->name('article_detail');
