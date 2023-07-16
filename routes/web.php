@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\App;
 
 use App\Http\Controllers\Admin\ArtikelController as ArtikelControllerAdmin;
 use App\Http\Controllers\Admin\FotoController as FotoControllerAdmin;
@@ -58,15 +59,15 @@ use function Psy\debug;
 |
 */
 // Route::group(['middleware' => ['XssSanitizer']], function () {
-    Route::any('en/{allsegments}', function($first, $rest = '') {
-        Session::put('lg', 'en');
-        // only allowed $first using alphabet and dash only
-        $first = preg_replace('/[^a-zA-Z-]/', '', $first);
-        // only allowed $rest using alphabet, number and dash only
-        $rest = preg_replace('/[^a-zA-Z0-9-]/', '', $rest);
+    // Route::any('en/{allsegments}', function($first, $rest = '') {
+    //     Session::put('lg', 'en');
+    //     // only allowed $first using alphabet and dash only
+    //     $first = preg_replace('/[^a-zA-Z-]/', '', $first);
+    //     // only allowed $rest using alphabet, number and dash only
+    //     $rest = preg_replace('/[^a-zA-Z0-9-]/', '', $rest);
 
-        return redirect("{$first}/{$rest}");
-    })->where('allsegments','(.*)?');
+    //     return redirect("{$first}/{$rest}");
+    // })->where('allsegments','(.*)?');
 
     Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function() {
         Route::get('/', [HomeControllerAdmin::class, 'index'])->name('admin.home');
@@ -158,7 +159,7 @@ use function Psy\debug;
 
     // Route::middleware(['language'])->group(function() {
     Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/english', [HomeController::class, 'index_english'])->name('home.english');
+    // Route::get('/english', [HomeController::class, 'index_english'])->name('home.english');
     Route::get('/semua-artikel', [ArtikelController::class, 'index'])->name('articles');
     Route::get('/all-article', [ArtikelController::class, 'index_english'])->name('articles.english');
     Route::get('/semua-foto', [FotoController::class, 'index'])->name('photos');
@@ -171,6 +172,10 @@ use function Psy\debug;
     Route::get('/all-publication', [PublikasiController::class, 'index_english'])->name('publications.english');
     Route::get('/semua-kegiatan', [KegiatanController::class, 'index'])->name('events');
     Route::get('/all-event', [KegiatanController::class, 'index_english'])->name('events.english');
+
+    Route::group(['prefix' => "/en", "middleware" => "switchlocale"], function() {
+        Route::get('/', [HomeController::class, 'index_en'])->name('home.english');
+    });
 
     Route::get('/artikel/{slug}', [ArtikelController::class, 'show'])->name('article_detail');
     Route::get('/artikel/english/{slug}', [ArtikelController::class, 'show_english'])->name('article_detail.english');
