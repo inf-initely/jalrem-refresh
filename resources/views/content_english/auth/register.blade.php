@@ -9,9 +9,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://use.fontawesome.com/releases/v5.10.2/css/all.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="assets/css/jalur-rempah.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/jalur-rempah.css') }}">
     <title>Jalur Rempah</title>
-    <link rel="shortcut icon" href="assets/img/logo/favicon.png">
+    <link rel="shortcut icon" href="{{ asset('assets/img/logo/favicon.png') }}">
 </head>
 
 <body>
@@ -20,13 +20,13 @@
             <div class="row">
                 <div class="col-lg-7 wrap-img-daftar">
                     <img id="img-login"
-                        srcset="assets/img/hero/hero-6-576px.webp 576w, assets/img/hero/hero-6-768px.webp 768w, assets/img/hero/hero-6-992px.webp 992w, assets/img/hero/hero-6-1200px.webp 1200w, assets/img/hero/hero-6.webp"
+                        srcset="{{ asset('assets/img/hero/hero-6-576px.webp') }} 576w, {{ asset('assets/img/hero/hero-6-768px.webp') }} 768w, {{ asset('assets/img/hero/hero-6-992px.webp') }} 992w, {{ asset('assets/img/hero/hero-6-1200px.webp') }} 1200w, {{ asset('assets/img/hero/hero-6.webp') }}"
                         sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
-                        src="assets/img/hero/hero-6.webp" alt="" />
+                        src="{{ asset('assets/img/hero/hero-6.webp') }}" alt="" />
                 </div>
                 <div class="col-lg-5 wrap-form-daftar center-v">
                     <a href="index.html">
-                        <img class="logo-daftar mb-4" src="assets/img/logo-footer.webp">
+                        <img class="logo-daftar mb-4" src="{{ asset('assets/img/logo-footer.webp') }}">
                     </a>
                     <h1>Pembuatan Akun</h1>
                     <p class="des-form-daftar">Fill in the data for profile. It will take a couple of minutes. You only

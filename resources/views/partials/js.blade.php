@@ -3,9 +3,9 @@
 </script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script defer type="text/javascript" src="assets/js/ytdefer.min.js"></script>
+<script defer type="text/javascript" src="{{ asset('assets/js/ytdefer.min.js') }}"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script defer type="text/javascript" src="assets/js/slick.min.js"></script>
+<script defer type="text/javascript" src="{{ asset('assets/js/slick.min.js') }}"></script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
 <script>
     $(document).ready(function() {

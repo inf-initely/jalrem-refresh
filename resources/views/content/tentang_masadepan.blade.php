@@ -7,9 +7,9 @@
 @section('content')
     <header id="hero">
         <img class="hero-img-2"
-            srcset="assets/img/hero/hero-3-576px.webp 576w, assets/img/hero/hero-3-768px.webp 768w, assets/img/hero/hero-3-992px.webp 992w, assets/img/hero/hero-3-1200px.webp 1200w, assets/img/hero/hero-3.webp"
+            srcset="{{ asset('assets/img/hero/hero-3-576px.webp') }} 576w, {{ asset('assets/img/hero/hero-3-768px.webp') }} 768w, {{ asset('assets/img/hero/hero-3-992px.webp') }} 992w, {{ asset('assets/img/hero/hero-3-1200px.webp') }} 1200w, {{ asset('assets/img/hero/hero-3.webp') }}"
             sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
-            src="assets/img/hero/hero-3.webp" alt="" />
+            src="{{ asset('assets/img/hero/hero-3.webp') }}" alt="" />
         <div class="text-hero-2">
             <div class="">
                 <div class="col-lg-12 text-center">
@@ -228,7 +228,7 @@
                                     <div class="card no-border card-media">
                                         <div class="card-body row">
                                             <div class="col-3 mt-3 text-center">
-                                                <img src="assets/img/icon/jalur_1.svg" height="40px">
+                                                <img src="{{ asset('assets/img/icon/jalur_1.svg') }}" height="40px">
                                             </div>
                                             <div class="col-9">
                                                 <h3 class="judul-card-info">Jalur</h3>
@@ -243,7 +243,7 @@
                                     <div class="card no-border card-media">
                                         <div class="card-body row">
                                             <div class="col-3 mt-3 text-center">
-                                                <img src="assets/img/icon/jejak_1.svg" height="32px">
+                                                <img src="{{ asset('assets/img/icon/jejak_1.svg') }}" height="32px">
                                             </div>
                                             <div class="col-9">
                                                 <h3 class="judul-card-info">Jejak</h3>
@@ -258,7 +258,7 @@
                                     <div class="card no-border card-media">
                                         <div class="card-body row">
                                             <div class="col-3 mt-3 text-center">
-                                                <img src="assets/img/icon/masa-depan_1.svg" height="40px">
+                                                <img src="{{ asset('assets/img/icon/masa-depan_1.svg') }}" height="40px">
                                             </div>
                                             <div class="col-9">
                                                 <h3 class="judul-card-info">Masa Depan</h3>
