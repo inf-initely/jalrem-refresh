@@ -1,10 +1,10 @@
 @extends('layout.app')
 
-@section("meta_info")
+@section('meta_info')
     konten
 @endsection
 
-@section('content')
+@section('style')
     <style type="text/css">
         .slick-center {
             -webkit-transform: scale(1.25);
@@ -33,6 +33,9 @@
             }
         }
     </style>
+@endsection
+
+@section('content')
     <main>
         <div id="content" class="full-bg">
             <section id="sliderArtikel">
@@ -40,7 +43,7 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-12">
                             <header class="mb-2">
-                                <h2 class="sub-judul text-center">Terbaru</h2>
+                                <h2 class="sub-judul text-center">{{ __('page_konten.top_heading') }}</h2>
                             </header>
                             <div class="feature">
                                 @foreach ($kontenSlider as $a)
@@ -119,41 +122,13 @@
                     </div>
                 </div>
             </section>
-            {{-- <section id="secBerita" class="d-none">
-        <div class="container">
-          <header class="row justify-content-center">
-            <div class="col-md-12 text-center">
-              <h2 class="sub-judul aside-judul">Berita</h2>
-
-            </div>
-            <div class="col-md-6 center-v text-end">
-            </div>
-          </header>
-          <section class="row justify-content-center">
-            @foreach ($artikel as $a)
-            <div class="col-md-6 col-lg-4 mb-4">
-              <div class="card no-border no-background card-body">
-                <img src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}" class="card-img-top mb-4 img-thumbnail" alt="...">
-                <h3 class="card-title judul-artikel">{{ $a->judul_indo }}</h3>
-                <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p>
-                <p class="penulis-artikel">{{ $a->penulis }}</p>
-                <p class="tgl-artikel">{{ $a->created_at->isoFormat('D MMMM Y'); }}</p>
-                <a href="{{ route('article_detail', $a->slug) }}" class="stretched-link"></a>
-              </div>
-            </div>
-            @endforeach
-            {{ $artikel->links('vendor.pagination.custom') }}
-          </section>
-        </div>
-      </section> --}}
             <section id="secMedia">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-12">
                             <header class="text-center">
-                                <h2 class="sub-judul">Konten</h2>
-                                <p>Simak berbagai konten menarik mengenai Jalur Rempah dalam artikel, foto, video, dan
-                                    audio.</p>
+                                <h2 class="sub-judul">{{ __('page_konten.heading') }}</h2>
+                                <p>{{ __('page_konten.desc') }}</p>
                             </header>
                             <section id="tabLine">
                                 <ul class="nav nav-pills mb-3 nav-tabline justify-content-center" id="pills-tab"
@@ -161,27 +136,28 @@
                                     <li class="nav-item" role="presentation">
                                         <button class="nav-link active" id="tab-artikel-tab" data-bs-toggle="pill"
                                             data-bs-target="#tab-artikel" type="button" role="tab"
-                                            aria-controls="tab-artikel" aria-selected="true">Artikel</button>
+                                            aria-controls="tab-artikel" aria-selected="true">{{ __('Article') }}</button>
                                     </li>
                                     <li class="nav-item" role="presentation">
                                         <button class="nav-link" id="tab-foto-tab" data-bs-toggle="pill"
                                             data-bs-target="#tab-foto" type="button" role="tab"
-                                            aria-controls="tab-foto" aria-selected="false">Foto</button>
+                                            aria-controls="tab-foto" aria-selected="false">{{ __('Photo') }}</button>
                                     </li>
                                     <li class="nav-item" role="presentation">
                                         <button class="nav-link" id="tab-video-tab" data-bs-toggle="pill"
                                             data-bs-target="#tab-video" type="button" role="tab"
-                                            aria-controls="tab-video" aria-selected="false">Video</button>
+                                            aria-controls="tab-video" aria-selected="false">{{ __('Video') }}</button>
                                     </li>
                                     <li class="nav-item" role="presentation">
                                         <button class="nav-link" id="tab-publikasi-tab" data-bs-toggle="pill"
                                             data-bs-target="#tab-publikasi" type="button" role="tab"
-                                            aria-controls="tab-publikasi" aria-selected="false">Publikasi</button>
+                                            aria-controls="tab-publikasi"
+                                            aria-selected="false">{{ __('Publication') }}</button>
                                     </li>
                                     <li class="nav-item" role="presentation">
                                         <button class="nav-link" id="tab-audio-tab" data-bs-toggle="pill"
                                             data-bs-target="#tab-audio" type="button" role="tab"
-                                            aria-controls="tab-audio" aria-selected="false">Audio</button>
+                                            aria-controls="tab-audio" aria-selected="false">{{ __('Audio') }}</button>
                                     </li>
                                 </ul>
                                 <div class="tab-content mt-5" id="pills-tabContent">
@@ -223,9 +199,7 @@
                                             @endforeach
                                             <div class="d-flex justify-content-center">
                                                 <a href="{{ route('articles') }}" class="btn btn-danger mr-4"
-                                                    style="margin-right:1rem">
-                                                    Lihat Semua
-                                                </a>
+                                                    style="margin-right:1rem">{{ __('See All') }}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -266,9 +240,7 @@
                                             @endforeach
                                             <div class="d-flex justify-content-center">
                                                 <a href="{{ route('photos') }}" class="btn btn-danger mr-4"
-                                                    style="margin-right:1rem">
-                                                    Lihat Semua
-                                                </a>
+                                                    style="margin-right:1rem">{{ __('See All') }}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -324,9 +296,7 @@
                                             @endforeach
                                             <div class="d-flex justify-content-center">
                                                 <a href="{{ route('videos') }}" class="btn btn-danger mr-4"
-                                                    style="margin-right:1rem">
-                                                    Lihat Semua
-                                                </a>
+                                                    style="margin-right:1rem">{{ __('See All') }}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -368,9 +338,7 @@
                                             @endforeach
                                             <div class="d-flex justify-content-center">
                                                 <a href="{{ route('publications') }}" class="btn btn-danger mr-4"
-                                                    style="margin-right:1rem">
-                                                    Lihat Semua
-                                                </a>
+                                                    style="margin-right:1rem">{{ __('See All') }}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -426,9 +394,7 @@
                                             @endforeach
                                             <div class="d-flex justify-content-center">
                                                 <a href="{{ route('audios') }}" class="btn btn-danger mr-4"
-                                                    style="margin-right:1rem">
-                                                    Lihat Semua
-                                                </a>
+                                                    style="margin-right:1rem">{{ __('See All') }}</a>
                                             </div>
                                         </div>
                                     </div>
