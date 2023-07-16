@@ -14,7 +14,7 @@
                 <p class="footer-alamat">{{__("footer.address")}}</p>
             </div>
             <div class="col-12 col-md-6 col-lg-3 mb-4 footer-content">
-                <h3 class="menu-footer mb-3">{{strtoupper(__("footer.heading.contact"))}}</h3>
+                <h3 class="menu-footer mb-3">{{strtoupper(__("Contact"))}}</h3>
                 <ul>
                     <li>
                         jalurrempah@kemdikbud.go.id
@@ -28,41 +28,41 @@
                 </ul>
             </div>
             <div class="col-12 col-md-6 col-lg-2 mb-4 footer-content">
-                <h3 class="menu-footer mb-3">{{strtoupper(__("footer.heading.about"))}}</h3>
+                <h3 class="menu-footer mb-3">{{strtoupper(__("About"))}}</h3>
                 <ul>
                     <li>
-                        <a href="{{ route('tentangjalur') }}">{{__("footer.about.jalur")}}</a>
+                        <a href="{{ route('tentangjalur') }}">{{__("common.the_route")}}</a>
                     </li>
                     <li>
-                        <a href="{{ route('tentangjejak') }}">{{__("footer.about.jejak")}}</a>
+                        <a href="{{ route('tentangjejak') }}">{{__("common.the_trail")}}</a>
                     </li>
                     <li>
-                        <a href="{{ route('tentangmasadepan') }}">{{__("footer.about.masa_depan")}}</a>
+                        <a href="{{ route('tentangmasadepan') }}">{{__("common.the_future")}}</a>
                     </li>
                 </ul>
             </div>
             <div class="col-12 col-md-6 col-lg-2 mb-4 footer-content">
-                <h3 class="menu-footer mb-3">{{strtoupper(__("footer.heading.content"))}}</h3>
+                <h3 class="menu-footer mb-3">{{strtoupper(__("Contents"))}}</h3>
                 <ul>
                     <li>
-                        <a href="{{ route('articles') }}">{{__("footer.content.article")}}</a>
+                        <a href="{{ route('articles') }}">{{__("Article")}}</a>
                     </li>
                     <li>
-                        <a href="{{ route('photos') }}">{{__("footer.content.photo")}}</a>
+                        <a href="{{ route('photos') }}">{{__("Photo")}}</a>
                     </li>
                     <li>
-                        <a href="{{ route('videos') }}">{{__("footer.content.video")}}</a>
+                        <a href="{{ route('videos') }}">{{__("Video")}}</a>
                     </li>
                     <li>
-                        <a href="{{ route('publications') }}">{{__("footer.content.publication")}}</a>
+                        <a href="{{ route('publications') }}">{{__("Publication")}}</a>
                     </li>
                     <li>
-                        <a href="{{ route('audios') }}">{{__("footer.content.audio")}}</a>
+                        <a href="{{ route('audios') }}">{{__("Audio")}}</a>
                     </li>
                 </ul>
             </div>
             <div class="col-12 col-md-6 col-lg-2 mb-4 footer-content">
-                <h3 class="menu-footer mb-3">{{strtoupper(__("footer.heading.social_media"))}}</h3>
+                <h3 class="menu-footer mb-3">{{strtoupper(__("Social Media"))}}</h3>
                 <ul class="list-group list-group-horizontal">
                     <li class="list-group-item">
                         <a target="_blank" href="https://web.facebook.com/jalurrempahri">

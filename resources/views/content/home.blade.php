@@ -4,7 +4,7 @@
     $lang = App::getLocale();
 @endphp
 
-@section("meta_info")
+@section('meta_info')
     home
 @endsection
 
@@ -22,11 +22,11 @@
                                     <div class="container">
                                         <div data-swiper-parallax="300" class="slide-title">
                                             <h2 class="title"><a style="text-decoration: none; color: #fff;"
-                                                    href="{{ route(generate_route_content($s->getTable()) . '_detail', $s->{"slug_".$lang} ?? $s->slug) }}">{{ $s->{"judul_".$lang} }}</a>
+                                                    href="{{ route(generate_route_content($s->getTable()) . '_detail', $s->{'slug_' . $lang} ?? $s->slug) }}">{{ $s->{'judul_' . $lang} }}</a>
                                             </h2>
                                         </div>
                                         <div data-swiper-parallax="400" class="slide-text">
-                                            <p class="caption">{!! Str::limit($s->{"meta_".$lang}, 160, $end = '...') !!}</p>
+                                            <p class="caption">{!! Str::limit($s->{'meta_' . $lang}, 160, $end = '...') !!}</p>
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
@@ -35,7 +35,8 @@
                         @endforeach
                     @else
                         <div class="swiper-slide">
-                            <div class="slide-inner slide-bg-image" data-background="{{ asset('assets/img/hero/hero-1.jpg') }}">
+                            <div class="slide-inner slide-bg-image"
+                                data-background="{{ asset('assets/img/hero/hero-1.jpg') }}">
                                 <div class="layer-masking"></div>
                                 <div class="container">
                                     <div data-swiper-parallax="300" class="slide-title">
@@ -73,19 +74,21 @@
                         </div>
                         <div class="col-12 col-md-6 col-lg-6 center-v">
                             <header>
-                                <h2 class="sub-judul sub-judul-jelajahi">{{__("home.navigation.jalur.heading")}}</h2>
+                                <h2 class="sub-judul sub-judul-jelajahi">{{ __('common.the_route') }}</h2>
                             </header>
-                            <p class="jelajah-des">{{__("home.navigation.jalur.content")}}</p>
-                            <a href="{{ route('tentangjalur') }}" class="btn btn-danger btn-jelajah">{{__("home.navigation.button_callout")}}</a>
+                            <p class="jelajah-des">{{ __('page_home.desc.route') }}</p>
+                            <a href="{{ route('tentangjalur') }}"
+                                class="btn btn-danger btn-jelajah">{{ __('Explore More') }}</a>
                         </div>
                     </div>
                     <div class="row justify-content-center content-jelajahi wrap-div text-end" data-aos="fade-left">
                         <div class="col-12 col-md-6 col-lg-6 center-v mb-2 second-div sec-jejak">
                             <header>
-                                <h2 class="sub-judul sub-judul-jelajahi">{{__("home.navigation.jejak.heading")}}</h2>
+                                <h2 class="sub-judul sub-judul-jelajahi">{{ __('common.the_trail') }}</h2>
                             </header>
-                            <p class="jelajah-des">{{__("home.navigation.jejak.content")}}</p>
-                            <a href="{{ route('tentangjejak') }}" class="btn btn-danger btn-jelajah">{{__("home.navigation.button_callout")}}</a>
+                            <p class="jelajah-des">{{ __('page_home.desc.trail') }}</p>
+                            <a href="{{ route('tentangjejak') }}"
+                                class="btn btn-danger btn-jelajah">{{ __('Explore More') }}</a>
 
                         </div>
                         <div class="col-12 col-md-6 col-lg-4 first-div mb-2">
@@ -104,10 +107,11 @@
                         </div>
                         <div class="col-12 col-md-6 col-lg-6 center-v">
                             <header>
-                                <h2 class="sub-judul sub-judul-jelajahi">{{__("home.navigation.masa_depan.heading")}}</h2>
+                                <h2 class="sub-judul sub-judul-jelajahi">{{ __('common.the_future') }}</h2>
                             </header>
-                            <p class="jelajah-des">{{__("home.navigation.masa_depan.content")}}</p>
-                            <a href="{{ route('tentangmasadepan') }}" class="btn btn-danger btn-jelajah">{{__("home.navigation.button_callout")}}</a>
+                            <p class="jelajah-des">{{ __('page_home.desc.future') }}</p>
+                            <a href="{{ route('tentangmasadepan') }}"
+                                class="btn btn-danger btn-jelajah">{{ __('Explore More') }}</a>
                         </div>
                     </div>
                 </div>
@@ -126,9 +130,9 @@
                         </div>
                         <div class=" col-lg-10 center-v">
                             <header>
-                                <h2 class="sub-judul text-center mb-3">{{__("home.magnet_dunia.heading")}}</h2>
+                                <h2 class="sub-judul text-center mb-3">{{ __('page_home.heading.world_magnet') }}</h2>
                             </header>
-                            <p class="jelajah-des text-center">{{__("home.magnet_dunia.content")}}</p>
+                            <p class="jelajah-des text-center">{{ __('page_home.desc.world_magnet') }}</p>
                         </div>
                     </div>
                 </div>
@@ -137,10 +141,11 @@
                 <div class="container">
                     <header class="row justify-content-center mb-2">
                         <div class="col-md-6">
-                            <h2 class="sub-judul">{{__("home.kegiatan.heading")}}</h2>
+                            <h2 class="sub-judul">{{ __('Activity') }}</h2>
                         </div>
                         <div class="col-md-6 center-v text-end d-desktop">
-                            <a href="{{ route('informasi') }}" class="btn btn-outline-danger">{{__("home.kegiatan.button_see_all")}}</a>
+                            <a href="{{ route('informasi') }}"
+                                class="btn btn-outline-danger">{{ __('page_home.button.activity') }}</a>
                         </div>
                     </header>
                     <section class="row justify-content-center" data-aos="flip-up">
@@ -159,16 +164,18 @@
                                                     {{ \Carbon\Carbon::parse($k->published_at)->isoFormat('D MMMM Y') }}
                                                 </p>
                                                 <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">
-                                                    {{ $k->{"judul_".$lang} }}</h3>
+                                                    {{ $k->{'judul_' . $lang} }}</h3>
                                             </div>
                                         </div>
-                                        <a href="{{ route('event_detail', $k->{"slug_".$lang} ?? $k->slug) }}" class="stretched-link"></a>
+                                        <a href="{{ route('event_detail', $k->{'slug_' . $lang} ?? $k->slug) }}"
+                                            class="stretched-link"></a>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
                         <div class="col-md-12 text-center d-mobile">
-                            <a href="{{ route('informasi') }}" class="btn btn-outline-danger">{{__("home.kegiatan.button_see_all")}}</a>
+                            <a href="{{ route('informasi') }}"
+                                class="btn btn-outline-danger">{{ __('page_home.button.activity') }}</a>
                         </div>
                     </section>
                 </div>
@@ -177,10 +184,11 @@
                 <section class="container" id="artikel">
                     <header class="row justify-content-center mb-2">
                         <div class="col-lg-6">
-                            <h2 class="sub-judul">{{__("home.artikel.heading")}}</h2>
+                            <h2 class="sub-judul">{{ __('News and Articles') }}</h2>
                         </div>
                         <div class="col-md-6 center-v text-end  d-desktop">
-                            <a href="{{ route('articles') }}" class="btn btn-outline-danger">{{__("home.artikel.button_see_all")}}</a>
+                            <a href="{{ route('articles') }}"
+                                class="btn btn-outline-danger">{{ __('page_home.button.article') }}</a>
                         </div>
                     </header>
                     <section class="row justify-content-center" data-aos="fade-up">
@@ -190,7 +198,7 @@
                                     <img src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}"
                                         class="card-img-top img-thumbnail" alt="..." loading="lazy">
                                     <div class="card-body">
-                                        <h3 class="card-title judul-artikel">{{ $a->{"judul_".$lang} }}</h3>
+                                        <h3 class="card-title judul-artikel">{{ $a->{'judul_' . $lang} }}</h3>
                                         {{-- <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p> --}}
                                         <p class="penulis-artikel">
                                             {{ $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin' }}
@@ -199,12 +207,14 @@
                                             {{ \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y') }}
                                         </p>
                                     </div>
-                                    <a href="{{ route('article_detail', $a->{"slug_".$lang} ?? $a->slug) }}" class="stretched-link"></a>
+                                    <a href="{{ route('article_detail', $a->{'slug_' . $lang} ?? $a->slug) }}"
+                                        class="stretched-link"></a>
                                 </div>
                             </div>
                         @endforeach
                         <div class="col-md-12 text-center  d-mobile">
-                            <button type="button" class="btn btn-outline-danger">{{__("home.artikel.button_see_all")}}</button>
+                            <button type="button"
+                                class="btn btn-outline-danger">{{ __('page_home.button.article') }}</button>
                         </div>
                     </section>
                 </section>
@@ -212,9 +222,10 @@
                     <div class="row">
                         <section class="col-md-6 center-v">
                             <header>
-                                <h2 class="sub-judul">{{__("home.konten.heading")}}</h2>
-                                <p class="des-sub-judul">{{__("home.konten.content")}}</p>
-                                <a href="{{ route('konten') }}" class="btn btn-outline-danger">{{__("home.konten.button_see_all")}}</a>
+                                <h2 class="sub-judul">{{ __('Contents') }}</h2>
+                                <p class="des-sub-judul">{{ __('page_home.desc.contents') }}</p>
+                                <a href="{{ route('konten') }}"
+                                    class="btn btn-outline-danger">{{ __('page_home.button.content') }}</a>
                             </header>
                         </section>
                         <section class="offset-md-1 col-md-5">
@@ -223,7 +234,7 @@
                                     <div class="card no-border card-media card-media-1">
                                         <div class="card-body text-center">
                                             <img src="{{ asset('assets/img/icon-image.webp') }}" width="40%">
-                                            <p class="judul-media">{{__("home.konten.navigation.photo")}}</p>
+                                            <p class="judul-media">{{ __('Photo') }}</p>
                                         </div>
                                         <a href="{{ route('photos') }}" class="stretched-link"></a>
                                     </div>
@@ -232,7 +243,7 @@
                                     <div class="card no-border card-media card-media-2">
                                         <div class="card-body text-center">
                                             <img src="{{ asset('assets/img/icon-publication.webp') }}" width="40%">
-                                            <p class="judul-media">{{__("home.konten.navigation.publikasi")}}</p>
+                                            <p class="judul-media">{{ __('Publication') }}</p>
                                         </div>
                                         <a href="{{ route('publications') }}" class="stretched-link"></a>
                                     </div>
@@ -243,7 +254,7 @@
                                     <div class="card no-border card-media card-media-3">
                                         <div class="card-body text-center">
                                             <img src="{{ asset('assets/img/icon-video.webp') }}" width="40%">
-                                            <p class="judul-media">{{__("home.konten.navigation.video")}}</p>
+                                            <p class="judul-media">{{ __('Video') }}</p>
                                         </div>
                                         <a href="{{ route('videos') }}" class="stretched-link"></a>
                                     </div>
@@ -252,7 +263,7 @@
                                     <div class="card no-border card-media card-media-4">
                                         <div class="card-body text-center">
                                             <img src="{{ asset('assets/img/icon-sound.webp') }}" width="40%">
-                                            <p class="judul-media">{{__("home.konten.navigation.audio")}}</p>
+                                            <p class="judul-media">{{ __('Audio') }}</p>
                                         </div>
                                         <a href="{{ route('audios') }}" class="stretched-link"></a>
                                     </div>
@@ -272,12 +283,13 @@
                     <div class="row">
                         <div class="col-lg-5 clr-white">
                             <header>
-                                <h2 class="sub-judul">{{__("home.kontribusi.heading")}}</h2>
+                                <h2 class="sub-judul">{{ __('page_home.heading.contribute') }}</h2>
                             </header>
-                            <p>{!! __("home.kontribusi.content") !!}</p>
+                            <p>{!! __('page_home.desc.contribute') !!}</p>
                         </div>
                         <div class="offset-lg-1 col-lg-6 text-center center-v">
-                            <a href="{{ route('contributor') }}" class="btn btn-lg btn-secondary btn-primary-jarem">{{__("home.kontribusi.button_callout")}}</a>
+                            <a href="{{ route('contributor') }}"
+                                class="btn btn-lg btn-secondary btn-primary-jarem">{{ __('page_home.button.contribute') }}</a>
                         </div>
                     </div>
                 </div>

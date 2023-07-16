@@ -30,9 +30,9 @@
                     <div class="mb-3">
                         <form class="input-group" action="{{ url('/cari') }}">
                             <input type="text" name="search" class="form-control form-control-lg"
-                                placeholder="{{__("app_layout.search.placeholder")}}" aria-describedby="btnCari">
+                                placeholder="{{__("Search")}}" aria-describedby="btnCari">
                             <button type="submit" class="btn btn-lg btn-danger" type="button" id="btnCari"> <i
-                                    class="fa fa-search mr-2"></i> {{__("app_layout.search.button")}}</button>
+                                    class="fa fa-search mr-2"></i> {{__("placeholder.search_for")}}</button>
                         </form>
                     </div>
                 </div>

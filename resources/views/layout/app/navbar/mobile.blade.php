@@ -39,7 +39,7 @@
                 <li class="nav-item">
                     <a class="page-scroll {{ $info == 'home' ? 'active' : '' }}"
                         href="{{ $altnav ? route('home') : '#home' }}">
-                        <i class="fa fa-home mr-2"></i> {{ __('navbar.beranda') }}
+                        <i class="fa fa-home mr-2"></i> {{ __("Home") }}
                     </a>
                 </li>
                 @if ($altnav)
@@ -47,52 +47,52 @@
                         <a class="page-scroll dropdown-toggle clr-black {{ in_array($info, ['tentang_jalur', 'tentang_jejak', 'tentang_masa_depan']) ? 'active' : '' }}"
                             href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            <i class="fa fa-info-circle mr-2"></i> {{ __('navbar.tentang') }}
+                            <i class="fa fa-info-circle mr-2"></i> {{ __('About') }}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li style="padding-top : 0px"><a class="dropdown-item"
-                                    href="{{ route('tentangjalur') }}">{{ __('navbar.jalur') }}</a></li>
+                                    href="{{ route('tentangjalur') }}">{{ __('common.the_route') }}</a></li>
                             <li><a class="dropdown-item"
-                                    href="{{ route('tentangjejak') }}">{{ __('navbar.jejak') }}</a></li>
+                                    href="{{ route('tentangjejak') }}">{{ __('common.the_trail') }}</a></li>
                             <li><a class="dropdown-item"
-                                    href="{{ route('tentangmasadepan') }}">{{ __('navbar.masa_depan') }}</a>
+                                    href="{{ route('tentangmasadepan') }}">{{ __('common.the_future') }}</a>
                             </li>
                         </ul>
                     </li>
                 @else
                     <li class="nav-item">
                         <a class="page-scroll" href="#jelajah">
-                            <i class="fa fa-info-circle mr-2"></i> {{ __('navbar.tentang') }}
+                            <i class="fa fa-info-circle mr-2"></i> {{ __('About') }}
                         </a>
                     </li>
                 @endif
                 <li class="nav-item">
                     <a class="page-scroll {{ $info == 'konten' ? 'active' : '' }}"
                         href="{{ $altnav ? route('konten') : '#media' }}">
-                        <i class="fa fa-image mr-2"></i> {{ __('navbar.konten') }}</a>
+                        <i class="fa fa-image mr-2"></i> {{ __('Contents') }}</a>
                 </li>
                 <li class="nav-item">
                     @if ($altnav)
                         <a class="page-scroll {{ $info == 'informasi' ? 'active' : '' }}"
                             href="{{ route('informasi') }}">
-                            <i class="fa fa-newspaper mr-2"></i> {{ __('navbar.informasi') }}
+                            <i class="fa fa-newspaper mr-2"></i> {{ __('Information') }}
                         </a>
                     @else
                         <a class="page-scroll" href="#kegiatan">
-                            <i class="fa fa-newspaper mr-2"></i> {{ __('navbar.kegiatan') }}
+                            <i class="fa fa-newspaper mr-2"></i> {{ __('Activity') }}
                         </a>
                     @endif
                 </li>
                 <li class="nav-item">
                     <a class="page-scroll" data-bs-toggle="modal" data-bs-target="#searchModal">
-                        <i class="fa fa-search"></i> {{__("navbar.pencarian")}}
+                        <i class="fa fa-search"></i> {{__("common.the_search")}}
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <a target="_blank" href="https://pameran-jalurrempah.kemdikbud.go.id/id"
                         class="btn btn-danger clr-white">
-                        {{__("navbar.pameran")}}
+                        {{__("The Spice Routes Exhibition")}}
                     </a>
                 </li>
                 <div class="bg-nav2">

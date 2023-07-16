@@ -2,46 +2,47 @@
     class="navbar navbar-expand-lg {{ $altnav ? 'navbar-light' : 'navbar-dark' }} bg-light sticky-top bg-trans d-none d-lg-block d-xl-none">
     <div class="container">
         <a class="navbar-brand" href="{{ route('home') }}">
-            <img src="{{ asset('assets/img/logo/'. ($altnav ? 'logo-2.png' : 'logo.png')) }}" height="50px">
+            <img src="{{ asset('assets/img/logo/' . ($altnav ? 'logo-2.png' : 'logo.png')) }}" height="50px">
         </a>
         <div class="collapse navbar-collapse {{ $altnav ? 'navbar-baru' : '' }}" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link page-scroll {{ $info == 'home' ? 'active' : '' }}" aria-current="page"
-                        href="{{ $info != "home" ? route('home') : '#home' }}">{{ __('navbar.beranda') }}</a>
+                        href="{{ $info != 'home' ? route('home') : '#home' }}">{{ __('Home') }}</a>
                 </li>
-                @if ($info != "home")
+                @if ($info != 'home')
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle {{ in_array($info, ['tentang_jalur', 'tentang_jejak', 'tentang_masa_depan']) ? 'active' : '' }}"
                             href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            {{ __('navbar.tentang') }}
+                            {{ __('About') }}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="{{ route('tentangjalur') }}">{{ __('navbar.jalur') }}</a>
+                            <li><a class="dropdown-item"
+                                    href="{{ route('tentangjalur') }}">{{ __('common.the_route') }}</a>
                             </li>
                             <li><a class="dropdown-item"
-                                    href="{{ route('tentangjejak') }}">{{ __('navbar.jejak') }}</a></li>
+                                    href="{{ route('tentangjejak') }}">{{ __('common.the_trail') }}</a></li>
                             <li><a class="dropdown-item"
-                                    href="{{ route('tentangmasadepan') }}">{{ __('navbar.masa_depan') }}</a>
+                                    href="{{ route('tentangmasadepan') }}">{{ __('common.the_future') }}</a>
                             </li>
                         </ul>
                     </li>
                 @else
                     <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#jelajah">{{ __('navbar.tentang') }}</a>
+                        <a class="nav-link page-scroll" href="#jelajah">{{ __('About') }}</a>
                     </li>
                 @endif
                 <li class="nav-item">
                     <a class="nav-link page-scroll {{ $info == 'konten' ? 'active' : '' }}"
-                        href="{{ $info != "home" ? route('konten') : '#media' }}">{{ __('navbar.konten') }}</a>
+                        href="{{ $info != 'home' ? route('konten') : '#media' }}">{{ __('Contents') }}</a>
                 </li>
                 <li class="nav-item">
-                    @if ($info != "home")
+                    @if ($info != 'home')
                         <a class="nav-link page-scroll {{ $info == 'informasi' ? 'active' : '' }}"
-                            href="{{ route('informasi') }}">{{ __('navbar.informasi') }}</a>
+                            href="{{ route('informasi') }}">{{ __('Information') }}</a>
                     @else
-                        <a class="nav-link page-scroll" href="#kegiatan">{{ __('navbar.kegiatan') }}</a>
+                        <a class="nav-link page-scroll" href="#kegiatan">{{ __('Activity') }}</a>
                     @endif
                 </li>
             </ul>
@@ -78,7 +79,7 @@
                 </button>
                 <a target="_blank" href="https://pameran-jalurrempah.kemdikbud.go.id/id" class="btn btn-danger mr-4"
                     style="margin-right:1rem">
-                    {{ __('navbar.pameran') }}
+                    {{ __('The Spice Routes Exhibition') }}
                 </a>
             </div>
         </div>
