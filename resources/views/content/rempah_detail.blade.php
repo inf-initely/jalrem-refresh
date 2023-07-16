@@ -3,9 +3,9 @@
 @section('content')
     <header id="hero">
         <img class="hero-img-2"
-            srcset="assets/img/hero/hero-5-576px.webp 576w, assets/img/hero/hero-5-768px.webp 768w, assets/img/hero/hero-5-992px.webp 992w, assets/img/hero/hero-5-1200px.webp 1200w, assets/img/hero/hero-5.webp"
+            srcset="{{ asset('assets/img/hero/hero-5-576px.webp') }} 576w, {{ asset('assets/img/hero/hero-5-768px.webp') }} 768w, {{ asset('assets/img/hero/hero-5-992px.webp') }} 992w, {{ asset('assets/img/hero/hero-5-1200px.webp') }} 1200w, {{ asset('assets/img/hero/hero-5.webp') }}"
             sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
-            src="assets/img/hero/hero-5.webp" alt="" />
+            src="{{ asset('assets/img/hero/hero-5.webp') }}" alt="" />
         <div class="text-hero-2">
             <div class="">
                 <div class="col-lg-12 text-center">
@@ -82,7 +82,7 @@
           <section class="row justify-content-center">
             <div class="col-md-6 col-lg-4 mb-4">
               <div class="card no-border no-background card-body">
-                <img src="assets/img/berita-detail/gambar6.png" class="card-img-top mb-4" alt="...">
+                <img src="{{ asset('assets/img/berita-detail/gambar6.png') }}" class="card-img-top mb-4" alt="...">
                 <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
                 <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
                 <p class="penulis-artikel">Ahmad Rifaldi</p>
@@ -92,7 +92,7 @@
             </div>
             <div class="col-md-6 col-lg-4 mb-4">
               <div class="card no-border no-background card-body">
-                <img src="assets/img/berita-detail/gambar7.png" class="card-img-top mb-4" alt="...">
+                <img src="{{ asset('assets/img/berita-detail/gambar7.png') }}" class="card-img-top mb-4" alt="...">
                 <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
                 <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
                 <p class="penulis-artikel">Ahmad Rifaldi</p>
@@ -102,7 +102,7 @@
             </div>
             <div class="col-md-6 col-lg-4 mb-4">
               <div class="card no-border no-background card-body">
-                <img src="assets/img/berita-detail/gambar8.png" class="card-img-top mb-4" alt="...">
+                <img src="{{ asset('assets/img/berita-detail/gambar8.png') }}" class="card-img-top mb-4" alt="...">
                 <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
                 <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
                 <p class="penulis-artikel">Ahmad Rifaldi</p>

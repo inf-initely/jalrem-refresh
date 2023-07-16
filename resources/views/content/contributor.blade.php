@@ -30,8 +30,8 @@
     @csrf
   <section id="jelajah">
     <div class="container pb-5 pt-5">
-      <img class="item-jelajah item-jelajah-1" src="assets/kontributor/img/item-daun-1.svg">
-      <img class="item-jelajah item-jelajah-2" src="assets/kontributor/img/item-daun-2.svg">
+      <img class="item-jelajah item-jelajah-1" src="{{ asset('assets/kontributor/img/item-daun-1.svg') }}">
+      <img class="item-jelajah item-jelajah-2" src="{{ asset('assets/kontributor/img/item-daun-2.svg') }}">
         <div class="col-lg-12 mb-4">
           <div class="card shadow">
             <div class="card-header py-3">
@@ -39,7 +39,7 @@
             </div>
             @if (count($errors) > 0)
               <div class="alert alert-danger" role="alert">
-                {{ $errors->first() }} 
+                {{ $errors->first() }}
               </div>
             @endif
             <div class="card-body ">
@@ -95,7 +95,7 @@
                 <select required id="domisili" name="domisili" class="form-select select2-style" aria-label="Default select example">
                   <option value="" selected>Pilih Lokasi</option>
                   @foreach ($lokasi as $l)
-                    <option value="{{ $l->id }}">{{ $l->nama_lokasi }}</option>    
+                    <option value="{{ $l->id }}">{{ $l->nama_lokasi }}</option>
                   @endforeach
                 </select>
               </div>
@@ -144,7 +144,7 @@
   </div>
   <!-- Optional JavaScript; choose one of the two! -->
   <!-- Option 1: Bootstrap Bundle with Popper -->
-  <script src="assets/kontributor/vendor/jquery/jquery.min.js"></script>
+  <script src="{{ asset('assets/kontributor/vendor/jquery/jquery.min.js') }}"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
   {{-- <script src="https://cdn.ckeditor.com/ckeditor5/29.0.0/decoupled-document/ckeditor.js"></script> --}}
@@ -203,7 +203,7 @@
             }
         });
     });
-  
+
   </script>
   <script>
     $('.menu-toggle').click(function(){

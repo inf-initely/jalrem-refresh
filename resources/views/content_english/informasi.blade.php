@@ -3,9 +3,9 @@
 @section('content')
     <header id="hero">
         <img class="hero-img-2"
-            srcset="assets/img/hero/hero-5-576px.webp 576w, assets/img/hero/hero-5-768px.webp 768w, assets/img/hero/hero-5-992px.webp 992w, assets/img/hero/hero-5-1200px.webp 1200w, assets/img/hero/hero-5.webp"
+            srcset="{{ asset('assets/img/hero/hero-5-576px.webp') }} 576w, {{ asset('assets/img/hero/hero-5-768px.webp') }} 768w, {{ asset('assets/img/hero/hero-5-992px.webp') }} 992w, {{ asset('assets/img/hero/hero-5-1200px.webp') }} 1200w, {{ asset('assets/img/hero/hero-5.webp') }}"
             sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
-            src="assets/img/hero/hero-5.webp" alt="" />
+            src="{{ asset('assets/img/hero/hero-5.webp') }}" alt="" />
         <div class="text-hero-2">
             <div class="">
                 <div class="col-lg-12 text-center">
@@ -200,7 +200,7 @@
                                 <div class="card no-border card-media">
                                     <div class="card-body row">
                                         <div class="col-3 mt-3 text-center">
-                                            <img src="assets/img/icon/jalur_1.svg" height="40px">
+                                            <img src="{{ asset('assets/img/icon/jalur_1.svg') }}" height="40px">
                                         </div>
                                         <div class="col-9">
                                             <h3 class="judul-card-info">The Routes</h3>
@@ -214,7 +214,7 @@
                                 <div class="card no-border card-media">
                                     <div class="card-body row">
                                         <div class="col-3 mt-3 text-center">
-                                            <img src="assets/img/icon/jejak_1.svg" height="32px">
+                                            <img src="{{ asset('assets/img/icon/jejak_1.svg') }}" height="32px">
                                         </div>
                                         <div class="col-9">
                                             <h3 class="judul-card-info">The Traces</h3>
@@ -229,7 +229,7 @@
                                 <div class="card no-border card-media">
                                     <div class="card-body row">
                                         <div class="col-3 mt-3 text-center">
-                                            <img src="assets/img/icon/masa-depan_1.svg" height="40px">
+                                            <img src="{{ asset('assets/img/icon/masa-depan_1.svg') }}" height="40px">
                                         </div>
                                         <div class="col-9">
                                             <h3 class="judul-card-info">The Future</h3>
@@ -255,7 +255,7 @@
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="assets/js/slick.min.js"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/slick.min.js') }}"></script>
     <script>
         $(document).ready(function() {
             if ($(window).width() <= 1000) {
