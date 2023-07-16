@@ -9,6 +9,7 @@
 <head>
     @include('layout.app.head.meta')
     @include('layout.app.head.style')
+    @yield("head")
     @hasSection("meta_info")
         <title>{{__("meta.".$info.".title")}}</title>
     @else
