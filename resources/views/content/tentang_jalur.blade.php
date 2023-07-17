@@ -4,6 +4,10 @@
     tentang_jalur
 @endsection
 
+@section("title")
+    {{__("common.the_route")}}
+@endsection
+
 @section('content')
     <header id="hero">
         <img class="hero-img-2 hero-peta "

@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('title')
-    Semua Video - Jalur Rempah Kemdikbudristek Republik Indonesia
+    {{__("All Videos")}}
 @endsection
 
 @section('content')

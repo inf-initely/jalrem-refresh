@@ -4,6 +4,10 @@
     informasi
 @endsection
 
+@section("title")
+    {{__("Information")}}
+@endsection
+
 @section('content')
     <header id="hero">
         <img class="hero-img-2"

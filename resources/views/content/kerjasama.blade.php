@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('title')
-    Semua Kerjasama - Jalur Rempah Kemdikbudristek Republik Indonesia
+    {{__("All Partnership")}}
 @endsection
 
 @section('content')

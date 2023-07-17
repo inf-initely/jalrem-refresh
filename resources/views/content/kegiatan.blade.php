@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('title')
-    Semua Kegiatan - Jalur Rempah Kemdikbudristek Republik Indonesia
+    {{__("All Events")}}
 @endsection
 
 @section('content')

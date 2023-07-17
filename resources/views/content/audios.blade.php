@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('title')
-    Semua Audio - Jalur Rempah Kemdikbudristek Republik Indonesia
+    {{__("All Audios")}}
 @endsection
 
 @section('content')

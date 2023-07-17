@@ -42,7 +42,7 @@
                         <a class="nav-link page-scroll {{ $info == 'informasi' ? 'active' : '' }}"
                             href="{{ route('informasi') }}">{{ __('Information') }}</a>
                     @else
-                        <a class="nav-link page-scroll" href="#kegiatan">{{ __('Activity') }}</a>
+                        <a class="nav-link page-scroll" href="#kegiatan">{{ __('Events') }}</a>
                     @endif
                 </li>
             </ul>

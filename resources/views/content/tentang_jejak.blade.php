@@ -4,6 +4,10 @@
     tentang_jejak
 @endsection
 
+@section("title")
+    {{__("common.the_trail")}}
+@endsection
+
 @section('content')
 
     @php

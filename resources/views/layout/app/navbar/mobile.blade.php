@@ -79,7 +79,7 @@
                         </a>
                     @else
                         <a class="page-scroll" href="#kegiatan">
-                            <i class="fa fa-newspaper mr-2"></i> {{ __('Activity') }}
+                            <i class="fa fa-newspaper mr-2"></i> {{ __('Events') }}
                         </a>
                     @endif
                 </li>

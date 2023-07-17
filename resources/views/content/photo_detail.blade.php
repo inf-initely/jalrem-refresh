@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('title')
-    {{ $foto->judul_indo }} - Jalur Rempah Kemdikbudristek Republik Indonesia
+    {{ $foto->judul_indo }}
 @endsection
 
 @section('content')

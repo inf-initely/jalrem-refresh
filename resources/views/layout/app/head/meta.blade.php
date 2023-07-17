@@ -4,10 +4,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="language" content="{{ $lang }}">
 
-@hasSection("meta_info")
-    <meta name="title" content="{{ __('meta.' . $info . '.title') }}">
-    <meta name="description" content="{{ __('meta.' . $info . '.description') }}">
-    <meta name="keywords" content="{{ __('meta.' . $info . '.keywords') }}">
+<meta name="description" content="{{ __('meta.' . $info . '.description') }}">
+<meta name="keywords" content="{{ __('meta.' . $info . '.keywords') }}">
+
+@hasSection("title")
+    <meta name="title" content="{{trim(View::getSection('title'))}} | {{__("common.title")}}">
 @endif
 
 @yield('meta')

@@ -8,6 +8,10 @@
     home
 @endsection
 
+@section("title")
+    {{__("Home")}}
+@endsection
+
 @section('content')
     <header id="hero">
         <section class="hero-slider hero-style">

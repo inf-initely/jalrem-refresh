@@ -4,6 +4,10 @@
     tentang_masa_depan
 @endsection
 
+@section("title")
+    {{__("common.the_future")}}
+@endsection
+
 @section('content')
     <header id="hero">
         <img class="hero-img-2"

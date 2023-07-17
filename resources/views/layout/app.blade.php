@@ -10,10 +10,8 @@
     @include('layout.app.head.meta')
     @include('layout.app.head.style')
     @yield("head")
-    @hasSection("meta_info")
-        <title>{{__("meta.".$info.".title")}}</title>
-    @else
-        <title>@yield('title')</title>
+    @hasSection("title")
+        <title>@yield('title') | {{__("common.title")}}</title>
     @endif
     <link rel="shortcut icon" href="{{ asset('assets/img/logo/favicon.png') }}">
 </head>

@@ -8,7 +8,11 @@
     konten
 @endsection
 
-@section('style')
+@section("title")
+    {{__("Contents")}}
+@endsection
+
+@section('head')
     <style type="text/css">
         .slick-center {
             -webkit-transform: scale(1.25);

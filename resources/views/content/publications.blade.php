@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('title')
-    Semua Publikasi - Jalur Rempah Kemdikbudristek Republik Indonesia
+    {{__("All Publications")}}
 @endsection
 
 @section('content')
