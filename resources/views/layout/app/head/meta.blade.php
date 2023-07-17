@@ -2,7 +2,7 @@
 <!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="language" content="{{ $lang }}">
+<meta name="language" content="en">
 
 @yield('meta')
 
