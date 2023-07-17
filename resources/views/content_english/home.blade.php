@@ -29,7 +29,7 @@
                         @endforeach
                     @else
                         <div class="swiper-slide">
-                            <div class="slide-inner slide-bg-image" data-background="assets/img/hero/hero-1.jpg">
+                            <div class="slide-inner slide-bg-image" data-background="{{ asset('assets/img/hero/hero-1.jpg') }}">
                                 <div class="layer-masking"></div>
                                 <div class="container">
                                     <div data-swiper-parallax="300" class="slide-title">
@@ -60,14 +60,14 @@
         <div id="content">
             <section id="jelajah">
                 <div class="container">
-                    <img class="item-jelajah item-jelajah-1" src="assets/img/item-daun-1.svg" loading="lazy">
-                    <img class="item-jelajah item-jelajah-2" src="assets/img/item-daun-2.svg" loading="lazy">
+                    <img class="item-jelajah item-jelajah-1" src="{{ asset('assets/img/item-daun-1.svg') }}" loading="lazy">
+                    <img class="item-jelajah item-jelajah-2" src="{{ asset('assets/img/item-daun-2.svg') }}" loading="lazy">
                     <div class="row justify-content-center content-jelajahi" data-aos="fade-right">
                         <div class="col-12 col-md-6 col-lg-4 mb-2">
                             <img class="jelajah-img"
-                                srcset="assets/img/jalur-576px.webp 576w, assets/img/jalur-768px.webp 768w, assets/img/jalur-992px.webp 992w, assets/img/jalur-1200px.webp 1200w, assets/img/jalur.webp"
+                                srcset="{{ asset('assets/img/jalur-576px.webp') }} 576w, {{ asset('assets/img/jalur-768px.webp') }} 768w, {{ asset('assets/img/jalur-992px.webp') }} 992w, {{ asset('assets/img/jalur-1200px.webp') }}200px.webp') }} 1200w, {{ asset('assets/img/jalur.webp') }}"
                                 sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
-                                src="assets/img/jalur.webp" alt="" loading="lazy" />
+                                src="{{ asset('assets/img/jalur.webp') }}" alt="" loading="lazy" />
                         </div>
                         <div class="col-12 col-md-6 col-lg-6 center-v">
                             <header>
@@ -99,17 +99,17 @@
                         </div>
                         <div class="col-12 col-md-6 col-lg-4 first-div mb-2">
                             <img class="jelajah-img"
-                                srcset="assets/img/jejak-576px.webp 576w, assets/img/jejak-768px.webp 768w, assets/img/jejak-992px.webp 992w, assets/img/jejak-1200px.webp 1200w, assets/img/jejak.webp"
+                                srcset="{{ asset('assets/img/jejak-576px.webp') }} 576w, {{ asset('assets/img/jejak-768px.webp') }}768px.webp') }} 768w, {{ asset('assets/img/jejak-992px.webp') }} 992w, {{ asset('assets/img/jejak-1200px.webp') }} 1200w, {{ asset('assets/img/jejak.webp') }}"
                                 sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
-                                src="assets/img/jejak.webp" alt="" loading="lazy" />
+                                src="{{ asset('assets/img/jejak.webp') }}" alt="" loading="lazy" />
                         </div>
                     </div>
                     <div class="row justify-content-center content-jelajahi" data-aos="fade-right">
                         <div class="col-12 col-md-6 col-lg-4 mb-2">
                             <img class="jelajah-img"
-                                srcset="assets/img/masa-depan-576px.webp 576w, assets/img/masa-depan-768px.webp 768w, assets/img/masa-depan-992px.webp 992w, assets/img/masa-depan-1200px.webp 1200w, assets/img/masa-depan.webp"
+                                srcset="{{ asset('assets/img/masa-depan-576px.webp') }} 576w, {{ asset('assets/img/masa-depan-768px.webp') }} 768w, {{ asset('assets/img/masa-depan-992px.webp') }} 992w, {{ asset('assets/img/masa-depan-1200px.webp') }} 1200w, {{ asset('assets/img/masa-depan.webp') }}"
                                 sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
-                                src="assets/img/masa-depan.webp" alt="" loading="lazy" />
+                                src="{{ asset('assets/img/masa-depan.webp') }}" alt="" loading="lazy" />
                         </div>
                         <div class="col-12 col-md-6 col-lg-6 center-v">
                             <header>
@@ -130,9 +130,9 @@
             <section id="magnetDunia">
                 <div class="container">
                     <img class="item-jelajah item-jelajah-3"
-                        srcset="assets/img/asset-jelajah-576px.webp 576w, assets/img/asset-jelajah-768px.webp 768w, assets/img/asset-jelajah-992px.webp 992w, assets/img/asset-jelajah-1200px.webp 1200w, assets/img/asset-jelajah.webp"
+                        srcset="{{ asset('assets/img/asset-jelajah-576px.webp') }} 576w, {{ asset('assets/img/asset-jelajah-768px.webp') }} 768w, {{ asset('assets/img/asset-jelajah-992px.webp') }} 992w, {{ asset('assets/img/asset-jelajah-1200px.webp') }} 1200w, {{ asset('assets/img/asset-jelajah.webp') }}"
                         sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
-                        src="assets/img/asset-jelajah.webp" alt="" loading="lazy" />
+                        src="{{ asset('assets/img/asset-jelajah.webp') }}" alt="" loading="lazy" />
                     <div class="row justify-content-center content-jelajahi" data-aos="fade-left">
                         <div class="col-lg-10 mb-4">
                             <div class="ytdefer video video-magnet-dunia" data-alt="Enter optional img alt text here"
@@ -248,7 +248,7 @@
                                 <div class="col-6 col-md-6">
                                     <div class="card no-border card-media card-media-1">
                                         <div class="card-body text-center">
-                                            <img src="assets/img/icon-image.webp" width="40%">
+                                            <img src="{{ asset('assets/img/icon-image.webp') }}" width="40%">
                                             <p class="judul-media">Photo</p>
                                         </div>
                                         <a href="{{ route('photos') }}" class="stretched-link"></a>
@@ -257,7 +257,7 @@
                                 <div class="col-6 col-md-6">
                                     <div class="card no-border card-media card-media-2">
                                         <div class="card-body text-center">
-                                            <img src="assets/img/icon-publication.webp" width="40%">
+                                            <img src="{{ asset('assets/img/icon-publication.webp') }}" width="40%">
                                             <p class="judul-media">Publication</p>
                                         </div>
                                         <a href="{{ route('publications') }}" class="stretched-link"></a>
@@ -268,7 +268,7 @@
                                 <div class="col-6 col-md-6">
                                     <div class="card no-border card-media card-media-3">
                                         <div class="card-body text-center">
-                                            <img src="assets/img/icon-video.webp" width="40%">
+                                            <img src="{{ asset('assets/img/icon-video.webp') }}" width="40%">
                                             <p class="judul-media">Video</p>
                                         </div>
                                         <a href="{{ route('videos') }}" class="stretched-link"></a>
@@ -277,7 +277,7 @@
                                 <div class="col-6 col-md-6">
                                     <div class="card no-border card-media card-media-4">
                                         <div class="card-body text-center">
-                                            <img src="assets/img/icon-sound.webp" width="40%">
+                                            <img src="{{ asset('assets/img/icon-sound.webp') }}" width="40%">
                                             <p class="judul-media">Audio</p>
                                         </div>
                                         <a href="{{ route('audios') }}" class="stretched-link"></a>
@@ -290,9 +290,9 @@
             </section>
             <section id="kontributor" class="no-padding ">
                 <div class="wrap-img-kontributor">
-                    <img srcset="assets/img/hero/hero-6-576px.webp 576w, assets/img/hero/hero-6-768px.webp 768w, assets/img/hero/hero-6-992px.webp 992w, assets/img/hero/hero-6-1200px.webp 1200w, assets/img/hero/hero-6.webp"
+                    <img srcset="{{ asset('assets/img/hero/hero-6-576px.webp') }} 576w, {{ asset('assets/img/hero/hero-6-768px.webp') }} 768w, {{ asset('assets/img/hero/hero-6-992px.webp') }} 992w, {{ asset('assets/img/hero/hero-6-1200px.webp') }} 1200w, {{ asset('assets/img/hero/hero-6.webp') }}"
                         sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
-                        src="assets/img/hero/hero-6.webp" alt="" loading="lazy" />
+                        src="{{ asset('assets/img/hero/hero-6.webp') }}" alt="" loading="lazy" />
                 </div>
                 <div class="wrap-text-kontributor">
                     <div class="row">
@@ -324,8 +324,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script type="text/javascript" src="assets/js/ytdefer.min.js"></script>
-    <script type="text/javascript" src="assets/js/slick.min.js"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/ytdefer.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/slick.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
     <script>
         window.addEventListener("load", function() {

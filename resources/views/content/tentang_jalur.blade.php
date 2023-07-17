@@ -253,7 +253,7 @@
                                     <div class="card no-border card-media">
                                         <div class="card-body row">
                                             <div class="col-3 mt-3 text-center">
-                                                <img src="assets/img/icon/jalur_1.svg" height="40px">
+                                                <img src="{{ asset('assets/img/icon/jalur_1.svg') }}" height="40px">
                                             </div>
                                             <div class="col-9">
                                                 <h3 class="judul-card-info">Jalur</h3>
@@ -268,7 +268,7 @@
                                     <div class="card no-border card-media">
                                         <div class="card-body row">
                                             <div class="col-3 mt-3 text-center">
-                                                <img src="assets/img/icon/jejak_1.svg" height="32px">
+                                                <img src="{{ asset('assets/img/icon/jejak_1.svg') }}" height="32px">
                                             </div>
                                             <div class="col-9">
                                                 <h3 class="judul-card-info">Jejak</h3>
@@ -283,7 +283,7 @@
                                     <div class="card no-border card-media">
                                         <div class="card-body row">
                                             <div class="col-3 mt-3 text-center">
-                                                <img src="assets/img/icon/masa-depan_1.svg" height="40px">
+                                                <img src="{{ asset('assets/img/icon/masa-depan_1.svg') }}" height="40px">
                                             </div>
                                             <div class="col-9">
                                                 <h3 class="judul-card-info">Masa Depan</h3>

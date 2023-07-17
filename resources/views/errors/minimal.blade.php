@@ -59,9 +59,9 @@
 
 <body class="antialiased" class="position-relative">
     <img class="item-jelajah item-jelajah-3"
-        srcset="assets/img/asset-jelajah-576px.webp 576w, assets/img/asset-jelajah-768px.webp 768w, assets/img/asset-jelajah-992px.webp 992w, assets/img/asset-jelajah-1200px.webp 1200w, assets/img/asset-jelajah.webp"
+        srcset="{{ asset('assets/img/asset-jelajah-576px.webp') }} 576w, {{ asset('assets/img/asset-jelajah-768px.webp') }} 768w, {{ asset('assets/img/asset-jelajah-992px.webp') }} 992w, {{ asset('assets/img/asset-jelajah-1200px.webp') }} 1200w, {{ asset('assets/img/asset-jelajah.webp') }}"
         sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
-        src="assets/img/asset-jelajah.webp" alt="" />
+        src="{{ asset('assets/img/asset-jelajah.webp') }}" alt="" />
     <div class="position-relative" style="height: 100vh; width: 100vw;">
         <div class="position-absolute top-50 start-50 translate-middle text-center">
 
