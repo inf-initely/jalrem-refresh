@@ -299,6 +299,7 @@
 @endsection
 
 @section('js')
+    @include("partials.bootstrapjs")
     @include('partials.jqueryjs')
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script type="text/javascript" src="{{ asset('assets/js/slick.min.js') }}"></script>
