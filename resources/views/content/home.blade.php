@@ -318,39 +318,12 @@
 @endsection
 
 @section('js')
-    @include("partials.bootstrapjs")
-    @include('partials.jqueryjs')
+    @include("partials.js.bootstrap")
+    @include('partials.js.jquery')
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script type="text/javascript" src="assets/js/slick.min.js"></script>
-    <script type="text/javascript" src="assets/js/ytdefer.min.js"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/ytdefer.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            if ($(window).width() <= 1000) {
-                $(".navbar").addClass("bg-nav");
-                $(".navbar").removeClass("bg-trans");
-            }
-        });
-        $(window).scroll(function() {
-
-            if ($(window).width() >= 1000) {
-                var scroll = $(window).scrollTop();
-                //>=, not <=
-                if (scroll >= 50) {
-                    //clearHeader, not clearheader - caps H
-                    $(".navbar").addClass("bg-nav");
-                    $(".navbar").removeClass("bg-trans");
-                } else {
-                    $(".navbar").addClass("bg-trans");
-                    $(".navbar").removeClass("bg-nav");
-                }
-            } else {
-                $(".navbar").addClass("bg-nav");
-                $(".navbar").removeClass("bg-trans");
-            }
-
-        }); //missing );
-    </script>
+    @include("partials.js.dynamic-navbar")
     <script>
         $(function() {
 
@@ -384,84 +357,6 @@
                 } else {
                     $("#languageFlag").attr("src", "assets/img/bendera/flag-english-20px.webp");
                 }
-            });
-        });
-    </script>
-    <script>
-        $(document).ready(function() {
-            $('.youtube-video').slick({
-                dots: true,
-                infinite: true,
-                speed: 300,
-                slidesToShow: 2,
-                slidesToScroll: 2,
-                responsive: [{
-                        breakpoint: 1024,
-                        settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 2,
-                            infinite: true,
-                            dots: true
-                        }
-                    },
-                    {
-                        breakpoint: 600,
-                        settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 2,
-                            arrows: false
-                        }
-                    },
-                    {
-                        breakpoint: 480,
-                        settings: {
-                            arrows: false,
-                            slidesToShow: 1,
-                            slidesToScroll: 1
-                        }
-                    }
-                    // You can unslick at a given breakpoint now by adding:
-                    // settings: "unslick"
-                    // instead of a settings object
-                ]
-            });
-
-            $('.twitter-jalrem').slick({
-                dots: true,
-                infinite: true,
-                speed: 300,
-                slidesToShow: 3,
-                slidesToScroll: 1,
-                responsive: [{
-                        breakpoint: 1024,
-                        settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 2,
-                            infinite: true,
-                            dots: true
-                        }
-                    },
-                    {
-                        breakpoint: 600,
-                        settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 2,
-                            arrows: false
-                        }
-                    },
-                    {
-                        breakpoint: 480,
-                        settings: {
-                            dots: false,
-                            arrows: false,
-                            slidesToShow: 1,
-                            slidesToScroll: 1
-                        }
-                    }
-                    // You can unslick at a given breakpoint now by adding:
-                    // settings: "unslick"
-                    // instead of a settings object
-                ]
             });
         });
     </script>
