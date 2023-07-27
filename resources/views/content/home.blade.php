@@ -145,7 +145,7 @@
                 <div class="container">
                     <header class="row justify-content-center mb-2">
                         <div class="col-md-6">
-                            <h2 class="sub-judul">{{ __('Activity') }}</h2>
+                            <h2 class="sub-judul">{{ __('Events') }}</h2>
                         </div>
                         <div class="col-md-6 center-v text-end d-desktop">
                             <a href="{{ route('informasi') }}"

@@ -35,12 +35,8 @@
                                     <div class="card-body">
                                         <h3 class="card-title judul-artikel">{{ $article["title"] }}</h3>
                                         {{-- <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p> --}}
-                                        <p class="penulis-artikel">
-                                            {{ $article["author"] }}
-                                        </p>
-                                        <p class="tgl-artikel">
-                                            {{ $article["published_at"] }}
-                                        </p>
+                                        <p class="penulis-artikel">{{ $article["author"] }}</p>
+                                        <p class="tgl-artikel">{{ $article["published_at"] }}</p>
                                         @foreach ($article["categories"] as $category)
                                             @include("partials.category-badge")
                                         @endforeach
@@ -63,24 +59,6 @@
     @include("partials.js.jquery")
     @include("partials.js.bootstrap")
     @include("partials.js.dynamic-navbar")
-    <script>
-        $(function() {
-
-            var minimized_elements = $('p.minimize');
-
-            minimized_elements.each(function() {
-                var t = $(this).text();
-                if (t.length < 90) return;
-
-                $(this).html(
-                    t.slice(0, 90) + '<span>...' +
-                    '<span style="display:none;">' + t.slice(90, t.length)
-                );
-
-            });
-
-        });
-    </script>
     @include('content.loader.articles')
     <script>
         $('.menu-toggle').click(function() {
