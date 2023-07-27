@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Str;
 
 use App\Models\Artikel;
@@ -16,48 +18,38 @@ use Carbon\Carbon;
 class ArtikelController extends Controller
 {
 
-    public function index(){
-        $artikel = Artikel::where('status', 'publikasi')->where('published_at', '<=', Carbon::now())->orderBy('published_at', 'desc');
-
-        if(Session::get('lg') == 'en' ) {
-            return redirect()->route('article.english');
+    public function index(Request $request){
+        $page = (int)$request->query("page");
+        if($page < -1) {
+            return response("parameter page should be an unsigned int", Response::HTTP_BAD_REQUEST);
         }
 
-        $artikel = $artikel->paginate(9);
+        $isApi = $page !== 0;
 
-        if( Paginator::resolveCurrentPage() != 1 ) {
-            $artikels = [];
-            $i = 0;
+        $lang = App::getLocale();
+        $articles = Artikel::getAllArticles($isApi ? $page : 1, $lang);
+        $data = $articles->map(function ($article) use ($lang) {
+            $categories = $article->kategori_show->map(function ($category) {
+                return $category->isi;
+            });
 
-            if(!request()->ajax()) {
-                return response()->json([
-                    'status' => 'success',
-                    'data' => $artikels
-                ]);
-            }
+            return [
+                "title" => $article->{'judul_'.$lang},
+                "thumbnail" => $article->thumbnail,
+                "categories" => $categories,
+                "slug" => $article->{'slug_'.$lang},
+                "author" => $article->penulis != 'admin' ? $article->kontributor_relasi->nama : "admin",
+                "published_at" => Carbon::parse($article->published_at)->isoFormat("D MMMM Y")
+            ];
+        });
 
-            foreach( $artikel as $a ) {
-                $artikels[$i]['judul'] = $a->judul_indo;
-                $artikels[$i]['thumbnail'] = $a->thumbnail;
-                $j = 0;
-                foreach( $a->kategori_show as $ks ) {
-                    $artikels[$i]['kategori_show'][$j] = $ks->isi;
-                    $j++;
-                }
-                $artikels[$i]['konten'] = \Str::limit($a->konten_indo, 50, $end='...');
-                $artikels[$i]['slug'] = $a->slug;
-                $artikels[$i]['penulis'] = $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin';
-                $artikels[$i]['published_at'] = \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y');
-                $i++;
-            }
-            return response()->json([
-                'status' => 'success',
-                'data' => $artikels
-            ]);
-
-        } else {
-            return view('content.articles', compact('artikel'));
+        if(!$isApi) {
+            return view('content.articles', compact('data'));
         }
+
+        return response()->json([
+            "data" => $data
+        ]);
     }
 
     public function index_english(){

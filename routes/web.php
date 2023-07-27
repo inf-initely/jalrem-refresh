@@ -176,6 +176,7 @@ use function Psy\debug;
     Route::group(['prefix' => "/en", "middleware" => "switchlocale"], function() {
         Route::get('/', [HomeController::class, 'index_en'])->name('home.english');
         Route::get('/contents', [KontenController::class, 'index_en'])->name('konten.english');
+        Route::get('/articles', [ArtikelController::class, 'index'])->name('articles.english');
     });
 
     Route::get('/artikel/{slug}', [ArtikelController::class, 'show'])->name('article_detail');
@@ -200,7 +201,7 @@ use function Psy\debug;
     Route::get('/semua-kerjasama', [KerjasamaController::class, 'index'])->name('kerjasama');
     Route::get('/semua-kegiatan', [KegiatanController::class, 'index'])->name('events');
     Route::get('/konten', [KontenController::class, 'index'])->name('konten');
-    Route::get('/content', [KontenController::class, 'index_english'])->name('konten.english');
+    // Route::get('/content', [KontenController::class, 'index_english'])->name('konten.english');
     Route::get('/tentang-jalur', [JalurController::class, 'index'])->name('tentangjalur');
     Route::get('/about-path', [JalurController::class, 'index_english'])->name('tentangjalur.english');
     Route::get('/tentang-jejak', [JejakController::class, 'index'])->name('tentangjejak');
