@@ -54,7 +54,6 @@ class Audio extends Model
         return 'slug';
     }
 
-
     public static function getPage(int $page, string $lang = "id", int $limit = 9)
     {
         $query = Audio::select(
