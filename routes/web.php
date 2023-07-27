@@ -161,14 +161,11 @@ use function Psy\debug;
     Route::get('/', [HomeController::class, 'index'])->name('home');
     // Route::get('/english', [HomeController::class, 'index_english'])->name('home.english');
     Route::get('/semua-artikel', [ArtikelController::class, 'index'])->name('articles');
-    // Route::get('/all-article', [ArtikelController::class, 'index_english'])->name('articles.english');
     Route::get('/semua-foto', [FotoController::class, 'index'])->name('photos');
     Route::get('/semua-video', [VideoController::class, 'index'])->name('videos');
     Route::get('/all-video', [VideoController::class, 'index_english'])->name('videos.english');
     Route::get('/semua-audio', [AudioController::class, 'index'])->name('audios');
-    // Route::get('/all-audio', [AudioController::class, 'index_english'])->name('audios.english');
     Route::get('/semua-publikasi', [PublikasiController::class, 'index'])->name('publications');
-    Route::get('/all-publication', [PublikasiController::class, 'index_english'])->name('publications.english');
     Route::get('/semua-kegiatan', [KegiatanController::class, 'index'])->name('events');
 
     Route::group(['prefix' => "/en", "middleware" => "switchlocale"], function() {
@@ -178,6 +175,7 @@ use function Psy\debug;
         Route::get('/audios', [AudioController::class, 'index'])->name('audios.english');
         Route::get('/events', [KegiatanController::class, 'index'])->name('events.english');
         Route::get('/photos', [FotoController::class, 'index'])->name('photos.english');
+        Route::get('/publications', [PublikasiController::class, 'index'])->name('publications.english');
     });
 
     Route::get('/artikel/{slug}', [ArtikelController::class, 'show'])->name('article_detail');

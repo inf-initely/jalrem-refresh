@@ -24,7 +24,7 @@ class Publikasi extends Model implements Viewable
     public function lokasi()
     {
         return $this->belongsTo('App\Models\Lokasi', 'id_lokasi', 'id');
-    }    
+    }
 
     public function rempahs()
     {
@@ -32,7 +32,7 @@ class Publikasi extends Model implements Viewable
     }
 
     public function kategori_show()
-    { 
+    {
         return $this->belongsToMany('App\Models\KategoriShow', 'publikasi_kategori_show', 'id_publikasi', 'id_kategori_show');
     }
 
@@ -54,5 +54,30 @@ class Publikasi extends Model implements Viewable
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public static function getPage(int $page, string $lang = "id", int $limit = 9)
+    {
+        $query = Publikasi::select(
+            "judul_indo as judul_id",
+            "judul_english as judul_en",
+            "slug as slug_id",
+            "slug_english as slug_en",
+            "thumbnail",
+            "penulis",
+            "id_kontributor",
+            "id",
+            "published_at",
+        )
+            ->where("status", "publikasi")
+            ->where('published_at', '<=', now())
+            ->orderBy('published_at', 'desc')
+            ->forPage($page, $limit);
+
+        if ($lang == "en") {
+            $query = $query->whereNotNull('judul_english');
+        }
+
+        return $query->get();
     }
 }
