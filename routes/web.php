@@ -161,13 +161,13 @@ use function Psy\debug;
     Route::get('/', [HomeController::class, 'index'])->name('home');
     // Route::get('/english', [HomeController::class, 'index_english'])->name('home.english');
     Route::get('/semua-artikel', [ArtikelController::class, 'index'])->name('articles');
-    Route::get('/all-article', [ArtikelController::class, 'index_english'])->name('articles.english');
+    // Route::get('/all-article', [ArtikelController::class, 'index_english'])->name('articles.english');
     Route::get('/semua-foto', [FotoController::class, 'index'])->name('photos');
     Route::get('/all-photo', [FotoController::class, 'index_english'])->name('photos.english');
     Route::get('/semua-video', [VideoController::class, 'index'])->name('videos');
     Route::get('/all-video', [VideoController::class, 'index_english'])->name('videos.english');
     Route::get('/semua-audio', [AudioController::class, 'index'])->name('audios');
-    Route::get('/all-audio', [AudioController::class, 'index_english'])->name('audios.english');
+    // Route::get('/all-audio', [AudioController::class, 'index_english'])->name('audios.english');
     Route::get('/semua-publikasi', [PublikasiController::class, 'index'])->name('publications');
     Route::get('/all-publication', [PublikasiController::class, 'index_english'])->name('publications.english');
     Route::get('/semua-kegiatan', [KegiatanController::class, 'index'])->name('events');
@@ -175,8 +175,9 @@ use function Psy\debug;
 
     Route::group(['prefix' => "/en", "middleware" => "switchlocale"], function() {
         Route::get('/', [HomeController::class, 'index_en'])->name('home.english');
-        Route::get('/contents', [KontenController::class, 'index_en'])->name('konten.english');
+        Route::get('/contents', [KontenController::class, 'index_en'])->name('content.english');
         Route::get('/articles', [ArtikelController::class, 'index'])->name('articles.english');
+        Route::get('/audios', [AudioController::class, 'index'])->name('audios.english');
     });
 
     Route::get('/artikel/{slug}', [ArtikelController::class, 'show'])->name('article_detail');

@@ -57,7 +57,7 @@ class Artikel extends Model implements Viewable
         return 'slug';
     }
 
-    public static function getAllArticles(int $page, string $lang = "id", int $limit = 9)
+    public static function getPage(int $page, string $lang = "id", int $limit = 9)
     {
         $query = Artikel::select(
             "judul_indo as judul_id",

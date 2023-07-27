@@ -27,7 +27,7 @@ class ArtikelController extends Controller
         $isApi = $page !== 0;
 
         $lang = App::getLocale();
-        $articles = Artikel::getAllArticles($isApi ? $page : 1, $lang);
+        $articles = Artikel::getPage($isApi ? $page : 1, $lang);
         $data = $articles->map(function ($article) use ($lang) {
             $categories = $article->kategori_show->map(function ($category) {
                 return $category->isi;

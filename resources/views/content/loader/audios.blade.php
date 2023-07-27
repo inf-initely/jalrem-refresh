@@ -3,18 +3,15 @@
     const audiosEl = $('#audios')
     function displayAudios(audios) {
         for (const audio of audios) {
-            let kategori_show = audio.kategori_show?.map(item => {
+            let categories = audio?.categories?.map(item => {
                 if (item == 'Indepth') {
                     return '<span class="badge rounded-pill py-1 px-3 bg-success">Indepth</span>'
                 } else if (item == 'Jurnal Artikel') {
                     return '<span class="badge rounded-pill py-1 px-3 bg-secondary">Jurnal Artikel</span>'
                 }
                 return '<div></div>';
-            }).toString().replaceAll(',', ' ')
+            }).join("")
 
-            if (kategori_show == undefined) {
-                kategori_show = '<div></div>';
-            }
             audiosEl.append(`
                 <div class="col-md-12 col-lg-4 mb-4">
                     <div class="card no-border card-artikel">
@@ -23,7 +20,7 @@
                         <a class="stretched-link lightbox" href="/audio/${audio.slug}"></a>
                         <div class="card-body">
                             <p class="card-text">${audio.judul}</p>
-                            ${kategori_show}
+                            ${categories}
                         </div>
                     </div>
                 </div>

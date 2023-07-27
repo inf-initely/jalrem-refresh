@@ -30,7 +30,7 @@ class Audio extends Model
     }
 
     public function kategori_show()
-    { 
+    {
         return $this->belongsToMany('App\Models\KategoriShow', 'audio_kategori_show', 'id_audio', 'id_kategori_show');
     }
 
@@ -52,5 +52,28 @@ class Audio extends Model
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+
+    public static function getPage(int $page, string $lang = "id", int $limit = 9)
+    {
+        $query = Audio::select(
+            "judul_indo as judul_id",
+            "judul_english as judul_en",
+            "slug as slug_id",
+            "slug_english as slug_en",
+            "cloud_key",
+            "id"
+        )
+            ->where("status", "publikasi")
+            ->where('published_at', '<=', now())
+            ->orderBy('published_at', 'desc')
+            ->forPage($page, $limit);
+
+        if ($lang == "en") {
+            $query = $query->whereNotNull('judul_english');
+        }
+
+        return $query->get();
     }
 }
