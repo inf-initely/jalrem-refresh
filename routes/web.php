@@ -163,7 +163,6 @@ use function Psy\debug;
     Route::get('/semua-artikel', [ArtikelController::class, 'index'])->name('articles');
     Route::get('/semua-foto', [FotoController::class, 'index'])->name('photos');
     Route::get('/semua-video', [VideoController::class, 'index'])->name('videos');
-    Route::get('/all-video', [VideoController::class, 'index_english'])->name('videos.english');
     Route::get('/semua-audio', [AudioController::class, 'index'])->name('audios');
     Route::get('/semua-publikasi', [PublikasiController::class, 'index'])->name('publications');
     Route::get('/semua-kegiatan', [KegiatanController::class, 'index'])->name('events');
@@ -176,6 +175,7 @@ use function Psy\debug;
         Route::get('/events', [KegiatanController::class, 'index'])->name('events.english');
         Route::get('/photos', [FotoController::class, 'index'])->name('photos.english');
         Route::get('/publications', [PublikasiController::class, 'index'])->name('publications.english');
+        Route::get('/videos', [VideoController::class, 'index'])->name('videos.english');
     });
 
     Route::get('/artikel/{slug}', [ArtikelController::class, 'show'])->name('article_detail');

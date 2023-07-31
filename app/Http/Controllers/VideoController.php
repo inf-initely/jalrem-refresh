@@ -3,55 +3,49 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Str;
 
 use Illuminate\Pagination\Paginator;
+use Carbon\Carbon;
 
 use App\Models\Video;
 
 class VideoController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        if( Session::get('lg') == 'en' ) {
-            return redirect()->route('videos.english');
+        $page = (int)$request->query("page");
+        if ($page < -1) {
+            return response("parameter page should be an unsigned int", Response::HTTP_BAD_REQUEST);
         }
-        $video = Video::where('status', 'publikasi')->where('published_at', '<=', \Carbon\Carbon::now())->orderBy('published_at', 'desc');
 
-        $video = $video->paginate(9);
+        $isApi = $page !== 0;
 
-        if( Paginator::resolveCurrentPage() != 1 ) {
-            $videos = [];
-            $i = 0;
+        $lang = App::getLocale();
+        $videos = Video::getPage($isApi ? $page : 1, $lang);
+        $data = $videos->map(function ($video) use ($lang) {
+            $categories = $video->kategori_show->map(function ($video) {
+                return $video->isi;
+            });
 
-            if(!request()->ajax()) {
-                return response()->json([
-                    'status' => 'success',
-                    'data' => $videos,
-                ]);
-            }
+            return [
+                "title" => $video->{'judul_' . $lang},
+                "youtube_key" => $video->youtube_key,
+                "categories" => $categories,
+                "slug" => $video->{'slug_' . $lang}
+            ];
+        });
 
-            foreach( $video as $a ) {
-                $videos[$i]['judul'] = $a->judul_indo;
-                $videos[$i]['youtubekey'] = $a->youtube_key;
-                $j = 0;
-                foreach( $a->kategori_show as $ks ) {
-                    $videos[$i]['kategori_show'][$j] = $ks->isi;
-                    $j++;
-                }
-                $videos[$i]['konten'] = \Str::limit($a->konten_indo, 50, $end='...');
-                $videos[$i]['slug'] = $a->slug;
-                $videos[$i]['penulis'] = $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin';
-                $videos[$i]['published_at'] = \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y');
-                $i++;
-            }
-            return response()->json([
-                'status' => 'success',
-                'data' => $videos
-            ]);
-        } else {
-            return view('content.videos', compact('video'));
+        if (!$isApi) {
+            return view('content.videos', compact('data'));
         }
+
+        return response()->json([
+            "data" => $data
+        ]);
     }
 
     public function index_english()
@@ -81,7 +75,7 @@ class VideoController extends Controller
                     $videos[$i]['kategori_show'][$j] = $ks->isi;
                     $j++;
                 }
-                $videos[$i]['konten'] = \Str::limit($a->konten_english, 50, $end='...');
+                $videos[$i]['konten'] = Str::limit($a->konten_english, 50, $end='...');
                 $videos[$i]['slug'] = $a->slug;
                 $videos[$i]['penulis'] = $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin';
                 $videos[$i]['published_at'] = \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y');
@@ -95,7 +89,7 @@ class VideoController extends Controller
             return view('content_english.videos', compact('video'));
         }
 
-       
+
     }
 
     public function show($slug)
