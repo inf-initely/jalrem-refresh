@@ -176,6 +176,8 @@ use function Psy\debug;
         Route::get('/photos', [FotoController::class, 'index'])->name('photos.english');
         Route::get('/publications', [PublikasiController::class, 'index'])->name('publications.english');
         Route::get('/videos', [VideoController::class, 'index'])->name('videos.english');
+
+        Route::get('/article/{slug}', [ArtikelController::class, 'show'])->name('article_detail.english');
     });
 
     Route::get('/artikel/{slug}', [ArtikelController::class, 'show'])->name('article_detail');
