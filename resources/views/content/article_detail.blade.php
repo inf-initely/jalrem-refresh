@@ -43,7 +43,7 @@
                             </article>
                             @if ($content["author_type"] != 'admin')
                                 <div id="disclaimer" class="mt-4">
-                                    <p>{{__("wall.author_disclaimer_contributor")}}</p>
+                                    <p>{!! __("wall.author_disclaimer_contributor") !!}</p>
                                 </div>
                             @endif
                             @include('partials.social_share')

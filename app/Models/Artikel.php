@@ -121,7 +121,8 @@ class Artikel extends Model implements Viewable
             "penulis",
             "id_kontributor",
             "id",
-            "published_at"
+            "published_at",
+            "status"
         )
             ->where("status", "publikasi")
             ->where('published_at', '<=', now())

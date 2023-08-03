@@ -17,7 +17,7 @@ class FotoController extends Controller
     public function index(Request $request)
     {
         $page = (int)$request->query("page");
-        if($page < -1) {
+        if ($page < -1) {
             return response("parameter page should be an unsigned int", Response::HTTP_BAD_REQUEST);
         }
 
@@ -31,16 +31,16 @@ class FotoController extends Controller
             });
 
             return [
-                "title" => $photo->{'judul_'.$lang},
+                "title" => $photo->{'judul_' . $lang},
                 "thumbnail" => $photo->thumbnail,
                 "categories" => $categories,
-                "slug" => $photo->{'slug_'.$lang},
+                "slug" => $photo->{'slug_' . $lang},
                 "author" => $photo->penulis != 'admin' ? $photo->kontributor_relasi->nama : "admin",
                 "published_at" => Carbon::parse($photo->published_at)->isoFormat("D MMMM Y")
             ];
         });
 
-        if(!$isApi) {
+        if (!$isApi) {
             return view('content.photos', compact('data'));
         }
 
@@ -49,44 +49,37 @@ class FotoController extends Controller
         ]);
     }
 
-    public function show($slug)
+    public function show(Request $request, string $slug)
     {
-        $lg = Session::get('lg');
-
-        $foto = Foto::where('slug', $slug)->orWhere('slug_english', $slug)->firstOrFail();
-
-        if( $lg == 'en' )
-            return redirect()->route('photo_detail.english', $slug);
-
-        // check draft
-        if( $foto->status == 'draft' && !isset(auth()->user()->id) ) {
-            abort(404);
+        $lang = App::getLocale();
+        $thephoto = Foto::getDetailQuery($slug, $lang)->firstOrFail();
+        if ($thephoto->status == "draft") {
+            if (!isset(auth()->user()->id)) {
+                abort(404);
+            }
         }
 
-        if( $lg == 'en' )
-            return view('content_english.photo_detail', compact('foto'));
+        $urls = unserialize($thephoto->slider_foto);
+        // wtf why does this need to be decoded first!!!
+        $captions = unserialize(json_decode($thephoto->{'caption_slider_foto_' . $lang}));
 
-        return view('content.photo_detail', compact('foto'));
+        $content = [
+            "title" => $thephoto->{'judul_' . $lang},
+            "content" => $thephoto->{'konten_' . $lang},
+            "photos" => array_map(function (string $url, string $caption) {
+                return [
+                    "url" => $url,
+                    "caption" => $caption
+                ];
+            }, $urls, $captions),
+
+            "slug" => $thephoto->{'slug_' . $lang},
+            "published_at" => Carbon::parse($thephoto->published_at)->isoFormat("D MMMM Y"),
+            "author" => $thephoto->penulis != 'admin' ? $thephoto->kontributor_relasi->nama : "admin",
+            "author_type" => $thephoto->penulis,
+            "content_type" => "photo"
+        ];
+
+        return view('content.photo_detail', compact('content'));
     }
-
-    public function show_english($slug)
-    {
-        $lg = Session::get('lg');
-
-        $foto = Foto::where('slug', $slug)->orWhere('slug_english', $slug)->firstOrFail();
-
-        if( $lg != 'en' )
-            return redirect()->route('photo_detail', $slug);
-
-        // check draft
-        if( $foto->status == 'draft' && !isset(auth()->user()->id) ) {
-            abort(404);
-        }
-
-        if( $lg == 'en' )
-            return view('content_english.photo_detail', compact('foto'));
-
-        return view('content.photo_detail', compact('foto'));
-    }
-
 }
