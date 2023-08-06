@@ -60,15 +60,15 @@ class ArtikelController extends Controller
     {
         $lang = App::getLocale();
 
-        $thearticle = Artikel::getDetailQuery($slug, $lang)->firstOrFail();
-        if ($thearticle->status == "draft") {
+        $article = Artikel::getDetailQuery($slug, $lang)->firstOrFail();
+        if ($article->status == "draft") {
             if (!isset(auth()->user()->id)) {
                 abort(404);
             }
         }
 
         $latest = Artikel::getPageQuery(1, $lang, 3)
-            ->whereKeyNot($thearticle->id)
+            ->whereKeyNot($article->id)
             ->get()
             ->map(function ($item) use ($lang) {
                 return ArtikelController::normalizePageItem($item, $lang);
@@ -83,18 +83,18 @@ class ArtikelController extends Controller
         $popular = $random->slice(1, 3);
         $related = $random->slice(3, 3);
 
-        $categories = $thearticle->kategori_show->map(function ($category) {
+        $categories = $article->kategori_show->map(function ($category) {
             return $category->isi;
         });
         $content = [
-            "title" => $thearticle->{'judul_'.$lang},
-            "thumbnail" => $thearticle->thumbnail,
+            "title" => $article->{'judul_'.$lang},
+            "thumbnail" => $article->thumbnail,
             "categories" => $categories,
-            "slug" => $thearticle->{'slug_'.$lang},
-            "author" => $thearticle->penulis != 'admin' ? $thearticle->kontributor_relasi->nama : "admin",
-            "published_at" => Carbon::parse($thearticle->published_at)->isoFormat("D MMMM Y"),
-            "content" => $thearticle->{'konten_'.$lang},
-            "author_type" => $thearticle->penulis,
+            "slug" => $article->{'slug_'.$lang},
+            "author" => $article->penulis != 'admin' ? $article->kontributor_relasi->nama : "admin",
+            "published_at" => Carbon::parse($article->published_at)->isoFormat("D MMMM Y"),
+            "content" => $article->{'konten_'.$lang},
+            "author_type" => $article->penulis,
             "content_type" => "article",
         ];
 

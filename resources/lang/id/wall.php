@@ -5,5 +5,7 @@ return [
     Laman Kontributor merupakan platform dari website Jalur Rempah yang digagas khusus
     untuk masyarakat luas untuk mengirimkan konten (berupa tulisan, foto, dan video) dan
     membagikan pengalamannya tentang Jalur Rempah. Setiap konten dari kontributor adalah
-    tanggung jawab kontributor sepenuhnya."
+    tanggung jawab kontributor sepenuhnya.",
+    "publication_desc_related" => "Berbagai upaya dilakukan untuk melestarikan jalur rempah, salah satunya dengan
+    melakukan berbagai penelitian dan publikasi terkait jalur rempah"
 ];
