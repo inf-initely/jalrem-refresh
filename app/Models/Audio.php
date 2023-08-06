@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 use Spatie\Sluggable\HasSlug;
@@ -74,5 +75,41 @@ class Audio extends Model
         }
 
         return $query->get();
+    }
+
+
+    public static function getDetailQuery(string $slug, string $lang = "id"): Builder {
+        $query = Audio::select(
+            "judul_indo as judul_id",
+            "konten_indo as konten_id",
+            "meta_indo as meta_id",
+            "keywords_indo as keywords_id",
+
+            "judul_english as judul_en",
+            "konten_english as konten_en",
+            "meta_english as meta_en",
+            "keywords_english as keywords_en",
+
+            "slug as slug_id",
+            "slug_english as slug_en",
+
+            "penulis",
+            "id_kontributor",
+            "id",
+            "published_at",
+
+            "cloud_key",
+            "status"
+        );
+
+        if ($lang == "id") {
+            $query = $query->where("slug", $slug);
+        }
+
+        if ($lang == "en") {
+            $query = $query->where("slug_english", $slug);
+        }
+
+        return $query;
     }
 }
