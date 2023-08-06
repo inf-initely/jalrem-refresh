@@ -179,8 +179,8 @@ use function Psy\debug;
 
         Route::get('/article/{slug}', [ArtikelController::class, 'show'])->name('article_detail.english');
         Route::get('/photo/{slug}', [FotoController::class, 'show'])->name('photo_detail.english');
+        Route::get('/video/{slug}', [VideoController::class, 'show'])->name('video_detail.english');
 
-        Route::get('/video/english/{slug}', [VideoController::class, 'show_english'])->name('video_detail.english');
         Route::get('/audio/english/{slug}', [AudioController::class, 'show'])->name('audio_detail.english');
         Route::get('/publikasi/english/{slug}', [PublikasiController::class, 'show_english'])->name('publication_detail.english');
         Route::get('/kegiatan/english/{slug}', [KegiatanController::class, 'show_english'])->name('event_detail.english');

@@ -48,93 +48,27 @@ class VideoController extends Controller
         ]);
     }
 
-    public function index_english()
-    {
-        if( Session::get('lg') != 'en' )
-            return redirect()->route('videos');
-        $video = Video::where('status', 'publikasi')->where('published_at', '<=', \Carbon\Carbon::now())->orderBy('published_at', 'desc');
-
-        $video = $video->where('judul_english', '!=', null)->paginate(9);
-
-        if( Paginator::resolveCurrentPage() != 1 ) {
-            $videos = [];
-            $i = 0;
-
-            if(!request()->ajax()) {
-                return response()->json([
-                    'status' => 'success',
-                    'data' => $videos,
-                ]);
-            }
-
-            foreach( $video as $a ) {
-                $videos[$i]['judul'] = $a->judul_english;
-                $videos[$i]['youtubekey'] = $a->youtube_key;
-                $j = 0;
-                foreach( $a->kategori_show as $ks ) {
-                    $videos[$i]['kategori_show'][$j] = $ks->isi;
-                    $j++;
-                }
-                $videos[$i]['konten'] = Str::limit($a->konten_english, 50, $end='...');
-                $videos[$i]['slug'] = $a->slug;
-                $videos[$i]['penulis'] = $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin';
-                $videos[$i]['published_at'] = \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y');
-                $i++;
-            }
-            return response()->json([
-                'status' => 'success',
-                'data' => $videos
-            ]);
-        } else {
-            return view('content_english.videos', compact('video'));
-        }
-
-
-    }
-
     public function show($slug)
     {
-        $lg = Session::get('lg');
-        // $slug_field = $lg == 'en' ? 'slug_english' : 'slug';
-
-        $video = Video::where('slug', $slug)->orWhere('slug_english', $slug)->firstOrFail();
-
-        if( Session::get('lg') == 'en' ) {
-            return redirect()->route('video_detail.english', $video->slug_english);
+        $lang = App::getLocale();
+        $video = Video::getDetailQuery($slug, $lang)->firstOrFail();
+        if ($video->status == "draft") {
+            if (!isset(auth()->user()->id)) {
+                abort(404);
+            }
         }
 
-        // check draft
-        if( $video->status == 'draft' && !isset(auth()->user()->id) ) {
-            abort(404);
-        }
+        $content = [
+            "title" => $video->{"judul_" . $lang},
+            "content" => $video->{'konten_' . $lang},
+            "youtube_key" => $video->youtube_key,
+            "slug" => $video->{'slug_' . $lang},
+            "published_at" => Carbon::parse($video->published_at)->isoFormat("D MMMM Y"),
+            "author" => $video->penulis != 'admin' ? $video->kontributor_relasi->nama : "admin",
+            "author_type" => $video->penulis,
+            "content_type" => "video"
+        ];
 
-        if( $lg == 'en' ) {
-            return view('content_english.video_detail', compact('video'));
-        }
-
-        return view('content.video_detail', compact('video'));
-    }
-
-    public function show_english($slug)
-    {
-        $lg = Session::get('lg');
-        // $slug_field = $lg == 'en' ? 'slug_english' : 'slug';
-
-        $video = Video::where('slug', $slug)->orWhere('slug_english', $slug)->firstOrFail();
-
-        if( Session::get('lg') != 'en' ) {
-            return redirect()->route('video_detail', $video->slug);
-        }
-
-        // check draft
-        if( $video->status == 'draft' && !isset(auth()->user()->id) ) {
-            abort(404);
-        }
-
-        if( $lg == 'en' ) {
-            return view('content_english.video_detail', compact('video'));
-        }
-
-        return view('content.video_detail', compact('video'));
+        return view('content.video_detail', compact('content'));
     }
 }
