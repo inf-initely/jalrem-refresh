@@ -49,18 +49,30 @@ class KerjasamaController extends Controller
     }
     public function show($slug)
     {
-        $lg = Session::get('lg');
+        $lang = App::getLocale();
 
-        $kerjasama = Kerjasama::where('slug', $slug)->orWhere('slug_english', $slug)->firstOrFail();
-
-        // check draft
-        if( $kerjasama->status == 'draft' && !isset(auth()->user()->id) ) {
-            abort(404);
+        $partnership = Kerjasama::getDetailQuery($slug, $lang)->firstOrFail();
+        if ($partnership->status == "draft") {
+            if (!isset(auth()->user()->id)) {
+                abort(404);
+            }
         }
 
-        if( $lg == 'en' )
-            return view('content_english.kerjasama_detail', compact('kerjasama'));
+        $categories = $partnership->kategori_show->map(function ($category) {
+            return $category->isi;
+        });
+        $content = [
+            "title" => $partnership->{'judul_'.$lang},
+            "thumbnail" => $partnership->thumbnail,
+            "categories" => $categories,
+            "slug" => $partnership->{'slug_'.$lang},
+            "author" => $partnership->penulis != 'admin' ? $partnership->kontributor_relasi->nama : "admin",
+            "published_at" => Carbon::parse($partnership->published_at)->isoFormat("D MMMM Y"),
+            "content" => $partnership->{'konten_'.$lang},
+            "author_type" => $partnership->penulis,
+            "content_type" => "event",
+        ];
 
-        return view('content.kerjasama_detail', compact('kerjasama'));
+        return view('content.kerjasama_detail', compact('content'));
     }
 }

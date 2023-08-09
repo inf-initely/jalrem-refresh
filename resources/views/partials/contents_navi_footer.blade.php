@@ -2,7 +2,7 @@
     <section class="container" id="artikel">
         <header class="row justify-content-start mb-2">
             <div class="col-md-6">
-                <h2 class="sub-judul">Konten Jalur Rempah</h2>
+                <h2 class="sub-judul">{{__("The Spice Routes Contents")}}</h2>
             </div>
         </header>
         <div class="row justify-content-center">
@@ -12,7 +12,7 @@
                         <div class="card no-border card-media">
                             <div class="card-body">
                                 <img src="{{ asset('assets/img/icon-publication.webp') }}" width="32.5%">
-                                <p class="judul-media">Artikel</p>
+                                <p class="judul-media">{{__("Article")}}</p>
                                 <p class="des-media">
 
                                 </p>
@@ -24,7 +24,7 @@
                         <div class="card no-border card-media">
                             <div class="card-body">
                                 <img src="{{ asset('assets/img/icon-image.webp') }}" width="32.5%">
-                                <p class="judul-media">Foto</p>
+                                <p class="judul-media">{{__("Photo")}}</p>
                                 <p class="des-media">
 
                                 </p>
@@ -36,7 +36,7 @@
                         <div class="card no-border card-media">
                             <div class="card-body">
                                 <img src="{{ asset('assets/img/icon-video.webp') }}" width="32.5%">
-                                <p class="judul-media">Video</p>
+                                <p class="judul-media">{{__("Video")}}</p>
                                 <p class="des-media">
 
                                 </p>
@@ -48,7 +48,7 @@
                         <div class="card no-border card-media">
                             <div class="card-body">
                                 <img src="{{ asset('assets/img/icon-publication.webp') }}" width="32.5%">
-                                <p class="judul-media">Publikasi</p>
+                                <p class="judul-media">{{__("Publication")}}</p>
                                 <p class="des-media">
 
                                 </p>
@@ -60,7 +60,7 @@
                         <div class="card no-border card-media">
                             <div class="card-body">
                                 <img src="{{ asset('assets/img/icon-sound.webp') }}" width="32.5%">
-                                <p class="judul-media">Audio</p>
+                                <p class="judul-media">{{__("Audio")}}</p>
                                 <p class="des-media">
 
                                 </p>
@@ -72,7 +72,7 @@
                         <div class="card no-border card-media">
                             <div class="card-body">
                                 <img src="{{ asset('assets/img/icon-sound.webp') }}" width="32.5%">
-                                <p class="judul-media">Audio</p>
+                                <p class="judul-media">{{__("Audio")}}</p>
                                 <p class="des-media">
 
                                 </p>
