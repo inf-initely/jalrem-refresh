@@ -40,7 +40,7 @@ class KegiatanController extends Controller
         $isApi = $page !== 0;
 
         $lang = App::getLocale();
-        $events = Kegiatan::getPage($isApi ? $page : 1, $lang)->get();
+        $events = Kegiatan::getPageQuery($isApi ? $page : 1, $lang)->get();
         $data = $events->map(function ($event) use ($lang) {
             $categories = $event->kategori_show->map(function ($category) {
                 return $category->isi;

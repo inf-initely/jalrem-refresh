@@ -55,7 +55,6 @@ class Kegiatan extends Model
         return 'slug';
     }
 
-
     public static function getPageQuery(int $page, string $lang = "id", int $limit = 9): Builder {
         $query = Kegiatan::select(
             "judul_indo as judul_id",
