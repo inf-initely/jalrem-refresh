@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
@@ -30,7 +31,7 @@ class Kerjasama extends Model
     }
 
     public function kategori_show()
-    { 
+    {
         return $this->belongsToMany('App\Models\KategoriShow', 'kerjasama_kategori_show', 'id_kerjasama', 'id_kategori_show');
     }
 
@@ -52,5 +53,30 @@ class Kerjasama extends Model
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+
+    public static function getPageQuery(int $page, string $lang = "id", int $limit = 9): Builder {
+        $query = Kerjasama::select(
+            "judul_indo as judul_id",
+            "judul_english as judul_en",
+            "slug as slug_id",
+            "slug_english as slug_en",
+            "thumbnail",
+            "penulis",
+            "id_kontributor",
+            "id",
+            "published_at"
+        )
+            ->where("status", "publikasi")
+            ->where('published_at', '<=', now())
+            ->orderBy('published_at', 'desc')
+            ->forPage($page, $limit);
+
+        if ($lang == "en") {
+            $query = $query->whereNotNull('judul_english');
+        }
+
+        return $query;
     }
 }
