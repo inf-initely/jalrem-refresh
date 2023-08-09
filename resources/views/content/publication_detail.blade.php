@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@php
+    $lang = App::getLocale();
+@endphp
+
 @section('title')
     {{ $content['title'] }}
 @endsection
@@ -78,7 +82,7 @@
                                                                 </p>
                                                             </div>
                                                         </div>
-                                                        <a href="{{ route('publication_detail', $publication['slug']) }}"
+                                                        <a href="{{ route('publication_detail.'.$lang, $publication['slug']) }}"
                                                             class="stretched-link"></a>
                                                     </div>
                                                 </div>
@@ -113,7 +117,7 @@
                                                                 </p>
                                                             </div>
                                                         </div>
-                                                        <a href="{{ route('publication_detail', $publication['slug']) }}"
+                                                        <a href="{{ route('publication_detail.'.$lang, $publication['slug']) }}"
                                                             class="stretched-link"></a>
                                                     </div>
                                                 </div>
@@ -146,7 +150,7 @@
                                 {{-- <p class="card-text des-artikel minimize">{!! Str::limit($publication["konten_indo"] , 50, $end='...') !!}</p> --}}
                                 <p class="penulis-artikel"> {{ $publication['author'] }}</p>
                                 <p class="tgl-artikel">{{ $publication['published_at'] }}</p>
-                                <a href="{{ route('publication_detail', $publication['slug']) }}"
+                                <a href="{{ route('publication_detail.'.$lang, $publication['slug']) }}"
                                     class="stretched-link"></a>
                             </div>
                         </div>

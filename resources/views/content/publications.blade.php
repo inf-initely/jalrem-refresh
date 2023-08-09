@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@php
+    $lang = App::getLocale();
+@endphp
+
 @section('title')
     {{__("All Publications")}}
 @endsection
@@ -38,7 +42,7 @@
                                                         @include("partials.category-badge")
                                                     @endforeach
                                                 </div>
-                                                <a href="{{ route('publication_detail', $publication["slug"]) }}"
+                                                <a href="{{ route('publication_detail.'.$lang, $publication["slug"]) }}"
                                                     class="stretched-link"></a>
                                             </div>
                                         </div>

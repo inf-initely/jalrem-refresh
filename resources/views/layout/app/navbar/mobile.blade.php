@@ -2,7 +2,7 @@
     <div class="px-3">
         <div class="row">
             <div class="col-6">
-                <a class="navbar-brand" href="{{ route('home') }}">
+                <a class="navbar-brand" href="{{ route('home.'.$lang) }}">
                     <img src="{{ asset('assets/img/logo/logo.png') }}" height="45px">
                 </a>
             </div>
@@ -38,7 +38,7 @@
             <ul class="nav2 no-search temp-pos">
                 <li class="nav-item">
                     <a class="page-scroll {{ $info == 'home' ? 'active' : '' }}"
-                        href="{{ $altnav ? route('home') : '#home' }}">
+                        href="{{ $altnav ? route('home.'.$lang) : '#home' }}">
                         <i class="fa fa-home mr-2"></i> {{ __("Home") }}
                     </a>
                 </li>
@@ -68,13 +68,13 @@
                 @endif
                 <li class="nav-item">
                     <a class="page-scroll {{ $info == 'konten' ? 'active' : '' }}"
-                        href="{{ $altnav ? route('konten') : '#media' }}">
+                        href="{{ $altnav ? route('contents.'.$lang) : '#media' }}">
                         <i class="fa fa-image mr-2"></i> {{ __('Contents') }}</a>
                 </li>
                 <li class="nav-item">
                     @if ($altnav)
                         <a class="page-scroll {{ $info == 'informasi' ? 'active' : '' }}"
-                            href="{{ route('informasi') }}">
+                            href="{{ route('information.'.$lang) }}">
                             <i class="fa fa-newspaper mr-2"></i> {{ __('Information') }}
                         </a>
                     @else

@@ -17,7 +17,7 @@
 
                                 </p>
                             </div>
-                            <a href="{{ route('articles') }}" class="stretched-link"></a>
+                            <a href="{{ route('articles.'.$lang) }}" class="stretched-link"></a>
                         </div>
                     </div>
                     <div class="col mb-1">
@@ -29,7 +29,7 @@
 
                                 </p>
                             </div>
-                            <a href="{{ route('photos') }}" class="stretched-link"></a>
+                            <a href="{{ route('photos.'.$lang) }}" class="stretched-link"></a>
                         </div>
                     </div>
                     <div class="col mb-1">
@@ -41,7 +41,7 @@
 
                                 </p>
                             </div>
-                            <a href="{{ route('videos') }}" class="stretched-link"></a>
+                            <a href="{{ route('videos.'.$lang) }}" class="stretched-link"></a>
                         </div>
                     </div>
                     <div class="col mb-1">
@@ -53,7 +53,7 @@
 
                                 </p>
                             </div>
-                            <a href="{{ route('publications') }}" class="stretched-link"></a>
+                            <a href="{{ route('publications.'.$lang) }}" class="stretched-link"></a>
                         </div>
                     </div>
                     <div class="col d-none d-lg-block d-xl-none mb-1">
@@ -65,7 +65,7 @@
 
                                 </p>
                             </div>
-                            <a href="{{ route('audios') }}" class="stretched-link"></a>
+                            <a href="{{ route('audios.'.$lang) }}" class="stretched-link"></a>
                         </div>
                     </div>
                     <div class="col-6 col-md-3 mb-1 d-lg-none d-xl-block">
@@ -77,7 +77,7 @@
 
                                 </p>
                             </div>
-                            <a href="{{ route('audios') }}" class="stretched-link"></a>
+                            <a href="{{ route('audios.'.$lang) }}" class="stretched-link"></a>
                         </div>
                     </div>
                 </div>

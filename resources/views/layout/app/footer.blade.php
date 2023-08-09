@@ -45,19 +45,19 @@
                 <h3 class="menu-footer mb-3">{{strtoupper(__("Contents"))}}</h3>
                 <ul>
                     <li>
-                        <a href="{{ route('articles') }}">{{__("Article")}}</a>
+                        <a href="{{ route('articles.'.$lang) }}">{{__("Article")}}</a>
                     </li>
                     <li>
-                        <a href="{{ route('photos') }}">{{__("Photo")}}</a>
+                        <a href="{{ route('photos.'.$lang) }}">{{__("Photo")}}</a>
                     </li>
                     <li>
-                        <a href="{{ route('videos') }}">{{__("Video")}}</a>
+                        <a href="{{ route('videos.'.$lang) }}">{{__("Video")}}</a>
                     </li>
                     <li>
-                        <a href="{{ route('publications') }}">{{__("Publication")}}</a>
+                        <a href="{{ route('publications.'.$lang) }}">{{__("Publication")}}</a>
                     </li>
                     <li>
-                        <a href="{{ route('audios') }}">{{__("Audio")}}</a>
+                        <a href="{{ route('audios.'.$lang) }}">{{__("Audio")}}</a>
                     </li>
                 </ul>
             </div>

@@ -78,7 +78,7 @@
                                                 </div>
                                             </div>
                                             <a class="stretched-link lightbox"
-                                                href="{{ route('video_detail', $a->{"slug_".$lang} ?? $a->slug) }}"></a>
+                                                href="{{ route('video_detail.'.$lang, $a->{"slug_".$lang} ?? $a->slug) }}"></a>
                                             <div class="card-body">
                                                 <p class="card-text">{{ $a->{"judul_".$lang} }}</p>
                                             </div>
@@ -106,7 +106,7 @@
                                                 </div>
                                             </div>
                                             <a class="stretched-link lightbox"
-                                                href="{{ route('audio_detail', $a->{"slug_".$lang} ?? $a->slug) }}"></a>
+                                                href="{{ route('audio_detail.'.$lang, $a->{"slug_".$lang} ?? $a->slug) }}"></a>
                                             <div class="card-body">
                                                 <p class="card-text">{{ $a->{"judul_".$lang} }}</p>
                                             </div>
@@ -199,13 +199,13 @@
                                                                 @endif
                                                             @endforeach
                                                         </div>
-                                                        <a href="{{ route('article_detail', $a->{"slug_".$lang} ?? $a->slug) }}"
+                                                        <a href="{{ route('article_detail.'.$lang, $a->{"slug_".$lang} ?? $a->slug) }}"
                                                             class="stretched-link"></a>
                                                     </div>
                                                 </div>
                                             @endforeach
                                             <div class="d-flex justify-content-center">
-                                                <a href="{{ route('articles') }}" class="btn btn-danger mr-4"
+                                                <a href="{{ route('articles.'.$lang) }}" class="btn btn-danger mr-4"
                                                     style="margin-right:1rem">{{ __('See All') }}</a>
                                             </div>
                                         </div>
@@ -241,12 +241,12 @@
                                                             @endif
                                                         @endforeach
                                                         <a class="stretched-link lightbox"
-                                                            href="{{ route('photo_detail', $f->slug) }}"></a>
+                                                            href="{{ route('photo_detail.'.$lang, $f->slug) }}"></a>
                                                     </div>
                                                 </div>
                                             @endforeach
                                             <div class="d-flex justify-content-center">
-                                                <a href="{{ route('photos') }}" class="btn btn-danger mr-4"
+                                                <a href="{{ route('photos.'.$lang) }}" class="btn btn-danger mr-4"
                                                     style="margin-right:1rem">{{ __('See All') }}</a>
                                             </div>
                                         </div>
@@ -281,7 +281,7 @@
                                                             </div>
                                                         </div>
                                                         <a class="stretched-link lightbox"
-                                                            href="{{ route('video_detail', $v->slug) }}"></a>
+                                                            href="{{ route('video_detail.'.$lang, $v->slug) }}"></a>
                                                         <div class="card-body">
                                                             <p class="card-text">{{ $v->{"judul_".$lang} }}</p>
                                                         </div>
@@ -302,7 +302,7 @@
                                                 </div>
                                             @endforeach
                                             <div class="d-flex justify-content-center">
-                                                <a href="{{ route('videos') }}" class="btn btn-danger mr-4"
+                                                <a href="{{ route('videos.'.$lang) }}" class="btn btn-danger mr-4"
                                                     style="margin-right:1rem">{{ __('See All') }}</a>
                                             </div>
                                         </div>
@@ -338,13 +338,13 @@
                                                                 @endif
                                                             @endforeach
                                                         </div>
-                                                        <a href="{{ route('publication_detail', $p->slug) }}"
+                                                        <a href="{{ route('publication_detail.'.$lang, $p->slug) }}"
                                                             class="stretched-link"></a>
                                                     </div>
                                                 </div>
                                             @endforeach
                                             <div class="d-flex justify-content-center">
-                                                <a href="{{ route('publications') }}" class="btn btn-danger mr-4"
+                                                <a href="{{ route('publications.'.$lang) }}" class="btn btn-danger mr-4"
                                                     style="margin-right:1rem">{{ __('See All') }}</a>
                                             </div>
                                         </div>
@@ -379,7 +379,7 @@
                                                             </div>
                                                         </div>
                                                         <a class="stretched-link lightbox"
-                                                            href="{{ route('audio_detail', $a->{"slug_".$lang} ?? $a->slug) }}"></a>
+                                                            href="{{ route('audio_detail.'.$lang, $a->{"slug_".$lang} ?? $a->slug) }}"></a>
                                                         <div class="card-body">
                                                             <p class="card-text">{{ $a->{"judul_".$lang} }}</p>
                                                         </div>
@@ -400,7 +400,7 @@
                                                 </div>
                                             @endforeach
                                             <div class="d-flex justify-content-center">
-                                                <a href="{{ route('audios') }}" class="btn btn-danger mr-4"
+                                                <a href="{{ route('audios.'.$lang) }}" class="btn btn-danger mr-4"
                                                     style="margin-right:1rem">{{ __('See All') }}</a>
                                             </div>
                                         </div>

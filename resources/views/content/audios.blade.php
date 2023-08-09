@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@php
+    $lang = App::getLocale();
+@endphp
+
 @section('title')
     {{__("All Audios")}}
 @endsection
@@ -31,7 +35,7 @@
                                                 <div class="ytdefer video media-video" data-alt="youtube jalur rempah"
                                                     data-src="{{ $audio["cloud_key"] }}"></div>
                                                 <a class="stretched-link lightbox"
-                                                    href="{{ route('audio_detail', $audio["slug"]) }}"></a>
+                                                    href="{{ route('audio_detail.'.$lang, $audio["slug"]) }}"></a>
                                                 <div class="card-body">
                                                     <p class="card-text">{{ $audio["title"] }}</p>
                                                     @foreach ($audio["categories"] as $category)

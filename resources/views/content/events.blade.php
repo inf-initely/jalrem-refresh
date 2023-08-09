@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@php
+    $lang = App::getLocale();
+@endphp
+
 @section('title')
     {{ __('All Events') }}
 @endsection
@@ -40,7 +44,7 @@
                                                         @include("partials.category-badge")
                                                     @endforeach
                                                 </div>
-                                                <a href="{{ route('event_detail', $event['slug']) }}"
+                                                <a href="{{ route('event_detail.'.$lang, $event['slug']) }}"
                                                     class="stretched-link"></a>
                                             </div>
                                         </div>

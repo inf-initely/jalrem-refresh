@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@php
+    $lang = App::getLocale();
+@endphp
+
 @section('title')
     {{ $content["title"] }}
 @endsection
@@ -48,7 +52,7 @@
                             @endif
                             @include('partials.social_share')
                             <div class="wrap-baca-juga">
-                                <p>{{__("Also read")}}: <a href="{{ route('article_detail', $alsoread["slug"]) }}"
+                                <p>{{__("Also read")}}: <a href="{{ route('article_detail.'.$lang, $alsoread["slug"]) }}"
                                         class="berita-terkait">{{ $alsoread["title"] }}</a></p>
                             </div>
                         </div>
@@ -100,7 +104,7 @@
                                 {{-- <p class="card-text des-artikel minimize">{!! Str::limit($article["konten_indo"], 50, $end='...') !!}</p> --}}
                                 <p class="penulis-artikel">{{ $article["author"] }}</p>
                                 <p class="tgl-artikel">{{ $article["published_at"] }}</p>
-                                <a href="{{ route('article_detail', $article["slug"]) }}" class="stretched-link"></a>
+                                <a href="{{ route('article_detail.'.$lang, $article["slug"]) }}" class="stretched-link"></a>
                             </div>
                         </div>
                     @endforeach

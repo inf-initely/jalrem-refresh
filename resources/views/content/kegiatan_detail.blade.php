@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@php
+    $lang = App::getLocale();
+@endphp
+
 @section('title')
     {{ $content["title"] }}
 @endsection
@@ -63,7 +67,7 @@
                                                             {{ $item["title"] }}</h3>
                                                     </div>
                                                 </div>
-                                                <a href="{{ route('event_detail', $item["slug"]) }}" class="stretched-link"></a>
+                                                <a href="{{ route('event_detail.'.$lang, $item["slug"]) }}" class="stretched-link"></a>
                                             </div>
                                         </div>
                                     </div>

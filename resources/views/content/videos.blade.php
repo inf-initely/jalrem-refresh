@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@php
+    $lang = App::getLocale();
+@endphp
+
 @section('title')
     {{__("All Videos")}}
 @endsection
@@ -33,7 +37,7 @@
                                                     frameborder="0" allowfullscreen>
                                                 </iframe>
                                                 <a class="stretched-link lightbox"
-                                                    href="{{ route('video_detail', $video["slug"]) }}"></a>
+                                                    href="{{ route('video_detail.'.$lang, $video["slug"]) }}"></a>
                                                 <div class="card-body">
                                                     <p class="card-text">{{ $video["title"] }}</p>
                                                     @foreach ($video["categories"] as $category)

@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@php
+    $lang = App::getLocale();
+@endphp
+
 @section('title')
     {{__("All Photos")}}
 @endsection
@@ -38,7 +42,7 @@
                                                     @include("partials.category-badge")
                                                 @endforeach
                                                 <a class="stretched-link lightbox"
-                                                    href="{{ route('photo_detail', $photo["slug"]) }}"></a>
+                                                    href="{{ route('photo_detail.'.$lang, $photo["slug"]) }}"></a>
                                             </div>
                                         </div>
                                     @endforeach

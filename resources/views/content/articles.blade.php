@@ -41,7 +41,7 @@
                                             @include("partials.category-badge")
                                         @endforeach
                                     </div>
-                                    <a href="{{ route('article_detail', $article["slug"]) }}" class="stretched-link"></a>
+                                    <a href="{{ route('article_detail.'.$lang, $article["slug"]) }}" class="stretched-link"></a>
                                 </div>
                             </div>
                         @endforeach

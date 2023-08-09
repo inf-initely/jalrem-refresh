@@ -1,14 +1,14 @@
 <nav
     class="navbar navbar-expand-lg {{ $altnav ? 'navbar-light' : 'navbar-dark' }} bg-light sticky-top bg-trans d-none d-lg-block d-xl-none">
     <div class="container">
-        <a class="navbar-brand" href="{{ route('home') }}">
+        <a class="navbar-brand" href="{{ route('home.'.$lang) }}">
             <img src="{{ asset('assets/img/logo/' . ($altnav ? 'logo-2.png' : 'logo.png')) }}" height="50px">
         </a>
         <div class="collapse navbar-collapse {{ $altnav ? 'navbar-baru' : '' }}" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link page-scroll {{ $info == 'home' ? 'active' : '' }}" aria-current="page"
-                        href="{{ $info != 'home' ? route('home') : '#home' }}">{{ __('Home') }}</a>
+                        href="{{ $info != 'home' ? route('home.'.$lang) : '#home' }}">{{ __('Home') }}</a>
                 </li>
                 @if ($info != 'home')
                     <li class="nav-item dropdown">
@@ -35,12 +35,12 @@
                 @endif
                 <li class="nav-item">
                     <a class="nav-link page-scroll {{ $info == 'konten' ? 'active' : '' }}"
-                        href="{{ $info != 'home' ? route('konten') : '#media' }}">{{ __('Contents') }}</a>
+                        href="{{ $info != 'home' ? route('contents.'.$lang) : '#media' }}">{{ __('Contents') }}</a>
                 </li>
                 <li class="nav-item">
                     @if ($info != 'home')
                         <a class="nav-link page-scroll {{ $info == 'informasi' ? 'active' : '' }}"
-                            href="{{ route('informasi') }}">{{ __('Information') }}</a>
+                            href="{{ route('information.'.$lang) }}">{{ __('Information') }}</a>
                     @else
                         <a class="nav-link page-scroll" href="#kegiatan">{{ __('Events') }}</a>
                     @endif

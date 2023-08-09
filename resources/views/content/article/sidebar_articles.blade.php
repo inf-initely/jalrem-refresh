@@ -11,7 +11,7 @@
                     <p class="tgl-berita-aside" id="tglKegiatan" name="tglKegiatan">{{ $article['published_at'] }}</p>
                 </div>
             </div>
-            <a href="{{ route('article_detail', $article['slug']) }}" class="stretched-link"></a>
+            <a href="{{ route('article_detail.'.$lang, $article['slug']) }}" class="stretched-link"></a>
         </div>
     </div>
 </div>
