@@ -181,6 +181,11 @@ use function Psy\debug;
 
     Route::get('/informasi', [InformasiController::class, 'index'])->name('information.id');
 
+    Route::get('/tentang-jalur', [JalurController::class, 'index'])->name('tentangjalur');
+    Route::get('/tentang-jejak', [JejakController::class, 'index'])->name('tentangjejak');
+    Route::get('/tentang-masa-depan', [MasaDepanController::class, 'index'])->name('tentangmasadepan');
+    Route::get('/funfact/{rempahName}', [RempahController::class, 'show'])->name('rempah_detail');
+
     Route::group(['prefix' => "/en", "middleware" => "switchlocale"], function() {
         Route::get('/', [HomeController::class, 'index_en'])->name('home.en');
         Route::get('/contents', [KontenController::class, 'index_en'])->name('contents.en');
@@ -203,7 +208,7 @@ use function Psy\debug;
 
         Route::get('/search', [SearchController::class, 'search'])->name('article_search.en');
 
-        Route::get('/information', [InformasiController::class, 'index_en'])->name('information.en');
+        Route::get('/information', [InformasiController::class, 'index'])->name('information.en');
 
         Route::get('/about-path', [JalurController::class, 'index_en'])->name('tentangjalur.en');
         Route::get('/about-track', [JejakController::class, 'index_en'])->name('tentangjejak.en');
@@ -212,10 +217,6 @@ use function Psy\debug;
     });
 
     // Route::get('/content', [KontenController::class, 'index_english'])->name('konten.english');
-    Route::get('/tentang-jalur', [JalurController::class, 'index'])->name('tentangjalur');
-    Route::get('/tentang-jejak', [JejakController::class, 'index'])->name('tentangjejak');
-    Route::get('/tentang-masa-depan', [MasaDepanController::class, 'index'])->name('tentangmasadepan');
-    Route::get('/funfact/{rempahName}', [RempahController::class, 'show'])->name('rempah_detail');
 
     Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/login', [AuthController::class, 'login_post'])->name('login_post');

@@ -15,21 +15,6 @@ use App\Models\Kegiatan;
 
 class KegiatanController extends Controller
 {
-    public static function normalizePageItem(Kegiatan $item, string $lang) {
-        $categories = $item->kategori_show->map(function ($category) {
-            return $category->isi;
-        });
-
-        return [
-            "title" => $item->{'judul_'.$lang},
-            "thumbnail" => $item->thumbnail,
-            "categories" => $categories,
-            "slug" => $item->{'slug_'.$lang},
-            "author" => $item->penulis != 'admin' ? $item->kontributor_relasi->nama : "admin",
-            "published_at" => Carbon::parse($item->published_at)->isoFormat("D MMMM Y")
-        ];
-    }
-
     public function index(Request $request)
     {
         $page = (int)$request->query("page");
@@ -42,18 +27,7 @@ class KegiatanController extends Controller
         $lang = App::getLocale();
         $events = Kegiatan::getPageQuery($isApi ? $page : 1, $lang)->get();
         $data = $events->map(function ($event) use ($lang) {
-            $categories = $event->kategori_show->map(function ($category) {
-                return $category->isi;
-            });
-
-            return [
-                "title" => $event->{'judul_'.$lang},
-                "thumbnail" => $event->thumbnail,
-                "categories" => $categories,
-                "slug" => $event->{'slug_'.$lang},
-                "author" => $event->penulis != 'admin' ? $event->kontributor_relasi->nama : "admin",
-                "published_at" => Carbon::parse($event->published_at)->isoFormat("D MMMM Y")
-            ];
+            return Kegiatan::normalizePageItem($event, $lang);
         });
 
         if(!$isApi) {
@@ -80,7 +54,7 @@ class KegiatanController extends Controller
             ->whereKeyNot($event->id)
             ->get()
             ->map(function ($item) use ($lang) {
-                return KegiatanController::normalizePageItem($item, $lang);
+                return Kegiatan::normalizePageItem($item, $lang);
             });
 
         $categories = $event->kategori_show->map(function ($category) {

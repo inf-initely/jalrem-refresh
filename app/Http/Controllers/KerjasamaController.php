@@ -25,18 +25,7 @@ class KerjasamaController extends Controller
         $lang = App::getLocale();
         $partnerships = Kerjasama::getPageQuery($isApi ? $page : 1, $lang)->get();
         $data = $partnerships->map(function ($partnership) use ($lang) {
-            $categories = $partnership->kategori_show->map(function ($category) {
-                return $category->isi;
-            });
-
-            return [
-                "title" => $partnership->{'judul_'.$lang},
-                "thumbnail" => $partnership->thumbnail,
-                "categories" => $categories,
-                "slug" => $partnership->{'slug_'.$lang},
-                "author" => $partnership->penulis != 'admin' ? $partnership->kontributor_relasi->nama : "admin",
-                "published_at" => Carbon::parse($partnership->published_at)->isoFormat("D MMMM Y")
-            ];
+            return Kerjasama::normalizePageItem($partnership, $lang);
         });
 
         if(!$isApi) {

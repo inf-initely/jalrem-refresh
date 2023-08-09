@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Carbon;
 
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
@@ -65,7 +66,8 @@ class Kegiatan extends Model
             "penulis",
             "id_kontributor",
             "id",
-            "published_at"
+            "published_at",
+            "end_date"
         )
             ->where("status", "publikasi")
             ->where('published_at', '<=', now())
@@ -112,6 +114,21 @@ class Kegiatan extends Model
         }
 
         return $query;
+    }
+
+    public static function normalizePageItem(Kegiatan $item, string $lang) {
+        $categories = $item->kategori_show->map(function ($category) {
+            return $category->isi;
+        });
+
+        return [
+            "title" => $item->{'judul_'.$lang},
+            "thumbnail" => $item->thumbnail,
+            "categories" => $categories,
+            "slug" => $item->{'slug_'.$lang},
+            "author" => $item->penulis != 'admin' ? $item->kontributor_relasi->nama : "admin",
+            "published_at" => Carbon::parse($item->published_at)->isoFormat("D MMMM Y")
+        ];
     }
 }
 
