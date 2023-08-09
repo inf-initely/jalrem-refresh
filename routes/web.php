@@ -184,7 +184,7 @@ use function Psy\debug;
         Route::get('/publication/{slug}', [PublikasiController::class, 'show'])->name('publication_detail.en');
         Route::get('/kegiatan/{slug}', [KegiatanController::class, 'show'])->name('event_detail.en');
 
-        Route::get('/search', [SearchController::class, 'search_en'])->name('article_search.en');
+        Route::get('/search', [SearchController::class, 'search'])->name('article_search.en');
 
         Route::get('/information', [InformasiController::class, 'index_en'])->name('informasi.en');
 
