@@ -56,7 +56,7 @@ class Kegiatan extends Model
         return 'slug';
     }
 
-    public static function getPageQuery(int $page, string $lang = "id", int $limit = 9): Builder {
+    public static function getPageQuery(string $lang = "id"): Builder {
         $query = Kegiatan::select(
             "judul_indo as judul_id",
             "judul_english as judul_en",
@@ -71,8 +71,7 @@ class Kegiatan extends Model
         )
             ->where("status", "publikasi")
             ->where('published_at', '<=', now())
-            ->orderBy('published_at', 'desc')
-            ->forPage($page, $limit);
+            ->orderBy('published_at', 'desc');
 
         if ($lang == "en") {
             $query = $query->whereNotNull('judul_english');

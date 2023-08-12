@@ -24,7 +24,7 @@ class FotoController extends Controller
         $isApi = $page !== 0;
 
         $lang = App::getLocale();
-        $photos = Foto::getPage($isApi ? $page : 1, $lang);
+        $photos = Foto::getPageQuery($lang)->forPage($isApi ? $page : 1, 9)->get();
         $data = $photos->map(function ($photo) use ($lang) {
             $categories = $photo->kategori_show->map(function ($photo) {
                 return $photo->isi;

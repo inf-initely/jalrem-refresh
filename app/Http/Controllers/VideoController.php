@@ -25,7 +25,7 @@ class VideoController extends Controller
         $isApi = $page !== 0;
 
         $lang = App::getLocale();
-        $videos = Video::getPage($isApi ? $page : 1, $lang);
+        $videos = Video::getPageQuery($lang)->forPage($isApi ? $page : 1, 9)->get();
         $data = $videos->map(function ($video) use ($lang) {
             $categories = $video->kategori_show->map(function ($video) {
                 return $video->isi;

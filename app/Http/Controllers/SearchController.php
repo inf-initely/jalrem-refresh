@@ -22,6 +22,24 @@ use App\Models\Kerjasama;
 
 class SearchController extends Controller
 {
+    public static function translatedFields() {
+        return [
+            "judul_indo as judul_id",
+            "judul_english as judul_en",
+            "slug as slug_id",
+            "slug_english as slug_en",
+        ];
+    }
+
+    public static function commonFields() {
+        return [
+            "id",
+            "penulis",
+            "id_kontributor",
+            "published_at"
+        ];
+    }
+
     public function search(Request $request)
     {
         $lang = App::getLocale();
@@ -38,63 +56,80 @@ class SearchController extends Controller
         }
         $perPage = 9;
 
-        $subquery = "SELECT judul_indo as judul_id, judul_english as judul_en, meta_indo as meta_id, meta_english as meta_en,
-        keywords_indo as keywords_id, keywords_english as keywords_en, slug as slug_id, slug_english as slug_en,
-        thumbnail, cloud_key, youtube_key, content_type, id, penulis, id_kontributor, table_name
-        FROM (
-            SELECT id, judul_indo, judul_english, meta_indo, meta_english, keywords_indo, keywords_english, slug, slug_english, published_at,
-            thumbnail, NULL as cloud_key, NULL as youtube_key, 'article' as content_type, penulis, id_kontributor, 'artikels' as table_name
-            FROM artikels
-            WHERE status = 'publikasi' AND " . $fieldwhere . " LIKE ?
-            UNION
-            SELECT id, judul_indo, judul_english, meta_indo, meta_english, keywords_indo, keywords_english, slug, slug_english, published_at,
-            thumbnail, NULL as cloud_key, NULL as youtube_key, 'photo' as content_type, penulis, id_kontributor, 'fotos' as table_name
-            FROM fotos
-            WHERE status = 'publikasi' AND " . $fieldwhere . " LIKE ?
-            UNION
-            SELECT id, judul_indo, judul_english, meta_indo, meta_english, keywords_indo, keywords_english, slug, slug_english, published_at,
-            NULL as thumbnail, cloud_key, NULL as youtube_key, 'audio' as content_type, penulis, id_kontributor, 'audio' as table_name
-            FROM audio
-            WHERE status = 'publikasi' AND " . $fieldwhere . " LIKE ?
-            UNION
-            SELECT id, judul_indo, judul_english, meta_indo, meta_english, keywords_indo, keywords_english, slug, slug_english, published_at,
-            NULL as thumbnail, NULL as cloud_key, youtube_key, 'video' as content_type, penulis, id_kontributor, 'videos' as table_name
-            FROM videos
-            WHERE status = 'publikasi' AND " . $fieldwhere . " LIKE ?
-            UNION
-            SELECT id, judul_indo, judul_english, meta_indo, meta_english, keywords_indo, keywords_english, slug, slug_english, published_at,
-            thumbnail, NULL as cloud_key, NULL as youtube_key, 'publication' as content_type, penulis, id_kontributor, 'publikasis' as table_name
-            FROM publikasis
-            WHERE status = 'publikasi' AND " . $fieldwhere . " LIKE ?
-            UNION
-            SELECT id, judul_indo, judul_english, meta_indo, meta_english, keywords_indo, keywords_english, slug, slug_english, published_at,
-            thumbnail, NULL as cloud_key, NULL as youtube_key, 'event' as content_type, penulis, id_kontributor, 'kegiatans' as table_name
-            FROM kegiatans
-            WHERE status = 'publikasi' AND " . $fieldwhere . " LIKE ?
-            UNION
-            SELECT id, judul_indo, judul_english, meta_indo, meta_english, keywords_indo, keywords_english, slug, slug_english, published_at,
-            thumbnail, NULL as cloud_key, NULL as youtube_key, 'partnership' as content_type, penulis, id_kontributor, 'kerjasamas' as table_name
-            FROM kerjasamas
-            WHERE status = 'publikasi' AND " . $fieldwhere . " LIKE ?
-        ) as subquery_table
-        ORDER BY published_at DESC";
+        $subquery = DB::query()
+            ->select(
+                "thumbnail", "cloud_key", "youtube_key",
+                "content_type", "table_name",
+                "judul_id", "judul_en", "slug_id", "slug_en",
+                ...SearchController::commonFields()
+            )
+            ->from(
+                Artikel::getPageQuery($lang)
+                    ->select(
+                        DB::raw("thumbnail, NULL as cloud_key, NULL as youtube_key"),
+                        DB::raw("'article' as content_type, 'artikels' as table_name"),
+                        ...SearchController::translatedFields(),
+                        ...SearchController::commonFields(),
+                    )
+                    ->whereRaw("artikels.".$fieldwhere." LIKE ?", ['%'.$query.'%'])
+                    ->union(Foto::getPageQuery($lang)
+                        ->select(
+                            DB::raw("thumbnail, NULL as cloud_key, NULL as youtube_key"),
+                            DB::raw("'photo' as content_type, 'fotos' as table_name"),
+                            ...SearchController::translatedFields(),
+                            ...SearchController::commonFields(),
+                        )
+                        ->whereRaw("fotos.".$fieldwhere." LIKE ?", ['%'.$query.'%']))
+                    ->union(Audio::getPageQuery($lang)
+                        ->select(
+                            DB::raw("NULL as thumbnail, cloud_key, NULL as youtube_key"),
+                            DB::raw("'audio' as content_type, 'audio' as table_name"),
+                            ...SearchController::translatedFields(),
+                            ...SearchController::commonFields(),
+                        )
+                        ->whereRaw("audio.".$fieldwhere." LIKE ?", ['%'.$query.'%']))
+                    ->union(Video::getPageQuery($lang)
+                        ->select(
+                            DB::raw("NULL as thumbnail, NULL as cloud_key, youtube_key"),
+                            DB::raw("'video' as content_type, 'videos' as table_name"),
+                            ...SearchController::translatedFields(),
+                            ...SearchController::commonFields(),
+                        )
+                        ->whereRaw("videos.".$fieldwhere." LIKE ?", ['%'.$query.'%']))
+                    ->union(Publikasi::getPageQuery($lang)
+                        ->select(
+                            DB::raw("thumbnail, NULL as cloud_key, NULL as youtube_key"),
+                            DB::raw("'publication' as content_type, 'publikasis' as table_name"),
+                            ...SearchController::translatedFields(),
+                            ...SearchController::commonFields(),
+                        )
+                        ->whereRaw("publikasis.".$fieldwhere." LIKE ?", ['%'.$query.'%']))
+                    ->union(Kegiatan::getPageQuery($lang)
+                        ->select(
+                            DB::raw("thumbnail, NULL as cloud_key, NULL as youtube_key"),
+                            DB::raw("'event' as content_type, 'kegiatans' as table_name"),
+                            ...SearchController::translatedFields(),
+                            ...SearchController::commonFields(),
+                        )
+                        ->whereRaw("kegiatans.".$fieldwhere." LIKE ?", ['%'.$query.'%']))
+                    ->union(Kerjasama::getPageQuery($lang)
+                        ->select(
+                            DB::raw("thumbnail, NULL as cloud_key, NULL as youtube_key"),
+                            DB::raw("'partnership' as content_type, 'kerjasamas' as table_name"),
+                            ...SearchController::translatedFields(),
+                            ...SearchController::commonFields(),
+                        )
+                        ->whereRaw("kerjasamas.".$fieldwhere." LIKE ?", ['%'.$query.'%']))
+            , "subquery_table")
+            ->orderByDesc("published_at");
 
-        $results = DB::select("WITH cte1 AS (".$subquery.")
-            SELECT *, (select COUNT(*) from cte1) as count FROM cte1
-            LIMIT ? OFFSET ?
-        ", [
-            '%'.$query.'%',
-            '%'.$query.'%',
-            '%'.$query.'%',
-            '%'.$query.'%',
-            '%'.$query.'%',
-            '%'.$query.'%',
-            '%'.$query.'%',
-            $perPage,
-            ($page - 1) * $perPage,
-        ]);
+        $results = DB::table("cte")
+            ->select(DB::raw("*"), DB::raw("(SELECT COUNT(*) FROM cte) as count"))
+            ->withExpression("cte", $subquery)
+            ->limit($perPage)->offset(($page - 1) * $perPage)
+            ->get();
 
-        $mapped = array_map(function ($item) use ($lang) {
+        $mapped = $results->map(function ($item) use ($lang) {
             $model = null;
             $content = (array) $item;
             switch($item->content_type) {
@@ -124,7 +159,7 @@ class SearchController extends Controller
                 "table_name" => $model->table_name,
                 "published_at" => Carbon::parse($model->published_at)->isoFormat("D MMMM Y")
             ];
-        }, $results);
+        });
 
         $total = 0;
         if(count($mapped) > 0) {

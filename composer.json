@@ -20,6 +20,7 @@
         "sentry/sentry-laravel": "^2.8",
         "spatie/laravel-sitemap": "^5.9",
         "spatie/laravel-sluggable": "^2.6",
+        "staudenmeir/laravel-cte": "^1.0",
         "techguy/laravel-ckeditor": "^1.4",
         "unisharp/laravel-filemanager": "^2.2"
     },

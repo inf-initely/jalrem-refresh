@@ -25,7 +25,7 @@ class AudioController extends Controller
         $isApi = $page !== 0;
 
         $lang = App::getLocale();
-        $audios = Audio::getPage($isApi ? $page : 1, $lang);
+        $audios = Audio::getPageQuery($lang)->forPage($isApi ? $page : 1, 9)->get();
         $data = $audios->map(function ($audio) use ($lang) {
             $categories = $audio->kategori_show->map(function ($category) {
                 return $category->isi;

@@ -57,7 +57,7 @@ class Publikasi extends Model implements Viewable
         return 'slug';
     }
 
-    public static function getPageQuery(int $page, string $lang = "id", int $limit = 9)
+    public static function getPageQuery(string $lang = "id")
     {
         $query = Publikasi::select(
             "judul_indo as judul_id",
@@ -72,8 +72,7 @@ class Publikasi extends Model implements Viewable
         )
             ->where("status", "publikasi")
             ->where('published_at', '<=', now())
-            ->orderBy('published_at', 'desc')
-            ->forPage($page, $limit);
+            ->orderBy('published_at', 'desc');
 
         if ($lang == "en") {
             $query = $query->whereNotNull('judul_english');

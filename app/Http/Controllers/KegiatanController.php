@@ -25,7 +25,7 @@ class KegiatanController extends Controller
         $isApi = $page !== 0;
 
         $lang = App::getLocale();
-        $events = Kegiatan::getPageQuery($isApi ? $page : 1, $lang)->get();
+        $events = Kegiatan::getPageQuery($lang)->forPage($isApi ? $page : 1, 9)->get();
         $data = $events->map(function ($event) use ($lang) {
             return Kegiatan::normalizePageItem($event, $lang);
         });
@@ -50,7 +50,7 @@ class KegiatanController extends Controller
             }
         }
 
-        $latest = Kegiatan::getPageQuery(1, $lang, 3)
+        $latest = Kegiatan::getPageQuery($lang)->forPage(1, 3)
             ->whereKeyNot($event->id)
             ->get()
             ->map(function ($item) use ($lang) {

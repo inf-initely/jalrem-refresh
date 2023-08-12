@@ -42,7 +42,7 @@ class ArtikelController extends Controller
         $isApi = $page !== 0;
 
         $lang = App::getLocale();
-        $articles = Artikel::getPageQuery($isApi ? $page : 1, $lang)->get();
+        $articles = Artikel::getPageQuery($lang)->forPage($isApi ? $page : 1, 9)->get();
         $data = $articles->map(function ($article) use ($lang) {
             return ArtikelController::normalizePageItem($article, $lang);
         });
@@ -67,8 +67,9 @@ class ArtikelController extends Controller
             }
         }
 
-        $latest = Artikel::getPageQuery(1, $lang, 3)
+        $latest = Artikel::getPageQuery($lang)
             ->whereKeyNot($article->id)
+            ->forPage(1, 3)
             ->get()
             ->map(function ($item) use ($lang) {
                 return ArtikelController::normalizePageItem($item, $lang);

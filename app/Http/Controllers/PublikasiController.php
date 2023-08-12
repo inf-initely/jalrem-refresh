@@ -41,7 +41,7 @@ class PublikasiController extends Controller
         $isApi = $page !== 0;
 
         $lang = App::getLocale();
-        $publications = Publikasi::getPageQuery($isApi ? $page : 1, $lang)->get();
+        $publications = Publikasi::getPageQuery($lang)->forPage($isApi ? $page : 1, 9)->get();
         $data = $publications->map(function ($publication) use ($lang) {
             $categories = $publication->kategori_show->map(function ($publication) {
                 return $publication->isi;
@@ -77,7 +77,8 @@ class PublikasiController extends Controller
             }
         }
 
-        $latest = Publikasi::getPageQuery(1, $lang, 3)
+        $latest = Publikasi::getPageQuery($lang)
+            ->forPage(1, 3)
             ->whereKeyNot($publication->id)
             ->get()
             ->map(function ($item) use ($lang) {

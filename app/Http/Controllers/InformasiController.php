@@ -15,14 +15,14 @@ class InformasiController extends Controller
     public function index()
     {
         $lang = App::getLocale();
-        $partnerships = Kerjasama::getPageQuery(1, $lang, 6)->get()->map(function ($partnership) use ($lang) {
+        $partnerships = Kerjasama::getPageQuery($lang)->forPage(1, 6)->get()->map(function ($partnership) use ($lang) {
             return Kerjasama::normalizePageItem($partnership, $lang);
         });
-        $ongoing_events = Kegiatan::getPageQuery(1, $lang, 6)->where("end_date", ">", now())
+        $ongoing_events = Kegiatan::getPageQuery($lang)->forPage(1, 6)->where("end_date", ">", now())
             ->get()->map(function ($event) use ($lang) {
                 return Kegiatan::normalizePageItem($event, $lang);
             });
-        $past_events = Kegiatan::getPageQuery(1, $lang, 6)->where("end_date", "<=", now())
+        $past_events = Kegiatan::getPageQuery($lang)->forPage(1, 6)->where("end_date", "<=", now())
             ->get()->map(function ($event) use ($lang) {
                 return Kegiatan::normalizePageItem($event, $lang);
             });

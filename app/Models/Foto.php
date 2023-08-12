@@ -61,8 +61,7 @@ class Foto extends Model
         return 'slug';
     }
 
-    public static function getPage(int $page, string $lang = "id", int $limit = 9)
-    {
+    public static function getPageQuery(string $lang = "id"): Builder {
         $query = Foto::select(
             "judul_indo as judul_id",
             "judul_english as judul_en",
@@ -76,14 +75,13 @@ class Foto extends Model
         )
             ->where("status", "publikasi")
             ->where('published_at', '<=', now())
-            ->orderBy('published_at', 'desc')
-            ->forPage($page, $limit);
+            ->orderBy('published_at', 'desc');
 
         if ($lang == "en") {
             $query = $query->whereNotNull('judul_english');
         }
 
-        return $query->get();
+        return $query;
     }
 
     public static function getDetailQuery(string $slug, string $lang = "id"): Builder {

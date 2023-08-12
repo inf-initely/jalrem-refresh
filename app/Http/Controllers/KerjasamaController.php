@@ -23,7 +23,7 @@ class KerjasamaController extends Controller
         $isApi = $page !== 0;
 
         $lang = App::getLocale();
-        $partnerships = Kerjasama::getPageQuery($isApi ? $page : 1, $lang)->get();
+        $partnerships = Kerjasama::getPageQuery($lang)->forPage($isApi ? $page : 1, 9)->get();
         $data = $partnerships->map(function ($partnership) use ($lang) {
             return Kerjasama::normalizePageItem($partnership, $lang);
         });
