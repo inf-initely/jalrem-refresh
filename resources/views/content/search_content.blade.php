@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@php
+    $lang = App::getLocale();
+@endphp
+
 @section('content')
     <header id="hero">
         <img class="hero-img-2"
@@ -42,7 +46,7 @@
                                                 </svg>
                                             </div>
                                         </div>
-                                        <a class="stretched-link lightbox" href="{{ route('video_detail', $content["slug"]) }}"></a>
+                                        <a class="stretched-link lightbox" href="{{ route('video_detail.'.$lang, $content["slug"]) }}"></a>
                                         <div class="card-body">
                                             <p class="card-text">{{ $content["title"] }}</p>
                                         </div>
@@ -59,7 +63,7 @@
                                         style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
                                         <a href="#" title="" target="_blank"
                                             style="color: #cccccc; text-decoration: none;"></a> · <a
-                                            href="{{ route('audio_detail', $content["slug"]) }}" title="{{ $content["title"] }}"
+                                            href="{{ route('audio_detail.'.$lang, $content["slug"]) }}" title="{{ $content["title"] }}"
                                             style="color: #cccccc; text-decoration: none;">{{ $content["title"] }}</a></div>
                                     <main></main>
                                     @foreach ($content["categories"] as $category)
@@ -80,7 +84,7 @@
                                                 @include("partials.category-badge")
                                             @endforeach
                                         </div>
-                                        <a href="{{ route(generate_route_content($content["table_name"]) . '_detail', $content["slug"]) }}"
+                                        <a href="{{ route(generate_route_content($content["table_name"]) . '_detail.'.$lang, $content["slug"]) }}"
                                             class="stretched-link"></a>
                                     </div>
                                 </div>

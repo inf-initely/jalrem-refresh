@@ -287,7 +287,7 @@
                                                     budaya</p>
                                             </div>
                                         </div>
-                                        <a href="{{ route('tentangjalur') }}" class="stretched-link"></a>
+                                        <a href="{{ route('the-route.'.$lang) }}" class="stretched-link"></a>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 mb-2">
@@ -317,7 +317,7 @@
                                                     budaya bahari</p>
                                             </div>
                                         </div>
-                                        <a href="{{ route('tentangmasadepan') }}" class="stretched-link"></a>
+                                        <a href="{{ route('the-future.'.$lang) }}" class="stretched-link"></a>
                                     </div>
                                 </div>
                             </div>

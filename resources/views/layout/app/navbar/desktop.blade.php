@@ -19,12 +19,12 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item"
-                                    href="{{ route('tentangjalur') }}">{{ __('common.the_route') }}</a>
+                                    href="{{ route('the-route.'.$lang) }}">{{ __('common.the_route') }}</a>
                             </li>
                             <li><a class="dropdown-item"
-                                    href="{{ route('tentangjejak') }}">{{ __('common.the_trail') }}</a></li>
+                                    href="{{ route('the-trail.'.$lang) }}">{{ __('common.the_trail') }}</a></li>
                             <li><a class="dropdown-item"
-                                    href="{{ route('tentangmasadepan') }}">{{ __('common.the_future') }}</a>
+                                    href="{{ route('the-future.'.$lang) }}">{{ __('common.the_future') }}</a>
                             </li>
                         </ul>
                     </li>

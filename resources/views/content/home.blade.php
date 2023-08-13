@@ -26,7 +26,7 @@
                                     <div class="container">
                                         <div data-swiper-parallax="300" class="slide-title">
                                             <h2 class="title"><a style="text-decoration: none; color: #fff;"
-                                                    href="{{ route(generate_route_content($s->getTable()) . '_detail', $s->{'slug_' . $lang} ?? $s->slug) }}">{{ $s->{'judul_' . $lang} }}</a>
+                                                    href="{{ route(generate_route_content($s->getTable()) . '_detail.'.$lang, $s->{'slug_' . $lang} ?? $s->slug) }}">{{ $s->{'judul_' . $lang} }}</a>
                                             </h2>
                                         </div>
                                         <div data-swiper-parallax="400" class="slide-text">
@@ -81,7 +81,7 @@
                                 <h2 class="sub-judul sub-judul-jelajahi">{{ __('common.the_route') }}</h2>
                             </header>
                             <p class="jelajah-des">{{ __('page_home.desc.route') }}</p>
-                            <a href="{{ route('tentangjalur') }}"
+                            <a href="{{ route('the-route.'.$lang) }}"
                                 class="btn btn-danger btn-jelajah">{{ __('Explore More') }}</a>
                         </div>
                     </div>
@@ -91,7 +91,7 @@
                                 <h2 class="sub-judul sub-judul-jelajahi">{{ __('common.the_trail') }}</h2>
                             </header>
                             <p class="jelajah-des">{{ __('page_home.desc.trail') }}</p>
-                            <a href="{{ route('tentangjejak') }}"
+                            <a href="{{ route('the-trail.'.$lang) }}"
                                 class="btn btn-danger btn-jelajah">{{ __('Explore More') }}</a>
 
                         </div>
@@ -114,7 +114,7 @@
                                 <h2 class="sub-judul sub-judul-jelajahi">{{ __('common.the_future') }}</h2>
                             </header>
                             <p class="jelajah-des">{{ __('page_home.desc.future') }}</p>
-                            <a href="{{ route('tentangmasadepan') }}"
+                            <a href="{{ route('the-future.'.$lang) }}"
                                 class="btn btn-danger btn-jelajah">{{ __('Explore More') }}</a>
                         </div>
                     </div>
@@ -148,7 +148,7 @@
                             <h2 class="sub-judul">{{ __('Events') }}</h2>
                         </div>
                         <div class="col-md-6 center-v text-end d-desktop">
-                            <a href="{{ route('informasi') }}"
+                            <a href="{{ route('information.'.$lang) }}"
                                 class="btn btn-outline-danger">{{ __('page_home.button.activity') }}</a>
                         </div>
                     </header>
@@ -171,14 +171,14 @@
                                                     {{ $k->{'judul_' . $lang} }}</h3>
                                             </div>
                                         </div>
-                                        <a href="{{ route('event_detail', $k->{'slug_' . $lang} ?? $k->slug) }}"
+                                        <a href="{{ route('event_detail.'.$lang, $k->{'slug_' . $lang} ?? $k->slug) }}"
                                             class="stretched-link"></a>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
                         <div class="col-md-12 text-center d-mobile">
-                            <a href="{{ route('informasi') }}"
+                            <a href="{{ route('information.'.$lang) }}"
                                 class="btn btn-outline-danger">{{ __('page_home.button.activity') }}</a>
                         </div>
                     </section>
@@ -191,7 +191,7 @@
                             <h2 class="sub-judul">{{ __('News and Articles') }}</h2>
                         </div>
                         <div class="col-md-6 center-v text-end  d-desktop">
-                            <a href="{{ route('articles') }}"
+                            <a href="{{ route('articles.'.$lang) }}"
                                 class="btn btn-outline-danger">{{ __('page_home.button.article') }}</a>
                         </div>
                     </header>
@@ -211,7 +211,7 @@
                                             {{ \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y') }}
                                         </p>
                                     </div>
-                                    <a href="{{ route('article_detail', $a->{'slug_' . $lang} ?? $a->slug) }}"
+                                    <a href="{{ route('article_detail.'.$lang, $a->{'slug_' . $lang} ?? $a->slug) }}"
                                         class="stretched-link"></a>
                                 </div>
                             </div>
@@ -228,7 +228,7 @@
                             <header>
                                 <h2 class="sub-judul">{{ __('Contents') }}</h2>
                                 <p class="des-sub-judul">{{ __('page_home.desc.contents') }}</p>
-                                <a href="{{ route('konten') }}"
+                                <a href="{{ route('contents.'.$lang) }}"
                                     class="btn btn-outline-danger">{{ __('page_home.button.content') }}</a>
                             </header>
                         </section>
@@ -240,7 +240,7 @@
                                             <img src="{{ asset('assets/img/icon-image.webp') }}" width="40%">
                                             <p class="judul-media">{{ __('Photo') }}</p>
                                         </div>
-                                        <a href="{{ route('photos') }}" class="stretched-link"></a>
+                                        <a href="{{ route('photos.'.$lang) }}" class="stretched-link"></a>
                                     </div>
                                 </div>
                                 <div class="col-6 col-md-6">
@@ -249,7 +249,7 @@
                                             <img src="{{ asset('assets/img/icon-publication.webp') }}" width="40%">
                                             <p class="judul-media">{{ __('Publication') }}</p>
                                         </div>
-                                        <a href="{{ route('publications') }}" class="stretched-link"></a>
+                                        <a href="{{ route('publications.'.$lang) }}" class="stretched-link"></a>
                                     </div>
                                 </div>
                             </div>
@@ -260,7 +260,7 @@
                                             <img src="{{ asset('assets/img/icon-video.webp') }}" width="40%">
                                             <p class="judul-media">{{ __('Video') }}</p>
                                         </div>
-                                        <a href="{{ route('videos') }}" class="stretched-link"></a>
+                                        <a href="{{ route('videos.'.$lang) }}" class="stretched-link"></a>
                                     </div>
                                 </div>
                                 <div class="col-6 col-md-6">
@@ -269,7 +269,7 @@
                                             <img src="{{ asset('assets/img/icon-sound.webp') }}" width="40%">
                                             <p class="judul-media">{{ __('Audio') }}</p>
                                         </div>
-                                        <a href="{{ route('audios') }}" class="stretched-link"></a>
+                                        <a href="{{ route('audios.'.$lang) }}" class="stretched-link"></a>
                                     </div>
                                 </div>
                             </div>

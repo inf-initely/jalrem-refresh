@@ -119,7 +119,7 @@
                                                 <div class="card-body">
                                                     <h3 class="card-title judul-artikel">{{ $a->{"judul_".$lang} }}</h3>
                                                 </div>
-                                                <a href="{{ route(generate_route_content($a->getTable()) . '_detail', $a->{"slug_".$lang} ?? $a->slug) }}"
+                                                <a href="{{ route(generate_route_content($a->getTable()) . '_detail.'.$lang, $a->{"slug_".$lang} ?? $a->slug) }}"
                                                     class="stretched-link"></a>
                                             </div>
                                         </div>
@@ -186,17 +186,7 @@
                                                                 {{ \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y') }}
                                                             </p>
                                                             @foreach ($a->kategori_show as $ks)
-                                                                @if ($ks->isi == 'Indepth')
-                                                                    <span
-                                                                        class="badge rounded-pill py-1 px-3 bg-success">Indepth</span>
-                                                                @endif
-                                                            @endforeach
-                                                            @foreach ($a->kategori_show as $ks)
-                                                                @if ($ks->isi == 'Jurnal Artikel')
-                                                                    <span
-                                                                        class="badge rounded-pill py-1 px-3 bg-secondary">Jurnal
-                                                                        Artikel</span>
-                                                                @endif
+                                                                @include("partials.badge")
                                                             @endforeach
                                                         </div>
                                                         <a href="{{ route('article_detail.'.$lang, $a->{"slug_".$lang} ?? $a->slug) }}"
@@ -228,17 +218,7 @@
                                                             </p>
                                                         </div>
                                                         @foreach ($f->kategori_show as $ks)
-                                                            @if ($ks->isi == 'Indepth')
-                                                                <span
-                                                                    class="badge rounded-pill py-1 px-3 bg-success">Indepth</span>
-                                                            @endif
-                                                        @endforeach
-                                                        @foreach ($f->kategori_show as $ks)
-                                                            @if ($ks->isi == 'Jurnal Artikel')
-                                                                <span
-                                                                    class="badge rounded-pill py-1 px-3 bg-secondary">Jurnal
-                                                                    Artikel</span>
-                                                            @endif
+                                                            @include("partials.badge")
                                                         @endforeach
                                                         <a class="stretched-link lightbox"
                                                             href="{{ route('photo_detail.'.$lang, $f->slug) }}"></a>
@@ -286,17 +266,7 @@
                                                             <p class="card-text">{{ $v->{"judul_".$lang} }}</p>
                                                         </div>
                                                         @foreach ($v->kategori_show as $ks)
-                                                            @if ($ks->isi == 'Indepth')
-                                                                <span
-                                                                    class="badge rounded-pill py-1 px-3 bg-success">Indepth</span>
-                                                            @endif
-                                                        @endforeach
-                                                        @foreach ($v->kategori_show as $ks)
-                                                            @if ($ks->isi == 'Jurnal Artikel')
-                                                                <span
-                                                                    class="badge rounded-pill py-1 px-3 bg-secondary">Jurnal
-                                                                    Artikel</span>
-                                                            @endif
+                                                            @include("partials.badge")
                                                         @endforeach
                                                     </div>
                                                 </div>
@@ -325,17 +295,7 @@
                                                                 {{ \Carbon\Carbon::parse($p->published_at)->isoFormat('D MMMM Y') }}
                                                             </p>
                                                             @foreach ($p->kategori_show as $ks)
-                                                                @if ($ks->isi == 'Indepth')
-                                                                    <span
-                                                                        class="badge rounded-pill py-1 px-3 bg-success">Indepth</span>
-                                                                @endif
-                                                            @endforeach
-                                                            @foreach ($p->kategori_show as $ks)
-                                                                @if ($ks->isi == 'Jurnal Artikel')
-                                                                    <span
-                                                                        class="badge rounded-pill py-1 px-3 bg-secondary">Jurnal
-                                                                        Artikel</span>
-                                                                @endif
+                                                                @include("partials.badge")
                                                             @endforeach
                                                         </div>
                                                         <a href="{{ route('publication_detail.'.$lang, $p->slug) }}"
@@ -384,17 +344,7 @@
                                                             <p class="card-text">{{ $a->{"judul_".$lang} }}</p>
                                                         </div>
                                                         @foreach ($a->kategori_show as $ks)
-                                                            @if ($ks->isi == 'Indepth')
-                                                                <span
-                                                                    class="badge rounded-pill py-1 px-3 bg-success">Indepth</span>
-                                                            @endif
-                                                        @endforeach
-                                                        @foreach ($a->kategori_show as $ks)
-                                                            @if ($ks->isi == 'Jurnal Artikel')
-                                                                <span
-                                                                    class="badge rounded-pill py-1 px-3 bg-secondary">Jurnal
-                                                                    Artikel</span>
-                                                            @endif
+                                                            @include("partials.badge")
                                                         @endforeach
                                                     </div>
                                                 </div>
@@ -416,40 +366,11 @@
 @endsection
 
 @section('js')
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    @include("partials.js.jquery")
+    @include("partials.js.bootstrap")
     <script type="text/javascript" src="{{ asset('assets/js/ytdefer.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/slick.min.js') }}"></script>
-    <script>
-        $(document).ready(function() {
-            if ($(window).width() <= 1000) {
-                $(".navbar").addClass("bg-nav-baru");
-                $(".navbar").removeClass("bg-trans");
-            }
-        });
-        $(window).scroll(function() {
-
-            if ($(window).width() >= 1000) {
-                var scroll = $(window).scrollTop();
-                //>=, not <=
-                if (scroll >= 50) {
-                    //clearHeader, not clearheader - caps H
-                    $(".navbar").addClass("bg-nav-baru");
-                    $(".navbar").removeClass("bg-trans");
-                } else {
-                    $(".navbar").addClass("bg-trans");
-                    $(".navbar").removeClass("bg-nav-baru");
-                }
-            } else {
-                $(".navbar").addClass("bg-nav-baru");
-                $(".navbar").removeClass("bg-trans");
-            }
-
-        }); //missing );
-    </script>
+    @include("partials.js.dynamic-navbar")
     <script>
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";

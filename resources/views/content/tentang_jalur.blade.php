@@ -1,11 +1,15 @@
 @extends('layout.app')
 
-@section("meta_info")
+@php
+    $lang = App::getLocale();
+@endphp
+
+@section('meta_info')
     tentang_jalur
 @endsection
 
-@section("title")
-    {{__("common.the_route")}}
+@section('title')
+    {{ __('common.the_route') }}
 @endsection
 
 @section('content')
@@ -16,25 +20,12 @@
             <div class="row">
                 <article class="col-md-12">
                     <header>
-                        <h2 class="sub-judul sub-judul-hero text-end">Titik-Titik Jalur Rempah</h2>
+                        <h2 class="sub-judul sub-judul-hero text-end">{{ __("The Spice Routes' Spots") }}</h2>
                     </header>
-                    <p>Jalur Rempah mencakup berbagai lintasan <b>jalur budaya</b> dari timur Asia hingga barat Eropa
-                        terhubung dengan Benua Amerika, Afrika dan Australia. Suatu lintasan peradaban bermacam bentuk,
-                        garis lurus, lingkaran, silang, bahkan berbentuk jejaring.<span id="dots">...</span><span
-                            id="more"><br><br>
-                            Di Indonesia, wujud jalur perniagaan rempah mencakup banyak hal. Tidak hanya berdiri di satu
-                            titik penghasil rempah, namun juga mencakup berbagai titik yang bisa dijumpai di Indonesia dan
-                            membentuk suatu <b>lintasan peradaban yang berkelanjutan.</b><br><br>
-                            Program Jalur Rempah mJalur Rempah mencakup berbagai lintasan jalur budaya yang melahirkan
-                            peradaban global & menghidupkan kembali peran masyarakat Nusantara berabad-abad lampau.<br><br>
-                            Program ini bertekad keras menghidupkan kembali narasi sejarah dengan memperlihatkan <b>peran
-                                masyarakat Nusantara</b> dalam pembentukan Jalur Rempah; mendokumentasikan peran mereka yang
-                            berada di berbagai wilayah perdagangan rempah; dan merekonstruksi serangkaian benang merah dalam
-                            satu bangunan sejarah.</span></p>
+                    <p>{!! __("wall.the_route_hero_desc") !!}</p>
                     <div class="row">
                         <div class="col-md-12 text-end">
-                            <button class="btn btn-sm btn-outline-secondary" onclick="readMore()" id="btnReadmore">Lihat
-                                Selengkapnya</button>
+                            <button class="btn btn-sm btn-outline-secondary" onclick="readMore()" id="btnReadmore">{{__("Read More")}}</button>
                         </div>
                     </div>
                 </article>
@@ -47,26 +38,13 @@
                 <div class="row">
                     <article class="col-md-12">
                         <header>
-                            <h2 class="sub-judul sub-judul-hero">Titik-Titik Jalur Rempah</h2>
+                            <h2 class="sub-judul sub-judul-hero">{{ __("The Spice Routes' Spots") }}</h2>
                         </header>
-                        <p>alur Rempah mencakup berbagai lintasan <b>jalur budaya</b> dari timur Asia hingga barat Eropa
-                            terhubung dengan Benua Amerika, Afrika dan Australia. Suatu lintasan peradaban bermacam bentuk,
-                            garis lurus, lingkaran, silang, bahkan berbentuk jejaring.<span id="dots2"
-                                style="display:inline">...</span><span id="more2" style="display:none"><br><br>
-                                Di Indonesia, wujud jalur perniagaan rempah mencakup banyak hal. Tidak hanya berdiri di satu
-                                titik penghasil rempah, namun juga mencakup berbagai titik yang bisa dijumpai di Indonesia
-                                dan membentuk suatu <b>lintasan peradaban yang berkelanjutan.</b><br><br>
-                                Program Jalur Rempah mJalur Rempah mencakup berbagai lintasan jalur budaya yang melahirkan
-                                peradaban global & menghidupkan kembali peran masyarakat Nusantara berabad-abad
-                                lampau.<br><br>
-                                Program ini bertekad keras menghidupkan kembali narasi sejarah dengan memperlihatkan
-                                <b>peran masyarakat Nusantara</b> dalam pembentukan Jalur Rempah; mendokumentasikan peran
-                                mereka yang berada di berbagai wilayah perdagangan rempah; dan merekonstruksi serangkaian
-                                benang merah dalam satu bangunan sejarah.</span></p>
+                        <p>{!! __("wall.the_route_hero_desc") !!}</p>
                         <div class="row">
                             <div class="col-md-12">
                                 <button class="btn btn-sm btn-outline-secondary" onclick="readMore2()"
-                                    id="btnReadmore2">Lihat Selengkapnya</button>
+                                    id="btnReadmore2">{{ __('Read More') }}</button>
                             </div>
                         </div>
                     </article>
@@ -77,14 +55,14 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-11 mt-3">
                             <div class="row" id="contents">
-                                @foreach ($artikel as $a)
-                                    @if ($a->getTable() == 'videos')
+                                @foreach ($data as $content)
+                                    @if ($content['content_type'] == 'video')
                                         <div class="col-lg-6 mb-1">
                                             <div class="card no-border no-background">
                                                 <div class="card-body row">
                                                     <div class="col-5 center-v">
                                                         <div class="video media-video" style="height: 170px;"
-                                                            data-video-id="{{ $a->youtube_key }}">
+                                                            data-video-id="{{ $content['youtube_key'] }}">
                                                             <!--ganti id sesuai id youtube yang akan ditampilkan-->
                                                             <div class="video-layer">
                                                                 <div class="video-placeholder">
@@ -92,7 +70,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="video-preview"
-                                                                style="background: url('https://img.youtube.com/vi/{{ $a->youtube_key }}/hqdefault.jpg') 50% 50% no-repeat; background-size: cover;">
+                                                                style="background: url('https://img.youtube.com/vi/{{ $content['youtube_key'] }}/hqdefault.jpg') 50% 50% no-repeat; background-size: cover;">
                                                                 <!-- this icon would normally be implemented as a character in an icon font or svg spritesheet, or similar -->
                                                                 <svg viewBox="0 0 74 74">
                                                                     <circle style="opacity:0.64;stroke:#fff" cx="37"
@@ -107,44 +85,34 @@
                                                     </div>
                                                     <div class="col-7 center-v">
                                                         <a href="#"
-                                                            class="text-danger m-0 p-0 text-decoration-none wilayah"><small>{{ $a->lokasi->nama_lokasi ?? '' }}</small></a>
+                                                            class="text-danger m-0 p-0 text-decoration-none wilayah"><small>{{ $content['location'] ?? '' }}</small></a>
                                                         <h3 class="judul-artikel judul-artikel-tentang"><a
-                                                                href="{{ route('video_detail', $a->slug) }}"
-                                                                class="text-decoration-none clr-black">{{ $a->judul_indo }}</a>
+                                                                href="{{ route('video_detail', $content['slug']) }}"
+                                                                class="text-decoration-none clr-black">{{ $content['title'] }}</a>
                                                         </h3>
                                                         <div class="wrap-tag-rempah">
-                                                            @if ($a->rempahs != null)
-                                                                @foreach ($a->rempahs as $r)
-                                                                    <a href="{{ route('rempah_detail', $r->jenis_rempah) }}"
-                                                                        class="text-danger text-decoration-none">{{ $r->jenis_rempah }}</a>
+                                                            @foreach ($content['sices'] as $spice)
+                                                                <a href="{{ route('rempah_detail', $spice['type']) }}"
+                                                                    class="text-danger text-decoration-none">{{ $spice['type'] }}</a>
+                                                                @if (!$loop->last)
                                                                     |
-                                                                @endforeach
-                                                            @endif
+                                                                @endif
+                                                            @endforeach
                                                         </div>
-                                                        @foreach ($a->kategori_show as $ks)
-                                                            @if ($ks->isi == 'Indepth')
-                                                                <span
-                                                                    class="badge rounded-pill py-1 px-3 bg-success">Indepth</span>
-                                                            @endif
-                                                        @endforeach
-                                                        @foreach ($a->kategori_show as $ks)
-                                                            @if ($ks->isi == 'Jurnal Artikel')
-                                                                <span
-                                                                    class="badge rounded-pill py-1 px-3 bg-secondary">Jurnal
-                                                                    Artikel</span>
-                                                            @endif
+                                                        @foreach ($content['categories'] as $category)
+                                                            @include('partials.category-badge')
                                                         @endforeach
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    @elseif($a->getTable() == 'audio')
+                                    @elseif($content['content_type'] == 'audio')
                                         <div class="col-lg-6 mb-1">
                                             <div class="card no-border no-background">
                                                 <div class="card-body row">
                                                     <div class="col-5 center-v">
                                                         <div class="video media-video" style="height: 170px;"
-                                                            data-video-id="{{ $a->cloud_key }}">
+                                                            data-video-id="{{ $content['cloud_key'] }}">
                                                             <!--ganti id sesuai id youtube yang akan ditampilkan-->
                                                             <div class="video-layer">
                                                                 <div class="video-placeholder">
@@ -152,7 +120,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="video-preview"
-                                                                style="background: url('https://img.youtube.com/vi/{{ $a->cloud_key }}/hqdefault.jpg') 50% 50% no-repeat; background-size: cover;">
+                                                                style="background: url('https://img.youtube.com/vi/{{ $content['cloud_key'] }}/hqdefault.jpg') 50% 50% no-repeat; background-size: cover;">
                                                                 <!-- this icon would normally be implemented as a character in an icon font or svg spritesheet, or similar -->
                                                                 <svg viewBox="0 0 74 74">
                                                                     <circle style="opacity:0.64;stroke:#fff" cx="37"
@@ -167,34 +135,22 @@
                                                     </div>
                                                     <div class="col-7 center-v">
                                                         <a href="#"
-                                                            class="text-danger m-0 p-0 text-decoration-none wilayah"><small>{{ $a->lokasi->nama_lokasi_english ?? '' }}</small></a>
+                                                            class="text-danger m-0 p-0 text-decoration-none wilayah"><small>{{ $content['location'] }}</small></a>
                                                         <h3 class="judul-artikel judul-artikel-tentang"><a
-                                                                href="{{ route('video_detail', $a->slug) }}"
-                                                                class="text-decoration-none clr-black">{{ $a->judul_english }}</a>
+                                                                href="{{ route('video_detail', $content['slug']) }}"
+                                                                class="text-decoration-none clr-black">{{ $content['title'] }}</a>
                                                         </h3>
                                                         <div class="wrap-tag-rempah">
-                                                            @if ($a->rempahs != null)
-                                                                @foreach ($a->rempahs as $r)
-                                                                    @if ($r->jenis_rempah_english)
-                                                                        <a href="{{ route('rempah_detail', $r->jenis_rempah_english ?? $r->jenis_rempah) }}"
-                                                                            class="text-danger text-decoration-none">{{ $r->jenis_rempah_english }}</a>
-                                                                        |
-                                                                    @endif
-                                                                @endforeach
-                                                            @endif
+                                                            @foreach ($content['spices'] as $spice)
+                                                                <a href="{{ route('rempah_detail', $spice['type']) }}"
+                                                                    class="text-danger text-decoration-none">{{ $spice['type'] }}</a>
+                                                                @if (!$loop->last)
+                                                                    |
+                                                                @endif
+                                                            @endforeach
                                                         </div>
-                                                        @foreach ($a->kategori_show as $ks)
-                                                            @if ($ks->isi == 'Indepth')
-                                                                <span
-                                                                    class="badge rounded-pill py-1 px-3 bg-success">Indepth</span>
-                                                            @endif
-                                                        @endforeach
-                                                        @foreach ($a->kategori_show as $ks)
-                                                            @if ($ks->isi == 'Jurnal Artikel')
-                                                                <span
-                                                                    class="badge rounded-pill py-1 px-3 bg-secondary">Jurnal
-                                                                    Artikel</span>
-                                                            @endif
+                                                        @foreach ($content['categories'] as $category)
+                                                            @include('partials.category-badge')
                                                         @endforeach
                                                     </div>
                                                 </div>
@@ -206,37 +162,27 @@
                                                 <div class="card-body row">
                                                     <div class="col-5 center-v">
                                                         <img class="tentang-thumbnail"
-                                                            src="{{ asset(get_asset_path($a->getTable(), $a->thumbnail)) }}"
+                                                            src="{{ asset(get_asset_path($content['table_name'], $content['thumbnail'])) }}"
                                                             width="100%">
                                                     </div>
                                                     <div class="col-7 center-v">
                                                         <a href="#"
-                                                            class="text-danger m-0 p-0 text-decoration-none wilayah"><small>{{ $a->lokasi->nama_lokasi ?? '' }}</small></a>
+                                                            class="text-danger m-0 p-0 text-decoration-none wilayah"><small>{{ $content['location'] }}</small></a>
                                                         <h3 class="judul-artikel judul-artikel-tentang"><a
-                                                                href="{{ route(generate_route_content($a->getTable()) . '_detail', $a->slug) }}"
-                                                                class="text-decoration-none clr-black">{{ $a->judul_indo }}</a>
+                                                                href="{{ route(generate_route_content($content['table_name']) . '_detail.' . $lang, $content['slug']) }}"
+                                                                class="text-decoration-none clr-black">{{ $content['title'] }}</a>
                                                         </h3>
                                                         <div class="wrap-tag-rempah">
-                                                            @if ($a->rempahs != null)
-                                                                @foreach ($a->rempahs as $r)
-                                                                    <a href="{{ route('rempah_detail', $r->jenis_rempah) }}"
-                                                                        class="text-danger text-decoration-none">{{ $r->jenis_rempah }}</a>
+                                                            @foreach ($content['spices'] as $spice)
+                                                                <a href="{{ route('rempah_detail', $spice['type']) }}"
+                                                                    class="text-danger text-decoration-none">{{ $spice['type'] }}</a>
+                                                                @if (!$loop->last)
                                                                     |
-                                                                @endforeach
-                                                            @endif
+                                                                @endif
+                                                            @endforeach
                                                         </div>
-                                                        @foreach ($a->kategori_show as $ks)
-                                                            @if ($ks->isi == 'Indepth')
-                                                                <span
-                                                                    class="badge rounded-pill py-1 px-3 bg-success">Indepth</span>
-                                                            @endif
-                                                        @endforeach
-                                                        @foreach ($a->kategori_show as $ks)
-                                                            @if ($ks->isi == 'Jurnal Artikel')
-                                                                <span
-                                                                    class="badge rounded-pill py-1 px-3 bg-secondary">Jurnal
-                                                                    Artikel</span>
-                                                            @endif
+                                                        @foreach ($content['categories'] as $category)
+                                                            @include('partials.category-badge')
                                                         @endforeach
                                                     </div>
                                                 </div>
@@ -252,100 +198,16 @@
                     </div>
                 </div>
             </section>
-            <section id="cardInfo">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-11">
-                            <div class="row">
-                                <div class="col-lg-4 mb-2">
-                                    <div class="card no-border card-media">
-                                        <div class="card-body row">
-                                            <div class="col-3 mt-3 text-center">
-                                                <img src="{{ asset('assets/img/icon/jalur_1.svg') }}" height="40px">
-                                            </div>
-                                            <div class="col-9">
-                                                <h3 class="judul-card-info">Jalur</h3>
-                                                <p class="des-card-info-id">Jalur Rempah mencakup berbagai lintasan jalur
-                                                    budaya</p>
-                                            </div>
-                                        </div>
-                                        <a href="#" class="stretched-link"></a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 mb-2">
-                                    <div class="card no-border card-media">
-                                        <div class="card-body row">
-                                            <div class="col-3 mt-3 text-center">
-                                                <img src="{{ asset('assets/img/icon/jejak_1.svg') }}" height="32px">
-                                            </div>
-                                            <div class="col-9">
-                                                <h3 class="judul-card-info">Jejak</h3>
-                                                <p class="des-card-info-id">Jejak memperlihatkan interaksi budaya pada masa
-                                                    lampau</p>
-                                            </div>
-                                        </div>
-                                        <a href="{{ route('tentangjejak') }}" class="stretched-link"></a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 mb-2">
-                                    <div class="card no-border card-media">
-                                        <div class="card-body row">
-                                            <div class="col-3 mt-3 text-center">
-                                                <img src="{{ asset('assets/img/icon/masa-depan_1.svg') }}" height="40px">
-                                            </div>
-                                            <div class="col-9">
-                                                <h3 class="judul-card-info">Masa Depan</h3>
-                                                <p class="des-card-info-id">Sebuah upaya rekontruksi dan revitalisasi jalur
-                                                    budaya bahari</p>
-                                            </div>
-                                        </div>
-                                        <a href="{{ route('tentangmasadepan') }}" class="stretched-link"></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            @include("partials.triad_card_navi_footer")
         </div>
     </main>
 @endsection
 
 @section('js')
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            if ($(window).width() <= 1000) {
-                $(".navbar").addClass("bg-nav");
-                $(".navbar").removeClass("bg-trans");
-            }
-            $(".navbar").addClass("bg-trans");
-        });
-        $(window).scroll(function() {
-
-            if ($(window).width() >= 1000) {
-                var scroll = $(window).scrollTop();
-                //>=, not <=
-                if (scroll >= 50) {
-                    //clearHeader, not clearheader - caps H
-                    $(".navbar").addClass("bg-nav");
-                    $(".navbar").removeClass("bg-trans");
-                } else {
-                    $(".navbar").addClass("bg-trans");
-                    // $(".navbar").removeClass("bg-nav");
-                }
-            } else {
-                $(".navbar").addClass("bg-nav");
-                $(".navbar").removeClass("bg-trans");
-            }
-
-        }); //missing );
-    </script>
+    @include("partials.js.jquery")
+    @include("partials.js.bootstrap")
+    @include("partials.js.dynamic-navbar")
+    @include("content.loader.the_route")
     <script>
         $("#selectLokasi").select2({
             placeholder: "Pilih Lokasi",
@@ -384,11 +246,11 @@
 
             if (dots.style.display === "none") {
                 dots.style.display = "inline";
-                btnText.innerHTML = "Lihat Selengkapnya";
+                btnText.innerHTML = {{__("Read More")}};
                 moreText.style.display = "none";
             } else {
                 dots.style.display = "none";
-                btnText.innerHTML = "Kembali";
+                btnText.innerHTML = {{__("Hide")}};
                 moreText.style.display = "inline";
             }
 
@@ -456,184 +318,6 @@
         }
     </script>
 
-    <script>
-        var halaman = 1;
-        var mentok = false;
-        $(window).scroll(function() {
-            if ($(window).scrollTop() + $(window).height() >= $(document).height() - 400) {
-                if (!mentok) {
-                    halaman++;
-                    loadMoreData(halaman);
-                }
-            }
-        });
-        $('.loader').hide();
-
-        function loadMoreData(halaman) {
-            $.ajax({
-                    url: `?page=${halaman}`,
-                    type: 'GET',
-                    beforeSend: function() {
-                        $('.loader').show();
-                    }
-                })
-                .done(function(data) {
-                    // console.log(data.data[0].profile.photo_url);
-                    // if(data.html == " "){
-                    //       // $('.ajax-load').html("No more records found");
-                    //       return;
-                    // }
-                    for (let i = 0; i < data.data.length; i++) {
-                        let kategori_show = data?.data[i]?.kategori_show?.map(item => {
-                            if (item == 'Indepth') {
-                                return '<span class="badge rounded-pill py-1 px-3 bg-success">Indepth</span>'
-                            } else if (item == 'Jurnal Artikel') {
-                                return '<span class="badge rounded-pill py-1 px-3 bg-secondary">Jurnal Artikel</span>'
-                            }
-                            return '<div></div>';
-                        }).toString().replaceAll(',', ' ')
-
-                        if (kategori_show == undefined) {
-                            kategori_show = '<div></div>';
-                        }
-
-                        let content = '';
-                        let rempahs = '';
-                        if (data?.data[i]?.rempahs == undefined) {
-                            rempahs = `<div></div>`;
-                        } else {
-                            rempahs = data?.data[i]?.rempahs?.map(item => {
-                                return `<a href="/funfact/${item.jenis_rempah}" class="text-danger text-decoration-none">${item.jenis_rempah}</a>
-                                    |`;
-                            })
-                        }
-
-                        if (data.data[i].table == 'audio') {
-                            content = `
-                <div class="col-lg-6 mb-1">
-                    <div class="card no-border no-background">
-                        <div class="card-body row">
-                            <div class="col-5 center-v">
-                                <div class="video media-video" style="height: 170px;" data-video-id="${data.data[i].cloudkey}">
-                                    <!--ganti id sesuai id youtube yang akan ditampilkan-->
-                                    <div class="video-layer">
-                                        <div class="video-placeholder">
-                                            <!-- ^ div is replaced by the YouTube video -->
-                                        </div>
-                                    </div>
-                                    <div class="video-preview" style="background: url('https://img.youtube.com/vi/${data.data[i].cloudkey}/hqdefault.jpg') 50% 50% no-repeat; background-size: cover;">
-                                        <!-- this icon would normally be implemented as a character in an icon font or svg spritesheet, or similar -->
-                                        <svg viewBox="0 0 74 74">
-                                            <circle style="opacity:0.64;stroke:#fff" cx="37" cy="37" r="36.5"></circle>
-                                            <circle fill="none" stroke="#fff" cx="37" cy="37" r="36.5"></circle>
-                                            <polygon fill="#fff" points="33,22 33,52 48,37"></polygon>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-7 center-v">
-                                <a href="#" class="text-danger m-0 p-0 text-decoration-none wilayah"><small>${data.data[i].nama_lokasi}</small></a>
-                                <h3 class="judul-artikel judul-artikel-tentang"><a href="video/${data.data[i].slug}" class="text-decoration-none clr-black">${data.data[i].judul}</a> </h3>
-                                <div class="wrap-tag-rempah">
-                                    ${rempahs}
-                                </div>
-                                ${kategori_show}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                `
-                        } else if (data.data[i].table == 'videos') {
-                            content = `
-                <div class="col-lg-6 mb-1">
-                    <div class="card no-border no-background">
-                        <div class="card-body row">
-                            <div class="col-5 center-v">
-                                <div class="video media-video" style="height: 170px;" data-video-id="${data.data[i].youtubekey}">
-                                    <!--ganti id sesuai id youtube yang akan ditampilkan-->
-                                    <div class="video-layer">
-                                        <div class="video-placeholder">
-                                            <!-- ^ div is replaced by the YouTube video -->
-                                        </div>
-                                    </div>
-                                    <div class="video-preview" style="background: url('https://img.youtube.com/vi/${data.data[i].youtubekey}/hqdefault.jpg') 50% 50% no-repeat; background-size: cover;">
-                                        <!-- this icon would normally be implemented as a character in an icon font or svg spritesheet, or similar -->
-                                        <svg viewBox="0 0 74 74">
-                                            <circle style="opacity:0.64;stroke:#fff" cx="37" cy="37" r="36.5"></circle>
-                                            <circle fill="none" stroke="#fff" cx="37" cy="37" r="36.5"></circle>
-                                            <polygon fill="#fff" points="33,22 33,52 48,37"></polygon>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-7 center-v">
-                                <a href="#" class="text-danger m-0 p-0 text-decoration-none wilayah"><small>${data.data[i].nama_lokasi}</small></a>
-                                <h3 class="judul-artikel judul-artikel-tentang"><a href="video/${data.data[i].slug}" class="text-decoration-none clr-black">${data.data[i].judul}</a> </h3>
-                                <div class="wrap-tag-rempah">
-                                    ${rempahs}
-                                </div>
-                                ${kategori_show}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                `
-                        } else {
-                            let asset = '';
-                            switch (data.data[i].table) {
-                                case 'artikels':
-                                    asset = 'artikel';
-                                    break;
-                                case 'fotos':
-                                    asset = 'foto';
-                                    break;
-                                case 'publikasis':
-                                    asset = 'publikasi';
-                                    break;
-                                case 'kegiatans':
-                                    asset = 'kegiatan';
-                                    break;
-                                case 'kerjasamas':
-                                    asset = 'kerjasama';
-                                    break;
-                                default:
-                                    asset = '';
-                                    break;
-                            }
-                            content = `
-                <div class="col-lg-6 mb-2">
-                    <div class="card no-border no-background">
-                        <div class="card-body row">
-                            <div class="col-5 center-v">
-                                <img class="tentang-thumbnail" src="{{ asset('storage/assets/${asset}/thumbnail/${data.data[i].thumbnail}') }}" width="100%">
-                            </div>
-                            <div class="col-7 center-v">
-                                <a href="#" class="text-danger m-0 p-0 text-decoration-none wilayah"><small>${data.data[i].nama_lokasi}</small></a>
-                                <h3 class="judul-artikel judul-artikel-tentang"><a href="${asset}/${data.data[i].slug}" class="text-decoration-none clr-black">${data.data[i].judul}</a> </h3>
-                                <div class="wrap-tag-rempah">
-                                    ${rempahs}
-                                </div>
-                                ${kategori_show}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                `
-                        }
-
-                        $('#contents').append(content);
-                    }
-                    console.log(data);
-                    if (data.data.length <= 0) {
-                        mentok = true;
-                    }
-                    $('.loader').hide();
-                })
-                .fail(function(jqXHR, ajaxOptions, thrownError) {
-                    alert('server not responding...');
-                });
-        }
-    </script>
     <script>
         $('.menu-toggle').click(function() {
             $(".nav2").toggleClass("mobile-nav");

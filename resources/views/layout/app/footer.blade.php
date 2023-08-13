@@ -31,13 +31,13 @@
                 <h3 class="menu-footer mb-3">{{strtoupper(__("About"))}}</h3>
                 <ul>
                     <li>
-                        <a href="{{ route('tentangjalur') }}">{{__("common.the_route")}}</a>
+                        <a href="{{ route('the-route.'.$lang) }}">{{__("common.the_route")}}</a>
                     </li>
                     <li>
-                        <a href="{{ route('tentangjejak') }}">{{__("common.the_trail")}}</a>
+                        <a href="{{ route('the-trail.'.$lang) }}">{{__("common.the_trail")}}</a>
                     </li>
                     <li>
-                        <a href="{{ route('tentangmasadepan') }}">{{__("common.the_future")}}</a>
+                        <a href="{{ route('the-future.'.$lang) }}">{{__("common.the_future")}}</a>
                     </li>
                 </ul>
             </div>

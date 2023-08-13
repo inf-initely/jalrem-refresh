@@ -181,9 +181,9 @@ use function Psy\debug;
 
     Route::get('/informasi', [InformasiController::class, 'index'])->name('information.id');
 
-    Route::get('/tentang-jalur', [JalurController::class, 'index'])->name('tentangjalur');
-    Route::get('/tentang-jejak', [JejakController::class, 'index'])->name('tentangjejak');
-    Route::get('/tentang-masa-depan', [MasaDepanController::class, 'index'])->name('tentangmasadepan');
+    Route::get('/jalur', [JalurController::class, 'index'])->name('the-route.id');
+    Route::get('/jejak', [JejakController::class, 'index'])->name('the-trail.id');
+    Route::get('/masa-depan', [MasaDepanController::class, 'index'])->name('the-future.id');
     Route::get('/funfact/{rempahName}', [RempahController::class, 'show'])->name('rempah_detail');
 
     Route::group(['prefix' => "/en", "middleware" => "switchlocale"], function() {
@@ -210,13 +210,11 @@ use function Psy\debug;
 
         Route::get('/information', [InformasiController::class, 'index'])->name('information.en');
 
-        Route::get('/about-path', [JalurController::class, 'index_en'])->name('tentangjalur.en');
-        Route::get('/about-track', [JejakController::class, 'index_en'])->name('tentangjejak.en');
-        Route::get('/about-the-future', [MasaDepanController::class, 'index_en'])->name('tentangmasadepan.en');
+        Route::get('/the-route', [JalurController::class, 'index'])->name('the-route.en');
+        Route::get('/the-trail', [JejakController::class, 'index'])->name('the-trail.en');
+        Route::get('/the-future', [MasaDepanController::class, 'index'])->name('the-future.en');
         Route::get('/funfact/en/{rempahName}', [RempahController::class, 'show_en'])->name('rempah_detail.en');
     });
-
-    // Route::get('/content', [KontenController::class, 'index_english'])->name('konten.english');
 
     Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/login', [AuthController::class, 'login_post'])->name('login_post');
