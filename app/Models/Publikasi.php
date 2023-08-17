@@ -143,4 +143,7 @@ class Publikasi extends Model implements Viewable
 
         return $query;
     }
+
+    public static $contentType = "publication";
+    public static $tableName = "publikasis";
 }

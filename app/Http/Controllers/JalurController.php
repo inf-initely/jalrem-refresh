@@ -15,7 +15,6 @@ use App\Models\Audio;
 use App\Models\Publikasi;
 use App\Models\Kegiatan;
 use App\Models\Kerjasama;
-use App\Models\KategoriShow;
 use Carbon\Carbon;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Response;
@@ -28,12 +27,13 @@ class JalurController extends Controller
         $table = rtrim($pluralTable, "s");
         $categoryTable = "{$table}_kategori_show";
         return $builder->from($categoryTable)
-            ->select(DB::raw($categoryId))
+            ->select(DB::raw(1))
             ->whereColumn("{$categoryTable}.id_{$table}", "{$pluralTable}.id")
             ->where("{$categoryTable}.id_kategori_show", $categoryId);
     }
 
-    public static function getContentsQuery(int $categoryId, string $lang = "id"): Builder {
+    public static function getContentsQuery(string $lang = "id"): Builder {
+        $categoryId = 2;
         $subquery = DB::query()
             ->select(SearchController::finalFields())
             ->from(
@@ -97,15 +97,6 @@ class JalurController extends Controller
             return $item->isi;
         });
 
-        $location = $model->lokasi;
-        if($location != null) {
-            $location = $model->lokasi->map(function ($item) use ($lang) {
-                return $lang == "id" ? $item->nama_lokasi : $item->nama_lokasi_english;
-            });
-        } else {
-            $location = "";
-        }
-
         $spices = $model->rempahs->map(function ($item) use ($lang) {
             return [
                 "type" => $lang == "id" ? $item->jenis_rempah : $item->jenis_rempah_english,
@@ -125,7 +116,7 @@ class JalurController extends Controller
             "content_type" => $model->content_type,
             "table_name" => $model->table_name,
             "published_at" => Carbon::parse($model->published_at)->isoFormat("D MMMM Y"),
-            "location" => $location,
+            "location" => $model->id_lokasi,
             "spices" => $spices,
         ];
     }
@@ -139,7 +130,7 @@ class JalurController extends Controller
         $isApi = $page !== 0;
 
         $lang = App::getLocale();
-        $contents = JalurController::getContentsQuery(2, $lang)->forPage($isApi ? $page : 1, 10)->get();
+        $contents = JalurController::getContentsQuery($lang)->forPage($isApi ? $page : 1, 10)->get();
         $data = $contents->map(function ($content) use ($lang) {
             return JalurController::normalizePageItem($content, $lang);
         });

@@ -13,6 +13,7 @@
 @endsection
 
 @section('content')
+    @include('content.common.location')
     <header id="hero">
         <img class="hero-img-2 hero-peta "
             src="https://jalurrempah.kemdikbud.go.id/wp-content/uploads/2020/09/Peta-indonesia-u-JR.jpg">
@@ -22,10 +23,11 @@
                     <header>
                         <h2 class="sub-judul sub-judul-hero text-end">{{ __("The Spice Routes' Spots") }}</h2>
                     </header>
-                    <p>{!! __("wall.the_route_hero_desc") !!}</p>
+                    @include('content.the_route.hero_desc_' . $lang)
                     <div class="row">
                         <div class="col-md-12 text-end">
-                            <button class="btn btn-sm btn-outline-secondary" onclick="readMore()" id="btnReadmore">{{__("Read More")}}</button>
+                            <button class="btn btn-sm btn-outline-secondary" onclick="readMore()"
+                                id="btnReadmore">{{ __('Read More') }}</button>
                         </div>
                     </div>
                 </article>
@@ -40,7 +42,7 @@
                         <header>
                             <h2 class="sub-judul sub-judul-hero">{{ __("The Spice Routes' Spots") }}</h2>
                         </header>
-                        <p>{!! __("wall.the_route_hero_desc") !!}</p>
+                        @include('content.the_route.hero_desc_' . $lang)
                         <div class="row">
                             <div class="col-md-12">
                                 <button class="btn btn-sm btn-outline-secondary" onclick="readMore2()"
@@ -56,139 +58,7 @@
                         <div class="col-lg-11 mt-3">
                             <div class="row" id="contents">
                                 @foreach ($data as $content)
-                                    @if ($content['content_type'] == 'video')
-                                        <div class="col-lg-6 mb-1">
-                                            <div class="card no-border no-background">
-                                                <div class="card-body row">
-                                                    <div class="col-5 center-v">
-                                                        <div class="video media-video" style="height: 170px;"
-                                                            data-video-id="{{ $content['youtube_key'] }}">
-                                                            <!--ganti id sesuai id youtube yang akan ditampilkan-->
-                                                            <div class="video-layer">
-                                                                <div class="video-placeholder">
-                                                                    <!-- ^ div is replaced by the YouTube video -->
-                                                                </div>
-                                                            </div>
-                                                            <div class="video-preview"
-                                                                style="background: url('https://img.youtube.com/vi/{{ $content['youtube_key'] }}/hqdefault.jpg') 50% 50% no-repeat; background-size: cover;">
-                                                                <!-- this icon would normally be implemented as a character in an icon font or svg spritesheet, or similar -->
-                                                                <svg viewBox="0 0 74 74">
-                                                                    <circle style="opacity:0.64;stroke:#fff" cx="37"
-                                                                        cy="37" r="36.5"></circle>
-                                                                    <circle fill="none" stroke="#fff" cx="37"
-                                                                        cy="37" r="36.5"></circle>
-                                                                    <polygon fill="#fff" points="33,22 33,52 48,37">
-                                                                    </polygon>
-                                                                </svg>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-7 center-v">
-                                                        <a href="#"
-                                                            class="text-danger m-0 p-0 text-decoration-none wilayah"><small>{{ $content['location'] ?? '' }}</small></a>
-                                                        <h3 class="judul-artikel judul-artikel-tentang"><a
-                                                                href="{{ route('video_detail', $content['slug']) }}"
-                                                                class="text-decoration-none clr-black">{{ $content['title'] }}</a>
-                                                        </h3>
-                                                        <div class="wrap-tag-rempah">
-                                                            @foreach ($content['sices'] as $spice)
-                                                                <a href="{{ route('rempah_detail', $spice['type']) }}"
-                                                                    class="text-danger text-decoration-none">{{ $spice['type'] }}</a>
-                                                                @if (!$loop->last)
-                                                                    |
-                                                                @endif
-                                                            @endforeach
-                                                        </div>
-                                                        @foreach ($content['categories'] as $category)
-                                                            @include('partials.category-badge')
-                                                        @endforeach
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @elseif($content['content_type'] == 'audio')
-                                        <div class="col-lg-6 mb-1">
-                                            <div class="card no-border no-background">
-                                                <div class="card-body row">
-                                                    <div class="col-5 center-v">
-                                                        <div class="video media-video" style="height: 170px;"
-                                                            data-video-id="{{ $content['cloud_key'] }}">
-                                                            <!--ganti id sesuai id youtube yang akan ditampilkan-->
-                                                            <div class="video-layer">
-                                                                <div class="video-placeholder">
-                                                                    <!-- ^ div is replaced by the YouTube video -->
-                                                                </div>
-                                                            </div>
-                                                            <div class="video-preview"
-                                                                style="background: url('https://img.youtube.com/vi/{{ $content['cloud_key'] }}/hqdefault.jpg') 50% 50% no-repeat; background-size: cover;">
-                                                                <!-- this icon would normally be implemented as a character in an icon font or svg spritesheet, or similar -->
-                                                                <svg viewBox="0 0 74 74">
-                                                                    <circle style="opacity:0.64;stroke:#fff" cx="37"
-                                                                        cy="37" r="36.5"></circle>
-                                                                    <circle fill="none" stroke="#fff" cx="37"
-                                                                        cy="37" r="36.5"></circle>
-                                                                    <polygon fill="#fff" points="33,22 33,52 48,37">
-                                                                    </polygon>
-                                                                </svg>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-7 center-v">
-                                                        <a href="#"
-                                                            class="text-danger m-0 p-0 text-decoration-none wilayah"><small>{{ $content['location'] }}</small></a>
-                                                        <h3 class="judul-artikel judul-artikel-tentang"><a
-                                                                href="{{ route('video_detail', $content['slug']) }}"
-                                                                class="text-decoration-none clr-black">{{ $content['title'] }}</a>
-                                                        </h3>
-                                                        <div class="wrap-tag-rempah">
-                                                            @foreach ($content['spices'] as $spice)
-                                                                <a href="{{ route('rempah_detail', $spice['type']) }}"
-                                                                    class="text-danger text-decoration-none">{{ $spice['type'] }}</a>
-                                                                @if (!$loop->last)
-                                                                    |
-                                                                @endif
-                                                            @endforeach
-                                                        </div>
-                                                        @foreach ($content['categories'] as $category)
-                                                            @include('partials.category-badge')
-                                                        @endforeach
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @else
-                                        <div class="col-lg-6 mb-2">
-                                            <div class="card no-border no-background">
-                                                <div class="card-body row">
-                                                    <div class="col-5 center-v">
-                                                        <img class="tentang-thumbnail"
-                                                            src="{{ asset(get_asset_path($content['table_name'], $content['thumbnail'])) }}"
-                                                            width="100%">
-                                                    </div>
-                                                    <div class="col-7 center-v">
-                                                        <a href="#"
-                                                            class="text-danger m-0 p-0 text-decoration-none wilayah"><small>{{ $content['location'] }}</small></a>
-                                                        <h3 class="judul-artikel judul-artikel-tentang"><a
-                                                                href="{{ route(generate_route_content($content['table_name']) . '_detail.' . $lang, $content['slug']) }}"
-                                                                class="text-decoration-none clr-black">{{ $content['title'] }}</a>
-                                                        </h3>
-                                                        <div class="wrap-tag-rempah">
-                                                            @foreach ($content['spices'] as $spice)
-                                                                <a href="{{ route('rempah_detail', $spice['type']) }}"
-                                                                    class="text-danger text-decoration-none">{{ $spice['type'] }}</a>
-                                                                @if (!$loop->last)
-                                                                    |
-                                                                @endif
-                                                            @endforeach
-                                                        </div>
-                                                        @foreach ($content['categories'] as $category)
-                                                            @include('partials.category-badge')
-                                                        @endforeach
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endif
+                                    @include('content.common.the_xxx_item')
                                 @endforeach
                             </div>
                             <div class="d-flex justify-content-center mt-2">
@@ -198,16 +68,17 @@
                     </div>
                 </div>
             </section>
-            @include("partials.triad_card_navi_footer")
+            @include('partials.triad_card_navi_footer')
         </div>
     </main>
 @endsection
 
 @section('js')
-    @include("partials.js.jquery")
-    @include("partials.js.bootstrap")
-    @include("partials.js.dynamic-navbar")
-    @include("content.loader.the_route")
+    @include('partials.js.jquery')
+    @include('partials.js.bootstrap')
+    @include('partials.js.dynamic-navbar')
+    @include('content.loader.the_xxx')
+    @include('content.common.location')
     <script>
         $("#selectLokasi").select2({
             placeholder: "Pilih Lokasi",
@@ -246,11 +117,11 @@
 
             if (dots.style.display === "none") {
                 dots.style.display = "inline";
-                btnText.innerHTML = {{__("Read More")}};
+                btnText.innerHTML = '{{ __('Read More') }}';
                 moreText.style.display = "none";
             } else {
                 dots.style.display = "none";
-                btnText.innerHTML = {{__("Hide")}};
+                btnText.innerHTML = '{{ __('Hide') }}';
                 moreText.style.display = "inline";
             }
 
@@ -270,11 +141,11 @@
 
             if (dots2.style.display === "none") {
                 dots2.style.display = "inline";
-                btnText2.innerHTML = "Lihat Selengkapnya";
+                btnText2.innerHTML = '{{ __('Read More') }}';
                 moreText2.style.display = "none";
             } else {
                 dots2.style.display = "none";
-                btnText2.innerHTML = "Kembali";
+                btnText2.innerHTML = '{{ __('Hide') }}';
                 moreText2.style.display = "inline";
             }
         }

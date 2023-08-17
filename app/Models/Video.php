@@ -114,4 +114,7 @@ class Video extends Model
 
         return $query;
     }
+
+    public static $contentType = "video";
+    public static $tableName = "videos";
 }

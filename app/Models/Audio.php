@@ -114,4 +114,6 @@ class Audio extends Model
 
         return $query;
     }
+    public static $contentType = "audio";
+    public static $tableName = "audio";
 }

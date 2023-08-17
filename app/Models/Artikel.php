@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\SearchController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use CyrildeWit\EloquentViewable\InteractsWithViews;
@@ -135,4 +136,7 @@ class Artikel extends Model implements Viewable
 
         return $query;
     }
+
+    public static $contentType = "article";
+    public static $tableName = "artikels";
 }

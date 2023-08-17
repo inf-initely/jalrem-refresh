@@ -129,4 +129,7 @@ class Kerjasama extends Model
             "published_at" => Carbon::parse($item->published_at)->isoFormat("D MMMM Y")
         ];
     }
+
+    public static $contentType = "partnership";
+    public static $tableName = "kerjasamas";
 }

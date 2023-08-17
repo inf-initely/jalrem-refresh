@@ -3,390 +3,152 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Pagination\paginator;
-use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Session;
 
 use App\Models\Artikel;
+use App\Models\Foto;
+use App\Models\Video;
+use App\Models\Audio;
+use App\Models\Publikasi;
+use App\Models\Kegiatan;
+use App\Models\Kerjasama;
 use App\Models\Rempah;
 use App\Models\Lokasi;
 use App\Models\KategoriShow;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\DB;
 
 class JejakController extends Controller
 {
-    public function index(Request $request)
-    {
-        $rempahId = $request->get('rempah');
-        $lokasiId = $request->get('wilayah');
+    public static function getContentsQuery(int $spiceId = -1, int $locationId = -1, string $lang = "id"): Builder {
+        $categoryId = 1;
+        $items = [
+            "article" => ["Artikel", SearchController::$THUMBNAIL],
+            "photo" => ["Foto", SearchController::$THUMBNAIL],
+            "audio" => ["Audio", SearchController::$CLOUD_KEY],
+            "video" => ["Video", SearchController::$YOUTUBE_KEY],
+            "publication" => ["Publikasi", SearchController::$THUMBNAIL],
+            "event" => ["Kegiatan", SearchController::$THUMBNAIL],
+            "partnership" => ["Kerjasama", SearchController::$THUMBNAIL]
+        ];
 
-        if (!is_string($rempahId)) $rempahId = null;
-        if (!is_string($lokasiId)) $lokasiId = null;
+        $queries = array_map(function($item) use ($lang, $spiceId, $locationId, $categoryId) {
+            $cls = "App\\Models\\{$item[0]}";
+            $media = $item[1];
+            $pluralTable = $cls::$tableName;
+            $type = $cls::$contentType;
+            $table = rtrim($pluralTable, "s");
+            $spiceTable = "{$table}_rempah";
 
-        $kategori = KategoriShow::where('isi', 'jejak')->first();
+            $query = $cls::getPageQuery($lang)
+                ->select(SearchController::contentFields($type, $pluralTable, $media))
+                ->whereExists(function ($query) use ($categoryId, $pluralTable) {
+                    JalurController::whereCategory($query, $pluralTable, $categoryId);
+                });
 
-        $rempah = Rempah::find($rempahId);
-        $lokasi = Lokasi::find($lokasiId);
-
-        $artikel = [];
-        $artikelRempah = [];
-        $artikelWilayah = [];
-
-        $value_type = []; // untuk menampikan isi rempah jika sebelumnya memilih rempah dan wilayah jika sebelumnya memilih wilayah
-        if( $rempah ) {
-            $artikelRempah = $this->loopingArtikel($rempah, $artikelRempah, $kategori);
-            $value_type = Rempah::orderBy('jenis_rempah', 'asc')->get();
-            $artikel = collect($artikelRempah);
-        } else if( $lokasi ) {
-            foreach( $kategori->artikel as $ka ) {
-                if( $ka->id_lokasi == $lokasi->id )
-                    $artikelWilayah[] = $ka;
+            if($locationId > -1) {
+                $query->where("{$pluralTable}.id_lokasi", $locationId);
             }
 
-            foreach( $kategori->foto as $ka ) {
-                if( $ka->id_lokasi == $lokasi->id )
-                    $artikelWilayah[] = $ka;
+            if($spiceId > -1) {
+                $query
+                    ->join($spiceTable, "{$spiceTable}.id_{$table}", "=", "{$pluralTable}.id")
+                    ->where("{$spiceTable}.id_rempah", $spiceId);
+                    // ->join($spiceTable, function ($join) use ($spiceTable, $table, $pluralTable, $spiceId) {
+                    //     $join
+                    //         ->on("{$spiceTable}.id_{$table}", "=", "{$pluralTable}.id")
+                    //         ->where("{$spiceTable}.id_rempah", $spiceId);
+                    // });
             }
 
-            foreach( $kategori->audio as $ka ) {
-                if( $ka->id_lokasi == $lokasi->id )
-                    $artikelWilayah[] = $ka;
-            }
+            return $query;
+        }, $items);
 
-            foreach( $kategori->video as $ka ) {
-                if( $ka->id_lokasi == $lokasi->id )
-                    $artikelWilayah[] = $ka;
-            }
+        $subquery = DB::query()
+            ->select(SearchController::finalFields())
+            ->from(
+                $queries["article"]
+                    ->union($queries["photo"])
+                    ->union($queries["audio"])
+                    ->union($queries["video"])
+                    ->union($queries["publication"])
+                    ->union($queries["event"])
+                    ->union($queries["partnership"])
+            , "subquery_table");
 
-            foreach( $kategori->publikasi as $ka ) {
-                if( $ka->id_lokasi == $lokasi->id )
-                    $artikelWilayah[] = $ka;
-            }
-
-            foreach( $kategori->kerjasama as $ka ) {
-                if( $ka->id_lokasi == $lokasi->id )
-                    $artikelWilayah[] = $ka;
-            }
-
-            foreach( $kategori->kegiatan as $ka ) {
-                if( $ka->id_lokasi == $lokasi->id )
-                    $artikelWilayah[] = $ka;
-            }
-
-            $value_type = Lokasi::all();
-            $artikel = collect($artikelWilayah);
-        } else {
-            $artikel = $kategori->artikel->mergeRecursive($kategori->foto)->mergeRecursive($kategori->audio)->mergeRecursive($kategori->video)->mergeRecursive($kategori->publikasi)->mergeRecursive($kategori->kerjasama)->mergeRecursive($kategori->kegiatan);
-        }
-
-        $artikel = $artikel->filter(function($item) {
-            return $item->status == 'publikasi';
-        });
-
-        // $artikel = array_mergeRecursive($artikel, $artikelRempah, $artikelWilayah);
-
-        $artikel = ( $kategori != null )
-            ? $this->paginate($artikel,9)
-            : [];
-
-        $artikel->setPath('/tentang-jejak?rempah=' . $rempahId . '&wilayah=' . $lokasiId);
-
-        // dd($kategori->artikel);
-
-        if( Paginator::resolveCurrentPage() != 1 ) {
-            $artikels = [];
-            $i = 0;
-
-            if(!request()->ajax()) {
-                return response()->json([
-                    'status' => 'success',
-                    'data' => $artikels
-                ]);
-            }
-
-            foreach( $artikel as $a ) {
-                $artikels[$i]['judul'] = $a->judul_indo;
-
-                if( $a->getTable() == 'videos' ) {
-                    $artikels[$i]['youtubekey'] = $a->youtube_key;
-                } else if( $a->getTable() == 'audio' ) {
-                    $artikels[$i]['cloudkey'] = $a->cloud_key;
-                } else {
-                    $artikels[$i]['thumbnail'] = $a->thumbnail;
-                }
-
-                $j = 0;
-                foreach( $a->kategori_show as $ks ) {
-                    $artikels[$i]['kategori_show'][$j] = $ks->isi;
-                    $j++;
-                }
-                $artikels[$i]['konten'] = \Str::limit($a->konten_indo, 50, $end='...');
-                $artikels[$i]['slug'] = $a->slug;
-                $artikels[$i]['penulis'] = $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin';
-                $artikels[$i]['published_at'] = \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y');
-                $artikels[$i]['table'] = $a->getTable();
-                $artikels[$i]['nama_lokasi'] = $a->lokasi->nama_lokasi ?? '';
-                $artikels[$i]['rempahs'] = $a->rempahs;
-                $i++;
-            }
-            return response()->json([
-                'status' => 'success',
-                'data' => $artikels
-            ]);
-        } else {
-            return view('content.tentang_jejak', compact('artikel', 'value_type'));
-        }
+        return DB::table("cte")
+            ->select(DB::raw("*"), DB::raw("(SELECT COUNT(*) FROM cte) as count"))
+            ->withExpression("cte", $subquery);
     }
 
-    public function index_english(Request $request)
-    {
-        $rempahId = $request->get('rempah');
-        $lokasiId = $request->get('wilayah');
-
-        if (!is_string($rempahId)) $rempahId = null;
-        if (!is_string($lokasiId)) $lokasiId = null;
-
-        $kategori = KategoriShow::where('isi', 'jejak')->first();
-
-        $rempah = Rempah::find($rempahId);
-        $lokasi = Lokasi::find($lokasiId);
-
-        $artikel = [];
-        $artikelRempah = [];
-        $artikelWilayah = [];
-
-        $value_type = []; // untuk menampikan isi rempah jika sebelumnya memilih rempah dan wilayah jika sebelumnya memilih wilayah
-        if( $rempah ) {
-            $artikelRempah = $this->loopingArtikel($rempah, $artikelRempah, $kategori);
-            $value_type = Rempah::orderBy('jenis_rempah_english', 'asc')->get();
-            $artikel = collect($artikelRempah);
-        } else if( $lokasi ) {
-            foreach( $kategori->artikel as $ka ) {
-                if( $ka->id_lokasi == $lokasi->id )
-                    $artikelWilayah[] = $ka;
-            }
-
-            foreach( $kategori->foto as $ka ) {
-                if( $ka->id_lokasi == $lokasi->id )
-                    $artikelWilayah[] = $ka;
-            }
-
-            foreach( $kategori->audio as $ka ) {
-                if( $ka->id_lokasi == $lokasi->id )
-                    $artikelWilayah[] = $ka;
-            }
-
-            foreach( $kategori->video as $ka ) {
-                if( $ka->id_lokasi == $lokasi->id )
-                    $artikelWilayah[] = $ka;
-            }
-
-            foreach( $kategori->publikasi as $ka ) {
-                if( $ka->id_lokasi == $lokasi->id )
-                    $artikelWilayah[] = $ka;
-            }
-
-            foreach( $kategori->kerjasama as $ka ) {
-                if( $ka->id_lokasi == $lokasi->id )
-                    $artikelWilayah[] = $ka;
-            }
-
-            foreach( $kategori->kegiatan as $ka ) {
-                if( $ka->id_lokasi == $lokasi->id )
-                    $artikelWilayah[] = $ka;
-            }
-
-            $value_type = Lokasi::all();
-            $artikel = collect($artikelWilayah);
-        } else {
-            $artikel = $kategori->artikel->mergeRecursive($kategori->foto)->mergeRecursive($kategori->audio)->mergeRecursive($kategori->video)->mergeRecursive($kategori->publikasi)->mergeRecursive($kategori->kerjasama)->mergeRecursive($kategori->kegiatan);
-        }
-
-        $artikel = $artikel->filter(function($item) {
-            return $item->status == 'publikasi';
-        });
-
-        $artikel = $artikel->filter(function($item) {
-            return $item->judul_english != null;
-        });
-
-        // $artikel = array_mergeRecursive($artikel, $artikelRempah, $artikelWilayah);
-
-        $artikel = ( $kategori != null )
-            ? $this->paginate($artikel,9)
-            : [];
-
-        $artikel->setPath('/about-track?rempah=' . $rempahId . '&wilayah=' . $lokasiId);
-
-        // dd($kategori->artikel);
-
-        if( Paginator::resolveCurrentPage() != 1 ) {
-            $artikels = [];
-            $i = 0;
-
-            if(!request()->ajax()) {
-                return response()->json([
-                    'status' => 'success',
-                    'data' => $artikels
-                ]);
-            }
-
-            foreach( $artikel as $a ) {
-                $artikels[$i]['judul'] = $a->judul_english;
-
-                if( $a->getTable() == 'videos' ) {
-                    $artikels[$i]['youtubekey'] = $a->youtube_key;
-                } else if( $a->getTable() == 'audio' ) {
-                    $artikels[$i]['cloudkey'] = $a->cloud_key;
-                } else {
-                    $artikels[$i]['thumbnail'] = $a->thumbnail;
-                }
-
-                $j = 0;
-                foreach( $a->kategori_show as $ks ) {
-                    $artikels[$i]['kategori_show'][$j] = $ks->isi;
-                    $j++;
-                }
-                $artikels[$i]['konten'] = \Str::limit($a->konten_english, 50, $end='...');
-                $artikels[$i]['slug'] = $a->slug;
-                $artikels[$i]['penulis'] = $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin';
-                $artikels[$i]['published_at'] = \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y');
-                $artikels[$i]['table'] = $a->getTable();
-                $artikels[$i]['nama_lokasi'] = $a->lokasi->nama_lokasi ?? '';
-                $artikels[$i]['rempahs'] = $a->rempahs;
-                $i++;
-            }
-            return response()->json([
-                'status' => 'success',
-                'data' => $artikels
-            ]);
-        } else {
-            return view('content_english.tentang_jejak', compact('artikel', 'value_type'));
-        }
-
-
-        if( Paginator::resolveCurrentPage() != 1 ) {
-            $artikels = [];
-            $i = 0;
-
-            if(!request()->ajax()) {
-                return response()->json([
-                    'status' => 'success',
-                    'data' => $artikels
-                ]);
-            }
-
-            foreach( $artikel as $a ) {
-                $artikels[$i]['judul'] = $a->judul_english;
-
-                if( $a->getTable() == 'videos' ) {
-                    $artikels[$i]['youtubekey'] = $a->youtube_key;
-                } else if( $a->getTable() == 'audio' ) {
-                    $artikels[$i]['cloudkey'] = $a->cloud_key;
-                } else {
-                    $artikels[$i]['thumbnail'] = $a->thumbnail;
-                }
-
-                $j = 0;
-                foreach( $a->kategori_show as $ks ) {
-                    $artikels[$i]['kategori_show'][$j] = $ks->isi;
-                    $j++;
-                }
-                $artikels[$i]['konten'] = \Str::limit($a->konten_english, 50, $end='...');
-                $artikels[$i]['slug'] = $a->slug;
-                $artikels[$i]['penulis'] = $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin';
-                $artikels[$i]['published_at'] = \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y');
-                $artikels[$i]['table'] = $a->getTable();
-                $artikels[$i]['nama_lokasi'] = $a->lokasi->nama_lokasi ?? '';
-                $artikels[$i]['rempahs'] = $a->rempahs;
-                $i++;
-            }
-            return response()->json([
-                'status' => 'success',
-                'data' => $artikels
-            ]);
-        } else {
-            return view('content.tentang_jejak', compact('artikel', 'value_type'));
-        }
+    public static function normalizeSpice($spice, string $lang = "id") {
+        return [
+            "id" => $spice->id,
+            "name" => $spice->{'name_'.$lang}
+        ];
     }
 
-    private function paginate($items, $perPage = 15, $page = null, $options = [])
-    {
-        $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
-        $items = $items instanceof Collection ? $items : Collection::make($items);
-        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
+    public static function normalizeLocation($location, string $lang = "id") {
+        $loc = JejakController::normalizeSpice($location, $lang);
+        $loc["latitude"] = $location->latitude;
+        $loc["longitude"] = $location->longitude;
+        return $loc;
     }
 
-    private function loopingArtikel($type, $container, $kategori)
-    {
-        // foreach( $kategori->artikel->filter(function($item) {
-        //     return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
-        // }) as $ka ) {
-        //     foreach( $type->artikel as $ta ) {
-        //         if( $ka->id == $ta->id )
-        //             $container[] = $ka;
-        //     }
-        // }
+    public function index(Request $request) {
+        $page = $request->query("page");
+        if($page === null) $page = 0;
+        else if(!is_numeric($page))
+            return response("query parameter page should be an unsigned int", Response::HTTP_BAD_REQUEST);
+        else $page = (int) $page;
 
-        foreach( $kategori->artikel->filter(function($item) {
-            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
-        }) as $ka ) {
-            $container[] = $ka;
+        $spiceId = $request->query("spice");
+        if($spiceId === null) $spiceId = -1;
+        else if(!is_numeric($spiceId))
+            return response("query parameter spice should be an unsigned int", Response::HTTP_BAD_REQUEST);
+        else $spiceId = (int) $spiceId;
+
+        $locationId = $request->query("area");
+        if($locationId === null) $locationId = -1;
+        else if(!is_numeric($locationId))
+            return response("query parameter area should be an unsigned int", Response::HTTP_BAD_REQUEST);
+        else $locationId = (int) $locationId;
+
+        $isApi = $page !== 0;
+
+        $lang = App::getLocale();
+        $contents = JejakController::getContentsQuery($spiceId, $locationId, $lang)->forPage($isApi ? $page : 1, 10)->get();
+        $data = $contents->map(function ($content) use ($lang) {
+            return JalurController::normalizePageItem($content, $lang);
+        });
+
+        if(!$isApi) {
+            $spices = Rempah::getAllQuery()->get()->map(function ($spice) use ($lang) {
+                return JejakController::normalizeSpice($spice, $lang);
+            });
+            // $locations = Lokasi::getAllQuery()->get()->map(function ($location) use ($lang) {
+            //     return JejakController::normalizeLocation($location, $lang);
+            // });
+            $stats = JejakController::getContentsQuery($spiceId, $locationId, $lang)
+                ->select(
+                    "cte.id_lokasi as id",
+                    DB::raw("(SELECT COUNT(*) FROM cte) as count"),
+                    DB::raw("COUNT(cte.id_lokasi) as total")
+                )
+                ->groupBy("cte.id_lokasi")
+                ->get();
+
+            return view('content.tentang_jejak', compact(
+                'data',
+                'spices',
+                // 'locations',
+                'stats'
+            ));
         }
 
-        foreach( $kategori->foto->filter(function($item) {
-            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
-        }) as $ka ) {
-            foreach( $type->foto as $ta ) {
-                if( $ka->id == $ta->id )
-                    $container[] = $ka;
-            }
-        }
-
-        foreach( $kategori->audio->filter(function($item) {
-            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
-        }) as $ka ) {
-            foreach( $type->audio as $ta ) {
-                if( $ka->id == $ta->id )
-                    $container[] = $ka;
-            }
-        }
-
-        foreach( $kategori->video->filter(function($item) {
-            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
-        }) as $ka ) {
-            foreach( $type->video as $ta ) {
-                if( $ka->id == $ta->id )
-                    $container[] = $ka;
-            }
-        }
-
-        foreach( $kategori->publikasi->filter(function($item) {
-            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
-        }) as $ka ) {
-            foreach( $type->publikasi as $ta ) {
-                if( $ka->id == $ta->id )
-                    $container[] = $ka;
-            }
-        }
-
-        foreach( $kategori->kerjasama->filter(function($item) {
-            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
-        }) as $ka ) {
-            foreach( $type->kerjasama as $ta ) {
-                if( $ka->id == $ta->id )
-                    $container[] = $ka;
-            }
-        }
-
-        foreach( $kategori->kegiatan->filter(function($item) {
-            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
-        }) as $ka ) {
-            foreach( $type->kegiatan as $ta ) {
-                if( $ka->id == $ta->id )
-                    $container[] = $ka;
-            }
-        }
-        return $container;
+        return response()->json([
+            "data" => $data
+        ]);
     }
 }

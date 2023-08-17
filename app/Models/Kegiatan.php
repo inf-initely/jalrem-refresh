@@ -129,5 +129,8 @@ class Kegiatan extends Model
             "published_at" => Carbon::parse($item->published_at)->isoFormat("D MMMM Y")
         ];
     }
+
+    public static $contentType = "event";
+    public static $tableName = "kegiatans";
 }
 

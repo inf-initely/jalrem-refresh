@@ -121,4 +121,7 @@ class Foto extends Model
 
         return $query;
     }
+
+    public static $contentType = "photo";
+    public static $tableName = "fotos";
 }
