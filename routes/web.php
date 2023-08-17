@@ -177,7 +177,7 @@ use function Psy\debug;
     Route::get('/video/{slug}', [VideoController::class, 'show'])->name('video_detail.id');
     Route::get('/kerjasama/{slug}', [KerjasamaController::class, 'show'])->name('partnership_detail.id');
 
-    Route::get('/cari', [SearchController::class, 'search'])->name('article_search');
+    Route::get('/cari', [SearchController::class, 'search'])->name('search.id');
 
     Route::get('/informasi', [InformasiController::class, 'index'])->name('information.id');
 
@@ -206,7 +206,7 @@ use function Psy\debug;
         Route::get('/video/{slug}', [VideoController::class, 'show'])->name('video_detail.en');
         Route::get('/partnership/{slug}', [KerjasamaController::class, 'show'])->name('partnership_detail.en');
 
-        Route::get('/search', [SearchController::class, 'search'])->name('article_search.en');
+        Route::get('/search', [SearchController::class, 'search'])->name('search.en');
 
         Route::get('/information', [InformasiController::class, 'index'])->name('information.en');
 

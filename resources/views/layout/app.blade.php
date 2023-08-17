@@ -27,8 +27,8 @@
             <div class="modal-content modal-body-search">
                 <div class="modal-body">
                     <div class="mb-3">
-                        <form class="input-group" action="{{ url('/cari') }}">
-                            <input type="text" name="search" class="form-control form-control-lg"
+                        <form class="input-group" action="{{ route('search.'.$lang) }}">
+                            <input type="text" name="query" class="form-control form-control-lg"
                                 placeholder="{{__("Search")}}" aria-describedby="btnCari">
                             <button type="submit" class="btn btn-lg btn-danger" type="button" id="btnCari"> <i
                                     class="fa fa-search mr-2"></i> {{__("placeholder.search_for")}}</button>

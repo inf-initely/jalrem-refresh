@@ -26,18 +26,19 @@ class SearchController extends Controller
     public static $CLOUD_KEY = 1;
     public static $YOUTUBE_KEY = 2;
 
-    public static function contentFields(string $type, string $tableName, int $nonNullField) {
+    public static function contentFields(string $type, string $table, int $nonNullField) {
+        $prefix = $table != "" ? "{$table}." : "";
         return [
-            DB::raw($nonNullField === SearchController::$THUMBNAIL ? "thumbnail" : "NULL as thumbnail"),
-            DB::raw($nonNullField === SearchController::$CLOUD_KEY ? "cloud_key" : "NULL as cloud_key"),
-            DB::raw($nonNullField === SearchController::$YOUTUBE_KEY ? "youtube_key" : "NULL as youtube_key"),
+            $nonNullField === SearchController::$THUMBNAIL ? "{$prefix}thumbnail" : DB::raw("NULL as thumbnail"),
+            $nonNullField === SearchController::$CLOUD_KEY ? "{$prefix}cloud_key" : DB::raw("NULL as cloud_key"),
+            $nonNullField === SearchController::$YOUTUBE_KEY ? "{$prefix}youtube_key" : DB::raw("NULL as youtube_key"),
             DB::raw("'$type' as content_type"),
-            DB::raw("'$tableName' as table_name"),
-            "judul_indo as judul_id",
-            "judul_english as judul_en",
-            "slug as slug_id",
-            "slug_english as slug_en",
-            ...SearchController::commonFields()
+            DB::raw("'$table' as table_name"),
+            "{$prefix}judul_indo as judul_id",
+            "{$prefix}judul_english as judul_en",
+            "{$prefix}slug as slug_id",
+            "{$prefix}slug_english as slug_en",
+            ...SearchController::commonFields($table)
         ];
     }
 
@@ -51,12 +52,14 @@ class SearchController extends Controller
         ];
     }
 
-    public static function commonFields() {
+    public static function commonFields($table = "") {
+        $prefix = $table != "" ? "{$table}." : "";
         return [
-            "id",
-            "penulis",
-            "id_kontributor",
-            "published_at"
+            "{$prefix}id",
+            "{$prefix}penulis",
+            "{$prefix}id_kontributor",
+            "{$prefix}published_at",
+            "{$prefix}id_lokasi"
         ];
     }
 
@@ -88,6 +91,7 @@ class SearchController extends Controller
             "author_type" => $model->penulis,
             "content_type" => $model->content_type,
             "table_name" => $model->table_name,
+            "location" => $model->id_lokasi,
             "published_at" => Carbon::parse($model->published_at)->isoFormat("D MMMM Y")
         ];
     }
