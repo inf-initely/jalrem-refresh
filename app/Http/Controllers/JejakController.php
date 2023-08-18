@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\All;
 use Illuminate\Http\Request;
 
 use App\Models\Artikel;
@@ -22,30 +23,12 @@ use Illuminate\Support\Facades\DB;
 class JejakController extends Controller
 {
     public static function getContentsQuery(int $spiceId = -1, int $locationId = -1, string $lang = "id"): Builder {
-        $categoryId = 1;
-        $items = [
-            "article" => ["Artikel", SearchController::$THUMBNAIL],
-            "photo" => ["Foto", SearchController::$THUMBNAIL],
-            "audio" => ["Audio", SearchController::$CLOUD_KEY],
-            "video" => ["Video", SearchController::$YOUTUBE_KEY],
-            "publication" => ["Publikasi", SearchController::$THUMBNAIL],
-            "event" => ["Kegiatan", SearchController::$THUMBNAIL],
-            "partnership" => ["Kerjasama", SearchController::$THUMBNAIL]
-        ];
-
-        $queries = array_map(function($item) use ($lang, $spiceId, $locationId, $categoryId) {
-            $cls = "App\\Models\\{$item[0]}";
-            $media = $item[1];
-            $pluralTable = $cls::$tableName;
-            $type = $cls::$contentType;
+        $subquery = All::getAllQuery(function ($query, $item) use ($locationId, $spiceId, $lang) {
+            $pluralTable = $item["table_name"];
             $table = rtrim($pluralTable, "s");
             $spiceTable = "{$table}_rempah";
 
-            $query = $cls::getPageQuery($lang)
-                ->select(SearchController::contentFields($type, $pluralTable, $media))
-                ->whereExists(function ($query) use ($categoryId, $pluralTable) {
-                    JalurController::whereCategory($query, $pluralTable, $categoryId);
-                });
+            All::whereCategory($query, $pluralTable, 1);
 
             if($locationId > -1) {
                 $query->where("{$pluralTable}.id_lokasi", $locationId);
@@ -63,19 +46,7 @@ class JejakController extends Controller
             }
 
             return $query;
-        }, $items);
-
-        $subquery = DB::query()
-            ->select(SearchController::finalFields())
-            ->from(
-                $queries["article"]
-                    ->union($queries["photo"])
-                    ->union($queries["audio"])
-                    ->union($queries["video"])
-                    ->union($queries["publication"])
-                    ->union($queries["event"])
-                    ->union($queries["partnership"])
-            , "subquery_table");
+        }, $lang);
 
         return DB::table("cte")
             ->select(DB::raw("*"), DB::raw("(SELECT COUNT(*) FROM cte) as count"))
@@ -87,13 +58,6 @@ class JejakController extends Controller
             "id" => $spice->id,
             "name" => $spice->{'name_'.$lang}
         ];
-    }
-
-    public static function normalizeLocation($location, string $lang = "id") {
-        $loc = JejakController::normalizeSpice($location, $lang);
-        $loc["latitude"] = $location->latitude;
-        $loc["longitude"] = $location->longitude;
-        return $loc;
     }
 
     public function index(Request $request) {
@@ -127,9 +91,7 @@ class JejakController extends Controller
             $spices = Rempah::getAllQuery()->get()->map(function ($spice) use ($lang) {
                 return JejakController::normalizeSpice($spice, $lang);
             });
-            // $locations = Lokasi::getAllQuery()->get()->map(function ($location) use ($lang) {
-            //     return JejakController::normalizeLocation($location, $lang);
-            // });
+
             $stats = JejakController::getContentsQuery($spiceId, $locationId, $lang)
                 ->select(
                     "cte.id_lokasi as id",

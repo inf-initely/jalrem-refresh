@@ -239,6 +239,7 @@ return [
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
 
         'Image' => 'Intervention\Image\Facades\Image::class',
+        'Common' => App\Common::class,
     ],
 
     /*

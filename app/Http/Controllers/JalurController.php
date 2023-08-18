@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\All;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\paginator;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -23,57 +24,10 @@ use Illuminate\Support\Facades\DB;
 
 class JalurController extends Controller
 {
-    public static function whereCategory(Builder $builder, string $pluralTable, int $categoryId): Builder {
-        $table = rtrim($pluralTable, "s");
-        $categoryTable = "{$table}_kategori_show";
-        return $builder->from($categoryTable)
-            ->select(DB::raw(1))
-            ->whereColumn("{$categoryTable}.id_{$table}", "{$pluralTable}.id")
-            ->where("{$categoryTable}.id_kategori_show", $categoryId);
-    }
-
     public static function getContentsQuery(string $lang = "id"): Builder {
-        $categoryId = 2;
-        $subquery = DB::query()
-            ->select(SearchController::finalFields())
-            ->from(
-                Artikel::getPageQuery($lang)
-                    ->select(SearchController::contentFields("article", "artikels", SearchController::$THUMBNAIL))
-                    ->whereExists(function ($query) use ($categoryId) {
-                        JalurController::whereCategory($query, "artikels", $categoryId);
-                    })
-                    ->union(Foto::getPageQuery($lang)
-                        ->select(SearchController::contentFields("photo", "fotos", SearchController::$THUMBNAIL))
-                        ->whereExists(function ($query) use ($categoryId) {
-                            JalurController::whereCategory($query, "fotos", $categoryId);
-                        }))
-                    ->union(Audio::getPageQuery($lang)
-                        ->select(SearchController::contentFields("audio", "audio", SearchController::$CLOUD_KEY))
-                        ->whereExists(function ($query) use ($categoryId) {
-                            JalurController::whereCategory($query, "audio", $categoryId);
-                        }))
-                    ->union(Video::getPageQuery($lang)
-                        ->select(SearchController::contentFields("video", "videos", SearchController::$YOUTUBE_KEY))
-                        ->whereExists(function ($query) use ($categoryId) {
-                            JalurController::whereCategory($query, "videos", $categoryId);
-                        }))
-                    ->union(Publikasi::getPageQuery($lang)
-                        ->select(SearchController::contentFields("publication", "publikasis", SearchController::$THUMBNAIL))
-                        ->whereExists(function ($query) use ($categoryId) {
-                            JalurController::whereCategory($query, "publikasis", $categoryId);
-                        }))
-                    ->union(Kegiatan::getPageQuery($lang)
-                        ->select(SearchController::contentFields("event", "kegiatans", SearchController::$THUMBNAIL))
-                        ->whereExists(function ($query) use ($categoryId) {
-                            JalurController::whereCategory($query, "kegiatans", $categoryId);
-                        }))
-                    ->union(Kerjasama::getPageQuery($lang)
-                        ->select(SearchController::contentFields("partnership", "kerjasamas", SearchController::$THUMBNAIL))
-                        ->whereExists(function ($query) use ($categoryId) {
-                            JalurController::whereCategory($query, "kerjasamas", $categoryId);
-                        }))
-            , "subquery_table")
-            ->orderByDesc("published_at");
+        $subquery = All::getAllQuery(function ($query, $item) {
+            return All::whereCategory($query, $item["table_name"], 2);
+        }, $lang);
 
         return DB::table("cte")
             ->select(DB::raw("*"), DB::raw("(SELECT COUNT(*) FROM cte) as count"))
@@ -81,17 +35,7 @@ class JalurController extends Controller
     }
 
     public static function normalizePageItem($item, string $lang) {
-        $model = null;
-        $content = (array) $item;
-        switch($item->content_type) {
-            case "article": $model = new Artikel($content); break;
-            case "photo": $model = new Foto($content); break;
-            case "audio": $model = new Audio($content); break;
-            case "video": $model = new Video($content); break;
-            case "publication": $model = new Publikasi($content); break;
-            case "event": $model = new Kegiatan($content); break;
-            case "partnership": $model = new Kerjasama($content); break;
-        }
+        $model = All::modelizedItem($item);
 
         $categories = $model->kategori_show->map(function ($item) {
             return $item->isi;
@@ -104,21 +48,11 @@ class JalurController extends Controller
             ];
         });
 
-        return [
-            "title" => $model->{'judul_' . $lang},
-            "thumbnail" => $model->thumbnail,
-            "cloud_key" => $model->cloud_key,
-            "youtube_key" => $model->youtube_key,
-            "categories" => $categories,
-            "slug" => $model->{'slug_' . $lang},
-            "author" => $model->penulis != "admin" ? $model->kontributor_relasi->nama : "admin",
-            "author_type" => $model->penulis,
-            "content_type" => $model->content_type,
-            "table_name" => $model->table_name,
-            "published_at" => Carbon::parse($model->published_at)->isoFormat("D MMMM Y"),
-            "location" => $model->id_lokasi,
-            "spices" => $spices,
-        ];
+        $arr = All::normalizeModel($model, $lang);
+        $arr["categories"] = $categories;
+        $arr["spices"] = $spices;
+
+        return $arr;
     }
 
     public function index(Request $request) {

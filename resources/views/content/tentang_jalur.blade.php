@@ -78,7 +78,6 @@
     @include('partials.js.bootstrap')
     @include('partials.js.dynamic-navbar')
     @include('content.loader.the_xxx')
-    @include('content.common.location')
     <script>
         $("#selectLokasi").select2({
             placeholder: "Pilih Lokasi",

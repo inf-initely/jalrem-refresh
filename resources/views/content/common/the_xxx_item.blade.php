@@ -33,7 +33,7 @@
             <div class="col-7 center-v">
                 <a href="#"
                     class="text-danger m-0 p-0 text-decoration-none wilayah">
-                    <small>{{ $content['location'] ? $GLOBALS['locations'][$content['location']]['name'] : "" }}</small>
+                    <small>{{ $content['location'] ? Common::Locations[$content['location']]['name'] : "" }}</small>
                 </a>
                 <h3 class="judul-artikel judul-artikel-tentang">
                     <a href="{{ route(generate_route_content($content['table_name']) . '_detail.' . $lang, $content['slug']) }}"
@@ -41,7 +41,7 @@
                 </h3>
                 <div class="wrap-tag-rempah">
                     @foreach ($content['spices'] as $spice)
-                        <a href="{{ route('rempah_detail', $spice['type']) }}"
+                        <a href="{{ route('rempah_detail.'.$lang, $spice['type']) }}"
                             class="text-danger text-decoration-none">{{ $spice['type'] }}</a>
                         @if (!$loop->last)
                             |

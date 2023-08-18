@@ -97,10 +97,6 @@
         const spices = {!! json_encode($spices) !!}
         const stats = {!! json_encode($stats) !!}
 
-        const mapLocations = {}
-        for (const location of locations)
-            mapLocations[location.id] = location
-
         const mapSpices = {}
         for (const spice of spices)
             mapSpices[spice.id] = spice
@@ -133,7 +129,7 @@
             // }
 
             for (const stat of stats) {
-                const loc = mapLocations[stat.id]
+                const loc = locations[stat.id]
                 if (loc == null) continue
 
                 const marker = new google.maps.Marker({
@@ -210,7 +206,7 @@
             if (selected === 'area') {
                 itemSelect
                     .html('').prop('disabled', false)
-                    .append(locations.map(a =>
+                    .append(Object.values(locations).map(a =>
                         `<option value=${a.id} ${parseInt(area) === a.id ? "selected" : ""}>${a.name}</option>`));
             } else if (selected === 'spice') {
                 itemSelect

@@ -184,7 +184,7 @@ use function Psy\debug;
     Route::get('/jalur', [JalurController::class, 'index'])->name('the-route.id');
     Route::get('/jejak', [JejakController::class, 'index'])->name('the-trail.id');
     Route::get('/masa-depan', [MasaDepanController::class, 'index'])->name('the-future.id');
-    Route::get('/funfact/{rempahName}', [RempahController::class, 'show'])->name('rempah_detail');
+    Route::get('/funfact/{rempahName}', [RempahController::class, 'show'])->name('rempah_detail.id');
 
     Route::group(['prefix' => "/en", "middleware" => "switchlocale"], function() {
         Route::get('/', [HomeController::class, 'index_en'])->name('home.en');
