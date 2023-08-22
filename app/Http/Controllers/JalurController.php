@@ -24,9 +24,9 @@ use Illuminate\Support\Facades\DB;
 
 class JalurController extends Controller
 {
-    public static function getContentsQuery(string $lang = "id"): Builder {
-        $subquery = All::getAllQuery(function ($query, $item) {
-            return All::whereCategory($query, $item["table_name"], 2);
+    public static function getContentsQuery(int $category = 2, string $lang = "id"): Builder {
+        $subquery = All::getAllQuery(function ($query, $item) use ($category) {
+            return All::whereCategory($query, $item["table_name"], $category);
         }, $lang);
 
         return DB::table("cte")
@@ -64,7 +64,7 @@ class JalurController extends Controller
         $isApi = $page !== 0;
 
         $lang = App::getLocale();
-        $contents = JalurController::getContentsQuery($lang)->forPage($isApi ? $page : 1, 10)->get();
+        $contents = JalurController::getContentsQuery(2, $lang)->forPage($isApi ? $page : 1, 10)->get();
         $data = $contents->map(function ($content) use ($lang) {
             return JalurController::normalizePageItem($content, $lang);
         });
