@@ -22,6 +22,9 @@
                     <header>
                         <h2 class="sub-judul sub-judul-hero ">{{ __('The Trails of the Spices') }}</h2>
                     </header>
+                    @php
+                        $suffix = "";
+                    @endphp
                     @include('content.the_trail.hero_desc_' . $lang)
                     <button class="btn btn-sm btn-outline-secondary" onclick="readMore()"
                         id="btnReadmore">{{ __('Read More') }}</button>
@@ -59,6 +62,9 @@
                         <header>
                             <h2 class="sub-judul sub-judul-hero ">{{ __('The Trails of the Spices') }}</h2>
                         </header>
+                        @php
+                            $suffix = "2";
+                        @endphp
                         @include('content.the_trail.hero_desc_' . $lang)
                         <button class="btn btn-sm btn-outline-secondary" onclick="readMore2()"
                             id="btnReadmore2">{{ __('Read More') }}</button>

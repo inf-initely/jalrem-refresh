@@ -1,7 +1,7 @@
 <p>
     Jalur Rempah merupakan suatu <b> peradaban yang sangat tua, kompleks, luas, dan memengaruhi peradaban
-        global.</b> Jejaknya memperlihatkan interaksi budaya pada masa lampau.<span id="dots">...</span><span
-        id="more"><br><br>
+        global.</b> Jejaknya memperlihatkan interaksi budaya pada masa lampau.<span id="dots{{$suffix}}">...</span><span
+        id="more{{$suffix}}"><br><br>
 
         Dari keterbukaan masyarakat Nusantara dan hubungan budaya yang terjalin, lahir beragam warisan
         budaya multikultural dan multietnis ke berbagai medium. Hubungan budaya antarmanusia ini

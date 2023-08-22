@@ -118,7 +118,7 @@
                     <h2 class="sub-judul">Rempah Lainnya</h2>
                     <ul class="tags mt-3">
                         @foreach ($rempahs as $r)
-                            <li><a href="{{ route('rempah_detail', $r->jenis_rempah) }}"
+                            <li><a href="{{ route('rempah_detail.'.$lang, $r->jenis_rempah) }}"
                                     class="tag">{{ $r->jenis_rempah }}</a></li>
                         @endforeach
                     </ul>

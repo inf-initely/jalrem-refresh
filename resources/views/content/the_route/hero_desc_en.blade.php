@@ -2,7 +2,7 @@
     The Spice Routes covers various <b>cultural routes</b> from East Asia to Western Europe connected to
     American, African, and Australian Continents. A civilization trajectory in different forms; straight
     line, circle, crosswise, and even a network.
-    <span id="dots">...</span><span id="more"><br><br>
+    <span id="dots{{$suffix}}">...</span><span id="more{{$suffix}}"><br><br>
 
         In Indonesia, the spice trade routes cover many things. It stands not only on one spice producer
         area but also various points in Indonesia, forming a <b>sustainable civilization

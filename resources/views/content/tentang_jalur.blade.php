@@ -23,6 +23,9 @@
                     <header>
                         <h2 class="sub-judul sub-judul-hero text-end">{{ __("The Spice Routes' Spots") }}</h2>
                     </header>
+                    @php
+                        $suffix = "";
+                    @endphp
                     @include('content.the_route.hero_desc_' . $lang)
                     <div class="row">
                         <div class="col-md-12 text-end">
@@ -42,6 +45,9 @@
                         <header>
                             <h2 class="sub-judul sub-judul-hero">{{ __("The Spice Routes' Spots") }}</h2>
                         </header>
+                        @php
+                            $suffix = "2";
+                        @endphp
                         @include('content.the_route.hero_desc_' . $lang)
                         <div class="row">
                             <div class="col-md-12">
