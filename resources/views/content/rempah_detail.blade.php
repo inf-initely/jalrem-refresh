@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@php
+    $lang = App::getLocale();
+@endphp
+
 @section('content')
     <header id="hero">
         <img class="hero-img-2"
@@ -9,7 +13,7 @@
         <div class="text-hero-2">
             <div class="">
                 <div class="col-lg-12 text-center">
-                    <h1>Funfact</h1>
+                    <h1>{{__("Funfact")}}</h1>
                 </div>
             </div>
         </div>
@@ -21,13 +25,13 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-9">
                             <header class="mb-3">
-                                <h2 class="sub-judul">{{ $rempah->jenis_rempah }}</h2>
+                                <h2 class="sub-judul">{{ $spice["name"] }}</h2>
                             </header>
                             <div id="desTentang">
-                                {!! $rempah->keterangan !!}
+                                {!! $spice["desc"] !!}
                                 <section>
-                                    <ul class="@if (count($artikel_rempah) > 0) timeline @endif">
-                                        @foreach ($artikel_rempah as $index => $a)
+                                    <ul class="@if (count($articles) > 0) timeline @endif">
+                                        @foreach ($articles as $article)
                                             <li class="@if (($loop->index + 1) % 2 == 0) timeline-inverted @endif">
                                                 <div class="timeline-badge primary"><a><i class="glyphicon glyphicon-record"
                                                             rel="tooltip" title="11 hours ago via Twitter"
@@ -35,7 +39,7 @@
                                                 <div class="timeline-panel">
                                                     <div class="timeline-heading">
                                                         <img class="img-responsive"
-                                                            src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}" />
+                                                            src="{{ asset('storage/assets/artikel/thumbnail/' . $article["thumbnail"]) }}" />
                                                     </div>
                                                     <div class="timeline-body">
                                                         <div class="card no-border no-background">
@@ -44,18 +48,14 @@
                                                                     <div class="col-md-6 mb-3">
                                                                         <img class="kegiatan-img" id="imgKegiatan"
                                                                             name="imgKegiatan"
-                                                                            src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}">
+                                                                            src="{{ asset('storage/assets/artikel/thumbnail/' . $article["thumbnail"]) }}">
                                                                     </div>
                                                                     <div class="col-md-6 mb-3">
-                                                                        <p class="tgl-timeline">
-                                                                            {{ \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y') }}
-                                                                        </p>
-                                                                        <h3 class="judul-timeline">
-                                                                            {{ Str::limit($a->judul_indo, 50, $end = '...') }}
-                                                                        </h3>
+                                                                        <p class="tgl-timeline">{{ $article["published_at"] }}</p>
+                                                                        <h3 class="judul-timeline">{{ Str::limit($article["title"], 50, $end = '...') }}</h3>
                                                                     </div>
                                                                 </div>
-                                                                <a href="{{ route('article_detail', $a->slug) }}"
+                                                                <a href="{{ route('article_detail.' . $lang, $article["slug"]) }}"
                                                                     class="stretched-link"></a>
                                                             </div>
                                                         </div>
@@ -71,55 +71,13 @@
                     </div>
                 </div>
             </section>
-            <!----------------------------------------------------------->
-            {{-- <section id="kisahLainnya" class="full-bg">
-        <div class="container">
-          <header class="row justify-content-center mb-2">
-            <div class="col-md-12">
-              <h2 class="sub-judul aside-judul">Jelajahi Kisah Lainnya</h2>
-            </div>
-          </header>
-          <section class="row justify-content-center">
-            <div class="col-md-6 col-lg-4 mb-4">
-              <div class="card no-border no-background card-body">
-                <img src="{{ asset('assets/img/berita-detail/gambar6.png') }}" class="card-img-top mb-4" alt="...">
-                <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
-                <p class="penulis-artikel">Ahmad Rifaldi</p>
-                <p class="tgl-artikel">20 November 2021</p>
-                <a href="detail-berita.html" class="stretched-link"></a>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-4 mb-4">
-              <div class="card no-border no-background card-body">
-                <img src="{{ asset('assets/img/berita-detail/gambar7.png') }}" class="card-img-top mb-4" alt="...">
-                <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
-                <p class="penulis-artikel">Ahmad Rifaldi</p>
-                <p class="tgl-artikel">20 November 2021</p>
-                <a href="detail-berita.html" class="stretched-link"></a>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-4 mb-4">
-              <div class="card no-border no-background card-body">
-                <img src="{{ asset('assets/img/berita-detail/gambar8.png') }}" class="card-img-top mb-4" alt="...">
-                <h3 class="card-title judul-artikel">Cagar Budaya di Pati: Sejarah Akulturasi dan Jejak Perdagangan Rempah</h3>
-                <p class="card-text des-artikel minimize">Pati, merupakan sebuah kabupaten di wilayah Jawa Tengah, ia berbatasan dengan Kabupaten JCurabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Sed porttitor lectus nibh.</p>
-                <p class="penulis-artikel">Ahmad Rifaldi</p>
-                <p class="tgl-artikel">20 November 2021</p>
-                <a href="detail-berita.html" class="stretched-link"></a>
-              </div>
-            </div>
-          </section>
-        </div>
-      </section> --}}
             <section id="rempahLainnya">
                 <div class="container">
-                    <h2 class="sub-judul">Rempah Lainnya</h2>
+                    <h2 class="sub-judul">{{__("Other Spices")}}</h2>
                     <ul class="tags mt-3">
-                        @foreach ($rempahs as $r)
-                            <li><a href="{{ route('rempah_detail.'.$lang, $r->jenis_rempah) }}"
-                                    class="tag">{{ $r->jenis_rempah }}</a></li>
+                        @foreach ($spices as $spice)
+                            <li><a href="{{ route('rempah_detail.'.$lang, $spice["name"]) }}"
+                                    class="tag">{{ $spice["name"] }}</a></li>
                         @endforeach
                     </ul>
                 </div>

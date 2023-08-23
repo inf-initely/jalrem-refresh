@@ -2,46 +2,39 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\All;
+use App\Models\Artikel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 use App\Models\Rempah;
+use Illuminate\Support\Facades\App;
 
 class RempahController extends Controller
 {
-    public function show($rempahName)
-    {
-        $rempah = Rempah::where('jenis_rempah', $rempahName)->orWhere('jenis_rempah_english', $rempahName)->firstOrFail();
-        if( Session::get('lg') == 'en' )
-            return redirect()->route('rempah_detail.english', $rempah->jenis_rempah_english);
-        $rempahs = Rempah::all();
-        $artikel_rempah = $rempah->artikel->filter(function($item) use ($rempah) {
-            return ($item->status == 'publikasi'  && $item->published_at <= \Carbon\Carbon::now());
-        })->sortByDesc('published_at')->slice(0, 5);
-
-        return view('content.rempah_detail', compact('rempah', 'artikel_rempah', 'rempahs'));
+    public static function normalizeSpice($spice, string $lang = "id") {
+        return [
+            "name" => $spice->{"name_".$lang},
+            "desc" => $spice->{"desc_".$lang}
+        ];
     }
 
-    public function show_english($rempahName)
+    public function show(string $spiceName)
     {
-        $rempah = Rempah::where('jenis_rempah', $rempahName)->orWhere('jenis_rempah_english', $rempahName)->firstOrFail();
+        $lang = App::getLocale();
+        $s = Rempah::getDetailQuery($spiceName)->firstOrFail();
+        $spice = RempahController::normalizeSpice($s, $lang);
 
-        if( Session::get('lg') != 'en' )
-            return redirect()->route('rempah_detail', $rempah->jenis_rempah);
+        $spices = Rempah::getAllQuery()->get()
+            ->map(function ($spice) use ($lang) {
+                return RempahController::normalizeSpice($spice, $lang);
+            });
+        $articlesQuery = Artikel::getPageQuery($lang);
+        $articles = All::whereSpice($articlesQuery, "artikels", $s->id)->forPage(1, 5)->get()
+            ->map(function ($article) use ($lang) {
+                return ArtikelController::normalizePageItem($article, $lang);
+            });
 
-        $rempahs = Rempah::all();
-        $artikel_rempah = $rempah->artikel->filter(function($item) use ($rempah) {
-            return ($item->status == 'publikasi'  && $item->published_at <= \Carbon\Carbon::now());
-        })->sortByDesc('published_at')->slice(0, 5);
-
-        return view('content_english.rempah_detail', compact('rempah', 'artikel_rempah', 'rempahs'));
-    }
-
-    public function getJSON()
-    {
-        $lg = Session::get('lg');
-        $rempah = Rempah::orderBy($lg == 'en' ? 'jenis_rempah_english' : 'jenis_rempah' , 'asc')->get();
-
-        return response()->json($rempah);
+        return view('content.rempah_detail', compact('spice', 'articles', 'spices'));
     }
 }

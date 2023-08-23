@@ -115,4 +115,16 @@ class All {
                 ->where("{$categoryTable}.id_kategori_show", $categoryId);
         });
     }
+
+
+    public static function whereSpice($builder, string $pluralTable, int $spiceId) {
+        $table = rtrim($pluralTable, "s");
+        $spiceTable = "{$table}_rempah";
+        return $builder->whereExists(function ($query) use ($spiceTable, $table, $pluralTable, $spiceId) {
+            return $query->from($spiceTable)
+                ->select(DB::raw(1))
+                ->whereColumn("{$spiceTable}.id_{$table}", "{$pluralTable}.id")
+                ->where("{$spiceTable}.id_rempah", $spiceId);
+        });
+    }
 }
