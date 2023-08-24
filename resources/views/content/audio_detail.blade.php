@@ -1,8 +1,9 @@
-@extends('layout.app')
-
 @php
     $lang = App::getLocale();
+    $altnav = true;
 @endphp
+
+@extends('layout.app')
 
 @section('title')
     {{ $content['title'] }}

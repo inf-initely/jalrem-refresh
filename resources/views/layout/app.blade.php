@@ -1,6 +1,9 @@
 @php
     $lang = App::getLocale();
     $info = trim(View::getSection('meta_info', 'default'));
+    if(!isset($altnav)) {
+        $altnav = false;
+    }
 @endphp
 
 <!doctype html>

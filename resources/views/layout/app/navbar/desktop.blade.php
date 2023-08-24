@@ -1,5 +1,5 @@
 <nav
-    class="navbar navbar-expand-lg {{ $altnav ? 'navbar-light' : 'navbar-dark' }} bg-light sticky-top bg-trans d-none d-lg-block d-xl-none">
+    class="navbar navbar-expand-lg {{ $altnav ? 'navbar-light' : 'navbar-dark' }} {{ $altnav ? 'bg-light' : 'bg-dark'}} sticky-top bg-trans d-none d-lg-block d-xl-none">
     <div class="container">
         <a class="navbar-brand" href="{{ route('home.'.$lang) }}">
             <img src="{{ asset('assets/img/logo/' . ($altnav ? 'logo-2.png' : 'logo.png')) }}" height="50px">
@@ -75,7 +75,7 @@
                 </div>
                 <button class="btn icon-search mr-4 d-none d-lg-block" data-bs-toggle="modal"
                     data-bs-target="#searchModal">
-                    <i class="fa fa-search clr-white"></i>
+                    <i class="fa fa-search {{ $altnav ? 'clr-black' : 'clr-white' }}"></i>
                 </button>
                 <a target="_blank" href="https://pameran-jalurrempah.kemdikbud.go.id/id" class="btn btn-danger mr-4"
                     style="margin-right:1rem">
