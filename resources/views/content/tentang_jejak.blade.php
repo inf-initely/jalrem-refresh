@@ -1,8 +1,9 @@
-@extends('layout.app')
-
 @php
     $lang = App::getLocale();
+    $altnav = true;
 @endphp
+
+@extends('layout.app')
 
 @section('meta_info')
     tentang_jejak
@@ -94,8 +95,12 @@
 @section('js')
     @include('partials.js.jquery')
     @include('partials.js.bootstrap')
-    @include('partials.js.dynamic-navbar')
+    {{-- @include('partials.js.dynamic-navbar') --}}
     @include("content.loader.the_xxx")
+    <script>
+        $(".navbar").addClass({!! $altnav ? "'bg-nav-baru'" : "'bg-nav'" !!});
+        $(".navbar").removeClass("bg-trans");
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
@@ -119,7 +124,7 @@
             const theMap = new google.maps.Map(document.querySelector("#map"), {
                 zoom: 5,
                 center: {
-                    lat: -1.5,
+                    lat: 0,
                     lng: 123,
                 },
                 mapId: "ceda280a7ce6c183"

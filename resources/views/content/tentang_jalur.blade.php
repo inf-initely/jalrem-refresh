@@ -1,8 +1,9 @@
-@extends('layout.app')
-
 @php
     $lang = App::getLocale();
+    $altnav = true;
 @endphp
+
+@extends('layout.app')
 
 @section('meta_info')
     tentang_jalur
