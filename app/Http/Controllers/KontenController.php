@@ -13,14 +13,15 @@ use App\Models\Publikasi;
 use App\Models\Audio;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\App;
 
 class KontenController extends Controller
 {
-    private function makeContentQueries()
+    private function makeContentQueries(string $lang = "id")
     {
-        $selector = Controller::$content_selector;
+        $selector = HomeController::selector;
         $now = Carbon::now();
-        return [
+        $query = [
             "artikel" => Artikel::select(DB::raw($selector))->take(9)
                 ->where('status', 'publikasi')->where('published_at', '<=', $now)->orderBy('published_at', 'desc'),
             "foto" => Foto::select(DB::raw($selector))->take(9)
@@ -32,35 +33,27 @@ class KontenController extends Controller
             "audio" => Audio::select(DB::raw($selector))->take(9)
                 ->where('status', 'publikasi')->where('published_at', '<=', $now)->orderBy('published_at', 'desc'),
         ];
+
+        if ($lang == "en") {
+            $query["artikel"]->where('judul_english', '!=', null);
+            $query["foto"]->where('judul_english', '!=', null);
+            $query["video"]->where('judul_english', '!=', null);
+            $query["publikasi"]->where('judul_english', '!=', null);
+            $query["audio"]->where('judul_english', '!=', null);
+        }
+
+        return $query;
     }
 
     public function index()
     {
-        $queries = $this->makeContentQueries();
+        $lang = App::getLocale();
+        $queries = $this->makeContentQueries($lang);
         $artikel = $queries["artikel"]->get();
         $foto = $queries["foto"]->get();
         $publikasi = $queries["publikasi"]->get();
         $audio = $queries["audio"]->get();
         $video = $queries["video"]->get();
-
-        $kontenSlider = $artikel->take(3)
-            ->mergeRecursive($foto->take(3))
-            ->mergeRecursive($video->take(3))
-            ->mergeRecursive($publikasi->take(3))
-            ->mergeRecursive($audio->take(3))
-            ->sortBy('desc');
-
-        return view('content.konten', compact('artikel', 'foto', 'video', 'publikasi', 'audio', 'kontenSlider'));
-    }
-
-    public function index_en()
-    {
-        $queries = $this->makeContentQueries();
-        $artikel = $queries["artikel"]->where('judul_english', '!=', null)->get();
-        $foto = $queries["foto"]->where('judul_english', '!=', null)->get();
-        $publikasi = $queries["publikasi"]->where('judul_english', '!=', null)->get();
-        $audio = $queries["audio"]->where('judul_english', '!=', null)->get();
-        $video = $queries["video"]->where('judul_english', '!=', null)->get();
 
         $kontenSlider = $artikel->take(3)
             ->mergeRecursive($foto->take(3))

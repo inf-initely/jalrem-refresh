@@ -20,13 +20,13 @@ use Illuminate\Support\Facades\App;
 class HomeController extends Controller
 {
 
-    public static $selector = "*, slug as slug_id, slug_english as slug_en,"
+    const selector = "*, slug as slug_id, slug_english as slug_en,"
         ."judul_indo as judul_id, judul_english as judul_en,"
         ."meta_indo as meta_id, meta_english as meta_en";
 
     private function makeSliderQueries(string $lang = "id")
     {
-        $selector = HomeController::$selector;
+        $selector = HomeController::selector;
         $sliders = [
             "artikel" => Artikel::select(DB::raw($selector))->where('status', 'publikasi')->where('slider_utama', 1),
             "publikasi" => Publikasi::select(DB::raw($selector))->where('status', 'publikasi')->where('slider_utama', 1),
@@ -52,7 +52,7 @@ class HomeController extends Controller
 
     private function makeContentQueries(string $lang = "id")
     {
-        $selector = HomeController::$selector;
+        $selector = HomeController::selector;
         $now = Carbon::now();
         $contents = [
             "artikel" => Artikel::select(DB::raw($selector))->where('status', 'publikasi')
