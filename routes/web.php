@@ -187,7 +187,7 @@ use function Psy\debug;
     Route::get('/funfact/{rempahName}', [RempahController::class, 'show'])->name('rempah_detail.id');
 
     Route::group(['prefix' => "/en", "middleware" => "switchlocale"], function() {
-        Route::get('/', [HomeController::class, 'index_en'])->name('home.en');
+        Route::get('/', [HomeController::class, 'index'])->name('home.en');
         Route::get('/contents', [KontenController::class, 'index_en'])->name('contents.en');
 
         Route::get('/articles', [ArtikelController::class, 'index'])->name('articles.en');
