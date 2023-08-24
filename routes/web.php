@@ -188,7 +188,7 @@ use function Psy\debug;
 
     Route::group(['prefix' => "/en", "middleware" => "switchlocale"], function() {
         Route::get('/', [HomeController::class, 'index'])->name('home.en');
-        Route::get('/contents', [KontenController::class, 'index_en'])->name('contents.en');
+        Route::get('/contents', [KontenController::class, 'index'])->name('contents.en');
 
         Route::get('/articles', [ArtikelController::class, 'index'])->name('articles.en');
         Route::get('/audios', [AudioController::class, 'index'])->name('audios.en');
