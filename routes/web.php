@@ -213,7 +213,7 @@ use function Psy\debug;
         Route::get('/the-route', [JalurController::class, 'index'])->name('the-route.en');
         Route::get('/the-trail', [JejakController::class, 'index'])->name('the-trail.en');
         Route::get('/the-future', [MasaDepanController::class, 'index'])->name('the-future.en');
-        Route::get('/funfact/en/{rempahName}', [RempahController::class, 'show_en'])->name('rempah_detail.en');
+        Route::get('/funfact/{rempahName}', [RempahController::class, 'show'])->name('rempah_detail.en');
     });
 
     Route::get('/login', [AuthController::class, 'login'])->name('login');

@@ -4,6 +4,10 @@
     if(!isset($altnav)) {
         $altnav = false;
     }
+
+    function getRouteForLang($old, $new = "id") {
+        return route(str_replace($old, $new, Route::currentRouteName()), Route::current()->parameters());
+    }
 @endphp
 
 <!doctype html>

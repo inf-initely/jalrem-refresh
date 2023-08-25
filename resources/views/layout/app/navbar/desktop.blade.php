@@ -58,13 +58,13 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li>
-                                    <a class="dropdown-item" href="{{ route('set_language_id') }}">
+                                    <a class="dropdown-item" href="{{ getRouteForLang($lang, "id") }}">
                                         <img src="{{ asset('assets/img/bendera/flag-indonesia-20px.webp') }}"
                                             class="mr-2 flag" width="20px"> ID
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="{{ route('set_language_en') }}">
+                                    <a class="dropdown-item" href="{{ getRouteForLang($lang, "en") }}">
                                         <img src="{{ asset('assets/img/bendera/flag-english-20px.webp') }}"
                                             class="mr-2 flag" width="20px"> EN
                                     </a>
