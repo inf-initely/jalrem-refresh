@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Common;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Session;
@@ -76,6 +77,8 @@ class PublikasiController extends Controller
                 abort(404);
             }
         }
+
+        Common::handleSlugRedirection($lang, $slug, $publication);
 
         $latest = Publikasi::getPageQuery($lang)
             ->forPage(1, 3)

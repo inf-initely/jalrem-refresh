@@ -57,7 +57,8 @@ class Kerjasama extends Model
     }
 
 
-    public static function getPageQuery(string $lang = "id"): Builder {
+    public static function getPageQuery(string $lang = "id"): Builder
+    {
         $query = Kerjasama::select(
             "judul_indo as judul_id",
             "judul_english as judul_en",
@@ -80,7 +81,8 @@ class Kerjasama extends Model
         return $query;
     }
 
-    public static function getDetailQuery(string $slug, string $lang = "id"): Builder {
+    public static function getDetailQuery(string $slug, string $lang = "id"): Builder
+    {
         $query = Kerjasama::select(
             "judul_indo as judul_id",
             "konten_indo as konten_id",
@@ -104,27 +106,22 @@ class Kerjasama extends Model
             "status"
         );
 
-        if ($lang == "id") {
-            $query = $query->where("slug", $slug);
-        }
-
-        if ($lang == "en") {
-            $query = $query->where("slug_english", $slug);
-        }
+        $query = $query->where("slug", $slug)->orWhere("slug_english", $slug);
 
         return $query;
     }
 
-    public static function normalizePageItem(Kerjasama $item, string $lang) {
+    public static function normalizePageItem(Kerjasama $item, string $lang)
+    {
         $categories = $item->kategori_show->map(function ($category) {
             return $category->isi;
         });
 
         return [
-            "title" => $item->{'judul_'.$lang},
+            "title" => $item->{'judul_' . $lang},
             "thumbnail" => $item->thumbnail,
             "categories" => $categories,
-            "slug" => $item->{'slug_'.$lang},
+            "slug" => $item->{'slug_' . $lang},
             "author" => $item->penulis != 'admin' ? $item->kontributor_relasi->nama : "admin",
             "published_at" => Carbon::parse($item->published_at)->isoFormat("D MMMM Y")
         ];

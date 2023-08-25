@@ -111,13 +111,7 @@ class Foto extends Model
             "status"
         );
 
-        if ($lang == "id") {
-            $query = $query->where("slug", $slug);
-        }
-
-        if ($lang == "en") {
-            $query = $query->where("slug_english", $slug);
-        }
+        $query = $query->where("slug", $slug)->orWhere("slug_english", $slug);
 
         return $query;
     }

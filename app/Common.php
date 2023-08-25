@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Illuminate\Support\Facades\Route;
+
 class Common
 {
     const MEDIA_TYPE_THUMBNAIL = 0;
@@ -259,4 +261,42 @@ class Common
             'longitude' => '120.69786000',
         ],
     ];
+
+    public static function isSlugNotFound($slug) {
+        return $slug == "n-a" || $slug == "" || $slug == null;
+    }
+
+    public static function handleSlugRedirection($lang, $slug, $item) {
+        if(Common::isSlugNotFound($slug)) {
+            abort(404);
+        }
+        $trueSlug = $item->{"slug_".$lang};
+        if($slug == $trueSlug) return;
+
+        if(Common::isSlugNotFound($trueSlug)) {
+            abort(404);
+        }
+
+        abort(301, "", [
+            "Location" => route(Route::currentRouteName(), ["slug" => $trueSlug])
+        ]);
+    }
+
+    public static function createSlugParameters($item) {
+
+        $parameters = [
+            "id" => ["slug" => $item->slug_id],
+            "en" => ["slug" => $item->slug_en]
+        ];
+
+        if(Common::isSlugNotFound($item->slug_id)) {
+            $parameters["stub"] = ["id" => true];
+        }
+
+        if(Common::isSlugNotFound($item->slug_en)) {
+            $parameters["stub"] = ["en" => true];
+        }
+
+        return $parameters;
+    }
 }

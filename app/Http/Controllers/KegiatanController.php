@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Common;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Session;
@@ -50,6 +51,8 @@ class KegiatanController extends Controller
             }
         }
 
+        Common::handleSlugRedirection($lang, $slug, $event);
+
         $latest = Kegiatan::getPageQuery($lang)->forPage(1, 3)
             ->whereKeyNot($event->id)
             ->get()
@@ -72,6 +75,8 @@ class KegiatanController extends Controller
             "content_type" => "event",
         ];
 
-        return view('content.kegiatan_detail', compact('content', 'latest'));
+        $parameters = Common::createSlugParameters($event);
+
+        return view('content.kegiatan_detail', compact('content', 'latest', 'parameters'));
     }
 }

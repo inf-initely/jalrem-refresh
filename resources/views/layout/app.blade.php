@@ -5,8 +5,17 @@
         $altnav = false;
     }
 
-    function getRouteForLang($old, $new = "id") {
-        return route(str_replace($old, $new, Route::currentRouteName()), Route::current()->parameters());
+    $overrideParameters = isset($parameters) ? $parameters : [
+        "id" => Route::current()->parameters(),
+        "en" => Route::current()->parameters()
+    ];
+    $langRoute = function ($old, $new = "id") use ($overrideParameters) {
+        if(isset($overrideParameters["stub"])) {
+            if(isset($overrideParameters["stub"][$new])) {
+                return route("home.".$new);
+            }
+        }
+        return route(str_replace(".".$old, ".".$new, Route::currentRouteName()), $overrideParameters[$new]);
     }
 @endphp
 

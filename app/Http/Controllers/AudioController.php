@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Common;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Session;
@@ -58,6 +59,8 @@ class AudioController extends Controller
             }
         }
 
+        Common::handleSlugRedirection($lang, $slug, $audio);
+
         $content = [
             "title" => $audio->{"judul_" . $lang},
             "content" => $audio->{'konten_' . $lang},
@@ -69,6 +72,8 @@ class AudioController extends Controller
             "content_type" => "audio"
         ];
 
-        return view('content.audio_detail', compact('content'));
+        $parameters = Common::createSlugParameters($audio);
+
+        return view('content.audio_detail', compact('content', 'parameters'));
     }
 }

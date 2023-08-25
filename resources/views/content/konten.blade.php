@@ -3,7 +3,6 @@
     $altnav = true;
 @endphp
 
-
 @extends('layout.app')
 
 @section('meta_info')
@@ -223,7 +222,7 @@
                                                             @include("partials.badge")
                                                         @endforeach
                                                         <a class="stretched-link lightbox"
-                                                            href="{{ route('photo_detail.'.$lang, $f->slug) }}"></a>
+                                                            href="{{ route('photo_detail.'.$lang, $f->{"slug_".$lang} ?? $f->slug) }}"></a>
                                                     </div>
                                                 </div>
                                             @endforeach
@@ -263,7 +262,7 @@
                                                             </div>
                                                         </div>
                                                         <a class="stretched-link lightbox"
-                                                            href="{{ route('video_detail.'.$lang, $v->slug) }}"></a>
+                                                            href="{{ route('video_detail.'.$lang, $v->{"slug_".$lang} ?? $v->slug) }}"></a>
                                                         <div class="card-body">
                                                             <p class="card-text">{{ $v->{"judul_".$lang} }}</p>
                                                         </div>
@@ -300,7 +299,7 @@
                                                                 @include("partials.badge")
                                                             @endforeach
                                                         </div>
-                                                        <a href="{{ route('publication_detail.'.$lang, $p->slug) }}"
+                                                        <a href="{{ route('publication_detail.'.$lang, $p->{"slug_".$lang} ?? $p->slug) }}"
                                                             class="stretched-link"></a>
                                                     </div>
                                                 </div>

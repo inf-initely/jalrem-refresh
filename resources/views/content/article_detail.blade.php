@@ -1,8 +1,8 @@
-@extends('layout.app')
-
 @php
     $lang = App::getLocale();
 @endphp
+
+@extends('layout.app')
 
 @section('title')
     {{ $content["title"] }}

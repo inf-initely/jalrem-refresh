@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Common;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Session;
@@ -14,6 +15,7 @@ use Illuminate\Pagination\Paginator;
 use Auth;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Route;
 
 class ArtikelController extends Controller
 {
@@ -67,6 +69,8 @@ class ArtikelController extends Controller
             }
         }
 
+        Common::handleSlugRedirection($lang, $slug, $article);
+
         $latest = Artikel::getPageQuery($lang)
             ->whereKeyNot($article->id)
             ->forPage(1, 3)
@@ -99,7 +103,9 @@ class ArtikelController extends Controller
             "content_type" => "article",
         ];
 
-        return view('content.article_detail', compact('content', 'latest', 'random', 'popular', 'related', 'alsoread'));
+        $parameters = Common::createSlugParameters($article);
+
+        return view('content.article_detail', compact('content', 'latest', 'random', 'popular', 'related', 'alsoread', 'parameters'));
     }
 
     public function search(Request $request)

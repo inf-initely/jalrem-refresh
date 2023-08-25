@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Common;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Session;
@@ -59,6 +60,8 @@ class FotoController extends Controller
             }
         }
 
+        Common::handleSlugRedirection($lang, $slug, $thephoto);
+
         $urls = unserialize($thephoto->slider_foto);
         // wtf why does this need to be decoded first!!!
         $captions = unserialize(json_decode($thephoto->{'caption_slider_foto_' . $lang}));
@@ -80,6 +83,8 @@ class FotoController extends Controller
             "content_type" => "photo"
         ];
 
-        return view('content.photo_detail', compact('content'));
+        $parameters = Common::createSlugParameters($thephoto);
+
+        return view('content.photo_detail', compact('content', 'parameters'));
     }
 }

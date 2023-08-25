@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Common;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Session;
@@ -58,6 +59,8 @@ class VideoController extends Controller
             }
         }
 
+        Common::handleSlugRedirection($lang, $slug, $video);
+
         $content = [
             "title" => $video->{"judul_" . $lang},
             "content" => $video->{'konten_' . $lang},
@@ -69,6 +72,8 @@ class VideoController extends Controller
             "content_type" => "video"
         ];
 
-        return view('content.video_detail', compact('content'));
+        $parameters = Common::createSlugParameters($video);
+
+        return view('content.video_detail', compact('content', 'parameters'));
     }
 }

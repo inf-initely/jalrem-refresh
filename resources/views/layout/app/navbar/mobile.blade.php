@@ -15,13 +15,13 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="border: 0px">
                     <li>
-                        <a class="dropdown-item" href="{{ getRouteForLang($lang, "id") }}">
+                        <a class="dropdown-item" href="{{ $langRoute($lang, "id") }}">
                             <img src="{{ asset('assets/img/bendera/flag-indonesia-20px.webp') }}"
                                 class="mr-2 flag" width="20px"> ID
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="{{ getRouteForLang($lang, "en") }}">
+                        <a class="dropdown-item" href="{{ $langRoute($lang, "en") }}">
                             <img src="{{ asset('assets/img/bendera/flag-english-20px.webp') }}"
                                 class="mr-2 flag" width="20px"> EN
                         </a>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Common;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\App;
@@ -47,6 +48,8 @@ class KerjasamaController extends Controller
             }
         }
 
+        Common::handleSlugRedirection($lang, $slug, $partnership);
+
         $categories = $partnership->kategori_show->map(function ($category) {
             return $category->isi;
         });
@@ -62,6 +65,8 @@ class KerjasamaController extends Controller
             "content_type" => "event",
         ];
 
-        return view('content.kerjasama_detail', compact('content'));
+        $parameters = Common::createSlugParameters($partnership);
+
+        return view('content.kerjasama_detail', compact('content', 'parameters'));
     }
 }

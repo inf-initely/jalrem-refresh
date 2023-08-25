@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Common;
 use App\Models\All;
 use App\Models\Artikel;
 use Illuminate\Http\Request;
@@ -9,6 +10,7 @@ use Illuminate\Support\Facades\Session;
 
 use App\Models\Rempah;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Route;
 
 class RempahController extends Controller
 {
@@ -23,6 +25,14 @@ class RempahController extends Controller
     {
         $lang = App::getLocale();
         $s = Rempah::getDetailQuery($spiceName)->firstOrFail();
+
+        $trueSpiceName = $s->{"name_".$lang};
+        if($spiceName != $trueSpiceName) {
+            abort(301, "", [
+                "Location" => route(Route::currentRouteName(), ["rempahName" => $trueSpiceName])
+            ]);
+        }
+
         $spice = RempahController::normalizeSpice($s, $lang);
 
         $spices = Rempah::getAllQuery()->get()
@@ -35,6 +45,12 @@ class RempahController extends Controller
                 return ArtikelController::normalizePageItem($article, $lang);
             });
 
-        return view('content.rempah_detail', compact('spice', 'articles', 'spices'));
+
+        $parameters = [
+            "id" => $s->name_id,
+            "en" => $s->name_en,
+        ];
+
+        return view('content.rempah_detail', compact('spice', 'articles', 'spices', 'parameters'));
     }
 }
