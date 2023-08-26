@@ -227,31 +227,14 @@ use function Psy\debug;
     // RELOAD CAPTCHA
     Route::get('/reload-captcha', [CaptchaServiceController::class, 'reloadCaptcha']);
 
-    Route::get('/set_language/en', function() {
-        Session::put('lg', 'en');
-        return redirect()->back();
-    })->name('set_language_en');
-
-    Route::get('/set_language/id', function() {
-        Session::forget('lg');
-        return redirect()->back();
-    })->name('set_language_id');
-
     // Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     //     \UniSharp\LaravelFilemanager\Lfm::routes();
     // });
-
-
-    // JSON
-    Route::get('get_rempah_json', [RempahController::class, 'getJSON'])->name('get_rempah_json');
-    Route::get('get_location_json', [LokasiController::class, 'getJSON'])->name('get_location_json');
 
     // route for test sentry on prods
     Route::get('/debug-sentry', function () {
         if (! app()->environment('production')) throw new Exception('Test Sentry error!');
     });
-
-    Route::get('/{slug}', [RedirectController::class, 'index']);
 
 
 // });

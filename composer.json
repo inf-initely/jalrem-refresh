@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.5",
         "mews/captcha": "^3.2",
         "realrashid/sweet-alert": "^4.0",
+        "refinery29/sitemap": "^0.5.0",
         "sentry/sentry-laravel": "^2.8",
         "spatie/laravel-sitemap": "^5.9",
         "spatie/laravel-sluggable": "^2.6",
