@@ -218,23 +218,47 @@ use function Psy\debug;
 
     Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/login', [AuthController::class, 'login_post'])->name('login_post');
-    // Route::get('/register', [AuthController::class, 'register'])->name('register');
-    // Route::post('/register', [AuthController::class, 'register_post'])->name('register_post');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-    // });
-
-    // RELOAD CAPTCHA
     Route::get('/reload-captcha', [CaptchaServiceController::class, 'reloadCaptcha']);
 
-    // Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
-    //     \UniSharp\LaravelFilemanager\Lfm::routes();
-    // });
-
-    // route for test sentry on prods
     Route::get('/debug-sentry', function () {
         if (! app()->environment('production')) throw new Exception('Test Sentry error!');
     });
 
+    Route::permanentRedirect("/semua-artikel", "/artikel");
+    Route::permanentRedirect("/semua-foto", "/foto");
+    Route::permanentRedirect("/semua-video", "/video");
+    Route::permanentRedirect("/semua-audio", "/audio");
+    Route::permanentRedirect("/semua-publikasi", "/publikasi");
+    Route::permanentRedirect("/semua-kegiatan", "/kegiatan");
+    Route::permanentRedirect("/semua-kerjasama", "/kerjasama");
 
-// });
+    Route::permanentRedirect("/all-article", "/en/articles");
+    Route::permanentRedirect("/all-photo", "/en/photos");
+    Route::permanentRedirect("/all-video", "/en/videos");
+    Route::permanentRedirect("/all-audio", "/en/audios");
+    Route::permanentRedirect("/all-publication", "/en/publications");
+    Route::permanentRedirect("/all-event", "/en/events");
+
+    Route::get("/artikel/english/{slug}", function () {
+        return redirect()->route("article_detail.en", Route::current()->parameters(), 301);
+    });
+    Route::get("/foto/english/{slug}", function () {
+        return redirect()->route("photo_detail.en", Route::current()->parameters(), 301);
+    });
+    Route::get("/video/english/{slug}", function () {
+        return redirect()->route("video_detail.en", Route::current()->parameters(), 301);
+    });
+    Route::get("/audio/english/{slug}", function () {
+        return redirect()->route("audio_detail.en", Route::current()->parameters(), 301);
+    });
+    Route::get("/publikasi/english/{slug}", function () {
+        return redirect()->route("publication_detail.en", Route::current()->parameters(), 301);
+    });
+    Route::get("/kegiatan/english/{slug}", function () {
+        return redirect()->route("event_detail.en", Route::current()->parameters(), 301);
+    });
+    Route::get("/kerjasama/english/{slug}", function () {
+        return redirect()->route("partnership_detail.en", Route::current()->parameters(), 301);
+    });
