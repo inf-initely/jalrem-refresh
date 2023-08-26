@@ -2,7 +2,14 @@
 <!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="language" content="en">
+<meta name="language" content="{{ $lang }}">
+
+<meta name="description" content="{{ __('meta.' . $info . '.description') }}">
+<meta name="keywords" content="{{ __('meta.' . $info . '.keywords') }}">
+
+@hasSection("title")
+    <meta name="title" content="{{trim(View::getSection('title'))}} | {{__("common.title")}}">
+@endif
 
 @yield('meta')
 

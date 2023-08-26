@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use CyrildeWit\EloquentViewable\InteractsWithViews;
 use CyrildeWit\EloquentViewable\Contracts\Viewable;
 
@@ -24,7 +25,7 @@ class Publikasi extends Model implements Viewable
     public function lokasi()
     {
         return $this->belongsTo('App\Models\Lokasi', 'id_lokasi', 'id');
-    }    
+    }
 
     public function rempahs()
     {
@@ -32,7 +33,7 @@ class Publikasi extends Model implements Viewable
     }
 
     public function kategori_show()
-    { 
+    {
         return $this->belongsToMany('App\Models\KategoriShow', 'publikasi_kategori_show', 'id_publikasi', 'id_kategori_show');
     }
 
@@ -55,4 +56,88 @@ class Publikasi extends Model implements Viewable
     {
         return 'slug';
     }
+
+    public static function getPageQuery(string $lang = "id")
+    {
+        $query = Publikasi::select(
+            "judul_indo as judul_id",
+            "judul_english as judul_en",
+            "slug as slug_id",
+            "slug_english as slug_en",
+            "thumbnail",
+            "penulis",
+            "id_kontributor",
+            "id",
+            "published_at",
+        )
+            ->where("status", "publikasi")
+            ->where('published_at', '<=', now())
+            ->orderBy('published_at', 'desc');
+
+        if ($lang == "en") {
+            $query = $query->whereNotNull('judul_english');
+        }
+
+        return $query;
+    }
+
+
+    public static function getRandomQuery(int $n, $lang = "id"): Builder {
+        $query = Publikasi::select(
+            "judul_indo as judul_id",
+            "judul_english as judul_en",
+            "slug as slug_id",
+            "slug_english as slug_en",
+            "thumbnail",
+            "penulis",
+            "id_kontributor",
+            "id",
+            "published_at",
+            "status"
+        )
+            ->where("status", "publikasi")
+            ->where('published_at', '<=', now())
+            ->whereRaw("RAND()<(SELECT ((".$n."/COUNT(*))*10) FROM publikasis)")
+            ->orderByRaw("RAND()")
+            ->limit($n);
+
+        if($lang == "en") {
+            $query = $query->whereNotNull('judul_english');
+        }
+
+        return $query;
+    }
+
+    public static function getDetailQuery(string $slug, string $lang = "id"): Builder {
+        $query = Publikasi::select(
+            "judul_indo as judul_id",
+            "konten_indo as konten_id",
+            "meta_indo as meta_id",
+            "keywords_indo as keywords_id",
+
+            "judul_english as judul_en",
+            "konten_english as konten_en",
+            "meta_english as meta_en",
+            "keywords_english as keywords_en",
+
+            "slug as slug_id",
+            "slug_english as slug_en",
+
+            "penulis",
+            "id_kontributor",
+            "id",
+            "published_at",
+
+            "thumbnail",
+            "iframe",
+            "status"
+        );
+
+        $query = $query->where("slug", $slug)->orWhere("slug_english", $slug);
+
+        return $query;
+    }
+
+    public static $contentType = "publication";
+    public static $tableName = "publikasis";
 }

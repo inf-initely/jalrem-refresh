@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\App;
 
 use App\Http\Controllers\Admin\ArtikelController as ArtikelControllerAdmin;
 use App\Http\Controllers\Admin\FotoController as FotoControllerAdmin;
@@ -58,15 +59,15 @@ use function Psy\debug;
 |
 */
 // Route::group(['middleware' => ['XssSanitizer']], function () {
-    Route::any('en/{allsegments}', function($first, $rest = '') {
-        Session::put('lg', 'en');
-        // only allowed $first using alphabet and dash only
-        $first = preg_replace('/[^a-zA-Z-]/', '', $first);
-        // only allowed $rest using alphabet, number and dash only
-        $rest = preg_replace('/[^a-zA-Z0-9-]/', '', $rest);
+    // Route::any('en/{allsegments}', function($first, $rest = '') {
+    //     Session::put('lg', 'en');
+    //     // only allowed $first using alphabet and dash only
+    //     $first = preg_replace('/[^a-zA-Z-]/', '', $first);
+    //     // only allowed $rest using alphabet, number and dash only
+    //     $rest = preg_replace('/[^a-zA-Z0-9-]/', '', $rest);
 
-        return redirect("{$first}/{$rest}");
-    })->where('allsegments','(.*)?');
+    //     return redirect("{$first}/{$rest}");
+    // })->where('allsegments','(.*)?');
 
     Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function() {
         Route::get('/', [HomeControllerAdmin::class, 'index'])->name('admin.home');
@@ -157,52 +158,63 @@ use function Psy\debug;
 
 
     // Route::middleware(['language'])->group(function() {
-    Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/english', [HomeController::class, 'index_english'])->name('home.english');
-    Route::get('/semua-artikel', [ArtikelController::class, 'index'])->name('articles');
-    Route::get('/all-article', [ArtikelController::class, 'index_english'])->name('articles.english');
-    Route::get('/semua-foto', [FotoController::class, 'index'])->name('photos');
-    Route::get('/all-photo', [FotoController::class, 'index_english'])->name('photos.english');
-    Route::get('/semua-video', [VideoController::class, 'index'])->name('videos');
-    Route::get('/all-video', [VideoController::class, 'index_english'])->name('videos.english');
-    Route::get('/semua-audio', [AudioController::class, 'index'])->name('audios');
-    Route::get('/all-audio', [AudioController::class, 'index_english'])->name('audios.english');
-    Route::get('/semua-publikasi', [PublikasiController::class, 'index'])->name('publications');
-    Route::get('/all-publication', [PublikasiController::class, 'index_english'])->name('publications.english');
-    Route::get('/semua-kegiatan', [KegiatanController::class, 'index'])->name('events');
-    Route::get('/all-event', [KegiatanController::class, 'index_english'])->name('events.english');
+    Route::get('/', [HomeController::class, 'index'])->name('home.id');
+    Route::get('/konten', [KontenController::class, 'index'])->name('contents.id');
+    // Route::get('/english', [HomeController::class, 'index_english'])->name('home.english.id');
+    Route::get('/artikel', [ArtikelController::class, 'index'])->name('articles.id');
+    Route::get('/audio', [AudioController::class, 'index'])->name('audios.id');
+    Route::get('/kegiatan', [KegiatanController::class, 'index'])->name('events.id');
+    Route::get('/foto', [FotoController::class, 'index'])->name('photos.id');
+    Route::get('/publikasi', [PublikasiController::class, 'index'])->name('publications.id');
+    Route::get('/video', [VideoController::class, 'index'])->name('videos.id');
+    Route::get('/kerjasama', [KerjasamaController::class, 'index'])->name('partnerships.id');
 
-    Route::get('/artikel/{slug}', [ArtikelController::class, 'show'])->name('article_detail');
-    Route::get('/artikel/english/{slug}', [ArtikelController::class, 'show_english'])->name('article_detail.english');
-    Route::get('/foto/{slug}', [FotoController::class, 'show'])->name('photo_detail');
-    Route::get('/foto/english/{slug}', [FotoController::class, 'show_english'])->name('photo_detail.english');
-    Route::get('/video/{slug}', [VideoController::class, 'show'])->name('video_detail');
-    Route::get('/video/english/{slug}', [VideoController::class, 'show_english'])->name('video_detail.english');
-    Route::get('/audio/{slug}', [AudioController::class, 'show'])->name('audio_detail');
-    Route::get('/audio/english/{slug}', [AudioController::class, 'show'])->name('audio_detail.english');
-    Route::get('/publikasi/{slug}', [PublikasiController::class, 'show'])->name('publication_detail');
-    Route::get('/publikasi/english/{slug}', [PublikasiController::class, 'show_english'])->name('publication_detail.english');
-    Route::get('/kegiatan/{slug}', [KegiatanController::class, 'show'])->name('event_detail');
-    Route::get('/kegiatan/english/{slug}', [KegiatanController::class, 'show_english'])->name('event_detail.english');
-    Route::get('/kerjasama/{slug}', [KerjasamaController::class, 'show'])->name('kerjasama_detail');
+    Route::get('/artikel/{slug}', [ArtikelController::class, 'show'])->name('article_detail.id');
+    Route::get('/audio/{slug}', [AudioController::class, 'show'])->name('audio_detail.id');
+    Route::get('/kegiatan/{slug}', [KegiatanController::class, 'show'])->name('event_detail.id');
+    Route::get('/foto/{slug}', [FotoController::class, 'show'])->name('photo_detail.id');
+    Route::get('/publikasi/{slug}', [PublikasiController::class, 'show'])->name('publication_detail.id');
+    Route::get('/video/{slug}', [VideoController::class, 'show'])->name('video_detail.id');
+    Route::get('/kerjasama/{slug}', [KerjasamaController::class, 'show'])->name('partnership_detail.id');
 
-    Route::get('/cari', [SearchController::class, 'search'])->name('article_search');
-    Route::get('/search', [SearchController::class, 'search_english'])->name('article_search.english');
+    Route::get('/cari', [SearchController::class, 'search'])->name('search.id');
 
-    Route::get('/informasi', [InformasiController::class, 'index'])->name('informasi');
-    Route::get('/information', [InformasiController::class, 'index_english'])->name('informasi.english');
-    Route::get('/semua-kerjasama', [KerjasamaController::class, 'index'])->name('kerjasama');
-    Route::get('/semua-kegiatan', [KegiatanController::class, 'index'])->name('events');
-    Route::get('/konten', [KontenController::class, 'index'])->name('konten');
-    Route::get('/content', [KontenController::class, 'index_english'])->name('konten.english');
-    Route::get('/tentang-jalur', [JalurController::class, 'index'])->name('tentangjalur');
-    Route::get('/about-path', [JalurController::class, 'index_english'])->name('tentangjalur.english');
-    Route::get('/tentang-jejak', [JejakController::class, 'index'])->name('tentangjejak');
-    Route::get('/about-track', [JejakController::class, 'index_english'])->name('tentangjejak.english');
-    Route::get('/tentang-masa-depan', [MasaDepanController::class, 'index'])->name('tentangmasadepan');
-    Route::get('/about-the-future', [MasaDepanController::class, 'index_english'])->name('tentangmasadepan.english');
-    Route::get('/funfact/{rempahName}', [RempahController::class, 'show'])->name('rempah_detail');
-    Route::get('/funfact/english/{rempahName}', [RempahController::class, 'show_english'])->name('rempah_detail.english');
+    Route::get('/informasi', [InformasiController::class, 'index'])->name('information.id');
+
+    Route::get('/jalur', [JalurController::class, 'index'])->name('the-route.id');
+    Route::get('/jejak', [JejakController::class, 'index'])->name('the-trail.id');
+    Route::get('/masa-depan', [MasaDepanController::class, 'index'])->name('the-future.id');
+    Route::get('/funfact/{rempahName}', [RempahController::class, 'show'])->name('rempah_detail.id');
+
+    Route::group(['prefix' => "/en", "middleware" => "switchlocale"], function() {
+        Route::get('/', [HomeController::class, 'index'])->name('home.en');
+        Route::get('/contents', [KontenController::class, 'index'])->name('contents.en');
+
+        Route::get('/articles', [ArtikelController::class, 'index'])->name('articles.en');
+        Route::get('/audios', [AudioController::class, 'index'])->name('audios.en');
+        Route::get('/events', [KegiatanController::class, 'index'])->name('events.en');
+        Route::get('/photos', [FotoController::class, 'index'])->name('photos.en');
+        Route::get('/publications', [PublikasiController::class, 'index'])->name('publications.en');
+        Route::get('/videos', [VideoController::class, 'index'])->name('videos.en');
+        Route::get('/partnerships', [KerjasamaController::class, 'index'])->name('partnerships.en');
+
+        Route::get('/article/{slug}', [ArtikelController::class, 'show'])->name('article_detail.en');
+        Route::get('/audio/{slug}', [AudioController::class, 'show'])->name('audio_detail.en');
+        Route::get('/event/{slug}', [KegiatanController::class, 'show'])->name('event_detail.en');
+        Route::get('/photo/{slug}', [FotoController::class, 'show'])->name('photo_detail.en');
+        Route::get('/publication/{slug}', [PublikasiController::class, 'show'])->name('publication_detail.en');
+        Route::get('/video/{slug}', [VideoController::class, 'show'])->name('video_detail.en');
+        Route::get('/partnership/{slug}', [KerjasamaController::class, 'show'])->name('partnership_detail.en');
+
+        Route::get('/search', [SearchController::class, 'search'])->name('search.en');
+
+        Route::get('/information', [InformasiController::class, 'index'])->name('information.en');
+
+        Route::get('/the-route', [JalurController::class, 'index'])->name('the-route.en');
+        Route::get('/the-trail', [JejakController::class, 'index'])->name('the-trail.en');
+        Route::get('/the-future', [MasaDepanController::class, 'index'])->name('the-future.en');
+        Route::get('/funfact/{rempahName}', [RempahController::class, 'show'])->name('rempah_detail.en');
+    });
 
     Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/login', [AuthController::class, 'login_post'])->name('login_post');

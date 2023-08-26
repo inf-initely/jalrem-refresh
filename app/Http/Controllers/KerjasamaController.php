@@ -2,106 +2,71 @@
 
 namespace App\Http\Controllers;
 
+use App\Common;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Carbon;
 use App\Models\Kerjasama;
 
 use Illuminate\Pagination\Paginator;
 
 class KerjasamaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $kerjasama = Kerjasama::where('status', 'publikasi')->where('published_at', '<=', \Carbon\Carbon::now())->orderBy('published_at', 'desc');
-
-        if( Session::get('lg') == 'en' ) {
-            $kerjasama = $kerjasama->where('judul_english', '!=', null)->paginate(1);
-
-            if( Paginator::resolveCurrentPage() != 1 ) {
-                $partnerships = [];
-                $i = 0;
-
-                if(!request()->ajax()) {
-                    return response()->json([
-                        'status' => 'success',
-                        'data' => $partnerships
-                    ]);
-                }
-
-                foreach( $kerjasama as $a ) {
-                    $partnerships[$i]['judul'] = Session::get('lg') == 'en' ? $a->judul_english : $a->judul_indo;
-                    $partnerships[$i]['thumbnail'] = $a->thumbnail;
-                    $j = 0;
-                    foreach( $a->kategori_show as $ks ) {
-                        $partnerships[$i]['kategori_show'][$j] = $ks->isi;
-                        $j++;
-                    }
-                    $partnerships[$i]['konten'] = Session::get('lg') == 'en' ? \Str::limit($a->konten_english, 50, $end='...') : \Str::limit($a->konten_indo, 50, $end='...');
-                    $partnerships[$i]['slug'] = $a->slug;
-                    $partnerships[$i]['penulis'] = $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin';
-                    $partnerships[$i]['published_at'] = \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y');
-                    $i++;
-                }
-                return response()->json([
-                    'status' => 'success',
-                    'data' => $partnerships
-                ]);
-            } else {
-                return view('content_english.kerjasama', compact('kerjasama'));
-            }
-
+        $page = (int)$request->query("page");
+        if($page < -1) {
+            return response("parameter page should be an unsigned int", Response::HTTP_BAD_REQUEST);
         }
 
-        $kerjasama = $kerjasama->paginate(1);
+        $isApi = $page !== 0;
 
-        if( Paginator::resolveCurrentPage() != 1 ) {
-            $partnerships = [];
-            $i = 0;
+        $lang = App::getLocale();
+        $partnerships = Kerjasama::getPageQuery($lang)->forPage($isApi ? $page : 1, 9)->get();
+        $data = $partnerships->map(function ($partnership) use ($lang) {
+            return Kerjasama::normalizePageItem($partnership, $lang);
+        });
 
-            if(!request()->ajax()) {
-                return response()->json([
-                    'status' => 'success',
-                    'data' => $partnerships
-                ]);
-            }
-
-            foreach( $kerjasama as $a ) {
-                $partnerships[$i]['judul'] = Session::get('lg') == 'en' ? $a->judul_english : $a->judul_indo;
-                $partnerships[$i]['thumbnail'] = $a->thumbnail;
-                $j = 0;
-                foreach( $a->kategori_show as $ks ) {
-                    $partnerships[$i]['kategori_show'][$j] = $ks->isi;
-                    $j++;
-                }
-                $partnerships[$i]['konten'] = Session::get('lg') == 'en' ? \Str::limit($a->konten_english, 50, $end='...') : \Str::limit($a->konten_indo, 50, $end='...');
-                $partnerships[$i]['slug'] = $a->slug;
-                $partnerships[$i]['penulis'] = $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin';
-                $partnerships[$i]['published_at'] = \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y');
-                $i++;
-            }
-            return response()->json([
-                'status' => 'success',
-                'data' => $partnerships
-            ]);
-        } else {
-            return view('content.kerjasama', compact('kerjasama'));
+        if(!$isApi) {
+            return view('content.kerjasama', compact('data'));
         }
 
+        return response()->json([
+            "data" => $data
+        ]);
     }
     public function show($slug)
     {
-        $lg = Session::get('lg');
+        $lang = App::getLocale();
 
-        $kerjasama = Kerjasama::where('slug', $slug)->orWhere('slug_english', $slug)->firstOrFail();
-
-        // check draft
-        if( $kerjasama->status == 'draft' && !isset(auth()->user()->id) ) {
-            abort(404);
+        $partnership = Kerjasama::getDetailQuery($slug, $lang)->firstOrFail();
+        if ($partnership->status == "draft") {
+            if (!isset(auth()->user()->id)) {
+                abort(404);
+            }
         }
 
-        if( $lg == 'en' )
-            return view('content_english.kerjasama_detail', compact('kerjasama'));
+        Common::handleSlugRedirection($lang, $slug, $partnership);
 
-        return view('content.kerjasama_detail', compact('kerjasama'));
+        $categories = $partnership->kategori_show->map(function ($category) {
+            return $category->isi;
+        });
+        $content = [
+            "title" => $partnership->{'judul_'.$lang},
+            "thumbnail" => $partnership->thumbnail,
+            "categories" => $categories,
+            "slug" => $partnership->{'slug_'.$lang},
+            "author" => $partnership->penulis != 'admin' ? $partnership->kontributor_relasi->nama : "admin",
+            "published_at" => Carbon::parse($partnership->published_at)->isoFormat("D MMMM Y"),
+            "content" => $partnership->{'konten_'.$lang},
+            "author_type" => $partnership->penulis,
+            "content_type" => "event",
+        ];
+
+        $parameters = Common::createSlugParameters($partnership);
+
+        return view('content.kerjasama_detail', compact('content', 'parameters'));
     }
 }
