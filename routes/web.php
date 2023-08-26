@@ -226,6 +226,10 @@ use function Psy\debug;
         if (! app()->environment('production')) throw new Exception('Test Sentry error!');
     });
 
+    Route::permanentRedirect("/tentang-jejak", "/jejak");
+    Route::permanentRedirect("/tentang-jalur", "/jalur");
+    Route::permanentRedirect("/tentang-masa-depan", "/masa-depan");
+
     Route::permanentRedirect("/semua-artikel", "/artikel");
     Route::permanentRedirect("/semua-foto", "/foto");
     Route::permanentRedirect("/semua-video", "/video");
@@ -233,6 +237,12 @@ use function Psy\debug;
     Route::permanentRedirect("/semua-publikasi", "/publikasi");
     Route::permanentRedirect("/semua-kegiatan", "/kegiatan");
     Route::permanentRedirect("/semua-kerjasama", "/kerjasama");
+
+    Route::permanentRedirect("/content", "/en/contents");
+
+    Route::permanentRedirect("/about-path", "/en/the-route");
+    Route::permanentRedirect("/about-track", "/en/the-trail");
+    Route::permanentRedirect("/about-the-future", "/en/the-future");
 
     Route::permanentRedirect("/all-article", "/en/articles");
     Route::permanentRedirect("/all-photo", "/en/photos");
@@ -261,4 +271,7 @@ use function Psy\debug;
     });
     Route::get("/kerjasama/english/{slug}", function () {
         return redirect()->route("partnership_detail.en", Route::current()->parameters(), 301);
+    });
+    Route::get("/funfact/english/{rempahName}", function () {
+        return redirect()->route("rempah_detail.en", Route::current()->parameters(), 301);
     });
