@@ -66,6 +66,8 @@ class AudioController extends Controller
             "content" => $audio->{'konten_' . $lang},
             "cloud_key" => $audio->cloud_key,
             "slug" => $audio->{'slug_' . $lang},
+            "meta" => $audio->{'meta_' . $lang},
+            "keywords" => $audio->{'keywords_' . $lang},
             "published_at" => Carbon::parse($audio->published_at)->isoFormat("D MMMM Y"),
             "author" => $audio->penulis != 'admin' ? $audio->kontributor_relasi->nama : "admin",
             "author_type" => $audio->penulis,

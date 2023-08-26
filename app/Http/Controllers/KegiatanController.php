@@ -68,6 +68,8 @@ class KegiatanController extends Controller
             "thumbnail" => $event->thumbnail,
             "categories" => $categories,
             "slug" => $event->{'slug_'.$lang},
+            "meta" => $event->{'meta_'.$lang},
+            "keywords" => $event->{'keywords_'.$lang},
             "author" => $event->penulis != 'admin' ? $event->kontributor_relasi->nama : "admin",
             "published_at" => Carbon::parse($event->published_at)->isoFormat("D MMMM Y"),
             "content" => $event->{'konten_'.$lang},

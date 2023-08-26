@@ -1,17 +1,16 @@
 @php
     $lang = App::getLocale();
     $altnav = true;
+
+    $metadata = [
+        "meta:title" => __("common.the_trail")." | ".__("common.title"),
+        "title" => __("common.the_trail"),
+        "description" => __("meta.tentang_jejak.description"),
+        "keywords" => __("meta.tentang_jejak.keywords"),
+    ];
 @endphp
 
 @extends('layout.app')
-
-@section('meta_info')
-    tentang_jejak
-@endsection
-
-@section('title')
-    {{ __('common.the_trail') }}
-@endsection
 
 @section('content')
     @include("content.common.location")

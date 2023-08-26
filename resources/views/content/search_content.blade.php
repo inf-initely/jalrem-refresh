@@ -1,8 +1,14 @@
-@extends('layout.app')
-
 @php
     $lang = App::getLocale();
+
+    $metadata = [
+        "meta:title" => false,
+        "title" => __("Search"),
+        // TODO: fix title
+    ];
 @endphp
+
+@extends('layout.app')
 
 @section('content')
     <header id="hero">

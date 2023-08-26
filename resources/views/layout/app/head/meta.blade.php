@@ -1,14 +1,33 @@
+@php
+    function notEmpty($c) {
+        return $c !== null && $c !== "" && is_string($c);
+    }
+@endphp
+
 @include('layout.app.head.gtag')
 <!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="language" content="{{ $lang }}">
 
-<meta name="description" content="{{ __('meta.' . $info . '.description') }}">
-<meta name="keywords" content="{{ __('meta.' . $info . '.keywords') }}">
+@if (isset($metadata))
+    @if (isset($metadata["description"]) && notEmpty($metadata["description"]))
+        <meta name="description" content="{{$metadata["description"]}}">
+    @endif
 
-@hasSection("title")
-    <meta name="title" content="{{trim(View::getSection('title'))}} | {{__("common.title")}}">
+    @if (isset($metadata["keywords"]) && notEmpty($metadata["keywords"]))
+        <meta name="keywords" content="{{$metadata["keywords"]}}">
+    @endif
+
+    @if (isset($metadata["meta:title"]) && $metadata["meta:title"] === false)
+
+    @elseif (isset($metadata["meta:title"]) && notEmpty($metadata["meta:title"]))
+        <meta name="title" content="{{$metadata["meta:title"]}}">
+    @elseif (isset($metadata["title"]) && notEmpty($metadata["title"]))
+        <meta name="title" content="{{$metadata["title"]}}">
+    @else
+        <meta name="title" content="{{__("common.title")}}">
+    @endif
 @endif
 
 @yield('meta')
@@ -16,7 +35,7 @@
 <meta name="robots" content="index, follow">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="revisit-after" content="2 days">
-<meta name="author" content="Kemdikbudristek RI">
+<meta name="author" content="{{__("Ministry of Education, Culture, Research, and Technology of the Republic of Indonesia")}}">
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">

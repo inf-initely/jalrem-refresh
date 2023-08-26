@@ -66,6 +66,8 @@ class VideoController extends Controller
             "content" => $video->{'konten_' . $lang},
             "youtube_key" => $video->youtube_key,
             "slug" => $video->{'slug_' . $lang},
+            "meta" => $video->{'meta_' . $lang},
+            "keywords" => $video->{'keywords_' . $lang},
             "published_at" => Carbon::parse($video->published_at)->isoFormat("D MMMM Y"),
             "author" => $video->penulis != 'admin' ? $video->kontributor_relasi->nama : "admin",
             "author_type" => $video->penulis,

@@ -13,7 +13,7 @@ return [
 
     "tentang_jalur" => [
         "description" => "The spice trade routes cover various cultural routes from one point to another that gave rise to global civilization",
-        "keywords" => "ancient traces,ancient traces",
+        "keywords" => "nusantara spice route,indonesia spice route",
     ],
 
     "tentang_jejak" => [

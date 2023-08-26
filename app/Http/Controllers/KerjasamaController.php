@@ -58,6 +58,8 @@ class KerjasamaController extends Controller
             "thumbnail" => $partnership->thumbnail,
             "categories" => $categories,
             "slug" => $partnership->{'slug_'.$lang},
+            "keywords" => $partnership->{'keywords_'.$lang},
+            "meta" => $partnership->{'meta_'.$lang},
             "author" => $partnership->penulis != 'admin' ? $partnership->kontributor_relasi->nama : "admin",
             "published_at" => Carbon::parse($partnership->published_at)->isoFormat("D MMMM Y"),
             "content" => $partnership->{'konten_'.$lang},

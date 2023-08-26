@@ -77,6 +77,8 @@ class FotoController extends Controller
             }, $urls, $captions),
 
             "slug" => $thephoto->{'slug_' . $lang},
+            "meta" => $thephoto->{'meta_' . $lang},
+            "keywords" => $thephoto->{'keywords_' . $lang},
             "published_at" => Carbon::parse($thephoto->published_at)->isoFormat("D MMMM Y"),
             "author" => $thephoto->penulis != 'admin' ? $thephoto->kontributor_relasi->nama : "admin",
             "author_type" => $thephoto->penulis,

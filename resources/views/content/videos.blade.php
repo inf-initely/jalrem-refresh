@@ -1,12 +1,14 @@
-@extends('layout.app')
-
 @php
     $lang = App::getLocale();
+
+    $metadata = [
+        "meta:title" => __("All Videos")." | ".__("common.title"),
+        "title" => __("All Videos"),
+        // TODO: add videos metadata
+    ];
 @endphp
 
-@section('title')
-    {{__("All Videos")}}
-@endsection
+@extends('layout.app')
 
 @section('content')
     <header id="hero">

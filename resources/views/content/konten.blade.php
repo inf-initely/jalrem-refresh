@@ -1,17 +1,16 @@
 @php
     $lang = App::getLocale();
     $altnav = true;
+
+    $metadata = [
+        "meta:title" => __("Contents")." | ".__("common.title"),
+        "title" => __("Contents"),
+        "description" => __("meta.konten.description"),
+        "keywords" => __("meta.konten.keywords"),
+    ];
 @endphp
 
 @extends('layout.app')
-
-@section('meta_info')
-    konten
-@endsection
-
-@section("title")
-    {{__("Contents")}}
-@endsection
 
 @section('head')
     <style type="text/css">

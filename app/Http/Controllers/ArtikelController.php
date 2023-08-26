@@ -96,6 +96,8 @@ class ArtikelController extends Controller
             "thumbnail" => $article->thumbnail,
             "categories" => $categories,
             "slug" => $article->{'slug_'.$lang},
+            "meta" => $article->{'meta_'.$lang},
+            "keywords" => $article->{'keywords_'.$lang},
             "author" => $article->penulis != 'admin' ? $article->kontributor_relasi->nama : "admin",
             "published_at" => Carbon::parse($article->published_at)->isoFormat("D MMMM Y"),
             "content" => $article->{'konten_'.$lang},

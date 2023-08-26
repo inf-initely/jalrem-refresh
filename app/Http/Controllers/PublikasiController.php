@@ -106,6 +106,8 @@ class PublikasiController extends Controller
             "iframe" => $publication->iframe,
             "categories" => $categories,
             "slug" => $publication->{'slug_'.$lang},
+            "meta" => $publication->{'meta_'.$lang},
+            "keywords" => $publication->{'keywords_'.$lang},
             "author" => $publication->penulis != 'admin' ? $publication->kontributor_relasi->nama : "admin",
             "published_at" => Carbon::parse($publication->published_at)->isoFormat("D MMMM Y"),
             "content" => $publication->{'konten_'.$lang},
@@ -113,6 +115,8 @@ class PublikasiController extends Controller
             "content_type" => "publication",
         ];
 
-        return view('content.publication_detail', compact('content', 'latest', 'random', 'popular', 'related', 'alsoread'));
+        $parameters = Common::createSlugParameters($publication);
+
+        return view('content.publication_detail', compact('content', 'latest', 'random', 'popular', 'related', 'alsoread', 'parameters'));
     }
 }

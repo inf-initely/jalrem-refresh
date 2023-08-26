@@ -1,12 +1,14 @@
-@extends('layout.app')
-
 @php
     $lang = App::getLocale();
+
+    $metadata = [
+        "meta:title" => __("All Articles")." | ".__("common.title"),
+        "title" => __("All Articles"),
+        // TODO: add articles metadata
+    ];
 @endphp
 
-@section('title')
-    {{__("All Articles")}}
-@endsection
+@extends('layout.app')
 
 @section('content')
     <header id="hero">
