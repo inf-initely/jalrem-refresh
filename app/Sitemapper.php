@@ -9,6 +9,7 @@ use App\Models\Foto;
 use App\Models\Publikasi;
 use App\Models\Video;
 use App\Models\Kerjasama;
+use App\Models\Rempah;
 use Assert\Assert;
 use DateTime;
 use Refinery29\Sitemap\Component\Image\Image;
@@ -136,16 +137,34 @@ class Sitemapper
         return new UrlSet($urls);
     }
 
-    public static function generateBaseSitemap() {
+    public static function spiceUrls()
+    {
+        $urls = [];
+
+        $spices = Rempah::select("jenis_rempah as name_id", "jenis_rempah_english as name_en")->get();
+        foreach ($spices as $spice) {
+            foreach (["id", "en"] as $lang) {
+                $url = new Url(route("rempah_detail." . $lang, $spice->{"name_" . $lang}));
+                $urls[] = $url->withPriority(0.6);
+            }
+        }
+
+        return new UrlSet($urls);
+    }
+
+    public static function generateBaseSitemap()
+    {
         $baseUrls = Sitemapper::baseUrls();
         Sitemapper::writeSitemap($baseUrls, "./public/sitemap/base.xml");
     }
 
-    public static function generateMainSitemapIndex() {
+    public static function generateMainSitemapIndex()
+    {
         $sitemaps = [];
 
-        foreach([
+        foreach ([
             ["", "base", ""],
+            ["", "spices", ""],
             ...Sitemapper::contents(),
         ] as $map) {
             $lastUpdated = filemtime("./public/sitemap/{$map[1]}.xml");
@@ -158,11 +177,18 @@ class Sitemapper
         Sitemapper::writeSitemapIndex(new SitemapIndex($sitemaps), "./public/sitemap.xml");
     }
 
-    public static function generateContentsSitemap() {
-        foreach(Sitemapper::contents() as $map) {
+    public static function generateContentsSitemap()
+    {
+        foreach (Sitemapper::contents() as $map) {
             $urls = Sitemapper::contentUrls($map[0], $map[2]);
             Sitemapper::writeSitemap($urls, "./public/sitemap/{$map[1]}.xml");
         }
+    }
+
+    public static function generateSpicesSitemap()
+    {
+        $spiceUrls = Sitemapper::spiceUrls();
+        Sitemapper::writeSitemap($spiceUrls, "./public/sitemap/spices.xml");
     }
 
     public static function writeSitemap(UrlSetInterface $urlSet, string $uri)
