@@ -1,8 +1,20 @@
-@extends('layout.app')
-
 @php
     $lang = App::getLocale();
+
+    $keywords = [
+        "id" => "rempah,rempah-rempah",
+        "en" => "spice,spices",
+    ];
+
+    $metadata = [
+        "meta:title" => $spice["name"]." | ".__("common.title"),
+        "title" => $spice["name"],
+        "description" => $spice["desc"],
+        "keywords" => "{$spice["name"]},{$keywords[$lang]}",
+    ];
 @endphp
+
+@extends('layout.app')
 
 @section('content')
     <header id="hero">

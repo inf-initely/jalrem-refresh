@@ -9,14 +9,21 @@
         "id" => Route::current()->parameters(),
         "en" => Route::current()->parameters()
     ];
-    $langRoute = function ($old, $new = "id") use ($overrideParameters) {
+    $isStub = function ($lang) use ($overrideParameters) {
         if(isset($overrideParameters["stub"])) {
-            if(isset($overrideParameters["stub"][$new])) {
-                return route("home.".$new);
+            if(isset($overrideParameters["stub"][$lang])) {
+                return true;
             }
         }
+        return false;
+    };
+
+    $langRoute = function ($old, $new = "id") use ($overrideParameters, $isStub) {
+        if($isStub($new)) {
+            return route("home.".$new);
+        }
         return route(str_replace(".".$old, ".".$new, Route::currentRouteName()), $overrideParameters[$new]);
-    }
+    };
 @endphp
 
 <!doctype html>
@@ -26,10 +33,17 @@
     @include('layout.app.head.meta')
     @include('layout.app.head.style')
     @yield("head")
-    @hasSection("title")
-        <title>@yield('title') | {{__("common.title")}}</title>
+    @if(isset($metadata) && isset($metadata["title"]))
+        <title>{{$metadata["title"]}} | {{__("common.title")}}</title>
+    @else
+        <title>{{__("common.title")}}</title>
     @endif
     <link rel="shortcut icon" href="{{ asset('assets/img/logo/favicon.png') }}">
+    @foreach (["id", "en"] as $l)
+        @if (!$isStub($l))
+            <link rel="alternate" hreflang="{{$l}}" href="{{$langRoute($lang, $l)}}" />
+        @endif
+    @endforeach
 </head>
 
 <body>
