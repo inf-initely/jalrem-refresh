@@ -1,5 +1,17 @@
 @extends('layout.app')
 
+@php
+    $lang = App::getLocale();
+@endphp
+
+@section('meta_info')
+    home
+@endsection
+
+@section("title")
+    {{__("Home")}}
+@endsection
+
 @section('content')
     <header id="hero">
         <section class="hero-slider hero-style">
@@ -14,22 +26,21 @@
                                     <div class="container">
                                         <div data-swiper-parallax="300" class="slide-title">
                                             <h2 class="title"><a style="text-decoration: none; color: #fff;"
-                                                    href="{{ route(generate_route_content($s->getTable()) . '_detail', $s->slug) }}">{{ $s->judul_indo }}</a>
+                                                    href="{{ route(generate_route_content($s->getTable()) . '_detail.'.$lang, $s->{'slug_' . $lang} ?? $s->slug) }}">{{ $s->{'judul_' . $lang} }}</a>
                                             </h2>
                                         </div>
                                         <div data-swiper-parallax="400" class="slide-text">
-                                            <p class="caption">{!! Str::limit($s->meta_indo, 160, $end = '...') !!}</p>
+                                            <p class="caption">{!! Str::limit($s->{'meta_' . $lang}, 160, $end = '...') !!}</p>
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
                                 </div>
-                                <!-- end slide-inner -->
                             </div>
-                            <!-- end swiper-slide -->
                         @endforeach
                     @else
                         <div class="swiper-slide">
-                            <div class="slide-inner slide-bg-image" data-background="assets/img/hero/hero-1.jpg">
+                            <div class="slide-inner slide-bg-image"
+                                data-background="{{ asset('assets/img/hero/hero-1.jpg') }}">
                                 <div class="layer-masking"></div>
                                 <div class="container">
                                     <div data-swiper-parallax="300" class="slide-title">
@@ -44,87 +55,67 @@
                                     <div class="clearfix"></div>
                                 </div>
                             </div>
-                            <!-- end slide-inner -->
                         </div>
-                        <!-- end swiper-slide -->
                     @endif
                 </div>
-                <!-- end swiper-wrapper -->
-                <!-- swipper controls -->
-                <!-- <div class="swiper-pagination"></div> -->
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
             </div>
         </section>
-        <!-- end of hero slider -->
     </header>
     <main>
         <div id="content">
             <section id="jelajah">
                 <div class="container">
-                    <img class="item-jelajah item-jelajah-1" src="assets/img/item-daun-1.svg" loading="lazy">
-                    <img class="item-jelajah item-jelajah-2" src="assets/img/item-daun-2.svg" loading="lazy">
+                    <img class="item-jelajah item-jelajah-1" src="{{ asset('assets/img/item-daun-1.svg') }}" loading="lazy">
+                    <img class="item-jelajah item-jelajah-2" src="{{ asset('assets/img/item-daun-2.svg') }}" loading="lazy">
                     <div class="row justify-content-center content-jelajahi" data-aos="fade-right">
                         <div class="col-12 col-md-6 col-lg-4 mb-2">
                             <img class="jelajah-img"
-                                srcset="assets/img/jalur-576px.webp 576w, assets/img/jalur-768px.webp 768w, assets/img/jalur-992px.webp 992w, assets/img/jalur-1200px.webp 1200w, assets/img/jalur.webp"
+                                srcset="{{ asset('assets/img/jalur-576px.webp') }} 576w, {{ asset('assets/img/jalur-768px.webp') }} 768w, {{ asset('assets/img/jalur-992px.webp') }} 992w, {{ asset('assets/img/jalur-1200px.webp') }} 1200w, {{ asset('assets/img/jalur.webp') }}"
                                 sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
-                                src="assets/img/jalur.webp" alt="" loading="lazy" />
+                                src="{{ asset('assets/img/jalur.webp') }}" alt="" loading="lazy" />
                         </div>
                         <div class="col-12 col-md-6 col-lg-6 center-v">
                             <header>
-                                <h2 class="sub-judul sub-judul-jelajahi">Jalur</h2>
+                                <h2 class="sub-judul sub-judul-jelajahi">{{ __('common.the_route') }}</h2>
                             </header>
-                            <p class="jelajah-des">Jalur Rempah mencakup berbagai lintasan jalur budaya yang melahirkan
-                                peradaban global & menghidupkan kembali peran masyarakat Nusantara berabad-abad lampau.</p>
-                            <a href="{{ route('tentangjalur') }}" class="btn btn-danger btn-jelajah">
-                                Jelajahi
-                            </a>
-                            {{-- <a href="#" class="btn btn-danger btn-jelajah">
-                Jelajahi
-              </a> --}}
+                            <p class="jelajah-des">{{ __('page_home.desc.route') }}</p>
+                            <a href="{{ route('the-route.'.$lang) }}"
+                                class="btn btn-danger btn-jelajah">{{ __('Explore More') }}</a>
                         </div>
                     </div>
                     <div class="row justify-content-center content-jelajahi wrap-div text-end" data-aos="fade-left">
                         <div class="col-12 col-md-6 col-lg-6 center-v mb-2 second-div sec-jejak">
                             <header>
-                                <h2 class="sub-judul sub-judul-jelajahi">Jejak</h2>
+                                <h2 class="sub-judul sub-judul-jelajahi">{{ __('common.the_trail') }}</h2>
                             </header>
-                            <p class="jelajah-des">Jejak memperlihatkan interaksi budaya pada masa lampau yang masih hidup
-                                hingga hari ini. Sebuah peninggalan nilai budaya yang menjadi memori kolektif bangsa.</p>
-                            <a href="{{ route('tentangjejak') }}" class="btn btn-danger btn-jelajah">
-                                Jelajahi
-                            </a>
-                            {{-- <a href="#" class="btn btn-danger btn-jelajah">
-                Jelajahi
-              </a> --}}
+                            <p class="jelajah-des">{{ __('page_home.desc.trail') }}</p>
+                            <a href="{{ route('the-trail.'.$lang) }}"
+                                class="btn btn-danger btn-jelajah">{{ __('Explore More') }}</a>
+
                         </div>
                         <div class="col-12 col-md-6 col-lg-4 first-div mb-2">
                             <img class="jelajah-img"
-                                srcset="assets/img/jejak-576px.webp 576w, assets/img/jejak-768px.webp 768w, assets/img/jejak-992px.webp 992w, assets/img/jejak-1200px.webp 1200w, assets/img/jejak.webp"
+                                srcset="{{ asset('assets/img/jejak-576px.webp') }} 576w, {{ asset('assets/img/jejak-768px.webp') }} 768w, {{ asset('assets/img/jejak-992px.webp') }} 992w, {{ asset('assets/img/jejak-1200px.webp') }} 1200w, {{ asset('assets/img/jejak.webp') }}"
                                 sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
-                                src="assets/img/jejak.webp" alt="" loading="lazy" />
+                                src="{{ asset('assets/img/jejak.webp') }}" alt="" loading="lazy" />
                         </div>
                     </div>
                     <div class="row justify-content-center content-jelajahi" data-aos="fade-right">
                         <div class="col-12 col-md-6 col-lg-4 mb-2">
                             <img class="jelajah-img"
-                                srcset="assets/img/masa-depan-576px.webp 576w, assets/img/masa-depan-768px.webp 768w, assets/img/masa-depan-992px.webp 992w, assets/img/masa-depan-1200px.webp 1200w, assets/img/masa-depan.webp"
+                                srcset="{{ asset('assets/img/masa-depan-576px.webp') }} 576w, {{ asset('assets/img/masa-depan-768px.webp') }} 768w, {{ asset('assets/img/masa-depan-992px.webp') }} 992w, {{ asset('assets/img/masa-depan-1200px.webp') }} 1200w, {{ asset('assets/img/masa-depan.webp') }}"
                                 sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
-                                src="assets/img/masa-depan.webp" alt="" loading="lazy" />
+                                src="{{ asset('assets/img/masa-depan.webp') }}" alt="" loading="lazy" />
                         </div>
                         <div class="col-12 col-md-6 col-lg-6 center-v">
                             <header>
-                                <h2 class="sub-judul sub-judul-jelajahi">Masa Depan</h2>
+                                <h2 class="sub-judul sub-judul-jelajahi">{{ __('common.the_future') }}</h2>
                             </header>
-                            <p class="jelajah-des">Sebuah upaya rekontruksi dan revitalisasi jalur budaya bahari. Penggalian
-                                kembali potensi untuk kekayaan dan kesejahteraan bersama yang lestari.</p>
-                            <a href="{{ route('tentangmasadepan') }}" class="btn btn-danger btn-jelajah">
-                                Jelajahi
-                            </a>
-                            {{-- <a href="#" class="btn btn-danger btn-jelajah">
-                Jelajahi
-              </a> --}}
+                            <p class="jelajah-des">{{ __('page_home.desc.future') }}</p>
+                            <a href="{{ route('the-future.'.$lang) }}"
+                                class="btn btn-danger btn-jelajah">{{ __('Explore More') }}</a>
                         </div>
                     </div>
                 </div>
@@ -132,9 +123,9 @@
             <section id="magnetDunia">
                 <div class="container">
                     <img class="item-jelajah item-jelajah-3"
-                        srcset="assets/img/asset-jelajah-576px.webp 576w, assets/img/asset-jelajah-768px.webp 768w, assets/img/asset-jelajah-992px.webp 992w, assets/img/asset-jelajah-1200px.webp 1200w, assets/img/asset-jelajah.webp"
+                        srcset="{{ asset('assets/img/asset-jelajah-576px.webp') }} 576w, {{ asset('assets/img/asset-jelajah-768px.webp') }} 768w, {{ asset('assets/img/asset-jelajah-992px.webp') }} 992w, {{ asset('assets/img/asset-jelajah-1200px.webp') }} 1200w, {{ asset('assets/img/asset-jelajah.webp') }}lajah.webp') }}"
                         sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
-                        src="assets/img/asset-jelajah.webp" alt="" loading="lazy" />
+                        src="{{ asset('assets/img/asset-jelajah.webp') }}" alt="" loading="lazy" />
                     <div class="row justify-content-center content-jelajahi" data-aos="fade-left">
                         <div class="col-lg-10 mb-4">
                             <div class="ytdefer video video-magnet-dunia" data-alt="Enter optional img alt text here"
@@ -143,14 +134,9 @@
                         </div>
                         <div class=" col-lg-10 center-v">
                             <header>
-                                <h2 class="sub-judul text-center mb-3">Jalur Rempah Magnet Dunia</h2>
+                                <h2 class="sub-judul text-center mb-3">{{ __('page_home.heading.world_magnet') }}</h2>
                             </header>
-                            <p class="jelajah-des text-center">Asimilasi budaya dan keterhubungan antarbangsa di Indonesia
-                                tidak terjadi begitu saja. Di masa lampau, kehadiran para pedagang antarbangsa memiliki
-                                peranan penting terhadap perkembangan budaya yang masih bisa kita lihat dan rasakan
-                                jejaknya. Hal ini disebabkan oleh komoditi rempah yang berasal dari berbagai kepulauan di
-                                Nusantara yang terlibat dalam lalu lintas perdagangan di masa lampau, sehingga menjadi salah
-                                satu jalur budaya.</p>
+                            <p class="jelajah-des text-center">{{ __('page_home.desc.world_magnet') }}</p>
                         </div>
                     </div>
                 </div>
@@ -159,10 +145,11 @@
                 <div class="container">
                     <header class="row justify-content-center mb-2">
                         <div class="col-md-6">
-                            <h2 class="sub-judul">Kegiatan</h2>
+                            <h2 class="sub-judul">{{ __('Events') }}</h2>
                         </div>
                         <div class="col-md-6 center-v text-end d-desktop">
-                            <a href="{{ route('informasi') }}" class="btn btn-outline-danger">Lihat Semua Kegiatan</a>
+                            <a href="{{ route('information.'.$lang) }}"
+                                class="btn btn-outline-danger">{{ __('page_home.button.activity') }}</a>
                         </div>
                     </header>
                     <section class="row justify-content-center" data-aos="flip-up">
@@ -181,16 +168,18 @@
                                                     {{ \Carbon\Carbon::parse($k->published_at)->isoFormat('D MMMM Y') }}
                                                 </p>
                                                 <h3 class="judul-kegiatan" id="jdlKegiatan" name="jdlKegiatan">
-                                                    {{ $k->judul_indo }}</h3>
+                                                    {{ $k->{'judul_' . $lang} }}</h3>
                                             </div>
                                         </div>
-                                        <a href="{{ route('event_detail', $k->slug) }}" class="stretched-link"></a>
+                                        <a href="{{ route('event_detail.'.$lang, $k->{'slug_' . $lang} ?? $k->slug) }}"
+                                            class="stretched-link"></a>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
                         <div class="col-md-12 text-center d-mobile">
-                            <a href="{{ route('informasi') }}" class="btn btn-outline-danger">Lihat Semua Kegiatan</a>
+                            <a href="{{ route('information.'.$lang) }}"
+                                class="btn btn-outline-danger">{{ __('page_home.button.activity') }}</a>
                         </div>
                     </section>
                 </div>
@@ -199,10 +188,11 @@
                 <section class="container" id="artikel">
                     <header class="row justify-content-center mb-2">
                         <div class="col-lg-6">
-                            <h2 class="sub-judul">Artikel dan Berita</h2>
+                            <h2 class="sub-judul">{{ __('News and Articles') }}</h2>
                         </div>
                         <div class="col-md-6 center-v text-end  d-desktop">
-                            <a href="{{ route('articles') }}" class="btn btn-outline-danger">Lihat Semua Artikel</a>
+                            <a href="{{ route('articles.'.$lang) }}"
+                                class="btn btn-outline-danger">{{ __('page_home.button.article') }}</a>
                         </div>
                     </header>
                     <section class="row justify-content-center" data-aos="fade-up">
@@ -212,7 +202,7 @@
                                     <img src="{{ asset('storage/assets/artikel/thumbnail/' . $a->thumbnail) }}"
                                         class="card-img-top img-thumbnail" alt="..." loading="lazy">
                                     <div class="card-body">
-                                        <h3 class="card-title judul-artikel">{{ $a->judul_indo }}</h3>
+                                        <h3 class="card-title judul-artikel">{{ $a->{'judul_' . $lang} }}</h3>
                                         {{-- <p class="card-text des-artikel minimize">{!! Str::limit($a->konten_indo, 50, $end='...') !!}</p> --}}
                                         <p class="penulis-artikel">
                                             {{ $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin' }}
@@ -221,12 +211,14 @@
                                             {{ \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y') }}
                                         </p>
                                     </div>
-                                    <a href="{{ route('article_detail', $a->slug) }}" class="stretched-link"></a>
+                                    <a href="{{ route('article_detail.'.$lang, $a->{'slug_' . $lang} ?? $a->slug) }}"
+                                        class="stretched-link"></a>
                                 </div>
                             </div>
                         @endforeach
                         <div class="col-md-12 text-center  d-mobile">
-                            <button type="button" class="btn btn-outline-danger">Lihat Semua Berita</button>
+                            <button type="button"
+                                class="btn btn-outline-danger">{{ __('page_home.button.article') }}</button>
                         </div>
                     </section>
                 </section>
@@ -234,12 +226,10 @@
                     <div class="row">
                         <section class="col-md-6 center-v">
                             <header>
-                                <h2 class="sub-judul">Konten</h2>
-                                <p class="des-sub-judul">Simak berbagai konten menarik mengenai Jalur Rempah dalam artikel,
-                                    foto, video, dan audio.</p>
-                                <a href="{{ route('konten') }}" class="btn btn-outline-danger">
-                                    Lihat Semua Konten
-                                </a>
+                                <h2 class="sub-judul">{{ __('Contents') }}</h2>
+                                <p class="des-sub-judul">{{ __('page_home.desc.contents') }}</p>
+                                <a href="{{ route('contents.'.$lang) }}"
+                                    class="btn btn-outline-danger">{{ __('page_home.button.content') }}</a>
                             </header>
                         </section>
                         <section class="offset-md-1 col-md-5">
@@ -247,19 +237,19 @@
                                 <div class="col-6 col-md-6">
                                     <div class="card no-border card-media card-media-1">
                                         <div class="card-body text-center">
-                                            <img src="assets/img/icon-image.webp" width="40%">
-                                            <p class="judul-media">Foto</p>
+                                            <img src="{{ asset('assets/img/icon-image.webp') }}" width="40%">
+                                            <p class="judul-media">{{ __('Photo') }}</p>
                                         </div>
-                                        <a href="{{ route('photos') }}" class="stretched-link"></a>
+                                        <a href="{{ route('photos.'.$lang) }}" class="stretched-link"></a>
                                     </div>
                                 </div>
                                 <div class="col-6 col-md-6">
                                     <div class="card no-border card-media card-media-2">
                                         <div class="card-body text-center">
-                                            <img src="assets/img/icon-publication.webp" width="40%">
-                                            <p class="judul-media">Publikasi</p>
+                                            <img src="{{ asset('assets/img/icon-publication.webp') }}" width="40%">
+                                            <p class="judul-media">{{ __('Publication') }}</p>
                                         </div>
-                                        <a href="{{ route('publications') }}" class="stretched-link"></a>
+                                        <a href="{{ route('publications.'.$lang) }}" class="stretched-link"></a>
                                     </div>
                                 </div>
                             </div>
@@ -267,19 +257,19 @@
                                 <div class="col-6 col-md-6">
                                     <div class="card no-border card-media card-media-3">
                                         <div class="card-body text-center">
-                                            <img src="assets/img/icon-video.webp" width="40%">
-                                            <p class="judul-media">Video</p>
+                                            <img src="{{ asset('assets/img/icon-video.webp') }}" width="40%">
+                                            <p class="judul-media">{{ __('Video') }}</p>
                                         </div>
-                                        <a href="{{ route('videos') }}" class="stretched-link"></a>
+                                        <a href="{{ route('videos.'.$lang) }}" class="stretched-link"></a>
                                     </div>
                                 </div>
                                 <div class="col-6 col-md-6">
                                     <div class="card no-border card-media card-media-4">
                                         <div class="card-body text-center">
-                                            <img src="assets/img/icon-sound.webp" width="40%">
-                                            <p class="judul-media">Audio</p>
+                                            <img src="{{ asset('assets/img/icon-sound.webp') }}" width="40%">
+                                            <p class="judul-media">{{ __('Audio') }}</p>
                                         </div>
-                                        <a href="{{ route('audios') }}" class="stretched-link"></a>
+                                        <a href="{{ route('audios.'.$lang) }}" class="stretched-link"></a>
                                     </div>
                                 </div>
                             </div>
@@ -289,26 +279,21 @@
             </section>
             <section id="kontributor" class="no-padding ">
                 <div class="wrap-img-kontributor">
-                    <img srcset="assets/img/hero/hero-6-576px.webp 576w, assets/img/hero/hero-6-768px.webp 768w, assets/img/hero/hero-6-992px.webp 992w, assets/img/hero/hero-6-1200px.webp 1200w, assets/img/hero/hero-6.webp"
+                    <img srcset="{{ asset('assets/img/hero/hero-6-576px.webp') }} 576w, {{ asset('assets/img/hero/hero-6-768px.webp') }} 768w, {{ asset('assets/img/hero/hero-6-992px.webp') }} 992w, {{ asset('assets/img/hero/hero-6-1200px.webp') }} 1200w, {{ asset('assets/img/hero/hero-6.webp') }}"
                         sizes="(max-width: 576px) 576px, (max-width: 768px) 768px, (max-width: 992px) 992px, (max-width: 1200px) 1200px, 100vw"
-                        src="assets/img/hero/hero-6.webp" alt="" loading="lazy" />
+                        src="{{ asset('assets/img/hero/hero-6.webp') }}" alt="" loading="lazy" />
                 </div>
                 <div class="wrap-text-kontributor">
                     <div class="row">
                         <div class="col-lg-5 clr-white">
                             <header>
-                                <h2 class="sub-judul">Mari Berkontribusi</h2>
+                                <h2 class="sub-judul">{{ __('page_home.heading.contribute') }}</h2>
                             </header>
-                            <p>Mari mendukung kegiatan Jalur Rempah dengan berkontribusi di website Jalur Rempah. Kami
-                                menerima konten dari kontributor berupa <b>artikel, esai, liputan, cerita foto,</b> hingga
-                                <b>video</b>
-                                dari sudut pandang sejarah, budaya, gastronomi, arkeologi, sastra, kuliner, film, fesyen,
-                                seni, dan hal-hal lain terkait Jalur Rempah yang ada di sekitarmu.
-                            </p>
+                            <p>{!! __('page_home.desc.contribute') !!}</p>
                         </div>
                         <div class="offset-lg-1 col-lg-6 text-center center-v">
-                            <a href="{{ route('contributor') }}" class="btn btn-lg btn-secondary btn-primary-jarem">Jadi
-                                Kontributor</a>
+                            <a href="{{ route('contributor') }}"
+                                class="btn btn-lg btn-secondary btn-primary-jarem">{{ __('page_home.button.contribute') }}</a>
                         </div>
                     </div>
                 </div>

@@ -53,7 +53,7 @@
                                                             {{ $k->judul_indo }}</h3>
                                                     </div>
                                                 </div>
-                                                <a href="{{ route('event_detail', $k->slug) }}" class="stretched-link"></a>
+                                                <a href="{{ route('event_detail.'.$lang, $k->slug) }}" class="stretched-link"></a>
                                             </div>
                                         </div>
                                     </div>

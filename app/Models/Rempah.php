@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Query\Builder;
 
 class Rempah extends Model
 {
@@ -44,5 +45,23 @@ class Rempah extends Model
     public function kegiatan()
     {
         return $this->belongsToMany('App\Models\Kegiatan', 'kegiatan_rempah', 'id_rempah', 'id_kegiatan');
+    }
+
+    public static function getAllQuery() {
+        return Rempah::select(
+            "id",
+            "jenis_rempah as name_id",
+            "jenis_rempah_english as name_en"
+        );
+    }
+
+    public static function getDetailQuery(string $rempah) {
+        return Rempah::select(
+            "id",
+            "jenis_rempah as name_id", "jenis_rempah_english as name_en",
+            "keterangan as desc_id", "keterangan_english as desc_en"
+        )
+            ->where("jenis_rempah", $rempah)
+            ->orWhere("jenis_rempah_english", $rempah);
     }
 }

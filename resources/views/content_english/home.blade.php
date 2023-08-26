@@ -29,7 +29,8 @@
                         @endforeach
                     @else
                         <div class="swiper-slide">
-                            <div class="slide-inner slide-bg-image" data-background="{{ asset('assets/img/hero/hero-1.jpg') }}">
+                            <div class="slide-inner slide-bg-image"
+                                data-background="{{ asset('assets/img/hero/hero-1.jpg') }}">
                                 <div class="layer-masking"></div>
                                 <div class="container">
                                     <div data-swiper-parallax="300" class="slide-title">

@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Common;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\App;
 
 use App\Models\Foto;
 use Illuminate\Pagination\Paginator;
@@ -12,132 +15,76 @@ use Carbon\Carbon;
 
 class FotoController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        if( Session::get('lg') == 'en' ) {
-            return redirect()->route('photos.english');
-        }
-        $foto = Foto::where('status', 'publikasi')->where('published_at', '<=', Carbon::now())->orderBy('published_at', 'desc');
-
-        $foto = $foto->paginate(9);
-
-        if( Paginator::resolveCurrentPage() != 1 ) {
-            $fotos = [];
-            $i = 0;
-
-            if(!request()->ajax()) {
-                return response()->json([
-                    'status' => 'success',
-                    'data' => $fotos,
-                ]);
-            }
-
-            foreach( $foto as $a ) {
-                $fotos[$i]['judul'] = Session::get('lg') == 'en' ? $a->judul_english : $a->judul_indo;
-                $fotos[$i]['thumbnail'] = $a->thumbnail;
-                $j = 0;
-                foreach( $a->kategori_show as $ks ) {
-                    $fotos[$i]['kategori_show'][$j] = $ks->isi;
-                    $j++;
-                }
-                $fotos[$i]['konten'] = Session::get('lg') == 'en' ? \Str::limit($a->konten_english, 50, $end='...') : \Str::limit($a->konten_indo, 50, $end='...');
-                $fotos[$i]['slug'] = $a->slug;
-                $fotos[$i]['penulis'] = $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin';
-                $fotos[$i]['published_at'] = \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y');
-                $i++;
-            }
-            return response()->json([
-                'status' => 'success',
-                'data' => $fotos
-            ]);
-        } else {
-            return view('content.photos', compact('foto'));
+        $page = (int)$request->query("page");
+        if ($page < -1) {
+            return response("parameter page should be an unsigned int", Response::HTTP_BAD_REQUEST);
         }
 
+        $isApi = $page !== 0;
+
+        $lang = App::getLocale();
+        $photos = Foto::getPageQuery($lang)->forPage($isApi ? $page : 1, 9)->get();
+        $data = $photos->map(function ($photo) use ($lang) {
+            $categories = $photo->kategori_show->map(function ($photo) {
+                return $photo->isi;
+            });
+
+            return [
+                "title" => $photo->{'judul_' . $lang},
+                "thumbnail" => $photo->thumbnail,
+                "categories" => $categories,
+                "slug" => $photo->{'slug_' . $lang},
+                "author" => $photo->penulis != 'admin' ? $photo->kontributor_relasi->nama : "admin",
+                "published_at" => Carbon::parse($photo->published_at)->isoFormat("D MMMM Y")
+            ];
+        });
+
+        if (!$isApi) {
+            return view('content.photos', compact('data'));
+        }
+
+        return response()->json([
+            "data" => $data
+        ]);
     }
 
-    public function index_english()
+    public function show(Request $request, string $slug)
     {
-        if( Session::get('lg') != 'en' ) {
-            return redirect()->route('photos');
-        }
-        $foto = Foto::where('status', 'publikasi')->where('published_at', '<=', Carbon::now())->orderBy('published_at', 'desc');
-
-        $foto = $foto->where('judul_english', '!=', null)->paginate(9);
-
-        if( Paginator::resolveCurrentPage() != 1 ) {
-            $fotos = [];
-            $i = 0;
-
-            if(!request()->ajax()) {
-                return response()->json([
-                    'status' => 'success',
-                    'data' => $fotos,
-                ]);
+        $lang = App::getLocale();
+        $thephoto = Foto::getDetailQuery($slug, $lang)->firstOrFail();
+        if ($thephoto->status == "draft") {
+            if (!isset(auth()->user()->id)) {
+                abort(404);
             }
-
-            foreach( $foto as $a ) {
-                $fotos[$i]['judul'] = Session::get('lg') == 'en' ? $a->judul_english : $a->judul_indo;
-                $fotos[$i]['thumbnail'] = $a->thumbnail;
-                $j = 0;
-                foreach( $a->kategori_show as $ks ) {
-                    $fotos[$i]['kategori_show'][$j] = $ks->isi;
-                    $j++;
-                }
-                $fotos[$i]['konten'] = Session::get('lg') == 'en' ? \Str::limit($a->konten_english, 50, $end='...') : \Str::limit($a->konten_indo, 50, $end='...');
-                $fotos[$i]['slug'] = $a->slug;
-                $fotos[$i]['penulis'] = $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin';
-                $fotos[$i]['published_at'] = \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y');
-                $i++;
-            }
-            return response()->json([
-                'status' => 'success',
-                'data' => $fotos
-            ]);
-        } else {
-            return view('content_english.photos', compact('foto'));
         }
 
+        Common::handleSlugRedirection($lang, $slug, $thephoto);
+
+        $urls = unserialize($thephoto->slider_foto);
+        // wtf why does this need to be decoded first!!!
+        $captions = unserialize(json_decode($thephoto->{'caption_slider_foto_' . $lang}));
+
+        $content = [
+            "title" => $thephoto->{'judul_' . $lang},
+            "content" => $thephoto->{'konten_' . $lang},
+            "photos" => array_map(function (string $url, string $caption) {
+                return [
+                    "url" => $url,
+                    "caption" => $caption
+                ];
+            }, $urls, $captions),
+
+            "slug" => $thephoto->{'slug_' . $lang},
+            "published_at" => Carbon::parse($thephoto->published_at)->isoFormat("D MMMM Y"),
+            "author" => $thephoto->penulis != 'admin' ? $thephoto->kontributor_relasi->nama : "admin",
+            "author_type" => $thephoto->penulis,
+            "content_type" => "photo"
+        ];
+
+        $parameters = Common::createSlugParameters($thephoto);
+
+        return view('content.photo_detail', compact('content', 'parameters'));
     }
-
-    public function show($slug)
-    {
-        $lg = Session::get('lg');
-
-        $foto = Foto::where('slug', $slug)->orWhere('slug_english', $slug)->firstOrFail();
-
-        if( $lg == 'en' )
-            return redirect()->route('photo_detail.english', $slug);
-
-        // check draft
-        if( $foto->status == 'draft' && !isset(auth()->user()->id) ) {
-            abort(404);
-        }
-
-        if( $lg == 'en' )
-            return view('content_english.photo_detail', compact('foto'));
-
-        return view('content.photo_detail', compact('foto'));
-    }
-
-    public function show_english($slug)
-    {
-        $lg = Session::get('lg');
-
-        $foto = Foto::where('slug', $slug)->orWhere('slug_english', $slug)->firstOrFail();
-
-        if( $lg != 'en' )
-            return redirect()->route('photo_detail', $slug);
-
-        // check draft
-        if( $foto->status == 'draft' && !isset(auth()->user()->id) ) {
-            abort(404);
-        }
-
-        if( $lg == 'en' )
-            return view('content_english.photo_detail', compact('foto'));
-
-        return view('content.photo_detail', compact('foto'));
-    }
-
 }

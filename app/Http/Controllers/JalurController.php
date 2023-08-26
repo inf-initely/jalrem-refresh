@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\All;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\paginator;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -9,169 +10,71 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Session;
 
 use App\Models\Artikel;
-use App\Models\KategoriShow;
+use App\Models\Foto;
+use App\Models\Video;
+use App\Models\Audio;
+use App\Models\Publikasi;
+use App\Models\Kegiatan;
+use App\Models\Kerjasama;
+use Carbon\Carbon;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\DB;
 
 class JalurController extends Controller
 {
-    public function index()
-    {
-        $kategori = KategoriShow::where('isi', 'jalur')->first();
-        $artikel = $kategori->artikel->filter(function($item) {
-            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
-        });
-        $foto = $kategori->foto->filter(function($item) {
-            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
-        });
-        $audio = $kategori->audio->filter(function($item) {
-            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
-        });
-        $video = $kategori->video->filter(function($item) {
-            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
-        });
-        $publikasi = $kategori->publikasi->filter(function($item) {
-            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
-        });
-        $kerjasama = $kategori->kerjasama->filter(function($item) {
-            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
-        });
-        $kegiatan = $kategori->kegiatan->filter(function($item) {
-            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
-        });
-        $artikel = $artikel->mergeRecursive($foto)->mergeRecursive($audio)->mergeRecursive($video)->mergeRecursive($publikasi)->mergeRecursive($kerjasama)->mergeRecursive($kegiatan);
+    public static function getContentsQuery(int $category = 2, string $lang = "id"): Builder {
+        $subquery = All::getAllQuery(function ($query, $item) use ($category) {
+            return All::whereCategory($query, $item["table_name"], $category);
+        }, $lang);
 
-        if( Session::get('lg') == 'en' ) {
-            $artikel = $artikel->filter(function($item) {
-                return $item->judul_english != null && $item->published_at <= \Carbon\Carbon::now();
-            });
-        }
-
-        $artikel = ( $kategori != null )
-            ? $this->paginate($artikel, 9)
-            : [];
-
-        $artikel->setPath('/tentang-jalur');
-
-        if( Session::get('lg') == 'en' ) {
-            if( Paginator::resolveCurrentPage() != 1 ) {
-                $artikels = [];
-                $i = 0;
-
-                if(!request()->ajax()) {
-                    return response()->json([
-                        'status' => 'success',
-                        'data' => $artikels
-                    ]);
-                }
-
-                foreach( $artikel as $a ) {
-                    $artikels[$i]['judul'] = Session::get('lg') == 'en' ? $a->judul_english : $a->judul_indo;
-
-                    if( $a->getTable() == 'videos' ) {
-                        $artikels[$i]['youtubekey'] = $a->youtube_key;
-                    } else if( $a->getTable() == 'audio' ) {
-                        $artikels[$i]['cloudkey'] = $a->cloud_key;
-                    } else {
-                        $artikels[$i]['thumbnail'] = $a->thumbnail;
-                    }
-
-                    $j = 0;
-                    foreach( $a->kategori_show as $ks ) {
-                        $artikels[$i]['kategori_show'][$j] = $ks->isi;
-                        $j++;
-                    }
-                    $artikels[$i]['konten'] = Session::get('lg') == 'en' ? \Str::limit($a->konten_english, 50, $end='...') : \Str::limit($a->konten_indo, 50, $end='...');
-                    $artikels[$i]['slug'] = $a->slug;
-                    $artikels[$i]['penulis'] = $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin';
-                    $artikels[$i]['published_at'] = \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y');
-                    $artikels[$i]['table'] = $a->getTable();
-                    $artikels[$i]['nama_lokasi'] = $a->lokasi->nama_lokasi ?? '';
-                    $artikels[$i]['rempahs'] = $a->rempahs;
-                    $i++;
-                }
-                return response()->json([
-                    'status' => 'success',
-                    'data' => $artikels
-                ]);
-            } else {
-                return view('content_english.tentang_jalur', compact('artikel'));
-            }
-        }
-
-        // if( Paginator::resolveCurrentPage() != 1 ) {
-        //     $artikels = [];
-        //     $i = 0;
-        //     foreach( $artikels as $a ) {
-        //         $artikels[$i]['judul'] = Session::get('lg') == 'en' ? $artikel->judul_english : $artikel->judul_indo;
-        //         $artikels[$i]['konten'] = Session::get('lg') ==
-        //          'en' ? Str::limit($artikel->konten_english, 50, $end='...') : Str::limit($artikel->konten_indo, 50, $end='...');
-        //         $artikels[$i]['published_at'] = $artikel->published_at->diffForHumans();
-        //         $i++;
-        //     }
-        //     return response()->json([
-        //         'status' => 'success',
-        //         'data' => $comments_post
-        //     ]);
-        // } else {
-        //     return view('member.post_detail', compact('post', 'comments'));
-        // }
-
-        if( Paginator::resolveCurrentPage() != 1 ) {
-            $artikels = [];
-            $i = 0;
-
-            if(!request()->ajax()) {
-                return response()->json([
-                    'status' => 'success',
-                    'data' => $artikels
-                ]);
-            }
-
-            foreach( $artikel as $a ) {
-                $artikels[$i]['judul'] = Session::get('lg') == 'en' ? $a->judul_english : $a->judul_indo;
-
-                if( $a->getTable() == 'videos' ) {
-                    $artikels[$i]['youtubekey'] = $a->youtube_key;
-                } else if( $a->getTable() == 'audio' ) {
-                    $artikels[$i]['cloudkey'] = $a->cloud_key;
-                } else {
-                    $artikels[$i]['thumbnail'] = $a->thumbnail;
-                }
-
-                $j = 0;
-                foreach( $a->kategori_show as $ks ) {
-                    $artikels[$i]['kategori_show'][$j] = $ks->isi;
-                    $j++;
-                }
-                $artikels[$i]['konten'] = Session::get('lg') == 'en' ? \Str::limit($a->konten_english, 50, $end='...') : \Str::limit($a->konten_indo, 50, $end='...');
-                $artikels[$i]['slug'] = $a->slug;
-                $artikels[$i]['penulis'] = $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin';
-                $artikels[$i]['published_at'] = \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y');
-                $artikels[$i]['table'] = $a->getTable();
-                $artikels[$i]['nama_lokasi'] = $a->lokasi->nama_lokasi ?? '';
-                $artikels[$i]['rempahs'] = $a->rempahs;
-                $i++;
-            }
-            return response()->json([
-                'status' => 'success',
-                'data' => $artikels
-            ]);
-        } else {
-            return view('content.tentang_jalur', compact('artikel'));
-        }
-
+        return DB::table("cte")
+            ->select(DB::raw("*"), DB::raw("(SELECT COUNT(*) FROM cte) as count"))
+            ->withExpression("cte", $subquery);
     }
 
-    private function paginate($items, $perPage = 15, $page = null, $options = [])
-    {
-        $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
-        $items = $items instanceof Collection ? $items : Collection::make($items);
-        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
+    public static function normalizePageItem($item, string $lang) {
+        $model = All::modelizedItem($item);
+
+        $categories = $model->kategori_show->map(function ($item) {
+            return $item->isi;
+        });
+
+        $spices = $model->rempahs->map(function ($item) use ($lang) {
+            return [
+                "type" => $lang == "id" ? $item->jenis_rempah : $item->jenis_rempah_english,
+                "desc" => $lang == "id" ? $item->keterangan : $item->keterangan_english,
+            ];
+        });
+
+        $arr = All::normalizeModel($model, $lang);
+        $arr["categories"] = $categories;
+        $arr["spices"] = $spices;
+
+        return $arr;
     }
 
-    private function filter_publication()
-    {
-        return $kategori->artikel->filter(function($item) {
-            return $item->status == 'publikasi';
+    public function index(Request $request) {
+        $page = (int)$request->query("page");
+        if($page < -1) {
+            return response("parameter page should be an unsigned int", Response::HTTP_BAD_REQUEST);
+        }
+
+        $isApi = $page !== 0;
+
+        $lang = App::getLocale();
+        $contents = JalurController::getContentsQuery(2, $lang)->forPage($isApi ? $page : 1, 10)->get();
+        $data = $contents->map(function ($content) use ($lang) {
+            return JalurController::normalizePageItem($content, $lang);
         });
+
+        if(!$isApi) {
+            return view('content.tentang_jalur', compact('data'));
+        }
+
+        return response()->json([
+            "data" => $data
+        ]);
     }
 }

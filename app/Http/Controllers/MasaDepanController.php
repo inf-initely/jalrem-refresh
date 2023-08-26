@@ -10,182 +10,32 @@ use Illuminate\Support\Facades\Session;
 
 use App\Models\Artikel;
 use App\Models\KategoriShow;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\App;
 
 class MasaDepanController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        if( Session::get('lg') == 'en' ) {
-            return redirect()->route('tentangmasadepan.english'');
-        }
-        $kategori = KategoriShow::where('isi', 'masa depan')->first();
-        $artikel = $kategori->artikel->filter(function($item) {
-            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
-        });
-        $foto = $kategori->foto->filter(function($item) {
-            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
-        });
-        $audio = $kategori->audio->filter(function($item) {
-            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
-        });
-        $video = $kategori->video->filter(function($item) {
-            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
-        });
-        $publikasi = $kategori->publikasi->filter(function($item) {
-            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
-        });
-        $kerjasama = $kategori->kerjasama->filter(function($item) {
-            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
-        });
-        $kegiatan = $kategori->kegiatan->filter(function($item) {
-            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
-        });
-
-        $artikel = $artikel->mergeRecursive($foto)->mergeRecursive($audio)->mergeRecursive($video)->mergeRecursive($publikasi)->mergeRecursive($kerjasama)->mergeRecursive($kegiatan);
-
-        $artikel = ( $kategori != null )
-           ? $this->paginate($artikel, 9)
-           : [];
-
-        $artikel->setPath('/tentang-masa-depan');
-
-        if( Paginator::resolveCurrentPage() != 1 ) {
-            $artikels = [];
-            $i = 0;
-
-            if(!request()->ajax()) {
-                return response()->json([
-                    'status' => 'success',
-                    'data' => $artikels
-                ]);
-            }
-
-            foreach( $artikel as $a ) {
-                $artikels[$i]['judul'] = $a->judul_indo;
-
-                if( $a->getTable() == 'videos' ) {
-                    $artikels[$i]['youtubekey'] = $a->youtube_key;
-                } else if( $a->getTable() == 'audio' ) {
-                    $artikels[$i]['cloudkey'] = $a->cloud_key;
-                } else {
-                    $artikels[$i]['thumbnail'] = $a->thumbnail;
-                }
-
-                $j = 0;
-                foreach( $a->kategori_show as $ks ) {
-                    $artikels[$i]['kategori_show'][$j] = $ks->isi;
-                    $j++;
-                }
-                $artikels[$i]['konten'] = \Str::limit($a->konten_indo, 50, $end='...');
-                $artikels[$i]['slug'] = $a->slug;
-                $artikels[$i]['penulis'] = $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin';
-                $artikels[$i]['published_at'] = \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y');
-                $artikels[$i]['table'] = $a->getTable();
-                $artikels[$i]['nama_lokasi'] = $a->lokasi->nama_lokasi ?? '';
-                $artikels[$i]['rempahs'] = $a->rempahs;
-                $i++;
-            }
-            return response()->json([
-                'status' => 'success',
-                'data' => $artikels
-            ]);
-        } else {
-            return view('content.tentang_masadepan', compact('artikel'));
+        $page = (int)$request->query("page");
+        if($page < -1) {
+            return response("parameter page should be an unsigned int", Response::HTTP_BAD_REQUEST);
         }
 
-    }
+        $isApi = $page !== 0;
 
-    public function index_english()
-    {
-        if( Session::get('lg') != 'en' ) {
-            return redirect()->route('tentangmasadepan');
-        }
-        $kategori = KategoriShow::where('isi', 'masa depan')->first();
-        $artikel = $kategori->artikel->filter(function($item) {
-            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
-        });
-        $foto = $kategori->foto->filter(function($item) {
-            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
-        });
-        $audio = $kategori->audio->filter(function($item) {
-            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
-        });
-        $video = $kategori->video->filter(function($item) {
-            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
-        });
-        $publikasi = $kategori->publikasi->filter(function($item) {
-            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
-        });
-        $kerjasama = $kategori->kerjasama->filter(function($item) {
-            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
-        });
-        $kegiatan = $kategori->kegiatan->filter(function($item) {
-            return $item->status == 'publikasi' && $item->published_at <= \Carbon\Carbon::now();
-        });
-        $artikel = $artikel->mergeRecursive($foto)->mergeRecursive($audio)->mergeRecursive($video)->mergeRecursive($publikasi)->mergeRecursive($kerjasama)->mergeRecursive($kegiatan);
-
-        $artikel = $artikel->filter(function($item) {
-            return $item->judul_english != null;
+        $lang = App::getLocale();
+        $contents = JalurController::getContentsQuery(3, $lang)->forPage($isApi ? $page : 1, 10)->get();
+        $data = $contents->map(function ($content) use ($lang) {
+            return JalurController::normalizePageItem($content, $lang);
         });
 
-        $artikel = ( $kategori != null )
-           ? $this->paginate($artikel, 9)
-           : [];
-
-        $artikel->setPath('/about-the-future');
-
-        if( Paginator::resolveCurrentPage() != 1 ) {
-            $artikels = [];
-            $i = 0;
-
-            if(!request()->ajax()) {
-                return response()->json([
-                    'status' => 'success',
-                    'data' => $artikels
-                ]);
-            }
-
-            foreach( $artikel as $a ) {
-                $artikels[$i]['judul'] = $a->judul_english;
-
-                if( $a->getTable() == 'videos' ) {
-                    $artikels[$i]['youtubekey'] = $a->youtube_key;
-                } else if( $a->getTable() == 'audio' ) {
-                    $artikels[$i]['cloudkey'] = $a->cloud_key;
-                } else {
-                    $artikels[$i]['thumbnail'] = $a->thumbnail;
-                }
-
-                $j = 0;
-                foreach( $a->kategori_show as $ks ) {
-                    $artikels[$i]['kategori_show'][$j] = $ks->isi;
-                    $j++;
-                }
-                $artikels[$i]['konten'] = \Str::limit($a->konten_english, 50, $end='...');
-                $artikels[$i]['slug'] = $a->slug;
-                $artikels[$i]['penulis'] = $a->penulis != 'admin' ? $a->kontributor_relasi->nama : 'admin';
-                $artikels[$i]['published_at'] = \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y');
-                $artikels[$i]['table'] = $a->getTable();
-                $artikels[$i]['nama_lokasi'] = $a->lokasi->nama_lokasi ?? '';
-                $artikels[$i]['rempahs'] = $a->rempahs;
-                $i++;
-            }
-            return response()->json([
-                'status' => 'success',
-                'data' => $artikels
-            ]);
-        } else {
-            return view('content_english.tentang_masadepan', compact('artikel'));
+        if(!$isApi) {
+            return view('content.tentang_masadepan', compact('data'));
         }
 
-
-
-    }
-
-    private function paginate($items, $perPage = 15, $page = null, $options = [])
-    {
-        $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
-        $items = $items instanceof Collection ? $items : Collection::make($items);
-        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
+        return response()->json([
+            "data" => $data
+        ]);
     }
 }
