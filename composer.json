@@ -4,6 +4,12 @@
     "description": "The Laravel Framework.",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/slainless/sitemap"
+        }
+    ],
     "require": {
         "php": "^7.3|^8.0",
         "cyrildewit/eloquent-viewable": "^6.0",
@@ -17,7 +23,7 @@
         "laravel/tinker": "^2.5",
         "mews/captcha": "^3.2",
         "realrashid/sweet-alert": "^4.0",
-        "refinery29/sitemap": "^0.5.0",
+        "slainless/sitemap": "master",
         "sentry/sentry-laravel": "^2.8",
         "spatie/laravel-sitemap": "^5.9",
         "spatie/laravel-sluggable": "^2.6",
