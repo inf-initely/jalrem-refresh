@@ -53,7 +53,7 @@
                 </div>
             </div>`
             :
-            `<img class="tentang-thumbnail" src="{{ asset('storage/assets/${content.table_name.replace(/s$/, "")}/thumbnail/${content.thumbnail}') }}" width="100%">`
+            `<img class="tentang-thumbnail" src="{{ asset('storage/assets/${content.table_name.replace(/s$/, '')}/thumbnail/${content.thumbnail}') }}" width="100%">`
 
             el.append(`
             <div class="col-lg-6 mb-1">
