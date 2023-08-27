@@ -10,23 +10,18 @@ use App\Models\Publikasi;
 use App\Models\Video;
 use App\Models\Kerjasama;
 use App\Models\Rempah;
-use Assert\Assert;
 use DateTime;
 use Refinery29\Sitemap\Component\Image\Image;
-use Refinery29\Sitemap\Component\Image\ImageInterface;
-use Refinery29\Sitemap\Component\UrlSet;
-use Refinery29\Sitemap\Component\Url;
 use Refinery29\Sitemap\Component\News\News;
-use Refinery29\Sitemap\Component\News\NewsInterface;
 use Refinery29\Sitemap\Component\News\Publication;
 use Refinery29\Sitemap\Component\Sitemap;
 use Refinery29\Sitemap\Component\SitemapIndex;
+use Refinery29\Sitemap\Component\Url;
+use Refinery29\Sitemap\Component\UrlSet;
 use Refinery29\Sitemap\Component\UrlSetInterface;
-use Refinery29\Sitemap\Component\Video\VideoInterface;
-use Refinery29\Sitemap\Writer\SitemapWriter;
+use Refinery29\Sitemap\Writer\SitemapIndexWriter;
 use Refinery29\Sitemap\Writer\UrlSetWriter;
-use Refinery29\Sitemap\Writer\UrlWriter;
-use XMLWriter;
+use Slainless\Sitemap\Component\Alt;
 
 class Sitemapper
 {
@@ -51,31 +46,25 @@ class Sitemapper
         ];
     }
 
-    public static function url(string $u, float $priority)
-    {
-        $url = new Url($u);
-        return $url->withPriority($priority);
-    }
-
     public static function baseUrls()
     {
         $urls = [];
         foreach (["id", "en"] as $lang) {
-            $urls[] = Sitemapper::url(route("home." . $lang), 1);
-            $urls[] = Sitemapper::url(route("the-route." . $lang), 0.9);
-            $urls[] = Sitemapper::url(route("the-trail." . $lang), 0.9);
-            $urls[] = Sitemapper::url(route("the-future." . $lang), 0.9);
+            $urls[] = Url::create(route("home." . $lang))->withPriority(1);
+            $urls[] = Url::create(route("the-route." . $lang))->withPriority(0.9);
+            $urls[] = Url::create(route("the-trail." . $lang))->withPriority(0.9);
+            $urls[] = Url::create(route("the-future." . $lang))->withPriority(0.9);
 
-            $urls[] = Sitemapper::url(route("information." . $lang), 0.8);
+            $urls[] = Url::create(route("information." . $lang))->withPriority(0.8);
 
-            $urls[] = Sitemapper::url(route("contents." . $lang), 0.7);
-            $urls[] = Sitemapper::url(route("articles." . $lang), 0.7);
-            $urls[] = Sitemapper::url(route("audios." . $lang), 0.7);
-            $urls[] = Sitemapper::url(route("events." . $lang), 0.7);
-            $urls[] = Sitemapper::url(route("photos." . $lang), 0.7);
-            $urls[] = Sitemapper::url(route("publications." . $lang), 0.7);
-            $urls[] = Sitemapper::url(route("videos." . $lang), 0.7);
-            $urls[] = Sitemapper::url(route("partnerships." . $lang), 0.7);
+            $urls[] = Url::create(route("contents." . $lang))->withPriority(0.7);
+            $urls[] = Url::create(route("articles." . $lang))->withPriority(0.7);
+            $urls[] = Url::create(route("audios." . $lang))->withPriority(0.7);
+            $urls[] = Url::create(route("events." . $lang))->withPriority(0.7);
+            $urls[] = Url::create(route("photos." . $lang))->withPriority(0.7);
+            $urls[] = Url::create(route("publications." . $lang))->withPriority(0.7);
+            $urls[] = Url::create(route("videos." . $lang))->withPriority(0.7);
+            $urls[] = Url::create(route("partnerships." . $lang))->withPriority(0.7);
         }
         return new UrlSet($urls);
     }
@@ -99,11 +88,27 @@ class Sitemapper
         $type = $Class == Video::class ? 1 : ($Class == Audio::class ? 2 : 3);
         if ($type === 3) {
             $query->addSelect("thumbnail");
+
+            if ($Class == Foto::class) {
+                $query->addSelect(
+                    "slider_foto",
+                    "caption_slider_foto as caption_id",
+                    "caption_slider_foto_english as caption_en",
+                );
+            }
         }
 
         $urls = [];
         $contents = $query->get();
         foreach ($contents as $content) {
+            $alts = [];
+
+            foreach (["id", "en"] as $lang) {
+                if ($content->{"slug_" . $lang} != null && $content->{"slug_" . $lang} != "" && $content->{"slug_" . $lang} != "n/a") {
+                    $alts[] = new Alt(route($baseRouteName . "." . $lang, $content->{"slug_" . $lang}), "id");
+                }
+            }
+
             foreach (["id", "en"] as $lang) {
                 $title = $content->{"title_" . $lang};
                 $slug = $content->{"slug_" . $lang};
@@ -119,18 +124,31 @@ class Sitemapper
                     $news = $news->withKeywords(explode(",", $keywords));
                 }
 
-                $url = $url->withNews([
-                    $news
-                ]);
+                $url = $url
+                    ->withNews([$news])
+                    ->withAlternatives($alts);
 
                 if ($type === 3) {
-                    $img = new Image(asset('storage/assets/' . substr($content->getTable(), 0, -1) . '/thumbnail/' . $content->thumbnail));
-                    $url = $url->withImages([
-                        $img
-                    ]);
+                    $imgs = [];
+                    $imgs[] = new Image(asset('storage/assets/' . substr($content->getTable(), 0, -1) . '/thumbnail/' . $content->thumbnail));
+
+                    if ($Class == Foto::class) {
+                        $us = unserialize($content->slider_foto);
+                        // wtf why does this need to be decoded first!!!
+                        $captions = unserialize(json_decode($content->{'caption_' . $lang}));
+                        foreach ($us as $i => $u) {
+                            $img = new Image(asset('storage/assets/foto/slider_foto/' . $u));
+                            if ($captions[$i] != "" && $captions[$i] != null) {
+                                $img = $img->withCaption($captions[$i]);
+                            }
+                            $imgs[] = $img;
+                        }
+                    }
+
+                    $url = $url->withImages($imgs);
                 }
 
-                array_push($urls, $url);
+                $urls[] = $url;
             }
         }
 
@@ -143,9 +161,15 @@ class Sitemapper
 
         $spices = Rempah::select("jenis_rempah as name_id", "jenis_rempah_english as name_en")->get();
         foreach ($spices as $spice) {
+            $alts = [
+                new Alt(route("rempah_detail.id", $spice->name_id), "id"),
+                new Alt(route("rempah_detail.en", $spice->name_en), "en"),
+            ];
+
             foreach (["id", "en"] as $lang) {
-                $url = new Url(route("rempah_detail." . $lang, $spice->{"name_" . $lang}));
-                $urls[] = $url->withPriority(0.6);
+                $urls[] = Url::create(route("rempah_detail." . $lang, $spice->{"name_" . $lang}))
+                    ->withPriority(0.6)
+                    ->withAlternatives($alts);
             }
         }
 
@@ -170,8 +194,9 @@ class Sitemapper
             $lastUpdated = filemtime("./public/sitemap/{$map[1]}.xml");
             assert($lastUpdated);
 
-            $sitemap = new Sitemap(url("/sitemap/{$map[1]}.xml"));
-            $sitemaps[] = $sitemap->withLastModified((new DateTime())->setTimestamp($lastUpdated));
+            $sitemaps[] = Sitemap::create(url("/sitemap/{$map[1]}.xml"))
+                ->withLastModified((new DateTime())
+                    ->setTimestamp($lastUpdated));
         }
 
         Sitemapper::writeSitemapIndex(new SitemapIndex($sitemaps), "./public/sitemap.xml");
@@ -193,48 +218,11 @@ class Sitemapper
 
     public static function writeSitemap(UrlSetInterface $urlSet, string $uri)
     {
-        $urlWriter = new UrlWriter();
-        $xmlWriter = new XMLWriter();
-
-        $xmlWriter->openUri($uri);
-        $xmlWriter->startDocument('1.0', 'UTF-8');
-
-        $xmlWriter->startElement('urlset');
-
-        $xmlWriter->writeAttribute(UrlSetInterface::XML_NAMESPACE_ATTRIBUTE, UrlSetInterface::XML_NAMESPACE_URI);
-        $xmlWriter->writeAttribute(ImageInterface::XML_NAMESPACE_ATTRIBUTE, ImageInterface::XML_NAMESPACE_URI);
-        $xmlWriter->writeAttribute(NewsInterface::XML_NAMESPACE_ATTRIBUTE, NewsInterface::XML_NAMESPACE_URI);
-        $xmlWriter->writeAttribute(VideoInterface::XML_NAMESPACE_ATTRIBUTE, VideoInterface::XML_NAMESPACE_URI);
-        foreach ($urlSet->urls() as $url) {
-            $urlWriter->write($url, $xmlWriter);
-        }
-
-        $xmlWriter->endElement();
-
-        $xmlWriter->endDocument();
-
-        return $xmlWriter->outputMemory();
+        UrlSetWriter::create()->writeToUri($urlSet, $uri);
     }
 
     public static function writeSitemapIndex(SitemapIndex $index, string $uri)
     {
-        $sitemapWriter = new SitemapWriter();
-        $xmlWriter = new XMLWriter();
-
-        $xmlWriter->openUri($uri);
-        $xmlWriter->startDocument('1.0', 'UTF-8');
-
-        $xmlWriter->startElement('sitemapindex');
-        $xmlWriter->writeAttribute('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
-
-        foreach ($index->sitemaps() as $sitemap) {
-            $sitemapWriter->write($sitemap, $xmlWriter);
-        }
-
-        $xmlWriter->endElement();
-
-        $xmlWriter->endDocument();
-
-        return $xmlWriter->outputMemory();
+        SitemapIndexWriter::create()->writeToUri($index, $uri);
     }
 }
