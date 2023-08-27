@@ -49,22 +49,27 @@ class Sitemapper
     public static function baseUrls()
     {
         $urls = [];
-        foreach (["id", "en"] as $lang) {
-            $urls[] = Url::create(route("home." . $lang))->withPriority(1);
-            $urls[] = Url::create(route("the-route." . $lang))->withPriority(0.9);
-            $urls[] = Url::create(route("the-trail." . $lang))->withPriority(0.9);
-            $urls[] = Url::create(route("the-future." . $lang))->withPriority(0.9);
+        foreach ([
+            ["home", 1.0],
 
-            $urls[] = Url::create(route("information." . $lang))->withPriority(0.8);
+            ["the-route", 0.9], ["the-trail", 0.9], ["the-future", 0.9],
 
-            $urls[] = Url::create(route("contents." . $lang))->withPriority(0.7);
-            $urls[] = Url::create(route("articles." . $lang))->withPriority(0.7);
-            $urls[] = Url::create(route("audios." . $lang))->withPriority(0.7);
-            $urls[] = Url::create(route("events." . $lang))->withPriority(0.7);
-            $urls[] = Url::create(route("photos." . $lang))->withPriority(0.7);
-            $urls[] = Url::create(route("publications." . $lang))->withPriority(0.7);
-            $urls[] = Url::create(route("videos." . $lang))->withPriority(0.7);
-            $urls[] = Url::create(route("partnerships." . $lang))->withPriority(0.7);
+            ["information", 0.8],
+
+            ["contents", 0.7],  ["articles", 0.7],      ["audios", 0.7],
+            ["events", 0.7],    ["photos", 0.7],        ["publications", 0.7],
+            ["videos", 0.7],    ["partnerships", 0.7],
+        ] as $url) {
+            $alts = [
+                new Alt(route($url[0].".id"), "id"),
+                new Alt(route($url[0].".en"), "en"),
+            ];
+
+            foreach (["id", "en"] as $lang) {
+                $urls[] = Url::create(route($url[0]."." . $lang))
+                    ->withPriority($url[1])
+                    ->withAlternatives($alts);
+            }
         }
         return new UrlSet($urls);
     }
@@ -105,7 +110,7 @@ class Sitemapper
 
             foreach (["id", "en"] as $lang) {
                 if ($content->{"slug_" . $lang} != null && $content->{"slug_" . $lang} != "" && $content->{"slug_" . $lang} != "n/a") {
-                    $alts[] = new Alt(route($baseRouteName . "." . $lang, $content->{"slug_" . $lang}), "id");
+                    $alts[] = new Alt(route($baseRouteName . "." . $lang, $content->{"slug_" . $lang}), $lang);
                 }
             }
 

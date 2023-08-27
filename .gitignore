@@ -16,4 +16,5 @@ production_deploy.sh
 /.vscode
 /public/sitemap/*
 /public/sitemap.xml
+/flags/*
 !/flags/*.example
