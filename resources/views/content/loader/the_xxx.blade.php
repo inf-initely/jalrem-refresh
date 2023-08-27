@@ -19,6 +19,8 @@
                 return `<a href="/funfact/${item.type}" class="text-danger text-decoration-none">${item.type}</a>` + sep
             }).join("")
 
+            const emptyString = ""
+
             const media =
             content.type == "audio" ?
             `<div class="col-5 center-v">
@@ -53,7 +55,7 @@
                 </div>
             </div>`
             :
-            `<img class="tentang-thumbnail" src="{{ asset('storage/assets/${content.table_name.replace(/s$/, '')}/thumbnail/${content.thumbnail}') }}" width="100%">`
+            `<img class="tentang-thumbnail" src="{{ asset('storage/assets/${content.table_name.replace(/s$/, emptyString)}/thumbnail/${content.thumbnail}') }}" width="100%">`
 
             el.append(`
             <div class="col-lg-6 mb-1">
