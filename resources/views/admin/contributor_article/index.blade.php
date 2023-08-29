@@ -56,7 +56,7 @@
                               <span class="badge rounded-pill py-1 px-3 {{ $a->status == 'publikasi' ? 'bg-success' : 'bg-secondary' }}">{{ $a->status == 'publikasi' ? 'Aktif' : 'Draft' }}</span>
                             </td>
                             <td>
-                              <a href="{{ route('article_detail', $a->slug) }}" class="btn btn-sm btn-outline-primary mb-1">
+                              <a href="{{ route('article_detail.id', $a->slug) }}" class="btn btn-sm btn-outline-primary mb-1">
                                 View
                               </a>
                               <a href="{{ route('admin.article.edit', $a->id) }}" class="btn btn-sm btn-outline-info mb-1">
