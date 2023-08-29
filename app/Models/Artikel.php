@@ -93,6 +93,7 @@ class Artikel extends Model implements Viewable
             "meta_english as meta_en",
             "keywords_english as keywords_en",
             "slug as slug_id",
+            "thumbnail",
             "slug_english as slug_en",
             "penulis",
             "id_kontributor",
