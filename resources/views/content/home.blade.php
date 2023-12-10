@@ -2,10 +2,10 @@
     $lang = App::getLocale();
 
     $metadata = [
-        "meta:title" => __("common.title"),
-        "title" => __("Home"),
-        "description" => __("meta.home.description"),
-        "keywords" => __("meta.home.keywords"),
+        'meta:title' => __('common.title'),
+        'title' => __('Home'),
+        'description' => __('meta.home.description'),
+        'keywords' => __('meta.home.keywords'),
     ];
 @endphp
 
@@ -25,7 +25,7 @@
                                     <div class="container">
                                         <div data-swiper-parallax="300" class="slide-title">
                                             <h2 class="title"><a style="text-decoration: none; color: #fff;"
-                                                    href="{{ route(generate_route_content($s->getTable()) . '_detail.'.$lang, $s->{'slug_' . $lang} ?? $s->slug) }}">{{ $s->{'judul_' . $lang} }}</a>
+                                                    href="{{ route(generate_route_content($s->getTable()) . '_detail.' . $lang, $s->{'slug_' . $lang} ?? $s->slug) }}">{{ $s->{'judul_' . $lang} }}</a>
                                             </h2>
                                         </div>
                                         <div data-swiper-parallax="400" class="slide-text">
@@ -64,6 +64,9 @@
     </header>
     <main>
         <div id="content">
+            <section id="timeline">
+                @include("content.home.timeline")
+            </section>
             <section id="jelajah">
                 <div class="container">
                     <img class="item-jelajah item-jelajah-1" src="{{ asset('assets/img/item-daun-1.svg') }}" loading="lazy">
@@ -80,7 +83,7 @@
                                 <h2 class="sub-judul sub-judul-jelajahi">{{ __('common.the_route') }}</h2>
                             </header>
                             <p class="jelajah-des">{{ __('page_home.desc.route') }}</p>
-                            <a href="{{ route('the-route.'.$lang) }}"
+                            <a href="{{ route('the-route.' . $lang) }}"
                                 class="btn btn-danger btn-jelajah">{{ __('Explore More') }}</a>
                         </div>
                     </div>
@@ -90,7 +93,7 @@
                                 <h2 class="sub-judul sub-judul-jelajahi">{{ __('common.the_trail') }}</h2>
                             </header>
                             <p class="jelajah-des">{{ __('page_home.desc.trail') }}</p>
-                            <a href="{{ route('the-trail.'.$lang) }}"
+                            <a href="{{ route('the-trail.' . $lang) }}"
                                 class="btn btn-danger btn-jelajah">{{ __('Explore More') }}</a>
 
                         </div>
@@ -113,7 +116,7 @@
                                 <h2 class="sub-judul sub-judul-jelajahi">{{ __('common.the_future') }}</h2>
                             </header>
                             <p class="jelajah-des">{{ __('page_home.desc.future') }}</p>
-                            <a href="{{ route('the-future.'.$lang) }}"
+                            <a href="{{ route('the-future.' . $lang) }}"
                                 class="btn btn-danger btn-jelajah">{{ __('Explore More') }}</a>
                         </div>
                     </div>
@@ -147,7 +150,7 @@
                             <h2 class="sub-judul">{{ __('Events') }}</h2>
                         </div>
                         <div class="col-md-6 center-v text-end d-desktop">
-                            <a href="{{ route('information.'.$lang) }}"
+                            <a href="{{ route('information.' . $lang) }}"
                                 class="btn btn-outline-danger">{{ __('page_home.button.activity') }}</a>
                         </div>
                     </header>
@@ -170,14 +173,14 @@
                                                     {{ $k->{'judul_' . $lang} }}</h3>
                                             </div>
                                         </div>
-                                        <a href="{{ route('event_detail.'.$lang, $k->{'slug_' . $lang} ?? $k->slug) }}"
+                                        <a href="{{ route('event_detail.' . $lang, $k->{'slug_' . $lang} ?? $k->slug) }}"
                                             class="stretched-link"></a>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
                         <div class="col-md-12 text-center d-mobile">
-                            <a href="{{ route('information.'.$lang) }}"
+                            <a href="{{ route('information.' . $lang) }}"
                                 class="btn btn-outline-danger">{{ __('page_home.button.activity') }}</a>
                         </div>
                     </section>
@@ -190,7 +193,7 @@
                             <h2 class="sub-judul">{{ __('News and Articles') }}</h2>
                         </div>
                         <div class="col-md-6 center-v text-end  d-desktop">
-                            <a href="{{ route('articles.'.$lang) }}"
+                            <a href="{{ route('articles.' . $lang) }}"
                                 class="btn btn-outline-danger">{{ __('page_home.button.article') }}</a>
                         </div>
                     </header>
@@ -210,7 +213,7 @@
                                             {{ \Carbon\Carbon::parse($a->published_at)->isoFormat('D MMMM Y') }}
                                         </p>
                                     </div>
-                                    <a href="{{ route('article_detail.'.$lang, $a->{'slug_' . $lang} ?? $a->slug) }}"
+                                    <a href="{{ route('article_detail.' . $lang, $a->{'slug_' . $lang} ?? $a->slug) }}"
                                         class="stretched-link"></a>
                                 </div>
                             </div>
@@ -227,7 +230,7 @@
                             <header>
                                 <h2 class="sub-judul">{{ __('Contents') }}</h2>
                                 <p class="des-sub-judul">{{ __('page_home.desc.contents') }}</p>
-                                <a href="{{ route('contents.'.$lang) }}"
+                                <a href="{{ route('contents.' . $lang) }}"
                                     class="btn btn-outline-danger">{{ __('page_home.button.content') }}</a>
                             </header>
                         </section>
@@ -239,7 +242,7 @@
                                             <img src="{{ asset('assets/img/icon-image.webp') }}" width="40%">
                                             <p class="judul-media">{{ __('Photo') }}</p>
                                         </div>
-                                        <a href="{{ route('photos.'.$lang) }}" class="stretched-link"></a>
+                                        <a href="{{ route('photos.' . $lang) }}" class="stretched-link"></a>
                                     </div>
                                 </div>
                                 <div class="col-6 col-md-6">
@@ -248,7 +251,7 @@
                                             <img src="{{ asset('assets/img/icon-publication.webp') }}" width="40%">
                                             <p class="judul-media">{{ __('Publication') }}</p>
                                         </div>
-                                        <a href="{{ route('publications.'.$lang) }}" class="stretched-link"></a>
+                                        <a href="{{ route('publications.' . $lang) }}" class="stretched-link"></a>
                                     </div>
                                 </div>
                             </div>
@@ -259,7 +262,7 @@
                                             <img src="{{ asset('assets/img/icon-video.webp') }}" width="40%">
                                             <p class="judul-media">{{ __('Video') }}</p>
                                         </div>
-                                        <a href="{{ route('videos.'.$lang) }}" class="stretched-link"></a>
+                                        <a href="{{ route('videos.' . $lang) }}" class="stretched-link"></a>
                                     </div>
                                 </div>
                                 <div class="col-6 col-md-6">
@@ -268,7 +271,7 @@
                                             <img src="{{ asset('assets/img/icon-sound.webp') }}" width="40%">
                                             <p class="judul-media">{{ __('Audio') }}</p>
                                         </div>
-                                        <a href="{{ route('audios.'.$lang) }}" class="stretched-link"></a>
+                                        <a href="{{ route('audios.' . $lang) }}" class="stretched-link"></a>
                                     </div>
                                 </div>
                             </div>
@@ -302,12 +305,13 @@
 @endsection
 
 @section('js')
-    @include("partials.js.bootstrap")
+    @include('partials.js.bootstrap')
     @include('partials.js.jquery')
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script type="text/javascript" src="{{ asset('assets/js/ytdefer.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
-    @include("partials.js.dynamic-navbar")
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"></script>
+    @include('partials.js.dynamic-navbar')
     <script>
         $(function() {
 
@@ -421,6 +425,24 @@
             if ($(this).attr("data-background")) {
                 $(this).css("background-image", "url(" + $(this).data("background") + ")");
             }
+        });
+    </script>
+    <script>
+        $('.timeline-carousel-slick').slick({
+            infinite: false,
+            arrows: false,
+            dots: true,
+            autoplay: false,
+            speed: 1100,
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            responsive: [{
+                breakpoint: 800,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }]
         });
     </script>
     <script>
